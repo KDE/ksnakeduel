@@ -22,4 +22,4 @@ messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/ktron.pot
 
 install-data-local:
-	rm -rf $(kde_appsdir)/Games/ktron.desktop
+	rm -rf $(DESTDIR)$(kde_appsdir)/Games/ktron.desktop
