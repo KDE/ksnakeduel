@@ -10,8 +10,7 @@ EXTRA_DIST = ktron.desktop
 
 KDE_ICON = ktron
 
-appsdir = $(kde_appsdir)/Games/Arcade
-apps_DATA = ktron.desktop
+xdg_apps_DATA = ktron.desktop
 
 METASOURCES = AUTO
 
@@ -20,6 +19,3 @@ rc_DATA = ktronui.rc
 
 messages: rc.cpp
 	$(XGETTEXT) *.cpp -o $(podir)/ktron.pot
-
-install-data-local:
-	rm -rf $(DESTDIR)$(kde_appsdir)/Games/ktron.desktop
