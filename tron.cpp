@@ -87,7 +87,7 @@ void Tron::loadSettings(){
   // Backgroundimage
   setBackgroundPix(NULL);
   if(Settings::backgroundImageChoice()){
-    KURL url = Settings::backgroundImage();
+    KURL url ( Settings::backgroundImage() );
     if(!url.isEmpty()){
       QString tmpFile;
       KIO::NetAccess::download(url, tmpFile, this);
