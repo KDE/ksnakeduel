@@ -25,8 +25,6 @@
 #include <kconfig.h>
 #include <kcolordlg.h>
 #include <qtimer.h>
-#include <sys/time.h>
-#include <stdlib.h>
 
 #include "tron.h"
 
@@ -46,7 +44,7 @@ Tron::Tron(QWidget *parent,const char *name)
   beginHint=false;
   lookForward=15;
 
-  srand(time(0)); // used for computerplayers
+  random.setSeed(0);
 
   timer=new QTimer(this,"timer");
   connect(timer,SIGNAL(timeout()),SLOT(doMove()));
@@ -1377,13 +1375,13 @@ if(_skill != Easy)
          // opponent is to the right and we have the chance to block the way
          if(opSideDis>0 && opSideDis < opForwardDis && opSideDis < dis_right && opForwardDis < lookForward)
          {
-            if ((int)rand()%100 <= doPercentage || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
                switchDir(playerNr,sides[1]); // turn right
          }
          // opponent is to the left and we have the chance to block the way
          else if(opSideDis<0 && -opSideDis < opForwardDis && -opSideDis < dis_left && opForwardDis < lookForward)
          {
-            if ((int)rand()%100 <= doPercentage || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
                switchDir(playerNr,sides[0]); // turn left
          }
          // if we can do nothing, go forward
@@ -1392,7 +1390,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
          			changeDirection(playerNr,dis_right,dis_left);
          }
       }
@@ -1402,7 +1400,7 @@ if(_skill != Easy)
       	dis_forward = 100 - 100/dis_forward;
 
     		if(!(dis_left == 1 && dis_right == 1))
-      		if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      		if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         			changeDirection(playerNr,dis_right,dis_left);	
       }
    } // end  if(opMovesOppositeDir)
@@ -1415,13 +1413,13 @@ if(_skill != Easy)
         	// opponent is to the right and we have the chance to block the way
          if(opSideDis>0 && opSideDis < -opForwardDis && opSideDis < dis_right)
          {
-            if ((int)rand()%100 <= doPercentage || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
                switchDir(playerNr,sides[1]); // turn right
          }
          // opponent is to the left and we have the chance to block the way
          else if(opSideDis<0 && -opSideDis < -opForwardDis && -opSideDis < dis_left)
          {
-            if ((int)rand()%100 <= doPercentage || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
                switchDir(playerNr,sides[0]); // turn left
          }
          // if we can do nothing, go forward
@@ -1430,7 +1428,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
          			changeDirection(playerNr,dis_right,dis_left);
          }
       }
@@ -1440,7 +1438,7 @@ if(_skill != Easy)
       	dis_forward = 100 - 100/dis_forward;
       	
     		if(!(dis_left == 1 && dis_right == 1))
-      		if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      		if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         			changeDirection(playerNr,dis_right,dis_left);
       }
    } // end if(opMovesSameDir)
@@ -1455,7 +1453,7 @@ if(_skill != Easy)
           {
              if(opForwardDis < lookForward && dis_left > lookForward)
              {
-	          	 if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+	          	 if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
                	changeDirection(playerNr,dis_right,dis_left);
 	          }
 	          else if(dis_forward < lookForward)
@@ -1463,7 +1461,7 @@ if(_skill != Easy)
       			dis_forward = 100 - 100/dis_forward;
       	
     				if(!(dis_left == 1 && dis_right == 1))
-      				if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
           }
@@ -1472,7 +1470,7 @@ if(_skill != Easy)
           {
              if(opForwardDis < lookForward && dis_right>lookForward)
              {
-            	if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+            	if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
                	switchDir(playerNr,sides[1]); // turn right
              }
 	          else if(dis_forward < lookForward)
@@ -1480,7 +1478,7 @@ if(_skill != Easy)
       			dis_forward = 100 - 100/dis_forward;
       	
     				if(!(dis_left == 1 && dis_right == 1))
-      				if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
           }
@@ -1489,7 +1487,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
       	 }
       }
@@ -1499,7 +1497,7 @@ if(_skill != Easy)
          // opponent is right from us and we already blocked him
          if(opSideDis>0 && opForwardDis < lookForward && opSideDis < dis_right)
          {
-            if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
                	changeDirection(playerNr,dis_right,dis_left);
          }
       	else if(dis_forward<lookForward)
@@ -1507,7 +1505,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
       	}
       }
@@ -1523,7 +1521,7 @@ if(_skill != Easy)
           {
              if(opForwardDis < lookForward && dis_right>lookForward)
              {
-          	 	if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+          	 	if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
                	changeDirection(playerNr,dis_right,dis_left);
              }
           	 else if(dis_forward < lookForward)
@@ -1531,7 +1529,7 @@ if(_skill != Easy)
       			dis_forward = 100 - 100/dis_forward;
       	
     				if(!(dis_left == 1 && dis_right == 1))
-      				if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
           }
@@ -1540,7 +1538,7 @@ if(_skill != Easy)
           {
              if(opForwardDis < lookForward && dis_left>lookForward)
              {
-             	if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+             	if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
 						switchDir(playerNr,sides[0]); // turn left
 				 }
 	       	 else if(dis_forward < lookForward)
@@ -1548,7 +1546,7 @@ if(_skill != Easy)
       			dis_forward = 100 - 100/dis_forward;
       	
     				if(!(dis_left == 1 && dis_right == 1))
-      				if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
 	       		
@@ -1558,7 +1556,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
       	}
       }
@@ -1568,7 +1566,7 @@ if(_skill != Easy)
          // opponent is left from us and we already blocked him
          if(opSideDis<0 && opForwardDis < lookForward && -opSideDis < dis_left)
          {
-            if ((int)rand()%100 <= doPercentage/2 || dis_forward==1)
+            if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
                	changeDirection(playerNr,dis_right,dis_left);
          }
       	else if(dis_forward<lookForward)
@@ -1576,7 +1574,7 @@ if(_skill != Easy)
       		dis_forward = 100 - 100/dis_forward;
       	
     			if(!(dis_left == 1 && dis_right == 1))
-      			if ((int)rand()%100 >= dis_forward || dis_forward == 1)
+      			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
       	}
       }
@@ -1682,10 +1680,10 @@ else //_skill==Easy
       index[1] += flags[5];
     }
     if(!(dis_left == 1 && dis_right == 1))
-      if ((int)rand()%100 >= dis_forward || dis_forward == 0) {
+      if ((int)random.getLong(100) >= dis_forward || dis_forward == 0) {
        
 	// change direction
-	if ((int)rand()%100 <= (100*dis_left)/(dis_left+dis_right))
+	if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
 	  if (dis_left != 1)
 
 	    // turn to the left
@@ -1737,7 +1735,7 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
    if(!(dis_left == 1 && dis_right == 1))
    {
 			// change direction
-			if ((int)rand()%100 <= (100*dis_left)/(dis_left+dis_right))
+			if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
 			{
 	  			if (dis_left != 1)
 		    		// turn to the left

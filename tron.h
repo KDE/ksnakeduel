@@ -32,6 +32,7 @@
 #include <qtimer.h>
 #include <qstring.h>
 #include <math.h>
+#include <krandomsequence.h>
 
 class KAccel;
 class KConfig;
@@ -134,6 +135,8 @@ private:
   /** skill of computerplayer */
   Skill _skill;
 
+  /** The random sequence generator **/
+  KRandomSequence random;
 
   // Options
   /** flag, if the color of a crashed player has to change */
