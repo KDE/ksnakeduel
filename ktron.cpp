@@ -659,7 +659,10 @@ void KTron::chooseBgPix()
   //const QString dir=KGlobal::dirs()->getResourceDirs("wallpaper").first();
   const QString dir="";
 
-  QString name=KFilePreviewDialog::getOpenFileName(dir,"*",this);
+  // Used to be:
+  //QString name=KFilePreviewDialog::getOpenFileName(dir,"*",this);
+  //When do we get back KFilePreviewDialog???
+  QString name=KFileDialog::getOpenFileName(dir, "*", this);
   if(name.isNull())
      return;
 

@@ -27,6 +27,8 @@
 
 // this function is for previewing wallpapers in the
 // KFilePreviewDialog
+// KFilePreviewDialog is broken, so we don't care.
+#if 0
 bool previewWallpaper(const KFileInfo *,const QString filename,
 											QString &, QPixmap& pix)
 {
@@ -40,7 +42,7 @@ bool previewWallpaper(const KFileInfo *,const QString filename,
 
    return flag;
 }
-
+#endif
 
 int main(int argc, char* argv[]) { 
   KApplication a(argc,argv,"ktron");  
@@ -48,7 +50,9 @@ int main(int argc, char* argv[]) {
   // used for loading background pixmaps
   kimgioRegister();
 
+#if 0
   KFilePreviewDialog::registerPreviewModule("Wallpapers",previewWallpaper,PreviewPixmap);
+#endif
 
   if(a.isRestored())
   {
