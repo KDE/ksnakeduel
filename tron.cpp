@@ -30,7 +30,7 @@
 
 #include "tron.h"
 
-#define FRAMESIZE 2
+#define TRON_FRAMESIZE 2
 
 /* *************************************************************** **
 **                    init-functions										 **
@@ -91,8 +91,8 @@ void Tron::createNewPlayfield()
 
   // field size
 
-  fieldWidth=(width()-2*FRAMESIZE)/rectSize;
-  fieldHeight=(height()-2*FRAMESIZE)/rectSize;
+  fieldWidth=(width()-2*TRON_FRAMESIZE)/rectSize;
+  fieldHeight=(height()-2*TRON_FRAMESIZE)/rectSize;
 
   // start positions
   playfield=new QMemArray<int>[fieldWidth];
@@ -281,11 +281,11 @@ void Tron::updatePixmap()
 
    p.setPen(NoPen);
    p.setBrush(light);
-      p.drawRect(width()-FRAMESIZE,0,FRAMESIZE,height());
-   p.drawRect(0,height()-FRAMESIZE,width(),FRAMESIZE);
+      p.drawRect(width()-TRON_FRAMESIZE,0,TRON_FRAMESIZE,height());
+   p.drawRect(0,height()-TRON_FRAMESIZE,width(),TRON_FRAMESIZE);
    p.setBrush(dark);
-   p.drawRect(0,0,width(),FRAMESIZE);
-   p.drawRect(0,0,FRAMESIZE,height());
+   p.drawRect(0,0,width(),TRON_FRAMESIZE);
+   p.drawRect(0,0,TRON_FRAMESIZE,height());
 
    p.end();
 }
