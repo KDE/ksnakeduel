@@ -45,10 +45,7 @@
 
 KTron::KTron(const char *name)
       : KTMainWindow(name),
-       skillAction(3),
-       velocityAction(9),
-       styleAction(4),
-       sizeAction(5)
+       skillAction(3)
 {
    playerPoints[0]=playerPoints[1]=0;
 
@@ -109,38 +106,42 @@ KTron::KTron(const char *name)
       skillAction[i]->setExclusiveGroup("skill");
 
 
-   velocityAction[0]=new KRadioAction(i18n("&1 (slow)"), 0 , this, SLOT(velocity1()),
-          actionCollection(), "velocity_1");
-   velocityAction[1]=new KRadioAction(i18n("&2"), 0 , this, SLOT(velocity2()),
-          actionCollection(), "velocity_2");
-   velocityAction[2]=new KRadioAction(i18n("&3"), 0 , this, SLOT(velocity3()),
-          actionCollection(), "velocity_3");
-   velocityAction[3]=new KRadioAction(i18n("&4"), 0 , this, SLOT(velocity4()),
-          actionCollection(), "velocity_4");
-   velocityAction[4]=new KRadioAction(i18n("&5 (default)"), 0 , this, SLOT(velocity5()),
-          actionCollection(), "velocity_5");
-   velocityAction[5]=new KRadioAction(i18n("&6"), 0 , this, SLOT(velocity6()),
-          actionCollection(), "velocity_6");
-   velocityAction[6]=new KRadioAction(i18n("&7"), 0 , this, SLOT(velocity7()),
-          actionCollection(), "velocity_7");
-   velocityAction[7]=new KRadioAction(i18n("&8"), 0 , this, SLOT(velocity8()),
-          actionCollection(), "velocity_8");
-   velocityAction[8]=new KRadioAction(i18n("&9 (fast)"), 0 , this, SLOT(velocity9()),
-          actionCollection(), "velocity_9");
-   for (i=0; i<velocityAction.size(); i++)
-      velocityAction[i]->setExclusiveGroup("velocity");
+   KSelectAction* selectAction = new KSelectAction( i18n("&Velocity"),  0
+                 , actionCollection(), "select_velocity");
+   QStringList itemList;
+   itemList.append(i18n("&1 (slow)"));
+   itemList.append(i18n("&2"));
+   itemList.append(i18n("&3"));
+   itemList.append(i18n("&4"));
+   itemList.append( i18n("&5 (default)") );
+   itemList.append(i18n("&6"));
+   itemList.append(i18n("&7"));
+   itemList.append(i18n("&8"));
+   itemList.append(i18n("&9 (fast)"));
+   selectAction->setItems(itemList);
+   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setVelocity(int)));
 
+   selectAction = new KSelectAction( i18n("&Drawing style"),  0
+                 , actionCollection(), "select_style");
+   itemList.clear();
+   itemList.append(i18n("&3D Line"));
+   itemList.append(i18n("3&D Rects"));
+   itemList.append(i18n("&Line"));
+   itemList.append(i18n("&Circles"));
+   selectAction->setItems(itemList);
+   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setStyle(int)));
 
-   styleAction[0]=new KRadioAction(i18n("&3D Line"), 0 , this, SLOT(style3dLine()),
-          actionCollection(), "style_3d_line");
-   styleAction[1]=new KRadioAction(i18n("3&D Rects"), 0 , this, SLOT(style3dRects()),
-          actionCollection(), "style_3d_rects");
-   styleAction[2]=new KRadioAction(i18n("&Line"), 0 , this, SLOT(styleLine()),
-          actionCollection(), "style_line");
-   styleAction[3]=new KRadioAction(i18n("&Circles"), 0 , this, SLOT(styleCircles()),
-          actionCollection(), "style_circles");
-   for (i=0; i<styleAction.size(); i++)
-      styleAction[i]->setExclusiveGroup("style");
+   selectAction = new KSelectAction( i18n("Si&ze"),  0
+                 , actionCollection(), "select_size");
+   itemList.clear();
+   itemList.append(i18n("&Very Small"));
+   itemList.append(i18n("&Small"));
+   itemList.append(i18n("&Medium"));
+   itemList.append(i18n("&Large"));
+   itemList.append(i18n("&Very Large"));
+   selectAction->setItems(itemList);
+   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setSize(int)));
+
 
 
    action=new KAction(i18n("Color Player &1..."), 0, this, SLOT(colorPl1()),
@@ -152,23 +153,10 @@ KTron::KTron(const char *name)
    action=new KAction(i18n("&Backgroundcolor..."), 0, this, SLOT(colorBackground()),
           actionCollection(), "color_background");
    action->plugAccel(accel);
-   action=new KAction(i18n("&Background image..."), 0, this, SLOT(chooseBgPix()),
+   action=new KAction(i18n("B&ackground image..."), 0, this, SLOT(chooseBgPix()),
           actionCollection(), "background_image");
    action->plugAccel(accel);
 
-
-   sizeAction[0]=new KRadioAction(i18n("&Very Small"), 0 , this, SLOT(sizeVerySmall()),
-          actionCollection(), "size_very_small");
-   sizeAction[1]=new KRadioAction(i18n("&Small"), 0 , this, SLOT(sizeSmall()),
-          actionCollection(), "size_small");
-   sizeAction[2]=new KRadioAction(i18n("&Medium"), 0 , this, SLOT(sizeMedium()),
-          actionCollection(), "size_medium");
-   sizeAction[3]=new KRadioAction(i18n("&Large"), 0 , this, SLOT(sizeLarge()),
-          actionCollection(), "size_large");
-   sizeAction[4]=new KRadioAction(i18n("V&ery Large"), 0 , this, SLOT(sizeVeryLarge()),
-          actionCollection(), "size_very_large");
-   for (i=0; i<sizeAction.size(); i++)
-      sizeAction[i]->setExclusiveGroup("size");
 
 
    KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
@@ -200,12 +188,10 @@ KTron::KTron(const char *name)
    bool status=config->readBoolEntry("Computerplayer1",true);
    toggleAction=(KToggleAction *)actionCollection()->action("computer_player1");
    toggleAction->setChecked(status);
-   tron->setComputerplayer(One,status);
 
    status=config->readBoolEntry("Computerplayer2",false);
    toggleAction=(KToggleAction *)actionCollection()->action("computer_player2");
    toggleAction->setChecked(status);
-   tron->setComputerplayer(Two,status);
 
 
    QString temp="";
@@ -220,12 +206,13 @@ KTron::KTron(const char *name)
 
    Skill skill=(Skill)config->readNumEntry("Skill",(int)Medium);
    skillAction[skill]->setChecked(true);
-   tron->setSkill(skill);
 
+   selectAction=(KSelectAction*)actionCollection()->action("select_velocity");
    int velocity=config->readNumEntry("Velocity",5);
-   tron->setVelocity(velocity);
-   velocityAction[velocity-1]->setChecked(true);
+   selectAction->setCurrentItem(velocity-1);
 
+
+   selectAction=(KSelectAction*)actionCollection()->action("select_style");
    TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
    // if the configfile is from a older than from KTron 0.5 than switch to
    // 3d-Line
@@ -238,28 +225,26 @@ KTron::KTron(const char *name)
       config->writeEntry("Style",(int)OLine);
    }
    config->setGroup("Game");
-
-   tron->setStyle(newStyle);
-   styleAction[newStyle]->setChecked(true);
+   selectAction->setCurrentItem(newStyle);
 
    int size=config->readNumEntry("RectSize",10);
-   tron->setRectSize(size);
+   selectAction=(KSelectAction*)actionCollection()->action("select_size");
    switch(size)
    {
       case 4:
-         sizeAction[0]->setChecked(true);
+         selectAction->setCurrentItem(0);
          break;
       case 7:
-         sizeAction[1]->setChecked(true);
+         selectAction->setCurrentItem(1);
          break;
       case 10:
-         sizeAction[2]->setChecked(true);
+         selectAction->setCurrentItem(2);
          break;
       case 13:
-         sizeAction[3]->setChecked(true);
+         selectAction->setCurrentItem(3);
          break;
       case 16:
-         sizeAction[4]->setChecked(true);
+         selectAction->setCurrentItem(4);
          break;
    }
 
@@ -493,49 +478,36 @@ void KTron::expertSkill()
    tron->setSkill(Hard);
 }
 
-void KTron::style3dLine()
+void KTron::setStyle(int index)
 {
-   tron->setStyle(OLine);
+   tron->setStyle((TronStyle)index);
 }
 
-void KTron::style3dRects()
+void KTron::setSize(int index)
 {
-   tron->setStyle(ORect);
+   switch(index)
+   {
+      case 0:
+         tron->setRectSize(4);
+         break;
+      case 1:
+         tron->setRectSize(7);
+         break;
+      case 2:
+         tron->setRectSize(10);
+         break;
+      case 3:
+         tron->setRectSize(13);
+         break;
+      case 4:
+         tron->setRectSize(16);
+         break;
+   }
 }
 
-void KTron::styleLine()
+void KTron::setVelocity(int index)
 {
-   tron->setStyle(Line);
-}
-
-void KTron::styleCircles()
-{
-   tron->setStyle(Circle);
-}
-
-void KTron::sizeVerySmall()
-{
-   tron->setRectSize(4);
-}
-
-void KTron::sizeSmall()
-{
-   tron->setRectSize(7);
-}
-
-void KTron::sizeMedium()
-{
-   tron->setRectSize(10);
-}
-
-void KTron::sizeLarge()
-{
-   tron->setRectSize(13);
-}
-
-void KTron::sizeVeryLarge()
-{
-   tron->setRectSize(16);
+    tron->setVelocity(index+1);
 }
 
 void KTron::configureKeys()
@@ -569,51 +541,6 @@ void KTron::colorBackground()
    bool success=tron->changeColor(0);
    if(success)
       bgPixURL = QString::null;
-}
-
-void KTron::velocity1()
-{
-   tron->setVelocity(1);
-}
-
-void KTron::velocity2()
-{
-   tron->setVelocity(2);
-}
-
-void KTron::velocity3()
-{
-   tron->setVelocity(3);
-}
-
-void KTron::velocity4()
-{
-   tron->setVelocity(4);
-}
-
-void KTron::velocity5()
-{
-   tron->setVelocity(5);
-}
-
-void KTron::velocity6()
-{
-   tron->setVelocity(6);
-}
-
-void KTron::velocity7()
-{
-   tron->setVelocity(7);
-}
-
-void KTron::velocity8()
-{
-   tron->setVelocity(8);
-}
-
-void KTron::velocity9()
-{
-   tron->setVelocity(9);
 }
 
 void KTron::chooseBgPix()
@@ -711,38 +638,36 @@ void KTron::readProperties(KConfig *config)
    toggleAction->setChecked(status);
    tron->setComputerplayer(Two,status);
 
-
    Skill skill=(Skill)config->readNumEntry("Skill",(int)Medium);
-   tron->setSkill(skill);
    skillAction[skill]->setChecked(true);
 
+   KSelectAction* selectAction=(KSelectAction*)actionCollection()->action("select_velocity");
    int velocity=config->readNumEntry("Velocity",5);
-   tron->setVelocity(velocity);
-   velocityAction[velocity-1]->setChecked(true);
+   selectAction->setCurrentItem(velocity-1);
 
-   TronStyle newStyle=OLine;
-   newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
-   tron->setStyle(newStyle);
-   styleAction[newStyle]->setChecked(true);
+
+   selectAction=(KSelectAction*)actionCollection()->action("select_style");
+   TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
+   selectAction->setCurrentItem(newStyle);
 
    int size=config->readNumEntry("RectSize",10);
-   tron->setRectSize(size);
+   selectAction=(KSelectAction*)actionCollection()->action("select_size");
    switch(size)
    {
       case 4:
-         sizeAction[0]->setChecked(true);
+         selectAction->setCurrentItem(0);
          break;
       case 7:
-         sizeAction[1]->setChecked(true);
+         selectAction->setCurrentItem(1);
          break;
       case 10:
-         sizeAction[2]->setChecked(true);
+         selectAction->setCurrentItem(2);
          break;
       case 13:
-         sizeAction[3]->setChecked(true);
+         selectAction->setCurrentItem(3);
          break;
       case 16:
-         sizeAction[4]->setChecked(true);
+         selectAction->setCurrentItem(4);
          break;
    }
 

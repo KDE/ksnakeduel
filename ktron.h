@@ -33,6 +33,7 @@
 
 class KAccel;
 class KRadioAction;
+class KSelectAction;
 class KTOptDlg;
 
 /**
@@ -82,17 +83,6 @@ private slots:
    void averageSkill();
    void expertSkill();
 
-   void style3dLine();
-   void style3dRects();
-   void styleLine();
-   void styleCircles();
-
-   void sizeVerySmall();
-   void sizeSmall();
-   void sizeMedium();
-   void sizeLarge();
-   void sizeVeryLarge();
-
    void configureKeys();
 
    void toggleStatusbar();
@@ -101,21 +91,12 @@ private slots:
    void colorPl2();
    void colorBackground();
 
-   void velocity1();
-   void velocity2();
-   void velocity3();
-   void velocity4();
-   void velocity5();
-   void velocity6();
-   void velocity7();
-   void velocity8();
-   void velocity9();
+   void setVelocity(int index);
+   void setSize(int index);
+   void setStyle(int index);
 
 private:
   QArray<KRadioAction*> skillAction;
-  QArray<KRadioAction*> velocityAction;
-  QArray<KRadioAction*> styleAction;
-  QArray<KRadioAction*> sizeAction;
 };
 
 #endif
