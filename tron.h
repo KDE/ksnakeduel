@@ -182,7 +182,7 @@ private slots:
     /**
     * This is the main function of KTron.
     * It checkes if an accelerator is pressed and than moves this player
-    * forward. Then it checkes if a crash occured.
+    * forward. Then it checkes if a crash occurred.
     * If no crash happen it moves both players forward and checks again
     * if someone crashed.
     */

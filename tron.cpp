@@ -1517,7 +1517,7 @@ if(_skill != Easy)
    } // end if(opMovesLeft)
 
 }
-// This part is completly ported from
+// This part is completely ported from
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 else //_skill==Easy
 {
