@@ -10,8 +10,6 @@ ktron_DEPENDENCIES = $(LIB_KDEGAMES_DEP)
 
 EXTRA_DIST = ktron.desktop
 
-KDE_ICON = ktron
-
 xdg_apps_DATA = ktron.desktop
 kde_kcfg_DATA = ktron.kcfg
 
