@@ -5,6 +5,7 @@ Exec=ktron -caption "%c" %i %m
 Icon=ktron
 DocPath=ktron/index.html
 GenericName=Game
+GenericName[af]=speletjie
 GenericName[ar]=لعبة
 GenericName[be]=Гульня
 GenericName[bg]=Игра
