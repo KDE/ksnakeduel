@@ -209,7 +209,7 @@ void KTron::configureKeys(){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-  settings = new KDialogBase(KDialogBase::IconList, i18n("Settings"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel , KDialogBase::Ok, this, "SettingsDialog", false, WDestructiveClose ); 
+  settings = new KDialogBase(KDialogBase::IconList, i18n("Configure"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel , KDialogBase::Ok, this, "SettingsDialog", false, WDestructiveClose ); 
   KAutoConfig *kautoconfig = new KAutoConfig(settings, "KAutoConfig");
   //KAutoConfig_KURLRequester *r = new KAutoConfig_KURLRequester();
   //kautoconfig->addKAutoConfigWidget("KURLRequester", r);

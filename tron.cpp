@@ -105,22 +105,24 @@ void Tron::loadSettings(){
   }
    
   // Backgroundimage
-  KURL url = config->readEntry("BackgroundImage");
-  if(!url.isEmpty()){
-    QString tmpFile;
-    KIO::NetAccess::download(url, tmpFile);
-    QPixmap pix(tmpFile);
-    if(!pix.isNull()){
-      setBackgroundPix(pix);
-    } else {
-	QString msg=i18n("Wasn't able to load wallpaper\n%1");
+  setBackgroundPix(NULL);
+  if(config->readBoolEntry("BackgroundImageChoice", false)){
+    KURL url = config->readEntry("BackgroundImage");
+    if(!url.isEmpty()){
+      QString tmpFile;
+      KIO::NetAccess::download(url, tmpFile);
+      QPixmap pix(tmpFile);
+      if(!pix.isNull()){
+        setBackgroundPix(pix);
+      } else {
+  	QString msg=i18n("Wasn't able to load wallpaper\n%1");
 	msg=msg.arg(tmpFile);
 	KMessageBox::sorry(this, msg);
+      }
+      KIO::NetAccess::removeTempFile(tmpFile);
     }
-    KIO::NetAccess::removeTempFile(tmpFile);
+    else setBackgroundPix(NULL);
   }
-  else setBackgroundPix(NULL);
-
   setComputerplayer(One,config->readBoolEntry("Computerplayer1",true));
   setComputerplayer(Two,config->readBoolEntry("Computerplayer2",false));
 }
@@ -449,11 +451,11 @@ void Tron::setBackgroundPix(QPixmap pix)
 {
     bgPix=pix;
 
-    if(pixmap!=0)
+    if(pixmap!=0){
        updatePixmap();
-
-    // most pictures have colors, that you can read white text
-    setPalette(QColor("black"));
+      // most pictures have colors, that you can read white text
+      setPalette(QColor("black"));
+    }
 }
 
 // configure colors
