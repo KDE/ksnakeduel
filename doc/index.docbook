@@ -1,6 +1,7 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
   <!ENTITY kappname "&ktron;">
+  <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
@@ -537,7 +538,7 @@ This will displays version and author information
 <entry>Pause Game</entry>
 </row>
 <row>
-<entry><keycap>Ctrl</keycap>
+<entry>&Ctrl;
 <keycap>N</keycap>
 </entry>
 <entry>New Game</entry>
@@ -606,11 +607,7 @@ Documentation Copyright 1999 Matthias Kiefer
 <sect1 id="getting-ktron">
 <title>How to obtain &ktron;</title>
 
-<para>&ktron; is part of the &kde; project <ulink
-url="http://www.kde.org">http://www.kde.org</ulink>.  &ktron; can be found in
-the kdegames package on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
-&FTP; site of the &kde; project. </para>
+&install.intro.documentation;
 
 </sect1>
 
@@ -627,20 +624,11 @@ found on
 <sect1 id="compilation">
 <title>Compilation and Installation</title>
 
-<para>In order to compile and install &ktron; on your system, type the
-following in the base directory of the kdegames distribution:</para>
+&install.compile.documentation;
 
-<screen width="40">
-<prompt>%</prompt><userinput>./configure</userinput>
-<prompt>%</prompt><userinput>make</userinput>
-<prompt>%</prompt><userinput>make install</userinput>
-</screen>
-
-<para>
-Since &ktron; uses <application>autoconf</application> and
-<application>automake</application> you should have no trouble compiling
-it. Should you run into problems, please report them to the the author at <ulink
-url="mailto:matthias.kiefer@gmx.de">Matthias Kiefer</ulink>
+<para>Should you run into problems, please report them to the the
+author at <ulink url="mailto:matthias.kiefer@gmx.de">Matthias
+Kiefer</ulink>
 </para>
 
 </sect1>
