@@ -1,7 +1,7 @@
 /* ********************************************************************************
    This file is part of the game 'KTron'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+  Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -35,40 +35,33 @@
 #include <qlabel.h>
 #include <qwhatsthis.h>
 
-KTOptDlg::KTOptDlg(ExtOptions opts) : QDialog()
+KTOptDlg::KTOptDlg(QWidget* parent,ExtOptions opts)
+        :KDialogBase(Tabbed, i18n("Options"), Help|Ok|Cancel,Ok,parent)
 {
-   setCaption(i18n("KTron - Options"));
+   QWidget* page=addPage(i18n("Other"));
 
-   QVBoxLayout* layout=new QVBoxLayout(this,10);
+   initOther(page);
 
-   tabWidget=new KTabCtl(this);
-   layout->addWidget(tabWidget,1);
+   setHelp("ktron/index-4.html","extended");
 
-   initOther();
-   tabWidget->addTab(otherWidget,i18n("Other"));
+   connect(this,SIGNAL(cancelClicked()),this,SLOT(reset()));
 
-   KButtonBox* bg=new KButtonBox(this);
-   layout->addWidget(bg);
-   QPushButton *ok, *cancel;
-   QPushButton *help;
-   help=bg->addButton(i18n("&Help"));
-   connect(help,SIGNAL(clicked()),this,SLOT(showHelp()));
-   bg->addStretch();
-   ok = bg->addButton(i18n("&OK"));
-   connect(ok,SIGNAL(clicked()),this,SLOT(accept()));
-   connect(ok,SIGNAL(clicked()),SIGNAL(buttonPressed()));
-   cancel=bg->addButton(i18n("&Cancel"));
-   connect(cancel,SIGNAL(clicked()),this,SLOT(reject()));
-   bg->layout();
+   _options=opts;
+   reset();
 
-
-    changeColor->setChecked(opts.changeColor);
-    blockAcc->setChecked(opts.blockAccelerator);
-    namePl1->setText(opts.namePl1);
-    namePl2->setText(opts.namePl2);
+   adjustSize();
 }
+
 KTOptDlg::~KTOptDlg()
 {
+}
+
+void KTOptDlg::reset()
+{
+    changeColor->setChecked(_options.changeColor);
+    blockAcc->setChecked(_options.blockAccelerator);
+    namePl1->setText(_options.namePl1);
+    namePl2->setText(_options.namePl2);
 }
 
 ExtOptions KTOptDlg::options()
@@ -80,72 +73,52 @@ ExtOptions KTOptDlg::options()
     opts.namePl1=namePl1->text();
     opts.namePl2=namePl2->text();
 
+    _options=opts;
+
     return opts;
 }
 
 
-void KTOptDlg::showHelp()
+
+void KTOptDlg::initOther(QWidget* parent)
 {
-   kapp->invokeHTMLHelp("ktron/index-4.html","extended");
-}
+   otherWidget=parent;
 
+   QVBoxLayout* layout=new QVBoxLayout(otherWidget,KDialog::marginHint(),KDialog::spacingHint());
 
-void KTOptDlg::initOther()
-{
-   otherWidget=new QWidget(tabWidget);
-
-   QVBoxLayout* layout=new QVBoxLayout(otherWidget,10);
-
-   QGroupBox* box=new QGroupBox(i18n("Behavior"),otherWidget);
+   QGroupBox* box=new QGroupBox(1,Qt::Horizontal,i18n("Behavior")
+            ,otherWidget);
    layout->addWidget(box);
 
-   QVBoxLayout* boxLayout=new QVBoxLayout(box,10);
-   boxLayout->addSpacing(10);
    changeColor=new QCheckBox(i18n("Show winner by changing color")
-   							,box);
+               ,box);
 
-   boxLayout->addWidget(changeColor);
+   blockAcc=new QCheckBox(i18n("Disable acceleration"),box);
+
+
+   box=new QGroupBox(2,Qt::Horizontal,i18n("Name of Players")
+               ,otherWidget);
+   layout->addWidget(box);
+
+   QLabel* label=new QLabel(i18n("Player 1:"),box);
+   namePl1=new QLineEdit(box);
+   namePl1->setMaxLength(20);
+   label=new QLabel(i18n("Player 2:"),box);
+   namePl2=new QLineEdit(box);
+   namePl2->setMaxLength(20);
 
    // Quickhelp message
    QString message=i18n(
-"Show winner by changing color\n\n\
-If this is enabled and a player crashes,\n\
-his color changes to the other players color.");
+"Show winner by changing color\n\n"
+"If this is enabled and a player crashes,\n"
+"his color changes to the other players color.");
    QWhatsThis::add(changeColor,message);
-
-   blockAcc=new QCheckBox(i18n("Disable acceleration"),box);
-   boxLayout->addWidget(blockAcc);
 
    // Quickhelp message
    message=i18n(
-"Disable acceleration\n\n\
-If checked, the accelerator key is blocked.");
+"Disable acceleration\n\n"
+"If checked, the accelerator key is blocked.");
    QWhatsThis::add(blockAcc,message);
-   // first Buttongroup ready
-
-   box=new QGroupBox(i18n("Name of Players"),otherWidget);
-   layout->addWidget(box);
-
-   boxLayout=new QVBoxLayout(box,10);
-   boxLayout->addSpacing(10);
-
-   QHBoxLayout* hl=new QHBoxLayout(boxLayout);
-   QLabel* label=new QLabel(i18n("Player 1:"),box);
-   hl->addWidget(label);
-
-   namePl1=new QLineEdit(box);
-   namePl1->setMaxLength(20);
-   hl->addWidget(namePl1);
-
-   hl=new QHBoxLayout();
-   boxLayout->addLayout(hl);
-   label=new QLabel(i18n("Player 2:"),box);
-   hl->addWidget(label);
-
-
-   namePl2=new QLineEdit(box);
-   namePl2->setMaxLength(20);
-   hl->addWidget(namePl2);
 
    layout->addStretch(3);
 

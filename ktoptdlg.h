@@ -1,7 +1,7 @@
 /* ********************************************************************************
    This file is part of the game 'KTron'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+  Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -23,8 +23,7 @@
 #ifndef KTOPTDLG_H
 #define KTOPTDLG_H
 
-#include <qdialog.h>
-#include <ktabctl.h>
+#include <kdialogbase.h>
 
 class QLineEdit;
 class QCheckBox;
@@ -42,25 +41,20 @@ struct ExtOptions
   *@author Matthias Kiefer
   */
 
-class KTOptDlg : public QDialog
+class KTOptDlg : public KDialogBase
 {
    Q_OBJECT
 public: 
-  KTOptDlg(ExtOptions);
+  KTOptDlg(QWidget* parent,ExtOptions);
   ~KTOptDlg();
   ExtOptions options();
 
-
-signals:
-  void buttonPressed();
-
 private slots:
-   void showHelp();
+  void reset();
 
 private:
-   void initOther();
+   void initOther(QWidget* parent);
 
-   KTabCtl* tabWidget;
    QWidget *otherWidget;
 
    QCheckBox* changeColor;
@@ -68,6 +62,8 @@ private:
 
    QLineEdit* namePl1;
    QLineEdit* namePl2;
+
+   ExtOptions _options;
 };
 
 #endif
