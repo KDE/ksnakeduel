@@ -20,7 +20,7 @@
   ***************************************************************************** */  
 
 #include <kapp.h>
-#include <kimgio.h>
+#include <kimageio.h>
 #include <kfiledialog.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
@@ -46,7 +46,7 @@ int main(int argc, char* argv[])
   KApplication a;  
 
   // used for loading background pixmaps
-  kimgioRegister();
+  KImageIO::registerFormats();
 
   if(a.isRestored())
   {
