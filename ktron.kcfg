@@ -40,19 +40,19 @@
       <label>The skill of the computer player.</label>
       <default>Medium</default>
       <choices>
-        <choice>Easy</choice>
-        <choice>Medium</choice>
-        <choice>Hard</choice>
+        <choice name="Easy"/>
+        <choice name="Medium"/>
+        <choice name="Hard"/>
       </choices>
     </entry>
     <entry name="Style" type="Enum">
       <label>The line style.</label>
       <default>OLine</default>
       <choices>
-        <choice>OLine</choice>
-        <choice>ORect</choice>
-        <choice>Line</choice>
-        <choice>Circle</choice>
+        <choice name="OLine"/>
+        <choice name="ORect"/>
+        <choice name="Line"/>
+        <choice name="Circle"/>
       </choices>
     </entry>
     
