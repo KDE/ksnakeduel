@@ -86,7 +86,7 @@ KTron::KTron(const char *name)
    action=new KAction(i18n("&New Game"), KStdAccel::openNew(), tron, SLOT(newGame()),
           actionCollection(), "game_new");
    action->plugAccel(accel);
-   action=new KAction(i18n("&Exit"), KStdAccel::quit(), this, SLOT(quit()),
+   action=new KAction(i18n("&Quit"), KStdAccel::quit(), this, SLOT(quit()),
           actionCollection(), "game_quit");
    action->plugAccel(accel);
 
