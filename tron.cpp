@@ -93,7 +93,7 @@ void Tron::createNewPlayfield()
   fieldHeight=(height()-2*FRAMESIZE)/rectSize;
 
   // start positions
-  playfield=new QArray<int>[fieldWidth];
+  playfield=new QMemArray<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
 
