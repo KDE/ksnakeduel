@@ -184,7 +184,7 @@ void KTron::showSettings(){
   
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General(0, "General"), i18n("General"), "package_settings");
-  dialog->addPage(new Ai(0, "Ai"), i18n("Ai"), "package_system");
+  dialog->addPage(new Ai(0, "Ai"), i18n("A.I."), "personal");
   dialog->addPage(new Appearance(0, "Appearance"), i18n("Appearance"), "style");
   connect(dialog, SIGNAL(settingsChanged()), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged()), this, SLOT(loadSettings()));
