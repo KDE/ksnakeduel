@@ -19,12 +19,14 @@
 
   ***************************************************************************** */
 
+#include <qtimer.h>
+
+#include <kdebug.h>
 #include <kapp.h>
 #include <kaccel.h>
 #include <klocale.h>
 #include <kconfig.h>
 #include <kcolordlg.h>
-#include <qtimer.h>
 
 #include "tron.h"
 
@@ -54,11 +56,8 @@ Tron::Tron(QWidget *parent,const char *name)
   colors[2]=QColor("blue");
   setPalette(colors[0]);
 
-
   setFocusPolicy(QWidget::StrongFocus);
   setBackgroundMode(NoBackground);
-
-
 
   gameBlocked=false;
   style=OLine;
@@ -67,7 +66,6 @@ Tron::Tron(QWidget *parent,const char *name)
 
   QTimer::singleShot(15000,this,SLOT(showBeginHint()));
 }
-
 
 Tron::~Tron()
 {
@@ -78,7 +76,6 @@ Tron::~Tron()
   if(pixmap)
     delete pixmap;
 }
-
 
 void Tron::createNewPlayfield()
 {
@@ -96,7 +93,6 @@ void Tron::createNewPlayfield()
   fieldHeight=(height()-2*FRAMESIZE)/rectSize;
 
   // start positions
-
   playfield=new QArray<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
@@ -104,12 +100,10 @@ void Tron::createNewPlayfield()
   pixmap=new QPixmap(size());
      pixmap->fill(colors[0]);
 
-
   //int min=(fieldWidth<fieldHeight) ? fieldWidth : fieldHeight;
   //lookForward=min/4;
 
 }
-
 
 void Tron::newGame()
 {
@@ -121,7 +115,6 @@ void Tron::newGame()
   QTimer::singleShot(15000,this,SLOT(showBeginHint()));
 }
 
-
 void Tron::reset()
 {
   gamePaused=false;
@@ -129,7 +122,6 @@ void Tron::reset()
 
   players[0].reset();
   players[1].reset();
-
 
   // If playfield exists, then clean it
   // ans set start coordinates
@@ -143,7 +135,6 @@ void Tron::reset()
 
       players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
       players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
-
 
       playfield[players[0].xCoordinate][players[0].yCoordinate]=
          PLAYER1 | TOP | BOTTOM | LEFT | RIGHT;
@@ -209,7 +200,6 @@ void Tron::showWinner(Player player)
 {
    int i,j;
 
-
    if(player != Both && changeWinnerColor)
    {
       int winner;
@@ -248,11 +238,6 @@ void Tron::showWinner(Player player)
        QTimer::singleShot(1000,this,SLOT(computerStart()));
    }
 }
-
-
-
-
-
 
 /* *************************************************************** **
 **                    paint functions										 **
@@ -300,13 +285,10 @@ void Tron::updatePixmap()
    p.drawRect(0,0,width(),FRAMESIZE);
    p.drawRect(0,0,FRAMESIZE,height());
 
-
    p.end();
 }
 
-
-//draw new player rects
-
+// draw new player rects
 void Tron::paintPlayers()
 {
    QPainter p;
@@ -315,13 +297,11 @@ void Tron::paintPlayers()
    drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
    p.end();
 
-
    p.begin(pixmap);
    drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
    drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
    p.end();
 }
-
 
 void Tron::drawRect(QPainter & p, int x, int y)
 {
@@ -345,10 +325,9 @@ void Tron::drawRect(QPainter & p, int x, int y)
    }
    else
    {
-      debug("No player defined in Tron::drawRect(...)");
+      kdDebug() << "No player defined in Tron::drawRect(...)" << endl;
       return;
    }
-
 
    switch(style)
    {
@@ -400,8 +379,6 @@ void Tron::drawRect(QPainter & p, int x, int y)
     }
 }
 
-
-
 /* *************************************************************** **
 **                    config functions										 **
 ** *************************************************************** */
@@ -410,7 +387,6 @@ void Tron::setAccel(KAccel *acc)
 {
    accel=acc;
 }
-
 
 void Tron::setBackgroundPix(QPixmap pix)
 {
@@ -472,8 +448,6 @@ void Tron::restoreColors(KConfig *config)
    setPalette(colors[0]);
 }
 
-
-
 void Tron::setVelocity(int newVel)            // set new velocity
 {
   velocity=(10-newVel)*15;
@@ -488,7 +462,6 @@ int Tron::getVelocity() const
   return 10-velocity/15;
 }
 
-
 void Tron::setStyle(TronStyle newStyle)
 {
    style=newStyle;
@@ -500,12 +473,10 @@ void Tron::setStyle(TronStyle newStyle)
    }
 }
 
-
 TronStyle Tron::getStyle() const
 {
    return style;
 }
-
 
 void Tron::setRectSize(int newSize)
 {
@@ -517,12 +488,10 @@ void Tron::setRectSize(int newSize)
    }
 }
 
-
 int Tron::getRectSize() const
 {
    return rectSize;
 }
-
 
 void Tron::setAcceleratorBlocked(bool flag)
 {
@@ -543,7 +512,6 @@ bool Tron::winnerColor() const
 {
    return changeWinnerColor;
 }
-
 
 void Tron::setComputerplayer(Player player, bool flag)
 {
@@ -618,14 +586,13 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 {
   if(playerNr!=0 && playerNr != 1)
   {
-     debug("wrong playerNr");
+     kdDebug() << "wrong playerNr" << endl;
      return;
   }
 
   players[playerNr].dir=newDirection;
 
 }
-
 
 void Tron::updateDirections(int playerNr)
 {
@@ -684,8 +651,6 @@ void Tron::updateDirections(int playerNr)
 
    paintPlayers();
 }
-
-
 
 /* *************************************************************** **
 **                    			Events										 **
@@ -761,7 +726,6 @@ void Tron::resizeEvent(QResizeEvent *)
     reset();
 }
 
-
 void Tron::keyPressEvent(QKeyEvent *e)
 {
   uint key=e->key();
@@ -826,9 +790,7 @@ void Tron::keyPressEvent(QKeyEvent *e)
 		}
   }
 
-
   e->ignore();  // if key is unknown: ignore
-
 
   // if both players press keys at the same time, start game...
 
@@ -849,8 +811,6 @@ void Tron::keyPressEvent(QKeyEvent *e)
 		   togglePause();
 		}
 	}
-
-
 }
 
 void Tron::keyReleaseEvent(QKeyEvent * e)
@@ -929,8 +889,6 @@ void Tron::focusOutEvent(QFocusEvent *)
    }
 }
 
-
-
 /* *************************************************************** **
 **     				slots										 **
 ** *************************************************************** */
@@ -939,7 +897,6 @@ void Tron::unblockGame()
 {
   gameBlocked=false;
 }
-
 
 void Tron::showBeginHint()
 {
@@ -953,7 +910,6 @@ void Tron::showBeginHint()
       }
    }
 }
-
 
 // doMove() is called from QTimer
 void Tron::doMove()
@@ -1188,7 +1144,6 @@ void Tron::doMove()
       }
 
 
-
   	if(gameEnded)
   	{
    	//this is for waiting 1s before starting next game
@@ -1197,9 +1152,6 @@ void Tron::doMove()
   	}
 
 }
-
-
-
 
 /* *************************************************************** **
 **                 algoritm for the computerplayer                 **
@@ -1720,7 +1672,6 @@ else //_skill==Easy
  }
 }
 
-
 void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
 {
    Direction currentDir=players[playerNr].dir;
@@ -1769,43 +1720,6 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
           }
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
