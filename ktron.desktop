@@ -63,3 +63,4 @@ Name[sv]=Ktron
 Name[zu]=I-KTron
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
+Categories=QT;KDE;Game;ArcadeGame
