@@ -29,6 +29,8 @@
 #include <kkeydialog.h>
 #include <kfiledialog.h>
 #include <qmessagebox.h>
+#include <kmenubar.h>
+#include <kconfig.h>
 
 
 #define ID_GAME_NEW 1
