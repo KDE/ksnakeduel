@@ -386,7 +386,7 @@ These key bindings can be changed by selecting <menuchoice>
 
 <para>Selecting the <guimenuitem>Configure &kappname;...</guimenuitem> option
 in the <guimenu>Settings</guimenu> menu will open a further dialog which lets
-you tweak &kappname;'s behaviour.</para>
+you tweak &kappname;'s behavior.</para>
 
 <para>This dialog is divided into three pages.</para>
 
