@@ -82,7 +82,7 @@ KTron::KTron() : settings(0) {
 
    KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
    KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
-   KStdGameAction::quit(kapp, SLOT( quit() ), actionCollection());
+   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
 
    showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
    KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
