@@ -35,13 +35,13 @@
 </affiliation>
 <contrib>Reviewer</contrib>
 </othercredit>
-
+<!-- TRANS:ROLES OF TRANSLATOR-->
 </authorgroup>
 
 <copyright>
 <year>1999</year>
 <year>2000</year>
-<holder>Matthias Keifer</holder>
+<holder>Matthias Kiefer</holder>
 </copyright>
 
 <copyright>
@@ -593,6 +593,7 @@ Documentation Copyright 1999 Matthias Kiefer
 <para>Documentation updated for KDE 2.0 by Fabian Dal Santo
 <email>linuxgnu@yahoo.com.au</email></para>
 
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
 &underGPL;
 </chapter>
