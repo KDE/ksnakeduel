@@ -309,16 +309,8 @@ KTron::KTron(const char *name) : KTMainWindow(name)
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
 
    tron->restoreColors(config);
-   QString name=config->readEntry("BackgroundImage",0);
-   if(!name.isNull())
-   {
-      QPixmap pix(name);
-      if(!pix.isNull())
-      {
-         tron->setBackgroundPix(pix);
-         bgPixName=name;
-      }
-   }
+   readBackground(config);
+
 }
 
 // Destruktor
@@ -402,7 +394,7 @@ void KTron::saveSettings()
   		   config->writeEntry("Name_Pl2",playerName[1]);
   		
   		tron->saveColors(config);
-  		config->writeEntry("BackgroundImage",bgPixName);
+  		config->writeEntry("BackgroundImage",bgPixURL.url());
 	}
   	config->sync();
 }
@@ -625,7 +617,7 @@ void KTron::menuCallback(int id)
     	{
     	   bool success=tron->changeColor(0);
     	   if(success)
-    	      bgPixName=QString::null;
+    	      bgPixURL = QString::null;
     	   break;
     	}
     	case ID_COLOR_BASE+1:
@@ -670,24 +662,16 @@ void KTron::chooseBgPix()
     QPixmap bgPix(tmpFile);
 
     if (!bgPix.isNull()) {
-	QString name;
-	tron->setBackgroundPix(bgPix);
-	if (url.isLocalFile()) {
-	  bgPixName=tmpFile;
-	} else {
-	  QString name = tmpFile.mid(tmpFile.findRev('/'));
-	  name = locateLocal("appdata", "wallpapers/" + name);
-	  KIO::file_move(tmpFile, name);
-	  KIO::file_delete(tmpFile);
-	  bgPixName=name;
-	}
+        QString name;
+        tron->setBackgroundPix(bgPix);
+        bgPixURL = url;
     } else {
 	QString msg=i18n("Wasn't able to load wallpaper\n%1");
 	msg=msg.arg(tmpFile);
 	KMessageBox::sorry(this, msg);
-	KIO::NetAccess::removeTempFile( tmpFile );
     }
 
+    KIO::NetAccess::removeTempFile( tmpFile );
 }
 
 void KTron::changeStatus(Player player)
@@ -817,19 +801,25 @@ void KTron::readProperties(KConfig *config)
    updateStatusbar();
 
    tron->restoreColors(config);
-
-   QString name=config->readEntry("BackgroundImage",0);
-   if(!name.isNull())
-   {
-      QPixmap pix(name);
-      if(!pix.isNull())
-      {
-         tron->setBackgroundPix(pix);
-         bgPixName=name;
-      }
-   }
+   readBackground(config);
 }
 
+void KTron::readBackground(KConfig *config)
+{
+  KURL url = config->readEntry("BackgroundImage");
+  if(!url.isEmpty())
+    {
+      QString tmpFile;
+      KIO::NetAccess::download(url, tmpFile);
+      QPixmap pix(tmpFile);
+      if(!pix.isNull())
+	{
+	  tron->setBackgroundPix(pix);
+	  bgPixURL = url;
+	}
+      KIO::NetAccess::removeTempFile(tmpFile);
+    }
+}
 
 void KTron::saveProperties(KConfig *config)
 {
@@ -861,6 +851,6 @@ void KTron::saveProperties(KConfig *config)
   		
   tron->saveColors(config);
 
-  config->writeEntry("BackgroundImage",bgPixName);
+  config->writeEntry("BackgroundImage",bgPixURL.url());
 }
 
