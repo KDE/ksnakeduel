@@ -52,8 +52,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2001-04-03</date>
-<releaseinfo>1.00.00</releaseinfo>
+<date>2003-09-16</date>
+<releaseinfo>1.1</releaseinfo>
 
 <abstract>
 <para>
@@ -99,9 +99,6 @@ is paused).  All you have to do is avoid crashing by changing your players
 direction. Additionally you can try to hinder your opponent.  For this it is
 possible to increase the velocity by pressing your accelerator key.
 </para>
-
-<warning><para>Pushing a direction key in the opposite direction to which you
-are traveling, will make you crash.</para></warning>
 
 <para>
 A round starts when all human players press a direction key.  The initial moving
@@ -195,7 +192,7 @@ Menu</link> for information how to change the default keys.
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>New Game</guimenuitem>
+<guimenuitem>New</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Starts a new game.</action></para></listitem>
 </varlistentry>
@@ -206,9 +203,9 @@ Menu</link> for information how to change the default keys.
 <keycap>P</keycap>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Pause/Continue</guimenuitem>
+<guimenuitem>Pause</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Pauses the game.</action></para></listitem>
+<listitem><para><action>Toggles whether the game is paused.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -248,142 +245,13 @@ Menu</link> for information how to change the default keys.
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Computerplayer</guimenuitem>
+<guimenuitem>Configure &kappname;...</guimenuitem>
 </menuchoice></term>
-<listitem><para>Selects the number of computer players, and
-their skill level, <guimenuitem>Beginner</guimenuitem>,
-<guimenuitem>Average</guimenuitem> or
-<guimenuitem>Expert</guimenuitem></para>
-<para>The computer can be Player 1, Player 2 or both players.</para>
-<para><guimenuitem>Beginner</guimenuitem> ignores the opponent, and just moves randomly.  <guimenuitem>Average</guimenuitem> or <guimenuitem>Expert</guimenuitem> causes the computer to actively hinder the opponent.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Velocity</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Selects the speed of the game</action>, from slow
-<guimenuitem>1</guimenuitem> to fast <guimenuitem>10</guimenuitem>.  The default
-velocity is <guimenuitem>5</guimenuitem>.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Appearance</guimenuitem>
-<guimenuitem>Drawing Style</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Selects the drawing style</action> of the &ktron; players.  The options
-are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
-<guimenuitem>Line</guimenuitem> and <guimenuitem>Circles</guimenuitem>.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Appearance</guimenuitem>
-<guimenuitem>Color Player 1</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Changes the color of Player 1, using a color selector</action>
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Appearance</guimenuitem>
-<guimenuitem>Color Player 2</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Changes the color of Player 2, using a color selector.</action>
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Appearance</guimenuitem>
-<guimenuitem>Backgroundcolor</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Changes the color of the background, using a color selector.</action>
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Appearance</guimenuitem>
-<guimenuitem>Background image</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Allows selection of a background image, using a dialog
-box.</action></para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Size</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-<action>Selects how large</action> the &ktron; players are drawn, from
-<guimenuitem>Very Small</guimenuitem> to <guimenuitem>Very Large</guimenuitem>.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Other...</guimenuitem>
-</menuchoice></term>
-<listitem>
-<para>
-Brings up a tabbed window,with the following options:  
-</para>
-<itemizedlist>
-<listitem>
-<para>
-<action>The player can be given more descriptive names</action>, other than
-Player 1 and Player 2.
-</para>
-</listitem>
-<listitem>
-<para>
-<action>Acceleration can be disabled</action>, leaving both players traveling
-at a constant velocity.</para>
-</listitem>
-<listitem>
-<para>
-<action>The players colors can be changed on winning.</action>
-</para>
-</listitem>
-</itemizedlist>
-
-</listitem>
+<listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
+to configure various options.</action></para></listitem>
 </varlistentry>
 </variablelist>
+
 </sect1>
 
 <sect1 id="help">
@@ -510,6 +378,126 @@ These key bindings can be changed by selecting <menuchoice>
 
 </sect1>
 
+</chapter>
+
+<chapter id="configuration">
+
+<title>The Configuration Dialog</title>
+
+<para>Selecting the <guimenuitem>Configure &kappname;...</guimenuitem> option
+in the <guimenu>Settings</guimenu> menu will open a further dialog which lets
+you tweak &kappname;'s behaviour.</para>
+
+<para>This dialog is divided into three pages.</para>
+
+<sect1 id="configuration-general">
+<title>General Configuration</title>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Show winner by changing color</guilabel></term>
+<listitem><para>Enable this box to improve visualizing that the game is over
+by making &kappname; change the color of the loser's trail to the color of
+the winner.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Disable acceleration</guilabel></term>
+<listitem><para>Checking this box will disable the acceleration feature - 
+pressing the acceleration key will have no effect, both snakes will always
+travel with constant velocity.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Crash when moving in the opposite direction</guilabel></term>
+<listitem><para>Enable this to make a snake crash into itself as soon as a
+player attempts to move into the opposite direction (&ie; a snake moves left,
+and the player tries to move to the right in one step). If this box is
+not checked, nothing happens when a player attempts to move into the opposite
+direction.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Speed</guilabel></term>
+<listitem><para>Use this slider to define how fast the snakes move; moving the
+slider to the left will make the snakes move slower, moving it to the right
+will make them move faster.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-ai">
+<title><acronym>AI</acronym> Configuration</title>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Computer Control</guilabel></term>
+<listitem><para>Use these two checkable boxes to define which players should
+be controlled by the computer.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Intelligence:</guilabel></term>
+<listitem><para>Selects the skill level of the computer player,
+<guimenuitem>Beginner</guimenuitem>, <guimenuitem>Average</guimenuitem> or
+<guimenuitem>Expert</guimenuitem></para>
+<para><guimenuitem>Beginner</guimenuitem> ignores the opponent, and just moves
+randomly. <guimenuitem>Average</guimenuitem> or
+<guimenuitem>Expert</guimenuitem> causes the computer to actively hinder the
+opponent.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-appearance">
+<title>Appearance Configuration</title>
+
+<variablelist>
+<varlistentry>
+<term><guilabel>Line style:</guilabel></term>
+<listitem><para>Here you can choose one of four different line styles to be
+used for drawing the snakes. The names of the styles are self-explanatory:
+<guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rectangles</guimenuitem>,
+<guimenuitem>Flat</guimenuitem> and <guimenuitem>Circles</guimenuitem>.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Line Size</guilabel></term>
+<listitem><para>Use this slider to define how broad the trail of a snake should
+be. Moving the slider towards the left will make the trail more narrow, moving
+it to the right will result in a wider trail.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Background</guilabel></term>
+<listitem><para>Here you can define the appearance of the playground's
+background. If you prefer a simple solid color, select the
+<guilabel>Color:</guilabel> option and click on the buttom at the right of it
+to open a convenient color-selection dialog.</para>
+<para>You can also choose a background image for the playground. To do so,
+select the <guilabel>Image:</guilabel> option, and then provide the filename
+of a wallpaper image to use in the input field at the right. Alternatively you
+can click on the little button at the very right to open the well-known
+file-selection dialog.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Player 1 color:</guilabel></term>
+<listitem><para>Click on the colored rectangle to open a color-selection dialog
+which lets you define the color to be used for the snake of the first
+player.</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><guilabel>Player 2 color:</guilabel></term>
+<listitem><para>Click on the colored rectangle to open a color-selection dialog
+which lets you define the color to be used for the snake of the second
+player.</para></listitem>
+</varlistentry>
+</variablelist>
+</sect1>
 </chapter>
 
 <!-- credits chapter done --> 
