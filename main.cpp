@@ -42,8 +42,9 @@ int main(int argc, char* argv[])
   aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
-  
-  KApplication a;  
+  KApplication a;
+
+  KGlobal::locale()->insertCatalogue("libkdegames");
 
   // used for loading background pixmaps
   KImageIO::registerFormats();
