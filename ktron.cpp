@@ -191,7 +191,7 @@ it and/or modify it under the terms of the GNU General\n\
 Public License as published by the Free Software\n\
 Foundation; either version 2 of the License, or\n\
 (at your option) any later version.");
-  QPopupMenu *help = kapp->helpMenu(false,about);
+  QPopupMenu *help = helpMenu(about);
 
   KMenuBar *menu=menuBar();
   menu->insertItem( i18n("&Game"), game );
