@@ -52,7 +52,7 @@ private:
   QString playerName[2];
   int playerPoints[2];
   KToggleAction *showStatusbar;
-  KDialogBase *options;
+  KDialogBase *settings;
 
   void updateStatusbar();
   void saveSettings();
@@ -69,8 +69,8 @@ private slots:
   void showWinner(Player winner);
   void toggleStatusbar();
   void configureKeys();
-  void showOptions();
-  void closeOptions();
+  void showSettings();
+  void closeSettings();
 };
 
 #endif

@@ -119,6 +119,7 @@ void Tron::loadSettings(){
     }
     KIO::NetAccess::removeTempFile(tmpFile);
   }
+  else setBackgroundPix(NULL);
 
   setComputerplayer(One,config->readBoolEntry("Computerplayer1",true));
   setComputerplayer(Two,config->readBoolEntry("Computerplayer2",false));
