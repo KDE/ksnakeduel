@@ -29,7 +29,7 @@
 #include <kmainwindow.h>
 #include "tron.h"
 #include <kurl.h>
-#include <qarray.h>
+#include <qmemarray.h>
 
 class KAccel;
 class KRadioAction;
@@ -96,7 +96,7 @@ private slots:
    void setStyle(int index);
 
 private:
-  QArray<KRadioAction*> skillAction;
+  QMemArray<KRadioAction*> skillAction;
 };
 
 #endif

@@ -113,7 +113,7 @@ private:
   /** Drawing buffer */
   QPixmap *pixmap;
   /** The playingfield */
-  QArray<int> *playfield;
+  QMemArray<int> *playfield;
   /** game status flag */
   bool gamePaused;
   /** game status flag */
