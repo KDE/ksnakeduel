@@ -80,7 +80,7 @@ public slots:
   void loadSettings();
 
 signals:
-  void gameEnds(Player looser);
+  void gameEnds(Player loser);
   void gameReset();
 
 protected:

@@ -146,12 +146,12 @@ void KTron::showWinner(Player winner){
   if(tron->isComputer(Both) || (winner != One && winner != Two))
     return;
 
-  QString looserName = i18n("KTron");
-  int looser = Two;
+  QString loserName = i18n("KTron");
+  int loser = Two;
   if(winner == Two)
-    looser = One;
-  if(!tron->isComputer(((Player)looser)))
-    looserName = playerName[looser];
+    loser = One;
+  if(!tron->isComputer(((Player)loser)))
+    loserName = playerName[loser];
   
   QString winnerName = i18n("KTron");
   if(!tron->isComputer(winner))
@@ -161,8 +161,8 @@ void KTron::showWinner(Player winner){
   statusBar()->message(message,MESSAGE_TIME);
 
   message = i18n("%1 has won versus %2 with %3 : %4 points!");
-      message=message.arg(winnerName).arg(looserName);
-      message=message.arg(playerPoints[winner]).arg(playerPoints[looser]);
+      message=message.arg(winnerName).arg(loserName);
+      message=message.arg(playerPoints[winner]).arg(playerPoints[loser]);
   
   KMessageBox::information(this, message, i18n("Winner"));
   tron->newGame();

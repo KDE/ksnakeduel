@@ -260,16 +260,16 @@ void Tron::showWinner(Player player)
    if(player != Both && changeWinnerColor)
    {
       int winner;
-      int looser;
+      int loser;
       if(player==One)
       {
          winner=PLAYER1;
-         looser=PLAYER2;
+         loser=PLAYER2;
       }
       else
       {
          winner=PLAYER2;
-         looser=PLAYER1;
+         loser=PLAYER1;
       }
 
       for(i=0;i<fieldWidth;i++)
@@ -279,7 +279,7 @@ void Tron::showWinner(Player player)
             {
                // change player
                playfield[i][j] |= winner;
-               playfield[i][j] &= ~looser;
+               playfield[i][j] &= ~loser;
             }
          }
 
@@ -850,7 +850,7 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 
 }
 
-// if playingfield looses keyboard focus, pause game
+// if playingfield loses keyboard focus, pause game
 void Tron::focusOutEvent(QFocusEvent *)
 {
    if(!gameEnded && !gamePaused)
