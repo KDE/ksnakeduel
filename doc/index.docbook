@@ -101,7 +101,7 @@ possible to increase the velocity by pressing your accelerator key.
 </para>
 
 <warning><para>Pushing a direction key in the opposite direction to which you
-are travelling, will make you crash.</para></warning>
+are traveling, will make you crash.</para></warning>
 
 <para>
 A round starts when all human players press a direction key.  The initial moving
@@ -371,7 +371,7 @@ Player 1 and Player 2.
 </listitem>
 <listitem>
 <para>
-<action>Acceleration can be disabled</action>, leaving both players travelling
+<action>Acceleration can be disabled</action>, leaving both players traveling
 at a constant velocity.</para>
 </listitem>
 <listitem>
