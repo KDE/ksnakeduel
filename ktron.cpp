@@ -719,13 +719,13 @@ void KTron::changeStatus(Player player)
   }
 }
 
-void KTron::statusbarClicked(int id)
+void KTron::statusbarClicked(int )
 {
   //debug("click");
 }
 
 
-void KTron::paletteChange(const QPalette &oldPalette)
+void KTron::paletteChange(const QPalette &/*oldPalette*/)
 {
    update();
    tron->updatePixmap();

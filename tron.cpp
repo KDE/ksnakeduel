@@ -518,7 +518,7 @@ int Tron::getRectSize() const
 }
 
 
-void Tron::setAcceleratorBlocked(bool flag=true)
+void Tron::setAcceleratorBlocked(bool flag)
 {
    blockAccelerator=flag;
 }
@@ -528,7 +528,7 @@ bool Tron::acceleratorBlocked() const
    return blockAccelerator;
 }
 
-void Tron::enableWinnerColor(bool flag=true)
+void Tron::enableWinnerColor(bool flag)
 {
    changeWinnerColor=flag;
 }
