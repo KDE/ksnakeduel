@@ -24,12 +24,11 @@
 
 #include <kglobal.h>
 #include <kaccel.h>
-#include <kmsgbox.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kkeydialog.h>
-#include <kmsgbox.h>
 #include <kfiledialog.h>
+#include <qmessagebox.h>
 
 
 #define ID_GAME_NEW 1
@@ -512,9 +511,9 @@ void KTron::showWinner(Player winner)
      message=message.arg(name[winnerNr]).arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
   }
 		
-  KMsgBox::message(this,i18n("KTron - Winner"),message);
-	
-   tron->newGame();
+  QMessageBox::information(this,i18n("KTron - Winner"),message);
+  
+  tron->newGame();
 }
 
 void KTron::quit()
@@ -673,7 +672,7 @@ void KTron::chooseBgPix()
   {
      QString msg=i18n("Wasn't able to load wallpaper\n%1");
      msg=msg.arg(name);
-     KMsgBox::message(this,kapp->name(),msg, KMsgBox::EXCLAMATION);
+     QMessageBox::information(this, kapp->getCaption(), msg);
   }
 }
 
