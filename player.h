@@ -26,7 +26,7 @@
 #include <config.h>
 #endif
 
-enum Direction{ Up, Down, Left, Right};
+enum Direction{ None, Up, Down, Left, Right};
 
 /**
 * @short This class represents a player with current position and several flags
@@ -43,6 +43,7 @@ public:
   int score;
   bool alive;
   Direction dir;
+  Direction last_dir;
   bool accelerated;
   bool keyPressed;
   bool computer;

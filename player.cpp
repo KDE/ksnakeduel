@@ -27,21 +27,18 @@ player::player()
   score=0;
   reset();
   dir=Up;
+  last_dir=None;
 }
 
 
 void player::reset()
 {
-  
  alive=true;
  accelerated=false;
  if(computer)
    keyPressed=true;
  else
    keyPressed=false;
-
-
-
 }
 
 void player::setCoordinates(int x, int y)

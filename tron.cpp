@@ -175,7 +175,8 @@ void Tron::stopGame()
 {
    timer->stop();
    gameEnded=true;
-
+   players[0].last_dir = None;
+   players[1].last_dir = None;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -603,13 +604,13 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 
   if (oppositeDirCrashes()==false)
   {
-    if (newDirection==::Up && players[playerNr].dir==::Down)
+    if (newDirection==::Up && players[playerNr].last_dir==::Down)
       return;
-    if (newDirection==::Down && players[playerNr].dir==::Up)
+    if (newDirection==::Down && players[playerNr].last_dir==::Up)
       return;
-    if (newDirection==::Left && players[playerNr].dir==::Right)
+    if (newDirection==::Left && players[playerNr].last_dir==::Right)
       return;
-    if (newDirection==::Right && players[playerNr].dir==::Left)
+    if (newDirection==::Right && players[playerNr].last_dir==::Left)
       return;
   }
 
@@ -642,6 +643,7 @@ void Tron::updateDirections(int playerNr)
             playfield[x][y] &= (~LEFT);
             break;
       }
+      players[0].last_dir = players[0].dir;
 
    }
    if(playerNr==-1 || playerNr==1)
@@ -668,6 +670,7 @@ void Tron::updateDirections(int playerNr)
              playfield[x][y] &= (~LEFT);
              break;
       }
+      players[1].last_dir = players[1].dir;
 
    }
 
@@ -813,24 +816,22 @@ void Tron::keyPressEvent(QKeyEvent *e)
   e->ignore();  // if key is unknown: ignore
 
   // if both players press keys at the same time, start game...
-
-	if(gameEnded && !gameBlocked)
-  	{
-  		if(players[0].keyPressed && players[1].keyPressed)
-		{
-	   	reset();
-	   	startGame();
-		}
+  if(gameEnded && !gameBlocked)
+  {
+	if(players[0].keyPressed && players[1].keyPressed)
+	{
+		reset();
+		startGame();
 	}
-
-  	// ...or continue
-  	else if(gamePaused)
-   {
-      if(players[0].keyPressed && players[1].keyPressed)
-		{
-		   togglePause();
-		}
+  }
+  // ...or continue
+  else if(gamePaused)
+  {
+	if(players[0].keyPressed && players[1].keyPressed)
+	{
+	   togglePause();
 	}
+  }
 }
 
 void Tron::keyReleaseEvent(QKeyEvent * e)
