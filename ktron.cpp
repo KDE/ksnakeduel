@@ -231,8 +231,6 @@ Foundation; either version 2 of the License, or\n\
   	KConfig *config=kapp->config();
   	
   	config->setGroup("Window");
-  	int menuPos = config->readNumEntry("MenubarPos",(int)(KMenuBar::Top));
-  	menuBar()->setMenuBarPos((KMenuBar::menuPosition)menuPos);
 
   	int barPos = config->readNumEntry("ToolbarPos",(int)(KToolBar::Top));
   	toolBar()->setBarPos((KToolBar::BarPosition)barPos);
@@ -741,7 +739,6 @@ void KTron::barPositionChanged()
 {
   KConfig *config=kapp->config();
   KConfigGroupSaver saver(config,"Window");
-  config->writeEntry("MenuBarPos",(int)(menuBar()->menuBarPos()));
   config->writeEntry("ToolbarPos",(int)(toolBar()->barPos()));
 }
 
