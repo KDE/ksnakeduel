@@ -1,355 +1,582 @@
-<?xml version="1.0" ?><!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.1-Based Variant V1.0//EN" "dtd/kdex.dtd" [
  <!ENTITY kappname "&ktron;">
- <!ENTITY % English "INCLUDE"> 
  <!ENTITY % addindex "IGNORE">
- 
-  
+ <!ENTITY % English "INCLUDE">
 ]>
 
-<book lang="&language;" id="ktron">
+<book lang="&language;">
 <bookinfo>
 <title>The &ktron; Handbook</title>
 
 <authorgroup>
 <author>
+<firstname>Fabian</firstname>
+<surname>Dal Santo</surname>
+<affiliation>
+<address><email>linuxgnu@yahoo.com.au</email></address>
+</affiliation>
+</author>
+
+<othercredit role="developer">
 <firstname>Matthias</firstname>
 <surname>Kiefer</surname>
-</author>
-</authorgroup>
+<affiliiation>
+<address><email>matthias.kiefer@gmx.de</email></address>
+</affiliiation>
+<contrib>Developer</contrib>
+</othercredit>
 
-<!-- TRANS:ROLES_OF_TRANSLATORS -->
+<othercredit role="reviewer">
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation>
+<address><email>lauri@kde.org</email></address>
+</affiliation>
+<contrib>Reviewer</contrib>
+</othercredit>
+
+</authorgroup>
 
 <copyright>
 <year>1999</year>
 <year>2000</year>
-<holder>Matthias Kiefer</holder>
+<holder>Matthias Keifer</holder>
 </copyright>
 
-<date>16/12/1999</date>
+<copyright>
+<year>2001</year>
+<holder>Fabian Dal Santo</holder>
+</copyright>
+
+<legalnotice>&FDLNotice;</legalnotice>
+
+<date>03/04/2001</date>
 <releaseinfo>1.00.00</releaseinfo>
 
 <abstract>
-<para>This Handbook describes &ktron; Version 1.0</para>
+<para>
+&ktron; is a simple <quote>Tron</quote> clone for &kde;, which you can
+play alone or against a friend.
+</para>
 </abstract>
 
 <keywordset>
-      <keyword>KDE</keyword>
-      <keyword>kdegames</keyword>
-      <keyword>KTron</keyword>
-      <keyword>game</keyword>
-      <keyword>tron</keyword>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>KTron</keyword>
+<keyword>game</keyword>
+<keyword>tron</keyword>
 </keywordset>
 </bookinfo>
-
-
 
 <chapter id="introduction">
 <title>Introduction</title>
 
 <para>
-<application>KTron</application> is a simple Tron-Clone for the
-<ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play 
-<application>KTron</application> against the computer or a friend.
+&ktron; is a simple Tron-Clone for the
+<ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
+&ktron; against the computer or a friend.
 </para>
 
 <para>
-The aim of the game is to live longer than your opponent. To do that, 
+The aim of the game is to live longer than your opponent. To do that,
 avoid running into a wall, your own tail and that of your opponent.
 </para>
+
 </chapter>
 
-
-
-
 <chapter id="playing-ktron">
-<title>Playing KTron</title>
-<sect1 id="rules">
+<title>Playing &ktron;</title>
+
+<sect1 id="playing-ktron">
 <title>Rules</title>
 
 <para>
-The rules of <application>KTron</application> are very simple. Once a round is 
-started, the player don't stop moving forward. All you have to do is avoid 
-crashing by changing the direction. Additionaly you can try to hinder your 
-opponent.
-For this it is possible to accelerate the velocity by pressing your
-accelerator key.
+Once a round is started, the players do not stop moving forward (unless the game
+is paused).  All you have to do is avoid crashing by changing your players
+direction. Additionally you can try to hinder your opponent.  For this it is
+possible to increase the velocity by pressing your accelerator key.
+</para>
+
+<warning><para>Pushing a direction key in the opposite direction to which you
+are travelling, will make you crash.</para></warning>
+
+<para>
+A round starts when all human players press a direction key.  The initial moving
+direction is then in this direction.
 </para>
 
 <para>
-A round starts when all human players press a direction key.
-The initial moving direction is then this direction.
+If you want to interrupt playing, select
+<guimenuitem>Pause/Continue</guimenuitem> from the <guimenu>Game</guimenu> menu
+or hit the keyboard shortcut (see section <link linkend="keys">Default Key
+Bindings</link>).  Additionally the game is paused when the game loses the
+keyboard focus, &eg; when switching to an other window.
 </para>
 
-<para>A game consists of several rounds and ends, if a player has at least 
-nine points and additionaly two more points than the opponent.
-The current score is always displayed in the statusbar.
+<para>To continue the game, select the menu item
+<guimenuitem>Pause/Continue</guimenuitem> again, or the keyboard shortcut.  The
+game will also continue if the human players press one of their direction keys.
+But be careful, your player switches to this direction immediately.
 </para>
+
+
+<para>A game consists of several rounds, and ends if a player has at least
+nine points, and additionally two more points than the opponent.
+The current score is always displayed in the status bar.
+</para>
+
 </sect1>
 
 <sect1 id="computerplayer">
-<title id="computerplayer-title">The Computerplayer</title>
+<title>The Computer Player</title>
 
 <para>
-You can let the computer play player one, player two or both players.
-There are three difficulty levels: 
-Beginner,Average and Expert. 
-If you choose Beginner, the computer doesn't care about
-the opponent and just moves around. This is the same algorithm as used by 
-xtron-1.1. 
-At skill Average and Expert the computer tries to hinder the
-opponent when he comes near.
-</para>
+You can let the computer be Player One, Player Two or both players.
+There are three difficulty levels:  Beginner, Average and Expert.</para>
 
-<para>See section <link linkend="config-behaviour" endterm="config-behaviour-title">
-</link> for information how to configure the computerplayer.
-</para>
+<itemizedlist>
+<listitem>
+<para>If you choose Beginner, the computer doesn't care about
+the opponent and just moves around. This is the same algorithm as used by
+xtron-1.1.</para>
+</listitem>
+<listitem>
+<para>At skill levels Average and Expert, the computer tries to hinder the
+opponent when he comes near.</para>
+</listitem>
+</itemizedlist>
+
+<note><para>See the <link linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link> section for information on how to configure the computer player.
+</para></note>
+
 </sect1>
 
 <sect1 id="using-keyboard">
 <title>Using the keyboard</title>
-<para>
-Every player has five keys. Four keys for changing the direction and one to
-accelerate. You don't have to press the direction keys all the time. Just
-press once, if you want to change the direction of your player. Acceleration is
-only activated, if the acceleration key is pressed. When you release the
-acceleration key, the velocity slows down to normal.
-</para>
-<para>
-See section <link linkend="keybindings">Key Bindings</link> for information how to 
-change the keys.
-</para>
-</sect1>
 
-<sect1 id="pause-game">
-<title>Pause the game</title>
 <para>
-If you want to interrupt playing, select <guimenuitem>Pause/Continue</guimenuitem> 
-from the <guimenu>Game</guimenu>-menu or hit the keyboard shortcut 
-(see section <link linkend="keybindings">Key Bindings</link> ).
-Additionaly the game is paused when the game looses the keyboard focus, e.g.
-when switching to an other window.
+Each player has five keys. Four keys for changing the direction and one to
+accelerate.
 </para>
 
-<para>If you want to continue the game, use again the menuitem
-<guimenuitem>Pause/Continue</guimenuitem> or the keyboard shortcut. If all 
-human players press one of their direction keys, the game continues, too. 
-But be careful, your player switches to this direction immediately.
+<para>
+The direction keys do not have to be held down. Simply press them once to change
+the direction of your player.
 </para>
+
+<para>
+Acceleration only occurs while the acceleration key remains depressed.  When you
+release the acceleration key, velocity returns to normal.
+</para>
+
+<note><para>
+See section <link linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link> for information how to change the default keys.
+</para></note>
 </sect1>
 </chapter>
 
+<chapter id="command">
+<title>Command Reference</title>
 
-<chapter id="configuration">
-<title>Configuration </title>
-<para>
-<application>KTron</application> has several possibilities to change its behavior 
-and look. All options can be changed from the menu <guimenu>Options</guimenu>.
-</para>
+<para>The following sections briefly describe each menu bar option.</para>
 
-<para>
-Don't forget to save the options by selecting 
-<guimenuitem>Save Options</guimenuitem>, if you want
-them set at every startup.
-</para>
+<sect1 id="game-menu">
+<title>The <guimenu>Game</guimenu> Menu</title>
 
-
-<sect1 id="config-appearance">
-<title>Appearance</title>
-
-<para>
 <variablelist>
 <varlistentry>
-<term>Appearance</term>
-<listitem>
-<para>
-In the submenu <guisubmenu>Appearance</guisubmenu> you can change the colors of 
-the players and the background.
-As a new feature in version 0.6 you can also load a background image.
-Just click on a entry and a dialog opens from which you can select a color or 
-a background image.
-</para>
-</listitem>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu><accel>G</accel>ame</guimenu>
+<guimenuitem><accel>N</accel>ew Game</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Starts a new game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term>Drawing style</term>
-<listitem>
-<para>
-Choose how to draw the players from the submenu 
-<guisubmenu>Drawing style</guisubmenu> in menu
-<guisubmenu>Appearance</guisubmenu>.
-</para>
-</listitem>
+<term><menuchoice>
+<shortcut>
+<keycap>P</keycap>
+</shortcut>
+<guimenu><accel>G</accel>ame</guimenu>
+<guimenuitem><accel>P</accel>ause/Continue</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Pauses the game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term>Size</term>
-<listitem>
-<para>
-Choose the size of the players from the submenu 
-<guisubmenu>Size</guisubmenu>.
-</para>
-</listitem>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu><accel>G</accel>ame</guimenu>
+<guimenuitem><accel>E</accel>xit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quits.</action></para></listitem>
 </varlistentry>
 </variablelist>
-</para>
 </sect1>
 
 
-<sect1 id="config-behaviour">
-<title id="config-behaviour-title">Behavior</title>
+<sect1 id="settings-menu">
+<title>The <guimenu>Settings</guimenu> Menu</title>
 
-<para>
 <variablelist>
 <varlistentry>
-<term>Velocity</term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem>Show St<accel>a</accel>tusbar</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Shows or hides the Statusbar.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem>Configure <accel>K</accel>ey Bindings</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays a standard KDE key bindings configurator.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>C</accel>omputerplayer</guimenuitem>
+</menuchoice></term>
+<listitem><para>Selects the number of computer players, and
+their skill level, <guimenuitem>Beginner</guimenuitem>,
+<guimenuitem>Average</guimenuitem> or
+<guimenuitem>Expert</guimenuitem></para>
+<para>The computer can be Player 1, Player 2 or both players.</para>
+<para><guimenuitem>Beginner</guimenuitem> ignores the opponent, and just moves randomly.  <guimenuitem>Average</guimenuitem> or <guimenuitem>Expert</guimenuitem> causes the computer to actively hinder the opponent.</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>V</accel>elocity</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para>Choose how fast the players should move from the submenu 
-<guisubmenu>Velocity</guisubmenu>.
+<para>
+<action>Selects the speed of the game</action>, from slow
+<guimenuitem>1</guimenuitem> to fast <guimenuitem>10</guimenuitem>.  The default
+velocity is <guimenuitem>5</guimenuitem>.
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term>Computerplayer</term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>A</accel>ppearance</guimenuitem>
+<guimenuitem><accel>D</accel>rawing Style</guimenuitem>
+</menuchoice></term>
 <listitem>
 <para>
-Choose which player should be played by the computer from the submenu 
-<guisubmenu>Computerplayer</guisubmenu>.
-You can even let both players played by the computer.
-In addition you can choose at which skill the computer plays.
-(see section <link linkend="computerplayer" endterm="computerplayer-title"></link> 
-for more information)
+<action>Selects the drawing style</action> of the &ktron; players.  The options
+are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
+<guimenuitem>Line</guimenuitem> and <guimenuitem>Circles</guimenuitem>.
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term>Other</term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>A</accel>ppearance</guimenuitem>
+<guimenuitem>Color Player <accel>1</accel></guimenuitem>
+</menuchoice></term>
 <listitem>
 <para>
-Selecting <guimenuitem>Other...</guimenuitem> opens a dialog, where you can 
-configure additional options.
-Press right mousebutton over an item to get a quick description of the option.
-</para>
-
-<para>
-<variablelist>
-<varlistentry>
-<term><guilabel>Show winner by changing color</guilabel></term>
-<listitem>
-<para>
-If this is activated and a player crashes, then its color
-changes to the opponents color.	     
+<action>Changes the color of Player 1, using a color selector</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Disable acceleration</guilabel></term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>A</accel>ppearance</guimenuitem>
+<guimenuitem>Color Player <accel>2</accel></guimenuitem>
+</menuchoice></term>
 <listitem>
 <para>
-Blocks the accelerator keys. All players then can only move at
-normal speed.
+<action>Changes the color of Player 2, using a color selector.</action>
 </para>
 </listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Name of players</guilabel></term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>A</accel>ppearance</guimenuitem>
+<guimenuitem><accel>B</accel>ackgroundcolor</guimenuitem>
+</menuchoice></term>
 <listitem>
-<para>Enter here the name of the players, that will then appear in
-the statusbar.
-</para>
-</listitem>
-</varlistentry>
-
-</variablelist>
-</para>
-
-</listitem>
-</varlistentry>
-</variablelist>
-</para>
-</sect1>
-
-
-<sect1 id="keybindings">
-<title>Key Bindings</title>
 <para>
-All key bindings can be changed by selecting 
-<guimenuitem>Configure Key Bindings...</guimenuitem>.
+<action>Changes the color of the background, using a color selector.</action>
 </para>
+</listitem>
+</varlistentry>
 
-<para>Default key bindings are:
-<variablelist>
 <varlistentry>
-<term>Player 1</term>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem><accel>A</accel>ppearance</guimenuitem>
+<guimenuitem>B<accel>a</accel>ckground image</guimenuitem>
+</menuchoice></term>
 <listitem>
 <para>
+<action>Allows selection of a background image, using a dialog
+box.</action></para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem>Si<accel>z</accel>e</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+<action>Selects how large</action> the &ktron; players are drawn, from
+<guimenuitem>Very Small</guimenuitem> to <guimenuitem>Very Large</guimenuitem>.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>S</accel>ettings</guimenu>
+<guimenuitem>Other...</guimenuitem>
+</menuchoice></term>
+<listitem>
+<para>
+Brings up a tabbed window,with the following options:  
+</para>
 <itemizedlist>
 <listitem>
-<para>Up: <keycap>R</keycap></para>
+<para>
+<action>The player can be given more descriptive names</action>, other than
+Player 1 and Player 2.
+</para>
 </listitem>
-<listitem>
-<para>Down: <keycap>F</keycap></para>
-</listitem>
-<listitem>
-<para>Right: <keycap>G</keycap></para>
-</listitem>
-<listitem>
-<para>Left: <keycap>D</keycap></para>
-</listitem>
-<listitem>
-<para>Accelerate: <keycap>A</keycap></para>
-</listitem>
-</itemizedlist></para>
-</listitem>
-</varlistentry>
-<varlistentry>
-<term>Player 2</term>
 <listitem>
 <para>
-<itemizedlist>
-<listitem>
-<para>Up: <keysym>Cursor Up</keysym></para>
+<action>Acceleration can be disabled</action>, leaving both players travelling
+at a constant velocity.</para>
 </listitem>
 <listitem>
-<para>Down: <keysym>Cursor Down</keysym></para>
+<para>
+<action>The players colors can be changed on winning.</action>
+</para>
 </listitem>
-<listitem>
-<para>Right: <keysym>Cursor Right</keysym></para>
-</listitem>
-<listitem>
-<para>Left: <keysym>Cursor Left</keysym></para>
-</listitem>
-<listitem>
-<para>Accelerate: <keycap>+</keycap></para>
-</listitem>
-</itemizedlist></para>
+</itemizedlist>
+
 </listitem>
 </varlistentry>
 </variablelist>
-</para>
+</sect1>
 
+<sect1 id="help">
+<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+
+<variablelist>
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>F1</keycap></keycombo></shortcut>
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>C</accel>ontents</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+This invokes the &kde; help system starting at the &ktron; help pages (this
+document).
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut><keycombo><keycap>Shift</keycap><keycap>F1</keycap></keycombo></shortcut>
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem>What's
+<accel>T</accel>his?</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+This changes the mouse cursor to a combination arrow and question mark. Clicking
+on items within &ktron; with this arrow will open a help window (if one exists
+for the particular item) explaining the item's function.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice><guimenu><accel>H</accel>elp</guimenu>
+<guimenuitem><accel>R</accel>eport Bug</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+Report a bug or a wish list item to &ktron;s' authors.
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout
+KTron</guimenuitem></menuchoice></term>
+<listitem>
+<para>
+This will displays version and author information
+</para>
+</listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu><accel>H</accel>elp</guimenu><guimenuitem>About
+<accel>K</accel>DE</guimenuitem></menuchoice></term>
+<listitem>
+<para>This displays the &kde; version and other basic information.
+</para>
+</listitem>
+</varlistentry>
+
+</variablelist>
+
+</sect1>
+
+<sect1 id="keys">
+<title>Default Key Bindings</title>
+
+<para>The following tables show you the default key bindings.</para>
+
+
+<table>
+<title>Player 1 Key bindings</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry></row></thead>
+<tbody>
+<row>
+<entry><keycap>R</keycap></entry>
+<entry>Up</entry>
+</row>
+<row>
+<entry><keycap>F</keycap></entry>
+<entry>Down</entry>
+</row>
+<row>
+<entry><keycap>G</keycap></entry>
+<entry>Right</entry>
+</row>
+<row>
+<entry><keycap>D</keycap></entry>
+<entry>Left</entry>
+</row>
+<row>
+<entry><keycap>A</keycap></entry>
+<entry>Accelerate</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title>Player 2 Key bindings</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><keycap>Up Arrow</keycap></entry>
+<entry>Up</entry>
+</row>
+<row>
+<entry><keycap>Down Arrow</keycap></entry>
+<entry>Down</entry>
+</row>
+<row>
+<entry><keycap>Right Arrow</keycap></entry>
+<entry>Right</entry>
+</row>
+<row>
+<entry><keycap>Left Arrow</keycap></entry>
+<entry>Left</entry>
+</row>
+<row>
+<entry><keycap>+</keycap></entry>
+<entry>Accelerate</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title>General Key Bindings</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry><keycap>P</keycap></entry>
+<entry>Pause Game</entry>
+</row>
+<row>
+<entry><keycap>Ctrl</keycap>
+<keycap>N</keycap>
+</entry>
+<entry>New Game</entry>
+</row>
+<row>
+<entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
+<entry>Quit &ktron;</entry>
+</row>
+<row>
+<entry><keycap>F1</keycap></entry>
+<entry>Help Contents</entry>
+</row>
+<row>
+<entry><keycombo
+action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo></entry>
+<entry>What's This Help</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
 
 <para>
-In addition use <keycap>P</keycap> to pause a game, 
-<keycombo><keycap>Strg</keycap><keycap>N</keycap>	</keycombo>
-to start a new game and 
-<keycombo><keycap>Strg</keycap><keycap>Q</keycap>	</keycombo> to exit 
-<application>KTron</application>.
+These key bindings can be changed by selecting <menuchoice>
+<guimenu>Settings</guimenu> <guimenuitem>Configure Key Bindings</guimenuitem>
+</menuchoice> from the menubar.
 </para>
+
 </sect1>
+
 </chapter>
 
-
-
+<!-- credits chapter done --> 
 <chapter id="credits">
 <title>Credits and License</title>
 
 <para>
-<application>KTron</application> Copyright 1999 Matthias Kiefer 
+&ktron; 
+</para>
+<para>Program Copyright 1999 Matthias Kiefer 
 <email>matthias.kiefer@gmx.de</email>
 </para>
 
@@ -363,62 +590,60 @@ Documentation Copyright 1999 Matthias Kiefer
 <email>matthias.kiefer@gmx.de</email>
 </para>
 
-<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+<para>Documentation updated for KDE 2.0 by Fabian Dal Santo
+<email>linuxgnu@yahoo.com.au</email></para>
 
 &underFDL;
 &underGPL;
-
 </chapter>
 
+<!-- appendix finished -->
 
-<chapter id="installation">
+<appendix id="installation">
 <title>Installation</title>
-<sect1 id="getting-ktron">
-<title>How to obtain KTron</title>
 
-<para>
-<application>KTron</application> is written for the KDE project 
-<ulink url="http://www.kde.org">http://www.kde.org</ulink>.
-<application>KTron</application> can be found on 
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, 
-the main ftp site of the KDE project.</para>
+<sect1 id="getting-ktron">
+<title>How to obtain &ktron;</title>
+
+<para>&ktron; is part of the &kde; project <ulink
+url="http://www.kde.org">http://www.kde.org</ulink>.  &ktron; can be found in
+the kdegames package on <ulink
+url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>, the main
+&FTP; site of the &kde; project. </para>
+
 </sect1>
 
 <sect1 id="requirements">
 <title>Requirements</title>
+
 <para>
-In order to successfully compile <application>KTron</application>, you need KDE 2.0
-All required libraries as well as <application>KTron</application> itself can be 
+In order to successfully compile &ktron;, you need &kde; 2.0
+All required libraries as well as &ktron; itself can be
 found on
 <ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 </sect1>
 
-
 <sect1 id="compilation">
 <title>Compilation and installation</title>
 
-<para>
-In order to compile and install <application>KTron</application> on your 
-system, type the following in the base directory of the 
-<application>KTron</application> distribution:
-</para>
+<para>In order to compile and install &ktron; on your system, type the
+following in the base directory of the kdeutils distribution:</para>
 
-<para>
-<screen Width="40">
-<prompt>%</prompt> <userinput>./configure</userinput>
-<prompt>%</prompt> <userinput>make</userinput>
-<prompt>%</prompt> <userinput>make install</userinput>
+<screen width="40">
+<prompt>%</prompt><userinput>./configure</userinput>
+<prompt>%</prompt><userinput>make</userinput>
+<prompt>%</prompt><userinput>make install</userinput>
 </screen>
-</para>
-      
-<para>
-Since <application>KTron</application> uses autoconf and automake you should have 
-not trouble compiling it.
-Should you run into problems please report them to the the author at 
-<ulink url="mailto:matthias.kiefer@gmx.de">Matthias Kiefer</ulink></para>
-</sect1>
-</chapter>
 
+<para>
+Since &ktron; uses <application>autoconf</application> and
+<application>automake</application> you should have no trouble compiling
+it. Should you run into problems, please report them to the the author at <ulink
+url="mailto:matthias.kiefer@gmx.de">Matthias Kiefer</ulink>
+</para>
+
+</sect1>
+</appendix>
 
 </book>
 <!--
