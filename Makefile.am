@@ -1,32 +1,24 @@
 
-ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp 
-ktron_LDADD   = $(LIB_KIMGIO) $(LIB_KFILE)
+bin_PROGRAMS = ktron
+INCLUDES = $(all_includes)
+LDFLAGS = $(all_libraries) $(KDE_RPATH)
+LDADD = $(LIB_KDEUI) $(LIB_KIMGIO) $(LIB_KFILE)
 
-EXTRA_DIST = ktron.desktop 
+SUBDIRS =
+
+ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp
+
+EXTRA_DIST = ktron.desktop
+
+KDE_ICON = ktron
 
 appsdir = $(kde_appsdir)/Games
 apps_DATA = ktron.desktop
 
-KDE_ICON = ktron
+METASOURCES = AUTO
 
-# set the include path for X, qt and KDE
-INCLUDES= $(all_includes)
-# claim, which subdirectories you want to install
-# you can add here more. This one gets installed 
-bin_PROGRAMS = ktron 
 
-ktron_METASOURCES = AUTO
-
-# the library search path. 
-ktron_LDFLAGS = $(all_libraries) $(KDE_RPATH)
-
-# make messages.po. Move this one to ../po/ and "make merge" in po
-# the -x is for skipping messages already translated in kdelibs
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot $(ktron_SOURCES) && mv messages.po ../po/ktron.pot
-
-
-
-
+	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po ../po/ktron.pot
 
 
