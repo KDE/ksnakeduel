@@ -1,11 +1,11 @@
-# KDE Config File  
-[KDE Desktop Entry]
+[Desktop Entry]
 Type=Application
 Exec=ktron -caption "%c" %i %m
 Icon=ktron
 DocPath=ktron/index.html
 Comment=A race in the hyperspace
 Comment[ca]=Una carrera a l'hiperespai
+Comment[de]=Ein Rennen im Hyperspace
 Comment[eo]=Kurkonkurso en la hiperspaco
 Comment[fi]=Kilpailu hyperavaruudessal
 Comment[hu]=Verseny a hiperûrben
@@ -15,6 +15,6 @@ Comment[no_NY]=Eit kappløp i hyperrommet
 Comment[sr]=Trka u hipersvemiru
 Comment[sv]=Ett lopp i hyperrymden
 Terminal=0
-Name=KTron
+Name=Tron
 Name[eo]=Trono
 Name[sv]=Tron
