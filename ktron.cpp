@@ -191,7 +191,7 @@ it and/or modify it under the terms of the GNU General\n\
 Public License as published by the Free Software\n\
 Foundation; either version 2 of the License, or\n\
 (at your option) any later version.");
-  QPopupMenu *help = kapp->getHelpMenu(false,about);
+  QPopupMenu *help = kapp->helpMenu(false,about);
 
   KMenuBar *menu=menuBar();
   menu->insertItem( i18n("&Game"), game );
@@ -228,7 +228,7 @@ Foundation; either version 2 of the License, or\n\
 
 
     // read config
-  	KConfig *config=kapp->getConfig();
+  	KConfig *config=kapp->config();
   	
   	config->setGroup("Window");
   	int menuPos = config->readNumEntry("MenubarPos",(int)(KMenuBar::Top));
@@ -365,7 +365,7 @@ void KTron::updateStatusbar()
 
 void KTron::saveSettings()
 {
-  	KConfig *config=kapp->getConfig();
+  	KConfig *config=kapp->config();
   	{
   		KConfigGroupSaver saver(config,"Window");
 
@@ -674,7 +674,7 @@ void KTron::chooseBgPix()
   {
      QString msg=i18n("Wasn't able to load wallpaper\n%1");
      msg=msg.arg(name);
-     QMessageBox::information(this, kapp->getCaption(), msg, i18n("OK"));
+     QMessageBox::information(this, kapp->caption(), msg, i18n("OK"));
   }
 }
 
@@ -736,7 +736,7 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/)
 
 void KTron::barPositionChanged()
 {
-  KConfig *config=kapp->getConfig();
+  KConfig *config=kapp->config();
   KConfigGroupSaver saver(config,"Window");
   config->writeEntry("MenuBarPos",(int)(menuBar()->menuBarPos()));
   config->writeEntry("ToolbarPos",(int)(toolBar()->barPos()));
