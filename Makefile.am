@@ -1,10 +1,10 @@
 
 bin_PROGRAMS = ktron
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
-LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KIO) $(LIB_KDEGAMES)
 
 ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp
+ktron_LDFLAGS =  $(all_libraries) $(KDE_RPATH)
+ktron_LDADD = $(LIB_KIO) $(LIB_KDEGAMES)
 
 EXTRA_DIST = ktron.desktop
 
