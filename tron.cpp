@@ -75,6 +75,8 @@ Tron::~Tron()
     }
   if(pixmap)
     delete pixmap;
+  delete timer;
+
 }
 
 void Tron::createNewPlayfield()

@@ -40,17 +40,15 @@
 #include <kstdgameaction.h>
 #include <kapplication.h>
 #include <kstatusbar.h>
-
+#include <kdebug.h>
 #define ID_STATUS_BASE 40
 
 #define MESSAGE_TIME 2000
-
 KTron::KTron(const char *name)
       : KMainWindow(0, name),
        skillAction(3)
 {
    playerPoints[0]=playerPoints[1]=0;
-
    optionsDialog=0;
 
    tron=new Tron(this);
@@ -261,7 +259,8 @@ KTron::KTron(const char *name)
 
 KTron::~KTron()
 {
-	saveSettings();
+   saveSettings();
+   delete tron;
 }
 
 
@@ -453,6 +452,7 @@ void KTron::quit()
 {
    saveSettings();
    kapp->quit();
+   delete this;
 }
 
 void KTron::toggleComPl1()
