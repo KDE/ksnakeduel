@@ -23,6 +23,7 @@
 #include <kimageio.h>
 #include <kfiledialog.h>
 #include <klocale.h>
+#include <kglobal.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 
@@ -43,7 +44,8 @@ int main(int argc, char* argv[])
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   
-  KApplication a;  
+  KApplication a;
+  KGlobal::locale()->insertCatalogue("libkdegames");
 
   // used for loading background pixmaps
   KImageIO::registerFormats();
