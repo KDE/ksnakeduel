@@ -177,23 +177,23 @@ KTron::KTron(const char *name) : KTMainWindow(name)
 
   connect(options,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
-  QString about;
-  about.sprintf(i18n(
-"KTron version %s \n\n\
-(C) 1998,1999 by Matthias Kiefer\n\
-email: matthias.kiefer@gmx.de\n"),KTRON_VERSION);
-  about+=i18n(
-"\nParts of the algorithms for the computerplayer are from\n\
-xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>\n\n\
-This program is free software; you can redistribute\n\
-it and/or modify it under the terms of the GNU General\n\
-Public License as published by the Free Software\n\
-Foundation; either version 2 of the License, or\n\
-(at your option) any later version.");
+  QString about = i18n(
+    "KTron version %1 \n\n"
+    "(C) 1998-1999 by Matthias Kiefer\n"
+    "email: matthias.kiefer@gmx.de\n")
+    .arg(KTRON_VERSION);
+  about += i18n(
+    "\nParts of the algorithms for the computerplayer are from\n"
+    "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>\n\n"
+    "This program is free software; you can redistribute\n"
+    "it and/or modify it under the terms of the GNU General\n"
+    "Public License as published by the Free Software\n"
+    "Foundation; either version 2 of the License, or\n"
+    "(at your option) any later version.");
   QPopupMenu *help = helpMenu(about);
 
   KMenuBar *menu=menuBar();
-  menu->insertItem( i18n("&Game"), game );
+  menu->insertItem(i18n("&Game"), game );
   menu->insertItem(i18n("&Options"),options);
   menu->insertSeparator();
   menu->insertItem( i18n("&Help"), help );
