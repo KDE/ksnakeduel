@@ -52,18 +52,15 @@
                         </property>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>ChangeWinnerColor</cstring>
+                                <cstring>kcfg_ChangeWinnerColor</cstring>
                             </property>
                             <property name="text">
                                 <string>&amp;Show winner by changing color</string>
                             </property>
-                            <property name="checked">
-                                <bool>true</bool>
-                            </property>
                         </widget>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>AcceleratorBlocked</cstring>
+                                <cstring>kcfg_AcceleratorBlocked</cstring>
                             </property>
                             <property name="text">
                                 <string>&amp;Disable acceleration</string>
@@ -71,7 +68,7 @@
                         </widget>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>OppositeDirCrashes</cstring>
+                                <cstring>kcfg_OppositeDirCrashes</cstring>
                             </property>
                             <property name="text">
                                 <string>&amp;Crash when moving in the opposite direction</string>
@@ -92,12 +89,12 @@
                         </property>
                         <widget class="QLineEdit" row="0" column="1">
                             <property name="name">
-                                <cstring>Name_Pl1</cstring>
+                                <cstring>kcfg_NamePlayer1</cstring>
                             </property>
                         </widget>
                         <widget class="QLineEdit" row="1" column="1">
                             <property name="name">
-                                <cstring>Name_Pl2</cstring>
+                                <cstring>kcfg_NamePlayer2</cstring>
                             </property>
                         </widget>
                         <widget class="QLabel" row="0" column="0">
@@ -131,7 +128,7 @@
                         </property>
                         <widget class="QSlider">
                             <property name="name">
-                                <cstring>Velocity</cstring>
+                                <cstring>kcfg_Velocity</cstring>
                             </property>
                             <property name="minValue">
                                 <number>1</number>

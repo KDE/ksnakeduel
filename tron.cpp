@@ -32,6 +32,7 @@
 #include <kcolordialog.h>
 #include <kaction.h>
 
+#include "settings.h"
 #include "tron.h"
 
 #define TRON_FRAMESIZE 2
@@ -63,40 +64,21 @@ Tron::Tron(QWidget *parent,const char *name)
 }
 
 void Tron::loadSettings(){
-  KConfig *config = kapp->config();
-  config->setGroup("Game");
-  // Colors
-  QColor bg("black");
-  QColor pl1("red");
-  QColor pl2("blue");
-  colors[0] = config->readColorEntry("Color_Background",&bg);
-  colors[1] = config->readColorEntry("Color_Player1",&pl1);
-  colors[2] = config->readColorEntry("Color_Player2",&pl2);
-  reset();
-
-  setPalette(colors[0]);
-
-  changeWinnerColor = config->readBoolEntry("ChangeWinnerColor",true);
-  blockAccelerator = config->readBoolEntry("AcceleratorBlocked",false);
-  crashOnOppositeDir=config->readBoolEntry("OppositeDirCrashes",false);
+  setPalette(Settings::color_Background());
 
   // Size
-  int newSize = config->readNumEntry("RectSize",10);
+  int newSize = Settings::rectSize();
   if(newSize!=rectSize){
     rectSize=newSize;
     createNewPlayfield();
-    reset();
   }
 
-  // Velocity
-  int velocity=config->readNumEntry("Velocity",5);
-  setVelocity(velocity);
+  reset();
 
-  // Skill
-  _skill=(Skill)config->readNumEntry("Skill",(int)Medium);
+  // Velocity
+  setVelocity( Settings::velocity() );
 
   // Style
-  style=(TronStyle)config->readNumEntry("Style",(int) OLine);
   if(pixmap){
     updatePixmap();
     repaint();
@@ -104,8 +86,8 @@ void Tron::loadSettings(){
 
   // Backgroundimage
   setBackgroundPix(NULL);
-  if(config->readBoolEntry("BackgroundImageChoice", false)){
-    KURL url = config->readPathEntry("BackgroundImage");
+  if(Settings::backgroundImageChoice()){
+    KURL url = Settings::backgroundImage();
     if(!url.isEmpty()){
       QString tmpFile;
       KIO::NetAccess::download(url, tmpFile, this);
@@ -121,8 +103,8 @@ void Tron::loadSettings(){
     }
     else setBackgroundPix(NULL);
   }
-  setComputerplayer(One,config->readBoolEntry("Computerplayer1",true));
-  setComputerplayer(Two,config->readBoolEntry("Computerplayer2",false));
+  setComputerplayer(One, Settings::computerplayer1());
+  setComputerplayer(Two, Settings::computerplayer2());
 }
 
 Tron::~Tron()
@@ -155,7 +137,7 @@ void Tron::createNewPlayfield()
     playfield[i].resize(fieldHeight);
 
   pixmap=new QPixmap(size());
-     pixmap->fill(colors[0]);
+  pixmap->fill(Settings::color_Background());
 
   //int min=(fieldWidth<fieldHeight) ? fieldWidth : fieldHeight;
   //lookForward=min/4;
@@ -257,7 +239,7 @@ void Tron::showWinner(Player player)
 {
    int i,j;
 
-   if(player != Both && changeWinnerColor)
+   if(player != Both && Settings::changeWinnerColor())
    {
       int winner;
       int loser;
@@ -314,7 +296,7 @@ void Tron::updatePixmap()
   }
   else
   {
-    pixmap->fill(colors[0]);
+    pixmap->fill(Settings::color_Background());
   }
 
   QPainter p;
@@ -372,12 +354,12 @@ void Tron::drawRect(QPainter & p, int x, int y)
    int player;
    if(type&PLAYER1) // check player bit
    {
-      toDraw=colors[1];
+      toDraw=Settings::color_Player1();
       player=0;
    }
    else if(type&PLAYER2)
    {
-      toDraw=colors[2];
+      toDraw=Settings::color_Player2();
       player=1;
    }
    else
@@ -386,14 +368,14 @@ void Tron::drawRect(QPainter & p, int x, int y)
       return;
    }
 
-   switch(style)
+   switch(Settings::style())
    {
-      case Line:
+      case Settings::EnumStyle::Line:
          p.setBrush(toDraw);
          p.setPen(toDraw);
          p.drawRect(xOffset,yOffset,rectSize,rectSize);
          break;
-      case OLine:
+      case Settings::EnumStyle::OLine:
       {
          p.setBrush(toDraw);
          p.setPen(toDraw);
@@ -419,12 +401,12 @@ void Tron::drawRect(QPainter & p, int x, int y)
 
          break;
       }
-      case Circle:
+      case Settings::EnumStyle::Circle:
          p.setBrush(toDraw);
          p.setPen(toDraw);
          p.drawEllipse(xOffset ,yOffset ,rectSize,rectSize);
          break;
-      case ORect:
+      case Settings::EnumStyle::ORect:
          p.setBrush(toDraw);
          p.setPen(toDraw.light());
          p.drawRect(xOffset,yOffset,rectSize,rectSize);
@@ -456,48 +438,12 @@ void Tron::setBackgroundPix(QPixmap pix)
     }
 }
 
-// configure colors
-// id = 0 = background, 1, and 2
-bool Tron::changeColor(int id)
-{
-   QColor color;
-   int result=KColorDialog::getColor(color);
-
-   bool flag=false;
-
-   if(result)  // if button 'ok' pressed
-   {
-      // backgroundcolor changed
-      if(id==0)
-      {
-         colors[0]=color;
-         setPalette(color);
-         bgPix.resize(0,0);
-      }
-      else  // set other color
-      {
-         colors[id]=color;
-      }
-      updatePixmap();
-      repaint();
-
-      flag=true;
-   }
-
-   return flag;
-}
-
 void Tron::setVelocity(int newVel)            // set new velocity
 {
   velocity=(10-newVel)*15;
 
   if(!gameEnded && !gamePaused)
     timer->changeInterval(velocity);
-}
-
-int Tron::getVelocity() const
-{
-  return 10-velocity/15;
 }
 
 void Tron::setComputerplayer(Player player, bool flag) {
@@ -552,7 +498,7 @@ void Tron::switchDir(int playerNr,Direction newDirection)
      return;
   }
 
-  if (crashOnOppositeDir==false)
+  if (Settings::oppositeDirCrashes()==false)
   {
     if (newDirection==::Up && players[playerNr].last_dir==::Down)
       return;
@@ -732,7 +678,7 @@ void Tron::keyPressEvent(QKeyEvent *e)
 		}
       else if(actionCollection->action("Pl2Ac")->shortcut().contains(key))
 		{
-		   if(!blockAccelerator)
+		   if(!Settings::acceleratorBlocked())
 	  			players[1].accelerated=true;
 
 		}
@@ -762,7 +708,7 @@ void Tron::keyPressEvent(QKeyEvent *e)
 		}
       else if(actionCollection->action("Pl1Ac")->shortcut().contains(key))
 		{
-		   if(!blockAccelerator)
+		   if(!Settings::acceleratorBlocked())
 	  			players[0].accelerated=true;
 		}
   }
@@ -1139,7 +1085,7 @@ void Tron::doMove()
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 void Tron::think(int playerNr)
 {
-if(_skill != Easy)
+if(Settings::skill() != Settings::EnumSkill::Easy)
 {
   int opponent=(playerNr==1)? 0 : 1;
 
@@ -1310,11 +1256,21 @@ if(_skill != Easy)
 
   	}
 
-  	int doPercentage=100;
-  	if(_skill==Medium)
+  	int doPercentage = 100;
+  	switch(Settings::skill())
+  	{
+  	  case Settings::EnumSkill::Easy:
+  	        // Never reached
+  		break;
+
+  	  case Settings::EnumSkill::Medium:
   		doPercentage=5;
-  	else if(_skill==Hard)
+  		break;
+  		
+  	  case Settings::EnumSkill::Hard:
   		doPercentage=90;
+  		break;
+  	}
 
   	// if opponent moves the opposite direction as we
    if(opMovesOppositeDir)
@@ -1533,7 +1489,7 @@ if(_skill != Easy)
 }
 // This part is completely ported from
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
-else //_skill==Easy
+else // Settings::skill() == Settings::EnumSkill::Easy
 {
   Direction sides[2];
   int flags[6] = {0,0,0,0,0,0};

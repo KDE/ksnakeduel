@@ -52,18 +52,15 @@
                         </property>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>Computerplayer1</cstring>
+                                <cstring>kcfg_Computerplayer1</cstring>
                             </property>
                             <property name="text">
                                 <string>Player &amp;1</string>
                             </property>
-                            <property name="checked">
-                                <bool>true</bool>
-                            </property>
                         </widget>
                         <widget class="QCheckBox">
                             <property name="name">
-                                <cstring>Computerplayer2</cstring>
+                                <cstring>kcfg_Computerplayer2</cstring>
                             </property>
                             <property name="text">
                                 <string>Player &amp;2</string>
@@ -113,7 +110,7 @@
                         </property>
                     </item>
                     <property name="name">
-                        <cstring>Skill</cstring>
+                        <cstring>kcfg_Skill</cstring>
                     </property>
                     <property name="currentItem">
                         <number>1</number>

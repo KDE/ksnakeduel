@@ -37,12 +37,9 @@ class KActionCollection;
 
 #include "player.h"
 
-enum TronStyle{OLine=0,ORect=1 , Line=2 , Circle=3};
 enum Player{One,Two,Both,Nobody};
 // Bits that defines the rect and which sides to draw
 enum {BACKGROUND=0, PLAYER1=1,PLAYER2=2,TOP=4,BOTTOM=8,LEFT=16,RIGHT=32};
-
-enum Skill{Easy=0,Medium=1,Hard=2};
 
 /**
 * @short The playingfield
@@ -57,13 +54,10 @@ public:
   void setActionCollection(KActionCollection*);
   void updatePixmap();
   void setBackgroundPix(QPixmap);
-  bool changeColor(int player);
   void setComputerplayer(Player player, bool);
   bool isComputer(Player player);
   void setVelocity(int);
-  int getVelocity() const;
   void setRectSize(int newSize);
-  int getRectSize() const;
 
 public slots:
   /** Starts a new game. The difference to reset is, that the players
@@ -116,30 +110,19 @@ private:
   int fieldWidth;
   QTimer *timer;
   player players[2];
-  /** Color of players and Background
-  * Backgroundcolor is colors[0] */
-  QColor colors[3];
+
   /** Backgroundpixmap **/
   QPixmap bgPix;
+
   /** time in ms between two moves */
   int velocity;
-  /** how to draw the rects */	
-  TronStyle style;
   /** size of the rects */
   int rectSize;
-  /** skill of computerplayer */
-  Skill _skill;
 
   /** The random sequence generator **/
   KRandomSequence random;
 
   // Options
-  /** flag, if the color of a crashed player has to change */
-  bool changeWinnerColor;
-  /** flag, if the accelerator keys has to be ignored */
-  bool blockAccelerator;
-  /** flag, if moving in opposite direction causes a crash */
-  bool crashOnOppositeDir;
   /** determines level of computerplayer */
   int lookForward;
 

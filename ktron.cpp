@@ -21,9 +21,9 @@
 
 #include "ktron.h"
 
+#include <kconfigdialog.h>
 #include <klocale.h>
 #include <kkeydialog.h>
-#include <kconfig.h>
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdgameaction.h>
@@ -31,10 +31,10 @@
 #include <kstatusbar.h>
 
 // Settings
+#include "settings.h"
 #include "general.h"
 #include "ai.h"
 #include "appearance.h"
-#include <kautoconfigdialog.h>
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
@@ -88,12 +88,10 @@ KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
 }
 
 void KTron::loadSettings() {
-   KConfig *config=kapp->config();
-   config->setGroup("Game");
-   playerName[0]=config->readEntry("Name_Pl1");
+   playerName[0]=Settings::namePlayer1();
    if ( playerName[0].isEmpty() )
        playerName[0] = i18n("Player 1");
-   playerName[1]=config->readEntry("Name_Pl2");
+   playerName[1]=Settings::namePlayer2();
    if ( playerName[1].isEmpty() )
        playerName[1] = i18n("Player 2");
    
@@ -185,13 +183,13 @@ void KTron::configureKeys(){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-  if(KAutoConfigDialog::showDialog("settings"))
+  if(KConfigDialog::showDialog("settings"))
     return;
   
-  KAutoConfigDialog *dialog = new KAutoConfigDialog(this, "settings");
-  dialog->addPage(new General(0, "General"), i18n("General"), "General", "package_settings");
-  dialog->addPage(new Ai(0, "Ai"), i18n("Ai"), "Game", "package_system");
-  dialog->addPage(new Appearance(0, "Appearance"), i18n("Appearance"), "Game", "style");
+  KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
+  dialog->addPage(new General(0, "General"), i18n("General"), "package_settings");
+  dialog->addPage(new Ai(0, "Ai"), i18n("Ai"), "package_system");
+  dialog->addPage(new Appearance(0, "Appearance"), i18n("Appearance"), "style");
   connect(dialog, SIGNAL(settingsChanged()), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged()), this, SLOT(loadSettings()));
   dialog->show();

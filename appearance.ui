@@ -69,7 +69,7 @@
                         </property>
                     </item>
                     <property name="name">
-                        <cstring>Style</cstring>
+                        <cstring>kcfg_Style</cstring>
                     </property>
                 </widget>
                 <widget class="QGroupBox" row="1" column="0" rowspan="1" colspan="3">
@@ -118,7 +118,7 @@
                         </widget>
                         <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
                             <property name="name">
-                                <cstring>RectSize</cstring>
+                                <cstring>kcfg_RectSize</cstring>
                             </property>
                             <property name="minValue">
                                 <number>4</number>
@@ -149,7 +149,7 @@
                 </widget>
                 <widget class="QButtonGroup" row="2" column="0" rowspan="1" colspan="3">
                     <property name="name">
-                        <cstring>BackgroundGroup</cstring>
+                        <cstring>kcfg_BackgroundImageChoice</cstring>
                     </property>
                     <property name="title">
                         <string>Background</string>
@@ -171,7 +171,7 @@
                         </widget>
                         <widget class="KURLRequester" row="1" column="1">
                             <property name="name">
-                                <cstring>BackgroundImage</cstring>
+                                <cstring>kcfg_BackgroundImage</cstring>
                             </property>
                             <property name="enabled">
                                 <bool>false</bool>
@@ -184,13 +184,10 @@
                             <property name="text">
                                 <string>Image:</string>
                             </property>
-                            <property name="checked">
-                                <bool>false</bool>
-                            </property>
                         </widget>
                         <widget class="KColorButton" row="0" column="1">
                             <property name="name">
-                                <cstring>Color_Background</cstring>
+                                <cstring>kcfg_Color_Background</cstring>
                             </property>
                             <property name="enabled">
                                 <bool>true</bool>
@@ -218,7 +215,7 @@
                 </widget>
                 <widget class="KColorButton" row="3" column="1" rowspan="1" colspan="2">
                     <property name="name">
-                        <cstring>Color_Player1</cstring>
+                        <cstring>kcfg_Color_Player1</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -241,7 +238,7 @@
                 </widget>
                 <widget class="KColorButton" row="4" column="1" rowspan="1" colspan="2">
                     <property name="name">
-                        <cstring>Color_Player2</cstring>
+                        <cstring>kcfg_Color_Player2</cstring>
                     </property>
                     <property name="text">
                         <string></string>
@@ -279,29 +276,27 @@
     <connection>
         <sender>BackgroundColorChoice</sender>
         <signal>toggled(bool)</signal>
-        <receiver>Color_Background</receiver>
+        <receiver>kcfg_Color_Background</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
     <connection>
         <sender>BackgroundImageChoice</sender>
         <signal>toggled(bool)</signal>
-        <receiver>BackgroundImage</receiver>
+        <receiver>kcfg_BackgroundImage</receiver>
         <slot>setEnabled(bool)</slot>
     </connection>
 </connections>
 <tabstops>
-    <tabstop>Style</tabstop>
-    <tabstop>RectSize</tabstop>
-    <tabstop>Color_Player1</tabstop>
-    <tabstop>Color_Player2</tabstop>
+    <tabstop>kcfg_Style</tabstop>
+    <tabstop>kcfg_RectSize</tabstop>
+    <tabstop>kcfg_Color_Player1</tabstop>
+    <tabstop>kcfg_Color_Player2</tabstop>
 </tabstops>
 <layoutdefaults spacing="6" margin="11"/>
 <includehints>
     <includehint>kurlrequester.h</includehint>
     <includehint>klineedit.h</includehint>
     <includehint>kpushbutton.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
-    <includehint>kcolorbutton.h</includehint>
     <includehint>kcolorbutton.h</includehint>
 </includehints>
 </UI>

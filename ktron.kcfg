@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE kcfg SYSTEM "http://www.kde.org/standards/kcfg/1.0/kcfg.dtd">
+<kcfg>
+  <kcfgfile name="ktronrc"/>
+  <group name="Game">
+    <entry name="Color_Background" type="QColor">
+      <desc>The background color of the game.</desc>
+      <default>black</default>
+    </entry>
+    <entry name="Color_Player1" type="QColor">
+      <desc>The color of player 1</desc>
+      <default>red</default>
+    </entry>
+    <entry name="Color_Player2" type="QColor">
+      <desc>The color of player 2</desc>
+      <default>blue</default>
+    </entry>
+    <entry name="ChangeWinnerColor" type="bool">
+      <desc>Whether to show the winner by changing color.</desc>
+      <default>true</default>
+    </entry>
+    <entry name="AcceleratorBlocked" type="bool">
+      <desc>Whether to disable acceleration.</desc>
+      <default>false</default>
+    </entry>
+    <entry name="OppositeDirCrashes" type="bool">
+      <desc>Whether changing in the opposite direction causes a crash.</desc>
+      <default>false</default>
+    </entry>
+    <entry name="RectSize" type="int">
+      <desc>The width of the line.</desc>
+      <default>10</default>
+    </entry>
+    <entry name="Velocity" type="int">
+      <desc>The speed of the line.</desc>
+      <default>5</default>
+    </entry>
+
+    <entry name="Skill" type="Enum">
+      <desc>The skill of the computer player.</desc>
+      <default>Medium</default>
+      <values>
+        <value>Easy</value>
+        <value>Medium</value>
+        <value>Hard</value>
+      </values>
+    </entry>
+    <entry name="Style" type="Enum">
+      <desc>The line style.</desc>
+      <default>OLine</default>
+      <values>
+        <value>OLine</value>
+        <value>ORect</value>
+        <value>Line</value>
+        <value>Circle</value>
+      </values>
+    </entry>
+    
+    <entry name="BackgroundImageChoice" type="bool">
+      <desc>Whether to use a custom background image.</desc>
+      <default>false</default>
+    </entry>
+    <entry name="BackgroundImage" type="Path">
+      <desc>Custom background image to use.</desc>
+    </entry>
+
+    <entry name="Computerplayer1" type="bool">
+      <desc>Whether player 1 is a computer player.</desc>
+      <default>true</default>
+    </entry>
+    <entry name="Computerplayer2" type="bool">
+      <desc>Whether player 2 is a computer player.</desc>
+      <default>false</default>
+    </entry>
+    <entry name="NamePlayer1" type="QString" key="Name_Pl1">
+      <desc>The name of player 1.</desc>
+    </entry>
+    <entry name="NamePlayer2" type="QString" key="Name_Pl2">
+      <desc>The name of player 2.</desc>
+    </entry>
+  </group>
+</kcfg>
