@@ -38,6 +38,7 @@
 #include <kaction.h>
 #include <kstdaction.h>
 #include <kapplication.h>
+#include <kstatusbar.h>
 
 #define ID_STATUS_BASE 40
 
