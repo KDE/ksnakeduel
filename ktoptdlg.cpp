@@ -125,17 +125,4 @@ void KTOptDlg::initOther(QWidget* parent)
    otherWidget->setMinimumSize(otherWidget->sizeHint());
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#include "ktoptdlg.moc"

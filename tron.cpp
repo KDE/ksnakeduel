@@ -1721,5 +1721,4 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
     }
 }
 
-
-
+#include "tron.moc"

@@ -44,7 +44,7 @@
 #define MESSAGE_TIME 2000
 
 KTron::KTron(const char *name)
-      : KTMainWindow(name),
+      : KMainWindow(0, name),
        skillAction(3)
 {
    playerPoints[0]=playerPoints[1]=0;
@@ -54,7 +54,7 @@ KTron::KTron(const char *name)
 
    tron=new Tron(this);
    connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
-   setView(tron);
+   setCentralWidget(tron);
 
    // create statusbar
    KStatusBar *statusbar= statusBar();
@@ -182,7 +182,6 @@ KTron::KTron(const char *name)
    int width=config->readNumEntry("Width",400);
    int height=config->readNumEntry("Height",300);
    resize(width,height);
-
 
    config->setGroup("Game");
    bool status=config->readBoolEntry("Computerplayer1",true);
@@ -741,3 +740,4 @@ void KTron::saveProperties(KConfig *config)
   config->writeEntry("BackgroundImage",bgPixURL.url());
 }
 
+#include "ktron.moc"

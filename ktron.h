@@ -26,7 +26,7 @@
 #include <config.h>
 #endif
 
-#include <ktmainwindow.h>
+#include <kmainwindow.h>
 #include "tron.h"
 #include <kurl.h>
 #include <qarray.h>
@@ -39,7 +39,7 @@ class KTOptDlg;
 /**
 * @short The main window of KTron
 */
-class KTron : public KTMainWindow
+class KTron : public KMainWindow
 {
  Q_OBJECT
 public:
