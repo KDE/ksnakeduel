@@ -50,12 +50,12 @@ KTron::KTron(const char *name)
 {
    playerPoints[0]=playerPoints[1]=0;
 
-   setMinimumSize(150,200);
    optionsDialog=0;
 
    tron=new Tron(this);
    connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
    setCentralWidget(tron);
+   tron->setMinimumSize(150,200);
 
    // create statusbar
    KStatusBar *statusbar= statusBar();
