@@ -84,15 +84,10 @@ KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
   KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
   KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
-
-  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), actionCollection());
-   
   KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
-  createStandardStatusBarAction();
 
-  createGUI();
+  setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
   resize(400,300);
-  setAutoSaveSettings();
   loadSettings();
 }
 
