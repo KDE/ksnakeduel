@@ -32,6 +32,7 @@ struct ExtOptions
 {
    bool blockAccelerator;
    bool changeColor;
+   bool crashOnOppositeDir;
    QString namePl1;
    QString namePl2;
 };
@@ -59,6 +60,7 @@ private:
 
    QCheckBox* changeColor;
    QCheckBox* blockAcc;
+   QCheckBox* crashOnOppositeDir;
 
    QLineEdit* namePl1;
    QLineEdit* namePl2;
@@ -67,6 +69,3 @@ private:
 };
 
 #endif
-
-
-

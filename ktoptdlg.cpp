@@ -60,6 +60,7 @@ void KTOptDlg::reset()
 {
     changeColor->setChecked(_options.changeColor);
     blockAcc->setChecked(_options.blockAccelerator);
+    crashOnOppositeDir->setChecked(_options.crashOnOppositeDir);
     namePl1->setText(_options.namePl1);
     namePl2->setText(_options.namePl2);
 }
@@ -69,6 +70,7 @@ ExtOptions KTOptDlg::options()
     ExtOptions opts;
     opts.changeColor=changeColor->isChecked();
     opts.blockAccelerator=blockAcc->isChecked();
+    opts.crashOnOppositeDir=crashOnOppositeDir->isChecked();
 
     opts.namePl1=namePl1->text();
     opts.namePl2=namePl2->text();
@@ -95,6 +97,7 @@ void KTOptDlg::initOther(QWidget* parent)
 
    blockAcc=new QCheckBox(i18n("Disable acceleration"),box);
 
+   crashOnOppositeDir = new QCheckBox(i18n("Crash when moving in opposite direction"), box);
 
    box=new QGroupBox(2,Qt::Horizontal,i18n("Name of Players")
                ,otherWidget);
@@ -119,6 +122,12 @@ void KTOptDlg::initOther(QWidget* parent)
 "Disable acceleration\n\n"
 "If checked, the accelerator key is blocked.");
    QWhatsThis::add(blockAcc,message);
+
+   // Quickhelp message
+   message=i18n(
+"Crash on moving in opposite direction\n\n"
+"If checked, moving in the opposite direction will cause a crash.");
+   QWhatsThis::add(crashOnOppositeDir,message);
 
    layout->addStretch(3);
 

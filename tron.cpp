@@ -513,6 +513,16 @@ bool Tron::winnerColor() const
    return changeWinnerColor;
 }
 
+void Tron::setOppositeDirCrashes(bool flag)
+{
+   crashOnOppositeDir=flag;
+}
+    
+bool Tron::oppositeDirCrashes() const
+{
+   return crashOnOppositeDir;
+}
+
 void Tron::setComputerplayer(Player player, bool flag)
 {
   if(player==One)
@@ -590,8 +600,19 @@ void Tron::switchDir(int playerNr,Direction newDirection)
      return;
   }
 
-  players[playerNr].dir=newDirection;
+  if (oppositeDirCrashes()==false)
+  {
+    if (newDirection==Up && players[playerNr].dir==Down)
+      return;
+    if (newDirection==Down && players[playerNr].dir==Up)
+      return;
+    if (newDirection==Left && players[playerNr].dir==Right)
+      return;
+    if (newDirection==Right && players[playerNr].dir==Left)
+      return;
+  }
 
+  players[playerNr].dir=newDirection;
 }
 
 void Tron::updateDirections(int playerNr)

@@ -76,6 +76,8 @@ public:
   bool acceleratorBlocked() const;
   void enableWinnerColor(bool flag=true);
   bool winnerColor() const;
+  void setOppositeDirCrashes(bool flag=true);
+  bool oppositeDirCrashes() const;
 
 public slots:
   /** Starts a new game. The difference to reset is, that the players
@@ -148,6 +150,8 @@ private:
   bool changeWinnerColor;
   /** flag, if the accelerator keys has to be ignored */
   bool blockAccelerator;
+  /** flag, if moving in opposite direction causes a crash */
+  bool crashOnOppositeDir;
   /** determines level of computerplayer */
   int lookForward;
 

@@ -254,6 +254,7 @@ KTron::KTron(const char *name)
 
    tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
+   tron->setOppositeDirCrashes(config->readBoolEntry("OppositeDirCrashes",true));
 
    tron->restoreColors(config);
    readBackground(config);
@@ -318,6 +319,7 @@ void KTron::saveSettings()
 
    config->writeEntry("ChangeWinnerColor",tron->winnerColor());
    config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
+   config->writeEntry("OppositeDirCrashes",tron->oppositeDirCrashes());
 
    if(playerName[0]==i18n("Player 1"))
       config->writeEntry("Name_Pl1","");
@@ -342,6 +344,7 @@ void KTron::configureOther()
       ExtOptions opts;
       opts.changeColor=tron->winnerColor();
       opts.blockAccelerator=tron->acceleratorBlocked();
+      opts.crashOnOppositeDir=tron->oppositeDirCrashes();
       if(playerName[0]==i18n("Player 1"))
          opts.namePl1="";
       else
@@ -366,6 +369,7 @@ void KTron::takeOptions()
    ExtOptions opts=optionsDialog->options();
    tron->enableWinnerColor(opts.changeColor);
    tron->setAcceleratorBlocked(opts.blockAccelerator);
+   tron->setOppositeDirCrashes(opts.crashOnOppositeDir);
 
    if(opts.namePl1=="")
       playerName[0]=i18n("Player 1");
@@ -678,6 +682,7 @@ void KTron::readProperties(KConfig *config)
 
    tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
+   tron->setOppositeDirCrashes(config->readBoolEntry("OppositeDirCrashes",true));
 
    QString temp="";
    playerName[0]=config->readEntry("Name_Pl1",temp);
@@ -724,6 +729,7 @@ void KTron::saveProperties(KConfig *config)
 		
    config->writeEntry("ChangeWinnerColor",tron->winnerColor());
    config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
+   config->writeEntry("OppositeDirCrashes",tron->oppositeDirCrashes());
 		
    if(playerName[0]==i18n("Player 1"))
       config->writeEntry("Name_Pl1","");
