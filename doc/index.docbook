@@ -194,8 +194,8 @@ Menu</link> for information how to change the default keys.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>N</accel>ew Game</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>New Game</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Starts a new game.</action></para></listitem>
 </varlistentry>
@@ -205,8 +205,8 @@ Menu</link> for information how to change the default keys.
 <shortcut>
 <keycap>P</keycap>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>P</accel>ause/Continue</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Pause/Continue</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Pauses the game.</action></para></listitem>
 </varlistentry>
@@ -216,8 +216,8 @@ Menu</link> for information how to change the default keys.
 <shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
 </shortcut>
-<guimenu><accel>G</accel>ame</guimenu>
-<guimenuitem><accel>E</accel>xit</guimenuitem>
+<guimenu>Game</guimenu>
+<guimenuitem>Exit</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Quits.</action></para></listitem>
 </varlistentry>
@@ -231,24 +231,24 @@ Menu</link> for information how to change the default keys.
 <variablelist>
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Show St<accel>a</accel>tusbar</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Shows or hides the Statusbar.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Configure <accel>K</accel>ey Bindings</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Displays a standard KDE key bindings configurator.</action></para></listitem>
+<listitem><para><action>Displays a standard &kde; key bindings configurator.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>C</accel>omputerplayer</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Computerplayer</guimenuitem>
 </menuchoice></term>
 <listitem><para>Selects the number of computer players, and
 their skill level, <guimenuitem>Beginner</guimenuitem>,
@@ -261,8 +261,8 @@ their skill level, <guimenuitem>Beginner</guimenuitem>,
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>V</accel>elocity</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Velocity</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -275,9 +275,9 @@ velocity is <guimenuitem>5</guimenuitem>.
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>A</accel>ppearance</guimenuitem>
-<guimenuitem><accel>D</accel>rawing Style</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Appearance</guimenuitem>
+<guimenuitem>Drawing Style</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -290,9 +290,9 @@ are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>A</accel>ppearance</guimenuitem>
-<guimenuitem>Color Player <accel>1</accel></guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Appearance</guimenuitem>
+<guimenuitem>Color Player 1</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -303,9 +303,9 @@ are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>A</accel>ppearance</guimenuitem>
-<guimenuitem>Color Player <accel>2</accel></guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Appearance</guimenuitem>
+<guimenuitem>Color Player 2</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -316,9 +316,9 @@ are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>A</accel>ppearance</guimenuitem>
-<guimenuitem><accel>B</accel>ackgroundcolor</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Appearance</guimenuitem>
+<guimenuitem>Backgroundcolor</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -329,9 +329,9 @@ are: <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rects</guimenuitem>,
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem><accel>A</accel>ppearance</guimenuitem>
-<guimenuitem>B<accel>a</accel>ckground image</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Appearance</guimenuitem>
+<guimenuitem>Background image</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -342,8 +342,8 @@ box.</action></para>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
-<guimenuitem>Si<accel>z</accel>e</guimenuitem>
+<guimenu>Settings</guimenu>
+<guimenuitem>Size</guimenuitem>
 </menuchoice></term>
 <listitem>
 <para>
@@ -355,7 +355,7 @@ box.</action></para>
 
 <varlistentry>
 <term><menuchoice>
-<guimenu><accel>S</accel>ettings</guimenu>
+<guimenu>Settings</guimenu>
 <guimenuitem>Other...</guimenuitem>
 </menuchoice></term>
 <listitem>
@@ -389,65 +389,7 @@ at a constant velocity.</para>
 <sect1 id="help">
 <title>The <guimenuitem>Help</guimenuitem> Menu</title>
 
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo><keycap>F1</keycap></keycombo></shortcut>
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>C</accel>ontents</guimenuitem></menuchoice></term>
-<listitem>
-<para>
-This invokes the &kde; help system starting at the &ktron; help pages (this
-document).
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<shortcut><keycombo><keycap>Shift</keycap><keycap>F1</keycap></keycombo></shortcut>
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem>What's
-<accel>T</accel>his?</guimenuitem></menuchoice></term>
-<listitem>
-<para>
-This changes the mouse cursor to a combination arrow and question mark. Clicking
-on items within &ktron; with this arrow will open a help window (if one exists
-for the particular item) explaining the item's function.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice><guimenu><accel>H</accel>elp</guimenu>
-<guimenuitem><accel>R</accel>eport Bug</guimenuitem></menuchoice></term>
-<listitem>
-<para>
-Report a bug or a wish list item to &ktron;s' authors.
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem><accel>A</accel>bout
-KTron</guimenuitem></menuchoice></term>
-<listitem>
-<para>
-This will displays version and author information
-</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu><accel>H</accel>elp</guimenu><guimenuitem>About
-<accel>K</accel>DE</guimenuitem></menuchoice></term>
-<listitem>
-<para>This displays the &kde; version and other basic information.
-</para>
-</listitem>
-</varlistentry>
-
-</variablelist>
+&help.menu.documentation;
 
 </sect1>
 
@@ -615,10 +557,9 @@ Documentation Copyright 1999 Matthias Kiefer
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &ktron;, you need &kde; 2.0
-All required libraries as well as &ktron; itself can be
-found on
-<ulink url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
+In order to successfully compile &ktron;, you need &kde; 3.0 All
+required libraries as well as &ktron; itself can be found on <ulink
+url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 </sect1>
 
 <sect1 id="compilation">
