@@ -12,7 +12,7 @@ EXTRA_DIST = ktron.desktop
 
 KDE_ICON = ktron
 
-appsdir = $(kde_appsdir)/Programs/Games
+appsdir = $(kde_appsdir)/Games
 apps_DATA = ktron.desktop
 
 METASOURCES = AUTO
