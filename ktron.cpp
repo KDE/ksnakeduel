@@ -188,11 +188,12 @@ KTron::KTron(const char *name)
    bool status=config->readBoolEntry("Computerplayer1",true);
    toggleAction=(KToggleAction *)actionCollection()->action("computer_player1");
    toggleAction->setChecked(status);
-
+   tron->setComputerplayer(One,status);
+   
    status=config->readBoolEntry("Computerplayer2",false);
    toggleAction=(KToggleAction *)actionCollection()->action("computer_player2");
    toggleAction->setChecked(status);
-
+   tron->setComputerplayer(Two,status);
 
    QString temp="";
    playerName[0]=config->readEntry("Name_Pl1",temp);
@@ -206,10 +207,12 @@ KTron::KTron(const char *name)
 
    Skill skill=(Skill)config->readNumEntry("Skill",(int)Medium);
    skillAction[skill]->setChecked(true);
+   tron->setSkill(skill);
 
    selectAction=(KSelectAction*)actionCollection()->action("select_velocity");
    int velocity=config->readNumEntry("Velocity",5);
    selectAction->setCurrentItem(velocity-1);
+   tron->setVelocity(velocity);
 
 
    selectAction=(KSelectAction*)actionCollection()->action("select_style");
@@ -226,6 +229,7 @@ KTron::KTron(const char *name)
    }
    config->setGroup("Game");
    selectAction->setCurrentItem(newStyle);
+   tron->setStyle(newStyle);
 
    int size=config->readNumEntry("RectSize",10);
    selectAction=(KSelectAction*)actionCollection()->action("select_size");
@@ -247,6 +251,7 @@ KTron::KTron(const char *name)
          selectAction->setCurrentItem(4);
          break;
    }
+   tron->setRectSize(size);
 
    tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
@@ -259,7 +264,7 @@ KTron::KTron(const char *name)
 
 KTron::~KTron()
 {
-   saveSettings();
+	saveSettings();
 }
 
 
@@ -446,6 +451,7 @@ void KTron::showWinner(Player winner)
 
 void KTron::quit()
 {
+   saveSettings();
    kapp->quit();
 }
 
