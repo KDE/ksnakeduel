@@ -624,7 +624,7 @@ found on
 </sect1>
 
 <sect1 id="compilation">
-<title>Compilation and installation</title>
+<title>Compilation and Installation</title>
 
 <para>In order to compile and install &ktron; on your system, type the
 following in the base directory of the kdegames distribution:</para>
