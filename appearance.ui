@@ -47,7 +47,7 @@
                         <cstring>textLabel16</cstring>
                     </property>
                     <property name="text">
-                        <string>Line style</string>
+                        <string>Line style:</string>
                     </property>
                 </widget>
                 <widget class="QComboBox" row="0" column="2">
@@ -166,7 +166,7 @@
                                 <cstring>BackgroundColorChoice</cstring>
                             </property>
                             <property name="text">
-                                <string>Color</string>
+                                <string>Color:</string>
                             </property>
                             <property name="checked">
                                 <bool>true</bool>
@@ -185,7 +185,7 @@
                                 <cstring>BackgroundImageChoice</cstring>
                             </property>
                             <property name="text">
-                                <string>Image</string>
+                                <string>Image:</string>
                             </property>
                             <property name="checked">
                                 <bool>false</bool>
@@ -216,7 +216,7 @@
                         <cstring>textLabel7</cstring>
                     </property>
                     <property name="text">
-                        <string>Player 1 color</string>
+                        <string>Player 1 color:</string>
                     </property>
                 </widget>
                 <widget class="KColorButton" row="3" column="1" rowspan="1" colspan="2">
@@ -239,7 +239,7 @@
                         <cstring>textLabel8</cstring>
                     </property>
                     <property name="text">
-                        <string>Player 2 color</string>
+                        <string>Player 2 color:</string>
                     </property>
                 </widget>
                 <widget class="KColorButton" row="4" column="1" rowspan="1" colspan="2">
