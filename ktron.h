@@ -1,5 +1,5 @@
-/* ********************************************************************************
-   This file is part of the game 'KTron'
+/* ***************************************************************************
+  This file is part of the game 'KTron'
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
@@ -17,7 +17,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-  ***************************************************************************** */
+  ****************************************************************************/
 
 #ifndef KTRON_H
 #define KTRON_H
@@ -28,97 +28,50 @@
 
 #include <kmainwindow.h>
 #include "tron.h"
-#include <kurl.h>
-#include <qmemarray.h>
 
 class KAccel;
 class KSelectAction;
 class KToggleAction;
-class KRadioAction;
-class KTOptDlg;
+class KDialogBase;
+class Tron;
 
 /**
-* @short The main window of KTron
-*/
-class KTron : public KMainWindow
-{
- Q_OBJECT
+ * @short The main window of KTron
+ */
+class KTron : public KMainWindow {
+
+Q_OBJECT
+
 public:
- KTron();
- ~KTron();
+  KTron();
+  ~KTron();
 
 private:
- KAccel *accel;
- Tron *tron;
- KURL bgPixURL;
- KTOptDlg* optionsDialog;
- QString playerName[2];
- int playerPoints[2];
- KToggleAction *showStatusbar, *computer1, *computer2;
- KSelectAction *selectVelocity, *selectStyle, *selectSize;
+  KAccel *accel;
+  Tron *tron;
+  QString playerName[2];
+  int playerPoints[2];
+  KToggleAction *showStatusbar;
+  KDialogBase *options;
 
- /** displays the current velocity */
- //void updateVelocityMenu(int);
- void updateStatusbar();
- void readSettings();
- void saveSettings();
- void readBackground(KConfig *config);
+  void updateStatusbar();
+  void saveSettings();
 
 protected:
- /** calls tron->updatePixmap to draw frame in the new colors */
- void paletteChange(const QPalette &oldPalette);
+  /** calls tron->updatePixmap to draw frame in the new colors */
+  void paletteChange(const QPalette &oldPalette);
 
 private slots:
-   /** updates players points in statusbar and checks if someone has won */
-   void changeStatus(Player);
-   void quit();
-   void showWinner(Player winner);
-   /** opens configure dialog */
-   void configureOther();
-   void takeOptions();
-   void chooseBgPix();
-
-   void toggleComPl1();
-   void toggleComPl2();
-
-   void beginnerSkill();
-   void averageSkill();
-   void expertSkill();
-
-   void configureKeys();
-
-   void toggleStatusbar();
-
-   void colorPl1();
-   void colorPl2();
-   void colorBackground();
-
-   void setVelocity(int index);
-   void setSize(int index);
-   void setStyle(int index);
-
-private:
-  QMemArray<KRadioAction*> skillAction;
+  void readSettings();
+  /** updates players points in statusbar and checks if someone has won */
+  void changeStatus(Player);
+  
+  void showWinner(Player winner);
+  void toggleStatusbar();
+  void configureKeys();
+  void showOptions();
+  void closeOptions();
 };
 
 #endif
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

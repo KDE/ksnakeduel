@@ -1,4 +1,4 @@
-/* ********************************************************************************
+/****************************************************************************
   This file is part of the game 'KTron'
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
@@ -17,12 +17,19 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-  ***************************************************************************** */
+  ***************************************************************************/
+// Background
+#include <kio/netaccess.h>
+#include <kio/job.h>
+#include <kmessagebox.h>
 
+// Normal class
 #include <qtimer.h>
 
 #include <kdebug.h>
 #include <klocale.h>
+#include <kglobal.h>
+#include <kapplication.h>
 #include <kconfig.h>
 #include <kcolordialog.h>
 #include <kaction.h>
@@ -31,39 +38,90 @@
 
 #define TRON_FRAMESIZE 2
 
-/* *************************************************************** **
-**                    init-functions										 **
-** *************************************************************** */
+/**
+ * init-functions
+ **/
 
 Tron::Tron(QWidget *parent,const char *name)
   : QWidget(parent,name)
 {
   pixmap=0;
   playfield=0;
-  changeWinnerColor=false;
-  blockAccelerator=false;
   beginHint=false;
   lookForward=15;
 
   random.setSeed(0);
 
-  timer=new QTimer(this,"timer");
-  connect(timer,SIGNAL(timeout()),SLOT(doMove()));
-
-  colors[0]=QColor("black");
-  colors[1]=QColor("red");
-  colors[2]=QColor("blue");
-  setPalette(colors[0]);
-
   setFocusPolicy(QWidget::StrongFocus);
   setBackgroundMode(NoBackground);
 
   gameBlocked=false;
-  style=OLine;
-  rectSize=7;
-  _skill=Medium;
+  rectSize=10;
 
-  QTimer::singleShot(15000,this,SLOT(showBeginHint()));
+  timer = new QTimer(this,"timer");
+  loadSettings();
+  connect(timer, SIGNAL(timeout()), SLOT(doMove()));
+  QTimer::singleShot(15000, this,SLOT(showBeginHint()));
+}
+
+void Tron::loadSettings(){
+  KConfig *config = kapp->config();
+  config->setGroup("Game");
+  // Colors
+  QColor bg("black");
+  QColor pl1("red");
+  QColor pl2("blue");
+  colors[0] = config->readColorEntry("Color_Background",&bg);
+  colors[1] = config->readColorEntry("Color_Player1",&pl1);
+  colors[2] = config->readColorEntry("Color_Player2",&pl2);
+  reset();
+
+  setPalette(colors[0]);
+      
+  changeWinnerColor = config->readBoolEntry("ChangeWinnerColor",true);
+  blockAccelerator = config->readBoolEntry("AcceleratorBlocked",false);
+  crashOnOppositeDir=config->readBoolEntry("OppositeDirCrashes",false);
+
+  // Size
+  int newSize = config->readNumEntry("RectSize",10);
+  if(newSize!=rectSize){
+    rectSize=newSize;
+    createNewPlayfield();
+    reset();
+  }
+
+  // Velocity
+  int velocity=config->readNumEntry("Velocity",5);
+  setVelocity(velocity);
+
+  // Skill
+  _skill=(Skill)config->readNumEntry("Skill",(int)Medium);
+
+  // Style
+  style=(TronStyle)config->readNumEntry("Style",(int) OLine);
+  if(pixmap){
+    updatePixmap();
+    repaint();
+  }
+   
+  // Backgroundimage
+  KURL url = config->readEntry("BackgroundImage");
+  if(!url.isEmpty()){
+    QString tmpFile;
+    KIO::NetAccess::download(url, tmpFile);
+    QPixmap pix(tmpFile);
+    if(!pix.isNull()){
+      setBackgroundPix(pix);
+    } else {
+	QString msg=i18n("Wasn't able to load wallpaper\n%1");
+	msg=msg.arg(tmpFile);
+	KMessageBox::sorry(this, msg);
+    }
+    KIO::NetAccess::removeTempFile(tmpFile);
+  }
+
+  setComputerplayer(One,config->readBoolEntry("Computerplayer1",true));
+  setComputerplayer(Two,config->readBoolEntry("Computerplayer2",false));
 }
 
 Tron::~Tron()
@@ -81,15 +139,12 @@ Tron::~Tron()
 void Tron::createNewPlayfield()
 {
   if(playfield)
-    {
-      delete [] playfield;
-    }
+    delete [] playfield;
 
   if(pixmap)
     delete pixmap;
 
   // field size
-
   fieldWidth=(width()-2*TRON_FRAMESIZE)/rectSize;
   fieldHeight=(height()-2*TRON_FRAMESIZE)/rectSize;
 
@@ -103,7 +158,6 @@ void Tron::createNewPlayfield()
 
   //int min=(fieldWidth<fieldHeight) ? fieldWidth : fieldHeight;
   //lookForward=min/4;
-
 }
 
 void Tron::newGame()
@@ -402,6 +456,7 @@ void Tron::setBackgroundPix(QPixmap pix)
 }
 
 // configure colors
+// id = 0 = background, 1, and 2
 bool Tron::changeColor(int id)
 {
    QColor color;
@@ -431,32 +486,12 @@ bool Tron::changeColor(int id)
    return flag;
 }
 
-void Tron::saveColors(KConfig* config) const
-{
-   config->writeEntry("Color_Background",colors[0]);
-   config->writeEntry("Color_Player1",colors[1]);
-   config->writeEntry("Color_Player2",colors[2]);
-}
-
-void Tron::restoreColors(KConfig *config)
-{
-   QColor bg("black");
-   QColor pl1("red");
-   QColor pl2("blue");
-   colors[0]=config->readColorEntry("Color_Background",&bg);
-   colors[1]=config->readColorEntry("Color_Player1",&pl1);
-   colors[2]=config->readColorEntry("Color_Player2",&pl2);
-
-   setPalette(colors[0]);
-}
-
 void Tron::setVelocity(int newVel)            // set new velocity
 {
   velocity=(10-newVel)*15;
 
   if(!gameEnded && !gamePaused)
     timer->changeInterval(velocity);
-
 }
 
 int Tron::getVelocity() const
@@ -464,115 +499,29 @@ int Tron::getVelocity() const
   return 10-velocity/15;
 }
 
-void Tron::setStyle(TronStyle newStyle)
-{
-   style=newStyle;
-
-   if(pixmap)
-   {
-      updatePixmap();
-      repaint();
-   }
-}
-
-TronStyle Tron::getStyle() const
-{
-   return style;
-}
-
-void Tron::setRectSize(int newSize)
-{
-   if(newSize!=rectSize)
-   {
-      rectSize=newSize;
-      createNewPlayfield();
-      reset();
-   }
-}
-
-int Tron::getRectSize() const
-{
-   return rectSize;
-}
-
-void Tron::setAcceleratorBlocked(bool flag)
-{
-   blockAccelerator=flag;
-}
-
-bool Tron::acceleratorBlocked() const
-{
-   return blockAccelerator;
-}
-
-void Tron::enableWinnerColor(bool flag)
-{
-   changeWinnerColor=flag;
-}
-
-bool Tron::winnerColor() const
-{
-   return changeWinnerColor;
-}
-
-void Tron::setOppositeDirCrashes(bool flag)
-{
-   crashOnOppositeDir=flag;
-}
-
-bool Tron::oppositeDirCrashes() const
-{
-   return crashOnOppositeDir;
-}
-
-void Tron::setComputerplayer(Player player, bool flag)
-{
+void Tron::setComputerplayer(Player player, bool flag) {
   if(player==One)
-  {
-     players[0].setComputer(flag);
-  }
+    players[0].setComputer(flag);
   else if(player==Two)
-  {
-     players[1].setComputer(flag);
-  }
+    players[1].setComputer(flag);
 
   if(isComputer(Both))
-  {
-     QTimer::singleShot(1000,this,SLOT(computerStart()));
-  }
-
+      QTimer::singleShot(1000,this,SLOT(computerStart()));
 }
 
 bool Tron::isComputer(Player player)
 {
-   bool flag=false;
    if(player==One)
-   {
-       flag=players[0].computer;
-   }
+     return players[0].computer;
    else if(player==Two)
-   {
-      flag=players[1].computer;
-   }
+     return players[1].computer;
    else if(player==Both)
    {
       if(players[0].computer && players[1].computer)
-         flag=true;
-      else
-         flag=false;
+        return true;
    }
 
-   return flag;
-}
-
-void Tron::setSkill(Skill newSkill)
-{
-   _skill=newSkill;
-}
-
-Skill Tron::skill() const
-{
-   return _skill;
+   return false;
 }
 
 /* *************************************************************** **
@@ -602,7 +551,7 @@ void Tron::switchDir(int playerNr,Direction newDirection)
      return;
   }
 
-  if (oppositeDirCrashes()==false)
+  if (crashOnOppositeDir==false)
   {
     if (newDirection==::Up && players[playerNr].last_dir==::Down)
       return;
@@ -1742,3 +1691,4 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
 }
 
 #include "tron.moc"
+

@@ -1,4 +1,4 @@
-/* ********************************************************************************
+/******************************************************************************
    This file is part of the game 'KTron'
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
@@ -17,8 +17,7 @@
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-  ***************************************************************************** */  
-
+  ****************************************************************************/  
 #include <kapplication.h>
 #include <kimageio.h>
 #include <klocale.h>
@@ -39,32 +38,24 @@ int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
     KTRON_VERSION, description, KAboutData::License_GPL, notice);
-  aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
+  aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
+  aboutData.addAuthor("Benjamin Meyer",0, "ben@meyerhome.net");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
-  
   KApplication a;
   KGlobal::locale()->insertCatalogue("libkdegames");
-
+  
   // used for loading background pixmaps
   KImageIO::registerFormats();
 
-  if(a.isRestored())
-  {
+  if(a.isRestored()){
      RESTORE(KTron)
   }
-  else
-  {
+  else {
      KTron* ktron = new KTron;
      a.setMainWidget(ktron);
      ktron->show();
   }
   return a.exec();
 }
-
-
-
-
-
-
 

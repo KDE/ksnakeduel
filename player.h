@@ -49,10 +49,5 @@ public:
   bool computer;
 };
 
-
-
-
-
-#endif // PLAYER_H
-
+#endif
 

@@ -55,5 +55,3 @@ void player::setComputer(bool computer)
   else keyPressed=false;
 }
 
-
-

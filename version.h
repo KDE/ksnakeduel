@@ -1,1 +1,1 @@
-#define KTRON_VERSION "1.0"
+#define KTRON_VERSION "1.1"

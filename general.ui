@@ -1,0 +1,208 @@
+<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
+<class>General</class>
+<widget class="QWidget">
+    <property name="name">
+        <cstring>General</cstring>
+    </property>
+    <property name="geometry">
+        <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>369</width>
+            <height>309</height>
+        </rect>
+    </property>
+    <property name="caption">
+        <string>Form1</string>
+    </property>
+    <vbox>
+        <property name="name">
+            <cstring>unnamed</cstring>
+        </property>
+        <property name="margin">
+            <number>0</number>
+        </property>
+        <property name="spacing">
+            <number>0</number>
+        </property>
+        <widget class="QFrame">
+            <property name="name">
+                <cstring>frame4</cstring>
+            </property>
+            <property name="frameShape">
+                <enum>StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+                <enum>Plain</enum>
+            </property>
+            <property name="lineWidth">
+                <number>0</number>
+            </property>
+            <vbox>
+                <property name="name">
+                    <cstring>unnamed</cstring>
+                </property>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox1</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Behavior</string>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>ChangeWinnerColor</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Show winner by changing color</string>
+                            </property>
+                            <property name="checked">
+                                <bool>true</bool>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>AcceleratorBlocked</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Disable acceleration</string>
+                            </property>
+                        </widget>
+                        <widget class="QCheckBox">
+                            <property name="name">
+                                <cstring>OppositeDirCrashes</cstring>
+                            </property>
+                            <property name="text">
+                                <string>&amp;Crash when moving in the opposite direction</string>
+                            </property>
+                        </widget>
+                    </vbox>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox2</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Player Names</string>
+                    </property>
+                    <grid>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QLineEdit" row="0" column="1">
+                            <property name="name">
+                                <cstring>Name_Pl1</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLineEdit" row="1" column="1">
+                            <property name="name">
+                                <cstring>Name_Pl2</cstring>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="0" column="0">
+                            <property name="name">
+                                <cstring>textLabel1</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Player 1</string>
+                            </property>
+                        </widget>
+                        <widget class="QLabel" row="1" column="0">
+                            <property name="name">
+                                <cstring>textLabel2</cstring>
+                            </property>
+                            <property name="text">
+                                <string>Player 2</string>
+                            </property>
+                        </widget>
+                    </grid>
+                </widget>
+                <widget class="QGroupBox">
+                    <property name="name">
+                        <cstring>groupBox3</cstring>
+                    </property>
+                    <property name="title">
+                        <string>Speed</string>
+                    </property>
+                    <vbox>
+                        <property name="name">
+                            <cstring>unnamed</cstring>
+                        </property>
+                        <widget class="QSlider">
+                            <property name="name">
+                                <cstring>Velocity</cstring>
+                            </property>
+                            <property name="minValue">
+                                <number>1</number>
+                            </property>
+                            <property name="maxValue">
+                                <number>9</number>
+                            </property>
+                            <property name="pageStep">
+                                <number>1</number>
+                            </property>
+                            <property name="value">
+                                <number>5</number>
+                            </property>
+                            <property name="orientation">
+                                <enum>Horizontal</enum>
+                            </property>
+                            <property name="tickmarks">
+                                <enum>Right</enum>
+                            </property>
+                            <property name="tickInterval">
+                                <number>1</number>
+                            </property>
+                        </widget>
+                        <widget class="QLayoutWidget">
+                            <property name="name">
+                                <cstring>layout1</cstring>
+                            </property>
+                            <hbox>
+                                <property name="name">
+                                    <cstring>unnamed</cstring>
+                                </property>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel4</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Slow</string>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel5</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Default</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>AlignCenter</set>
+                                    </property>
+                                </widget>
+                                <widget class="QLabel">
+                                    <property name="name">
+                                        <cstring>textLabel6</cstring>
+                                    </property>
+                                    <property name="text">
+                                        <string>Fast</string>
+                                    </property>
+                                    <property name="alignment">
+                                        <set>AlignVCenter|AlignRight</set>
+                                    </property>
+                                </widget>
+                            </hbox>
+                        </widget>
+                    </vbox>
+                </widget>
+            </vbox>
+        </widget>
+    </vbox>
+</widget>
+<layoutdefaults spacing="6" margin="11"/>
+</UI>

@@ -58,24 +58,12 @@ public:
   void updatePixmap();
   void setBackgroundPix(QPixmap);
   bool changeColor(int player);
-  void saveColors(KConfig *config) const;
-  void restoreColors(KConfig *config);
   void setComputerplayer(Player player, bool);
   bool isComputer(Player player);
-  void setSkill(Skill);
-  Skill skill() const;
   void setVelocity(int);
   int getVelocity() const;
-  void setStyle(TronStyle);
-  TronStyle getStyle() const;
   void setRectSize(int newSize);
   int getRectSize() const;
-  void setAcceleratorBlocked(bool flag=true);
-  bool acceleratorBlocked() const;
-  void enableWinnerColor(bool flag=true);
-  bool winnerColor() const;
-  void setOppositeDirCrashes(bool flag=true);
-  bool oppositeDirCrashes() const;
 
 public slots:
   /** Starts a new game. The difference to reset is, that the players
@@ -88,6 +76,8 @@ public slots:
   * checks if both players are computer and starts the game
   */
   void computerStart();
+
+  void loadSettings();
 
 signals:
   void gameEnds(Player looser);
