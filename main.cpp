@@ -24,6 +24,7 @@
 #include <kfiledialog.h>
 #include <klocale.h>
 #include <kcmdlineargs.h>
+#include <kaboutdata.h>
 
 #include "ktron.h"
 #include "version.h"
@@ -49,9 +50,15 @@ bool previewWallpaper(const KFileInfo *,const QString filename,
 }
 #endif
 
-int main(int argc, char* argv[]) { 
-  KCmdLineArgs::init(argc, argv, "ktron", description, KTRON_VERSION);
+int main(int argc, char* argv[])
+{
+  KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
+    KTRON_VERSION, description, KAboutData::GPL, 
+    "(c) 1999, Matthias Kiefer");
+  aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
+  KCmdLineArgs::init( argc, argv, &aboutData );
 
+  
   KApplication a;  
 
   // used for loading background pixmaps

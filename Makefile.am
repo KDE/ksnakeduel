@@ -19,6 +19,6 @@ METASOURCES = AUTO
 
 
 messages:
-	$(XGETTEXT) -C -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po $(podir)/ktron.pot
+	$(XGETTEXT) -C -kI18N_NOOP -ki18n -x $(includedir)/kde.pot *.cpp && mv messages.po $(podir)/ktron.pot
 
 
