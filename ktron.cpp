@@ -29,7 +29,7 @@
 #include <kiconloader.h>
 #include <kkeydialog.h>
 #include <kfiledialog.h>
-#include <kstddirs.h>
+#include <kstandarddirs.h>
 #include <kmenubar.h>
 #include <kconfig.h>
 #include <kio/netaccess.h>
@@ -37,7 +37,7 @@
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdaction.h>
-#include <kapp.h>
+#include <kapplication.h>
 
 #define ID_STATUS_BASE 40
 

@@ -23,7 +23,7 @@
 #include "ktoptdlg.h"
 #include <kglobal.h>
 #include <klocale.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <kwizard.h>
 #include <kbuttonbox.h>
 #include <kseparator.h>

@@ -19,7 +19,7 @@
 
   ***************************************************************************** */  
 
-#include <kapp.h>
+#include <kapplication.h>
 #include <kimageio.h>
 #include <kfiledialog.h>
 #include <klocale.h>

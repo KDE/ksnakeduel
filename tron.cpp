@@ -22,7 +22,7 @@
 #include <qtimer.h>
 
 #include <kdebug.h>
-#include <kapp.h>
+#include <kapplication.h>
 #include <kaccel.h>
 #include <klocale.h>
 #include <kconfig.h>
