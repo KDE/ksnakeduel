@@ -47,9 +47,9 @@ void player::setCoordinates(int x, int y)
   yCoordinate=y;
 }
 
-void player::setComputer(bool computer)
+void player::setComputer(bool isComputer)
 {
-  this->computer=computer;
+  computer=isComputer;
   if(computer)
     keyPressed=true;
   else keyPressed=false;
