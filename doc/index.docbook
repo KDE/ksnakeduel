@@ -1,4 +1,5 @@
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook V3.1-Based Variant V1.0//EN">
+
 <book lang="en" id="KTron">
 <bookinfo>
 <title>The KTron Handbook</title>
@@ -11,7 +12,7 @@
 </authorgroup>
 
 <date>10/20/1999</date>
-<releaseinfo>1.0</releaseinfo>
+<releaseinfo>1.00.00</releaseinfo>
 
 <revhistory>
 <revision>
