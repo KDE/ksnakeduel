@@ -66,7 +66,7 @@ avoid running into a wall, your own tail and that of your opponent.
 
 <para>
 The rules of <application>KTron</application> are very simple. Once a round is 
-started, the player don´t stop moving forward. All you have to do is avoid 
+started, the player don't stop moving forward. All you have to do is avoid 
 crashing by changing the direction. Additionaly you can try to hinder your 
 opponent.
 For this it is possible to accelerate the velocity by pressing your
@@ -91,7 +91,7 @@ The current score is always displayed in the statusbar.
 You can let the computer play player one, player two or both players.
 There are three difficulty levels: 
 Beginner,Average and Expert. 
-If you choose Beginner, the computer doesn´t care about
+If you choose Beginner, the computer doesn't care about
 the opponent and just moves around. This is the same algorithm as used by 
 xtron-1.1. 
 At skill Average and Expert the computer tries to hinder the
@@ -107,7 +107,7 @@ opponent when he comes near.
 <title>Using the keyboard</title>
 <para>
 Every player has five keys. Four keys for changing the direction and one to
-accelerate. You don´t have to press the direction keys all the time. Just
+accelerate. You don't have to press the direction keys all the time. Just
 press once, if you want to change the direction of your player. Acceleration is
 only activated, if the acceleration key is pressed. When you release the
 acceleration key, the velocity slows down to normal.
@@ -145,7 +145,7 @@ and look. All options can be changed from the menu <guimenu>Options</guimenu>.
 </para>
 
 <para>
-Don´t forget to save the options by selecting 
+Don't forget to save the options by selecting 
 <guimenuitem>Save Options</guimenuitem>, if you want
 them set at every startup.
 </para>
