@@ -41,7 +41,6 @@
 #include <kiconloader.h>
 #include <qvbox.h>
 #include <kautoconfig.h>
-//#include "kautoconfig_kfile.h"
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
@@ -74,7 +73,7 @@ KTron::KTron() : settings(0) {
    (void)new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
    (void)new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
    (void)new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
-   (void)new KAction(i18n("Player 2 Accelerator"), Key_Plus, 0, 0, actionCollection(), "Pl2Ac");
+   (void)new KAction(i18n("Player 2 Accelerator"), Key_0, 0, 0, actionCollection(), "Pl2Ac");
 
    actionCollection()->setAutoConnectShortcuts(true);
 
@@ -84,7 +83,7 @@ KTron::KTron() : settings(0) {
    KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
    KStdGameAction::quit(this, SLOT( close() ), actionCollection());
 
-   showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
+   //showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
    KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
    
    (void)new KAction(i18n("&Configure KTron..."), 0, this, SLOT(showSettings()), actionCollection(), "configure_ktron" );
@@ -92,7 +91,7 @@ KTron::KTron() : settings(0) {
   createGUI();
   resize(400,300);
   setAutoSaveSettings();
-  showStatusbar->setChecked(!statusBar()->isHidden());
+  //showStatusbar->setChecked(!statusBar()->isHidden());
   readSettings();
 }
 
