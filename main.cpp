@@ -19,11 +19,16 @@
 
   ***************************************************************************** */  
 
-#include "ktron.h"
 #include <kapp.h>
 #include <kimgio.h>
 #include <kfiledialog.h>
+#include <klocale.h>
+#include <kcmdlineargs.h>
 
+#include "ktron.h"
+#include "version.h"
+
+static const char *description = I18N_NOOP("KDE Game");
 
 // this function is for previewing wallpapers in the
 // KFilePreviewDialog
@@ -45,7 +50,9 @@ bool previewWallpaper(const KFileInfo *,const QString filename,
 #endif
 
 int main(int argc, char* argv[]) { 
-  KApplication a(argc,argv,"ktron");  
+  KCmdLineArgs::init(argc, argv, "ktron", description, KTRON_VERSION);
+
+  KApplication a;  
 
   // used for loading background pixmaps
   kimgioRegister();

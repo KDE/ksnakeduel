@@ -20,6 +20,7 @@
   ***************************************************************************** */  
 
 #include "ktron.h"
+#include "version.h"
 #include "ktoptdlg.h"
 
 #include <kglobal.h>
@@ -54,8 +55,6 @@
 
 
 #define MESSAGE_TIME 2000
-
-#define KTRON_VERSION "1.0"
 
 KTron::KTron(const char *name) : KTMainWindow(name)
 {
