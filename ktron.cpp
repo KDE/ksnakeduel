@@ -37,6 +37,7 @@
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdaction.h>
+#include <kstdgameaction.h>
 #include <kapplication.h>
 #include <kstatusbar.h>
 
@@ -83,12 +84,12 @@ KTron::KTron(const char *name)
    action=new KAction(i18n("&Pause/Continue"), Key_P, tron, SLOT(togglePause()),
           actionCollection(), "game_pause");
    action->plugAccel(accel);
-   action=new KAction(i18n("&New Game"), KStdAccel::openNew(), tron, SLOT(newGame()),
-          actionCollection(), "game_new");
-   action->plugAccel(accel);
-   action=new KAction(i18n("&Quit"), KStdAccel::quit(), this, SLOT(quit()),
-          actionCollection(), "game_quit");
-   action->plugAccel(accel);
+   KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
+   //action=new KAction(i18n("&New Game"), KStdAccel::openNew(), tron, SLOT(newGame()),
+   //       actionCollection(), "game_new");
+   //action->plugAccel(accel);
+   KStdGameAction::quit(this, SLOT( slotQuit() ), actionCollection());
+   //action->plugAccel(accel);
 
    /* options-menu  */
    new KToggleAction(i18n("Player &1"), 0 , this, SLOT(toggleComPl1()),
@@ -214,7 +215,6 @@ KTron::KTron(const char *name)
    selectAction->setCurrentItem(velocity-1);
    tron->setVelocity(velocity);
 
-
    selectAction=(KSelectAction*)actionCollection()->action("select_style");
    TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
    // if the configfile is from a older than from KTron 0.5 than switch to
@@ -255,7 +255,7 @@ KTron::KTron(const char *name)
 
    tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
-   tron->setOppositeDirCrashes(config->readBoolEntry("OppositeDirCrashes",true));
+   tron->setOppositeDirCrashes(config->readBoolEntry("OppositeDirCrashes",false));
 
    tron->restoreColors(config);
    readBackground(config);
