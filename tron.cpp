@@ -7,12 +7,12 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
@@ -36,7 +36,7 @@
 **                    init-functions										 **
 ** *************************************************************** */
 
-Tron::Tron(QWidget *parent,const char *name) 
+Tron::Tron(QWidget *parent,const char *name)
   : QWidget(parent,name)
 {
   pixmap=0;
@@ -174,7 +174,7 @@ void Tron::stopGame()
 {
    timer->stop();
    gameEnded=true;
-		  		
+
 }
 
 void Tron::togglePause() // pause or continue game
@@ -217,7 +217,7 @@ void Tron::showWinner(Player player)
 
       for(i=0;i<fieldWidth;i++)
          for(j=0;j<fieldHeight;j++)
-         {	
+         {
             if(playfield[i][j]!=BACKGROUND)
             {
                // change player
@@ -272,7 +272,7 @@ void Tron::updatePixmap()
            drawRect(p,i,j);
 	}
      }
-	
+
    // draw frame
    QColor light=parentWidget()->colorGroup().midlight();
    QColor dark=parentWidget()->colorGroup().mid();
@@ -444,7 +444,7 @@ void Tron::restoreColors(KConfig *config)
    colors[0]=config->readColorEntry("Color_Background",&bg);
    colors[1]=config->readColorEntry("Color_Player1",&pl1);
    colors[2]=config->readColorEntry("Color_Player2",&pl2);
-  	
+
    setPalette(colors[0]);
 }
 
@@ -465,7 +465,7 @@ int Tron::getVelocity() const
 void Tron::setStyle(TronStyle newStyle)
 {
    style=newStyle;
-  	
+
    if(pixmap)
    {
       updatePixmap();
@@ -597,7 +597,7 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 void Tron::updateDirections(int playerNr)
 {
    if(playerNr==-1 || playerNr==0)
-   {  	
+   {
       int x=players[0].xCoordinate;
       int y=players[0].yCoordinate;
 
@@ -623,10 +623,10 @@ void Tron::updateDirections(int playerNr)
 
    }
    if(playerNr==-1 || playerNr==1)
-   {  	
+   {
       int x=players[1].xCoordinate;
       int y=players[1].yCoordinate;
-  		
+
       // necessary for drawing the 3d-line
       switch(players[1].dir)
       {
@@ -702,11 +702,11 @@ void Tron::paintEvent(QPaintEvent *e)
                y+=rectSize/3;
             }
 
-          		
+
             p.drawText(x,y,message);
          }
       }
-    		
+
       // draw begin hint
       if(beginHint)
       {
@@ -714,7 +714,7 @@ void Tron::paintEvent(QPaintEvent *e)
          int x=p.fontMetrics().width(hint);
          x=(width()-x)/2;
          int y=height()/2;
-    		
+
          p.drawText(x,y,hint);
       }
    }
@@ -728,7 +728,7 @@ void Tron::resizeEvent(QResizeEvent *)
 
 void Tron::keyPressEvent(QKeyEvent *e)
 {
-  uint key=e->key();
+  int key=e->key();
 
   if(!players[1].computer)
   {
@@ -815,7 +815,7 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
 void Tron::keyReleaseEvent(QKeyEvent * e)
 {
-  uint key=e->key();
+  int key=e->key();
 
   if(!players[1].computer)
   {
@@ -920,7 +920,7 @@ void Tron::doMove()
   		// Überprüfen, ob Acceleratortaste gedrückt wurde...
       if(players[i].accelerated)
 		{
-		
+
 		   updateDirections(i);
 
 		   int newType; // determine type of rect to set
@@ -951,7 +951,7 @@ void Tron::doMove()
 	    			   players[i].yCoordinate++;
 	    			   newType |= (BOTTOM | LEFT | RIGHT);
 	    			}
-	    			
+
 	      		break;
 	    		case Left:
 	       		if(crashed(i,-1,0))
@@ -972,7 +972,7 @@ void Tron::doMove()
 	      	}
 	      	break;
 	    	}
-	
+
 	      if(players[i].alive)
       		playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
 		}
@@ -1055,7 +1055,7 @@ void Tron::doMove()
 			newType=PLAYER1;
 		else
 			newType=PLAYER2;
-		
+
       switch(players[i].dir)
 		{
 			case Up:
@@ -1174,8 +1174,8 @@ if(_skill != Easy)
   int dis_forward,  dis_left, dis_right;
 
   dis_forward = dis_left = dis_right = 1;
- 	
-	
+
+
   	switch (players[playerNr].dir)
    	{
   			case Left:
@@ -1238,7 +1238,7 @@ if(_skill != Easy)
     		index[0] += flags[0];
     		index[1] += flags[1];
   		}
-  		
+
     	// check left
     	index[0] = players[playerNr].xCoordinate+flags[2];
     	index[1] = players[playerNr].yCoordinate+flags[3];
@@ -1260,7 +1260,7 @@ if(_skill != Easy)
       index[0] += flags[4];
       index[1] += flags[5];
     }
-	
+
   	// distances to opponent
   	int hor_dis=0; // negative is opponent to the right
   	int vert_dis=0; // negative is opponent to the bottom
@@ -1273,7 +1273,7 @@ if(_skill != Easy)
   	bool opMovesSameDir=false;
   	bool opMovesRight=false;
   	bool opMovesLeft=false;
-  	
+
   	switch(players[playerNr].dir)
   	{
   	   case Up:
@@ -1325,13 +1325,13 @@ if(_skill != Easy)
   	         opMovesRight=true;
   	      break;
   	}
-	
+
   	int doPercentage=100;
   	if(_skill==Medium)
   		doPercentage=5;
   	else if(_skill==Hard)
   		doPercentage=90;
-  	
+
   	// if opponent moves the opposite direction as we
    if(opMovesOppositeDir)
    {
@@ -1354,7 +1354,7 @@ if(_skill != Easy)
          else if(dis_forward < lookForward)
          {
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
          			changeDirection(playerNr,dis_right,dis_left);
@@ -1367,7 +1367,7 @@ if(_skill != Easy)
 
     		if(!(dis_left == 1 && dis_right == 1))
       		if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
-        			changeDirection(playerNr,dis_right,dis_left);	
+        			changeDirection(playerNr,dis_right,dis_left);
       }
    } // end  if(opMovesOppositeDir)
 
@@ -1392,7 +1392,7 @@ if(_skill != Easy)
          else if(dis_forward < lookForward)
          {
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
          			changeDirection(playerNr,dis_right,dis_left);
@@ -1402,7 +1402,7 @@ if(_skill != Easy)
       else if(dis_forward < lookForward)
       {
       	dis_forward = 100 - 100/dis_forward;
-      	
+
     		if(!(dis_left == 1 && dis_right == 1))
       		if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         			changeDirection(playerNr,dis_right,dis_left);
@@ -1423,9 +1423,9 @@ if(_skill != Easy)
                	changeDirection(playerNr,dis_right,dis_left);
 	          }
 	          else if(dis_forward < lookForward)
-      		 {		
+      		 {
       			dis_forward = 100 - 100/dis_forward;
-      	
+
     				if(!(dis_left == 1 && dis_right == 1))
       				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
@@ -1440,18 +1440,18 @@ if(_skill != Easy)
                	switchDir(playerNr,sides[1]); // turn right
              }
 	          else if(dis_forward < lookForward)
-      		 {		
+      		 {
       			dis_forward = 100 - 100/dis_forward;
-      	
+
     				if(!(dis_left == 1 && dis_right == 1))
       				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
           }
           else if(dis_forward < lookForward)
-      	 {	
+      	 {
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
@@ -1467,9 +1467,9 @@ if(_skill != Easy)
                	changeDirection(playerNr,dis_right,dis_left);
          }
       	else if(dis_forward<lookForward)
-      	{	
+      	{
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
@@ -1491,9 +1491,9 @@ if(_skill != Easy)
                	changeDirection(playerNr,dis_right,dis_left);
              }
           	 else if(dis_forward < lookForward)
-      		 {		
+      		 {
       			dis_forward = 100 - 100/dis_forward;
-      	
+
     				if(!(dis_left == 1 && dis_right == 1))
       				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
@@ -1508,19 +1508,19 @@ if(_skill != Easy)
 						switchDir(playerNr,sides[0]); // turn left
 				 }
 	       	 else if(dis_forward < lookForward)
-      		 {		
+      		 {
       			dis_forward = 100 - 100/dis_forward;
-      	
+
     				if(!(dis_left == 1 && dis_right == 1))
       				if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         					changeDirection(playerNr,dis_right,dis_left);
       		 }
-	       		
+
           }
       	else if(dis_forward < lookForward)
-      	{	
+      	{
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
@@ -1536,9 +1536,9 @@ if(_skill != Easy)
                	changeDirection(playerNr,dis_right,dis_left);
          }
       	else if(dis_forward<lookForward)
-      	{	
+      	{
       		dis_forward = 100 - 100/dis_forward;
-      	
+
     			if(!(dis_left == 1 && dis_right == 1))
       			if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
         				changeDirection(playerNr,dis_right,dis_left);
@@ -1550,12 +1550,12 @@ if(_skill != Easy)
 // This part is completly ported from
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 else //_skill==Easy
-{	
+{
   Direction sides[2];
   int flags[6] = {0,0,0,0,0,0};
   int index[2];
   int dis_forward,  dis_left, dis_right;
- 
+
   dis_forward = dis_left = dis_right = 1;
 
   switch (players[playerNr].dir) {
@@ -1619,9 +1619,9 @@ else //_skill==Easy
     index[0] += flags[0];
     index[1] += flags[1];
   }
- 
+
   if (dis_forward < lookForward)
-    {   
+    {
       dis_forward = 100 - 100/dis_forward;
 
     // check left
@@ -1647,7 +1647,7 @@ else //_skill==Easy
     }
     if(!(dis_left == 1 && dis_right == 1))
       if ((int)random.getLong(100) >= dis_forward || dis_forward == 0) {
-       
+
 	// change direction
 	if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
 	  if (dis_left != 1)
