@@ -55,7 +55,6 @@ private:
   KDialogBase *settings;
 
   void updateStatusbar();
-  void saveSettings();
 
 protected:
   /** calls tron->updatePixmap to draw frame in the new colors */

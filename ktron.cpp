@@ -90,20 +90,14 @@ KTron::KTron() : settings(0) {
    (void)new KAction(i18n("&Configure KTron..."), 0, this, SLOT(showSettings()), actionCollection(), "configure_ktron" );
 
   createGUI();
+  resize(400,300);
+  setAutoSaveSettings();
+  showStatusbar->setChecked(!statusBar()->isHidden());
   readSettings();
 }
 
 void KTron::readSettings() {
    KConfig *config=kapp->config();
-   config->setGroup("Window");
-   
-   bool visible=config->readBoolEntry("Statusbar",true);
-   showStatusbar->setChecked(visible);
-   
-   int width=config->readNumEntry("Width",400);
-   int height=config->readNumEntry("Height",300);
-   resize(width,height);
-
    config->setGroup("Game");
    playerName[0]=config->readEntry("Name_Pl1");
    if ( playerName[0].isEmpty() )
@@ -117,17 +111,7 @@ void KTron::readSettings() {
 
 // Destructor
 KTron::~KTron(){
-  saveSettings();
   delete tron;
-}
-
-void KTron::saveSettings() {
-  KConfig *config=kapp->config();
-  KConfigGroupSaver saver(config,"Window");
-
-  config->writeEntry("Statusbar", showStatusbar->isChecked());
-  config->writeEntry("Width",width());
-  config->writeEntry("Height",height());
 }
 
 void KTron::updateStatusbar(){
