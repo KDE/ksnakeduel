@@ -26,7 +26,7 @@
 #include <kaccel.h>
 #include <klocale.h>
 #include <kconfig.h>
-#include <kcolordlg.h>
+#include <kcolordialog.h>
 
 #include "tron.h"
 
@@ -517,7 +517,7 @@ void Tron::setOppositeDirCrashes(bool flag)
 {
    crashOnOppositeDir=flag;
 }
-    
+
 bool Tron::oppositeDirCrashes() const
 {
    return crashOnOppositeDir;
