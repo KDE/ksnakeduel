@@ -151,7 +151,7 @@ private:
   void changeDirection(int playerNr,int dis_right,int dis_left);
 
   /** sets the direction of player playerNr to newDirection */
-  void switchDir(int playerNr,Direction newDirection);
+  void switchDir(int playerNr,Directions::Direction newDirection);
   /**
   * updates the the rect at current position to not draw a
   * border in the direction of the next step.
