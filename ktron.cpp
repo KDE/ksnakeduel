@@ -7,17 +7,17 @@
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-  
+
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-  
+
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 675 Mass Ave, Cambridge, MA 02139, USA.
 
-  ***************************************************************************** */  
+  ***************************************************************************** */
 
 #include "ktron.h"
 #include "version.h"
@@ -29,10 +29,13 @@
 #include <kiconloader.h>
 #include <kkeydialog.h>
 #include <kfiledialog.h>
+#include <kstddirs.h>
 #include <qmessagebox.h>
 #include <kmenubar.h>
 #include <kconfig.h>
-
+#include <kio/netaccess.h>
+#include <kio/job.h>
+#include <kmessagebox.h>
 
 #define ID_GAME_NEW 1
 #define ID_GAME_PAUSE 2
@@ -511,7 +514,7 @@ void KTron::showWinner(Player winner)
   }
 		
   QMessageBox::information(this, i18n("KTron - Winner"), message, i18n("OK"));
-  
+
   tron->newGame();
 }
 
@@ -653,29 +656,38 @@ void KTron::menuCallback(int id)
 
 void KTron::chooseBgPix()
 {
-  //const QString dir=KGlobal::dirs()->getResourceDirs("wallpaper").first();
-  const QString dir="";
+    // Used to be:
+    //QString name=KFilePreviewDialog::getOpenFileName(dir,"*",this);
+    //When do we get back KFilePreviewDialog???
+    KURL url = KFileDialog::getOpenURL(QString::null, "*", this);
+    if(url.isEmpty())
+	return;
 
-  // Used to be:
-  //QString name=KFilePreviewDialog::getOpenFileName(dir,"*",this);
-  //When do we get back KFilePreviewDialog???
-  QString name=KFileDialog::getOpenFileName(dir, "*", this);
-  if(name.isNull())
-     return;
+    QString tmpFile;
+    if (!KIO::NetAccess::download( url, tmpFile ) )
+	return;
 
-  QPixmap bgPix(name);
+    QPixmap bgPix(tmpFile);
 
-  if(!bgPix.isNull())
-  {
-     bgPixName=name;
-     tron->setBackgroundPix(bgPix);
-  }
-  else
-  {
-     QString msg=i18n("Wasn't able to load wallpaper\n%1");
-     msg=msg.arg(name);
-     QMessageBox::information(this, kapp->caption(), msg, i18n("OK"));
-  }
+    if (!bgPix.isNull()) {
+	QString name;
+	tron->setBackgroundPix(bgPix);
+	if (url.isLocalFile()) {
+	  bgPixName=tmpFile;
+	} else {
+	  QString name = tmpFile.mid(tmpFile.findRev('/'));
+	  name = locateLocal("appdata", "wallpapers/" + name);
+	  KIO::file_move(tmpFile, name);
+	  KIO::file_delete(tmpFile);
+	  bgPixName=name;
+	}
+    } else {
+	QString msg=i18n("Wasn't able to load wallpaper\n%1");
+	msg=msg.arg(tmpFile);
+	KMessageBox::sorry(this, msg);
+	KIO::NetAccess::removeTempFile( tmpFile );
+    }
+
 }
 
 void KTron::changeStatus(Player player)
@@ -851,38 +863,4 @@ void KTron::saveProperties(KConfig *config)
 
   config->writeEntry("BackgroundImage",bgPixName);
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
