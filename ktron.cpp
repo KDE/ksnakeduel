@@ -55,20 +55,30 @@ KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
 
-  actionCollection()->setAutoConnectShortcuts(false);
-  (void)new KAction(i18n("Player 1 Up"), Key_R, 0, 0, actionCollection(), "Pl1Up");
-  (void)new KAction(i18n("Player 1 Down"), Key_F, 0, 0, actionCollection(), "Pl1Down");
-  (void)new KAction(i18n("Player 1 Right"), Key_G, 0, 0, actionCollection(), "Pl1Right");
-  (void)new KAction(i18n("Player 1 Left"), Key_D, 0, 0, actionCollection(), "Pl1Left");
-  (void)new KAction(i18n("Player 1 Accelerator"), Key_A, 0, 0, actionCollection(), "Pl1Ac");
+  // We match up keyboard events ourselves in Tron::keyPressEvent()
+  // We must disable the actions, otherwise we don't get the keyPressEvent's
+  KAction *act;
+  act = new KAction(i18n("Player 1 Up"), Key_R, 0, 0, actionCollection(), "Pl1Up");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 1 Down"), Key_F, 0, 0, actionCollection(), "Pl1Down");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 1 Right"), Key_G, 0, 0, actionCollection(), "Pl1Right");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 1 Left"), Key_D, 0, 0, actionCollection(), "Pl1Left");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 1 Accelerator"), Key_A, 0, 0, actionCollection(), "Pl1Ac");
+  act->setEnabled(false);
  
-  (void)new KAction(i18n("Player 2 Up"), Key_Up, 0, 0, actionCollection(), "Pl2Up");
-  (void)new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
-  (void)new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
-  (void)new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
-  (void)new KAction(i18n("Player 2 Accelerator"), Key_0, 0, 0, actionCollection(), "Pl2Ac");
-
-  actionCollection()->setAutoConnectShortcuts(true);
+  act = new KAction(i18n("Player 2 Up"), Key_Up, 0, 0, actionCollection(), "Pl2Up");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
+  act->setEnabled(false);
+  act = new KAction(i18n("Player 2 Accelerator"), Key_0, 0, 0, actionCollection(), "Pl2Ac");
+  act->setEnabled(false);
 
   tron->setActionCollection(actionCollection());
 
