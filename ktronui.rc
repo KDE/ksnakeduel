@@ -1,14 +1,3 @@
 <!DOCTYPE kpartgui>
-<kpartgui name="ktron" version="2">
-
-<ActionProperties>
-  <Action name="configure_ktron" icon="configure"/>
-</ActionProperties>
-
-<MenuBar>
-  <Menu name="settings"><text>&amp;Settings</text>
-     <Action name="configure_ktron"/>
-  </Menu>
-</MenuBar>
-
+<kpartgui name="ktron" version="3">
 </kpartgui>

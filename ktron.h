@@ -31,7 +31,6 @@
 
 class KAccel;
 class KSelectAction;
-class KToggleAction;
 class KDialogBase;
 class Tron;
 
@@ -51,7 +50,6 @@ private:
   Tron *tron;
   QString playerName[2];
   int playerPoints[2];
-  KToggleAction *showStatusbar;
   KDialogBase *settings;
 
   void updateStatusbar();
@@ -66,7 +64,6 @@ private slots:
   void changeStatus(Player);
   
   void showWinner(Player winner);
-  void toggleStatusbar();
   void configureKeys();
   void showSettings();
   void closeSettings();

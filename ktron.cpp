@@ -50,48 +50,46 @@
  * Constuctor
  */ 
 KTron::KTron() : settings(0) {
-   playerPoints[0]=playerPoints[1]=0;
+  playerPoints[0]=playerPoints[1]=0;
 
-   tron=new Tron(this);
-   connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
-   setCentralWidget(tron);
-   tron->setMinimumSize(200,180);
+  tron=new Tron(this);
+  connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
+  setCentralWidget(tron);
+  tron->setMinimumSize(200,180);
 
-   // create statusbar
-   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
-   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
+  // create statusbar
+  statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
+  statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
 
-   actionCollection()->setAutoConnectShortcuts(false);
+  actionCollection()->setAutoConnectShortcuts(false);
+  (void)new KAction(i18n("Player 1 Up"), Key_R, 0, 0, actionCollection(), "Pl1Up");
+  (void)new KAction(i18n("Player 1 Down"), Key_F, 0, 0, actionCollection(), "Pl1Down");
+  (void)new KAction(i18n("Player 1 Right"), Key_G, 0, 0, actionCollection(), "Pl1Right");
+  (void)new KAction(i18n("Player 1 Left"), Key_D, 0, 0, actionCollection(), "Pl1Left");
+  (void)new KAction(i18n("Player 1 Accelerator"), Key_A, 0, 0, actionCollection(), "Pl1Ac");
+ 
+  (void)new KAction(i18n("Player 2 Up"), Key_Up, 0, 0, actionCollection(), "Pl2Up");
+  (void)new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
+  (void)new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
+  (void)new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
+  (void)new KAction(i18n("Player 2 Accelerator"), Key_0, 0, 0, actionCollection(), "Pl2Ac");
 
-   (void)new KAction(i18n("Player 1 Up"), Key_R, 0, 0, actionCollection(), "Pl1Up");
-   (void)new KAction(i18n("Player 1 Down"), Key_F, 0, 0, actionCollection(), "Pl1Down");
-   (void)new KAction(i18n("Player 1 Right"), Key_G, 0, 0, actionCollection(), "Pl1Right");
-   (void)new KAction(i18n("Player 1 Left"), Key_D, 0, 0, actionCollection(), "Pl1Left");
-   (void)new KAction(i18n("Player 1 Accelerator"), Key_A, 0, 0, actionCollection(), "Pl1Ac");
+  actionCollection()->setAutoConnectShortcuts(true);
 
-   (void)new KAction(i18n("Player 2 Up"), Key_Up, 0, 0, actionCollection(), "Pl2Up");
-   (void)new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
-   (void)new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
-   (void)new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
-   (void)new KAction(i18n("Player 2 Accelerator"), Key_0, 0, 0, actionCollection(), "Pl2Ac");
+  tron->setActionCollection(actionCollection());
 
-   actionCollection()->setAutoConnectShortcuts(true);
+  KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
+  KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
+  KStdGameAction::quit(this, SLOT( close() ), actionCollection());
 
-   tron->setActionCollection(actionCollection());
-
-   KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
-   KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
-   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
-
-   //showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
-   KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
+  KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
    
-   (void)new KAction(i18n("&Configure KTron..."), 0, this, SLOT(showSettings()), actionCollection(), "configure_ktron" );
+  KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
+  createStandardStatusBarAction();
 
   createGUI();
   resize(400,300);
   setAutoSaveSettings();
-  //showStatusbar->setChecked(!statusBar()->isHidden());
   readSettings();
 }
 
@@ -185,16 +183,6 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/){
    update();
    tron->updatePixmap();
    tron->update();
-}
-
-/**
- * Turn the statusbar on/off
- */ 
-void KTron::toggleStatusbar() {
-  if(showStatusbar->isChecked())
-    statusBar()->show();
-  else
-    statusBar()->hide();
 }
 
 /**
