@@ -37,7 +37,7 @@ int main(int argc, char* argv[])
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
     KTRON_VERSION, description, KAboutData::License_GPL, notice);
   aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
-  aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben@meyerhome.net");
+  aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben+ktron@meyerhome.net");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KApplication a;
