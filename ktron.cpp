@@ -36,12 +36,12 @@
 #include <kapplication.h>
 #include <kstatusbar.h>
 #include <kdebug.h>
-#define ID_STATUS_BASE 40
 
+#define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
-KTron::KTron(const char *name)
-      : KMainWindow(0, name),
-       skillAction(3)
+
+KTron::KTron()
+    : skillAction(3)
 {
    playerPoints[0]=playerPoints[1]=0;
    optionsDialog=0;
@@ -52,9 +52,8 @@ KTron::KTron(const char *name)
    tron->setMinimumSize(150,200);
 
    // create statusbar
-   KStatusBar *statusbar= statusBar();
-   statusbar->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
-   statusbar->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
+   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
+   statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
 
    actionCollection()->setAutoConnectShortcuts(false);
 
@@ -75,17 +74,15 @@ KTron::KTron(const char *name)
 
    tron->setActionCollection(actionCollection());
 
-   KAction* action;
-   action=new KAction(i18n("&Pause/Continue"), Key_P, tron, SLOT(togglePause()),
-          actionCollection(), "game_pause");
+   KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
    KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
    KStdGameAction::quit(this, SLOT( quit() ), actionCollection());
 
    /* options-menu  */
-   new KToggleAction(i18n("Player &1"), 0 , this, SLOT(toggleComPl1()),
-          actionCollection(), "computer_player1");
-   new KToggleAction(i18n("Player &2"), 0 , this, SLOT(toggleComPl2()),
-          actionCollection(), "computer_player2");
+   computer1 = new KToggleAction(i18n("Player &1"), 0 , this, SLOT(toggleComPl1()),
+                                 actionCollection(), "computer_player1");
+   computer2 = new KToggleAction(i18n("Player &2"), 0 , this, SLOT(toggleComPl2()),
+                                 actionCollection(), "computer_player2");
 
    skillAction[0]=new KRadioAction(i18n("Beginner"), 0 , this, SLOT(beginnerSkill()),
           actionCollection(), "skill_beginner");
@@ -98,8 +95,8 @@ KTron::KTron(const char *name)
       skillAction[i]->setExclusiveGroup("skill");
 
 
-   KSelectAction* selectAction = new KSelectAction( i18n("&Velocity"),  0
-                 , actionCollection(), "select_velocity");
+   selectVelocity = new KSelectAction( i18n("&Velocity"),  0,
+                                       actionCollection(), "select_velocity");
    QStringList itemList;
    itemList.append(i18n("&1 (slow)"));
    itemList.append(i18n("&2"));
@@ -110,32 +107,32 @@ KTron::KTron(const char *name)
    itemList.append(i18n("&7"));
    itemList.append(i18n("&8"));
    itemList.append(i18n("&9 (fast)"));
-   selectAction->setItems(itemList);
-   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setVelocity(int)));
+   selectVelocity->setItems(itemList);
+   connect(selectVelocity, SIGNAL(activated(int)),
+           this, SLOT(setVelocity(int)));
 
-   selectAction = new KSelectAction( i18n("&Drawing Style"),  0
-                 , actionCollection(), "select_style");
+   selectStyle = new KSelectAction( i18n("&Drawing Style"),  0,
+                                    actionCollection(), "select_style");
    itemList.clear();
    itemList.append(i18n("&3D Line"));
    itemList.append(i18n("3&D Rects"));
    itemList.append(i18n("&Line"));
    itemList.append(i18n("&Circles"));
-   selectAction->setItems(itemList);
-   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setStyle(int)));
+   selectStyle->setItems(itemList);
+   connect(selectStyle, SIGNAL(activated(int)), this, SLOT(setStyle(int)));
 
-   selectAction = new KSelectAction( i18n("Si&ze"),  0
-                 , actionCollection(), "select_size");
+   selectSize = new KSelectAction( i18n("Si&ze"),  0,
+                                   actionCollection(), "select_size");
    itemList.clear();
    itemList.append(i18n("&Very Small"));
    itemList.append(i18n("&Small"));
    itemList.append(i18n("&Medium"));
    itemList.append(i18n("&Large"));
    itemList.append(i18n("&Very Large"));
-   selectAction->setItems(itemList);
-   connect(selectAction, SIGNAL(activated(int)), this, SLOT(setSize(int)));
+   selectSize->setItems(itemList);
+   connect(selectSize, SIGNAL(activated(int)), this, SLOT(setSize(int)));
 
-
-
+   KAction *action;
    action=new KAction(i18n("Color Player &1..."), 0, this, SLOT(colorPl1()),
           actionCollection(), "color_player1");
    action=new KAction(i18n("Color Player &2..."), 0, this, SLOT(colorPl2()),
@@ -147,25 +144,23 @@ KTron::KTron(const char *name)
 
 
 
-   KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
+   showStatusbar = KStdAction::showStatusbar(this, SLOT(toggleStatusbar()), actionCollection());
    KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
 
-   new KAction(i18n("Other..."), 0 , this, SLOT(configureOther()),
-          actionCollection(), "configure_other");
+   (void)new KAction(i18n("Other..."), 0 , this, SLOT(configureOther()),
+                     actionCollection(), "configure_other");
 
-   createGUI("ktronui.rc");
+   createGUI();
+   readSettings();
+}
 
-  	
-   // read config
+void KTron::readSettings()
+{
    KConfig *config=kapp->config();
-  	
    config->setGroup("Window");
 
-   KToggleAction* toggleAction;
-	
    bool visible=config->readBoolEntry("Statusbar",true);
-   toggleAction=(KToggleAction *)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar));
-   toggleAction->setChecked(visible);
+   showStatusbar->setChecked(visible);
 
    int width=config->readNumEntry("Width",400);
    int height=config->readNumEntry("Height",300);
@@ -173,22 +168,20 @@ KTron::KTron(const char *name)
 
    config->setGroup("Game");
    bool status=config->readBoolEntry("Computerplayer1",true);
-   toggleAction=(KToggleAction *)actionCollection()->action("computer_player1");
-   toggleAction->setChecked(status);
+   computer1->setChecked(status);
    tron->setComputerplayer(One,status);
-   
+
    status=config->readBoolEntry("Computerplayer2",false);
-   toggleAction=(KToggleAction *)actionCollection()->action("computer_player2");
-   toggleAction->setChecked(status);
+   computer2->setChecked(status);
    tron->setComputerplayer(Two,status);
 
-   QString temp="";
-   playerName[0]=config->readEntry("Name_Pl1",temp);
-   if(playerName[0]=="")
-      playerName[0]=i18n("Player 1");
-   playerName[1]=config->readEntry("Name_Pl2",temp);
-   if(playerName[1]=="")
-      playerName[1]=i18n("Player 2");
+
+   playerName[0]=config->readEntry("Name_Pl1");
+   if ( playerName[0].isEmpty() )
+       playerName[0] = i18n("Player 1");
+   playerName[1]=config->readEntry("Name_Pl2");
+   if ( playerName[1].isEmpty() )
+       playerName[1] = i18n("Player 2");
 
    updateStatusbar();
 
@@ -196,12 +189,10 @@ KTron::KTron(const char *name)
    skillAction[skill]->setChecked(true);
    tron->setSkill(skill);
 
-   selectAction=(KSelectAction*)actionCollection()->action("select_velocity");
    int velocity=config->readNumEntry("Velocity",5);
-   selectAction->setCurrentItem(velocity-1);
+   selectVelocity->setCurrentItem(velocity-1);
    tron->setVelocity(velocity);
 
-   selectAction=(KSelectAction*)actionCollection()->action("select_style");
    TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
    // if the configfile is from a older than from KTron 0.5 than switch to
    // 3d-Line
@@ -214,27 +205,26 @@ KTron::KTron(const char *name)
       config->writeEntry("Style",(int)OLine);
    }
    config->setGroup("Game");
-   selectAction->setCurrentItem(newStyle);
+   selectStyle->setCurrentItem(newStyle);
    tron->setStyle(newStyle);
 
    int size=config->readNumEntry("RectSize",10);
-   selectAction=(KSelectAction*)actionCollection()->action("select_size");
    switch(size)
    {
       case 4:
-         selectAction->setCurrentItem(0);
+         selectSize->setCurrentItem(0);
          break;
       case 7:
-         selectAction->setCurrentItem(1);
+         selectSize->setCurrentItem(1);
          break;
       case 10:
-         selectAction->setCurrentItem(2);
+         selectSize->setCurrentItem(2);
          break;
       case 13:
-         selectAction->setCurrentItem(3);
+         selectSize->setCurrentItem(3);
          break;
       case 16:
-         selectAction->setCurrentItem(4);
+         selectSize->setCurrentItem(4);
          break;
    }
    tron->setRectSize(size);
@@ -262,7 +252,7 @@ void KTron::updateStatusbar()
    {
       Player player;
       player=(i==0?One:Two);
-	
+
       QString s;
       QString name;
       if(tron->isComputer(Both))
@@ -289,9 +279,7 @@ void KTron::saveSettings()
 
    KConfigGroupSaver saver(config,"Window");
 
-   KToggleAction* toggleAction;	
-   toggleAction=(KToggleAction *)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar));
-   config->writeEntry("Statusbar",toggleAction->isChecked());
+   config->writeEntry("Statusbar", showStatusbar->isChecked());
 
    config->writeEntry("Width",width());
    config->writeEntry("Height",height());
@@ -318,7 +306,7 @@ void KTron::saveSettings()
        config->writeEntry("Name_Pl2","");
    else
        config->writeEntry("Name_Pl2",playerName[1]);
-  	
+
    tron->saveColors(config);
    config->writeEntry("BackgroundImage",bgPixURL.url());
 
@@ -373,7 +361,7 @@ void KTron::takeOptions()
 }
 
 void KTron::showWinner(Player winner)
-{	
+{
    if(tron->isComputer(Both))
    {
       return;
@@ -412,10 +400,10 @@ void KTron::showWinner(Player winner)
          name[i]=playerName[i];
       }
    }
-   	
+
    message=i18n("%1 has won!").arg(name[winnerNr]);
    statusBar()->message(message,MESSAGE_TIME);
-  	
+
 
    if(looserNr==0 && playerName[0]!=i18n("Player 1"))
    {
@@ -434,7 +422,7 @@ void KTron::showWinner(Player winner)
       message=i18n("%1 has won with %2 : %3 points!");
       message=message.arg(name[winnerNr]).arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
    }
-		
+
    KMessageBox::information(this, message, i18n("Winner"));
 
    tron->newGame();
@@ -444,7 +432,6 @@ void KTron::quit()
 {
    saveSettings();
    kapp->quit();
-   delete this;
 }
 
 void KTron::toggleComPl1()
@@ -515,10 +502,7 @@ void KTron::configureKeys()
 
 void KTron::toggleStatusbar()
 {
-   KToggleAction* toggleAction;
-   toggleAction=(KToggleAction *)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar));
-
-   if(toggleAction->isChecked())
+   if(showStatusbar->isChecked())
       statusBar()->show();
    else
       statusBar()->hide();
@@ -570,7 +554,7 @@ void KTron::chooseBgPix()
 }
 
 void KTron::changeStatus(Player player)
-{  	
+{
    QString s;
 
    // if player=Nobody, then new game
@@ -615,77 +599,6 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/)
    tron->update();
 }
 
-
-
-void KTron::readProperties(KConfig *config)
-{
-   KToggleAction* toggleAction;
-	
-   bool visible=config->readBoolEntry("Statusbar",true);
-   toggleAction=(KToggleAction *)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar));
-   toggleAction->setChecked(visible);
-
-
-   bool status=config->readBoolEntry("Computerplayer1",true);
-   toggleAction=(KToggleAction *)actionCollection()->action("computer_player1");
-   toggleAction->setChecked(status);
-   tron->setComputerplayer(One,status);
-
-   status=config->readBoolEntry("Computerplayer2",false);
-   toggleAction=(KToggleAction *)actionCollection()->action("computer_player2");
-   toggleAction->setChecked(status);
-   tron->setComputerplayer(Two,status);
-
-   Skill skill=(Skill)config->readNumEntry("Skill",(int)Medium);
-   skillAction[skill]->setChecked(true);
-
-   KSelectAction* selectAction=(KSelectAction*)actionCollection()->action("select_velocity");
-   int velocity=config->readNumEntry("Velocity",5);
-   selectAction->setCurrentItem(velocity-1);
-
-
-   selectAction=(KSelectAction*)actionCollection()->action("select_style");
-   TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
-   selectAction->setCurrentItem(newStyle);
-
-   int size=config->readNumEntry("RectSize",10);
-   selectAction=(KSelectAction*)actionCollection()->action("select_size");
-   switch(size)
-   {
-      case 4:
-         selectAction->setCurrentItem(0);
-         break;
-      case 7:
-         selectAction->setCurrentItem(1);
-         break;
-      case 10:
-         selectAction->setCurrentItem(2);
-         break;
-      case 13:
-         selectAction->setCurrentItem(3);
-         break;
-      case 16:
-         selectAction->setCurrentItem(4);
-         break;
-   }
-
-   tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
-   tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
-   tron->setOppositeDirCrashes(config->readBoolEntry("OppositeDirCrashes",true));
-
-   QString temp="";
-   playerName[0]=config->readEntry("Name_Pl1",temp);
-   if(playerName[0]=="")
-      playerName[0]=i18n("Player 1");
-   playerName[1]=config->readEntry("Name_Pl2",temp);
-   if(playerName[1]=="")
-      playerName[1]=i18n("Player 2");
-   updateStatusbar();
-
-   tron->restoreColors(config);
-   readBackground(config);
-}
-
 void KTron::readBackground(KConfig *config)
 {
    KURL url = config->readEntry("BackgroundImage");
@@ -701,38 +614,6 @@ void KTron::readBackground(KConfig *config)
       }
       KIO::NetAccess::removeTempFile(tmpFile);
     }
-}
-
-void KTron::saveProperties(KConfig *config)
-{
-   KToggleAction* toggleAction;	
-   toggleAction=(KToggleAction *)actionCollection()->action(KStdAction::stdName(KStdAction::ShowStatusbar));
-   config->writeEntry("Statusbar",toggleAction->isChecked());
-
-   config->writeEntry("Velocity",tron->getVelocity());
-   config->writeEntry("Style",(int)tron->getStyle());
-   config->writeEntry("RectSize",tron->getRectSize());
-   config->writeEntry("Computerplayer1", tron->isComputer(One) );
-   config->writeEntry("Computerplayer2", tron->isComputer(Two) );
-   config->writeEntry("Skill",(int)tron->skill());
-		
-   config->writeEntry("ChangeWinnerColor",tron->winnerColor());
-   config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
-   config->writeEntry("OppositeDirCrashes",tron->oppositeDirCrashes());
-		
-   if(playerName[0]==i18n("Player 1"))
-      config->writeEntry("Name_Pl1","");
-   else
-      config->writeEntry("Name_Pl1",playerName[0]);
-
-   if(playerName[1]==i18n("Player 2"))
-      config->writeEntry("Name_Pl2","");
-   else
-      config->writeEntry("Name_Pl2",playerName[1]);
-  		
-  tron->saveColors(config);
-
-  config->writeEntry("BackgroundImage",bgPixURL.url());
 }
 
 #include "ktron.moc"

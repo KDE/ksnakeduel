@@ -1,5 +1,6 @@
 <!DOCTYPE kpartgui>
 <kpartgui name="ktron" version="1">
+
 <MenuBar>
   <Menu name="settings"><text>&amp;Settings</text>
      <Menu name="computerplayer" append="save_merge"><text>&amp;Computer Player</text>
@@ -22,4 +23,5 @@
      <Action name="configure_other" append="save_merge"/>
   </Menu>
 </MenuBar>
+
 </kpartgui>

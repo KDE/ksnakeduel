@@ -32,8 +32,9 @@
 #include <qmemarray.h>
 
 class KAccel;
-class KRadioAction;
 class KSelectAction;
+class KToggleAction;
+class KRadioAction;
 class KTOptDlg;
 
 /**
@@ -43,8 +44,8 @@ class KTron : public KMainWindow
 {
  Q_OBJECT
 public:
- KTron( const char *name=0); // Konstruktor
- ~KTron();                  // Destruktor
+ KTron();
+ ~KTron();
 
 private:
  KAccel *accel;
@@ -53,16 +54,17 @@ private:
  KTOptDlg* optionsDialog;
  QString playerName[2];
  int playerPoints[2];
+ KToggleAction *showStatusbar, *computer1, *computer2;
+ KSelectAction *selectVelocity, *selectStyle, *selectSize;
 
  /** displays the current velocity */
  //void updateVelocityMenu(int);
  void updateStatusbar();
+ void readSettings();
  void saveSettings();
  void readBackground(KConfig *config);
 
 protected:
- void readProperties(KConfig *);
- void saveProperties(KConfig *);
  /** calls tron->updatePixmap to draw frame in the new colors */
  void paletteChange(const QPalette &oldPalette);
 
