@@ -26,8 +26,8 @@
 #include "ktron.h"
 #include "version.h"
 
-static const char *description = I18N_NOOP("A race in hyperspace");
-static const char *notice = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
+static const char description[] = I18N_NOOP("A race in hyperspace");
+static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>");
 
