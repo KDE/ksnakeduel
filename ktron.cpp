@@ -122,7 +122,7 @@ KTron::KTron(const char *name)
    selectAction->setItems(itemList);
    connect(selectAction, SIGNAL(activated(int)), this, SLOT(setVelocity(int)));
 
-   selectAction = new KSelectAction( i18n("&Drawing style"),  0
+   selectAction = new KSelectAction( i18n("&Drawing Style"),  0
                  , actionCollection(), "select_style");
    itemList.clear();
    itemList.append(i18n("&3D Line"));
@@ -151,10 +151,10 @@ KTron::KTron(const char *name)
    action=new KAction(i18n("Color Player &2..."), 0, this, SLOT(colorPl2()),
           actionCollection(), "color_player2");
    action->plugAccel(accel);
-   action=new KAction(i18n("&Backgroundcolor..."), 0, this, SLOT(colorBackground()),
+   action=new KAction(i18n("&Background Color..."), 0, this, SLOT(colorBackground()),
           actionCollection(), "color_background");
    action->plugAccel(accel);
-   action=new KAction(i18n("B&ackground image..."), 0, this, SLOT(chooseBgPix()),
+   action=new KAction(i18n("B&ackground Image..."), 0, this, SLOT(chooseBgPix()),
           actionCollection(), "background_image");
    action->plugAccel(accel);
 
