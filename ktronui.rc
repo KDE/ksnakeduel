@@ -2,7 +2,7 @@
 <kpartgui name="ktron" version="1">
 <MenuBar>
   <Menu name="settings" append="configure_merge"><text>&amp;Settings</text>
-     <Menu name="computerplayer"><text>&amp;Computerplayer</text>
+     <Menu name="computerplayer"><text>&amp;Computer Player</text>
 	<Action name="computer_player1"/>
 	<Action name="computer_player2"/>
 	<Separator/>
