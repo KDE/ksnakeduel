@@ -2,19 +2,12 @@
 ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp 
 ktron_LDADD   = $(LIB_KIMGIO) $(LIB_KFILE)
 
-EXTRA_DIST = ktron.desktop ktron.xpm mini-ktron.xpm
+EXTRA_DIST = ktron.desktop 
 
 appsdir = $(kde_appsdir)/Games
 apps_DATA = ktron.desktop
 
-kde_icon_DATA = ktron.xpm
-
-install-data-local:
-	$(mkinstalldirs) $(kde_minidir)
-	$(INSTALL_DATA) $(srcdir)/mini-ktron.xpm $(kde_minidir)/ktron.xpm
-
-uninstall-local:
-	-rm -f $(kde_minidir)/ktron.xpm
+KDE_ICON = ktron
 
 # set the include path for X, qt and KDE
 INCLUDES= $(all_includes)
