@@ -31,7 +31,6 @@
 
 class KAccel;
 class KSelectAction;
-class KDialogBase;
 class Tron;
 
 /**
@@ -42,16 +41,13 @@ class KTron : public KMainWindow {
 Q_OBJECT
 
 public:
-  KTron();
-  ~KTron();
+  KTron(QWidget *parent=0, const char *name=0);
 
 private:
   KAccel *accel;
   Tron *tron;
   QString playerName[2];
   int playerPoints[2];
-  KDialogBase *settings;
-
   void updateStatusbar();
 
 protected:
@@ -59,15 +55,14 @@ protected:
   void paletteChange(const QPalette &oldPalette);
 
 private slots:
-  void readSettings();
+  void loadSettings();
   /** updates players points in statusbar and checks if someone has won */
   void changeStatus(Player);
   
   void showWinner(Player winner);
   void configureKeys();
   void showSettings();
-  void closeSettings();
 };
 
-#endif
+#endif // KTRON_H
 

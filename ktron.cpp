@@ -34,9 +34,7 @@
 #include "general.h"
 #include "ai.h"
 #include "appearance.h"
-#include <kiconloader.h>
-#include <qvbox.h>
-#include <kautoconfig.h>
+#include <kautoconfigdialog.h>
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
@@ -45,10 +43,10 @@
 /**
  * Constuctor
  */ 
-KTron::KTron() : settings(0) {
+KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
   playerPoints[0]=playerPoints[1]=0;
 
-  tron=new Tron(this);
+  tron=new Tron(this, "Tron");
   connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
   setCentralWidget(tron);
   tron->setMinimumSize(200,180);
@@ -86,10 +84,10 @@ KTron::KTron() : settings(0) {
   createGUI();
   resize(400,300);
   setAutoSaveSettings();
-  readSettings();
+  loadSettings();
 }
 
-void KTron::readSettings() {
+void KTron::loadSettings() {
    KConfig *config=kapp->config();
    config->setGroup("Game");
    playerName[0]=config->readEntry("Name_Pl1");
@@ -100,11 +98,6 @@ void KTron::readSettings() {
        playerName[1] = i18n("Player 2");
    
    updateStatusbar();
-}
-
-// Destructor
-KTron::~KTron(){
-  delete tron;
 }
 
 void KTron::updateStatusbar(){
@@ -192,37 +185,16 @@ void KTron::configureKeys(){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-  settings = new KDialogBase(KDialogBase::IconList, i18n("Configure"), KDialogBase::Default | KDialogBase::Ok | KDialogBase::Apply | KDialogBase::Cancel , KDialogBase::Ok, this, "SettingsDialog", false, WDestructiveClose ); 
-  KAutoConfig *kautoconfig = new KAutoConfig(settings, "KAutoConfig");
-  //KAutoConfig_KURLRequester *r = new KAutoConfig_KURLRequester();
-  //kautoconfig->addKAutoConfigWidget("KURLRequester", r);
-	  
-  connect(settings, SIGNAL(okClicked()), kautoconfig, SLOT(saveSettings()));
-  connect(settings, SIGNAL(okClicked()), this, SLOT(closeSettings()));
-  connect(settings, SIGNAL(applyClicked()), kautoconfig, SLOT(saveSettings()));
-  connect(settings, SIGNAL(defaultClicked()), kautoconfig, SLOT(resetSettings()));
-
-  QVBox *frame = settings->addVBoxPage(i18n("General"),i18n("General"), SmallIcon("package_settings", 32));
-  General *general = new General(frame, "General");
-  kautoconfig->addWidget(general, "Game");
-
-  frame = settings->addVBoxPage(i18n("Ai"),i18n("Ai"), SmallIcon("package_system", 32));
-  Ai *ai = new Ai(frame, "Ai");
-  kautoconfig->addWidget(ai, "Game");
-
-  frame = settings->addVBoxPage(i18n("Appearance"),i18n("Appearance"), SmallIcon("style", 32));
-  Appearance *appearance = new Appearance(frame, "Appearance");
-  kautoconfig->addWidget(appearance, "Game");
+  if(KAutoConfigDialog::showDialog("settings"))
+    return;
   
-  kautoconfig->retrieveSettings();
-  connect(kautoconfig, SIGNAL(settingsChanged()), tron, SLOT(loadSettings()));
-  connect(kautoconfig, SIGNAL(settingsChanged()), this, SLOT(readSettings()));
-  
-  settings->show();
-}
-
-void KTron::closeSettings(){
-  settings->close(true);
+  KAutoConfigDialog *dialog = new KAutoConfigDialog(this, "settings");
+  dialog->addPage(new General(0, "General"), i18n("General"), "General", "package_settings");
+  dialog->addPage(new Ai(0, "Ai"), i18n("Ai"), "Game", "package_system");
+  dialog->addPage(new Appearance(0, "Appearance"), i18n("Appearance"), "Game", "style");
+  connect(dialog, SIGNAL(settingsChanged()), tron, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged()), this, SLOT(loadSettings()));
+  dialog->show();
 }
 
 #include "ktron.moc"

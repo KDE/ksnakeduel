@@ -194,19 +194,3 @@ private slots:
 
 #endif // TRON_H
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
