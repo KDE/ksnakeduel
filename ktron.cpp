@@ -210,11 +210,11 @@ KTron::KTron(const char *name) : KTMainWindow(name)
   KToolBar *toolbar = toolBar();
 
   // restartbutton
-  toolbar->insertButton(loader->loadIcon("reload.xpm"),ID_GAME_NEW,
+  toolbar->insertButton(BarIcon("reload"),ID_GAME_NEW,
 			true,i18n("New Game"));
   toolbar->insertSeparator();
   //helpbutton
-  toolbar->insertButton(loader->loadIcon("help.xpm"),ID_HELP_CONTENTS,true,
+  toolbar->insertButton(BarIcon("help"),ID_HELP_CONTENTS,true,
 			i18n("Help"));
 
   connect(toolbar, SIGNAL(clicked(int)), this, SLOT(menuCallback(int)));
