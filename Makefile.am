@@ -2,7 +2,7 @@
 ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp 
 ktron_LDADD   = $(LIB_KIMGIO) $(LIB_KFILE)
 
-EXTRA_DIST = ktron.kdelnk ktron.xpm mini-ktron.xpm 
+EXTRA_DIST = ktron.desktop ktron.xpm mini-ktron.xpm
 
 appsdir = $(kde_appsdir)/Games
 apps_DATA = ktron.desktop
