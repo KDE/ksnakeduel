@@ -71,9 +71,9 @@ KTron::KTron(const char *name) : KTMainWindow(name)
 
   accel->insertItem(i18n("Pause/Continue"),"Pause","P");
   accel->connectItem("Pause",tron,SLOT(togglePause()));
-  accel->insertStdItem(KAccel::New,i18n("New Game"));
-  accel->connectItem(KAccel::New,tron,SLOT(newGame()));
-  accel->connectItem(KAccel::Quit,this,SLOT(quit()));
+  accel->insertStdItem(KStdAccel::New,i18n("New Game"));
+  accel->connectItem(KStdAccel::New,tron,SLOT(newGame()));
+  accel->connectItem(KStdAccel::Quit,this,SLOT(quit()));
 
   accel->insertItem(i18n("Player 1 Up"),"Pl1Up","R");
   accel->insertItem(i18n("Player 1 Down"),"Pl1Down","F");
@@ -95,10 +95,10 @@ KTron::KTron(const char *name) : KTMainWindow(name)
   game->insertItem(i18n("&Pause/Continue"),ID_GAME_PAUSE);
   accel->changeMenuAccel(game,ID_GAME_PAUSE,"Pause");
   game->insertItem(i18n("&New Game"),ID_GAME_NEW);
-  accel->changeMenuAccel(game,ID_GAME_NEW,KAccel::New);
+  accel->changeMenuAccel(game,ID_GAME_NEW,KStdAccel::New);
   game->insertSeparator();
   game->insertItem(i18n("E&xit"),ID_GAME_QUIT);
-  accel->changeMenuAccel(game,ID_GAME_QUIT,KAccel::Quit);
+  accel->changeMenuAccel(game,ID_GAME_QUIT,KStdAccel::Quit);
 
   connect(game,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
