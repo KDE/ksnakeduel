@@ -265,6 +265,7 @@ KTron::KTron(const char *name)
 KTron::~KTron()
 {
 	saveSettings();
+	delete tron;
 }
 
 
