@@ -213,7 +213,7 @@ void Tron::showWinner(Player player)
      		winner=PLAYER1;
      		looser=PLAYER2;
       }
-  		else if(player==Two)
+  		else
   		{
     		winner=PLAYER2;
     		looser=PLAYER1;
@@ -1303,8 +1303,8 @@ if(_skill != Easy)
   	hor_dis=players[playerNr].xCoordinate-players[opponent].xCoordinate;
   	vert_dis=players[playerNr].yCoordinate-players[opponent].yCoordinate;
 
-  	int opForwardDis; // negative is to the back
-  	int opSideDis;  // negative is to the left
+  	int opForwardDis=0; // negative is to the back
+  	int opSideDis=0;  // negative is to the left
   	bool opMovesOppositeDir=false;
   	bool opMovesSameDir=false;
   	bool opMovesRight=false;
@@ -1362,7 +1362,7 @@ if(_skill != Easy)
   	      break;
   	}
 	
-  	int doPercentage;
+  	int doPercentage=100;
   	if(_skill==Medium)
   		doPercentage=5;
   	else if(_skill==Hard)

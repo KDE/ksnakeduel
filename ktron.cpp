@@ -747,20 +747,23 @@ void KTron::readProperties(KConfig *config)
 {
   int i;
 
-  bool visible=config->readBoolEntry("Toolbar",true);
+  bool visible=true;
+  visible=config->readBoolEntry("Toolbar",true);
   options->setItemChecked(ID_VIEW_TOOLBAR,visible);
     	
   visible=config->readBoolEntry("Statusbar",true);
   options->setItemChecked(ID_VIEW_STATUSBAR,visible);
 
-  bool status=config->readBoolEntry("Computerplayer1",false);
+  bool status=false;
+  status=config->readBoolEntry("Computerplayer1",false);
   compPlayerMenu->setItemChecked(ID_COMP_BASE,status);
   tron->setComputerplayer(One,status);
   status=config->readBoolEntry("Computerplayer2",false);
   compPlayerMenu->setItemChecked(ID_COMP_BASE+1,status);
   tron->setComputerplayer(Two,status);
 
-   Skill skill=(Skill)config->readNumEntry("Skill",(int)Medium);
+   Skill skill=Medium;
+   skill=(Skill)config->readNumEntry("Skill",(int)Medium);
    for(i=0;i<3;i++)
    {
       compPlayerMenu->setItemChecked(ID_SKILL_BASE+i,false);
@@ -768,11 +771,13 @@ void KTron::readProperties(KConfig *config)
    compPlayerMenu->setItemChecked(ID_SKILL_BASE+skill,true);
    tron->setSkill(skill);
 
-  int velocity=config->readNumEntry("Velocity",5);
+  int velocity=5;
+  velocity=config->readNumEntry("Velocity",5);
   tron->setVelocity(velocity);
   updateVelocityMenu(ID_VELOCITY_BASE+velocity);
 
-  TronStyle newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
+  TronStyle newStyle=OLine;
+  newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
   tron->setStyle(newStyle);
   for(i=ID_STYLE_BASE;i<ID_STYLE_BASE+4;i++)
     styleMenu->setItemChecked(i,false);
@@ -780,7 +785,8 @@ void KTron::readProperties(KConfig *config)
   styleMenu->setItemChecked(ID_STYLE_BASE+newStyle,true);
 
 
-  	int size=config->readNumEntry("RectSize",10);
+  	int size=10;
+        size=config->readNumEntry("RectSize",10);
   	for(i=ID_SIZE_BASE+4;i<ID_SIZE_BASE+17;i+=3)
    	sizeMenu->setItemChecked(i,false);
   	tron->setRectSize(size);
