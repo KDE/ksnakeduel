@@ -701,34 +701,18 @@ void Tron::paintEvent(QPaintEvent *e)
       QString message=i18n("Crash!");
       QPainter p(this);
       int w=p.fontMetrics().width(message);
+      int h=p.fontMetrics().height();
       for(int i=0;i<2;i++)
       {
          if(!players[i].alive)
      	 {
-            int x=players[i].xCoordinate*rectSize+(width()%rectSize)/2-w/2;
-            int y=players[i].yCoordinate*rectSize+(height()%rectSize)/2;
-            if(players[i].dir==::Right)
-            {
-               x+=rectSize;
-               y+=rectSize/2;
-            }
-            if(players[i].dir==::Left)
-            {
-               y+=rectSize/2;
-            }
-            if(players[i].dir==::Down)
-            {
-               y+=rectSize;
-               x+=rectSize/2;
-            }
-            if(players[i].dir==::Up)
-            {
-               x+=rectSize/2;
-               y+=rectSize/3;
-            }
-
-
-            p.drawText(x,y,message);
+            int x=players[i].xCoordinate*rectSize;
+            int y=players[i].yCoordinate*rectSize;
+            while(x<0) x+=rectSize;
+            while(x+w>width()) x-=rectSize;
+            while(y-h<0) y+=rectSize;
+            while(y>height()) y-=rectSize;
+	    p.drawText(x,y,message);
          }
       }
 
