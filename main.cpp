@@ -53,7 +53,7 @@ bool previewWallpaper(const KFileInfo *,const QString filename,
 int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
-    KTRON_VERSION, description, KAboutData::GPL, 
+    KTRON_VERSION, description, KAboutData::License_GPL, 
     "(c) 1999, Matthias Kiefer");
   aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
