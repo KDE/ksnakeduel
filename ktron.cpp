@@ -37,7 +37,7 @@
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdaction.h>
-
+#include <kapp.h>
 
 #define ID_STATUS_BASE 40
 
