@@ -753,27 +753,27 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
   if(!players[1].computer)
   {
-      if(key==accel->currentKey("Pl2::Up"))
+      if(key==accel->shortcut("Pl2Up"))
 		{
 	  		switchDir(1,::Up);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2::Left"))
+      else if(key==accel->shortcut("Pl2Left"))
 	   {
 	  		switchDir(1,::Left);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2::Right"))
+      else if(key==accel->shortcut("Pl2Right"))
 		{
 	  		switchDir(1,::Right);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2::Down"))
+      else if(key==accel->shortcut("Pl2Down"))
 		{
 	  		switchDir(1,::Down);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2Ac"))
+      else if(key==accel->shortcut("Pl2Ac"))
 		{
 		   if(!blockAccelerator)
 	  			players[1].accelerated=true;
@@ -783,28 +783,28 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
   if(!players[0].computer)
   {
-      if(key==accel->currentKey("Pl1::Left"))
+      if(key==accel->shortcut("Pl1Left"))
 		{
 	  		switchDir(0,::Left);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1::Right"))
+      else if(key==accel->shortcut("Pl1Right"))
 		{
 	  		switchDir(0,::Right);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1::Up"))
+      else if(key==accel->shortcut("Pl1Up"))
 		{
 	  		switchDir(0,::Up);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1::Down"))
+      else if(key==accel->shortcut("Pl1Down"))
 		{
 	 		switchDir(0,::Down);
 	  		players[0].keyPressed=true;
 		}
 
-      else if(key==accel->currentKey("Pl1Ac"))
+      else if(key==accel->shortcut("Pl1Ac"))
 		{
 		   if(!blockAccelerator)
 	  			players[0].accelerated=true;
@@ -840,28 +840,28 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 
   if(!players[1].computer)
   {
-      if(key==accel->currentKey("Pl2Ac"))
+      if(key==accel->shortcut("Pl2Ac"))
 	   {
 	      players[1].accelerated=false;
 	      return;
   		}
 
-		else if(key==accel->currentKey("Pl2::Left"))
+		else if(key==accel->shortcut("Pl2Left"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2::Right"))
+      else if(key==accel->shortcut("Pl2Right"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2::Up"))
+      else if(key==accel->shortcut("Pl2Up"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2::Down"))
+      else if(key==accel->shortcut("Pl2Down"))
 		{
 		  players[1].keyPressed=false;
 		  return;
@@ -870,27 +870,27 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 
 	if(!players[0].computer)
    {
-   	if(key==accel->currentKey("Pl1::Left"))
+   	if(key==accel->shortcut("Pl1Left"))
     	{
 	 		players[0].keyPressed=false;
 	 		return;
     	}
-      else if(key==accel->currentKey("Pl1::Right"))
+      else if(key==accel->shortcut("Pl1Right"))
 		{
 	  		players[0].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl1::Up"))
+      else if(key==accel->shortcut("Pl1Up"))
 		{
 	 		players[0].keyPressed=false;
 	  		return;
 		}
-     	else if(key==accel->currentKey("Pl1::Down"))
+     	else if(key==accel->shortcut("Pl1Down"))
 		{
 	 		players[0].keyPressed=false;
 	 		return;
 		}
-      else if(key==accel->currentKey("Pl1Ac"))
+      else if(key==accel->shortcut("Pl1Ac"))
 		{
 	  		players[0].accelerated=false;
 	  		return;

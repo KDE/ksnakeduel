@@ -65,17 +65,17 @@ KTron::KTron(const char *name)
 
    accel=new KAccel(this,"Key Accel");
 
-   accel->insertItem(i18n("Player 1 Up"),"Pl1Up","R");
-   accel->insertItem(i18n("Player 1 Down"),"Pl1Down","F");
-   accel->insertItem(i18n("Player 1 Right"),"Pl1Right","G");
-   accel->insertItem(i18n("Player 1 Left"),"Pl1Left","D");
-   accel->insertItem(i18n("Player 1 Accelerator"),"Pl1Ac","A");
+   accel->insert("Pl1Up",    i18n("Player 1 Up"),          0, Key_R, 0, 0);
+   accel->insert("Pl1Down",  i18n("Player 1 Down"),        0, Key_F, 0, 0);
+   accel->insert("Pl1Right", i18n("Player 1 Right"),       0, Key_G, 0, 0);
+   accel->insert("Pl1Left",  i18n("Player 1 Left"),        0, Key_D, 0, 0);
+   accel->insert("Pl1Ac",    i18n("Player 1 Accelerator"), 0, Key_A, 0, 0);
 
-   accel->insertItem(i18n("Player 2 Up"),"Pl2Up","Up");
-   accel->insertItem(i18n("Player 2 Down"),"Pl2Down","Down");
-   accel->insertItem(i18n("Player 2 Right"),"Pl2Right","Right");
-   accel->insertItem(i18n("Player 2 Left"),"Pl2Left","Left");
-   accel->insertItem(i18n("Player 2 Accelerator"),"Pl2Ac","Plus");
+   accel->insert("Pl2Up",    i18n("Player 2 Up"),          0, Key_Up,    0, 0);
+   accel->insert("Pl2Down",  i18n("Player 2 Down"),        0, Key_Down,  0, 0);
+   accel->insert("Pl2Right", i18n("Player 2 Right"),       0, Key_Right, 0, 0);
+   accel->insert("Pl2Left",  i18n("Player 2 Left"),        0, Key_Left,  0, 0);
+   accel->insert("Pl2Ac",    i18n("Player 2 Accelerator"), 0, Key_Plus,  0, 0);
    accel->readSettings();
 
    tron->setAccel(accel);
@@ -85,11 +85,7 @@ KTron::KTron(const char *name)
           actionCollection(), "game_pause");
    action->plugAccel(accel);
    KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
-   //action=new KAction(i18n("&New Game"), KStdAccel::openNew(), tron, SLOT(newGame()),
-   //       actionCollection(), "game_new");
-   //action->plugAccel(accel);
-   KStdGameAction::quit(this, SLOT( slotQuit() ), actionCollection());
-   //action->plugAccel(accel);
+   KStdGameAction::quit(this, SLOT( quit() ), actionCollection());
 
    /* options-menu  */
    new KToggleAction(i18n("Player &1"), 0 , this, SLOT(toggleComPl1()),
