@@ -27,14 +27,13 @@
 #include <kwizard.h>
 #include <kbuttonbox.h>
 #include <kseparator.h>
-#include <kquickhelp.h>
 #include <qbuttongroup.h>
 #include <qgroupbox.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
 #include <qlineedit.h>
 #include <qlabel.h>
-
+#include <qwhatsthis.h>
 
 KTOptDlg::KTOptDlg(ExtOptions opts) : QDialog()
 {
@@ -112,7 +111,7 @@ void KTOptDlg::initOther()
 "Show winner by changing color\n\n\
 If this is enabled and a player crashes,\n\
 his color changes to the other players color.");
-   KQuickHelp::add(changeColor,message);
+   QWhatsThis::add(changeColor,message);
 
    blockAcc=new QCheckBox(i18n("Disable acceleration"),box);
    boxLayout->addWidget(blockAcc);
@@ -121,7 +120,7 @@ his color changes to the other players color.");
    message=i18n(
 "Disable acceleration\n\n\
 If checked, the accelerator key is blocked.");
-   KQuickHelp::add(blockAcc,message);
+   QWhatsThis::add(blockAcc,message);
    // first Buttongroup ready
 
    box=new QGroupBox(i18n("Name of Players"),otherWidget);
