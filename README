@@ -12,10 +12,6 @@ Parts of the code, especially parts of the algorithm for the computerplayer
 are from xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 
 
-Installing:
-For installing instructions read INSTALL.
-
-
 Copyright:
 
 KTron
@@ -41,6 +37,3 @@ Hope you have a lot of fun :-)
 ---------------
 Matthias Kiefer <matthias.kiefer@gmx.de>
 27 February 2000
-
-
-
