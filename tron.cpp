@@ -20,7 +20,6 @@
   ***************************************************************************/
 // Background
 #include <kio/netaccess.h>
-#include <kio/job.h>
 #include <kmessagebox.h>
 
 // Normal class
@@ -28,7 +27,6 @@
 
 #include <kdebug.h>
 #include <klocale.h>
-#include <kglobal.h>
 #include <kapplication.h>
 #include <kconfig.h>
 #include <kcolordialog.h>

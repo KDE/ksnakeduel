@@ -20,15 +20,12 @@
   *****************************************************************************/
 
 #include "ktron.h"
-#include "tron.h"
-#include "version.h"
 
 #include <klocale.h>
 #include <kkeydialog.h>
 #include <kconfig.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <kstdaction.h>
 #include <kstdgameaction.h>
 #include <kapplication.h>
 #include <kstatusbar.h>
@@ -37,7 +34,6 @@
 #include "general.h"
 #include "ai.h"
 #include "appearance.h"
-#include <kdialogbase.h>
 #include <kiconloader.h>
 #include <qvbox.h>
 #include <kautoconfig.h>
