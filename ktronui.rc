@@ -1,9 +1,6 @@
 <!DOCTYPE kpartgui>
 <kpartgui name="ktron" version="1">
 <MenuBar>
-  <Menu name="game"><text>&amp;Game</text>
-	<Action name="game_pause"/>
-  </Menu>
   <Menu name="settings" append="configure_merge"><text>&amp;Settings</text>
      <Menu name="computerplayer"><text>&amp;Computerplayer</text>
 	<Action name="computer_player1"/>
