@@ -86,7 +86,6 @@ KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
   KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
 
-  resize(400,300);
   setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
   loadSettings();
 }
