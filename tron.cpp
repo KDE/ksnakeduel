@@ -108,7 +108,7 @@ void Tron::loadSettings(){
     KURL url = config->readPathEntry("BackgroundImage");
     if(!url.isEmpty()){
       QString tmpFile;
-      KIO::NetAccess::download(url, tmpFile);
+      KIO::NetAccess::download(url, tmpFile, this);
       QPixmap pix(tmpFile);
       if(!pix.isNull()){
         setBackgroundPix(pix);
@@ -580,9 +580,9 @@ void Tron::updateDirections(int playerNr)
          // unset drawing flags in the moving direction
          case ::Up:
          {
-  	    playfield[x][y] &= (~TOP);
-  	    break;
-       	 }
+            playfield[x][y] &= (~TOP);
+            break;
+         }
          case ::Down:
             playfield[x][y] &= (~BOTTOM);
             break;
@@ -591,6 +591,8 @@ void Tron::updateDirections(int playerNr)
             break;
          case ::Left:
             playfield[x][y] &= (~LEFT);
+            break;
+         default:
             break;
       }
       players[0].last_dir = players[0].dir;
@@ -619,6 +621,8 @@ void Tron::updateDirections(int playerNr)
           case ::Left:
              playfield[x][y] &= (~LEFT);
              break;
+         default:
+            break;
       }
       players[1].last_dir = players[1].dir;
 
@@ -939,6 +943,8 @@ void Tron::doMove()
                   newType |= (RIGHT | TOP | BOTTOM);
                }
             break;
+            default:
+               break;
          }
          if(players[i].alive)
             playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
@@ -964,6 +970,8 @@ void Tron::doMove()
             break;
             case ::Down:
                yInc = 1;
+            break;
+            default:
             break;
          }
          if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
@@ -1061,6 +1069,9 @@ void Tron::doMove()
                newType |= (RIGHT | TOP | BOTTOM);
             }
          break;
+         default:
+         break;
+
       }
       if(players[i].alive)
          playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
@@ -1080,6 +1091,8 @@ void Tron::doMove()
             yInc = -1; break;
          case ::Down:
             yInc = 1; break;
+         default:
+            break;
       }
       if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
          if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
@@ -1190,6 +1203,9 @@ if(_skill != Easy)
     			sides[0] = ::Right;
     			sides[1] = ::Left;
     			break;
+			default:
+			break;
+
   		}
 
   		// check forward
@@ -1289,6 +1305,9 @@ if(_skill != Easy)
   	      else if(players[opponent].dir==::Down)
   	         opMovesRight=true;
   	      break;
+  	    default:
+  	      break;
+
   	}
 
   	int doPercentage=100;
@@ -1572,6 +1591,8 @@ else //_skill==Easy
     sides[0] = ::Right;
     sides[1] = ::Left;
     break;
+  default:
+    break;
   }
 
   // check forward
@@ -1660,6 +1681,9 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
     		sides[0] = ::Right;
     		sides[1] = ::Left;
     		break;
+		default:
+		break;
+
   	}
 
    if(!(dis_left == 1 && dis_right == 1))
