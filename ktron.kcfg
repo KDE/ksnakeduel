@@ -39,21 +39,21 @@
     <entry name="Skill" type="Enum">
       <label>The skill of the computer player.</label>
       <default>Medium</default>
-      <values>
-        <value>Easy</value>
-        <value>Medium</value>
-        <value>Hard</value>
-      </values>
+      <choices>
+        <choice>Easy</choice>
+        <choice>Medium</choice>
+        <choice>Hard</choice>
+      </choices>
     </entry>
     <entry name="Style" type="Enum">
       <label>The line style.</label>
       <default>OLine</default>
-      <values>
-        <value>OLine</value>
-        <value>ORect</value>
-        <value>Line</value>
-        <value>Circle</value>
-      </values>
+      <choices>
+        <choice>OLine</choice>
+        <choice>ORect</choice>
+        <choice>Line</choice>
+        <choice>Circle</choice>
+      </choices>
     </entry>
     
     <entry name="BackgroundImageChoice" type="Bool">
