@@ -75,7 +75,7 @@ void Tron::loadSettings(){
   reset();
 
   setPalette(colors[0]);
-      
+
   changeWinnerColor = config->readBoolEntry("ChangeWinnerColor",true);
   blockAccelerator = config->readBoolEntry("AcceleratorBlocked",false);
   crashOnOppositeDir=config->readBoolEntry("OppositeDirCrashes",false);
@@ -101,7 +101,7 @@ void Tron::loadSettings(){
     updatePixmap();
     repaint();
   }
-   
+
   // Backgroundimage
   setBackgroundPix(NULL);
   if(config->readBoolEntry("BackgroundImageChoice", false)){
@@ -885,241 +885,236 @@ void Tron::showBeginHint()
 void Tron::doMove()
 {
    int i;
-  	for(i=0;i<2;i++)
-  	{
-  		// Überprüfen, ob Acceleratortaste gedrückt wurde...
+   for(i=0;i<2;i++)
+   {
+      // Überprüfen, ob Acceleratortaste gedrückt wurde...
       if(players[i].accelerated)
-		{
+      {
+         updateDirections(i);
 
-		   updateDirections(i);
+         int newType; // determine type of rect to set
+         if(i==0)
+         {
+            newType=PLAYER1;
+         }
+         else
+         {
+            newType=PLAYER2;
+         }
+         switch(players[i].dir)
+         {
+            case ::Up:
+               if(crashed(i,0,-1))
+                  players[i].alive=false;
+               else
+               {
+                  players[i].yCoordinate--;
+                  newType|=(TOP | LEFT | RIGHT);
+               }
+            break;
+            case ::Down:
+               if(crashed(i,0,1))
+                  players[i].alive=false;
+               else
+               {
+                  players[i].yCoordinate++;
+                  newType |= (BOTTOM | LEFT | RIGHT);
+               }
+            break;
+            case ::Left:
+               if(crashed(i,-1,0))
+                  players[i].alive=false;
+               else
+               {
+                  players[i].xCoordinate--;
+                  newType |= (LEFT | TOP | BOTTOM);
+               }
+            break;
+            case ::Right:
+               if(crashed(i,1,0))
+                  players[i].alive=false;
+               else
+               {
+                  players[i].xCoordinate++;
+                  newType |= (RIGHT | TOP | BOTTOM);
+               }
+            break;
+         }
+         if(players[i].alive)
+            playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
+      }
+   }
 
-		   int newType; // determine type of rect to set
-		   if(i==0)
-		   {
-		      newType=PLAYER1;
-		   }
-		   else
-		   {
-		      newType=PLAYER2;
-		   }
-	  		switch(players[i].dir)
-	    	{
-	    		case ::Up:
-	      		if(crashed(i,0,-1))
-		 				players[i].alive=false;
-	      		else
-	      		{
-	      			players[i].yCoordinate--;
-	      			newType|=(TOP | LEFT | RIGHT);
-	      		}
-	      		break;
-	    		case ::Down:
-	    			if(crashed(i,0,1))
-	       			players[i].alive=false;
-	    			else
-	    			{
-	    			   players[i].yCoordinate++;
-	    			   newType |= (BOTTOM | LEFT | RIGHT);
-	    			}
-
-	      		break;
-	    		case ::Left:
-	       		if(crashed(i,-1,0))
-		 				players[i].alive=false;
-	       		else
-	       		{
-	       		   players[i].xCoordinate--;
-	       		   newType |= (LEFT | TOP | BOTTOM);
-	       		}
-	      		break;
-	    		case ::Right:
-	      	if(crashed(i,1,0))
-					players[i].alive=false;
-	      	else
-	      	{
-	      	   players[i].xCoordinate++;
-	      	   newType |= (RIGHT | TOP | BOTTOM);
-	      	}
-	      	break;
-	    	}
-
-	      if(players[i].alive)
-      		playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
-		}
-
-  	}
-
-	if(players[0].accelerated || players[1].accelerated)
- 	{
-       /* player collision check */
+   if(players[0].accelerated || players[1].accelerated)
+   {
+      /* player collision check */
       if(!players[1].alive)
-		{
-	  		int xInc=0,yInc=0;
-	  		switch(players[1].dir)
-	    	{
-	    		case ::Left:
-	      		xInc = -1;
-	      		break;
-	    		case ::Right:
-	      		xInc = 1;
-	      		break;
-	    		case ::Up:
-	      		yInc = -1;
-	      		break;
-	    		case ::Down:
-	      		yInc = 1;
-	      		break;
-	    	}
-	  		if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-	    		if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-	      	{
-					players[0].alive=false;
-	      	}
-		}
+      {
+         int xInc=0,yInc=0;
+         switch(players[1].dir)
+         {
+            case ::Left:
+              xInc = -1;
+            break;
+            case ::Right:
+               xInc = 1;
+            break;
+            case ::Up:
+               yInc = -1;
+            break;
+            case ::Down:
+               yInc = 1;
+            break;
+         }
+         if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
+         if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+         {
+            players[0].alive=false;
+         }
+      }
 
       paintPlayers();
 
       // crashtest
       if(!players[0].alive && !players[1].alive)
-		{
-		   stopGame();
-	  		players[0].score++;
-	  		players[1].score++;
-	  		showWinner(Both);
-		}
+      {
+         stopGame();
+         players[0].score++;
+         players[1].score++;
+         showWinner(Both);
+      }
       else
       {
-			for(i=0;i<2;i++)
-	  		{
-	    		if(!players[i].alive)
-	      	{
-	      	   stopGame();
-					showWinner((i==0)? Two:One);
-					players[i].score++;
-	      	}
-	  		}
-	  	}
+         for(i=0;i<2;i++)
+         {
+            if(!players[i].alive)
+            {
+               stopGame();
+               showWinner((i==0)? Two:One);
+               players[i].score++;
+            }
+         }
+      }
 
 
       if(gameEnded)
-		{
-	  		//this is for waiting 0,5s before starting next game
-	  		gameBlocked=true;
-	  		QTimer::singleShot(1000,this,SLOT(unblockGame()));
-		}
-  	}
+      {
+         //this is for waiting 0,5s before starting next game
+         gameBlocked=true;
+         QTimer::singleShot(1000,this,SLOT(unblockGame()));
+	 return;
+      }
+   }
 
-  	// neue Spielerstandorte festlegen
-  	for(i=0;i<2;i++)
+   // neue Spielerstandorte festlegen
+   for(i=0;i<2;i++)
    {
       if(players[i].computer)
-			think(i);
+         think(i);
    }
 
    updateDirections();
 
    for(i=0;i<2;i++)
    {
-		int newType;
-		if(i==0)
-			newType=PLAYER1;
-		else
-			newType=PLAYER2;
+      int newType;
+      if(i==0)
+         newType=PLAYER1;
+      else
+         newType=PLAYER2;
 
       switch(players[i].dir)
-		{
-			case ::Up:
-	      	if(crashed(i,0,-1))
-					players[i].alive=false;
-	      	else
-	      	{
-	      	   players[i].yCoordinate--;
-	      	   newType |= (TOP | RIGHT | LEFT);
-	      	}
-	  			break;
-			case ::Down:
-	      	if(crashed(i,0,1))
-					players[i].alive=false;
-	      	else
-	      	{
-	      	    players[i].yCoordinate++;
-	      	    newType |= (BOTTOM | RIGHT | LEFT);
-	      	}
-	  			break;
-			case ::Left:
-	      	if(crashed(i,-1,0))
-					players[i].alive=false;
-	      	else
-	      	{
-	      	   players[i].xCoordinate--;
-	      	   newType |= (LEFT | TOP | BOTTOM);
-	      	}
-	  			break;
-			case ::Right:
-	      	if(crashed(i,1,0))
-					players[i].alive=false;
-	      	else
-	      	{
-	      	   players[i].xCoordinate++;
-	      	   newType |= (RIGHT | TOP | BOTTOM);
-	      	}
-	  			break;
-		}
-		if(players[i].alive)
-			playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
+      {
+         case ::Up:
+            if(crashed(i,0,-1))
+               players[i].alive=false;
+            else
+            {
+               players[i].yCoordinate--;
+               newType |= (TOP | RIGHT | LEFT);
+            }
+         break;
+         case ::Down:
+            if(crashed(i,0,1))
+               players[i].alive=false;
+            else
+            {
+               players[i].yCoordinate++;
+               newType |= (BOTTOM | RIGHT | LEFT);
+            }
+         break;
+         case ::Left:
+            if(crashed(i,-1,0))
+               players[i].alive=false;
+            else
+            {
+               players[i].xCoordinate--;
+               newType |= (LEFT | TOP | BOTTOM);
+            }
+         break;
+         case ::Right:
+            if(crashed(i,1,0))
+               players[i].alive=false;
+            else
+            {
+               players[i].xCoordinate++;
+               newType |= (RIGHT | TOP | BOTTOM);
+            }
+         break;
+      }
+      if(players[i].alive)
+         playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
+   }
 
- 	}
-
-  	/* player collision check */
-  	if(!players[1].alive)
+   /* player collision check */
+   if(!players[1].alive)
    {
       int xInc=0,yInc=0;
       switch(players[1].dir)
-		{
-			case ::Left:
-	  			xInc = -1; break;
-			case ::Right:
-	  			xInc = 1; break;
-			case ::Up:
-	  			yInc = -1; break;
-			case ::Down:
-	  			yInc = 1; break;
-		}
+      {
+         case ::Left:
+            xInc = -1; break;
+         case ::Right:
+            xInc = 1; break;
+         case ::Up:
+            yInc = -1; break;
+         case ::Down:
+            yInc = 1; break;
+      }
       if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-			if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-	  		{
-	    		players[0].alive=false;
-	  		}
+         if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+         {
+            players[0].alive=false;
+         }
    }
 
-  paintPlayers();
+   paintPlayers();
 
-  if(!players[0].alive && !players[1].alive)
-  {
+   if(!players[0].alive && !players[1].alive)
+   {
       stopGame();
       players[0].score++;
       players[1].score++;
       showWinner(Both);
-  }
-	else
-		for(i=0;i<2;i++)
-    	{
-			// crashtests
-			if(!players[i].alive)
-	  		{
-	  		   stopGame();
-	    		showWinner((i==0)? Two:One);
-	    		players[i].score++;
-	  		}
+   }
+   else
+      for(i=0;i<2;i++)
+      {
+         // crashtests
+         if(!players[i].alive)
+         {
+            stopGame();
+            showWinner((i==0)? Two:One);
+            players[i].score++;
+         }
       }
 
-
-  	if(gameEnded)
-  	{
-   	//this is for waiting 1s before starting next game
+   if(gameEnded)
+   {
+      //this is for waiting 1s before starting next game
       gameBlocked=true;
       QTimer::singleShot(1000,this,SLOT(unblockGame()));
-  	}
+   }
 
 }
 
