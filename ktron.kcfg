@@ -3,41 +3,41 @@
 <kcfg>
   <kcfgfile name="ktronrc"/>
   <group name="Game">
-    <entry name="Color_Background" type="QColor">
-      <desc>The background color of the game.</desc>
+    <entry name="Color_Background" type="Color">
+      <label>The background color of the game.</label>
       <default>black</default>
     </entry>
-    <entry name="Color_Player1" type="QColor">
-      <desc>The color of player 1</desc>
+    <entry name="Color_Player1" type="Color">
+      <label>The color of player 1</label>
       <default>red</default>
     </entry>
-    <entry name="Color_Player2" type="QColor">
-      <desc>The color of player 2</desc>
+    <entry name="Color_Player2" type="Color">
+      <label>The color of player 2</label>
       <default>blue</default>
     </entry>
-    <entry name="ChangeWinnerColor" type="bool">
-      <desc>Whether to show the winner by changing color.</desc>
+    <entry name="ChangeWinnerColor" type="Bool">
+      <label>Whether to show the winner by changing color.</label>
       <default>true</default>
     </entry>
-    <entry name="AcceleratorBlocked" type="bool">
-      <desc>Whether to disable acceleration.</desc>
+    <entry name="AcceleratorBlocked" type="Bool">
+      <label>Whether to disable acceleration.</label>
       <default>false</default>
     </entry>
-    <entry name="OppositeDirCrashes" type="bool">
-      <desc>Whether changing in the opposite direction causes a crash.</desc>
+    <entry name="OppositeDirCrashes" type="Bool">
+      <label>Whether changing in the opposite direction causes a crash.</label>
       <default>false</default>
     </entry>
-    <entry name="RectSize" type="int">
-      <desc>The width of the line.</desc>
+    <entry name="RectSize" type="Int">
+      <label>The width of the line.</label>
       <default>10</default>
     </entry>
-    <entry name="Velocity" type="int">
-      <desc>The speed of the line.</desc>
+    <entry name="Velocity" type="Int">
+      <label>The speed of the line.</label>
       <default>5</default>
     </entry>
 
     <entry name="Skill" type="Enum">
-      <desc>The skill of the computer player.</desc>
+      <label>The skill of the computer player.</label>
       <default>Medium</default>
       <values>
         <value>Easy</value>
@@ -46,7 +46,7 @@
       </values>
     </entry>
     <entry name="Style" type="Enum">
-      <desc>The line style.</desc>
+      <label>The line style.</label>
       <default>OLine</default>
       <values>
         <value>OLine</value>
@@ -56,27 +56,27 @@
       </values>
     </entry>
     
-    <entry name="BackgroundImageChoice" type="bool">
-      <desc>Whether to use a custom background image.</desc>
+    <entry name="BackgroundImageChoice" type="Bool">
+      <label>Whether to use a custom background image.</label>
       <default>false</default>
     </entry>
     <entry name="BackgroundImage" type="Path">
-      <desc>Custom background image to use.</desc>
+      <label>Custom background image to use.</label>
     </entry>
 
-    <entry name="Computerplayer1" type="bool">
-      <desc>Whether player 1 is a computer player.</desc>
+    <entry name="Computerplayer1" type="Bool">
+      <label>Whether player 1 is a computer player.</label>
       <default>true</default>
     </entry>
-    <entry name="Computerplayer2" type="bool">
-      <desc>Whether player 2 is a computer player.</desc>
+    <entry name="Computerplayer2" type="Bool">
+      <label>Whether player 2 is a computer player.</label>
       <default>false</default>
     </entry>
-    <entry name="NamePlayer1" type="QString" key="Name_Pl1">
-      <desc>The name of player 1.</desc>
+    <entry name="NamePlayer1" type="String" key="Name_Pl1">
+      <label>The name of player 1.</label>
     </entry>
-    <entry name="NamePlayer2" type="QString" key="Name_Pl2">
-      <desc>The name of player 2.</desc>
+    <entry name="NamePlayer2" type="String" key="Name_Pl2">
+      <label>The name of player 2.</label>
     </entry>
   </group>
 </kcfg>
