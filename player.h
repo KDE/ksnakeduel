@@ -26,8 +26,6 @@
 #include <config.h>
 #endif
 
-#include <qobject.h>
-
 enum Direction{ Up, Down, Left, Right};
 
 /**

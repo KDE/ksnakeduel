@@ -29,8 +29,6 @@
 #include <qwidget.h>
 #include <qpainter.h>
 #include <qpixmap.h>
-#include <qtimer.h>
-#include <qstring.h>
 #include <math.h>
 #include <krandomsequence.h>
 
