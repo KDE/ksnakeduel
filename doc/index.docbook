@@ -473,7 +473,7 @@ it to the right will result in a wider trail.</para></listitem>
 <term><guilabel>Background</guilabel></term>
 <listitem><para>Here you can define the appearance of the playground's
 background. If you prefer a simple solid color, select the
-<guilabel>Color:</guilabel> option and click on the buttom at the right of it
+<guilabel>Color:</guilabel> option and click on the button at the right of it
 to open a convenient color-selection dialog.</para>
 <para>You can also choose a background image for the playground. To do so,
 select the <guilabel>Image:</guilabel> option, and then provide the filename
