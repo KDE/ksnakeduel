@@ -34,8 +34,8 @@
 #include <math.h>
 #include <krandomsequence.h>
 
-class KAccel;
 class KConfig;
+class KActionCollection;
 
 #include "player.h"
 
@@ -56,7 +56,7 @@ class Tron : public QWidget
 public:
   Tron(QWidget *parent=0, const char *name=0);
   ~Tron();
-  void setAccel(KAccel *);
+  void setActionCollection(KActionCollection*);
   void updatePixmap();
   void setBackgroundPix(QPixmap);
   bool changeColor(int player);
@@ -109,7 +109,7 @@ protected:
 
 private:
   /** Stores key shortcuts */
-  KAccel* accel;
+  KActionCollection* actionCollection;
   /** Drawing buffer */
   QPixmap *pixmap;
   /** The playingfield */

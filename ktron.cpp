@@ -24,7 +24,6 @@
 #include "ktoptdlg.h"
 
 #include <kglobal.h>
-#include <kaccel.h>
 #include <klocale.h>
 #include <kiconloader.h>
 #include <kkeydialog.h>
@@ -61,27 +60,24 @@ KTron::KTron(const char *name)
    statusbar->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
    statusbar->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
 
-   accel=new KAccel(this,"Key Accel");
+   (void)new KAction(i18n("Player 1 Up"), Key_R, 0, 0, actionCollection(), "Pl1Up");
+   (void)new KAction(i18n("Player 1 Down"), Key_F, 0, 0, actionCollection(), "Pl1Down");
+   (void)new KAction(i18n("Player 1 Right"), Key_G, 0, 0, actionCollection(), "Pl1Right");
+   (void)new KAction(i18n("Player 1 Left"), Key_D, 0, 0, actionCollection(), "Pl1Left");
+   (void)new KAction(i18n("Player 1 Accelerator"), Key_A, 0, 0, actionCollection(), "Pl1Ac");
 
-   accel->insert("Pl1Up",    i18n("Player 1 Up"),          0, Key_R, 0, 0);
-   accel->insert("Pl1Down",  i18n("Player 1 Down"),        0, Key_F, 0, 0);
-   accel->insert("Pl1Right", i18n("Player 1 Right"),       0, Key_G, 0, 0);
-   accel->insert("Pl1Left",  i18n("Player 1 Left"),        0, Key_D, 0, 0);
-   accel->insert("Pl1Ac",    i18n("Player 1 Accelerator"), 0, Key_A, 0, 0);
 
-   accel->insert("Pl2Up",    i18n("Player 2 Up"),          0, Key_Up,    0, 0);
-   accel->insert("Pl2Down",  i18n("Player 2 Down"),        0, Key_Down,  0, 0);
-   accel->insert("Pl2Right", i18n("Player 2 Right"),       0, Key_Right, 0, 0);
-   accel->insert("Pl2Left",  i18n("Player 2 Left"),        0, Key_Left,  0, 0);
-   accel->insert("Pl2Ac",    i18n("Player 2 Accelerator"), 0, Key_Plus,  0, 0);
-   accel->readSettings();
+   (void)new KAction(i18n("Player 2 Up"), Key_Up, 0, 0, actionCollection(), "Pl2Up");
+   (void)new KAction(i18n("Player 2 Down"), Key_Down, 0, 0, actionCollection(), "Pl2Down");
+   (void)new KAction(i18n("Player 2 Right"), Key_Right, 0, 0, actionCollection(), "Pl2Right");
+   (void)new KAction(i18n("Player 2 Left"), Key_Left, 0, 0, actionCollection(), "Pl2Left");
+   (void)new KAction(i18n("Player 2 Accelerator"), Key_Plus, 0, 0, actionCollection(), "Pl2Ac");
 
-   tron->setAccel(accel);
+   tron->setActionCollection(actionCollection());
 
    KAction* action;
    action=new KAction(i18n("&Pause/Continue"), Key_P, tron, SLOT(togglePause()),
           actionCollection(), "game_pause");
-   action->plugAccel(accel);
    KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
    KStdGameAction::quit(this, SLOT( quit() ), actionCollection());
 
@@ -142,16 +138,12 @@ KTron::KTron(const char *name)
 
    action=new KAction(i18n("Color Player &1..."), 0, this, SLOT(colorPl1()),
           actionCollection(), "color_player1");
-   action->plugAccel(accel);
    action=new KAction(i18n("Color Player &2..."), 0, this, SLOT(colorPl2()),
           actionCollection(), "color_player2");
-   action->plugAccel(accel);
    action=new KAction(i18n("&Background Color..."), 0, this, SLOT(colorBackground()),
           actionCollection(), "color_background");
-   action->plugAccel(accel);
    action=new KAction(i18n("B&ackground Image..."), 0, this, SLOT(chooseBgPix()),
           actionCollection(), "background_image");
-   action->plugAccel(accel);
 
 
 
@@ -518,7 +510,7 @@ void KTron::setVelocity(int index)
 
 void KTron::configureKeys()
 {
-   KKeyDialog::configureKeys(accel);
+   KKeyDialog::configure(actionCollection(), this);
 }
 
 void KTron::toggleStatusbar()

@@ -22,11 +22,11 @@
 #include <qtimer.h>
 
 #include <kdebug.h>
-#include <kapplication.h>
-#include <kaccel.h>
+//#include <kapplication.h>
 #include <klocale.h>
 #include <kconfig.h>
 #include <kcolordialog.h>
+#include <kaction.h>
 
 #include "tron.h"
 
@@ -385,9 +385,9 @@ void Tron::drawRect(QPainter & p, int x, int y)
 **                    config functions										 **
 ** *************************************************************** */
 
-void Tron::setAccel(KAccel *acc)
+void Tron::setActionCollection(KActionCollection *a)
 {
-   accel=acc;
+   actionCollection = a;
 }
 
 void Tron::setBackgroundPix(QPixmap pix)
@@ -751,62 +751,60 @@ void Tron::resizeEvent(QResizeEvent *)
 
 void Tron::keyPressEvent(QKeyEvent *e)
 {
-  int key=e->key();
-
+  KKey key(e);
   if(!players[1].computer)
   {
-      if(key==accel->shortcut("Pl2Up"))
+      if(actionCollection->action("Pl2Up")->shortcut().contains(key))
 		{
 	  		switchDir(1,::Up);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl2Left"))
+      else if(actionCollection->action("Pl2Left")->shortcut().contains(key))
 	   {
 	  		switchDir(1,::Left);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl2Right"))
+      else if(actionCollection->action("Pl2Right")->shortcut().contains(key))
 		{
 	  		switchDir(1,::Right);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl2Down"))
+      else if(actionCollection->action("Pl2Down")->shortcut().contains(key))
 		{
 	  		switchDir(1,::Down);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl2Ac"))
+      else if(actionCollection->action("Pl2Ac")->shortcut().contains(key))
 		{
 		   if(!blockAccelerator)
 	  			players[1].accelerated=true;
-		}
 
+		}
   }
 
   if(!players[0].computer)
   {
-      if(key==accel->shortcut("Pl1Left"))
+      if(actionCollection->action("Pl1Left")->shortcut().contains(key))
 		{
 	  		switchDir(0,::Left);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl1Right"))
+      else if(actionCollection->action("Pl1Right")->shortcut().contains(key))
 		{
 	  		switchDir(0,::Right);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl1Up"))
+      else if(actionCollection->action("Pl1Up")->shortcut().contains(key))
 		{
 	  		switchDir(0,::Up);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->shortcut("Pl1Down"))
+      else if(actionCollection->action("Pl1Down")->shortcut().contains(key))
 		{
 	 		switchDir(0,::Down);
 	  		players[0].keyPressed=true;
 		}
-
-      else if(key==accel->shortcut("Pl1Ac"))
+      else if(actionCollection->action("Pl1Ac")->shortcut().contains(key))
 		{
 		   if(!blockAccelerator)
 	  			players[0].accelerated=true;
@@ -838,61 +836,60 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
 void Tron::keyReleaseEvent(QKeyEvent * e)
 {
-  int key=e->key();
+  KKey key(e);
 
   if(!players[1].computer)
   {
-      if(key==accel->shortcut("Pl2Ac"))
-	   {
-	      players[1].accelerated=false;
-	      return;
+      if(actionCollection->action("Pl2Ac")->shortcut().contains(key))
+		{
+			players[1].accelerated=false;
+			return;
   		}
-
-		else if(key==accel->shortcut("Pl2Left"))
+      else if(actionCollection->action("Pl2Left")->shortcut().contains(key))
+		{
+			players[1].keyPressed=false;
+			return;
+		}
+      else if(actionCollection->action("Pl2Right")->shortcut().contains(key))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->shortcut("Pl2Right"))
+      else if(actionCollection->action("Pl2Up")->shortcut().contains(key))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->shortcut("Pl2Up"))
-		{
-	  		players[1].keyPressed=false;
-	  		return;
-		}
-      else if(key==accel->shortcut("Pl2Down"))
+      else if(actionCollection->action("Pl2Down")->shortcut().contains(key))
 		{
 		  players[1].keyPressed=false;
 		  return;
 		}
   }
 
-	if(!players[0].computer)
+   if(!players[0].computer)
    {
-   	if(key==accel->shortcut("Pl1Left"))
-    	{
+      if(actionCollection->action("Pl1Left")->shortcut().contains(key))
+		{
 	 		players[0].keyPressed=false;
 	 		return;
-    	}
-      else if(key==accel->shortcut("Pl1Right"))
+		}
+      else if(actionCollection->action("Pl1Right")->shortcut().contains(key))
 		{
 	  		players[0].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->shortcut("Pl1Up"))
+      else if(actionCollection->action("Pl1Up")->shortcut().contains(key))
 		{
 	 		players[0].keyPressed=false;
 	  		return;
 		}
-     	else if(key==accel->shortcut("Pl1Down"))
+      else if(actionCollection->action("Pl1Down")->shortcut().contains(key))
 		{
 	 		players[0].keyPressed=false;
 	 		return;
 		}
-      else if(key==accel->shortcut("Pl1Ac"))
+      else if(actionCollection->action("Pl1Ac")->shortcut().contains(key))
 		{
 	  		players[0].accelerated=false;
 	  		return;
