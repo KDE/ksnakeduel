@@ -22,7 +22,6 @@
 #include <qtimer.h>
 
 #include <kdebug.h>
-//#include <kapplication.h>
 #include <klocale.h>
 #include <kconfig.h>
 #include <kcolordialog.h>

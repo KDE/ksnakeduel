@@ -21,7 +21,6 @@
 
 #include <kapplication.h>
 #include <kimageio.h>
-#include <kfiledialog.h>
 #include <klocale.h>
 #include <kglobal.h>
 #include <kcmdlineargs.h>

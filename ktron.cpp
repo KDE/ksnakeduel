@@ -23,13 +23,9 @@
 #include "version.h"
 #include "ktoptdlg.h"
 
-#include <kglobal.h>
 #include <klocale.h>
-#include <kiconloader.h>
 #include <kkeydialog.h>
 #include <kfiledialog.h>
-#include <kstandarddirs.h>
-#include <kmenubar.h>
 #include <kconfig.h>
 #include <kio/netaccess.h>
 #include <kio/job.h>

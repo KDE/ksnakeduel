@@ -21,13 +21,7 @@
 
 
 #include "ktoptdlg.h"
-#include <kglobal.h>
 #include <klocale.h>
-#include <kapplication.h>
-#include <kwizard.h>
-#include <kbuttonbox.h>
-#include <kseparator.h>
-#include <qbuttongroup.h>
 #include <qgroupbox.h>
 #include <qlayout.h>
 #include <qcheckbox.h>
