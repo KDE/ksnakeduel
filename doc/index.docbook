@@ -21,9 +21,9 @@
 <othercredit role="developer">
 <firstname>Matthias</firstname>
 <surname>Kiefer</surname>
-<affiliiation>
+<affiliation>
 <address><email>matthias.kiefer@gmx.de</email></address>
-</affiliiation>
+</affiliation>
 <contrib>Developer</contrib>
 </othercredit>
 
@@ -89,7 +89,7 @@ avoid running into a wall, your own tail and that of your opponent.
 <chapter id="playing-ktron">
 <title>Playing &ktron;</title>
 
-<sect1 id="playing-ktron">
+<sect1 id="playing-ktron-rules">
 <title>Rules</title>
 
 <para>
