@@ -2,7 +2,7 @@
 bin_PROGRAMS = ktron
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 
-ktron_SOURCES = ai.ui appearance.ui general.ui tron.cpp player.cpp ktron.cpp main.cpp settings.kcfg-codegen
+ktron_SOURCES = ai.ui appearance.ui general.ui tron.cpp player.cpp ktron.cpp main.cpp settings.kcfgc
 ktron_LDFLAGS =  $(all_libraries) $(KDE_RPATH)
 ktron_LDADD = $(LIB_KIO) $(LIB_KDEGAMES)
 
