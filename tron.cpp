@@ -602,13 +602,13 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 
   if (oppositeDirCrashes()==false)
   {
-    if (newDirection==Up && players[playerNr].dir==Down)
+    if (newDirection==::Up && players[playerNr].dir==::Down)
       return;
-    if (newDirection==Down && players[playerNr].dir==Up)
+    if (newDirection==::Down && players[playerNr].dir==::Up)
       return;
-    if (newDirection==Left && players[playerNr].dir==Right)
+    if (newDirection==::Left && players[playerNr].dir==::Right)
       return;
-    if (newDirection==Right && players[playerNr].dir==Left)
+    if (newDirection==::Right && players[playerNr].dir==::Left)
       return;
   }
 
@@ -626,18 +626,18 @@ void Tron::updateDirections(int playerNr)
       switch(players[0].dir)
       {
          // unset drawing flags in the moving direction
-         case Up:
+         case ::Up:
          {
   	    playfield[x][y] &= (~TOP);
   	    break;
        	 }
-         case Down:
+         case ::Down:
             playfield[x][y] &= (~BOTTOM);
             break;
-         case Right:
+         case ::Right:
             playfield[x][y] &= (~RIGHT);
             break;
-         case Left:
+         case ::Left:
             playfield[x][y] &= (~LEFT);
             break;
       }
@@ -652,18 +652,18 @@ void Tron::updateDirections(int playerNr)
       switch(players[1].dir)
       {
           // unset drawing flags in the moving direction
-     	  case Up:
+     	  case ::Up:
      	  {
              playfield[x][y] &= (~TOP);
              break;
        	  }
-          case Down:
+          case ::Down:
              playfield[x][y] &= (~BOTTOM);
              break;
-          case Right:
+          case ::Right:
              playfield[x][y] &= (~RIGHT);
              break;
-          case Left:
+          case ::Left:
              playfield[x][y] &= (~LEFT);
              break;
       }
@@ -703,21 +703,21 @@ void Tron::paintEvent(QPaintEvent *e)
      	 {
             int x=players[i].xCoordinate*rectSize+(width()%rectSize)/2-w/2;
             int y=players[i].yCoordinate*rectSize+(height()%rectSize)/2;
-            if(players[i].dir==Right)
+            if(players[i].dir==::Right)
             {
                x+=rectSize;
                y+=rectSize/2;
             }
-            if(players[i].dir==Left)
+            if(players[i].dir==::Left)
             {
                y+=rectSize/2;
             }
-            if(players[i].dir==Down)
+            if(players[i].dir==::Down)
             {
                y+=rectSize;
                x+=rectSize/2;
             }
-            if(players[i].dir==Up)
+            if(players[i].dir==::Up)
             {
                x+=rectSize/2;
                y+=rectSize/3;
@@ -753,24 +753,24 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
   if(!players[1].computer)
   {
-      if(key==accel->currentKey("Pl2Up"))
+      if(key==accel->currentKey("Pl2::Up"))
 		{
-	  		switchDir(1,Up);
+	  		switchDir(1,::Up);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2Left"))
+      else if(key==accel->currentKey("Pl2::Left"))
 	   {
-	  		switchDir(1,Left);
+	  		switchDir(1,::Left);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2Right"))
+      else if(key==accel->currentKey("Pl2::Right"))
 		{
-	  		switchDir(1,Right);
+	  		switchDir(1,::Right);
 	  		players[1].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl2Down"))
+      else if(key==accel->currentKey("Pl2::Down"))
 		{
-	  		switchDir(1,Down);
+	  		switchDir(1,::Down);
 	  		players[1].keyPressed=true;
 		}
       else if(key==accel->currentKey("Pl2Ac"))
@@ -783,24 +783,24 @@ void Tron::keyPressEvent(QKeyEvent *e)
 
   if(!players[0].computer)
   {
-      if(key==accel->currentKey("Pl1Left"))
+      if(key==accel->currentKey("Pl1::Left"))
 		{
-	  		switchDir(0,Left);
+	  		switchDir(0,::Left);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1Right"))
+      else if(key==accel->currentKey("Pl1::Right"))
 		{
-	  		switchDir(0,Right);
+	  		switchDir(0,::Right);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1Up"))
+      else if(key==accel->currentKey("Pl1::Up"))
 		{
-	  		switchDir(0,Up);
+	  		switchDir(0,::Up);
 	  		players[0].keyPressed=true;
 		}
-      else if(key==accel->currentKey("Pl1Down"))
+      else if(key==accel->currentKey("Pl1::Down"))
 		{
-	 		switchDir(0,Down);
+	 		switchDir(0,::Down);
 	  		players[0].keyPressed=true;
 		}
 
@@ -846,22 +846,22 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 	      return;
   		}
 
-		else if(key==accel->currentKey("Pl2Left"))
+		else if(key==accel->currentKey("Pl2::Left"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2Right"))
+      else if(key==accel->currentKey("Pl2::Right"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2Up"))
+      else if(key==accel->currentKey("Pl2::Up"))
 		{
 	  		players[1].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl2Down"))
+      else if(key==accel->currentKey("Pl2::Down"))
 		{
 		  players[1].keyPressed=false;
 		  return;
@@ -870,22 +870,22 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 
 	if(!players[0].computer)
    {
-   	if(key==accel->currentKey("Pl1Left"))
+   	if(key==accel->currentKey("Pl1::Left"))
     	{
 	 		players[0].keyPressed=false;
 	 		return;
     	}
-      else if(key==accel->currentKey("Pl1Right"))
+      else if(key==accel->currentKey("Pl1::Right"))
 		{
 	  		players[0].keyPressed=false;
 	  		return;
 		}
-      else if(key==accel->currentKey("Pl1Up"))
+      else if(key==accel->currentKey("Pl1::Up"))
 		{
 	 		players[0].keyPressed=false;
 	  		return;
 		}
-     	else if(key==accel->currentKey("Pl1Down"))
+     	else if(key==accel->currentKey("Pl1::Down"))
 		{
 	 		players[0].keyPressed=false;
 	 		return;
@@ -955,7 +955,7 @@ void Tron::doMove()
 		   }
 	  		switch(players[i].dir)
 	    	{
-	    		case Up:
+	    		case ::Up:
 	      		if(crashed(i,0,-1))
 		 				players[i].alive=false;
 	      		else
@@ -964,7 +964,7 @@ void Tron::doMove()
 	      			newType|=(TOP | LEFT | RIGHT);
 	      		}
 	      		break;
-	    		case Down:
+	    		case ::Down:
 	    			if(crashed(i,0,1))
 	       			players[i].alive=false;
 	    			else
@@ -974,7 +974,7 @@ void Tron::doMove()
 	    			}
 
 	      		break;
-	    		case Left:
+	    		case ::Left:
 	       		if(crashed(i,-1,0))
 		 				players[i].alive=false;
 	       		else
@@ -983,7 +983,7 @@ void Tron::doMove()
 	       		   newType |= (LEFT | TOP | BOTTOM);
 	       		}
 	      		break;
-	    		case Right:
+	    		case ::Right:
 	      	if(crashed(i,1,0))
 					players[i].alive=false;
 	      	else
@@ -1008,16 +1008,16 @@ void Tron::doMove()
 	  		int xInc=0,yInc=0;
 	  		switch(players[1].dir)
 	    	{
-	    		case Left:
+	    		case ::Left:
 	      		xInc = -1;
 	      		break;
-	    		case Right:
+	    		case ::Right:
 	      		xInc = 1;
 	      		break;
-	    		case Up:
+	    		case ::Up:
 	      		yInc = -1;
 	      		break;
-	    		case Down:
+	    		case ::Down:
 	      		yInc = 1;
 	      		break;
 	    	}
@@ -1079,7 +1079,7 @@ void Tron::doMove()
 
       switch(players[i].dir)
 		{
-			case Up:
+			case ::Up:
 	      	if(crashed(i,0,-1))
 					players[i].alive=false;
 	      	else
@@ -1088,7 +1088,7 @@ void Tron::doMove()
 	      	   newType |= (TOP | RIGHT | LEFT);
 	      	}
 	  			break;
-			case Down:
+			case ::Down:
 	      	if(crashed(i,0,1))
 					players[i].alive=false;
 	      	else
@@ -1097,7 +1097,7 @@ void Tron::doMove()
 	      	    newType |= (BOTTOM | RIGHT | LEFT);
 	      	}
 	  			break;
-			case Left:
+			case ::Left:
 	      	if(crashed(i,-1,0))
 					players[i].alive=false;
 	      	else
@@ -1106,7 +1106,7 @@ void Tron::doMove()
 	      	   newType |= (LEFT | TOP | BOTTOM);
 	      	}
 	  			break;
-			case Right:
+			case ::Right:
 	      	if(crashed(i,1,0))
 					players[i].alive=false;
 	      	else
@@ -1127,13 +1127,13 @@ void Tron::doMove()
       int xInc=0,yInc=0;
       switch(players[1].dir)
 		{
-			case Left:
+			case ::Left:
 	  			xInc = -1; break;
-			case Right:
+			case ::Right:
 	  			xInc = 1; break;
-			case Up:
+			case ::Up:
 	  			yInc = -1; break;
-			case Down:
+			case ::Down:
 	  			yInc = 1; break;
 		}
       if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
@@ -1199,7 +1199,7 @@ if(_skill != Easy)
 
   	switch (players[playerNr].dir)
    	{
-  			case Left:
+  			case ::Left:
     			//forward flags
     			flags[0] = -1;
     			flags[1] = 0;
@@ -1213,38 +1213,38 @@ if(_skill != Easy)
     			flags[5] = -1;
 
     			//turns to either side
-    			sides[0] = Down;
-    			sides[1] = Up;
+    			sides[0] = ::Down;
+    			sides[1] = ::Up;
     			break;
-  			case Right:
+  			case ::Right:
     			flags[0] = 1;
     			flags[1] = 0;
     			flags[2] = 0;
 			   flags[3] = -1;
     			flags[4] = 0;
     			flags[5] = 1;
-    			sides[0] = Up;
-    			sides[1] = Down;
+    			sides[0] = ::Up;
+    			sides[1] = ::Down;
     			break;
-  			case Up:
+  			case ::Up:
     			flags[0] = 0;
     			flags[1] = -1;
     			flags[2] = -1;
     			flags[3] = 0;
     			flags[4] = 1;
     			flags[5] = 0;
-    			sides[0] = Left;
-    			sides[1] = Right;
+    			sides[0] = ::Left;
+    			sides[1] = ::Right;
     			break;
-  			case Down:
+  			case ::Down:
     			flags[0] = 0;
     			flags[1] = 1;
     			flags[2] = 1;
     			flags[3] = 0;
     			flags[4] = -1;
     			flags[5] = 0;
-    			sides[0] = Right;
-    			sides[1] = Left;
+    			sides[0] = ::Right;
+    			sides[1] = ::Left;
     			break;
   		}
 
@@ -1297,52 +1297,52 @@ if(_skill != Easy)
 
   	switch(players[playerNr].dir)
   	{
-  	   case Up:
+  	   case ::Up:
   	      opForwardDis=vert_dis;
   	      opSideDis=-hor_dis;
-  	      if(players[opponent].dir==Down)
+  	      if(players[opponent].dir==::Down)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Up)
+  	      else if(players[opponent].dir==::Up)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Left)
+  	      else if(players[opponent].dir==::Left)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Right)
+  	      else if(players[opponent].dir==::Right)
   	         opMovesRight=true;
   	      break;
-  	   case Down:
+  	   case ::Down:
   	      opForwardDis=-vert_dis;
   	      opSideDis=hor_dis;
-  	      if(players[opponent].dir==Up)
+  	      if(players[opponent].dir==::Up)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Down)
+  	      else if(players[opponent].dir==::Down)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Left)
+  	      else if(players[opponent].dir==::Left)
   	         opMovesRight=true;
-  	      else if(players[opponent].dir==Right)
+  	      else if(players[opponent].dir==::Right)
   	         opMovesLeft=true;
   	      break;
-  	   case Left:
+  	   case ::Left:
   	      opForwardDis=hor_dis;
   	      opSideDis=vert_dis;
-  	      if(players[opponent].dir==Right)
+  	      if(players[opponent].dir==::Right)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Left)
+  	      else if(players[opponent].dir==::Left)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Down)
+  	      else if(players[opponent].dir==::Down)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Up)
+  	      else if(players[opponent].dir==::Up)
   	         opMovesRight=true;
   	      break;
-  	   case Right:
+  	   case ::Right:
   	      opForwardDis=-hor_dis;
   	      opSideDis=-vert_dis;
-  	      if(players[opponent].dir==Left)
+  	      if(players[opponent].dir==::Left)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Right)
+  	      else if(players[opponent].dir==::Right)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Up)
+  	      else if(players[opponent].dir==::Up)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Down)
+  	      else if(players[opponent].dir==::Down)
   	         opMovesRight=true;
   	      break;
   	}
@@ -1580,7 +1580,7 @@ else //_skill==Easy
   dis_forward = dis_left = dis_right = 1;
 
   switch (players[playerNr].dir) {
-  case Left:
+  case ::Left:
 
     //forward flags
     flags[0] = -1;
@@ -1595,38 +1595,38 @@ else //_skill==Easy
     flags[5] = -1;
 
     //turns to either side
-    sides[0] = Down;
-    sides[1] = Up;
+    sides[0] = ::Down;
+    sides[1] = ::Up;
     break;
-  case Right:
+  case ::Right:
     flags[0] = 1;
     flags[1] = 0;
     flags[2] = 0;
     flags[3] = -1;
     flags[4] = 0;
     flags[5] = 1;
-    sides[0] = Up;
-    sides[1] = Down;
+    sides[0] = ::Up;
+    sides[1] = ::Down;
     break;
-  case Up:
+  case ::Up:
     flags[0] = 0;
     flags[1] = -1;
     flags[2] = -1;
     flags[3] = 0;
     flags[4] = 1;
     flags[5] = 0;
-    sides[0] = Left;
-    sides[1] = Right;
+    sides[0] = ::Left;
+    sides[1] = ::Right;
     break;
-  case Down:
+  case ::Down:
     flags[0] = 0;
     flags[1] = 1;
     flags[2] = 1;
     flags[3] = 0;
     flags[4] = -1;
     flags[5] = 0;
-    sides[0] = Right;
-    sides[1] = Left;
+    sides[0] = ::Right;
+    sides[1] = ::Left;
     break;
   }
 
@@ -1699,22 +1699,22 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
    Direction sides[2];
    switch (currentDir)
    {
-  		case Left:
+  		case ::Left:
     		//turns to either side
-    		sides[0] = Down;
-    		sides[1] = Up;
+    		sides[0] = ::Down;
+    		sides[1] = ::Up;
     		break;
-  		case Right:
-    		sides[0] = Up;
-    		sides[1] = Down;
+  		case ::Right:
+    		sides[0] = ::Up;
+    		sides[1] = ::Down;
     		break;
-  		case Up:
-    		sides[0] = Left;
-    		sides[1] = Right;
+  		case ::Up:
+    		sides[0] = ::Left;
+    		sides[1] = ::Right;
     		break;
-  		case Down:
-    		sides[0] = Right;
-    		sides[1] = Left;
+  		case ::Down:
+    		sides[0] = ::Right;
+    		sides[1] = ::Left;
     		break;
   	}
 
