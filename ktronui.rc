@@ -1,0 +1,49 @@
+<!DOCTYPE kpartgui>
+<kpartgui name="ktron">
+<MenuBar>
+  <Menu name="game"><text>&amp;Game</text>
+	<Action name="game_pause"/>
+  </Menu>
+  <Menu name="settings" append="configure_merge"><text>&amp;Settings</text>
+     <Menu name="computerplayer"><text>&amp;Computerplayer</text>
+	<Action name="computer_player1"/>
+	<Action name="computer_player2"/>
+	<Separator/>
+	<Action name="skill_beginner"/>
+	<Action name="skill_average"/>
+	<Action name="skill_expert"/>
+     </Menu>
+     <Menu name="velocity"><text>&amp;Velocity</text>
+	<Action name="velocity_1"/>
+	<Action name="velocity_2"/>
+	<Action name="velocity_3"/>
+	<Action name="velocity_4"/>
+	<Action name="velocity_5"/>
+	<Action name="velocity_6"/>
+	<Action name="velocity_7"/>
+	<Action name="velocity_8"/>
+	<Action name="velocity_9"/>
+     </Menu>
+     <Menu name="appearance"><text>&amp;Appearance</text>
+        <Menu name="style"><text>&amp;Drawing Style</text>
+	   <Action name="style_3d_line"/>
+	   <Action name="style_3d_rects"/>
+	   <Action name="style_line"/>
+	   <Action name="style_circles"/>
+        </Menu>
+	<Action name="color_player1"/>
+	<Action name="color_player2"/>
+	<Action name="color_background"/>
+	<Action name="background_image"/>
+     </Menu>
+     <Menu name="size"><text>Si&amp;ze</text>
+	<Action name="size_very_small"/>
+	<Action name="size_small"/>
+	<Action name="size_medium"/>
+	<Action name="size_large"/>
+	<Action name="size_very_large"/>
+     </Menu>
+     <Action name="configure_other"/>
+  </Menu>
+</MenuBar>
+</kpartgui>

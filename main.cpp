@@ -30,13 +30,15 @@
 #include "version.h"
 
 static const char *description = I18N_NOOP("A race in the hyperspace");
+static const char *notice = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
+"Parts of the algorithms for the computerplayer are from\n"
+"xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>");
 
 
 int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
-    KTRON_VERSION, description, KAboutData::License_GPL, 
-    "(c) 1998-2000, Matthias Kiefer");
+    KTRON_VERSION, description, KAboutData::License_GPL, notice);
   aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 

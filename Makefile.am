@@ -17,6 +17,8 @@ apps_DATA = ktron.desktop
 
 METASOURCES = AUTO
 
+rcdir = $(kde_datadir)/ktron
+rc_DATA = ktronui.rc
 
 messages:
 	$(XGETTEXT) *.cpp -o $(podir)/ktron.pot

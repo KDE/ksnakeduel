@@ -29,8 +29,10 @@
 #include <ktmainwindow.h>
 #include "tron.h"
 #include <kurl.h>
+#include <qarray.h>
 
 class KAccel;
+class KRadioAction;
 class KTOptDlg;
 
 /**
@@ -45,12 +47,6 @@ public:
 
 private:
  KAccel *accel;
- QPopupMenu *game;
- QPopupMenu *velocity;
- QPopupMenu *options;
- QPopupMenu *compPlayerMenu;
- QPopupMenu *styleMenu;
- QPopupMenu *sizeMenu;
  Tron *tron;
  KURL bgPixURL;
  KTOptDlg* optionsDialog;
@@ -58,7 +54,7 @@ private:
  int playerPoints[2];
 
  /** displays the current velocity */
- void updateVelocityMenu(int);
+ //void updateVelocityMenu(int);
  void updateStatusbar();
  void saveSettings();
  void readBackground(KConfig *config);
@@ -70,17 +66,56 @@ protected:
  void paletteChange(const QPalette &oldPalette);
 
 private slots:
-   void menuCallback(int);
    /** updates players points in statusbar and checks if someone has won */
    void changeStatus(Player);
-   void barPositionChanged();
    void quit();
    void showWinner(Player winner);
    /** opens configure dialog */
    void configureOther();
    void takeOptions();
-   void statusbarClicked(int id);
    void chooseBgPix();
+
+   void toggleComPl1();
+   void toggleComPl2();
+
+   void beginnerSkill();
+   void averageSkill();
+   void expertSkill();
+
+   void style3dLine();
+   void style3dRects();
+   void styleLine();
+   void styleCircles();
+
+   void sizeVerySmall();
+   void sizeSmall();
+   void sizeMedium();
+   void sizeLarge();
+   void sizeVeryLarge();
+
+   void configureKeys();
+
+   void toggleStatusbar();
+
+   void colorPl1();
+   void colorPl2();
+   void colorBackground();
+
+   void velocity1();
+   void velocity2();
+   void velocity3();
+   void velocity4();
+   void velocity5();
+   void velocity6();
+   void velocity7();
+   void velocity8();
+   void velocity9();
+
+private:
+  QArray<KRadioAction*> skillAction;
+  QArray<KRadioAction*> velocityAction;
+  QArray<KRadioAction*> styleAction;
+  QArray<KRadioAction*> sizeAction;
 };
 
 #endif
