@@ -673,7 +673,7 @@ void KTron::chooseBgPix()
   {
      QString msg=i18n("Wasn't able to load wallpaper\n%1");
      msg=msg.arg(name);
-     KMsgBox::message(this,kapp->appName(),msg, KMsgBox::EXCLAMATION);
+     KMsgBox::message(this,kapp->name(),msg, KMsgBox::EXCLAMATION);
   }
 }
 
