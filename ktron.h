@@ -60,7 +60,6 @@ private slots:
   void changeStatus(Player);
   
   void showWinner(Player winner);
-  void configureKeys();
   void showSettings();
 };
 

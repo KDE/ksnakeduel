@@ -23,7 +23,6 @@
 
 #include <kconfigdialog.h>
 #include <klocale.h>
-#include <kkeydialog.h>
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdgameaction.h>
@@ -76,7 +75,8 @@ KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
   KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
 
-  KStdAction::keyBindings(this, SLOT(configureKeys()), actionCollection());
+  KStdAction::keyBindings(guiFactory(), SLOT(configureShortcuts()), 
+actionCollection());
    
   KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
   createStandardStatusBarAction();
@@ -170,13 +170,6 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/){
    update();
    tron->updatePixmap();
    tron->update();
-}
-
-/**
- * Bring up the key configuration dialog.
- */ 
-void KTron::configureKeys(){
-  KKeyDialog::configure(actionCollection(), this);
 }
 
 /**

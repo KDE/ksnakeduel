@@ -32,7 +32,6 @@
 #include <math.h>
 #include <krandomsequence.h>
 
-class KConfig;
 class KActionCollection;
 
 #include "player.h"
