@@ -627,7 +627,7 @@ found on
 <title>Compilation and installation</title>
 
 <para>In order to compile and install &ktron; on your system, type the
-following in the base directory of the kdeutils distribution:</para>
+following in the base directory of the kdegames distribution:</para>
 
 <screen width="40">
 <prompt>%</prompt><userinput>./configure</userinput>
