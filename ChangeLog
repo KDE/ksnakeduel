@@ -1,0 +1,21 @@
+Changes 1.0:
+- added possibility to load background images
+- added possibility to give names to players
+
+Changes 0.5:
+- new drawing style: 3d-line
+- new improved computerplayer with possibility to change the skill
+
+Changes 0.4:
+- worked over to compile with KDE 1.1.1
+- flickering fixed
+- added some options 
+  (block accelerator, disable changing color)
+- some finetuning at drawing players and frame
+
+Changes 0.3.3:
+- use of bitBlt(...) to get less flickering
+- crashes are now shown by changing the color  
+- after a crash, the game is blocked for one second
+- possiblity to change the size of the players
+- possibility to change style of the players

@@ -1,0 +1,11 @@
+# KDE Config File  
+[KDE Desktop Entry]
+Type=Application
+Exec=ktron -caption "%c" %i %m
+Icon=ktron.xpm
+DocPath=ktron/index.html
+Comment=A race in the hyperspace
+Comment[de]=Ein Rennen im Hyperspace
+Terminal=0
+Name=KTron
+Name[de]=KTron
