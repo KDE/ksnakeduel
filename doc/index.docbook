@@ -17,6 +17,8 @@
 </author>
 </authorgroup>
 
+<!-- TRANS:ROLES_OF_TRANSLATORS -->
+
 <copyright>
 <year>1999</year>
 <year>2000</year>
@@ -360,6 +362,8 @@ Parts of the code are from xtron-1.1 by Rhett D. Jacobs
 Documentation Copyright 1999 Matthias Kiefer
 <email>matthias.kiefer@gmx.de</email>
 </para>
+
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 
 &underFDL;
 &underGPL;
