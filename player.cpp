@@ -26,8 +26,8 @@ player::player()
   computer=false;
   score=0;
   reset();
-  dir=Up;
-  last_dir=None;
+  dir=Directions::Up;
+  last_dir=Directions::None;
 }
 
 

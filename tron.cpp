@@ -212,8 +212,8 @@ void Tron::stopGame()
 {
    timer->stop();
    gameEnded=true;
-   players[0].last_dir = None;
-   players[1].last_dir = None;
+   players[0].last_dir = Directions::None;
+   players[1].last_dir = Directions::None;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -490,7 +490,7 @@ bool Tron::crashed(int playerNr,int xInc, int yInc) const
   return flag;
 }
 
-void Tron::switchDir(int playerNr,Direction newDirection)
+void Tron::switchDir(int playerNr,Directions::Direction newDirection)
 {
   if(playerNr!=0 && playerNr != 1)
   {
@@ -500,13 +500,13 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 
   if (Settings::oppositeDirCrashes()==false)
   {
-    if (newDirection==::Up && players[playerNr].last_dir==::Down)
+    if (newDirection==Directions::Up && players[playerNr].last_dir==Directions::Down)
       return;
-    if (newDirection==::Down && players[playerNr].last_dir==::Up)
+    if (newDirection==Directions::Down && players[playerNr].last_dir==Directions::Up)
       return;
-    if (newDirection==::Left && players[playerNr].last_dir==::Right)
+    if (newDirection==Directions::Left && players[playerNr].last_dir==Directions::Right)
       return;
-    if (newDirection==::Right && players[playerNr].last_dir==::Left)
+    if (newDirection==Directions::Right && players[playerNr].last_dir==Directions::Left)
       return;
   }
 
@@ -524,18 +524,18 @@ void Tron::updateDirections(int playerNr)
       switch(players[0].dir)
       {
          // unset drawing flags in the moving direction
-         case ::Up:
+         case Directions::Up:
          {
             playfield[x][y] &= (~TOP);
             break;
          }
-         case ::Down:
+         case Directions::Down:
             playfield[x][y] &= (~BOTTOM);
             break;
-         case ::Right:
+         case Directions::Right:
             playfield[x][y] &= (~RIGHT);
             break;
-         case ::Left:
+         case Directions::Left:
             playfield[x][y] &= (~LEFT);
             break;
          default:
@@ -553,18 +553,18 @@ void Tron::updateDirections(int playerNr)
       switch(players[1].dir)
       {
           // unset drawing flags in the moving direction
-     	  case ::Up:
+     	  case Directions::Up:
      	  {
              playfield[x][y] &= (~TOP);
              break;
        	  }
-          case ::Down:
+          case Directions::Down:
              playfield[x][y] &= (~BOTTOM);
              break;
-          case ::Right:
+          case Directions::Right:
              playfield[x][y] &= (~RIGHT);
              break;
-          case ::Left:
+          case Directions::Left:
              playfield[x][y] &= (~LEFT);
              break;
          default:
@@ -642,22 +642,22 @@ void Tron::keyPressEvent(QKeyEvent *e)
   {
       if(actionCollection->action("Pl2Up")->shortcut().contains(key))
 		{
-	  		switchDir(1,::Up);
+	  		switchDir(1,Directions::Up);
 	  		players[1].keyPressed=true;
 		}
       else if(actionCollection->action("Pl2Left")->shortcut().contains(key))
 	   {
-	  		switchDir(1,::Left);
+	  		switchDir(1,Directions::Left);
 	  		players[1].keyPressed=true;
 		}
       else if(actionCollection->action("Pl2Right")->shortcut().contains(key))
 		{
-	  		switchDir(1,::Right);
+	  		switchDir(1,Directions::Right);
 	  		players[1].keyPressed=true;
 		}
       else if(actionCollection->action("Pl2Down")->shortcut().contains(key))
 		{
-	  		switchDir(1,::Down);
+	  		switchDir(1,Directions::Down);
 	  		players[1].keyPressed=true;
 		}
       else if(actionCollection->action("Pl2Ac")->shortcut().contains(key))
@@ -672,22 +672,22 @@ void Tron::keyPressEvent(QKeyEvent *e)
   {
       if(actionCollection->action("Pl1Left")->shortcut().contains(key))
 		{
-	  		switchDir(0,::Left);
+	  		switchDir(0,Directions::Left);
 	  		players[0].keyPressed=true;
 		}
       else if(actionCollection->action("Pl1Right")->shortcut().contains(key))
 		{
-	  		switchDir(0,::Right);
+	  		switchDir(0,Directions::Right);
 	  		players[0].keyPressed=true;
 		}
       else if(actionCollection->action("Pl1Up")->shortcut().contains(key))
 		{
-	  		switchDir(0,::Up);
+	  		switchDir(0,Directions::Up);
 	  		players[0].keyPressed=true;
 		}
       else if(actionCollection->action("Pl1Down")->shortcut().contains(key))
 		{
-	 		switchDir(0,::Down);
+	 		switchDir(0,Directions::Down);
 	  		players[0].keyPressed=true;
 		}
       else if(actionCollection->action("Pl1Ac")->shortcut().contains(key))
@@ -837,7 +837,7 @@ void Tron::doMove()
          }
          switch(players[i].dir)
          {
-            case ::Up:
+            case Directions::Up:
                if(crashed(i,0,-1))
                   players[i].alive=false;
                else
@@ -846,7 +846,7 @@ void Tron::doMove()
                   newType|=(TOP | LEFT | RIGHT);
                }
             break;
-            case ::Down:
+            case Directions::Down:
                if(crashed(i,0,1))
                   players[i].alive=false;
                else
@@ -855,7 +855,7 @@ void Tron::doMove()
                   newType |= (BOTTOM | LEFT | RIGHT);
                }
             break;
-            case ::Left:
+            case Directions::Left:
                if(crashed(i,-1,0))
                   players[i].alive=false;
                else
@@ -864,7 +864,7 @@ void Tron::doMove()
                   newType |= (LEFT | TOP | BOTTOM);
                }
             break;
-            case ::Right:
+            case Directions::Right:
                if(crashed(i,1,0))
                   players[i].alive=false;
                else
@@ -889,16 +889,16 @@ void Tron::doMove()
          int xInc=0,yInc=0;
          switch(players[1].dir)
          {
-            case ::Left:
+            case Directions::Left:
               xInc = -1;
             break;
-            case ::Right:
+            case Directions::Right:
                xInc = 1;
             break;
-            case ::Up:
+            case Directions::Up:
                yInc = -1;
             break;
-            case ::Down:
+            case Directions::Down:
                yInc = 1;
             break;
             default:
@@ -963,7 +963,7 @@ void Tron::doMove()
 
       switch(players[i].dir)
       {
-         case ::Up:
+         case Directions::Up:
             if(crashed(i,0,-1))
                players[i].alive=false;
             else
@@ -972,7 +972,7 @@ void Tron::doMove()
                newType |= (TOP | RIGHT | LEFT);
             }
          break;
-         case ::Down:
+         case Directions::Down:
             if(crashed(i,0,1))
                players[i].alive=false;
             else
@@ -981,7 +981,7 @@ void Tron::doMove()
                newType |= (BOTTOM | RIGHT | LEFT);
             }
          break;
-         case ::Left:
+         case Directions::Left:
             if(crashed(i,-1,0))
                players[i].alive=false;
             else
@@ -990,7 +990,7 @@ void Tron::doMove()
                newType |= (LEFT | TOP | BOTTOM);
             }
          break;
-         case ::Right:
+         case Directions::Right:
             if(crashed(i,1,0))
                players[i].alive=false;
             else
@@ -1013,13 +1013,13 @@ void Tron::doMove()
       int xInc=0,yInc=0;
       switch(players[1].dir)
       {
-         case ::Left:
+         case Directions::Left:
             xInc = -1; break;
-         case ::Right:
+         case Directions::Right:
             xInc = 1; break;
-         case ::Up:
+         case Directions::Up:
             yInc = -1; break;
-         case ::Down:
+         case Directions::Down:
             yInc = 1; break;
          default:
             break;
@@ -1074,7 +1074,7 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
   int opponent=(playerNr==1)? 0 : 1;
 
   // determines left and right side
-  Direction sides[2];
+  Directions::Direction sides[2];
   // increments for moving to the different sides
   int flags[6]={0,0,0,0,0,0};
   int index[2];
@@ -1086,7 +1086,7 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
 
   	switch (players[playerNr].dir)
    	{
-  			case ::Left:
+  			case Directions::Left:
     			//forward flags
     			flags[0] = -1;
     			flags[1] = 0;
@@ -1100,38 +1100,38 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
     			flags[5] = -1;
 
     			//turns to either side
-    			sides[0] = ::Down;
-    			sides[1] = ::Up;
+    			sides[0] = Directions::Down;
+    			sides[1] = Directions::Up;
     			break;
-  			case ::Right:
+  			case Directions::Right:
     			flags[0] = 1;
     			flags[1] = 0;
     			flags[2] = 0;
 			   flags[3] = -1;
     			flags[4] = 0;
     			flags[5] = 1;
-    			sides[0] = ::Up;
-    			sides[1] = ::Down;
+    			sides[0] = Directions::Up;
+    			sides[1] = Directions::Down;
     			break;
-  			case ::Up:
+  			case Directions::Up:
     			flags[0] = 0;
     			flags[1] = -1;
     			flags[2] = -1;
     			flags[3] = 0;
     			flags[4] = 1;
     			flags[5] = 0;
-    			sides[0] = ::Left;
-    			sides[1] = ::Right;
+    			sides[0] = Directions::Left;
+    			sides[1] = Directions::Right;
     			break;
-  			case ::Down:
+  			case Directions::Down:
     			flags[0] = 0;
     			flags[1] = 1;
     			flags[2] = 1;
     			flags[3] = 0;
     			flags[4] = -1;
     			flags[5] = 0;
-    			sides[0] = ::Right;
-    			sides[1] = ::Left;
+    			sides[0] = Directions::Right;
+    			sides[1] = Directions::Left;
     			break;
 			default:
 			break;
@@ -1187,52 +1187,52 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
 
   	switch(players[playerNr].dir)
   	{
-  	   case ::Up:
+  	   case Directions::Up:
   	      opForwardDis=vert_dis;
   	      opSideDis=-hor_dis;
-  	      if(players[opponent].dir==::Down)
+  	      if(players[opponent].dir==Directions::Down)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==::Up)
+  	      else if(players[opponent].dir==Directions::Up)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==::Left)
+  	      else if(players[opponent].dir==Directions::Left)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==::Right)
+  	      else if(players[opponent].dir==Directions::Right)
   	         opMovesRight=true;
   	      break;
-  	   case ::Down:
+  	   case Directions::Down:
   	      opForwardDis=-vert_dis;
   	      opSideDis=hor_dis;
-  	      if(players[opponent].dir==::Up)
+  	      if(players[opponent].dir==Directions::Up)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==::Down)
+  	      else if(players[opponent].dir==Directions::Down)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==::Left)
+  	      else if(players[opponent].dir==Directions::Left)
   	         opMovesRight=true;
-  	      else if(players[opponent].dir==::Right)
+  	      else if(players[opponent].dir==Directions::Right)
   	         opMovesLeft=true;
   	      break;
-  	   case ::Left:
+  	   case Directions::Left:
   	      opForwardDis=hor_dis;
   	      opSideDis=vert_dis;
-  	      if(players[opponent].dir==::Right)
+  	      if(players[opponent].dir==Directions::Right)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==::Left)
+  	      else if(players[opponent].dir==Directions::Left)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==::Down)
+  	      else if(players[opponent].dir==Directions::Down)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==::Up)
+  	      else if(players[opponent].dir==Directions::Up)
   	         opMovesRight=true;
   	      break;
-  	   case ::Right:
+  	   case Directions::Right:
   	      opForwardDis=-hor_dis;
   	      opSideDis=-vert_dis;
-  	      if(players[opponent].dir==::Left)
+  	      if(players[opponent].dir==Directions::Left)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==::Right)
+  	      else if(players[opponent].dir==Directions::Right)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==::Up)
+  	      else if(players[opponent].dir==Directions::Up)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==::Down)
+  	      else if(players[opponent].dir==Directions::Down)
   	         opMovesRight=true;
   	      break;
   	    default:
@@ -1475,7 +1475,7 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 else // Settings::skill() == Settings::EnumSkill::Easy
 {
-  Direction sides[2];
+  Directions::Direction sides[2];
   int flags[6] = {0,0,0,0,0,0};
   int index[2];
   int dis_forward,  dis_left, dis_right;
@@ -1483,7 +1483,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   dis_forward = dis_left = dis_right = 1;
 
   switch (players[playerNr].dir) {
-  case ::Left:
+  case Directions::Left:
 
     //forward flags
     flags[0] = -1;
@@ -1498,38 +1498,38 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     flags[5] = -1;
 
     //turns to either side
-    sides[0] = ::Down;
-    sides[1] = ::Up;
+    sides[0] = Directions::Down;
+    sides[1] = Directions::Up;
     break;
-  case ::Right:
+  case Directions::Right:
     flags[0] = 1;
     flags[1] = 0;
     flags[2] = 0;
     flags[3] = -1;
     flags[4] = 0;
     flags[5] = 1;
-    sides[0] = ::Up;
-    sides[1] = ::Down;
+    sides[0] = Directions::Up;
+    sides[1] = Directions::Down;
     break;
-  case ::Up:
+  case Directions::Up:
     flags[0] = 0;
     flags[1] = -1;
     flags[2] = -1;
     flags[3] = 0;
     flags[4] = 1;
     flags[5] = 0;
-    sides[0] = ::Left;
-    sides[1] = ::Right;
+    sides[0] = Directions::Left;
+    sides[1] = Directions::Right;
     break;
-  case ::Down:
+  case Directions::Down:
     flags[0] = 0;
     flags[1] = 1;
     flags[2] = 1;
     flags[3] = 0;
     flags[4] = -1;
     flags[5] = 0;
-    sides[0] = ::Right;
-    sides[1] = ::Left;
+    sides[0] = Directions::Right;
+    sides[1] = Directions::Left;
     break;
   default:
     break;
@@ -1600,26 +1600,26 @@ else // Settings::skill() == Settings::EnumSkill::Easy
 
 void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
 {
-   Direction currentDir=players[playerNr].dir;
-   Direction sides[2];
+   Directions::Direction currentDir=players[playerNr].dir;
+   Directions::Direction sides[2];
    switch (currentDir)
    {
-  		case ::Left:
+  		case Directions::Left:
     		//turns to either side
-    		sides[0] = ::Down;
-    		sides[1] = ::Up;
+    		sides[0] = Directions::Down;
+    		sides[1] = Directions::Up;
     		break;
-  		case ::Right:
-    		sides[0] = ::Up;
-    		sides[1] = ::Down;
+  		case Directions::Right:
+    		sides[0] = Directions::Up;
+    		sides[1] = Directions::Down;
     		break;
-  		case ::Up:
-    		sides[0] = ::Left;
-    		sides[1] = ::Right;
+  		case Directions::Up:
+    		sides[0] = Directions::Left;
+    		sides[1] = Directions::Right;
     		break;
-  		case ::Down:
-    		sides[0] = ::Right;
-    		sides[1] = ::Left;
+  		case Directions::Down:
+    		sides[0] = Directions::Right;
+    		sides[1] = Directions::Left;
     		break;
 		default:
 		break;
