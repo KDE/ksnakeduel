@@ -1,7 +1,7 @@
 /* ********************************************************************************
    This file is part of the game 'KTron'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+  Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -29,32 +29,14 @@
 #include "ktron.h"
 #include "version.h"
 
-static const char *description = I18N_NOOP("KDE Game");
+static const char *description = I18N_NOOP("A race in the hyperspace");
 
-// this function is for previewing wallpapers in the
-// KFilePreviewDialog
-// KFilePreviewDialog is broken, so we don't care.
-#if 0
-bool previewWallpaper(const KFileInfo *,const QString filename,
-											QString &, QPixmap& pix)
-{
-   bool flag=false;
-   QPixmap temp(filename);
-   if(!temp.isNull())
-   {
-      pix=temp;
-      flag=true;
-   }
-
-   return flag;
-}
-#endif
 
 int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
     KTRON_VERSION, description, KAboutData::License_GPL, 
-    "(c) 1999, Matthias Kiefer");
+    "(c) 1998-2000, Matthias Kiefer");
   aboutData.addAuthor("Matthias Kiefer",0, "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
@@ -63,10 +45,6 @@ int main(int argc, char* argv[])
 
   // used for loading background pixmaps
   kimgioRegister();
-
-#if 0
-  KFilePreviewDialog::registerPreviewModule("Wallpapers",previewWallpaper,PreviewPixmap);
-#endif
 
   if(a.isRestored())
   {

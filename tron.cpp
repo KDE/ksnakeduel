@@ -1,7 +1,7 @@
 /* ********************************************************************************
   This file is part of the game 'KTron'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+  Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -90,12 +90,12 @@ void Tron::createNewPlayfield()
   if(pixmap)
     delete pixmap;
 
-  // Größe des Feldes
+  // field size
 
   fieldWidth=(width()-2*FRAMESIZE)/rectSize;
   fieldHeight=(height()-2*FRAMESIZE)/rectSize;
 
-  // Startpositionen;
+  // start positions
 
   playfield=new QArray<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
@@ -131,24 +131,24 @@ void Tron::reset()
   players[1].reset();
 
 
-  // Wenn playfield schon erstellt wurde, dann säubern
-  // und Anfangskoordinaten festlegen;
+  // If playfield exists, then clean it
+  // ans set start coordinates
   if(playfield)
   {
       int i;
       for(i=0;i<fieldWidth;i++)
 	   	playfield[i].fill(BACKGROUND);
 
-      // Anfangskoordinaten setzen
+      // set start coordinates
 
       players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
       players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
 
 
-	   playfield[players[0].xCoordinate][players[0].yCoordinate]=
-	   				PLAYER1 | TOP | BOTTOM | LEFT | RIGHT;
-	   playfield[players[1].xCoordinate][players[1].yCoordinate]=
-	   				PLAYER2 | TOP | BOTTOM | LEFT | RIGHT;
+      playfield[players[0].xCoordinate][players[0].yCoordinate]=
+         PLAYER1 | TOP | BOTTOM | LEFT | RIGHT;
+      playfield[players[1].xCoordinate][players[1].yCoordinate]=
+         PLAYER2 | TOP | BOTTOM | LEFT | RIGHT;
 
       updatePixmap();
       update();
@@ -159,6 +159,14 @@ void Tron::reset()
     emit gameReset();
 }
 
+void Tron::computerStart()
+{
+   if(isComputer(Both))
+   {
+      reset();
+      startGame();
+   }
+}
 
 /* *************************************************************** **
 **                   	??? functions										 **
@@ -167,74 +175,78 @@ void Tron::reset()
 void Tron::startGame()
 {
    gameEnded=false;
-	beginHint=false;
-	timer->start(velocity);
+   beginHint=false;
+   timer->start(velocity);
 }
 
 void Tron::stopGame()
 {
-	timer->stop();
-	gameEnded=true;
+   timer->stop();
+   gameEnded=true;
 		  		
 }
 
 void Tron::togglePause() // pause or continue game
 {
   if(!gameEnded)
-    {
-      if(gamePaused)
-	   {
-	  		gamePaused=false;
-	  		update();
-	  		timer->start(velocity);
-		}
-      else
-		{
-	  		gamePaused=true;
-	  		timer->stop();
-	  		update();
-		}
+  {
+     if(gamePaused)
+     {
+        gamePaused=false;
+        update();
+        timer->start(velocity);
+     }
+     else
+     {
+        gamePaused=true;
+        timer->stop();
+        update();
+     }
   }
 }
 
 void Tron::showWinner(Player player)
 {
-  	int i,j;
+   int i,j;
 
-  	
-	if(player != Both && changeWinnerColor)
-  	{
-  		int winner;
-  		int looser;
-  		if(player==One)
-  		{
-     		winner=PLAYER1;
-     		looser=PLAYER2;
+
+   if(player != Both && changeWinnerColor)
+   {
+      int winner;
+      int looser;
+      if(player==One)
+      {
+         winner=PLAYER1;
+         looser=PLAYER2;
       }
-  		else
-  		{
-    		winner=PLAYER2;
-    		looser=PLAYER1;
+      else
+      {
+         winner=PLAYER2;
+         looser=PLAYER1;
       }
 
-  		for(i=0;i<fieldWidth;i++)
-    		for(j=0;j<fieldHeight;j++)
-    		{	
-				if(playfield[i][j]!=BACKGROUND)
-	  			{
-	  			   // zugehörigen Spieler ändern
-	  	   		playfield[i][j] |= winner;
-	  	   		playfield[i][j] &= ~looser;
-	  			}
-    		}
+      for(i=0;i<fieldWidth;i++)
+         for(j=0;j<fieldHeight;j++)
+         {	
+            if(playfield[i][j]!=BACKGROUND)
+            {
+               // change player
+               playfield[i][j] |= winner;
+               playfield[i][j] &= ~looser;
+            }
+         }
 
-  		updatePixmap();
+      updatePixmap();
    }
 
-	repaint();
+   repaint();
 
-  	emit gameEnds(player);
+   emit gameEnds(player);
 
+   if(isComputer(Both))
+   {
+       QTimer::singleShot(1000,this,SLOT(computerStart()));
+   }
 }
 
 
@@ -255,8 +267,8 @@ void Tron::updatePixmap()
      int pw=bgPix.width();
      int ph=bgPix.height();
      for (int x = 0; x <= width(); x+=pw)
-		    for (int y = 0; y <= height(); y+=ph)
-		    bitBlt(pixmap, x, y, &bgPix);
+        for (int y = 0; y <= height(); y+=ph)
+	    bitBlt(pixmap, x, y, &bgPix);
   }
   else
   {
@@ -268,29 +280,28 @@ void Tron::updatePixmap()
 
   // alle Pixel prüfen und evt. zeichnen
   for(i=0;i<fieldWidth;i++)
-	for(j=0;j<fieldHeight;j++)
-	{
-		if(playfield[i][j]!=BACKGROUND)
-	 	{
-			drawRect(p,i,j);
-	  	}
+     for(j=0;j<fieldHeight;j++)
+     {
+        if(playfield[i][j]!=BACKGROUND)
+        {
+           drawRect(p,i,j);
 	}
+     }
 	
-	// draw frame
-	QColor light=parentWidget()->colorGroup().midlight();
-	QColor dark=parentWidget()->colorGroup().mid();
-	
-	p.setPen(NoPen);
-	p.setBrush(light);
-	p.drawRect(width()-FRAMESIZE,0,FRAMESIZE,height());
-	p.drawRect(0,height()-FRAMESIZE,width(),FRAMESIZE);
-	p.setBrush(dark);
-	p.drawRect(0,0,width(),FRAMESIZE);
-	p.drawRect(0,0,FRAMESIZE,height());
-	
-	
-  	p.end();
+   // draw frame
+   QColor light=parentWidget()->colorGroup().midlight();
+   QColor dark=parentWidget()->colorGroup().mid();
 
+   p.setPen(NoPen);
+   p.setBrush(light);
+      p.drawRect(width()-FRAMESIZE,0,FRAMESIZE,height());
+   p.drawRect(0,height()-FRAMESIZE,width(),FRAMESIZE);
+   p.setBrush(dark);
+   p.drawRect(0,0,width(),FRAMESIZE);
+   p.drawRect(0,0,FRAMESIZE,height());
+
+
+   p.end();
 }
 
 
@@ -298,40 +309,40 @@ void Tron::updatePixmap()
 
 void Tron::paintPlayers()
 {
-  QPainter p;
-  p.begin(this);
-  drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
-  drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
-  p.end();
+   QPainter p;
+   p.begin(this);
+   drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
+   drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
+   p.end();
 
 
-  p.begin(pixmap);
-  drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
-  drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
-  p.end();
+   p.begin(pixmap);
+   drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
+   drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
+   p.end();
 }
 
 
 void Tron::drawRect(QPainter & p, int x, int y)
 {
-  int xOffset=x*rectSize+(width()-fieldWidth*rectSize)/2;
-  int yOffset=y*rectSize+(height()-fieldHeight*rectSize)/2;
+   int xOffset=x*rectSize+(width()-fieldWidth*rectSize)/2;
+   int yOffset=y*rectSize+(height()-fieldHeight*rectSize)/2;
 
-  int type=playfield[x][y];
+   int type=playfield[x][y];
 
    // find out which color to draw
-	QColor toDraw;
-	int player;
- 	if(type&PLAYER1) // auf playerbit prüfen
-  	{
-  		toDraw=colors[1];
-  		player=0;
-  	}
-  	else if(type&PLAYER2)
-  	{
-  		toDraw=colors[2];
-  		player=1;
-  	}
+   QColor toDraw;
+   int player;
+   if(type&PLAYER1) // check player bit
+   {
+      toDraw=colors[1];
+      player=0;
+   }
+   else if(type&PLAYER2)
+   {
+      toDraw=colors[2];
+      player=1;
+   }
    else
    {
       debug("No player defined in Tron::drawRect(...)");
@@ -339,55 +350,53 @@ void Tron::drawRect(QPainter & p, int x, int y)
    }
 
 
-  switch(style)
-  {
-  	  case Line:
-		 p.setBrush(toDraw);
-       p.setPen(toDraw);
-       p.drawRect(xOffset,yOffset,rectSize,rectSize);
-       break;
+   switch(style)
+   {
+      case Line:
+         p.setBrush(toDraw);
+         p.setPen(toDraw);
+         p.drawRect(xOffset,yOffset,rectSize,rectSize);
+         break;
+      case OLine:
+      {
+         p.setBrush(toDraw);
+         p.setPen(toDraw);
+         p.drawRect(xOffset,yOffset,rectSize,rectSize);
+         p.setPen(toDraw.light());
+         if(type&TOP)
+         {
+            p.drawLine(xOffset,yOffset,xOffset+rectSize-1,yOffset);
+         }
+         if(type&LEFT)
+         {
+            p.drawLine(xOffset,yOffset,xOffset,yOffset+rectSize-1);
+         }
+         p.setPen(toDraw.dark());
+         if(type&RIGHT)
+         {
+            p.drawLine(xOffset+rectSize-1,yOffset,xOffset+rectSize-1,yOffset+rectSize-1);
+         }
+         if(type&BOTTOM)
+         {
+            p.drawLine(xOffset,yOffset+rectSize-1,xOffset+rectSize-1,yOffset+rectSize-1);
+         }
 
-    case OLine:
-    {
-       p.setBrush(toDraw);
-       p.setPen(toDraw);
-       p.drawRect(xOffset,yOffset,rectSize,rectSize);
-       p.setPen(toDraw.light());
-       if(type&TOP)
-       {
-         p.drawLine(xOffset,yOffset,xOffset+rectSize-1,yOffset);
-       }
-       if(type&LEFT)
-       {
-         p.drawLine(xOffset,yOffset,xOffset,yOffset+rectSize-1);
-       }
-       p.setPen(toDraw.dark());
-       if(type&RIGHT)
-       {
-          p.drawLine(xOffset+rectSize-1,yOffset,xOffset+rectSize-1,yOffset+rectSize-1);
-       }
-       if(type&BOTTOM)
-       {
-          p.drawLine(xOffset,yOffset+rectSize-1,xOffset+rectSize-1,yOffset+rectSize-1);
-       }
-
-       break;
-    }
-    case Circle:
-      p.setBrush(toDraw);
-      p.setPen(toDraw);
-		p.drawEllipse(xOffset ,yOffset ,rectSize,rectSize);
-      break;
-
-    case ORect:
-      p.setBrush(toDraw);
-      p.setPen(toDraw.light());
-      p.drawRect(xOffset,yOffset,rectSize,rectSize);
-      p.setPen(toDraw.dark());
-      p.drawLine(xOffset,yOffset+rectSize-1,xOffset+rectSize-1
-		 ,yOffset+rectSize-1);
-      p.drawLine(xOffset+rectSize-1,yOffset,xOffset+rectSize-1,yOffset+rectSize-1);
-      break;
+         break;
+      }
+      case Circle:
+         p.setBrush(toDraw);
+         p.setPen(toDraw);
+         p.drawEllipse(xOffset ,yOffset ,rectSize,rectSize);
+         break;
+      case ORect:
+         p.setBrush(toDraw);
+         p.setPen(toDraw.light());
+         p.drawRect(xOffset,yOffset,rectSize,rectSize);
+         p.setPen(toDraw.dark());
+         p.drawLine(xOffset,yOffset+rectSize-1,xOffset+rectSize-1
+             ,yOffset+rectSize-1);
+         p.drawLine(xOffset+rectSize-1,yOffset,xOffset+rectSize-1,yOffset+rectSize-1);
+         break;
     }
 }
 
@@ -417,28 +426,28 @@ void Tron::setBackgroundPix(QPixmap pix)
 // configure colors
 bool Tron::changeColor(int id)
 {
-  QColor color;
-  int result=KColorDialog::getColor(color);
+   QColor color;
+   int result=KColorDialog::getColor(color);
 
-  bool flag=false;
+   bool flag=false;
 
-  if(result)  // if button 'ok' pressed
-  {
+   if(result)  // if button 'ok' pressed
+   {
       // backgroundcolor changed
-		  if(id==0)
-     	{
-	  		colors[0]=color;
-	  		setPalette(color);
-	  		bgPix.resize(0,0);
-		  }
-  		else  // set other color
-		  {
-	  		colors[id]=color;
-		  }
- 		  updatePixmap();
-  		repaint();
+      if(id==0)
+      {
+         colors[0]=color;
+         setPalette(color);
+         bgPix.resize(0,0);
+      }
+      else  // set other color
+      {
+         colors[id]=color;
+      }
+      updatePixmap();
+      repaint();
 
-  		flag=true;
+      flag=true;
    }
 
    return flag;
@@ -446,9 +455,9 @@ bool Tron::changeColor(int id)
 
 void Tron::saveColors(KConfig* config) const
 {
-	config->writeEntry("Color_Background",colors[0]);
- 	config->writeEntry("Color_Player1",colors[1]);
-  config->writeEntry("Color_Player2",colors[2]);
+   config->writeEntry("Color_Background",colors[0]);
+   config->writeEntry("Color_Player1",colors[1]);
+   config->writeEntry("Color_Player2",colors[2]);
 }
 
 void Tron::restoreColors(KConfig *config)
@@ -456,8 +465,8 @@ void Tron::restoreColors(KConfig *config)
    QColor bg("black");
    QColor pl1("red");
    QColor pl2("blue");
-	 colors[0]=config->readColorEntry("Color_Background",&bg);
- 	 colors[1]=config->readColorEntry("Color_Player1",&pl1);
+   colors[0]=config->readColorEntry("Color_Background",&bg);
+   colors[1]=config->readColorEntry("Color_Player1",&pl1);
    colors[2]=config->readColorEntry("Color_Player2",&pl2);
   	
    setPalette(colors[0]);
@@ -482,37 +491,36 @@ int Tron::getVelocity() const
 
 void Tron::setStyle(TronStyle newStyle)
 {
-  	style=newStyle;
+   style=newStyle;
   	
-  	if(pixmap)
-  	{
-  		updatePixmap();
+   if(pixmap)
+   {
+      updatePixmap();
       repaint();
-  	}
-
+   }
 }
 
 
 TronStyle Tron::getStyle() const
 {
-  return style;
+   return style;
 }
 
 
 void Tron::setRectSize(int newSize)
 {
-  if(newSize!=rectSize)
-  {
+   if(newSize!=rectSize)
+   {
       rectSize=newSize;
       createNewPlayfield();
       reset();
-  }
+   }
 }
 
 
 int Tron::getRectSize() const
 {
-  return rectSize;
+   return rectSize;
 }
 
 
@@ -546,6 +554,11 @@ void Tron::setComputerplayer(Player player, bool flag)
   else if(player==Two)
   {
      players[1].setComputer(flag);
+  }
+
+  if(isComputer(Both))
+  {
+     QTimer::singleShot(1000,this,SLOT(computerStart()));
   }
 
 }
@@ -617,58 +630,59 @@ void Tron::switchDir(int playerNr,Direction newDirection)
 void Tron::updateDirections(int playerNr)
 {
    if(playerNr==-1 || playerNr==0)
-  	{  	
-  		int x=players[0].xCoordinate;
-  		int y=players[0].yCoordinate;
-  		
-  		// necessary for drawing the 3d-line
-  		switch(players[0].dir)
-  		{
-  		   // unset drawing flags in the moving direction
-     		case Up:
-     		{
-        		playfield[x][y] &= (~TOP);
-        		break;
-       	}
-     		case Down:
-        		playfield[x][y] &= (~BOTTOM);
-        		break;
-     		case Right:
-        		playfield[x][y] &= (~RIGHT);
-        		break;
-     		case Left:
-        		playfield[x][y] &= (~LEFT);
-        		break;
-  		}
+   {  	
+      int x=players[0].xCoordinate;
+      int y=players[0].yCoordinate;
 
-  	}
+      // necessary for drawing the 3d-line
+      switch(players[0].dir)
+      {
+         // unset drawing flags in the moving direction
+         case Up:
+         {
+  	    playfield[x][y] &= (~TOP);
+  	    break;
+       	 }
+         case Down:
+            playfield[x][y] &= (~BOTTOM);
+            break;
+         case Right:
+            playfield[x][y] &= (~RIGHT);
+            break;
+         case Left:
+            playfield[x][y] &= (~LEFT);
+            break;
+      }
+
+   }
    if(playerNr==-1 || playerNr==1)
-  	{  	
-  		int x=players[1].xCoordinate;
-  		int y=players[1].yCoordinate;
+   {  	
+      int x=players[1].xCoordinate;
+      int y=players[1].yCoordinate;
   		
-  		// necessary for drawing the 3d-line
-  		switch(players[1].dir)
-  		{
-  		   // unset drawing flags in the moving direction
-     		case Up:
-     		{
-        		playfield[x][y] &= (~TOP);
-        		break;
-       	}
-     		case Down:
-        		playfield[x][y] &= (~BOTTOM);
-        		break;
-     		case Right:
-        		playfield[x][y] &= (~RIGHT);
-        		break;
-     		case Left:
-        		playfield[x][y] &= (~LEFT);
-        		break;
-  		}
+      // necessary for drawing the 3d-line
+      switch(players[1].dir)
+      {
+          // unset drawing flags in the moving direction
+     	  case Up:
+     	  {
+             playfield[x][y] &= (~TOP);
+             break;
+       	  }
+          case Down:
+             playfield[x][y] &= (~BOTTOM);
+             break;
+          case Right:
+             playfield[x][y] &= (~RIGHT);
+             break;
+          case Left:
+             playfield[x][y] &= (~LEFT);
+             break;
+      }
 
-  	}
-  	paintPlayers();
+   }
+
+   paintPlayers();
 }
 
 
@@ -679,66 +693,66 @@ void Tron::updateDirections(int playerNr)
 
 void Tron::paintEvent(QPaintEvent *e)
 {
-  bitBlt(this,e->rect().topLeft(),pixmap,e->rect());
+   bitBlt(this,e->rect().topLeft(),pixmap,e->rect());
 
-  // if game is paused, print message
-  if(gamePaused)
-  {
-     QString message=i18n("Game paused");
-     QPainter p(this);
-     QFontMetrics fm=p.fontMetrics();
-     int w=fm.width(message);
-     p.drawText(width()/2-w/2,height()/2,message);
-  }
+   // if game is paused, print message
+   if(gamePaused)
+   {
+      QString message=i18n("Game paused");
+      QPainter p(this);
+      QFontMetrics fm=p.fontMetrics();
+      int w=fm.width(message);
+      p.drawText(width()/2-w/2,height()/2,message);
+   }
 
-  // If game ended, print "Crash!"
-  	else if(gameEnded)
-  	{
-     	QString message=i18n("Crash!");
-     	QPainter p(this);
-     	int w=p.fontMetrics().width(message);
-     	for(int i=0;i<2;i++)
-     	{
-     		if(!players[i].alive)
-     		{
-        		int x=players[i].xCoordinate*rectSize+(width()%rectSize)/2-w/2;
-        		int y=players[i].yCoordinate*rectSize+(height()%rectSize)/2;
-        		if(players[i].dir==Right)
-        		{
-           		x+=rectSize;
-           		y+=rectSize/2;
+   // If game ended, print "Crash!"
+   else if(gameEnded)
+   {
+      QString message=i18n("Crash!");
+      QPainter p(this);
+      int w=p.fontMetrics().width(message);
+      for(int i=0;i<2;i++)
+      {
+         if(!players[i].alive)
+     	 {
+            int x=players[i].xCoordinate*rectSize+(width()%rectSize)/2-w/2;
+            int y=players[i].yCoordinate*rectSize+(height()%rectSize)/2;
+            if(players[i].dir==Right)
+            {
+               x+=rectSize;
+               y+=rectSize/2;
             }
             if(players[i].dir==Left)
             {
                y+=rectSize/2;
             }
-        		if(players[i].dir==Down)
-        		{
-        		   y+=rectSize;
-          		x+=rectSize/2;
-          	}
-          	if(players[i].dir==Up)
-          	{
-          	   x+=rectSize/2;
-          	   y+=rectSize/3;
-          	}
+            if(players[i].dir==Down)
+            {
+               y+=rectSize;
+               x+=rectSize/2;
+            }
+            if(players[i].dir==Up)
+            {
+               x+=rectSize/2;
+               y+=rectSize/3;
+            }
 
           		
-        		p.drawText(x,y,message);
-     		}
-  		}
-  		
-  		// draw begin hint
-  		if(beginHint)
-  		{
-  		   QString hint=i18n("Press any of your direction keys to start!");
-  		   int x=p.fontMetrics().width(hint);
-  		   x=(width()-x)/2;
-  		   int y=height()/2;
-  		
-  		   p.drawText(x,y,hint);
-  		}
-	}
+            p.drawText(x,y,message);
+         }
+      }
+    		
+      // draw begin hint
+      if(beginHint)
+      {
+         QString hint=i18n("Press any of your direction keys to start!");
+         int x=p.fontMetrics().width(hint);
+         x=(width()-x)/2;
+         int y=height()/2;
+    		
+         p.drawText(x,y,hint);
+      }
+   }
 }
 
 void Tron::resizeEvent(QResizeEvent *)
@@ -909,16 +923,16 @@ void Tron::keyReleaseEvent(QKeyEvent * e)
 // if playingfield looses keyboard focus, pause game
 void Tron::focusOutEvent(QFocusEvent *)
 {
-  	if(!gameEnded && !gamePaused)
+   if(!gameEnded && !gamePaused)
    {
-         togglePause();
+      togglePause();
    }
 }
 
 
 
 /* *************************************************************** **
-**                    				slots										 **
+**     				slots										 **
 ** *************************************************************** */
 
 void Tron::unblockGame()

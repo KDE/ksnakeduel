@@ -1,7 +1,7 @@
 /* ********************************************************************************
    This file is part of the game 'KTron'
 
-  Copyright (C) 1998,1999 by Matthias Kiefer <matthias.kiefer@gmx.de>
+  Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -30,12 +30,12 @@
 #include <kkeydialog.h>
 #include <kfiledialog.h>
 #include <kstddirs.h>
-#include <qmessagebox.h>
 #include <kmenubar.h>
 #include <kconfig.h>
 #include <kio/netaccess.h>
 #include <kio/job.h>
 #include <kmessagebox.h>
+
 
 #define ID_GAME_NEW 1
 #define ID_GAME_PAUSE 2
@@ -46,7 +46,6 @@
 #define ID_VIEW_STATUSBAR 16
 #define ID_OPT_KEYS 21
 #define ID_OPT_OTHER 22
-#define ID_OPT_SAVE 23
 #define ID_OPT_WALLPAPER 24
 #define ID_COLOR_BASE 30
 #define ID_STATUS_BASE 40
@@ -175,14 +174,12 @@ KTron::KTron(const char *name) : KTMainWindow(name)
   options->insertItem(i18n("&Appearance"),colors);
   options->insertItem(i18n("Si&ze"),sizeMenu);
   options->insertItem(i18n("Other..."),ID_OPT_OTHER);
-  options->insertSeparator();
-  options->insertItem(i18n("S&ave Options"),ID_OPT_SAVE);
 
   connect(options,SIGNAL(activated(int)),SLOT(menuCallback(int)));
 
   QString about = i18n(
     "KTron version %1 \n\n"
-    "(C) 1998-1999 by Matthias Kiefer\n"
+    "(C) 1998-2000 by Matthias Kiefer\n"
     "email: matthias.kiefer@gmx.de\n")
     .arg(KTRON_VERSION);
   about += i18n(
@@ -201,12 +198,7 @@ KTron::KTron(const char *name) : KTMainWindow(name)
   menu->insertSeparator();
   menu->insertItem( i18n("&Help"), help );
 
-  connect(menu,SIGNAL(moved(menuPosition)),SLOT(barPositionChanged()));
-
   // Toolbar
-
-  KIconLoader *loader = KGlobal::iconLoader();
-
   KToolBar *toolbar = toolBar();
 
   // restartbutton
@@ -229,31 +221,31 @@ KTron::KTron(const char *name) : KTMainWindow(name)
    connect(statusbar,SIGNAL(pressed(int)),this,SLOT(statusbarClicked(int)));
 
 
-    // read config
-  	KConfig *config=kapp->config();
+   // read config
+   KConfig *config=kapp->config();
   	
-  	config->setGroup("Window");
+   config->setGroup("Window");
 
-  	int barPos = config->readNumEntry("ToolbarPos",(int)(KToolBar::Top));
-  	toolBar()->setBarPos((KToolBar::BarPosition)barPos);
+   int barPos = config->readNumEntry("ToolbarPos",(int)(KToolBar::Top));
+   toolBar()->setBarPos((KToolBar::BarPosition)barPos);
 
-  	bool visible=config->readBoolEntry("Toolbar",true);
-  	options->setItemChecked(ID_VIEW_TOOLBAR,visible);
- 		if(visible)
-	 		enableToolBar(KToolBar::Show);
-  	else
-			enableToolBar(KToolBar::Hide);
+   bool visible=config->readBoolEntry("Toolbar",true);
+   options->setItemChecked(ID_VIEW_TOOLBAR,visible);
+   if(visible)
+      enableToolBar(KToolBar::Show);
+   else
+      enableToolBar(KToolBar::Hide);
 	
-  	visible=config->readBoolEntry("Statusbar",true);
-  	options->setItemChecked(ID_VIEW_STATUSBAR,visible);
-   	if(visible)
-	  	enableStatusBar(KStatusBar::Show);
-   	else
-   		enableStatusBar(KStatusBar::Hide);
+   visible=config->readBoolEntry("Statusbar",true);
+   options->setItemChecked(ID_VIEW_STATUSBAR,visible);
+   if(visible)
+      enableStatusBar(KStatusBar::Show);
+   else
+      enableStatusBar(KStatusBar::Hide);
 
-   	int width=config->readNumEntry("Width",400);
-   	int height=config->readNumEntry("Height",300);
-   	resize(width,height);
+   int width=config->readNumEntry("Width",400);
+   int height=config->readNumEntry("Height",300);
+   resize(width,height);
 
 
    config->setGroup("Game");
@@ -301,8 +293,8 @@ KTron::KTron(const char *name) : KTMainWindow(name)
 	  styleMenu->setItemChecked(i,false);
    styleMenu->setItemChecked(ID_STYLE_BASE+newStyle,true);
 
- 	int size=config->readNumEntry("RectSize",10);
-  	tron->setRectSize(size);
+   int size=config->readNumEntry("RectSize",10);
+   tron->setRectSize(size);
    sizeMenu->setItemChecked(ID_SIZE_BASE+size,true);
 
    tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
@@ -310,13 +302,13 @@ KTron::KTron(const char *name) : KTMainWindow(name)
 
    tron->restoreColors(config);
    readBackground(config);
-
 }
 
 // Destruktor
 
 KTron::~KTron()
 {
+   saveSettings();
 }
 
 
@@ -357,82 +349,87 @@ void KTron::updateStatusbar()
 
 void KTron::saveSettings()
 {
-  	KConfig *config=kapp->config();
-  	{
-  		KConfigGroupSaver saver(config,"Window");
+   KConfig *config=kapp->config();
+   {
+      KConfigGroupSaver saver(config,"Window");
 
-  		bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
-  		config->writeEntry("Toolbar",status);
-  		status=options->isItemChecked(ID_VIEW_STATUSBAR);
-  		config->writeEntry("Statusbar",status);
+      bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
+      config->writeEntry("Toolbar",status);
+      status=options->isItemChecked(ID_VIEW_STATUSBAR);
+      config->writeEntry("Statusbar",status);
 
-  		config->writeEntry("Width",width());
-  		config->writeEntry("Height",height());
-  	}
-  	{
-  	   KConfigGroupSaver saver(config,"Game");
-  		config->writeEntry("Velocity",tron->getVelocity());
-  		config->writeEntry("Style",(int)tron->getStyle());
-  		config->writeEntry("RectSize",tron->getRectSize());
+       config->writeEntry("Width",width());
+       config->writeEntry("Height",height());
+    }
+    {
+       KConfigGroupSaver saver(config,"Game");
+       config->writeEntry("Velocity",tron->getVelocity());
+       config->writeEntry("Style",(int)tron->getStyle());
+       config->writeEntry("RectSize",tron->getRectSize());
 
-  		config->writeEntry("Computerplayer1"
-		     ,compPlayerMenu->isItemChecked(ID_COMP_BASE));
-  		config->writeEntry("Computerplayer2"
-		     ,compPlayerMenu->isItemChecked(ID_COMP_BASE+1));
-      config->writeEntry("Skill",(int)tron->skill());
+       config->writeEntry("Computerplayer1"
+                  ,compPlayerMenu->isItemChecked(ID_COMP_BASE));
+       config->writeEntry("Computerplayer2"
+                  ,compPlayerMenu->isItemChecked(ID_COMP_BASE+1));
+       config->writeEntry("Skill",(int)tron->skill());
 
-  		config->writeEntry("ChangeWinnerColor",tron->winnerColor());
-  		config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
+       config->writeEntry("ChangeWinnerColor",tron->winnerColor());
+       config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
 
-  		if(playerName[0]==i18n("Player 1"))
-  		   config->writeEntry("Name_Pl1","");
-  		else
-  		   config->writeEntry("Name_Pl1",playerName[0]);
-  		if(playerName[1]==i18n("Player 2"))
-   		   config->writeEntry("Name_Pl2","");
-  		else
-  		   config->writeEntry("Name_Pl2",playerName[1]);
+       if(playerName[0]==i18n("Player 1"))
+          config->writeEntry("Name_Pl1","");
+       else
+          config->writeEntry("Name_Pl1",playerName[0]);
+
+       if(playerName[1]==i18n("Player 2"))
+           config->writeEntry("Name_Pl2","");
+       else
+           config->writeEntry("Name_Pl2",playerName[1]);
   		
-  		tron->saveColors(config);
-  		config->writeEntry("BackgroundImage",bgPixURL.url());
-	}
-  	config->sync();
+       tron->saveColors(config);
+       config->writeEntry("BackgroundImage",bgPixURL.url());
+    }
+
+    config->sync();
 }
 
 void KTron::configureOther()
 {
    if(optionsDialog==0)
    {
-   		ExtOptions opts;
-   	  opts.changeColor=tron->winnerColor();
-   		opts.blockAccelerator=tron->acceleratorBlocked();
-   		if(playerName[0]==i18n("Player 1"))
-   		   opts.namePl1="";
-   		else
-   		   opts.namePl1=playerName[0];
-   		if(playerName[1]==i18n("Player 2"))
-   		   opts.namePl2="";
-   		else
-   		   opts.namePl2=playerName[1];
+      ExtOptions opts;
+      opts.changeColor=tron->winnerColor();
+      opts.blockAccelerator=tron->acceleratorBlocked();
+      if(playerName[0]==i18n("Player 1"))
+         opts.namePl1="";
+      else
+         opts.namePl1=playerName[0];
 
-      optionsDialog=new KTOptDlg(opts);
+      if(playerName[1]==i18n("Player 2"))
+         opts.namePl2="";
+      else
+         opts.namePl2=playerName[1];
 
-      connect(optionsDialog,SIGNAL(buttonPressed()),this,SLOT(takeOptions()));
+      optionsDialog=new KTOptDlg(this,opts);
+
+      connect(optionsDialog,SIGNAL(okClicked()),this,SLOT(takeOptions()));
    }
 
    optionsDialog->show();
    optionsDialog->raise();
-
 }
+
 void KTron::takeOptions()
 {
    ExtOptions opts=optionsDialog->options();
    tron->enableWinnerColor(opts.changeColor);
    tron->setAcceleratorBlocked(opts.blockAccelerator);
+
    if(opts.namePl1=="")
       playerName[0]=i18n("Player 1");
    else
       playerName[0]=opts.namePl1;
+
    if(opts.namePl2=="")
       playerName[1]=i18n("Player 2");
    else
@@ -443,71 +440,70 @@ void KTron::takeOptions()
 
 void KTron::showWinner(Player winner)
 {	
-  if(tron->isComputer(Both))
-  {
-     //tron->newGame();
-     return;
-  }
+   if(tron->isComputer(Both))
+   {
+      return;
+   }
 
-	QString message;
-	QString name[2];
-  int winnerNr;
-  int looserNr;
-	switch(winner)
- 	{
-  		case One:
-  		   winnerNr=0;
+   QString message;
+   QString name[2];
+   int winnerNr;
+   int looserNr;
+   switch(winner)
+   {
+      case One:
+         winnerNr=0;
          looserNr=1;
-  		   break;
-  		case Two:
-  		   winnerNr=1;
+         break;
+      case Two:
+         winnerNr=1;
          looserNr=0;
-  		   break;
-  		default:
-  		   return;
-  		   break;
-  }
+         break;
+      default:
+         return;
+         break;
+   }
 
-  for(int i=0;i<2;i++)
-  {
-    Player player;
-    player=(i==0)?One:Two;
+   for(int i=0;i<2;i++)
+   {
+      Player player;
+      player=(i==0)?One:Two;
 
-    if(tron->isComputer(player))
-  	{
-    	  name[i]=i18n("KTron");
- 	}
-  	else
-  	{
-   	   name[i]=playerName[i];
-  	}
-  }
+      if(tron->isComputer(player))
+      {
+         name[i]=i18n("KTron");
+      }
+      else
+      {
+         name[i]=playerName[i];
+      }
+   }
    	
-  message=i18n("%1 has won!").arg(name[winnerNr]);
-  statusBar()->message(message,MESSAGE_TIME);
+   message=i18n("%1 has won!").arg(name[winnerNr]);
+   statusBar()->message(message,MESSAGE_TIME);
   	
 
-  if(looserNr==0 && playerName[0]!=i18n("Player 1"))
-  {
-     message=i18n("%1 has won versus %2 with %3 : %4 points!");
-     message=message.arg(name[winnerNr]).arg(name[looserNr]);
-     message=message.arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
-  }
-  else if(looserNr==1 && playerName[1]!=i18n("Player 2"))
-  {
-     message=i18n("%1 has won versus %2 with %3 : %4 points!");
-     message=message.arg(name[winnerNr]).arg(name[looserNr]);
-     message=message.arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
-  }
-  else
-  {
-     message=i18n("%1 has won with %2 : %3 points!");
-     message=message.arg(name[winnerNr]).arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
-  }
+   if(looserNr==0 && playerName[0]!=i18n("Player 1"))
+   {
+      message=i18n("%1 has won versus %2 with %3 : %4 points!");
+      message=message.arg(name[winnerNr]).arg(name[looserNr]);
+      message=message.arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
+   }
+   else if(looserNr==1 && playerName[1]!=i18n("Player 2"))
+   {
+      message=i18n("%1 has won versus %2 with %3 : %4 points!");
+      message=message.arg(name[winnerNr]).arg(name[looserNr]);
+      message=message.arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
+   }
+   else
+   {
+      message=i18n("%1 has won with %2 : %3 points!");
+      message=message.arg(name[winnerNr]).arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
+   }
 		
-  QMessageBox::information(this, i18n("KTron - Winner"), message, i18n("OK"));
+   KMessageBox::information(this, message, i18n("Winner"));
 
-  tron->newGame();
+   tron->newGame();
 }
 
 void KTron::quit()
@@ -517,33 +513,32 @@ void KTron::quit()
 
 void KTron::menuCallback(int id)
 {
-  	switch(id)
-  	{
-  		case ID_GAME_PAUSE:
-      	tron->togglePause();
-      	break;
-    	case ID_GAME_NEW:
-      	tron->newGame();
-      	break;
-    	case ID_GAME_QUIT:
-      	quit();
-      	break;
-
-    	case ID_COMP_BASE:
+   switch(id)
+   {
+      case ID_GAME_PAUSE:
+         tron->togglePause();
+         break;
+      case ID_GAME_NEW:
+         tron->newGame();
+      	 break;
+      case ID_GAME_QUIT:
+         quit();
+         break;
+      case ID_COMP_BASE:
       {
-			bool status=compPlayerMenu->isItemChecked(id);
-			tron->setComputerplayer(One,status ? false : true);
-			compPlayerMenu->setItemChecked(id,status ? false : true);
-			updateStatusbar();
-			break;
+         bool status=compPlayerMenu->isItemChecked(id);
+         tron->setComputerplayer(One,status ? false : true);
+         compPlayerMenu->setItemChecked(id,status ? false : true);
+         updateStatusbar();
+         break;
       }
-    	case ID_COMP_BASE+1:
+      case ID_COMP_BASE+1:
       {
-			bool status=compPlayerMenu->isItemChecked(id);
-			tron->setComputerplayer(Two,status ? false : true);
-			compPlayerMenu->setItemChecked(id,status ? false : true);
-			updateStatusbar();
-			break;
+         bool status=compPlayerMenu->isItemChecked(id);
+         tron->setComputerplayer(Two,status ? false : true);
+         compPlayerMenu->setItemChecked(id,status ? false : true);
+         updateStatusbar();
+         break;
       }
       case ID_SKILL_BASE+Easy:
       case ID_SKILL_BASE+Medium:
@@ -553,97 +548,97 @@ void KTron::menuCallback(int id)
          {
              compPlayerMenu->setItemChecked(ID_SKILL_BASE+i,false);
          }
-			compPlayerMenu->setItemChecked(id,true);
-			tron->setSkill((Skill)(id-ID_SKILL_BASE));
+         compPlayerMenu->setItemChecked(id,true);
+         tron->setSkill((Skill)(id-ID_SKILL_BASE));
          break;
       }
-    	case ID_STYLE_BASE+OLine:
-    	case ID_STYLE_BASE+ORect:
-    	case ID_STYLE_BASE+Line:
-    	case ID_STYLE_BASE+Circle:
+      case ID_STYLE_BASE+OLine:
+      case ID_STYLE_BASE+ORect:
+      case ID_STYLE_BASE+Line:
+      case ID_STYLE_BASE+Circle:
       {
-			int i;
-	  		for(i=ID_STYLE_BASE;i<ID_STYLE_BASE+4;i++)
-	      	styleMenu->setItemChecked(i,false);
-	
-	    	styleMenu->setItemChecked(id,true);
+         int i;
+         for(i=ID_STYLE_BASE;i<ID_STYLE_BASE+4;i++)
+         {
+            styleMenu->setItemChecked(i,false);
+	 }
+	 styleMenu->setItemChecked(id,true);
 
-	    	tron->setStyle((TronStyle)(id-ID_STYLE_BASE));
-	
-			break;
+         tron->setStyle((TronStyle)(id-ID_STYLE_BASE));
+
+         break;
       }
 
-    	case ID_SIZE_BASE+4:
-    	case ID_SIZE_BASE+7:
-    	case ID_SIZE_BASE+10:
-    	case ID_SIZE_BASE+13:
-    	case ID_SIZE_BASE+16:
+      case ID_SIZE_BASE+4:
+      case ID_SIZE_BASE+7:
+      case ID_SIZE_BASE+10:
+      case ID_SIZE_BASE+13:
+      case ID_SIZE_BASE+16:
       {
-			for(int i=ID_SIZE_BASE+4;i<ID_SIZE_BASE+17;i++)
-	  		   sizeMenu->setItemChecked(i,false);
+         for(int i=ID_SIZE_BASE+4;i<ID_SIZE_BASE+17;i++)
+         {
+            sizeMenu->setItemChecked(i,false);
+         }
 	
-			sizeMenu->setItemChecked(id,true);
+         sizeMenu->setItemChecked(id,true);
 
-			tron->setRectSize(id-ID_SIZE_BASE);
-			break;
+         tron->setRectSize(id-ID_SIZE_BASE);
+         break;
       }
-    	case ID_OPT_KEYS:
-    	   if( KKeyDialog::configureKeys(accel) )
-    	   {
-  				accel->changeMenuAccel(game,ID_GAME_PAUSE,"Pause");
-  			}
-      	break;
+      case ID_OPT_KEYS:
+         if( KKeyDialog::configureKeys(accel) )
+         {
+            accel->changeMenuAccel(game,ID_GAME_PAUSE,"Pause");
+  	 }
+      	 break;
       case ID_OPT_OTHER:
          configureOther();
          break;
-    	case ID_OPT_SAVE:
-      	saveSettings();
-      	break;
-    	case ID_VIEW_TOOLBAR:
+      case ID_VIEW_TOOLBAR:
       {
-			enableToolBar(); // toggles toolbar
-			bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
-			options->setItemChecked(ID_VIEW_TOOLBAR, status?false:true);
-			break;
+         enableToolBar(); // toggles toolbar
+         bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
+         options->setItemChecked(ID_VIEW_TOOLBAR, status?false:true);
+         break;
       }
-    	case ID_VIEW_STATUSBAR:
+      case ID_VIEW_STATUSBAR:
       {
-			enableStatusBar(); // toggles statusbar
-			bool status=options->isItemChecked(ID_VIEW_STATUSBAR);
-			options->setItemChecked(ID_VIEW_STATUSBAR, status?false:true);
-			break;
+          enableStatusBar(); // toggles statusbar
+          bool status=options->isItemChecked(ID_VIEW_STATUSBAR);
+          options->setItemChecked(ID_VIEW_STATUSBAR, status?false:true);
+          break;
       }
-    	case ID_COLOR_BASE:
-    	{
-    	   bool success=tron->changeColor(0);
-    	   if(success)
-    	      bgPixURL = QString::null;
-    	   break;
-    	}
-    	case ID_COLOR_BASE+1:
-    	case ID_COLOR_BASE+2:
-      	tron->changeColor(id-ID_COLOR_BASE);
-      	break;
+      case ID_COLOR_BASE:
+      {
+         bool success=tron->changeColor(0);
+    	 if(success)
+    	     bgPixURL = QString::null;
+    	 break;
+       }
+       case ID_COLOR_BASE+1:
+       case ID_COLOR_BASE+2:
+          tron->changeColor(id-ID_COLOR_BASE);
+      	  break;
 
-    	case ID_VELOCITY_BASE+1:
-    	case ID_VELOCITY_BASE+2:
-    	case ID_VELOCITY_BASE+3:
-    	case ID_VELOCITY_BASE+4:
-    	case ID_VELOCITY_BASE+5:
-    	case ID_VELOCITY_BASE+6:
-    	case ID_VELOCITY_BASE+7:
-    	case ID_VELOCITY_BASE+8:
-    	case ID_VELOCITY_BASE+9:
-      	tron->setVelocity(id-ID_VELOCITY_BASE);
-      	updateVelocityMenu(id);
-      	break;
-      case ID_HELP_CONTENTS:
-         kapp->invokeHTMLHelp("","");
-         break;
-      case ID_OPT_WALLPAPER:
-         chooseBgPix();
-         break;
-	}
+       case ID_VELOCITY_BASE+1:
+       case ID_VELOCITY_BASE+2:
+       case ID_VELOCITY_BASE+3:
+       case ID_VELOCITY_BASE+4:
+       case ID_VELOCITY_BASE+5:
+       case ID_VELOCITY_BASE+6:
+       case ID_VELOCITY_BASE+7:
+       case ID_VELOCITY_BASE+8:
+       case ID_VELOCITY_BASE+9:
+          tron->setVelocity(id-ID_VELOCITY_BASE);
+          updateVelocityMenu(id);
+          break;
+       case ID_HELP_CONTENTS:
+          kapp->invokeHTMLHelp("","");
+          break;
+       case ID_OPT_WALLPAPER:
+          chooseBgPix();
+          break;
+   }
 }
 
 void KTron::chooseBgPix()
@@ -676,34 +671,31 @@ void KTron::chooseBgPix()
 
 void KTron::changeStatus(Player player)
 {  	
-  	QString s;
+   QString s;
 
-  	// if player=Nobody, then new game
-  	if(player==Nobody)
-  	{
+   // if player=Nobody, then new game
+   if(player==Nobody)
+   {
       playerPoints[0]=playerPoints[1]=0;
       updateStatusbar();
-   	}
-  	else
-   	{
+   }
+   else
+   {
       if(player==One)
-			{
-				playerPoints[0]++;
-	  		
-			}
+      {
+         playerPoints[0]++;
+      }
       else if(player==Two)
-	 		{
-	   		playerPoints[1]++;
-	 		}
-
+      {
+         playerPoints[1]++;
+      }
       else if(player==Both)
-			{
-	   		playerPoints[0]++;
-	   		playerPoints[1]++;
-	   		
-			}
+      {
+         playerPoints[0]++;
+         playerPoints[1]++;
+      }
 
-			updateStatusbar();
+      updateStatusbar();
 
       if(playerPoints[0]>=9 && playerPoints[1] < playerPoints[0]-1)
       {
@@ -741,22 +733,22 @@ void KTron::barPositionChanged()
 
 void KTron::readProperties(KConfig *config)
 {
-  int i;
+   int i;
 
-  bool visible=true;
-  visible=config->readBoolEntry("Toolbar",true);
-  options->setItemChecked(ID_VIEW_TOOLBAR,visible);
-    	
-  visible=config->readBoolEntry("Statusbar",true);
-  options->setItemChecked(ID_VIEW_STATUSBAR,visible);
+   bool visible=true;
+   visible=config->readBoolEntry("Toolbar",true);
+   options->setItemChecked(ID_VIEW_TOOLBAR,visible);
+     	
+   visible=config->readBoolEntry("Statusbar",true);
+   options->setItemChecked(ID_VIEW_STATUSBAR,visible);
 
-  bool status=false;
-  status=config->readBoolEntry("Computerplayer1",false);
-  compPlayerMenu->setItemChecked(ID_COMP_BASE,status);
-  tron->setComputerplayer(One,status);
-  status=config->readBoolEntry("Computerplayer2",false);
-  compPlayerMenu->setItemChecked(ID_COMP_BASE+1,status);
-  tron->setComputerplayer(Two,status);
+   bool status=false;
+   status=config->readBoolEntry("Computerplayer1",false);
+   compPlayerMenu->setItemChecked(ID_COMP_BASE,status);
+   tron->setComputerplayer(One,status);
+   status=config->readBoolEntry("Computerplayer2",false);
+   compPlayerMenu->setItemChecked(ID_COMP_BASE+1,status);
+   tron->setComputerplayer(Two,status);
 
    Skill skill=Medium;
    skill=(Skill)config->readNumEntry("Skill",(int)Medium);
@@ -767,28 +759,30 @@ void KTron::readProperties(KConfig *config)
    compPlayerMenu->setItemChecked(ID_SKILL_BASE+skill,true);
    tron->setSkill(skill);
 
-  int velocity=5;
-  velocity=config->readNumEntry("Velocity",5);
-  tron->setVelocity(velocity);
-  updateVelocityMenu(ID_VELOCITY_BASE+velocity);
+   int velocity=5;
+   velocity=config->readNumEntry("Velocity",5);
+   tron->setVelocity(velocity);
+   updateVelocityMenu(ID_VELOCITY_BASE+velocity);
 
-  TronStyle newStyle=OLine;
-  newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
-  tron->setStyle(newStyle);
-  for(i=ID_STYLE_BASE;i<ID_STYLE_BASE+4;i++)
-    styleMenu->setItemChecked(i,false);
+   TronStyle newStyle=OLine;
+   newStyle=(TronStyle)config->readNumEntry("Style",(int) OLine);
+   tron->setStyle(newStyle);
+   for(i=ID_STYLE_BASE;i<ID_STYLE_BASE+4;i++)
+     styleMenu->setItemChecked(i,false);
 
-  styleMenu->setItemChecked(ID_STYLE_BASE+newStyle,true);
+   styleMenu->setItemChecked(ID_STYLE_BASE+newStyle,true);
 
 
-  	int size=10;
-        size=config->readNumEntry("RectSize",10);
-  	for(i=ID_SIZE_BASE+4;i<ID_SIZE_BASE+17;i+=3)
-   	sizeMenu->setItemChecked(i,false);
-  	tron->setRectSize(size);
-  	sizeMenu->setItemChecked(size+ID_SIZE_BASE,true);
+   int size=10;
+   size=config->readNumEntry("RectSize",10);
+   for(i=ID_SIZE_BASE+4;i<ID_SIZE_BASE+17;i+=3)
+   {
+     sizeMenu->setItemChecked(i,false);
+   }
+   tron->setRectSize(size);
+   sizeMenu->setItemChecked(size+ID_SIZE_BASE,true);
 
-	 tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
+   tron->enableWinnerColor(config->readBoolEntry("ChangeWinnerColor",true));
    tron->setAcceleratorBlocked(config->readBoolEntry("AcceleratorBlocked",false));
 
    QString temp="";
@@ -806,48 +800,49 @@ void KTron::readProperties(KConfig *config)
 
 void KTron::readBackground(KConfig *config)
 {
-  KURL url = config->readEntry("BackgroundImage");
-  if(!url.isEmpty())
-    {
+   KURL url = config->readEntry("BackgroundImage");
+   if(!url.isEmpty())
+   {
       QString tmpFile;
       KIO::NetAccess::download(url, tmpFile);
       QPixmap pix(tmpFile);
       if(!pix.isNull())
-	{
-	  tron->setBackgroundPix(pix);
-	  bgPixURL = url;
-	}
+      {
+         tron->setBackgroundPix(pix);
+         bgPixURL = url;
+      }
       KIO::NetAccess::removeTempFile(tmpFile);
     }
 }
 
 void KTron::saveProperties(KConfig *config)
 {
-  bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
-  config->writeEntry("Toolbar",status);
-  status=options->isItemChecked(ID_VIEW_STATUSBAR);
-  config->writeEntry("Statusbar",status);
+   bool status=options->isItemChecked(ID_VIEW_TOOLBAR);
+   config->writeEntry("Toolbar",status);
+   status=options->isItemChecked(ID_VIEW_STATUSBAR);
+   config->writeEntry("Statusbar",status);
 
-  config->writeEntry("Velocity",tron->getVelocity());
-  config->writeEntry("Style",(int)tron->getStyle());
-  config->writeEntry("RectSize",tron->getRectSize());
-  config->writeEntry("Computerplayer1"
+   config->writeEntry("Velocity",tron->getVelocity());
+   config->writeEntry("Style",(int)tron->getStyle());
+   config->writeEntry("RectSize",tron->getRectSize());
+   config->writeEntry("Computerplayer1"
 		     ,compPlayerMenu->isItemChecked(ID_COMP_BASE));
-  config->writeEntry("Computerplayer2"
+   config->writeEntry("Computerplayer2"
 		     ,compPlayerMenu->isItemChecked(ID_COMP_BASE+1));
-  config->writeEntry("Skill",(int)tron->skill());
+   config->writeEntry("Skill",(int)tron->skill());
 		
-  config->writeEntry("ChangeWinnerColor",tron->winnerColor());
-  config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
+   config->writeEntry("ChangeWinnerColor",tron->winnerColor());
+   config->writeEntry("AcceleratorBlocked",tron->acceleratorBlocked());
 		
    if(playerName[0]==i18n("Player 1"))
-  	  config->writeEntry("Name_Pl1","");
+      config->writeEntry("Name_Pl1","");
    else
-  	  config->writeEntry("Name_Pl1",playerName[0]);
- 		if(playerName[1]==i18n("Player 2"))
- 		   config->writeEntry("Name_Pl2","");
- 		else
- 		   config->writeEntry("Name_Pl2",playerName[1]);
+      config->writeEntry("Name_Pl1",playerName[0]);
+
+   if(playerName[1]==i18n("Player 2"))
+      config->writeEntry("Name_Pl2","");
+   else
+      config->writeEntry("Name_Pl2",playerName[1]);
   		
   tron->saveColors(config);
 
