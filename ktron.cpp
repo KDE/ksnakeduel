@@ -511,7 +511,7 @@ void KTron::showWinner(Player winner)
      message=message.arg(name[winnerNr]).arg(playerPoints[winnerNr]).arg(playerPoints[looserNr]);
   }
 		
-  QMessageBox::information(this,i18n("KTron - Winner"),message);
+  QMessageBox::information(this, i18n("KTron - Winner"), message, i18n("OK"));
   
   tron->newGame();
 }
@@ -672,7 +672,7 @@ void KTron::chooseBgPix()
   {
      QString msg=i18n("Wasn't able to load wallpaper\n%1");
      msg=msg.arg(name);
-     QMessageBox::information(this, kapp->getCaption(), msg);
+     QMessageBox::information(this, kapp->getCaption(), msg, i18n("OK"));
   }
 }
 
