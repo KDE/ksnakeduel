@@ -2,7 +2,7 @@
 bin_PROGRAMS = ktron
 INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
-LDADD = $(LIB_KSYCOCA) $(LIB_KFILE) $(top_builddir)/libkdegames/libkdegames.la
+LDADD = $(LIB_KSYCOCA) $(LIB_KFILE) $(LIB_KDEGAMES)
 
 ktron_SOURCES = ktoptdlg.cpp tron.cpp player.cpp ktron.cpp main.cpp
 
