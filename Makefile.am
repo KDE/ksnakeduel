@@ -4,7 +4,7 @@ INCLUDES = -I$(top_srcdir)/libkdegames $(all_includes)
 LDFLAGS = $(all_libraries) $(KDE_RPATH)
 LDADD = $(LIB_KIO) $(LIB_KDEGAMES)
 
-ktron_SOURCES = kautoconfig_kfile.cpp ai.ui appearance.ui general.ui tron.cpp player.cpp ktron.cpp main.cpp
+ktron_SOURCES = ai.ui appearance.ui general.ui tron.cpp player.cpp ktron.cpp main.cpp
 
 EXTRA_DIST = ktron.desktop
 
