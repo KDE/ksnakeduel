@@ -215,10 +215,10 @@ void KTron::showSettings(){
   kautoconfig->addWidget(appearance, "Game");
   
   kautoconfig->retrieveSettings();
-  settings->show();
-	
   connect(kautoconfig, SIGNAL(settingsChanged()), tron, SLOT(loadSettings()));
   connect(kautoconfig, SIGNAL(settingsChanged()), this, SLOT(readSettings()));
+  
+  settings->show();
 }
 
 void KTron::closeSettings(){
