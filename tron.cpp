@@ -24,6 +24,13 @@
 
 // Normal class
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QFocusEvent>
+#include <QResizeEvent>
+#include <QKeyEvent>
+#include <QPaintEvent>
+#include <Q3MemArray>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -51,8 +58,8 @@ Tron::Tron(QWidget *parent,const char *name)
 
   random.setSeed(0);
 
-  setFocusPolicy(QWidget::StrongFocus);
-  setBackgroundMode(NoBackground);
+  setFocusPolicy(Qt::StrongFocus);
+  setBackgroundMode(Qt::NoBackground);
 
   gameBlocked=false;
   rectSize=10;
@@ -132,7 +139,7 @@ void Tron::createNewPlayfield()
   fieldHeight=(height()-2*TRON_FRAMESIZE)/rectSize;
 
   // start positions
-  playfield=new QMemArray<int>[fieldWidth];
+  playfield=new Q3MemArray<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
 
@@ -316,7 +323,7 @@ void Tron::updatePixmap()
    QColor light=parentWidget()->colorGroup().midlight();
    QColor dark=parentWidget()->colorGroup().mid();
 
-   p.setPen(NoPen);
+   p.setPen(Qt::NoPen);
    p.setBrush(light);
       p.drawRect(width()-TRON_FRAMESIZE,0,TRON_FRAMESIZE,height());
    p.drawRect(0,height()-TRON_FRAMESIZE,width(),TRON_FRAMESIZE);
