@@ -92,7 +92,8 @@ void Tron::loadSettings(){
   }
 
   // Backgroundimage
-  setBackgroundPix(NULL);
+#warning commented this because with it it crashed
+//  setBackgroundPix(NULL);
   if(Settings::backgroundImageChoice()){
     KURL url ( Settings::backgroundImage() );
     if(!url.isEmpty()){
@@ -108,7 +109,8 @@ void Tron::loadSettings(){
       }
       KIO::NetAccess::removeTempFile(tmpFile);
     }
-    else setBackgroundPix(NULL);
+#warning commented this because with it it crashed
+  //  else setBackgroundPix(NULL);
   }
   setComputerplayer(One, Settings::computerplayer1());
   setComputerplayer(Two, Settings::computerplayer2());
