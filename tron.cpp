@@ -583,7 +583,7 @@ void Tron::updateDirections(int playerNr)
 
    }
 
-   paintPlayers();
+   repaint();
 }
 
 /* *************************************************************** **
@@ -636,6 +636,7 @@ void Tron::paintEvent(QPaintEvent *e)
          p.drawText(x,y,hint);
       }
    }
+   else /* Qt4 porting question if something? */ paintPlayers();
 }
 
 void Tron::resizeEvent(QResizeEvent *)
@@ -920,7 +921,7 @@ void Tron::doMove()
          }
       }
 
-      paintPlayers();
+      repaint();
 
       // crashtest
       if(!players[0].alive && !players[1].alive)
@@ -1040,7 +1041,7 @@ void Tron::doMove()
          }
    }
 
-   paintPlayers();
+   repaint();
 
    if(!players[0].alive && !players[1].alive)
    {
