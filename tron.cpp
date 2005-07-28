@@ -24,6 +24,13 @@
 
 // Normal class
 #include <qtimer.h>
+//Added by qt3to4:
+#include <QPixmap>
+#include <QFocusEvent>
+#include <QResizeEvent>
+#include <QKeyEvent>
+#include <QPaintEvent>
+#include <Q3MemArray>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -51,8 +58,8 @@ Tron::Tron(QWidget *parent,const char *name)
 
   random.setSeed(0);
 
-  setFocusPolicy(QWidget::StrongFocus);
-  setBackgroundMode(NoBackground);
+  setFocusPolicy(Qt::StrongFocus);
+  setBackgroundMode(Qt::NoBackground);
 
   gameBlocked=false;
   rectSize=10;
@@ -85,7 +92,8 @@ void Tron::loadSettings(){
   }
 
   // Backgroundimage
-  setBackgroundPix(NULL);
+#warning commented this because with it it crashed
+//  setBackgroundPix(NULL);
   if(Settings::backgroundImageChoice()){
     KURL url ( Settings::backgroundImage() );
     if(!url.isEmpty()){
@@ -101,7 +109,8 @@ void Tron::loadSettings(){
       }
       KIO::NetAccess::removeTempFile(tmpFile);
     }
-    else setBackgroundPix(NULL);
+#warning commented this because with it it crashed
+  //  else setBackgroundPix(NULL);
   }
   setComputerplayer(One, Settings::computerplayer1());
   setComputerplayer(Two, Settings::computerplayer2());
@@ -132,7 +141,7 @@ void Tron::createNewPlayfield()
   fieldHeight=(height()-2*TRON_FRAMESIZE)/rectSize;
 
   // start positions
-  playfield=new QMemArray<int>[fieldWidth];
+  playfield=new Q3MemArray<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
 
@@ -316,7 +325,7 @@ void Tron::updatePixmap()
    QColor light=parentWidget()->colorGroup().midlight();
    QColor dark=parentWidget()->colorGroup().mid();
 
-   p.setPen(NoPen);
+   p.setPen(Qt::NoPen);
    p.setBrush(light);
       p.drawRect(width()-TRON_FRAMESIZE,0,TRON_FRAMESIZE,height());
    p.drawRect(0,height()-TRON_FRAMESIZE,width(),TRON_FRAMESIZE);
@@ -574,7 +583,7 @@ void Tron::updateDirections(int playerNr)
 
    }
 
-   paintPlayers();
+   repaint();
 }
 
 /* *************************************************************** **
@@ -627,6 +636,7 @@ void Tron::paintEvent(QPaintEvent *e)
          p.drawText(x,y,hint);
       }
    }
+   else /* Qt4 porting question if something? */ paintPlayers();
 }
 
 void Tron::resizeEvent(QResizeEvent *)
@@ -911,7 +921,7 @@ void Tron::doMove()
          }
       }
 
-      paintPlayers();
+      repaint();
 
       // crashtest
       if(!players[0].alive && !players[1].alive)
@@ -1031,7 +1041,7 @@ void Tron::doMove()
          }
    }
 
-   paintPlayers();
+   repaint();
 
    if(!players[0].alive && !players[1].alive)
    {

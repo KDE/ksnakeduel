@@ -91,7 +91,7 @@
                                 <string>Large</string>
                             </property>
                             <property name="alignment">
-                                <set>AlignVCenter|AlignRight</set>
+                                <set>Qt::AlignVCenter|Qt::AlignRight</set>
                             </property>
                         </widget>
                         <widget class="QLabel" row="1" column="0">
@@ -102,7 +102,7 @@
                                 <string>Small</string>
                             </property>
                             <property name="alignment">
-                                <set>AlignVCenter|AlignLeft</set>
+                                <set>Qt::AlignVCenter|Qt::AlignLeft</set>
                             </property>
                         </widget>
                         <widget class="QLabel" row="1" column="1">
@@ -113,7 +113,7 @@
                                 <string>Medium</string>
                             </property>
                             <property name="alignment">
-                                <set>AlignCenter</set>
+                                <set>Qt::AlignCenter</set>
                             </property>
                         </widget>
                         <widget class="QSlider" row="0" column="0" rowspan="1" colspan="3">
@@ -136,10 +136,10 @@
                                 <number>10</number>
                             </property>
                             <property name="orientation">
-                                <enum>Horizontal</enum>
+                                <enum>Qt::Horizontal</enum>
                             </property>
-                            <property name="tickmarks">
-                                <enum>Right</enum>
+                            <property name="tickPosition">
+                                <enum>TicksRight</enum>
                             </property>
                             <property name="tickInterval">
                                 <number>1</number>
@@ -197,9 +197,9 @@
                             </property>
                             <property name="color">
                                 <color>
-                                    <red>0</red>
-                                    <green>0</green>
-                                    <blue>0</blue>
+                                    <Qt::red>0</Qt::red>
+                                    <Qt::green>0</Qt::green>
+                                    <Qt::blue>0</Qt::blue>
                                 </color>
                             </property>
                         </widget>
@@ -222,9 +222,9 @@
                     </property>
                     <property name="color">
                         <color>
-                            <red>255</red>
-                            <green>0</green>
-                            <blue>0</blue>
+                            <Qt::red>255</Qt::red>
+                            <Qt::green>0</Qt::green>
+                            <Qt::blue>0</Qt::blue>
                         </color>
                     </property>
                 </widget>
@@ -245,9 +245,9 @@
                     </property>
                     <property name="color">
                         <color>
-                            <red>0</red>
-                            <green>0</green>
-                            <blue>255</blue>
+                            <Qt::red>0</Qt::red>
+                            <Qt::green>0</Qt::green>
+                            <Qt::blue>255</Qt::blue>
                         </color>
                     </property>
                 </widget>
@@ -256,7 +256,7 @@
                         <cstring>spacer2</cstring>
                     </property>
                     <property name="orientation">
-                        <enum>Vertical</enum>
+                        <enum>Qt::Vertical</enum>
                     </property>
                     <property name="sizeType">
                         <enum>Expanding</enum>
