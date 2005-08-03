@@ -145,8 +145,8 @@
                             <property name="orientation">
                                 <enum>Qt::Horizontal</enum>
                             </property>
-                            <property name="tickmarks">
-                                <enum>Qt::DockRight</enum>
+                            <property name="tickPosition">
+                                <enum>TicksRight</enum>
                             </property>
                             <property name="tickInterval">
                                 <number>1</number>
