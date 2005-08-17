@@ -24,7 +24,7 @@
 #include <kaboutdata.h>
 
 #include "ktron.h"
-#include "version.h"
+#define KTRON_VERSION "1.1"
 
 static const char description[] = I18N_NOOP("A race in hyperspace");
 static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"

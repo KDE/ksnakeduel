@@ -83,7 +83,7 @@ signals:
   void gameReset();
 
 protected:
-  /** bitBlt´s the rect that has to be updated from the
+  /** bitBlt's the rect that has to be updated from the
   * bufferpixmap on the screen and writes eventually text
   */
   void paintEvent(QPaintEvent *);
