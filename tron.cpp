@@ -311,7 +311,7 @@ void Tron::updatePixmap()
   QPainter p;
   p.begin(pixmap);
 
-  // alle Pixel prüfen und evt. zeichnen
+  // Examine all Pixels and draw
   for(i=0;i<fieldWidth;i++)
      for(j=0;j<fieldHeight;j++)
      {
@@ -831,7 +831,7 @@ void Tron::doMove()
    int i;
    for(i=0;i<2;i++)
    {
-      // Überprüfen, ob Acceleratortaste gedrückt wurde...
+      // Decide if the accelerator key was pressed...
       if(players[i].accelerated)
       {
          updateDirections(i);
