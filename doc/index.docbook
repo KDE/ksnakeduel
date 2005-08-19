@@ -418,6 +418,11 @@ direction.</para></listitem>
 </varlistentry>
 
 <varlistentry>
+<term><guilabel>Player Names</guilabel></term>
+<listitem><para>Specify custom names to use for the players to override the use of default ones.</para></listitem>
+</varlistentry>
+
+<varlistentry>
 <term><guilabel>Speed</guilabel></term>
 <listitem><para>Use this slider to define how fast the snakes move; moving the
 slider to the left will make the snakes move slower, moving it to the right
