@@ -89,7 +89,7 @@ void Tron::loadSettings(){
   // Style
   if(pixmap){
     updatePixmap();
-    repaint();
+    update();
   }
 
   // Backgroundimage
@@ -278,7 +278,7 @@ void Tron::showWinner(Player player)
       updatePixmap();
    }
 
-   repaint();
+   update();
 
    emit gameEnds(player);
 
@@ -584,7 +584,7 @@ void Tron::updateDirections(int playerNr)
 
    }
 
-   repaint();
+   update();
 }
 
 /* *************************************************************** **
@@ -821,7 +821,7 @@ void Tron::showBeginHint()
       if(players[0].score==0 && players[1].score==0)
       {
          beginHint=true;
-         repaint();
+         update();
       }
    }
 }
@@ -922,7 +922,7 @@ void Tron::doMove()
          }
       }
 
-      repaint();
+      update();
 
       // crashtest
       if(!players[0].alive && !players[1].alive)
@@ -1042,7 +1042,7 @@ void Tron::doMove()
          }
    }
 
-   repaint();
+   update();
 
    if(!players[0].alive && !players[1].alive)
    {

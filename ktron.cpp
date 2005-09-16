@@ -43,7 +43,7 @@
 /**
  * Constuctor
  */ 
-KTron::KTron(QWidget *parent, const char *name) : KMainWindow(parent, name) {
+KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   playerPoints[0]=playerPoints[1]=0;
 
   tron=new Tron(this, "Tron");

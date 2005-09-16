@@ -42,7 +42,7 @@ class KTron : public KMainWindow {
 Q_OBJECT
 
 public:
-  KTron(QWidget *parent=0, const char *name=0);
+  KTron(QWidget *parent=0);
 
 private:
   KAccel *accel;
