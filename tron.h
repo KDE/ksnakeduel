@@ -55,7 +55,7 @@ class Tron : public QWidget
   Q_OBJECT
 
 public:
-  Tron(QWidget *parent=0, const char *name=0);
+  Tron(QWidget *parent=0);
   ~Tron();
   void setActionCollection(KActionCollection*);
   void updatePixmap();

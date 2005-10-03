@@ -46,7 +46,7 @@
 KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   playerPoints[0]=playerPoints[1]=0;
 
-  tron=new Tron(this, "Tron");
+  tron=new Tron(this);
   connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
   setCentralWidget(tron);
   tron->setMinimumSize(200,180);

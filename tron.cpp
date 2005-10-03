@@ -49,8 +49,7 @@
  * init-functions
  **/
 
-Tron::Tron(QWidget *parent,const char *name)
-  : QWidget(parent,name)
+Tron::Tron(QWidget *parent) : QWidget(parent)
 {
   pixmap=0;
   playfield=0;
