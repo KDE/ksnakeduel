@@ -24,6 +24,7 @@
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
 #include <klocale.h>
+#include <kglobal.h>
 
 #include "ktron.h"
 #define KTRON_VERSION "1.1"
