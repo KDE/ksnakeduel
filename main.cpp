@@ -19,6 +19,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   ****************************************************************************/  
+
 #include <kapplication.h>
 #include <kimageio.h>
 #include <kcmdlineargs.h>
@@ -27,6 +28,7 @@
 #include <kglobal.h>
 
 #include "ktron.h"
+
 #define KTRON_VERSION "1.1"
 
 static const char description[] = I18N_NOOP("A race in hyperspace");
@@ -39,24 +41,23 @@ int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
     KTRON_VERSION, description, KAboutData::License_GPL, notice);
+  aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Maintainer"), "ben@meyerhome.net");
   aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
-  aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Various improvements"), "ben+ktron@meyerhome.net");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
-  KApplication a;
+  KApplication application;
   KGlobal::locale()->insertCatalog("libkdegames");
   
   // used for loading background pixmaps
   KImageIO::registerFormats();
 
-  if(a.isRestored()){
+  if(application.isSessionRestored()){
      RESTORE(KTron)
   }
   else {
-     KTron *ktron = new KTron();
-     a.setMainWidget(ktron);
-     ktron->show();
+     KTron ktron;
+     ktron.show();
   }
-  return a.exec();
+  return application.exec();
 }
 
