@@ -45,11 +45,7 @@ int main(int argc, char* argv[])
   aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
-  KInstance instance(&aboutData);
-  KGlobal::_instance = &instance;
-  QApplication application(argc, argv);
-  
-  //KApplication application;
+  KApplication application;
   KGlobal::locale()->insertCatalog("libkdegames");
   
   // used for loading background pixmaps
