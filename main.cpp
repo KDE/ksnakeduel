@@ -36,6 +36,8 @@ static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>");
 
+#include <kiconloader.h>
+#include <qicon.h>
 
 int main(int argc, char* argv[])
 {
@@ -45,19 +47,21 @@ int main(int argc, char* argv[])
   aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
+  /*
+  KInstance instance(&aboutData);
+  QApplication application(argc, argv);
+  application.setApplicationName("KTron");
+  QApplication::setWindowIcon(DesktopIcon("ktron"));
+  */
+  
   KApplication application;
   KGlobal::locale()->insertCatalog("libkdegames");
-  
   // used for loading background pixmaps
   KImageIO::registerFormats();
-
-  if(application.isSessionRestored()){
-     RESTORE(KTron)
-  }
-  else {
-     KTron ktron;
-     ktron.show();
-  }
+  
+  KTron ktron;
+  ktron.show();
+  
   return application.exec();
 }
 

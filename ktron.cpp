@@ -27,7 +27,6 @@
 #include <kmessagebox.h>
 #include <kaction.h>
 #include <kstdgameaction.h>
-#include <kapplication.h>
 #include <kstatusbar.h>
 
 // Settings
