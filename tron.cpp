@@ -452,7 +452,7 @@ void Tron::setVelocity(int newVel)            // set new velocity
   velocity=(10-newVel)*15;
 
   if(!gameEnded && !gamePaused)
-    timer->changeInterval(velocity);
+    timer->start(velocity);
 }
 
 void Tron::setComputerplayer(Player player, bool flag) {
