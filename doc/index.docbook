@@ -15,7 +15,7 @@
 <firstname>Fabian</firstname>
 <surname>Dal Santo</surname>
 <affiliation>
-<address><email>linuxgnu@yahoo.com.au</email></address>
+<address>&Fabian.DalSanto.mail;</address>
 </affiliation>
 </author>
 
@@ -23,7 +23,7 @@
 <firstname>Matthias</firstname>
 <surname>Kiefer</surname>
 <affiliation>
-<address><email>matthias.kiefer@gmx.de</email></address>
+<address>&Matthias.Kiefer.mail;</address>
 </affiliation>
 <contrib>Developer</contrib>
 </othercredit>
@@ -32,7 +32,7 @@
 <firstname>Lauri</firstname>
 <surname>Watts</surname>
 <affiliation>
-<address><email>lauri@kde.org</email></address>
+<address>&Lauri.Watts.mail;</address>
 </affiliation>
 <contrib>Reviewer</contrib>
 </othercredit>
@@ -42,17 +42,17 @@
 <copyright>
 <year>1999</year>
 <year>2000</year>
-<holder>Matthias Kiefer</holder>
+<holder>&Matthias.Kiefer;</holder>
 </copyright>
 
 <copyright>
 <year>2001</year>
-<holder>Fabian Dal Santo</holder>
+<holder>&Fabian.Dal.Santo;</holder>
 </copyright>
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2003-09-16</date>
+<date>2005-12-16</date>
 <releaseinfo>1.1</releaseinfo>
 
 <abstract>
@@ -107,14 +107,14 @@ direction is then in this direction.
 
 <para>
 If you want to interrupt playing, select
-<guimenuitem>Pause/Continue</guimenuitem> from the <guimenu>Game</guimenu> menu
-or hit the keyboard shortcut (see section <link linkend="keys">Default Key
-Bindings</link>).  Additionally the game is paused when the game loses the
+<guimenuitem>Pause</guimenuitem> from the <guimenu>Game</guimenu> menu
+or hit the keyboard shortcut (see section <link linkend="keys">Default 
+Shortcuts</link>).  Additionally the game is paused when the game loses the
 keyboard focus, &eg; when switching to an other window.
 </para>
 
 <para>To continue the game, select the menu item
-<guimenuitem>Pause/Continue</guimenuitem> again, or the keyboard shortcut.  The
+<guimenuitem>Pause</guimenuitem> again, or the keyboard shortcut.  The
 game will also continue if the human players press one of their direction keys.
 But be careful, your player switches to this direction immediately.
 </para>
@@ -153,7 +153,7 @@ Menu</link> section for information on how to configure the computer player.
 </sect1>
 
 <sect1 id="using-keyboard">
-<title>Using the keyboard</title>
+<title>Using the Keyboard</title>
 
 <para>
 Each player has five keys. Four keys for changing the direction and one to
@@ -180,7 +180,7 @@ Menu</link> for information how to change the default keys.
 <chapter id="command">
 <title>Command Reference</title>
 
-<para>The following sections briefly describe each menu bar option.</para>
+<para>The following sections briefly describe each menubar option.</para>
 
 <sect1 id="game-menu">
 <title>The <guimenu>Game</guimenu> Menu</title>
@@ -239,7 +239,7 @@ Menu</link> for information how to change the default keys.
 <guimenu>Settings</guimenu>
 <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Displays a standard &kde; key bindings configurator.</action></para></listitem>
+<listitem><para><action>Displays a standard &kde; shortcuts configurator.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -262,13 +262,13 @@ to configure various options.</action></para></listitem>
 </sect1>
 
 <sect1 id="keys">
-<title>Default Key Bindings</title>
+<title>Default Shortcuts</title>
 
-<para>The following tables show you the default key bindings.</para>
+<para>The following tables show you the default shortcuts.</para>
 
 
 <table>
-<title>Player 1 Key bindings</title>
+<title>Player 1 Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -300,7 +300,7 @@ to configure various options.</action></para></listitem>
 </table>
 
 <table>
-<title>Player 2 Key bindings</title>
+<title>Player 2 Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -326,7 +326,7 @@ to configure various options.</action></para></listitem>
 <entry>Left</entry>
 </row>
 <row>
-<entry><keycap>+</keycap></entry>
+<entry><keycap>0</keycap></entry>
 <entry>Accelerate</entry>
 </row>
 </tbody>
@@ -334,7 +334,7 @@ to configure various options.</action></para></listitem>
 </table>
 
 <table>
-<title>General Key Bindings</title>
+<title>General Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -345,7 +345,7 @@ to configure various options.</action></para></listitem>
 <tbody>
 <row>
 <entry><keycap>P</keycap></entry>
-<entry>Pause Game</entry>
+<entry>Pause/Resume Game</entry>
 </row>
 <row>
 <entry>&Ctrl;
@@ -371,8 +371,8 @@ action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo></entry>
 </table>
 
 <para>
-These key bindings can be changed by selecting <menuchoice>
-<guimenu>Settings</guimenu> <guimenuitem>Configure Key Bindings</guimenuitem>
+These shortcuts can be changed by selecting <menuchoice>
+<guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice> from the menubar.
 </para>
 
@@ -397,7 +397,7 @@ you tweak &kappname;'s behavior.</para>
 <varlistentry>
 <term><guilabel>Show winner by changing color</guilabel></term>
 <listitem><para>Enable this box to improve visualizing that the game is over
-by making &kappname; change the color of the loser's trail to the color of
+by making &ktron; change the color of the loser's trail to the color of
 the winner.</para></listitem>
 </varlistentry>
 
@@ -436,7 +436,7 @@ will make them move faster.</para></listitem>
 
 <variablelist>
 <varlistentry>
-<term><guilabel>Computer Control</guilabel></term>
+<term><guilabel>Computer Controls</guilabel></term>
 <listitem><para>Use these two checkable boxes to define which players should
 be controlled by the computer.</para></listitem>
 </varlistentry>
@@ -512,8 +512,8 @@ player.</para></listitem>
 <para>
 &ktron; 
 </para>
-<para>Program Copyright 1999 Matthias Kiefer 
-<email>matthias.kiefer@gmx.de</email>
+<para>Program Copyright 1999 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
 </para>
 
 <para>
@@ -522,12 +522,12 @@ Parts of the code are from xtron-1.1 by Rhett D. Jacobs
 </para>
 
 <para>
-Documentation Copyright 1999 Matthias Kiefer
-<email>matthias.kiefer@gmx.de</email>
+Documentation Copyright 1999 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
 </para>
 
-<para>Documentation updated for KDE 2.0 by Fabian Dal Santo
-<email>linuxgnu@yahoo.com.au</email></para>
+<para>Documentation updated for &kde; 2.0 by &Fabian.Dal.Santo;
+&Fabian.DalSanto.mail;</para>
 
 <!-- TRANS:CREDIT_FOR_TRANSLATORS -->
 &underFDL;
@@ -550,9 +550,8 @@ Documentation Copyright 1999 Matthias Kiefer
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &ktron;, you need &kde; 3.0 All
-required libraries as well as &ktron; itself can be found on <ulink
-url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
+In order to successfully compile &ktron;, you need &kde; 3.0. All
+required libraries as well as &ktron; itself can be found on &kde-ftp;.</para>
 </sect1>
 
 <sect1 id="compilation">
@@ -561,8 +560,7 @@ url="ftp://ftp.kde.org/pub/kde/">ftp://ftp.kde.org/pub/kde/</ulink>.</para>
 &install.compile.documentation;
 
 <para>Should you run into problems, please report them to the the
-author at <ulink url="mailto:matthias.kiefer@gmx.de">Matthias
-Kiefer</ulink>
+author at <ulink url="mailto:matthias.kiefer@gmx.de">&Matthias.Kiefer;</ulink>
 </para>
 
 </sect1>
