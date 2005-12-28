@@ -1,7 +1,7 @@
 [Desktop Entry]
 Encoding=UTF-8
 Type=Application
-Exec=ktron -caption "%c" %i %m
+Exec=ktron -caption "%c"
 Icon=ktron
 DocPath=ktron/index.html
 GenericName=Tron-like Game
