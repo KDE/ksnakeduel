@@ -31,7 +31,7 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QPaintEvent>
-#include <Q3MemArray>
+#include <QVector>
 
 #include <kdebug.h>
 #include <klocale.h>
@@ -141,7 +141,7 @@ void Tron::createNewPlayfield()
   fieldHeight=(height()-2*TRON_FRAMESIZE)/rectSize;
 
   // start positions
-  playfield=new Q3MemArray<int>[fieldWidth];
+  playfield=new QVector<int>[fieldWidth];
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
 

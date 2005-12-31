@@ -35,7 +35,7 @@
 #include <QResizeEvent>
 #include <QKeyEvent>
 #include <QPaintEvent>
-#include <Q3MemArray>
+#include <QVector>
 #include <math.h>
 #include <krandomsequence.h>
 
@@ -101,7 +101,7 @@ private:
   /** Drawing buffer */
   QPixmap *pixmap;
   /** The playingfield */
-  Q3MemArray<int> *playfield;
+  QVector<int> *playfield;
   /** game status flag */
   bool gamePaused;
   /** game status flag */
