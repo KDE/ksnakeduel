@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
   KApplication application;
   KGlobal::locale()->insertCatalog("libkdegames");
   // used for loading background pixmaps
-  KImageIO::registerFormats();
+  
   
   KTron ktron;
   ktron.show();
