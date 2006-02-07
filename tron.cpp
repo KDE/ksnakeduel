@@ -373,7 +373,7 @@ void Tron::drawRect(QPainter & p, int x, int y)
    }
    else
    {
-      kdDebug() << "No player defined in Tron::drawRect(...)" << endl;
+      kDebug() << "No player defined in Tron::drawRect(...)" << endl;
       return;
    }
 
@@ -503,7 +503,7 @@ void Tron::switchDir(int playerNr,Directions::Direction newDirection)
 {
   if(playerNr!=0 && playerNr != 1)
   {
-     kdDebug() << "wrong playerNr" << endl;
+     kDebug() << "wrong playerNr" << endl;
      return;
   }
 
