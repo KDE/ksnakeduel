@@ -130,10 +130,10 @@
                             <property name="name">
                                 <cstring>kcfg_Velocity</cstring>
                             </property>
-                            <property name="minValue">
+                            <property name="minimum">
                                 <number>1</number>
                             </property>
-                            <property name="maxValue">
+                            <property name="maximum">
                                 <number>9</number>
                             </property>
                             <property name="pageStep">

@@ -120,10 +120,10 @@
                             <property name="name">
                                 <cstring>kcfg_RectSize</cstring>
                             </property>
-                            <property name="minValue">
+                            <property name="minimum">
                                 <number>4</number>
                             </property>
-                            <property name="maxValue">
+                            <property name="maximum">
                                 <number>16</number>
                             </property>
                             <property name="lineStep">
