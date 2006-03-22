@@ -22,7 +22,7 @@ kde4_add_kcfg_files(ktron_SRCS settings.kcfgc )
 
 kde4_add_executable(ktron ${ktron_SRCS})
 
-target_link_libraries(ktron  ${LIB_KIO} kdegames )
+target_link_libraries(ktron  ${KDE4_KIO_LIBRARIES} kdegames )
 
 install_targets(/bin ktron )
 
