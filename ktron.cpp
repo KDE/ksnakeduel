@@ -108,7 +108,7 @@ void KTron::updateStatusbar(){
 
     QString name;
     if(tron->isComputer(Both))
-      name=i18n("Computer(%1)").arg(i+1);
+      name=i18n("Computer(%1)", i+1);
     else if(tron->isComputer(player))
       name=i18n("Computer");
     else
@@ -158,12 +158,12 @@ void KTron::showWinner(Player winner){
   if(!tron->isComputer(winner))
     winnerName = playerName[winner];
   
-  QString message=i18n("%1 has won!").arg(winnerName);
+  QString message=i18n("%1 has won!", winnerName);
   statusBar()->message(message,MESSAGE_TIME);
 
-  message = i18n("%1 has won versus %2 with %3 : %4 points!");
-      message=message.arg(winnerName).arg(loserName);
-      message=message.arg(playerPoints[winner]).arg(playerPoints[loser]);
+  message = i18n("%1 has won versus %2 with %3 : %4 points!",
+                 winnerName, loserName,
+                 playerPoints[winner], playerPoints[loser]);
   
   KMessageBox::information(this, message, i18n("Winner"));
   tron->newGame();

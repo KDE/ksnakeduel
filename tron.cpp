@@ -103,8 +103,7 @@ void Tron::loadSettings(){
       if(!pix.isNull()){
         setBackgroundPix(pix);
       } else {
-  	QString msg=i18n("Wasn't able to load wallpaper\n%1");
-	msg=msg.arg(tmpFile);
+  	QString msg=i18n("Wasn't able to load wallpaper\n%1", tmpFile);
 	KMessageBox::sorry(this, msg);
       }
       KIO::NetAccess::removeTempFile(tmpFile);
