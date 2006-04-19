@@ -64,7 +64,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
   gameBlocked=false;
   rectSize=10;
 
-  timer = new QTimer(this,"timer");
+  timer = new QTimer(this);
   loadSettings();
   connect(timer, SIGNAL(timeout()), SLOT(doMove()));
   QTimer::singleShot(15000, this,SLOT(showBeginHint()));
@@ -321,8 +321,8 @@ void Tron::updatePixmap()
      }
 
    // draw frame
-   QColor light=parentWidget()->colorGroup().midlight();
-   QColor dark=parentWidget()->colorGroup().mid();
+   QColor light=parentWidget()->palette().color( QPalette::Midlight );
+   QColor dark=parentWidget()->palette().color( QPalette::Mid );
 
    p.setPen(Qt::NoPen);
    p.setBrush(light);
@@ -1256,7 +1256,7 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
   	  case Settings::EnumSkill::Medium:
   		doPercentage=5;
   		break;
-  		
+
   	  case Settings::EnumSkill::Hard:
   		doPercentage=90;
   		break;

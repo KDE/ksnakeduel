@@ -41,7 +41,7 @@
 
 /**
  * Constuctor
- */ 
+ */
 KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   playerPoints[0]=playerPoints[1]=0;
 
@@ -67,7 +67,7 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   act->setEnabled(false);
   act = new KAction(i18n("Player 1 Accelerator"), Qt::Key_A, 0, 0, actionCollection(), "Pl1Ac");
   act->setEnabled(false);
- 
+
   act = new KAction(i18n("Player 2 Up"), Qt::Key_Up, 0, 0, actionCollection(), "Pl2Up");
   act->setEnabled(false);
   act = new KAction(i18n("Player 2 Down"), Qt::Key_Down, 0, 0, actionCollection(), "Pl2Down");
@@ -97,7 +97,7 @@ void KTron::loadSettings() {
    playerName[1]=Settings::namePlayer2();
    if ( playerName[1].isEmpty() )
        playerName[1] = i18n("Player 2");
-   
+
    updateStatusbar();
 }
 
@@ -125,7 +125,7 @@ void KTron::changeStatus(Player player) {
     updateStatusbar();
     return;
   }
-  
+
   if(player==One)
     playerPoints[0]++;
   else if(player==Two)
@@ -153,18 +153,18 @@ void KTron::showWinner(Player winner){
     loser = One;
   if(!tron->isComputer(((Player)loser)))
     loserName = playerName[loser];
-  
+
   QString winnerName = i18n("KTron");
   if(!tron->isComputer(winner))
     winnerName = playerName[winner];
-  
+
   QString message=i18n("%1 has won!", winnerName);
-  statusBar()->message(message,MESSAGE_TIME);
+  statusBar()->showMessage(message,MESSAGE_TIME);
 
   message = i18n("%1 has won versus %2 with %3 : %4 points!",
                  winnerName, loserName,
                  playerPoints[winner], playerPoints[loser]);
-  
+
   KMessageBox::information(this, message, i18n("Winner"));
   tron->newGame();
 }
@@ -181,7 +181,7 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/){
 void KTron::showSettings(){
   if(KConfigDialog::showDialog("settings"))
     return;
-  
+
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General(0, "General"), i18n("General"), "package_settings");
   dialog->addPage(new Ai(0, "Ai"), i18n("A.I."), "personal");
