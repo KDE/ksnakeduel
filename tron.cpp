@@ -59,7 +59,6 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
   random.setSeed(0);
 
   setFocusPolicy(Qt::StrongFocus);
-  setBackgroundMode(Qt::NoBackground);
 
   gameBlocked=false;
   rectSize=10;
@@ -294,21 +293,21 @@ void Tron::updatePixmap()
 {
   int i,j;
 
+  QPainter p;
+  p.begin(pixmap);
+
   if(!bgPix.isNull())
   {
      int pw=bgPix.width();
      int ph=bgPix.height();
      for (int x = 0; x <= width(); x+=pw)
         for (int y = 0; y <= height(); y+=ph)
-	    bitBlt(pixmap, x, y, &bgPix);
+	    p.drawPixmap(x, y, bgPix);
   }
   else
   {
     pixmap->fill(Settings::color_Background());
   }
-
-  QPainter p;
-  p.begin(pixmap);
 
   // Examine all Pixels and draw
   for(i=0;i<fieldWidth;i++)
@@ -591,13 +590,13 @@ void Tron::updateDirections(int playerNr)
 
 void Tron::paintEvent(QPaintEvent *e)
 {
-   bitBlt(this,e->rect().topLeft(),pixmap,e->rect());
+   QPainter p(this);
+   p.drawPixmap(e->rect().topLeft(), *pixmap, e->rect());
 
    // if game is paused, print message
    if(gamePaused)
    {
       QString message=i18n("Game paused");
-      QPainter p(this);
       QFontMetrics fm=p.fontMetrics();
       int w=fm.width(message);
       p.drawText(width()/2-w/2,height()/2,message);
@@ -607,7 +606,6 @@ void Tron::paintEvent(QPaintEvent *e)
    else if(gameEnded)
    {
       QString message=i18n("Crash!");
-      QPainter p(this);
       int w=p.fontMetrics().width(message);
       int h=p.fontMetrics().height();
       for(int i=0;i<2;i++)
