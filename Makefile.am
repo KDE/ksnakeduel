@@ -18,5 +18,3 @@ METASOURCES = AUTO
 rcdir = $(kde_datadir)/ktron
 rc_DATA = ktronui.rc
 
-messages: rc.cpp
-	$(XGETTEXT) *.cpp -o $(podir)/ktron.pot
