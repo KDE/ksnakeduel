@@ -57,26 +57,36 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   // We match up keyboard events ourselves in Tron::keyPressEvent()
   // We must disable the actions, otherwise we don't get the keyPressEvent's
   KAction *act;
-  act = new KAction(i18n("Player 1 Up"), Qt::Key_R, 0, 0, actionCollection(), "Pl1Up");
+  act = new KAction(i18n("Player 1 Up"), actionCollection(), "Pl1Up");
+  act->setShortcut(Qt::Key_R);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Down"), Qt::Key_F, 0, 0, actionCollection(), "Pl1Down");
+  act = new KAction(i18n("Player 1 Down"), actionCollection(), "Pl1Down");
+  act->setShortcut(Qt::Key_F);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Right"), Qt::Key_G, 0, 0, actionCollection(), "Pl1Right");
+  act = new KAction(i18n("Player 1 Right"), actionCollection(), "Pl1Right");
+  act->setShortcut(Qt::Key_G);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Left"), Qt::Key_D, 0, 0, actionCollection(), "Pl1Left");
+  act = new KAction(i18n("Player 1 Left"), actionCollection(), "Pl1Left");
+  act->setShortcut(Qt::Key_D);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Accelerator"), Qt::Key_A, 0, 0, actionCollection(), "Pl1Ac");
+  act = new KAction(i18n("Player 1 Accelerator"), actionCollection(), "Pl1Ac");
+  act->setShortcut(Qt::Key_A);
   act->setEnabled(false);
 
-  act = new KAction(i18n("Player 2 Up"), Qt::Key_Up, 0, 0, actionCollection(), "Pl2Up");
+  act = new KAction(i18n("Player 2 Up"), actionCollection(), "Pl2Up");
+  act->setShortcut(Qt::Key_Up);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Down"), Qt::Key_Down, 0, 0, actionCollection(), "Pl2Down");
+  act = new KAction(i18n("Player 2 Down"), actionCollection(), "Pl2Down");
+  act->setShortcut(Qt::Key_Down);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Right"), Qt::Key_Right, 0, 0, actionCollection(), "Pl2Right");
+  act = new KAction(i18n("Player 2 Right"), actionCollection(), "Pl2Right");
+  act->setShortcut(Qt::Key_Right);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Left"), Qt::Key_Left, 0, 0, actionCollection(), "Pl2Left");
+  act = new KAction(i18n("Player 2 Left"), actionCollection(), "Pl2Left");
+  act->setShortcut(Qt::Key_Left);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Accelerator"), Qt::Key_0, 0, 0, actionCollection(), "Pl2Ac");
+  act = new KAction(i18n("Player 2 Accelerator"), actionCollection(), "Pl2Ac");
+  act->setShortcut(Qt::Key_0);
   act->setEnabled(false);
 
   tron->setActionCollection(actionCollection());
