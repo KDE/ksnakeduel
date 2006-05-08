@@ -39,7 +39,8 @@
 #include <kconfig.h>
 #include <kcolordialog.h>
 #include <kaction.h>
-
+#include <kactioncollection.h>
+#include <kstdaction.h>
 #include "settings.h"
 #include "tron.h"
 

@@ -28,6 +28,7 @@
 #include <kaction.h>
 #include <kstdgameaction.h>
 #include <kstatusbar.h>
+#include <kstdaction.h>
 
 // Settings
 #include "settings.h"
