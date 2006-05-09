@@ -27,7 +27,7 @@
 #include <config.h>
 #endif
 
-#include <qwidget.h>
+#include <QWidget>
 #include <qpainter.h>
 #include <qpixmap.h>
 //Added by qt3to4:
