@@ -24,7 +24,7 @@
 #include <kmessagebox.h>
 
 // Normal class
-#include <qtimer.h>
+#include <QTimer>
 //Added by qt3to4:
 #include <QPixmap>
 #include <QFocusEvent>
