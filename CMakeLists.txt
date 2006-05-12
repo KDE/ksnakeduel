@@ -1,4 +1,3 @@
-kde4_header()
 project(ktron)
 
 add_subdirectory( pics ) 
@@ -33,7 +32,6 @@ install_files( ${XDG_APPS_DIR} FILES ktron.desktop )
 install_files( ${KCFG_INSTALL_DIR} FILES ktron.kcfg )
 install_files( ${DATA_INSTALL_DIR}/ktron FILES ktronui.rc )
 
-kde4_footer()
 
 
 
