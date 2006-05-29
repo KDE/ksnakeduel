@@ -59,9 +59,6 @@
            </property>
           </widget>
          </item>
-         <item row="0" column="1" >
-          <widget class="KColorButton" name="kcfg_Color_Background" />
-         </item>
          <item row="0" column="0" >
           <widget class="QRadioButton" name="BackgroundColorChoice" >
            <property name="text" >
@@ -72,14 +69,22 @@
            </property>
           </widget>
          </item>
+         <item row="0" column="1" >
+          <widget class="KColorButton" name="kcfg_Color_Background" >
+           <property name="color" >
+            <color>
+             <red>0</red>
+             <green>0</green>
+             <blue>0</blue>
+            </color>
+           </property>
+          </widget>
+         </item>
          <item row="1" column="1" >
           <widget class="KUrlRequester" name="kcfg_BackgroundImage" />
          </item>
         </layout>
        </widget>
-      </item>
-      <item row="3" column="1" >
-       <widget class="KColorButton" name="kcfg_Color_Player1" />
       </item>
       <item row="0" column="0" >
        <widget class="QLabel" name="label" >
@@ -189,9 +194,6 @@
         </property>
        </widget>
       </item>
-      <item row="4" column="1" >
-       <widget class="KColorButton" name="kcfg_Color_Player2" />
-      </item>
       <item row="4" column="0" >
        <widget class="QLabel" name="label_6" >
         <property name="text" >
@@ -211,6 +213,28 @@
          </size>
         </property>
        </spacer>
+      </item>
+      <item row="3" column="1" >
+       <widget class="KColorButton" name="kcfg_Color_Player1" >
+        <property name="color" >
+         <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </property>
+       </widget>
+      </item>
+      <item row="4" column="1" >
+       <widget class="KColorButton" name="kcfg_Color_Player2" >
+        <property name="color" >
+         <color>
+          <red>0</red>
+          <green>0</green>
+          <blue>0</blue>
+         </color>
+        </property>
+       </widget>
       </item>
      </layout>
     </widget>
