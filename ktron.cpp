@@ -32,13 +32,43 @@
 
 // Settings
 #include "settings.h"
-#include "general.h"
-#include "ai.h"
-#include "appearance.h"
+#include "ui_general.h"
+#include "ui_ai.h"
+#include "ui_appearance.h"
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
 #define WINNING_DIFF 5
+
+class Ai : public QWidget, public Ui::Ai
+{
+public:
+    Ai(QWidget* parent = 0)
+        : QWidget(parent)
+        {
+            setupUi(this);
+        }
+};
+
+class General : public QWidget, public Ui::General
+{
+public:
+    General(QWidget* parent = 0)
+        : QWidget(parent)
+        {
+            setupUi(this);
+        }
+};
+
+class Appearance : public QWidget, public Ui::Appearance
+{
+public:
+    Appearance(QWidget* parent = 0)
+        : QWidget(parent)
+        {
+            setupUi(this);
+        }
+};
 
 /**
  * Constuctor
@@ -194,9 +224,9 @@ void KTron::showSettings(){
     return;
 
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
-  dialog->addPage(new General(0, "General"), i18n("General"), "package_settings");
-  dialog->addPage(new Ai(0, "Ai"), i18n("A.I."), "personal");
-  dialog->addPage(new Appearance(0, "Appearance"), i18n("Appearance"), "style");
+  dialog->addPage(new General, i18n("General"), "package_settings");
+  dialog->addPage(new Ai, i18n("A.I."), "personal");
+  dialog->addPage(new Appearance, i18n("Appearance"), "style");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
   dialog->show();

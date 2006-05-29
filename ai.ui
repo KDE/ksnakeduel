@@ -1,141 +1,132 @@
-<!DOCTYPE UI><UI version="3.1" stdsetdef="1">
-<class>Ai</class>
-<widget class="QWidget">
-    <property name="name">
-        <cstring>Ai</cstring>
-    </property>
-    <property name="geometry">
-        <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>302</width>
-            <height>168</height>
-        </rect>
-    </property>
-    <vbox>
-        <property name="name">
-            <cstring>unnamed</cstring>
+<ui version="4.0" >
+ <author></author>
+ <comment></comment>
+ <exportmacro></exportmacro>
+ <class>Ai</class>
+ <widget class="QWidget" name="Ai" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>269</width>
+    <height>181</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Form</string>
+  </property>
+  <layout class="QVBoxLayout" >
+   <property name="margin" >
+    <number>0</number>
+   </property>
+   <property name="spacing" >
+    <number>0</number>
+   </property>
+   <item>
+    <widget class="QFrame" name="frame" >
+     <property name="frameShape" >
+      <enum>QFrame::StyledPanel</enum>
+     </property>
+     <property name="frameShadow" >
+      <enum>QFrame::Raised</enum>
+     </property>
+     <layout class="QGridLayout" >
+      <property name="margin" >
+       <number>9</number>
+      </property>
+      <property name="spacing" >
+       <number>6</number>
+      </property>
+      <item row="1" column="2" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Horizontal</enum>
         </property>
-        <property name="margin">
-            <number>0</number>
+        <property name="sizeHint" >
+         <size>
+          <width>89</width>
+          <height>23</height>
+         </size>
         </property>
-        <property name="spacing">
-            <number>0</number>
+       </spacer>
+      </item>
+      <item row="2" column="1" >
+       <spacer>
+        <property name="orientation" >
+         <enum>Qt::Vertical</enum>
         </property>
-        <widget class="QFrame">
-            <property name="name">
-                <cstring>frame9</cstring>
-            </property>
-            <property name="frameShape">
-                <enum>StyledPanel</enum>
-            </property>
-            <property name="frameShadow">
-                <enum>Raised</enum>
-            </property>
-            <property name="lineWidth">
-                <number>0</number>
-            </property>
-            <grid>
-                <property name="name">
-                    <cstring>unnamed</cstring>
-                </property>
-                <widget class="QGroupBox" row="0" column="0" rowspan="1" colspan="3">
-                    <property name="name">
-                        <cstring>groupBox3</cstring>
-                    </property>
-                    <property name="title">
-                        <string>Computer Controls</string>
-                    </property>
-                    <hbox>
-                        <property name="name">
-                            <cstring>unnamed</cstring>
-                        </property>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>kcfg_Computerplayer1</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player &amp;1</string>
-                            </property>
-                        </widget>
-                        <widget class="QCheckBox">
-                            <property name="name">
-                                <cstring>kcfg_Computerplayer2</cstring>
-                            </property>
-                            <property name="text">
-                                <string>Player &amp;2</string>
-                            </property>
-                        </widget>
-                    </hbox>
-                </widget>
-                <spacer row="1" column="2">
-                    <property name="name">
-                        <cstring>spacer2_2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>101</width>
-                            <height>20</height>
-                        </size>
-                    </property>
-                </spacer>
-                <widget class="QLabel" row="1" column="0">
-                    <property name="name">
-                        <cstring>textLabel15</cstring>
-                    </property>
-                    <property name="text">
-                        <string>Intelligence:</string>
-                    </property>
-                </widget>
-                <widget class="QComboBox" row="1" column="1">
-                    <item>
-                        <property name="text">
-                            <string>Beginner</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Average</string>
-                        </property>
-                    </item>
-                    <item>
-                        <property name="text">
-                            <string>Expert</string>
-                        </property>
-                    </item>
-                    <property name="name">
-                        <cstring>kcfg_Skill</cstring>
-                    </property>
-                    <property name="currentItem">
-                        <number>1</number>
-                    </property>
-                </widget>
-                <spacer row="2" column="1">
-                    <property name="name">
-                        <cstring>spacer2</cstring>
-                    </property>
-                    <property name="orientation">
-                        <enum>Qt::Vertical</enum>
-                    </property>
-                    <property name="sizeType">
-                        <enum>Expanding</enum>
-                    </property>
-                    <property name="sizeHint">
-                        <size>
-                            <width>20</width>
-                            <height>60</height>
-                        </size>
-                    </property>
-                </spacer>
-            </grid>
-        </widget>
-    </vbox>
-</widget>
-<layoutdefaults spacing="6" margin="11"/>
-</UI>
+        <property name="sizeHint" >
+         <size>
+          <width>77</width>
+          <height>63</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item row="1" column="1" >
+       <widget class="QComboBox" name="kcfg_Skill" >
+        <property name="currentIndex" >
+         <number>1</number>
+        </property>
+        <item>
+         <property name="text" >
+          <string>Beginner</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Average</string>
+         </property>
+        </item>
+        <item>
+         <property name="text" >
+          <string>Expert</string>
+         </property>
+        </item>
+       </widget>
+      </item>
+      <item row="1" column="0" >
+       <widget class="QLabel" name="label" >
+        <property name="text" >
+         <string>Intelligence:</string>
+        </property>
+       </widget>
+      </item>
+      <item row="0" column="0" colspan="3" >
+       <widget class="QGroupBox" name="groupBox" >
+        <property name="title" >
+         <string>Computer controls</string>
+        </property>
+        <layout class="QHBoxLayout" >
+         <property name="margin" >
+          <number>9</number>
+         </property>
+         <property name="spacing" >
+          <number>6</number>
+         </property>
+         <item>
+          <widget class="QCheckBox" name="kcfg_Computerplayer1" >
+           <property name="text" >
+            <string>Player &amp;1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QCheckBox" name="kcfg_Computerplayer2" >
+           <property name="text" >
+            <string>Player &amp;2</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
+      </item>
+     </layout>
+    </widget>
+   </item>
+  </layout>
+ </widget>
+ <pixmapfunction></pixmapfunction>
+ <resources/>
+ <connections/>
+</ui>
