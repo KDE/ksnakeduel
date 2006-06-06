@@ -348,9 +348,7 @@ to configure various options.</action></para></listitem>
 <entry>Pause/Resume Game</entry>
 </row>
 <row>
-<entry>&Ctrl;
-<keycap>N</keycap>
-</entry>
+<entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
 <entry>New Game</entry>
 </row>
 <row>
