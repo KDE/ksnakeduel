@@ -28,9 +28,9 @@ install_targets(/bin ktron )
 
 ########### install files ###############
 
-install_files( ${XDG_APPS_DIR} FILES ktron.desktop )
-install_files( ${KCFG_INSTALL_DIR} FILES ktron.kcfg )
-install_files( ${DATA_INSTALL_DIR}/ktron FILES ktronui.rc )
+install( FILES ktron.desktop  DESTINATION  ${XDG_APPS_DIR} )
+install( FILES ktron.kcfg  DESTINATION  ${KCFG_INSTALL_DIR} )
+install( FILES ktronui.rc  DESTINATION  ${DATA_INSTALL_DIR}/ktron )
 
 
 
