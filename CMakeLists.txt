@@ -23,7 +23,7 @@ kde4_add_executable(ktron ${ktron_SRCS})
 
 target_link_libraries(ktron  ${KDE4_KIO_LIBS} kdegames )
 
-install_targets(/bin ktron )
+install(TARGETS ktron  DESTINATION ${BIN_INSTALL_DIR} )
 
 
 ########### install files ###############
