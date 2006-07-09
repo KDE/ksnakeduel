@@ -348,9 +348,7 @@ to configure various options.</action></para></listitem>
 <entry>Pause/Resume Game</entry>
 </row>
 <row>
-<entry>&Ctrl;
-<keycap>N</keycap>
-</entry>
+<entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
 <entry>New Game</entry>
 </row>
 <row>
@@ -404,14 +402,14 @@ the winner.</para></listitem>
 <varlistentry>
 <term><guilabel>Disable acceleration</guilabel></term>
 <listitem><para>Checking this box will disable the acceleration feature - 
-pressing the acceleration key will have no effect, both snakes will always
+pressing the acceleration key will have no effect, both vehicles will always
 travel with constant velocity.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Crash when moving in the opposite direction</guilabel></term>
-<listitem><para>Enable this to make a snake crash into itself as soon as a
-player attempts to move into the opposite direction (&ie; a snake moves left,
+<listitem><para>Enable this to make a vehicle crash into itself as soon as a
+player attempts to move into the opposite direction (&ie; a vehicle moves left,
 and the player tries to move to the right in one step). If this box is
 not checked, nothing happens when a player attempts to move into the opposite
 direction.</para></listitem>
@@ -424,8 +422,8 @@ direction.</para></listitem>
 
 <varlistentry>
 <term><guilabel>Speed</guilabel></term>
-<listitem><para>Use this slider to define how fast the snakes move; moving the
-slider to the left will make the snakes move slower, moving it to the right
+<listitem><para>Use this slider to define how fast the vehicles move; moving the
+slider to the left will make the vehicles move slower, moving it to the right
 will make them move faster.</para></listitem>
 </varlistentry>
 </variablelist>
@@ -461,7 +459,7 @@ opponent.</para></listitem>
 <varlistentry>
 <term><guilabel>Line style:</guilabel></term>
 <listitem><para>Here you can choose one of four different line styles to be
-used for drawing the snakes. The names of the styles are self-explanatory:
+used for drawing the vehicles. The names of the styles are self-explanatory:
 <guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rectangles</guimenuitem>,
 <guimenuitem>Flat</guimenuitem> and <guimenuitem>Circles</guimenuitem>.</para>
 </listitem>
@@ -469,7 +467,7 @@ used for drawing the snakes. The names of the styles are self-explanatory:
 
 <varlistentry>
 <term><guilabel>Line Size</guilabel></term>
-<listitem><para>Use this slider to define how broad the trail of a snake should
+<listitem><para>Use this slider to define how broad the trail of a vehicle should
 be. Moving the slider towards the left will make the trail more narrow, moving
 it to the right will result in a wider trail.</para></listitem>
 </varlistentry>
@@ -491,14 +489,14 @@ file-selection dialog.</para>
 <varlistentry>
 <term><guilabel>Player 1 color:</guilabel></term>
 <listitem><para>Click on the colored rectangle to open a color-selection dialog
-which lets you define the color to be used for the snake of the first
+which lets you define the color to be used for the vehicle of the first
 player.</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><guilabel>Player 2 color:</guilabel></term>
 <listitem><para>Click on the colored rectangle to open a color-selection dialog
-which lets you define the color to be used for the snake of the second
+which lets you define the color to be used for the vehicle of the second
 player.</para></listitem>
 </varlistentry>
 </variablelist>
