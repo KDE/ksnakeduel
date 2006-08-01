@@ -28,15 +28,7 @@
 #endif
 
 #include <QWidget>
-#include <qpainter.h>
-#include <qpixmap.h>
-//Added by qt3to4:
-#include <QFocusEvent>
-#include <QResizeEvent>
-#include <QKeyEvent>
-#include <QPaintEvent>
-#include <QVector>
-#include <math.h>
+#include <QPixmap>
 #include <krandomsequence.h>
 
 class KActionCollection;
@@ -59,7 +51,7 @@ public:
   ~Tron();
   void setActionCollection(KActionCollection*);
   void updatePixmap();
-  void setBackgroundPix(QPixmap);
+  void setBackgroundPix(const QPixmap&);
   void setComputerplayer(Player player, bool);
   bool isComputer(Player player);
   void setVelocity(int);

@@ -25,8 +25,7 @@
 
 // Normal class
 #include <QTimer>
-//Added by qt3to4:
-#include <QPixmap>
+#include <QPainter>
 #include <QFocusEvent>
 #include <QResizeEvent>
 #include <QKeyEvent>
@@ -435,7 +434,7 @@ void Tron::setActionCollection(KActionCollection *a)
    actionCollection = a;
 }
 
-void Tron::setBackgroundPix(QPixmap pix)
+void Tron::setBackgroundPix(const QPixmap &pix)
 {
     bgPix=pix;
 
