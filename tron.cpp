@@ -91,8 +91,7 @@ void Tron::loadSettings(){
   }
 
   // Backgroundimage
-#warning commented this because with it it crashed
-//  setBackgroundPix(NULL);
+  setBackgroundPix(QPixmap());
   if(Settings::backgroundImageChoice()){
     KUrl url ( Settings::backgroundImage() );
     if(!url.isEmpty()){
@@ -107,8 +106,7 @@ void Tron::loadSettings(){
       }
       KIO::NetAccess::removeTempFile(tmpFile);
     }
-#warning commented this because with it it crashed
-  //  else setBackgroundPix(NULL);
+    else setBackgroundPix(QPixmap());
   }
   setComputerplayer(One, Settings::computerplayer1());
   setComputerplayer(Two, Settings::computerplayer2());
@@ -116,23 +114,17 @@ void Tron::loadSettings(){
 
 Tron::~Tron()
 {
-  if(playfield)
-    {
-      delete []  playfield;
-    }
-  if(pixmap)
-    delete pixmap;
+  delete[]  playfield;
+  delete pixmap;
   delete timer;
 
 }
 
 void Tron::createNewPlayfield()
 {
-  if(playfield)
-    delete [] playfield;
+  delete[] playfield;
 
-  if(pixmap)
-    delete pixmap;
+  delete pixmap;
 
   // field size
   fieldWidth=(width()-2*TRON_FRAMESIZE)/rectSize;
