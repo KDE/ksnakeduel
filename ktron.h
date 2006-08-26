@@ -23,9 +23,7 @@
 #ifndef KTRON_H
 #define KTRON_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 #include <kmainwindow.h>
 #include "tron.h"

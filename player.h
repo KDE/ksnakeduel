@@ -23,9 +23,7 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
-#ifdef HAVE_CONFIG_H
 #include <config.h>
-#endif
 
 namespace Directions
 {
