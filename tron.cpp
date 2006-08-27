@@ -32,7 +32,6 @@
 #include <QPaintEvent>
 #include <QVector>
 
-#include <kdebug.h>
 #include <klocale.h>
 #include <kapplication.h>
 #include <kconfig.h>
@@ -351,19 +350,19 @@ void Tron::drawRect(QPainter & p, int x, int y)
    // find out which color to draw
    QColor toDraw;
    int player;
-   if(type&PLAYER1) // check player bit
+   if(type & PLAYER1) // check player bit
    {
       toDraw=Settings::color_Player1();
       player=0;
    }
-   else if(type&PLAYER2)
+   else if(type & PLAYER2)
    {
       toDraw=Settings::color_Player2();
       player=1;
    }
    else
    {
-      kDebug() << "No player defined in Tron::drawRect(...)" << endl;
+      Q_ASSERT_X(true, "Tron::drawRect", "No player defined in Tron::drawRect(...)");
       return;
    }
 
@@ -489,11 +488,11 @@ bool Tron::crashed(int playerNr,int xInc, int yInc) const
   return flag;
 }
 
-void Tron::switchDir(int playerNr,Directions::Direction newDirection)
+void Tron::switchDir(int playerNr, Directions::Direction newDirection)
 {
-  if(playerNr!=0 && playerNr != 1)
+  if(playerNr !=0 && playerNr != 1)
   {
-     kDebug() << "wrong playerNr" << endl;
+     Q_ASSERT_X(true, "Tron::switchDir", "wrong playerNr");
      return;
   }
 
