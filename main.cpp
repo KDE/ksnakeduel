@@ -58,9 +58,8 @@ int main(int argc, char* argv[])
   KGlobal::locale()->insertCatalog("libkdegames");
   // used for loading background pixmaps
   
-  
-  KTron ktron;
-  ktron.show();
+  KTron* ktron = new KTron;
+  ktron->show();
   
   return application.exec();
 }
