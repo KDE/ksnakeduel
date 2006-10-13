@@ -17,7 +17,7 @@ kde4_automoc(ktron ${ktron_SRCS})
 
 kde4_add_ui_files(ktron_SRCS ai.ui appearance.ui general.ui )
 
-kde4_add_kcfg_files(ktron_SRCS settings.kcfgc )
+kde4_add_kcfg_files(ktron ktron_SRCS settings.kcfgc )
 
 kde4_add_executable(ktron ${ktron_SRCS})
 
