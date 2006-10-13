@@ -13,7 +13,7 @@ set(ktron_SRCS
    ktron.cpp 
    main.cpp )
 
-kde4_automoc(${ktron_SRCS})
+kde4_automoc(ktron ${ktron_SRCS})
 
 kde4_add_ui_files(ktron_SRCS ai.ui appearance.ui general.ui )
 
