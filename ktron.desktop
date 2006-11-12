@@ -11,5 +11,5 @@ Terminal=false
 Name=KTron
 Name[x-test]=xxKTronxx
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
+X-DBUS-StartupType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
