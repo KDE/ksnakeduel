@@ -255,7 +255,7 @@ to configure various options.</action></para></listitem>
 </sect1>
 
 <sect1 id="help">
-<title>The <guimenuitem>Help</guimenuitem> Menu</title>
+<title>The <guimenu>Help</guimenu> Menu</title>
 
 &help.menu.documentation;
 
