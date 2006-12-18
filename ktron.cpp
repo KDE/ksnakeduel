@@ -28,7 +28,7 @@
 #include <kaction.h>
 #include <kstdgameaction.h>
 #include <kstatusbar.h>
-#include <kstdaction.h>
+#include <kstandardaction.h>
 
 // Settings
 #include "settings.h"
@@ -125,7 +125,7 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
   KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
   KStdGameAction::quit(this, SLOT( close() ), actionCollection());
-  KStdAction::preferences(this, SLOT(showSettings()), actionCollection());
+  KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 
   setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
   loadSettings();
