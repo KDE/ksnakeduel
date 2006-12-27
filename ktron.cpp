@@ -26,7 +26,7 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <kstdgameaction.h>
+#include <kstandardgameaction.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
 
@@ -122,9 +122,9 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
 
   tron->setActionCollection(actionCollection());
 
-  KStdGameAction::pause(tron, SLOT(togglePause()), actionCollection());
-  KStdGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
-  KStdGameAction::quit(this, SLOT( close() ), actionCollection());
+  KStandardGameAction::pause(tron, SLOT(togglePause()), actionCollection());
+  KStandardGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
+  KStandardGameAction::quit(this, SLOT( close() ), actionCollection());
   KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 
   setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
