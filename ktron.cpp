@@ -29,6 +29,8 @@
 #include <kstandardgameaction.h>
 #include <kstatusbar.h>
 #include <kstandardaction.h>
+#include <ktoggleaction.h>
+#include <kactioncollection.h>
 
 // Settings
 #include "settings.h"
@@ -87,45 +89,59 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
 
   // We match up keyboard events ourselves in Tron::keyPressEvent()
   // We must disable the actions, otherwise we don't get the keyPressEvent's
-  KAction *act;
-  act = new KAction(i18n("Player 1 Up"), actionCollection(), "Pl1Up");
+  QAction *act;
+  act = actionCollection()->addAction("Pl1Up");
+  act->setText(i18n("Player 1 Up"));
   act->setShortcut(Qt::Key_R);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Down"), actionCollection(), "Pl1Down");
+  act = actionCollection()->addAction("Pl1Down");
+  act->setText(i18n("Player 1 Down"));
   act->setShortcut(Qt::Key_F);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Right"), actionCollection(), "Pl1Right");
+  act = actionCollection()->addAction("Pl1Right");
+  act->setText(i18n("Player 1 Right"));
   act->setShortcut(Qt::Key_G);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Left"), actionCollection(), "Pl1Left");
+  act = actionCollection()->addAction("Pl1Left");
+  act->setText(i18n("Player 1 Left"));
   act->setShortcut(Qt::Key_D);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 1 Accelerator"), actionCollection(), "Pl1Ac");
+  act = actionCollection()->addAction("Pl1Ac");
+  act->setText(i18n("Player 1 Accelerator"));
   act->setShortcut(Qt::Key_A);
   act->setEnabled(false);
 
-  act = new KAction(i18n("Player 2 Up"), actionCollection(), "Pl2Up");
+  act = actionCollection()->addAction("Pl2Up");
+  act->setText(i18n("Player 2 Up"));
   act->setShortcut(Qt::Key_Up);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Down"), actionCollection(), "Pl2Down");
+  act = actionCollection()->addAction("Pl2Down");
+  act->setText(i18n("Player 2 Down"));
   act->setShortcut(Qt::Key_Down);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Right"), actionCollection(), "Pl2Right");
+  act = actionCollection()->addAction("Pl2Right");
+  act->setText(i18n("Player 2 Right"));
   act->setShortcut(Qt::Key_Right);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Left"), actionCollection(), "Pl2Left");
+  act = actionCollection()->addAction("Pl2Left");
+  act->setText(i18n("Player 2 Left"));
   act->setShortcut(Qt::Key_Left);
   act->setEnabled(false);
-  act = new KAction(i18n("Player 2 Accelerator"), actionCollection(), "Pl2Ac");
+  act = actionCollection()->addAction("Pl2Ac");
+  act->setText(i18n("Player 2 Accelerator"));
   act->setShortcut(Qt::Key_0);
   act->setEnabled(false);
 
   tron->setActionCollection(actionCollection());
 
-  KStandardGameAction::pause(tron, SLOT(togglePause()), actionCollection());
-  KStandardGameAction::gameNew( tron, SLOT( newGame() ), actionCollection() );
-  KStandardGameAction::quit(this, SLOT( close() ), actionCollection());
-  KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+  act = KStandardGameAction::pause(tron, SLOT(togglePause()), this);
+  actionCollection()->addAction(act->objectName(), act);
+  act = KStandardGameAction::gameNew(tron, SLOT( newGame() ), this);
+  actionCollection()->addAction(act->objectName(), act);
+  act = KStandardGameAction::quit(this, SLOT( close() ), this);
+  actionCollection()->addAction(act->objectName(), act);
+  act = KStandardAction::preferences(this, SLOT(showSettings()), this);
+  actionCollection()->addAction(act->objectName(), act);
 
   setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
   loadSettings();
