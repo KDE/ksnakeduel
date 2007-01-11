@@ -33,7 +33,6 @@
 #include <QVector>
 
 #include <klocale.h>
-#include <kapplication.h>
 #include <kconfig.h>
 #include <kcolordialog.h>
 #include <kaction.h>
