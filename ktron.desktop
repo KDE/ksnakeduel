@@ -6,6 +6,7 @@ Icon=ktron
 DocPath=ktron/index.html
 GenericName=Tron-like Game
 GenericName[fr]=Jeu dans le style de Tron
+GenericName[ja]=トロンのようなゲーム
 GenericName[x-test]=xxTron-like Gamexx
 Terminal=false
 Name=KTron
