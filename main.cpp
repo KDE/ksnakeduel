@@ -48,7 +48,7 @@ int main(int argc, char* argv[])
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   /*
-  KInstance instance(&aboutData);
+  KComponentData componentData(&aboutData);
   QApplication application(argc, argv);
   application.setApplicationName("KTron");
   QApplication::setWindowIcon(DesktopIcon("ktron"));
