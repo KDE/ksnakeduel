@@ -75,7 +75,7 @@ public:
 /**
  * Constuctor
  */
-KTron::KTron(QWidget *parent) : KMainWindow(parent) {
+KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent) {
   playerPoints[0]=playerPoints[1]=0;
 
   tron=new Tron(this);
@@ -143,7 +143,7 @@ KTron::KTron(QWidget *parent) : KMainWindow(parent) {
   act = KStandardAction::preferences(this, SLOT(showSettings()), this);
   actionCollection()->addAction(act->objectName(), act);
 
-  setupGUI( KMainWindow::Keys | StatusBar | Save | Create);
+  setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
   loadSettings();
 }
 

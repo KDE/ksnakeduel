@@ -23,7 +23,7 @@
 #ifndef KTRON_H
 #define KTRON_H
 
-#include <kmainwindow.h>
+#include <kxmlguiwindow.h>
 #include "tron.h"
 
 class KAccel;
@@ -33,7 +33,7 @@ class Tron;
 /**
  * @short The main window of KTron
  */
-class KTron : public KMainWindow {
+class KTron : public KXmlGuiWindow {
 
 Q_OBJECT
 
