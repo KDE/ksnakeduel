@@ -5,6 +5,7 @@ Exec=ktron -caption "%c"
 Icon=ktron
 DocPath=ktron/index.html
 GenericName=Tron-like Game
+GenericName[bg]=Игра подобна на Tron
 GenericName[br]=C'hoari doare Tron
 GenericName[de]=Tron-ähnliches Spiel
 GenericName[el]=Παιχνίδι τύπου Tron
