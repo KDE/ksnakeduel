@@ -27,7 +27,6 @@
 #include "tron.h"
 
 class KAccel;
-class KSelectAction;
 class Tron;
 
 /**
