@@ -41,10 +41,10 @@ static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
 
 int main(int argc, char* argv[])
 {
-  KAboutData aboutData( "ktron", I18N_NOOP("KTron"), 
-    KTRON_VERSION, description, KAboutData::License_GPL, notice);
-  aboutData.addAuthor("Benjamin Meyer",I18N_NOOP("Maintainer"), "ben@meyerhome.net");
-  aboutData.addAuthor("Matthias Kiefer",I18N_NOOP("Original author"), "matthias.kiefer@gmx.de");
+  KAboutData aboutData( "ktron", 0, ki18n("KTron"), 
+    KTRON_VERSION, ki18n(description), KAboutData::License_GPL, ki18n(notice));
+  aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Maintainer"), "ben@meyerhome.net");
+  aboutData.addAuthor(ki18n("Matthias Kiefer"),ki18n("Original author"), "matthias.kiefer@gmx.de");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   /*
