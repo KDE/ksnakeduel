@@ -331,15 +331,15 @@ void Tron::updatePixmap()
 }
 
 // draw new player rects
-void Tron::paintPlayers()
-{
-   QPainter p;
-
-   p.begin(pixmap);
-   drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
-   drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
-   p.end();
-}
+//void Tron::paintPlayers()
+//{
+//   QPainter p;
+//
+//   p.begin(pixmap);
+//   drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
+//   drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
+//   p.end();
+//}
 
 void Tron::drawRect(QPainter & p, int x, int y)
 {
@@ -573,6 +573,7 @@ void Tron::updateDirections(int playerNr)
 
    }
 
+   updatePixmap();
    update();
 }
 
@@ -626,10 +627,10 @@ void Tron::paintEvent(QPaintEvent *e)
          p.drawText(x,y,hint);
       }
    }
-   else {
-      p.end();
-      paintPlayers();
-   }
+   //else {
+   //   p.end();
+   //   paintPlayers();
+   //}
 }
 
 void Tron::resizeEvent(QResizeEvent *)
