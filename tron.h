@@ -39,6 +39,12 @@ class KActionCollection;
 
 #include "player.h"
 
+// Old style, board as big as screen
+#define TRON_FRAMESIZE 2
+// New style, fixed board width
+#define TRON_PLAYFIELD_WIDTH 70
+#define TRON_PLAYFIELD_HEIGHT 40
+
 enum Player{One,Two,Both,Nobody};
 // Bits that defines the rect and which sides to draw
 enum {BACKGROUND=0, PLAYER1=1,PLAYER2=2,TOP=4,BOTTOM=8,LEFT=16,RIGHT=32};
@@ -119,7 +125,9 @@ private:
   /** time in ms between two moves */
   int velocity;
   /** size of the rects */
-  int rectSize;
+  //int rectSize;
+  int blockHeight;
+  int blockWidth;
 
   /** The random sequence generator **/
   KRandomSequence random;
