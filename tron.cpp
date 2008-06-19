@@ -35,14 +35,15 @@
 #include <QVector>
 #include <QKeySequence>
 
-#include <kdebug.h>
-#include <klocale.h>
-#include <kapplication.h>
-#include <kconfig.h>
-#include <kcolordialog.h>
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kstandardaction.h>
+#include <KDebug>
+#include <KLocale>
+#include <KApplication>
+#include <KConfig>
+#include <KColorDialog>
+#include <KAction>
+#include <KActionCollection>
+#include <KStandardAction>
+#include <KGameDifficulty>
 
 #include "settings.h"
 #include "tron.h"
@@ -87,7 +88,7 @@ void Tron::loadSettings(){
   reset();
 
   // Velocity
-  setVelocity( Settings::velocity() );
+  setVelocity( lineSpeed() );
 
   // Style
   if(pixmap){
@@ -1070,7 +1071,7 @@ void Tron::doMove()
 // xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>
 void Tron::think(int playerNr)
 {
-if(Settings::skill() != Settings::EnumSkill::Easy)
+if(opponentSkill() != 1)
 {
   int opponent=(playerNr==1)? 0 : 1;
 
@@ -1242,17 +1243,17 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
   	}
 
   	int doPercentage = 100;
-  	switch(Settings::skill())
+  	switch(opponentSkill())
   	{
-  	  case Settings::EnumSkill::Easy:
+  	  case 1:
   	        // Never reached
   		break;
 
-  	  case Settings::EnumSkill::Medium:
+  	  case 2:
   		doPercentage=5;
   		break;
   		
-  	  case Settings::EnumSkill::Hard:
+  	  case 3:
   		doPercentage=90;
   		break;
   	}
@@ -1650,6 +1651,51 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
           }
     }
 }
+
+/**
+ * Skill settings
+ */
+
+/** retrieves the opponentSkill */
+int Tron::opponentSkill() {
+	KGameDifficulty::standardLevel level = KGameDifficulty::level();
+	Settings::setDifficulty((int) level);
+
+	switch (level) {
+		case KGameDifficulty::VeryEasy:
+			return 1;
+		default:
+		case KGameDifficulty::Easy:
+			return 1;
+		case KGameDifficulty::Medium:
+			return 2;
+		case KGameDifficulty::Hard:
+			return 3;
+		case KGameDifficulty::VeryHard:
+			return 3;
+	}
+}
+
+/** retrieves the line speed */
+int Tron::lineSpeed() {
+	KGameDifficulty::standardLevel level = KGameDifficulty::level();
+	Settings::setDifficulty((int) level);
+
+	switch (level) {
+		case KGameDifficulty::VeryEasy:
+			return 1;
+		default:
+		case KGameDifficulty::Easy:
+			return 3;
+		case KGameDifficulty::Medium:
+			return 5;
+		case KGameDifficulty::Hard:
+			return 7;
+		case KGameDifficulty::VeryHard:
+			return 9;
+	}
+}
+
 
 #include "tron.moc"
 

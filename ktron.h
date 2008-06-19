@@ -52,6 +52,10 @@ private:
 protected:
   /** calls tron->updatePixmap to draw frame in the new colors */
   void paletteChange(const QPalette &oldPalette);
+  virtual void closeEvent(QCloseEvent *);
+
+public slots:
+  void close();
 
 private slots:
   void loadSettings();

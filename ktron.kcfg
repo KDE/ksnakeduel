@@ -4,6 +4,12 @@
       xsi:schemaLocation="http://www.kde.org/standards/kcfg/1.0
       http://www.kde.org/standards/kcfg/1.0/kcfg.xsd" >
   <kcfgfile name="ktronrc"/>
+  <group name="General">
+    <entry name="Theme" type="String">
+      <label>The graphical theme to be used.</label>
+      <default>themes/default.desktop</default>
+    </entry>
+  </group>
   <group name="Game">
     <entry name="Color_Background" type="Color">
       <label>The background color of the game.</label>
@@ -33,19 +39,9 @@
       <label>The width of the line.</label>
       <default>10</default>
     </entry>
-    <entry name="Velocity" type="Int">
-      <label>The speed of the line.</label>
-      <default>5</default>
-    </entry>
-
-    <entry name="Skill" type="Enum">
-      <label>The skill of the computer player.</label>
-      <choices>
-        <choice name="Easy"/>
-        <choice name="Medium"/>
-        <choice name="Hard"/>
-      </choices>
-      <default>Medium</default> 
+    <entry name="Difficulty" type="Int">
+      <label>The difficulty level.</label>
+      <default>30</default>
     </entry>
     <entry name="Style" type="Enum">
       <label>The line style.</label>

@@ -24,10 +24,6 @@
 #ifndef TRON_H
 #define TRON_H
 
-#ifdef HAVE_CONFIG_H
-#include <config.h>
-#endif
-
 #include <QWidget>
 #include <QPainter>
 #include <QPixmap>
@@ -132,10 +128,7 @@ private:
   /** determines level of computerplayer */
   int lookForward;
 
-  // Painter flags
-  //bool updatePixmapFlag;
-
-  // Funktionen
+  // Functions
   /** resets the game */
   void reset();
   /** starts the game timer */
@@ -150,6 +143,10 @@ private:
   void drawRect(QPainter & p, int x, int y);
   /** emits gameEnds(Player) and displays the winner by changing color*/
   void showWinner(Player winner);
+  /** retrieves the opponentSkill */
+  int opponentSkill();
+  /** retrieves the line speed */
+  int lineSpeed();
 
   /** calculates if player playerNr would crash
   * if he moves xInc in x-direction and yInc in y-direction

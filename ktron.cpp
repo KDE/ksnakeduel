@@ -23,15 +23,17 @@
 
 #include "ktron.h"
 
-#include <kconfigdialog.h>
-#include <klocale.h>
-#include <kmessagebox.h>
-#include <kaction.h>
-#include <kactioncollection.h>
-#include <kstandardgameaction.h>
-#include <kapplication.h>
-#include <kstatusbar.h>
-#include <ktoggleaction.h>
+#include <KConfigDialog>
+#include <KLocale>
+#include <KMessageBox>
+#include <KAction>
+#include <KActionCollection>
+#include <KStandardGameAction>
+#include <KApplication>
+#include <KStatusBar>
+#include <KToggleAction>
+#include <KGameThemeSelector>
+#include <KGameDifficulty>
 
 // Settings
 #include "settings.h"
@@ -148,10 +150,26 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
   actionCollection()->addAction(act->objectName(), act);
   act = KStandardGameAction::gameNew(tron, SLOT( newGame() ), this);
   actionCollection()->addAction(act->objectName(), act);
-  act = KStandardGameAction::quit(this, SLOT( close() ), this);
+  act = KStandardGameAction::quit(kapp, SLOT(quit()), this);
   actionCollection()->addAction(act->objectName(), act);
   act = KStandardAction::preferences(this, SLOT(showSettings()), this);
   actionCollection()->addAction(act->objectName(), act);
+
+  //difficulty
+  KGameDifficulty::init(this, tron, SLOT(loadSettings()));
+  KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
+  KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+  KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+  KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+  KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+  int skill = Settings::difficulty();
+  if (skill < (int)KGameDifficulty::VeryEasy || skill > (int)KGameDifficulty::VeryHard) {
+    KGameDifficulty::setLevel(KGameDifficulty::Easy);
+    Settings::setDifficulty((int) KGameDifficulty::Easy);
+  }
+  else {
+    KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (skill));
+  }
 
   setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
   loadSettings();
@@ -226,7 +244,7 @@ void KTron::showWinner(Player winner){
     winnerName = playerName[winner];
   
   QString message=i18n("%1 has won!", winnerName);
-  statusBar()->message(message,MESSAGE_TIME);
+  statusBar()->showMessage(message);
 
   message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, playerPoints[winner], playerPoints[loser]);
   
@@ -251,9 +269,23 @@ void KTron::showSettings(){
   dialog->addPage(new General, i18n("General"), "package_settings");
   dialog->addPage(new Ai, i18n("A.I."), "personal");
   dialog->addPage(new Appearance, i18n("Appearance"), "preferences-desktop-theme-style");
+  dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
   dialog->show();
+}
+
+/**
+ * Close KTron
+ */
+void KTron::close() {
+	Settings::self()->writeConfig();
+}
+
+void KTron::closeEvent(QCloseEvent *event)
+{
+    close();
+    event->accept();
 }
 
 #include "ktron.moc"

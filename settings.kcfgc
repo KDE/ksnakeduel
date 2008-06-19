@@ -2,4 +2,4 @@
 File=ktron.kcfg
 ClassName=Settings
 Singleton=true
-Mutators=false
+Mutators=true

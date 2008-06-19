@@ -20,10 +20,11 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   ****************************************************************************/  
-#include <kapplication.h>
-#include <kimageio.h>
-#include <kcmdlineargs.h>
-#include <kaboutdata.h>
+#include <KApplication>
+#include <KImageIO>
+#include <KCmdLineArgs>
+#include <KAboutData>
+#include <KStandardDirs>
 
 #include "ktron.h"
 #include "version.h"
@@ -45,18 +46,12 @@ int main(int argc, char* argv[])
 
   KApplication a;
   KGlobal::locale()->insertCatalog("libkdegames");
-  
-  // used for loading background pixmaps
-  
+  KStandardDirs::locateLocal("appdata", "themes/");
 
-  if(a.isSessionRestored()){
-     RESTORE(KTron)
-  }
-  else {
-     KTron *ktron = new KTron();
-     a.setMainWidget(ktron);
-     ktron->show();
-  }
+
+  KTron *ktron = new KTron();
+  ktron->show();
+
   return a.exec();
 }
 
