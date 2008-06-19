@@ -3,6 +3,7 @@
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
+  Copyright (C) 2008 Stas Verberkt <legolas at legolasweb dot nl>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,18 +27,23 @@
 // Normal class
 #include <QTimer>
 #include <QPainter>
-#include <QFocusEvent>
-#include <QResizeEvent>
-#include <QKeyEvent>
 #include <QPaintEvent>
+#include <QResizeEvent>
+#include <QFocusEvent>
+#include <QPixmap>
+#include <QKeyEvent>
 #include <QVector>
+#include <QKeySequence>
 
+#include <kdebug.h>
 #include <klocale.h>
+#include <kapplication.h>
 #include <kconfig.h>
 #include <kcolordialog.h>
 #include <kaction.h>
 #include <kactioncollection.h>
 #include <kstandardaction.h>
+
 #include "settings.h"
 #include "tron.h"
 
@@ -47,7 +53,8 @@
  * init-functions
  **/
 
-Tron::Tron(QWidget *parent) : QWidget(parent)
+Tron::Tron(QWidget *parent)
+  : QWidget(parent)
 {
   pixmap=0;
   playfield=0;
@@ -112,7 +119,7 @@ void Tron::loadSettings(){
 
 Tron::~Tron()
 {
-  delete[]  playfield;
+  delete []  playfield;
   delete pixmap;
   delete timer;
 
@@ -120,8 +127,7 @@ Tron::~Tron()
 
 void Tron::createNewPlayfield()
 {
-  delete[] playfield;
-
+  delete [] playfield;
   delete pixmap;
 
   // field size
@@ -299,7 +305,7 @@ void Tron::updatePixmap()
     pixmap->fill(Settings::color_Background());
   }
 
-  // Examine all Pixels and draw
+  // Examine all pixels and draw
   for(i=0;i<fieldWidth;i++)
      for(j=0;j<fieldHeight;j++)
      {
@@ -315,7 +321,7 @@ void Tron::updatePixmap()
 
    p.setPen(Qt::NoPen);
    p.setBrush(light);
-      p.drawRect(width()-TRON_FRAMESIZE,0,TRON_FRAMESIZE,height());
+   p.drawRect(width()-TRON_FRAMESIZE,0,TRON_FRAMESIZE,height());
    p.drawRect(0,height()-TRON_FRAMESIZE,width(),TRON_FRAMESIZE);
    p.setBrush(dark);
    p.drawRect(0,0,width(),TRON_FRAMESIZE);
@@ -328,10 +334,6 @@ void Tron::updatePixmap()
 void Tron::paintPlayers()
 {
    QPainter p;
-   p.begin(this);
-   drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
-   drawRect(p,players[1].xCoordinate,players[1].yCoordinate);
-   p.end();
 
    p.begin(pixmap);
    drawRect(p,players[0].xCoordinate,players[0].yCoordinate);
@@ -430,8 +432,8 @@ void Tron::setBackgroundPix(const QPixmap &pix)
 
     if(pixmap!=0){
        updatePixmap();
-      // most pictures have colors, that you can read white text
-      setPalette(QColor("black"));
+       // most pictures have colors, that you can read white text
+       setPalette(QColor("black"));
     }
 }
 
@@ -581,6 +583,7 @@ void Tron::updateDirections(int playerNr)
 void Tron::paintEvent(QPaintEvent *e)
 {
    QPainter p(this);
+
    p.drawPixmap(e->rect().topLeft(), *pixmap, e->rect());
 
    // if game is paused, print message
@@ -623,7 +626,10 @@ void Tron::paintEvent(QPaintEvent *e)
          p.drawText(x,y,hint);
       }
    }
-   else /* Qt4 porting question if something? */ paintPlayers();
+   else {
+      p.end();
+      paintPlayers();
+   }
 }
 
 void Tron::resizeEvent(QResizeEvent *)
@@ -1244,7 +1250,7 @@ if(Settings::skill() != Settings::EnumSkill::Easy)
   	  case Settings::EnumSkill::Medium:
   		doPercentage=5;
   		break;
-
+  		
   	  case Settings::EnumSkill::Hard:
   		doPercentage=90;
   		break;

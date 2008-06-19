@@ -3,6 +3,7 @@
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
+  Copyright (C) 2008 Stas Verberkt <legolas at legolasweb dot nl>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -19,48 +20,43 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   ****************************************************************************/  
-
 #include <kapplication.h>
 #include <kimageio.h>
 #include <kcmdlineargs.h>
 #include <kaboutdata.h>
-#include <klocale.h>
-#include <kglobal.h>
 
 #include "ktron.h"
+#include "version.h"
 
-#define KTRON_VERSION "1.1"
-
-static const char description[] = I18N_NOOP("A race in hyperspace");
-static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n\n"
+static KLocalizedString description = ki18n("A race in hyperspace");
+static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n\n"
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>");
 
-#include <kiconloader.h>
-#include <qicon.h>
 
 int main(int argc, char* argv[])
 {
   KAboutData aboutData( "ktron", 0, ki18n("KTron"), 
-    KTRON_VERSION, ki18n(description), KAboutData::License_GPL, ki18n(notice));
-  aboutData.addAuthor(ki18n("Benjamin Meyer"),ki18n("Maintainer"), "ben@meyerhome.net");
-  aboutData.addAuthor(ki18n("Matthias Kiefer"),ki18n("Original author"), "matthias.kiefer@gmx.de");
+    KTRON_VERSION, description, KAboutData::License_GPL, notice);
+  aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
+  aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
+  aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port"), "legolas@legolasweb.nl");
   KCmdLineArgs::init( argc, argv, &aboutData );
 
-  /*
-  KComponentData componentData(&aboutData);
-  QApplication application(argc, argv);
-  application.setApplicationName("KTron");
-  QApplication::setWindowIcon(DesktopIcon("ktron"));
-  */
-  
-  KApplication application;
+  KApplication a;
   KGlobal::locale()->insertCatalog("libkdegames");
+  
   // used for loading background pixmaps
   
-  KTron* ktron = new KTron;
-  ktron->show();
-  
-  return application.exec();
+
+  if(a.isSessionRestored()){
+     RESTORE(KTron)
+  }
+  else {
+     KTron *ktron = new KTron();
+     a.setMainWidget(ktron);
+     ktron->show();
+  }
+  return a.exec();
 }
 

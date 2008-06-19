@@ -3,6 +3,7 @@
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
+  Copyright (C) 2008 Stas Verberkt <legolas at legolasweb dot nl>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -26,11 +27,11 @@
 #include <klocale.h>
 #include <kmessagebox.h>
 #include <kaction.h>
-#include <kstandardgameaction.h>
-#include <kstatusbar.h>
-#include <kstandardaction.h>
-#include <ktoggleaction.h>
 #include <kactioncollection.h>
+#include <kstandardgameaction.h>
+#include <kapplication.h>
+#include <kstatusbar.h>
+#include <ktoggleaction.h>
 
 // Settings
 #include "settings.h"
@@ -42,30 +43,29 @@
 #define MESSAGE_TIME 2000
 #define WINNING_DIFF 5
 
-class Ai : public QWidget, public Ui::Ai
-{
-public:
-    Ai(QWidget* parent = 0)
-        : QWidget(parent)
-        {
-            setupUi(this);
-        }
-};
-
+//UI
 class General : public QWidget, public Ui::General
 {
 public:
-    General(QWidget* parent = 0)
+    General(QWidget *parent = 0)
         : QWidget(parent)
         {
             setupUi(this);
         }
 };
-
+class Ai : public QWidget, public Ui::Ai
+{
+public:
+    Ai(QWidget *parent = 0)
+        : QWidget(parent)
+        {
+            setupUi(this);
+        }
+};
 class Appearance : public QWidget, public Ui::Appearance
 {
 public:
-    Appearance(QWidget* parent = 0)
+    Appearance(QWidget *parent = 0)
         : QWidget(parent)
         {
             setupUi(this);
@@ -74,8 +74,8 @@ public:
 
 /**
  * Constuctor
- */
-KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent) {
+ */ 
+KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
   playerPoints[0]=playerPoints[1]=0;
 
   tron=new Tron(this);
@@ -90,43 +90,53 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent) {
   // We match up keyboard events ourselves in Tron::keyPressEvent()
   // We must disable the actions, otherwise we don't get the keyPressEvent's
   QAction *act;
+
   act = actionCollection()->addAction("Pl1Up");
   act->setText(i18n("Player 1 Up"));
   act->setShortcut(Qt::Key_R);
   act->setEnabled(false);
+
   act = actionCollection()->addAction("Pl1Down");
   act->setText(i18n("Player 1 Down"));
   act->setShortcut(Qt::Key_F);
+  act->setObjectName("Pl1Down");
   act->setEnabled(false);
-  act = actionCollection()->addAction("Pl1Right");
+
+  act = actionCollection()->addAction("Pl1Right");;
   act->setText(i18n("Player 1 Right"));
   act->setShortcut(Qt::Key_G);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl1Left");
   act->setText(i18n("Player 1 Left"));
   act->setShortcut(Qt::Key_D);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl1Ac");
   act->setText(i18n("Player 1 Accelerator"));
   act->setShortcut(Qt::Key_A);
   act->setEnabled(false);
-
+ 
   act = actionCollection()->addAction("Pl2Up");
   act->setText(i18n("Player 2 Up"));
   act->setShortcut(Qt::Key_Up);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl2Down");
   act->setText(i18n("Player 2 Down"));
   act->setShortcut(Qt::Key_Down);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl2Right");
   act->setText(i18n("Player 2 Right"));
   act->setShortcut(Qt::Key_Right);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl2Left");
   act->setText(i18n("Player 2 Left"));
   act->setShortcut(Qt::Key_Left);
   act->setEnabled(false);
+  
   act = actionCollection()->addAction("Pl2Ac");
   act->setText(i18n("Player 2 Accelerator"));
   act->setShortcut(Qt::Key_0);
@@ -154,7 +164,7 @@ void KTron::loadSettings() {
    playerName[1]=Settings::namePlayer2();
    if ( playerName[1].isEmpty() )
        playerName[1] = i18n("Player 2");
-
+   
    updateStatusbar();
 }
 
@@ -165,7 +175,7 @@ void KTron::updateStatusbar(){
 
     QString name;
     if(tron->isComputer(Both))
-      name=i18n("Computer(%1)", i+1);
+      name=i18n("Computer(%1)", (i+1));
     else if(tron->isComputer(player))
       name=i18n("Computer");
     else
@@ -182,7 +192,7 @@ void KTron::changeStatus(Player player) {
     updateStatusbar();
     return;
   }
-
+  
   if(player==One)
     playerPoints[0]++;
   else if(player==Two)
@@ -210,18 +220,16 @@ void KTron::showWinner(Player winner){
     loser = One;
   if(!tron->isComputer(((Player)loser)))
     loserName = playerName[loser];
-
+  
   QString winnerName = i18n("KTron");
   if(!tron->isComputer(winner))
     winnerName = playerName[winner];
-
+  
   QString message=i18n("%1 has won!", winnerName);
-  statusBar()->showMessage(message,MESSAGE_TIME);
+  statusBar()->message(message,MESSAGE_TIME);
 
-  message = i18n("%1 has won versus %2 with %3 : %4 points!",
-                 winnerName, loserName,
-                 playerPoints[winner], playerPoints[loser]);
-
+  message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, playerPoints[winner], playerPoints[loser]);
+  
   KMessageBox::information(this, message, i18n("Winner"));
   tron->newGame();
 }
@@ -238,11 +246,11 @@ void KTron::paletteChange(const QPalette &/*oldPalette*/){
 void KTron::showSettings(){
   if(KConfigDialog::showDialog("settings"))
     return;
-
+  
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General, i18n("General"), "package_settings");
   dialog->addPage(new Ai, i18n("A.I."), "personal");
-  dialog->addPage(new Appearance, i18n("Appearance"), "style");
+  dialog->addPage(new Appearance, i18n("Appearance"), "preferences-desktop-theme-style");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
   dialog->show();

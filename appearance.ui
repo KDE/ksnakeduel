@@ -1,260 +1,291 @@
-<ui version="4.0" >
- <author></author>
- <comment></comment>
- <exportmacro></exportmacro>
- <class>Appearance</class>
- <widget class="QWidget" name="Appearance" >
-  <property name="geometry" >
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>228</width>
-    <height>353</height>
-   </rect>
-  </property>
-  <layout class="QVBoxLayout" >
-   <property name="margin" >
-    <number>0</number>
-   </property>
-   <property name="spacing" >
-    <number>0</number>
-   </property>
-   <item>
-    <widget class="QFrame" name="frame" >
-     <property name="frameShape" >
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow" >
-      <enum>QFrame::Raised</enum>
-     </property>
-     <property name="lineWidth" >
-      <number>0</number>
-     </property>
-     <layout class="QGridLayout" >
+<ui version="4.0" stdsetdef="1" >
+  <author></author>
+  <comment></comment>
+  <exportmacro></exportmacro>
+  <class>Appearance</class>
+  <widget class="QWidget" name="Appearance" >
+    <property name="geometry" >
+      <rect>
+        <x>0</x>
+        <y>0</y>
+        <width>284</width>
+        <height>337</height>
+      </rect>
+    </property>
+    <layout class="QVBoxLayout" >
       <property name="margin" >
-       <number>9</number>
+        <number>0</number>
       </property>
       <property name="spacing" >
-       <number>6</number>
+        <number>0</number>
       </property>
-      <item row="2" column="0" colspan="2" >
-       <widget class="QGroupBox" name="groupBoxBkgnd" >
-        <property name="title" >
-         <string>Background</string>
-        </property>
-        <layout class="QGridLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item row="1" column="0" >
-          <widget class="QRadioButton" name="BackgroundImageChoice" >
-           <property name="text" >
-            <string>Image:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" >
-          <widget class="QRadioButton" name="BackgroundColorChoice" >
-           <property name="text" >
-            <string>Color:</string>
-           </property>
-           <property name="checked" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1" >
-          <widget class="KColorButton" name="kcfg_Color_Background" >
-           <property name="color" >
-            <color>
-             <red>0</red>
-             <green>0</green>
-             <blue>0</blue>
-            </color>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" >
-          <widget class="KUrlRequester" name="kcfg_BackgroundImage" />
-         </item>
-        </layout>
-       </widget>
+      <item>
+        <widget class="QFrame" name="frame4" >
+          <property name="frameShape" >
+            <enum>StyledPanel</enum>
+          </property>
+          <property name="frameShadow" >
+            <enum>Raised</enum>
+          </property>
+          <property name="lineWidth" >
+            <number>0</number>
+          </property>
+          <layout class="QGridLayout" >
+            <item rowspan="1" row="0" column="0" colspan="2" >
+              <widget class="QLabel" name="textLabel16" >
+                <property name="text" >
+                  <string>Line style:</string>
+                </property>
+                <property name="wordWrap" >
+                  <bool>false</bool>
+                </property>
+              </widget>
+            </item>
+            <item row="0" column="2" >
+              <widget class="QComboBox" name="kcfg_Style" >
+                <item>
+                  <property name="text" >
+                    <string>3D Line</string>
+                  </property>
+                </item>
+                <item>
+                  <property name="text" >
+                    <string>3D Rectangles</string>
+                  </property>
+                </item>
+                <item>
+                  <property name="text" >
+                    <string>Flat</string>
+                  </property>
+                </item>
+                <item>
+                  <property name="text" >
+                    <string>Circles</string>
+                  </property>
+                </item>
+              </widget>
+            </item>
+            <item rowspan="1" row="1" column="0" colspan="3" >
+              <widget class="QGroupBox" name="groupBox4" >
+                <property name="title" >
+                  <string>Line Size</string>
+                </property>
+                <layout class="QGridLayout" >
+                  <item row="1" column="2" >
+                    <widget class="QLabel" name="textLabel13" >
+                      <property name="text" >
+                        <string>Large</string>
+                      </property>
+                      <property name="alignment" >
+                        <set>Qt::AlignVCenter|Qt::AlignRight</set>
+                      </property>
+                      <property name="wordWrap" >
+                        <bool>false</bool>
+                      </property>
+                    </widget>
+                  </item>
+                  <item row="1" column="0" >
+                    <widget class="QLabel" name="textLabel11" >
+                      <property name="text" >
+                        <string>Small</string>
+                      </property>
+                      <property name="alignment" >
+                        <set>Qt::AlignVCenter|Qt::AlignLeft</set>
+                      </property>
+                      <property name="wordWrap" >
+                        <bool>false</bool>
+                      </property>
+                    </widget>
+                  </item>
+                  <item row="1" column="1" >
+                    <widget class="QLabel" name="textLabel12" >
+                      <property name="text" >
+                        <string>Medium</string>
+                      </property>
+                      <property name="alignment" >
+                        <set>Qt::AlignCenter</set>
+                      </property>
+                      <property name="wordWrap" >
+                        <bool>false</bool>
+                      </property>
+                    </widget>
+                  </item>
+                  <item rowspan="1" row="0" column="0" colspan="3" >
+                    <widget class="QSlider" name="kcfg_RectSize" >
+                      <property name="minimum" >
+                        <number>4</number>
+                      </property>
+                      <property name="maximum" >
+                        <number>16</number>
+                      </property>
+                      <property name="singleStep" >
+                        <number>3</number>
+                      </property>
+                      <property name="pageStep" >
+                        <number>3</number>
+                      </property>
+                      <property name="value" >
+                        <number>10</number>
+                      </property>
+                      <property name="orientation" >
+                        <enum>Qt::Horizontal</enum>
+                      </property>
+                      <property name="tickPosition" >
+                        <enum>QSlider::TicksRight</enum>
+                      </property>
+                      <property name="tickInterval" >
+                        <number>1</number>
+                      </property>
+                    </widget>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+            <item rowspan="1" row="2" column="0" colspan="3" >
+              <widget class="QGroupBox" name="kcfg_BackgroundImageChoice" >
+                <property name="title" >
+                  <string>Background</string>
+                </property>
+                <layout class="QGridLayout" >
+                  <item row="0" column="0" >
+                    <widget class="QRadioButton" name="BackgroundColorChoice" >
+                      <property name="text" >
+                        <string>Color:</string>
+                      </property>
+                      <property name="checked" >
+                        <bool>true</bool>
+                      </property>
+                    </widget>
+                  </item>
+                  <item row="1" column="1" >
+                    <widget class="KUrlRequester" name="kcfg_BackgroundImage" >
+                      <property name="enabled" >
+                        <bool>false</bool>
+                      </property>
+                    </widget>
+                  </item>
+                  <item row="1" column="0" >
+                    <widget class="QRadioButton" name="BackgroundImageChoice" >
+                      <property name="text" >
+                        <string>Image:</string>
+                      </property>
+                    </widget>
+                  </item>
+                  <item row="0" column="1" >
+                    <widget class="KColorButton" name="kcfg_Color_Background" >
+                      <property name="enabled" >
+                        <bool>true</bool>
+                      </property>
+                      <property name="text" >
+                        <string/>
+                      </property>
+                      <property name="color" >
+                        <color>
+                          <red>0</red>
+                          <green>0</green>
+                          <blue>0</blue>
+                        </color>
+                      </property>
+                    </widget>
+                  </item>
+                </layout>
+              </widget>
+            </item>
+            <item row="3" column="0" >
+              <widget class="QLabel" name="textLabel7" >
+                <property name="text" >
+                  <string>Player 1 color:</string>
+                </property>
+                <property name="wordWrap" >
+                  <bool>false</bool>
+                </property>
+              </widget>
+            </item>
+            <item rowspan="1" row="3" column="1" colspan="2" >
+              <widget class="KColorButton" name="kcfg_Color_Player1" >
+                <property name="text" >
+                  <string/>
+                </property>
+                <property name="color" >
+                  <color>
+                    <red>255</red>
+                    <green>0</green>
+                    <blue>0</blue>
+                  </color>
+                </property>
+              </widget>
+            </item>
+            <item row="4" column="0" >
+              <widget class="QLabel" name="textLabel8" >
+                <property name="text" >
+                  <string>Player 2 color:</string>
+                </property>
+                <property name="wordWrap" >
+                  <bool>false</bool>
+                </property>
+              </widget>
+            </item>
+            <item rowspan="1" row="4" column="1" colspan="2" >
+              <widget class="KColorButton" name="kcfg_Color_Player2" >
+                <property name="text" >
+                  <string/>
+                </property>
+                <property name="color" >
+                  <color>
+                    <red>0</red>
+                    <green>0</green>
+                    <blue>255</blue>
+                  </color>
+                </property>
+              </widget>
+            </item>
+            <item row="5" column="2" >
+              <spacer name="spacer2" >
+                <property name="sizeHint" >
+                  <size>
+                    <width>20</width>
+                    <height>16</height>
+                  </size>
+                </property>
+                <property name="sizeType" >
+                  <enum>QSizePolicy::Expanding</enum>
+                </property>
+                <property name="orientation" >
+                  <enum>Qt::Vertical</enum>
+                </property>
+              </spacer>
+            </item>
+          </layout>
+        </widget>
       </item>
-      <item row="0" column="0" >
-       <widget class="QLabel" name="label" >
-        <property name="text" >
-         <string>Line style:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="0" column="1" >
-       <widget class="QComboBox" name="kcfg_Style" >
-        <item>
-         <property name="text" >
-          <string>3D Line</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>3D Rectangles</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Flat</string>
-         </property>
-        </item>
-        <item>
-         <property name="text" >
-          <string>Circles</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-      <item row="1" column="0" colspan="2" >
-       <widget class="QGroupBox" name="groupBox" >
-        <property name="title" >
-         <string>Line Size</string>
-        </property>
-        <layout class="QGridLayout" >
-         <property name="margin" >
-          <number>9</number>
-         </property>
-         <property name="spacing" >
-          <number>6</number>
-         </property>
-         <item row="1" column="2" >
-          <widget class="QLabel" name="label_4" >
-           <property name="text" >
-            <string>Large</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" >
-          <widget class="QLabel" name="label_3" >
-           <property name="text" >
-            <string>Medium</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" >
-          <widget class="QLabel" name="label_2" >
-           <property name="text" >
-            <string>Small</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" colspan="3" >
-          <widget class="QSlider" name="kcfg_RectSize" >
-           <property name="minimum" >
-            <number>4</number>
-           </property>
-           <property name="maximum" >
-            <number>16</number>
-           </property>
-           <property name="singleStep" >
-            <number>3</number>
-           </property>
-           <property name="pageStep" >
-            <number>3</number>
-           </property>
-           <property name="value" >
-            <number>10</number>
-           </property>
-           <property name="orientation" >
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="tickPosition" >
-            <enum>QSlider::TicksBelow</enum>
-           </property>
-           <property name="tickInterval" >
-            <number>1</number>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item row="3" column="0" >
-       <widget class="QLabel" name="label_5" >
-        <property name="text" >
-         <string>Player 1 color:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="0" >
-       <widget class="QLabel" name="label_6" >
-        <property name="text" >
-         <string>Player 2 color:</string>
-        </property>
-       </widget>
-      </item>
-      <item row="5" column="0" >
-       <spacer>
-        <property name="orientation" >
-         <enum>Qt::Vertical</enum>
-        </property>
-        <property name="sizeHint" >
-         <size>
-          <width>20</width>
-          <height>40</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item row="3" column="1" >
-       <widget class="KColorButton" name="kcfg_Color_Player1" >
-        <property name="color" >
-         <color>
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </property>
-       </widget>
-      </item>
-      <item row="4" column="1" >
-       <widget class="KColorButton" name="kcfg_Color_Player2" >
-        <property name="color" >
-         <color>
-          <red>0</red>
-          <green>0</green>
-          <blue>0</blue>
-         </color>
-        </property>
-       </widget>
-      </item>
-     </layout>
-    </widget>
-   </item>
-  </layout>
- </widget>
- <pixmapfunction></pixmapfunction>
- <customwidgets>
-  <customwidget>
-   <class>KUrlRequester</class>
-   <extends>QFrame</extends>
-   <header>kurlrequester.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
-  <customwidget>
-   <class>KColorButton</class>
-   <extends>QPushButton</extends>
-   <header>kcolorbutton.h</header>
-   <container>0</container>
-   <pixmap></pixmap>
-  </customwidget>
- </customwidgets>
- <resources/>
- <connections/>
+    </layout>
+  </widget>
+  <layoutdefault spacing="6" margin="11" />
+  <pixmapfunction>qPixmapFromMimeSource</pixmapfunction>
+  <tabstops>
+    <tabstop>kcfg_Style</tabstop>
+    <tabstop>kcfg_RectSize</tabstop>
+    <tabstop>kcfg_Color_Player1</tabstop>
+    <tabstop>kcfg_Color_Player2</tabstop>
+  </tabstops>
+  <includes>
+    <include location="local" >kurlrequester.h</include>
+    <include location="local" >klineedit.h</include>
+    <include location="local" >kpushbutton.h</include>
+    <include location="local" >kcolorbutton.h</include>
+  </includes>
+  <connections>
+    <connection>
+      <sender>BackgroundColorChoice</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_Color_Background</receiver>
+      <slot>setEnabled(bool)</slot>
+    </connection>
+    <connection>
+      <sender>BackgroundImageChoice</sender>
+      <signal>toggled(bool)</signal>
+      <receiver>kcfg_BackgroundImage</receiver>
+      <slot>setEnabled(bool)</slot>
+    </connection>
+  </connections>
 </ui>

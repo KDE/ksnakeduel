@@ -3,6 +3,7 @@
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
+  Copyright (C) 2008 Stas Verberkt <legolas at legolasweb dot nl>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
@@ -24,9 +25,11 @@
 #define KTRON_H
 
 #include <kxmlguiwindow.h>
+
 #include "tron.h"
 
 class KAccel;
+class KSelectAction;
 class Tron;
 
 /**
@@ -54,7 +57,7 @@ private slots:
   void loadSettings();
   /** updates players points in statusbar and checks if someone has won */
   void changeStatus(Player);
-
+  
   void showWinner(Player winner);
   void showSettings();
 };

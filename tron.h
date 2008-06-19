@@ -3,28 +3,40 @@
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
+  Copyright (C) 2008 Stas Verberkt <legolas at legolasweb dot nl>
 
   This program is free software; you can redistribute it and/or modify
   it under the terms of the GNU General Public License as published by
   the Free Software Foundation; either version 2 of the License, or
   (at your option) any later version.
-
+  
   This program is distributed in the hope that it will be useful,
   but WITHOUT ANY WARRANTY; without even the implied warranty of
   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
   GNU General Public License for more details.
-
+  
   You should have received a copy of the GNU General Public License
   along with this program; if not, write to the Free Software
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
-  *******************************************************************************/
+  *******************************************************************************/  
 
 #ifndef TRON_H
 #define TRON_H
 
+#ifdef HAVE_CONFIG_H
+#include <config.h>
+#endif
+
 #include <QWidget>
+#include <QPainter>
 #include <QPixmap>
+#include <QResizeEvent>
+#include <QVector>
+#include <QKeyEvent>
+#include <QPaintEvent>
+#include <QFocusEvent>
+#include <math.h>
 #include <krandomsequence.h>
 
 class KActionCollection;
@@ -47,7 +59,7 @@ public:
   ~Tron();
   void setActionCollection(KActionCollection*);
   void updatePixmap();
-  void setBackgroundPix(const QPixmap&);
+  void setBackgroundPix(const QPixmap &);
   void setComputerplayer(Player player, bool);
   bool isComputer(Player player);
   void setVelocity(int);
@@ -120,6 +132,9 @@ private:
   /** determines level of computerplayer */
   int lookForward;
 
+  // Painter flags
+  //bool updatePixmapFlag;
+
   // Funktionen
   /** resets the game */
   void reset();
@@ -154,7 +169,7 @@ private:
   * -1 means update both players
   */
   void updateDirections(int playerNr=-1);
-
+  
 private slots:
     /**
     * This is the main function of KTron.
