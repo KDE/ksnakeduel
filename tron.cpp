@@ -149,50 +149,46 @@ void Tron::newGame()
 
 void Tron::reset()
 {
-  gamePaused=false;
-  stopGame();
+	gamePaused = false;
+	stopGame();
 
-  players[0].reset();
-  players[1].reset();
+	players[0].reset();
+	players[1].reset();
 
-  // If playfield exists, then clean it
-  // ans set start coordinates
-  if(playfield)
-  {
-      int i;
-      for(i=0;i<fieldWidth;i++)
-	   	playfield[i].fill(KTronEnum::BACKGROUND);
+	// If playfield exists, then clean it
+	// ans set start coordinates
+	if(playfield)
+	{
+		int i;
+		for(i = 0; i < fieldWidth; i++)
+			playfield[i].fill(KTronEnum::BACKGROUND);
 
-      // set start coordinates
+		// set start coordinates
 
-      players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
-      players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
+		players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
+		players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
 
-      playfield[players[0].xCoordinate][players[0].yCoordinate]=
-         KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-      playfield[players[0].xCoordinate][players[0].yCoordinate + 1]=
-         KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
-      playfield[players[1].xCoordinate][players[1].yCoordinate]=
-         KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-      playfield[players[1].xCoordinate][players[1].yCoordinate + 1]=
-         KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
+		playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+		playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
+		playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+		playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
 
-      updatePixmap();
-      update();
-    }
+		updatePixmap();
+		update();
+	}
 
-    setFocus();
+	setFocus();
 
-    emit gameReset();
+	emit gameReset();
 }
 
 void Tron::computerStart()
 {
-   if(isComputer(KTronEnum::Both))
-   {
-      reset();
-      startGame();
-   }
+	if(isComputer(KTronEnum::Both))
+	{
+		reset();
+		startGame();
+	}
 }
 
 /* *************************************************************** **
@@ -201,17 +197,17 @@ void Tron::computerStart()
 
 void Tron::startGame()
 {
-   gameEnded=false;
-   beginHint=false;
-   timer->start(velocity);
+	gameEnded = false;
+	beginHint = false;
+	timer->start(velocity);
 }
 
 void Tron::stopGame()
 {
-   timer->stop();
-   gameEnded=true;
-   players[0].last_dir = Directions::Up;
-   players[1].last_dir = Directions::Up;
+	timer->stop();
+	gameEnded = true;
+	players[0].last_dir = Directions::Up;
+	players[1].last_dir = Directions::Up;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -253,17 +249,17 @@ void Tron::showWinner(KTronEnum::Player player)
 
 void Tron::updatePixmap()
 {
-	int i,j;
+	int i, j;
 
 	QPainter p;
 	p.begin(pixmap);
 	
-	if(!bgPix.isNull())
+	if (!bgPix.isNull())
 	{
-		int pw=bgPix.width();
-		int ph=bgPix.height();
-		for (int x = 0; x <= width(); x+=pw)
-			for (int y = 0; y <= height(); y+=ph)
+		int pw = bgPix.width();
+		int ph = bgPix.height();
+		for (int x = 0; x <= width(); x += pw)
+			for (int y = 0; y <= height(); y += ph)
 				p.drawPixmap(x, y, bgPix);
 	}
 	else
@@ -272,13 +268,13 @@ void Tron::updatePixmap()
 	}
 
 	// Examine all pixels and draw
-	for(i=0;i<fieldWidth;i++)
+	for(i = 0; i < fieldWidth; i++)
 	{
-		for(j=0;j<fieldHeight;j++)
+		for(j = 0; j < fieldHeight; j++)
 		{
-			if(playfield[i][j]!=KTronEnum::BACKGROUND)
+			if(playfield[i][j] != KTronEnum::BACKGROUND)
 			{
-				drawRect(p,i,j);
+				drawRect(p, i, j);
 			}
 		}
 	}
@@ -309,13 +305,13 @@ void Tron::setActionCollection(KActionCollection *a)
 
 void Tron::setBackgroundPix(const QPixmap &pix)
 {
-    bgPix=pix;
+	bgPix=pix;
 
-    if(pixmap!=0){
-       updatePixmap();
-       // most pictures have colors, that you can read white text
-       setPalette(QColor("black"));
-    }
+	if (pixmap!=0){
+		updatePixmap();
+		// most pictures have colors, that you can read white text
+		setPalette(QColor("black"));
+	}
 }
 
 void Tron::setVelocity(int newVel)            // set new velocity
@@ -392,71 +388,43 @@ void Tron::switchDir(int playerNr, Directions::Direction newDirection)
 
 void Tron::updateDirections(int playerNr)
 {
-   if(playerNr==-1 || playerNr==0)
-   {
-      int x=players[0].xCoordinate;
-      int y=players[0].yCoordinate;
+	if (playerNr == -1)
+	{
+		updateDirections(0);
+		updateDirections(1);
+	}
+	else if (playerNr == 0 || playerNr == 1)
+	{
+		int x = players[playerNr].xCoordinate;
+		int y = players[playerNr].yCoordinate;
 
-      // necessary for drawing the 3d-line
-      switch(players[0].dir)
-      {
-         // unset drawing flags in the moving direction
-         case Directions::Up:
-         {
-            playfield[x][y] &= (~KTronEnum::TOP);
-            break;
-         }
-         case Directions::Down:
-            playfield[x][y] &= (~KTronEnum::BOTTOM);
-            break;
-         case Directions::Right:
-            playfield[x][y] &= (~KTronEnum::RIGHT);
-            break;
-         case Directions::Left:
-            playfield[x][y] &= (~KTronEnum::LEFT);
-            break;
-         default:
-            break;
-      }
-      playfield[x][y] &= (~KTronEnum::HEAD);
+		// necessary for drawing the 3d-line
+		switch(players[playerNr].dir)
+		{
+			// unset drawing flags in the moving direction
+			case Directions::Up:
+			{
+				playfield[x][y] &= (~KTronEnum::TOP);
+				break;
+			}
+			case Directions::Down:
+				playfield[x][y] &= (~KTronEnum::BOTTOM);
+				break;
+			case Directions::Right:
+				playfield[x][y] &= (~KTronEnum::RIGHT);
+				break;
+			case Directions::Left:
+				playfield[x][y] &= (~KTronEnum::LEFT);
+				break;
+			default:
+				break;
+		}
+		playfield[x][y] &= (~KTronEnum::HEAD);
 
-      players[0].last_dir = players[0].dir;
+		players[playerNr].last_dir = players[playerNr].dir;
+	}
 
-   }
-   if(playerNr==-1 || playerNr==1)
-   {
-      int x=players[1].xCoordinate;
-      int y=players[1].yCoordinate;
-
-      // necessary for drawing the 3d-line
-      switch(players[1].dir)
-      {
-          // unset drawing flags in the moving direction
-     	  case Directions::Up:
-     	  {
-             playfield[x][y] &= (~KTronEnum::TOP);
-             break;
-       	  }
-          case Directions::Down:
-             playfield[x][y] &= (~KTronEnum::BOTTOM);
-             break;
-          case Directions::Right:
-             playfield[x][y] &= (~KTronEnum::RIGHT);
-             break;
-          case Directions::Left:
-             playfield[x][y] &= (~KTronEnum::LEFT);
-             break;
-         default:
-            break;
-      }
-	  playfield[x][y] &= (~KTronEnum::HEAD);
-
-      players[1].last_dir = players[1].dir;
-
-   }
-
-   updatePixmap();
-   update();
+	update();
 }
 
 /* *************************************************************** **
@@ -465,135 +433,134 @@ void Tron::updateDirections(int playerNr)
 
 void Tron::paintEvent(QPaintEvent *e)
 {
-   QPainter p(this);
+	QPainter p(this);
 
-   p.drawPixmap(e->rect().topLeft(), *pixmap, e->rect());
+	p.drawPixmap(e->rect().topLeft(), *pixmap, e->rect());
 
-   if(gamePaused) // if game is paused, print message
-   {
-      QString message=i18n("Game paused");
-      QFontMetrics fm=p.fontMetrics();
-      int w=fm.width(message);
-      p.drawText(width()/2-w/2,height()/2,message);
-   }
-   else if(gameEnded) // If game ended, print "Crash!"
-   {
-      QString message=i18n("Crash!");
-      int w=p.fontMetrics().width(message);
-      int h=p.fontMetrics().height();
-      for(int i=0;i<2;i++)
-      {
-         if(!players[i].alive)
-     	 {
-            int x=players[i].xCoordinate*blockWidth;
-            int y=players[i].yCoordinate*blockHeight;
-            while(x<0) x+=blockWidth;
-            while(x+w>width()) x-=blockWidth;
-            while(y-h<0) y+=blockHeight;
-            while(y>height()) y-=blockHeight;
-            p.drawText(x,y,message);
-         }
-      }
+	if(gamePaused) // if game is paused, print message
+	{
+		QString message = i18n("Game paused");
+		QFontMetrics fm = p.fontMetrics();
+		int w = fm.width(message);
+		p.drawText(width()/2-w/2,height()/2,message);
+	}
+	else if(gameEnded) // If game ended, print "Crash!"
+	{
+		QString message = i18n("Crash!");
+		int w = p.fontMetrics().width(message);
+		int h = p.fontMetrics().height();
+		for (int i=0;i<2;i++)
+		{
+			if (!players[i].alive)
+			{
+				int x = players[i].xCoordinate*blockWidth;
+				int y = players[i].yCoordinate*blockHeight;
+				while(x<0) x+=blockWidth;
+				while(x+w>width()) x-=blockWidth;
+				while(y-h<0) y+=blockHeight;
+				while(y>height()) y-=blockHeight;
+				p.drawText(x,y,message);
+			}
+		}
 
-      // draw begin hint
-      if(beginHint)
-      {
-         QString hint=i18n("Press any of your direction keys to start!");
-         int x=p.fontMetrics().width(hint);
-         x=(width()-x)/2;
-         int y=height()/2;
+		// draw begin hint
+		if(beginHint)
+		{
+			QString hint=i18n("Press any of your direction keys to start!");
+			int x=p.fontMetrics().width(hint);
+			x=(width()-x)/2;
+			int y=height()/2;
 
-         p.drawText(x,y,hint);
-      }
-   }
+			p.drawText(x,y,hint);
+		}
+	}
 }
 
 void Tron::resizeEvent(QResizeEvent *)
 {
-    createNewPlayfield();
-    reset();
+	createNewPlayfield();
+	reset();
 }
 
 void Tron::keyPressEvent(QKeyEvent *e)
 {
-  if(!players[1].computer)
-  {
-      if(actionCollection->action("Pl2Up")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(1,Directions::Up);
-	  		players[1].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl2Left")->shortcuts().contains(e->key()))
-	   {
-	  		switchDir(1,Directions::Left);
-	  		players[1].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl2Right")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(1,Directions::Right);
-	  		players[1].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl2Down")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(1,Directions::Down);
-	  		players[1].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl2Ac")->shortcuts().contains(e->key()))
-		{
-		   if(!Settings::acceleratorBlocked())
-	  			players[1].accelerated=true;
-
-		}
-  }
-
-  if(!players[0].computer)
-  {
-      if(actionCollection->action("Pl1Left")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(0,Directions::Left);
-	  		players[0].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl1Right")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(0,Directions::Right);
-	  		players[0].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl1Up")->shortcuts().contains(e->key()))
-		{
-	  		switchDir(0,Directions::Up);
-	  		players[0].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl1Down")->shortcuts().contains(e->key()))
-		{
-	 		switchDir(0,Directions::Down);
-	  		players[0].keyPressed=true;
-		}
-      else if(actionCollection->action("Pl1Ac")->shortcuts().contains(e->key()))
-		{
-		   if(!Settings::acceleratorBlocked())
-	  			players[0].accelerated=true;
-		}
-  }
-
-  e->ignore();  // if key is unknown: ignore
-
-  // if both players press keys at the same time, start game...
-  if(gameEnded && !gameBlocked)
-  {
-	if(players[0].keyPressed && players[1].keyPressed)
+	if (!players[1].computer)
 	{
-		reset();
-		startGame();
+		if(actionCollection->action("Pl2Up")->shortcuts().contains(e->key()))
+		{
+			switchDir(1,Directions::Up);
+			players[1].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl2Left")->shortcuts().contains(e->key()))
+		{
+			switchDir(1,Directions::Left);
+			players[1].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl2Right")->shortcuts().contains(e->key()))
+		{
+			switchDir(1,Directions::Right);
+			players[1].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl2Down")->shortcuts().contains(e->key()))
+		{
+			switchDir(1,Directions::Down);
+			players[1].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl2Ac")->shortcuts().contains(e->key()))
+		{
+			if(!Settings::acceleratorBlocked())
+				players[1].accelerated=true;
+		}
 	}
-  }
-  // ...or continue
-  else if(gamePaused)
-  {
-	if(players[0].keyPressed && players[1].keyPressed)
+
+	if (!players[0].computer)
 	{
-	   togglePause();
+		if(actionCollection->action("Pl1Left")->shortcuts().contains(e->key()))
+		{
+			switchDir(0,Directions::Left);
+			players[0].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl1Right")->shortcuts().contains(e->key()))
+		{
+			switchDir(0,Directions::Right);
+			players[0].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl1Up")->shortcuts().contains(e->key()))
+		{
+			switchDir(0,Directions::Up);
+			players[0].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl1Down")->shortcuts().contains(e->key()))
+		{
+			switchDir(0,Directions::Down);
+			players[0].keyPressed=true;
+		}
+		else if(actionCollection->action("Pl1Ac")->shortcuts().contains(e->key()))
+		{
+			if(!Settings::acceleratorBlocked())
+				players[0].accelerated=true;
+		}
 	}
-  }
+
+	e->ignore();  // if key is unknown: ignore
+
+	// if both players press keys at the same time, start game...
+	if(gameEnded && !gameBlocked)
+	{
+		if(players[0].keyPressed && players[1].keyPressed)
+		{
+			reset();
+			startGame();
+		}
+	}
+	// ...or continue
+	else if(gamePaused)
+	{
+		if(players[0].keyPressed && players[1].keyPressed)
+		{
+		togglePause();
+		}
+	}
 }
 
 void Tron::keyReleaseEvent(QKeyEvent * e)
@@ -694,247 +661,294 @@ void Tron::showBeginHint()
 // doMove() is called from QTimer
 void Tron::doMove()
 {
-   int i;
-   for(i=0;i<2;i++)
-   {
-      // Decide if the accelerator key was pressed...
-      if(players[i].accelerated)
-      {
-         updateDirections(i);
+	int i;
+	for(i=0;i<2;i++)
+	{
+		// Decide if the accelerator key was pressed...
+		if(players[i].accelerated)
+		{
+			updateDirections(i);
 
-         int newType; // determine type of rect to set
-         if(i==0)
-         {
-            newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
-         }
-         else
-         {
-            newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
-         }
-         switch(players[i].dir)
-         {
-            case Directions::Up:
-               if(crashed(i,0,-1))
-                  players[i].alive=false;
-               else
-               {
-                  players[i].yCoordinate--;
-                  newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
-               }
-            break;
-            case Directions::Down:
-               if(crashed(i,0,1))
-                  players[i].alive=false;
-               else
-               {
-                  players[i].yCoordinate++;
-                  newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
-               }
-            break;
-            case Directions::Left:
-               if(crashed(i,-1,0))
-                  players[i].alive=false;
-               else
-               {
-                  players[i].xCoordinate--;
-                  newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
-               }
-            break;
-            case Directions::Right:
-               if(crashed(i,1,0))
-                  players[i].alive=false;
-               else
-               {
-                  players[i].xCoordinate++;
-                  newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
-               }
-            break;
-            default:
-               break;
-         }
-         if(players[i].alive)
-            playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
-      }
-   }
+			int newType; // determine type of rect to set
+			if(i==0)
+			{
+				newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
+			}
+			else
+			{
+				newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
+			}
+			switch(players[i].dir)
+			{
+				case Directions::Up:
+					if(crashed(i,0,-1))
+						players[i].alive=false;
+					else
+					{
+						players[i].yCoordinate--;
+						newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
+					}
+					break;
+				case Directions::Down:
+					if(crashed(i,0,1))
+						players[i].alive=false;
+					else
+					{
+						players[i].yCoordinate++;
+						newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
+					}
+					break;
+				case Directions::Left:
+					if(crashed(i,-1,0))
+						players[i].alive=false;
+					else
+					{
+						players[i].xCoordinate--;
+						newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
+					}
+					break;
+				case Directions::Right:
+					if(crashed(i,1,0))
+						players[i].alive=false;
+					else
+					{
+						players[i].xCoordinate++;
+						newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
+					}
+					break;
+				default:
+					break;
+			}
+			if(players[i].alive)
+			{
+				playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
+			}
+			else
+			{
+				switch (players[i].last_dir)
+				{
+					case Directions::Up:
+						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::TOP;
+						break;
+					case Directions::Down:
+						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::BOTTOM;
+						break;
+					case Directions::Right:
+						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::RIGHT;
+						break;
+					case Directions::Left:
+						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::LEFT;
+						break;
+					default:
+						break;
+				}
+				playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::HEAD;
+			}
+		}
+	}
 
-   if(players[0].accelerated || players[1].accelerated)
-   {
-      /* player collision check */
-      if(!players[1].alive)
-      {
-         int xInc=0,yInc=0;
-         switch(players[1].dir)
-         {
-            case Directions::Left:
-              xInc = -1;
-            break;
-            case Directions::Right:
-               xInc = 1;
-            break;
-            case Directions::Up:
-               yInc = -1;
-            break;
-            case Directions::Down:
-               yInc = 1;
-            break;
-            default:
-            break;
-         }
-         if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-         if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-         {
-            players[0].alive=false;
-         }
-      }
+	if(players[0].accelerated || players[1].accelerated)
+	{
+		/* player collision check */
+		if(!players[1].alive)
+		{
+			int xInc=0,yInc=0;
+			switch(players[1].dir)
+			{
+				case Directions::Left:
+				xInc = -1;
+				break;
+				case Directions::Right:
+				xInc = 1;
+				break;
+				case Directions::Up:
+				yInc = -1;
+				break;
+				case Directions::Down:
+				yInc = 1;
+				break;
+				default:
+				break;
+			}
+			if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
+			if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+			{
+				players[0].alive=false;
+			}
+		}
 
-      update();
+		updatePixmap();
+		update();
 
-      // crashtest
-      if(!players[0].alive && !players[1].alive)
-      {
-         stopGame();
-         players[0].score++;
-         players[1].score++;
-         showWinner(KTronEnum::Both);
-      }
-      else
-      {
-         for(i=0;i<2;i++)
-         {
-            if(!players[i].alive)
-            {
-               stopGame();
-               showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-               players[i].score++;
-            }
-         }
-      }
+		// crashtest
+		if(!players[0].alive && !players[1].alive)
+		{
+			stopGame();
+			players[0].score++;
+			players[1].score++;
+			showWinner(KTronEnum::Both);
+		}
+		else
+		{
+			for(i=0;i<2;i++)
+			{
+				if(!players[i].alive)
+				{
+				stopGame();
+				showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
+				players[i].score++;
+				}
+			}
+		}
 
 
-      if(gameEnded)
-      {
-         //this is for waiting 0,5s before starting next game
-         gameBlocked=true;
-         QTimer::singleShot(1000,this,SLOT(unblockGame()));
-	 return;
-      }
-   }
+		if(gameEnded)
+		{
+			//this is for waiting 0,5s before starting next game
+			gameBlocked=true;
+			QTimer::singleShot(1000,this,SLOT(unblockGame()));
+		return;
+		}
+	}
 
-   // neue Spielerstandorte festlegen
-   for(i=0;i<2;i++)
-   {
-      if(players[i].computer)
-         think(i);
-   }
+	// neue Spielerstandorte festlegen
+	for(i=0;i<2;i++)
+	{
+		if(players[i].computer)
+			think(i);
+	}
 
-   updateDirections();
+	updateDirections();
 
-   for(i=0;i<2;i++)
-   {
-      int newType;
-      if(i==0)
-         newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
-      else
-         newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
+	for(i=0;i<2;i++)
+	{
+		int newType;
+		if(i==0)
+			newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
+		else
+			newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
 
-      switch(players[i].dir)
-      {
-         case Directions::Up:
-            if(crashed(i,0,-1))
-               players[i].alive=false;
-            else
-            {
-               players[i].yCoordinate--;
-               newType |= (KTronEnum::TOP | KTronEnum::RIGHT | KTronEnum::LEFT);
-            }
-         break;
-         case Directions::Down:
-            if(crashed(i,0,1))
-               players[i].alive=false;
-            else
-            {
-               players[i].yCoordinate++;
-               newType |= (KTronEnum::BOTTOM | KTronEnum::RIGHT | KTronEnum::LEFT);
-            }
-         break;
-         case Directions::Left:
-            if(crashed(i,-1,0))
-               players[i].alive=false;
-            else
-            {
-               players[i].xCoordinate--;
-               newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
-            }
-         break;
-         case Directions::Right:
-            if(crashed(i,1,0))
-               players[i].alive=false;
-            else
-            {
-               players[i].xCoordinate++;
-               newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
-            }
-         break;
-         default:
-         break;
+		switch(players[i].dir)
+		{
+			case Directions::Up:
+				if(crashed(i,0,-1))
+				players[i].alive=false;
+				else
+				{
+				players[i].yCoordinate--;
+				newType |= (KTronEnum::TOP | KTronEnum::RIGHT | KTronEnum::LEFT);
+				}
+			break;
+			case Directions::Down:
+				if(crashed(i,0,1))
+				players[i].alive=false;
+				else
+				{
+				players[i].yCoordinate++;
+				newType |= (KTronEnum::BOTTOM | KTronEnum::RIGHT | KTronEnum::LEFT);
+				}
+			break;
+			case Directions::Left:
+				if(crashed(i,-1,0))
+				players[i].alive=false;
+				else
+				{
+				players[i].xCoordinate--;
+				newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
+				}
+			break;
+			case Directions::Right:
+				if(crashed(i,1,0))
+				players[i].alive=false;
+				else
+				{
+				players[i].xCoordinate++;
+				newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
+				}
+			break;
+			default:
+			break;
 
-      }
-      if(players[i].alive)
-         playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
-   }
+		}
+		if(players[i].alive)
+		{
+			playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
+		}
+		else
+		{
+			switch (players[i].last_dir)
+			{
+				case Directions::Up:
+					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::TOP;
+					break;
+				case Directions::Down:
+					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::BOTTOM;
+					break;
+				case Directions::Right:
+					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::RIGHT;
+					break;
+				case Directions::Left:
+					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::LEFT;
+					break;
+				default:
+					break;
+			}
+			playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::HEAD;
+		}
+	}
 
-   /* player collision check */
-   if(!players[1].alive)
-   {
-      int xInc=0,yInc=0;
-      switch(players[1].dir)
-      {
-         case Directions::Left:
-            xInc = -1; break;
-         case Directions::Right:
-            xInc = 1; break;
-         case Directions::Up:
-            yInc = -1; break;
-         case Directions::Down:
-            yInc = 1; break;
-         default:
-            break;
-      }
-      if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-         if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-         {
-            players[0].alive=false;
-         }
-   }
+	/* player collision check */
+	if(!players[1].alive)
+	{
+		int xInc=0,yInc=0;
+		switch(players[1].dir)
+		{
+			case Directions::Left:
+				xInc = -1; break;
+			case Directions::Right:
+				xInc = 1; break;
+			case Directions::Up:
+				yInc = -1; break;
+			case Directions::Down:
+				yInc = 1; break;
+			default:
+				break;
+		}
+		if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
+			if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+			{
+				players[0].alive=false;
+			}
+	}
 
-   update();
+	updatePixmap();
+	update();
 
-   if(!players[0].alive && !players[1].alive)
-   {
-      stopGame();
-      players[0].score++;
-      players[1].score++;
-      showWinner(KTronEnum::Both);
-   }
-   else
-      for(i=0;i<2;i++)
-      {
-         // crashtests
-         if(!players[i].alive)
-         {
-            stopGame();
-            showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-            players[i].score++;
-         }
-      }
+	if(!players[0].alive && !players[1].alive)
+	{
+		stopGame();
+		players[0].score++;
+		players[1].score++;
+		showWinner(KTronEnum::Both);
+	}
+	else
+		for(i=0;i<2;i++)
+		{
+			// crashtests
+			if(!players[i].alive)
+			{
+				stopGame();
+				showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
+				players[i].score++;
+			}
+		}
 
-   if(gameEnded)
-   {
-      //this is for waiting 1s before starting next game
-      gameBlocked=true;
-      QTimer::singleShot(1000,this,SLOT(unblockGame()));
-   }
-
+	if(gameEnded)
+	{
+		//this is for waiting 1s before starting next game
+		gameBlocked=true;
+		QTimer::singleShot(1000,this,SLOT(unblockGame()));
+	}
 }
 
 /* *************************************************************** **
