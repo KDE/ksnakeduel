@@ -22,7 +22,7 @@
   ***************************************************************************/
 // Background
 #include <kio/netaccess.h>
-#include <kmessagebox.h>
+#include <KMessageBox>
 
 // Normal class
 #include <QTimer>
@@ -45,8 +45,9 @@
 #include <KStandardAction>
 #include <KGameDifficulty>
 
-#include "settings.h"
 #include "tron.h"
+#include "settings.h"
+#include "renderer.h"
 
 /**
  * init-functions
@@ -138,6 +139,8 @@ void Tron::createNewPlayfield()
   // Block size
   blockWidth = width() / TRON_PLAYFIELD_WIDTH;
   blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
+
+  Renderer::self()->boardResized(fieldWidth, fieldHeight, 0, 0, blockWidth, blockHeight);
 
   // start positions
   playfield=new QVector<int>[fieldWidth];
@@ -327,11 +330,16 @@ void Tron::updatePixmap()
 
 void Tron::drawRect(QPainter & p, int x, int y)
 {
-   int xOffset = x*blockWidth+(width()-fieldWidth*blockWidth)/2;
-   int yOffset = y*blockHeight+(height()-fieldHeight*blockHeight)/2;
+	int xOffset = x*blockWidth+(width()-fieldWidth*blockWidth)/2;
+	int yOffset = y*blockHeight+(height()-fieldHeight*blockHeight)/2;
 
-   int type=playfield[x][y];
+	int type=playfield[x][y];
 
+	QPixmap snakePart = Renderer::self()->snakePart(type);
+
+	p.drawPixmap(xOffset, yOffset, snakePart);
+
+/*
    // find out which color to draw
    QColor toDraw;
    int player;
@@ -399,6 +407,7 @@ void Tron::drawRect(QPainter & p, int x, int y)
          p.drawLine(xOffset+blockWidth-1,yOffset,xOffset+blockWidth-1,yOffset+blockHeight-1);
          break;
     }
+*/
 }
 
 /* *************************************************************** **
@@ -811,11 +820,11 @@ void Tron::doMove()
          int newType; // determine type of rect to set
          if(i==0)
          {
-            newType=KTronEnum::PLAYER1 | KTronEnum::HEAD;
+            newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
          }
          else
          {
-            newType=KTronEnum::PLAYER2 | KTronEnum::HEAD;
+            newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
          }
          switch(players[i].dir)
          {
@@ -939,9 +948,9 @@ void Tron::doMove()
    {
       int newType;
       if(i==0)
-         newType=KTronEnum::PLAYER1 | KTronEnum::HEAD;
+         newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
       else
-         newType=KTronEnum::PLAYER2 | KTronEnum::HEAD;
+         newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
 
       switch(players[i].dir)
       {

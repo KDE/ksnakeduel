@@ -22,6 +22,7 @@
   *****************************************************************************/
 
 #include "ktron.h"
+#include "renderer.h"
 
 #include <KConfigDialog>
 #include <KLocale>
@@ -176,14 +177,20 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 }
 
 void KTron::loadSettings() {
-   playerName[0]=Settings::namePlayer1();
-   if ( playerName[0].isEmpty() )
-       playerName[0] = i18n("Player 1");
-   playerName[1]=Settings::namePlayer2();
-   if ( playerName[1].isEmpty() )
-       playerName[1] = i18n("Player 2");
-   
-   updateStatusbar();
+	if (!Renderer::self()->loadTheme(Settings::theme()))
+    {
+		KMessageBox::error(this, i18n("Failed to load \"%1\" theme. Please check your installation.", Settings::theme()));
+		return;
+	}
+
+	playerName[0]=Settings::namePlayer1();
+	if ( playerName[0].isEmpty() )
+		playerName[0] = i18n("Player 1");
+	playerName[1]=Settings::namePlayer2();
+	if ( playerName[1].isEmpty() )
+		playerName[1] = i18n("Player 2");
+	
+	updateStatusbar();
 }
 
 void KTron::updateStatusbar(){

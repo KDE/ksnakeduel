@@ -42,8 +42,10 @@ class KActionCollection;
 // Old style, board as big as screen
 #define TRON_FRAMESIZE 2
 // New style, fixed board width
-#define TRON_PLAYFIELD_WIDTH 70
-#define TRON_PLAYFIELD_HEIGHT 40
+//#define TRON_PLAYFIELD_WIDTH 70
+//#define TRON_PLAYFIELD_HEIGHT 40
+#define TRON_PLAYFIELD_WIDTH 50
+#define TRON_PLAYFIELD_HEIGHT 30
 
 namespace KTronEnum
 {

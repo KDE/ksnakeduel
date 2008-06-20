@@ -27,6 +27,7 @@
 #include <KStandardDirs>
 
 #include "ktron.h"
+#include "renderer.h"
 #include "version.h"
 
 static KLocalizedString description = ki18n("A race in hyperspace");
@@ -48,6 +49,7 @@ int main(int argc, char* argv[])
   KGlobal::locale()->insertCatalog("libkdegames");
   KStandardDirs::locateLocal("appdata", "themes/");
 
+  Renderer::self(); // Creates Renderer
 
   KTron *ktron = new KTron();
   ktron->show();

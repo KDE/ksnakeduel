@@ -39,6 +39,7 @@ class Renderer {
         static Renderer *self();
 
         bool loadTheme(const QString &);
+		void boardResized(int width, int height, int leftOffset, int topOffset, int partWidth, int partHeight);
 
 		QPixmap snakePart(int);
 		QString decodePart(int);

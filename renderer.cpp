@@ -27,9 +27,11 @@
 
 #include <QPainter>
 #include <QPixmap>
+
 #include <KGameTheme>
 #include <KPixmapCache>
 #include <KSvgRenderer>
+#include <KDebug>
 
 class RendererPrivate
 {
@@ -117,42 +119,76 @@ QString Renderer::decodePart(int type)
 	// Heads (or tails)
 	if (type & KTronEnum::HEAD)
 	{
-		if (type & (KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT))
+		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "head-north";
 		}
-		else if (type & (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT))
+		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "head-south";
 		}
-		else if (type & (KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT))
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
 		{
 			name += "head-west";
 		}
-		else if (type & (KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::RIGHT))
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
 		{
 			name += "head-east";
 		}
+
+		return name;
 	}
 	else
 	{
-		if (type & (KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT))
+		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-south";
+			return name;
 		}
-		else if (type & (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT))
+		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-north";
+			return name;
 		}
-		else if (type & (KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT))
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
 		{
 			name += "tail-east";
+			return name;
 		}
-		else if (type & (KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::RIGHT))
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-west";
+			return name;
 		}
 	}
+
+	// Bodys
+	if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM))
+	{
+		name += "body-h";
+	}
+	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+	{
+		name += "body-v";
+	}
+	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::TOP))
+	{
+		name += "body-nw";
+	}
+	else if ((type & KTronEnum::TOP) && (type & KTronEnum::RIGHT))
+	{
+		name += "body-ne";
+	}
+	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::BOTTOM))
+	{
+		name += "body-sw";
+	}
+	else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
+	{
+		name += "body-se";
+	}
+
+	return name;
 }
 
 QPixmap Renderer::snakePart(int part)
@@ -197,4 +233,26 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
 QPixmap Renderer::background()
 {
     return pixmapFromCache(p, "ktron-background", p->m_sceneSize);
+}
+
+void Renderer::boardResized(int width, int height, int leftOffset, int topOffset, int partWidth, int partHeight)
+{
+    //new metrics
+    p->m_sceneSize = QSize(width, height);
+    p->m_partSize = QSize(partWidth, partHeight);
+    
+    const QString svgName("ktron-background");
+    
+    QString pixName = svgName + sizeSuffix.arg(width).arg(height);
+    QPixmap pix;
+    if (!p->m_cache.find(pixName, pix))
+    {
+        pix = QPixmap(p->m_sceneSize);
+        pix.fill(Qt::transparent);
+        QPainter painter(&pix);
+        p->m_renderer.render(&painter, svgName);
+        
+        painter.end();
+        p->m_cache.insert(pixName, pix);
+    }
 }
