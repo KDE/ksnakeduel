@@ -23,7 +23,7 @@ set(ktron_SRCS
     ktron.cpp
     main.cpp)
 
-kde4_add_ui_files(ktron_SRCS ai.ui appearance.ui general.ui)
+kde4_add_ui_files(ktron_SRCS ai.ui general.ui)
 
 kde4_add_kcfg_files(ktron_SRCS settings.kcfgc)
 

@@ -35,27 +35,17 @@
         </property>
         <layout class="QVBoxLayout" >
          <item>
-          <widget class="QCheckBox" name="kcfg_ChangeWinnerColor" >
-           <property name="text" >
-            <string>&amp;Show winner by changing color</string>
-           </property>
-          </widget>
-         </item>
-         <item>
           <widget class="QCheckBox" name="kcfg_AcceleratorBlocked" >
            <property name="text" >
             <string>&amp;Disable acceleration</string>
            </property>
           </widget>
          </item>
-         <item>
-          <widget class="QCheckBox" name="kcfg_OppositeDirCrashes" >
-           <property name="text" >
-            <string>&amp;Crash when moving in the opposite direction</string>
-           </property>
-          </widget>
-         </item>
         </layout>
+        <zorder>kcfg_ChangeWinnerColor</zorder>
+        <zorder>kcfg_AcceleratorBlocked</zorder>
+        <zorder>kcfg_OppositeDirCrashes</zorder>
+        <zorder>groupBox2</zorder>
        </widget>
       </item>
       <item>

@@ -15,53 +15,14 @@
       <label>The background color of the game.</label>
       <default>black</default>
     </entry>
-    <entry name="Color_Player1" type="Color">
-      <label>The color of player 1</label>
-      <default>red</default>
-    </entry>
-    <entry name="Color_Player2" type="Color">
-      <label>The color of player 2</label>
-      <default>blue</default>
-    </entry>
-    <entry name="ChangeWinnerColor" type="Bool">
-      <label>Whether to show the winner by changing color.</label>
-      <default>true</default>
-    </entry>
     <entry name="AcceleratorBlocked" type="Bool">
       <label>Whether to disable acceleration.</label>
       <default>false</default>
-    </entry>
-    <entry name="OppositeDirCrashes" type="Bool">
-      <label>Whether changing in the opposite direction causes a crash.</label>
-      <default>false</default>
-    </entry>
-    <entry name="RectSize" type="Int">
-      <label>The width of the line.</label>
-      <default>10</default>
     </entry>
     <entry name="Difficulty" type="Int">
       <label>The difficulty level.</label>
       <default>30</default>
     </entry>
-    <entry name="Style" type="Enum">
-      <label>The line style.</label>
-      <choices>
-        <choice name="OLine"/>
-        <choice name="ORect"/>
-        <choice name="Line"/>
-        <choice name="Circle"/>
-      </choices>
-      <default>OLine</default>
-    </entry>
-    
-    <entry name="BackgroundImageChoice" type="Bool">
-      <label>Whether to use a custom background image.</label>
-      <default>false</default>
-    </entry>
-    <entry name="BackgroundImage" type="Path">
-      <label>Custom background image to use.</label>
-    </entry>
-
     <entry name="Computerplayer1" type="Bool">
       <label>Whether player 1 is a computer player.</label>
       <default>true</default>

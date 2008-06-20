@@ -79,13 +79,6 @@ Tron::Tron(QWidget *parent)
 void Tron::loadSettings(){
   setPalette(Settings::color_Background());
 
-  // Size
-  //int newSize = Settings::rectSize();
-  //if(newSize!=rectSize){
-  //  rectSize=newSize;
-  //  createNewPlayfield();
-  //}
-
   reset();
 
   // Velocity
@@ -97,24 +90,6 @@ void Tron::loadSettings(){
     update();
   }
 
-  // Backgroundimage
-  setBackgroundPix(QPixmap());
-  if(Settings::backgroundImageChoice()){
-    KUrl url ( Settings::backgroundImage() );
-    if(!url.isEmpty()){
-      QString tmpFile;
-      KIO::NetAccess::download(url, tmpFile, this);
-      QPixmap pix(tmpFile);
-      if(!pix.isNull()){
-        setBackgroundPix(pix);
-      } else {
-  	QString msg=i18n("Was not able to load wallpaper\n%1", tmpFile);
-	KMessageBox::sorry(this, msg);
-      }
-      KIO::NetAccess::removeTempFile(tmpFile);
-    }
-    else setBackgroundPix(QPixmap());
-  }
   setComputerplayer(KTronEnum::One, Settings::computerplayer1());
   setComputerplayer(KTronEnum::Two, Settings::computerplayer2());
 }
@@ -139,6 +114,14 @@ void Tron::createNewPlayfield()
   // Block size
   blockWidth = width() / TRON_PLAYFIELD_WIDTH;
   blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
+  if (blockWidth > blockHeight)
+  {
+    blockWidth = blockHeight;
+  }
+  else
+  {
+    blockHeight = blockWidth;
+  }
 
   Renderer::self()->boardResized(fieldWidth, fieldHeight, 0, 0, blockWidth, blockHeight);
 
@@ -186,9 +169,13 @@ void Tron::reset()
       players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
 
       playfield[players[0].xCoordinate][players[0].yCoordinate]=
-         KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+         KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+      playfield[players[0].xCoordinate][players[0].yCoordinate + 1]=
+         KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
       playfield[players[1].xCoordinate][players[1].yCoordinate]=
-         KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+         KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+      playfield[players[1].xCoordinate][players[1].yCoordinate + 1]=
+         KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
 
       updatePixmap();
       update();
@@ -223,8 +210,8 @@ void Tron::stopGame()
 {
    timer->stop();
    gameEnded=true;
-   players[0].last_dir = Directions::None;
-   players[1].last_dir = Directions::None;
+   players[0].last_dir = Directions::Up;
+   players[1].last_dir = Directions::Up;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -250,35 +237,6 @@ void Tron::showWinner(KTronEnum::Player player)
 {
    int i,j;
 
-   if(player != KTronEnum::Both && Settings::changeWinnerColor())
-   {
-      int winner;
-      int loser;
-      if(player==KTronEnum::One)
-      {
-         winner=KTronEnum::PLAYER1;
-         loser=KTronEnum::PLAYER2;
-      }
-      else
-      {
-         winner=KTronEnum::PLAYER2;
-         loser=KTronEnum::PLAYER1;
-      }
-
-      for(i=0;i<fieldWidth;i++)
-         for(j=0;j<fieldHeight;j++)
-         {
-            if(playfield[i][j]!=KTronEnum::BACKGROUND)
-            {
-               // change player
-               playfield[i][j] |= winner;
-               playfield[i][j] &= ~loser;
-            }
-         }
-
-      updatePixmap();
-   }
-
    update();
 
    emit gameEnds(player);
@@ -299,7 +257,7 @@ void Tron::updatePixmap()
 
 	QPainter p;
 	p.begin(pixmap);
-
+	
 	if(!bgPix.isNull())
 	{
 		int pw=bgPix.width();
@@ -338,76 +296,6 @@ void Tron::drawRect(QPainter & p, int x, int y)
 	QPixmap snakePart = Renderer::self()->snakePart(type);
 
 	p.drawPixmap(xOffset, yOffset, snakePart);
-
-/*
-   // find out which color to draw
-   QColor toDraw;
-   int player;
-   if(type & KTronEnum::PLAYER1) // check player bit
-   {
-      toDraw=Settings::color_Player1();
-      player=0;
-   }
-   else if(type & KTronEnum::PLAYER2)
-   {
-      toDraw=Settings::color_Player2();
-      player=1;
-   }
-   else
-   {
-      Q_ASSERT_X(true, "Tron::drawRect", "No player defined in Tron::drawRect(...)");
-      return;
-   }
-
-   switch(Settings::style())
-   {
-      case Settings::EnumStyle::Line:
-         p.setBrush(toDraw);
-         p.setPen(toDraw);
-         p.drawRect(xOffset,yOffset,blockWidth,blockHeight);
-         break;
-      case Settings::EnumStyle::OLine:
-      {
-         p.setBrush(toDraw);
-         p.setPen(toDraw);
-         p.drawRect(xOffset,yOffset,blockWidth,blockHeight);
-         p.setPen(toDraw.light());
-         if(type&KTronEnum::TOP)
-         {
-            p.drawLine(xOffset,yOffset,xOffset+blockWidth-1,yOffset);
-         }
-         if(type&KTronEnum::LEFT)
-         {
-            p.drawLine(xOffset,yOffset,xOffset,yOffset+blockHeight-1);
-         }
-         p.setPen(toDraw.dark());
-         if(type&KTronEnum::RIGHT)
-         {
-            p.drawLine(xOffset+blockWidth-1,yOffset,xOffset+blockWidth-1,yOffset+blockHeight-1);
-         }
-         if(type&KTronEnum::BOTTOM)
-         {
-            p.drawLine(xOffset,yOffset+blockHeight-1,xOffset+blockWidth-1,yOffset+blockHeight-1);
-         }
-
-         break;
-      }
-      case Settings::EnumStyle::Circle:
-         p.setBrush(toDraw);
-         p.setPen(toDraw);
-         p.drawEllipse(xOffset ,yOffset ,blockWidth,blockHeight);
-         break;
-      case Settings::EnumStyle::ORect:
-         p.setBrush(toDraw);
-         p.setPen(toDraw.light());
-         p.drawRect(xOffset,yOffset,blockWidth,blockHeight);
-         p.setPen(toDraw.dark());
-         p.drawLine(xOffset,yOffset+blockHeight-1,xOffset+blockWidth-1
-             ,yOffset+blockHeight-1);
-         p.drawLine(xOffset+blockWidth-1,yOffset,xOffset+blockWidth-1,yOffset+blockHeight-1);
-         break;
-    }
-*/
 }
 
 /* *************************************************************** **
@@ -490,8 +378,6 @@ void Tron::switchDir(int playerNr, Directions::Direction newDirection)
      return;
   }
 
-  if (Settings::oppositeDirCrashes()==false)
-  {
     if (newDirection==Directions::Up && players[playerNr].last_dir==Directions::Down)
       return;
     if (newDirection==Directions::Down && players[playerNr].last_dir==Directions::Up)
@@ -500,7 +386,6 @@ void Tron::switchDir(int playerNr, Directions::Direction newDirection)
       return;
     if (newDirection==Directions::Right && players[playerNr].last_dir==Directions::Left)
       return;
-  }
 
   players[playerNr].dir=newDirection;
 }

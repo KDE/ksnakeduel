@@ -40,7 +40,6 @@
 #include "settings.h"
 #include "ui_general.h"
 #include "ui_ai.h"
-#include "ui_appearance.h"
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
@@ -60,15 +59,6 @@ class Ai : public QWidget, public Ui::Ai
 {
 public:
     Ai(QWidget *parent = 0)
-        : QWidget(parent)
-        {
-            setupUi(this);
-        }
-};
-class Appearance : public QWidget, public Ui::Appearance
-{
-public:
-    Appearance(QWidget *parent = 0)
         : QWidget(parent)
         {
             setupUi(this);
@@ -275,7 +265,6 @@ void KTron::showSettings(){
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General, i18n("General"), "package_settings");
   dialog->addPage(new Ai, i18n("A.I."), "personal");
-  dialog->addPage(new Appearance, i18n("Appearance"), "preferences-desktop-theme-style");
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));

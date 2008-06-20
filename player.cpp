@@ -29,7 +29,7 @@ player::player()
   score=0;
   reset();
   dir=Directions::Up;
-  last_dir=Directions::None;
+  last_dir=Directions::Up;
 }
 
 
