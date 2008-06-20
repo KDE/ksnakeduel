@@ -81,7 +81,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
   playerPoints[0]=playerPoints[1]=0;
 
   tron=new Tron(this);
-  connect(tron,SIGNAL(gameEnds(Player)),SLOT(changeStatus(Player)));
+  connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
   setCentralWidget(tron);
   tron->setMinimumSize(200,180);
 
@@ -188,11 +188,11 @@ void KTron::loadSettings() {
 
 void KTron::updateStatusbar(){
   for(int i=0;i<2;i++){
-    Player player;
-    player=(i==0?One:Two);
+    KTronEnum::Player player;
+    player=(i==0 ? KTronEnum::One : KTronEnum::Two);
 
     QString name;
-    if(tron->isComputer(Both))
+    if(tron->isComputer(KTronEnum::Both))
       name=i18n("Computer(%1)", (i+1));
     else if(tron->isComputer(player))
       name=i18n("Computer");
@@ -203,19 +203,19 @@ void KTron::updateStatusbar(){
   }
 }
 
-void KTron::changeStatus(Player player) {
+void KTron::changeStatus(KTronEnum::Player player) {
   // if player=Nobody, then new game
-  if(player==Nobody){
+  if(player==KTronEnum::Nobody){
     playerPoints[0]=playerPoints[1]=0;
     updateStatusbar();
     return;
   }
   
-  if(player==One)
+  if(player==KTronEnum::One)
     playerPoints[0]++;
-  else if(player==Two)
+  else if(player==KTronEnum::Two)
     playerPoints[1]++;
-  else if(player==Both){
+  else if(player==KTronEnum::Both){
     playerPoints[0]++;
     playerPoints[1]++;
   }
@@ -223,20 +223,20 @@ void KTron::changeStatus(Player player) {
   updateStatusbar();
 
   if(playerPoints[0]>=WINNING_DIFF && playerPoints[1] < playerPoints[0]-1)
-    showWinner(One);
+    showWinner(KTronEnum::One);
   else if(playerPoints[1]>=WINNING_DIFF && playerPoints[0] < playerPoints[1]-1)
-    showWinner(Two);
+    showWinner(KTronEnum::Two);
 }
 
-void KTron::showWinner(Player winner){
-  if(tron->isComputer(Both) || (winner != One && winner != Two))
+void KTron::showWinner(KTronEnum::Player winner){
+  if(tron->isComputer(KTronEnum::Both) || (winner != KTronEnum::One && winner != KTronEnum::Two))
     return;
 
   QString loserName = i18n("KTron");
-  int loser = Two;
-  if(winner == Two)
-    loser = One;
-  if(!tron->isComputer(((Player)loser)))
+  KTronEnum::Player loser = KTronEnum::Two;
+  if(winner == KTronEnum::Two)
+    loser = KTronEnum::One;
+  if(!tron->isComputer(loser))
     loserName = playerName[loser];
   
   QString winnerName = i18n("KTron");

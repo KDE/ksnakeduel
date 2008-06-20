@@ -114,8 +114,8 @@ void Tron::loadSettings(){
     }
     else setBackgroundPix(QPixmap());
   }
-  setComputerplayer(One, Settings::computerplayer1());
-  setComputerplayer(Two, Settings::computerplayer2());
+  setComputerplayer(KTronEnum::One, Settings::computerplayer1());
+  setComputerplayer(KTronEnum::Two, Settings::computerplayer2());
 }
 
 Tron::~Tron()
@@ -155,7 +155,7 @@ void Tron::newGame()
 {
   players[0].score=0;
   players[1].score=0;
-  emit gameEnds(Nobody);
+  emit gameEnds(KTronEnum::Nobody);
   reset();
 
   QTimer::singleShot(15000,this,SLOT(showBeginHint()));
@@ -175,7 +175,7 @@ void Tron::reset()
   {
       int i;
       for(i=0;i<fieldWidth;i++)
-	   	playfield[i].fill(BACKGROUND);
+	   	playfield[i].fill(KTronEnum::BACKGROUND);
 
       // set start coordinates
 
@@ -183,9 +183,9 @@ void Tron::reset()
       players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
 
       playfield[players[0].xCoordinate][players[0].yCoordinate]=
-         PLAYER1 | TOP | BOTTOM | LEFT | RIGHT;
+         KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
       playfield[players[1].xCoordinate][players[1].yCoordinate]=
-         PLAYER2 | TOP | BOTTOM | LEFT | RIGHT;
+         KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
 
       updatePixmap();
       update();
@@ -198,7 +198,7 @@ void Tron::reset()
 
 void Tron::computerStart()
 {
-   if(isComputer(Both))
+   if(isComputer(KTronEnum::Both))
    {
       reset();
       startGame();
@@ -243,29 +243,29 @@ void Tron::togglePause() // pause or continue game
   }
 }
 
-void Tron::showWinner(Player player)
+void Tron::showWinner(KTronEnum::Player player)
 {
    int i,j;
 
-   if(player != Both && Settings::changeWinnerColor())
+   if(player != KTronEnum::Both && Settings::changeWinnerColor())
    {
       int winner;
       int loser;
-      if(player==One)
+      if(player==KTronEnum::One)
       {
-         winner=PLAYER1;
-         loser=PLAYER2;
+         winner=KTronEnum::PLAYER1;
+         loser=KTronEnum::PLAYER2;
       }
       else
       {
-         winner=PLAYER2;
-         loser=PLAYER1;
+         winner=KTronEnum::PLAYER2;
+         loser=KTronEnum::PLAYER1;
       }
 
       for(i=0;i<fieldWidth;i++)
          for(j=0;j<fieldHeight;j++)
          {
-            if(playfield[i][j]!=BACKGROUND)
+            if(playfield[i][j]!=KTronEnum::BACKGROUND)
             {
                // change player
                playfield[i][j] |= winner;
@@ -280,7 +280,7 @@ void Tron::showWinner(Player player)
 
    emit gameEnds(player);
 
-   if(isComputer(Both))
+   if(isComputer(KTronEnum::Both))
    {
        QTimer::singleShot(1000,this,SLOT(computerStart()));
    }
@@ -315,7 +315,7 @@ void Tron::updatePixmap()
 	{
 		for(j=0;j<fieldHeight;j++)
 		{
-			if(playfield[i][j]!=BACKGROUND)
+			if(playfield[i][j]!=KTronEnum::BACKGROUND)
 			{
 				drawRect(p,i,j);
 			}
@@ -335,12 +335,12 @@ void Tron::drawRect(QPainter & p, int x, int y)
    // find out which color to draw
    QColor toDraw;
    int player;
-   if(type & PLAYER1) // check player bit
+   if(type & KTronEnum::PLAYER1) // check player bit
    {
       toDraw=Settings::color_Player1();
       player=0;
    }
-   else if(type & PLAYER2)
+   else if(type & KTronEnum::PLAYER2)
    {
       toDraw=Settings::color_Player2();
       player=1;
@@ -364,20 +364,20 @@ void Tron::drawRect(QPainter & p, int x, int y)
          p.setPen(toDraw);
          p.drawRect(xOffset,yOffset,blockWidth,blockHeight);
          p.setPen(toDraw.light());
-         if(type&TOP)
+         if(type&KTronEnum::TOP)
          {
             p.drawLine(xOffset,yOffset,xOffset+blockWidth-1,yOffset);
          }
-         if(type&LEFT)
+         if(type&KTronEnum::LEFT)
          {
             p.drawLine(xOffset,yOffset,xOffset,yOffset+blockHeight-1);
          }
          p.setPen(toDraw.dark());
-         if(type&RIGHT)
+         if(type&KTronEnum::RIGHT)
          {
             p.drawLine(xOffset+blockWidth-1,yOffset,xOffset+blockWidth-1,yOffset+blockHeight-1);
          }
-         if(type&BOTTOM)
+         if(type&KTronEnum::BOTTOM)
          {
             p.drawLine(xOffset,yOffset+blockHeight-1,xOffset+blockWidth-1,yOffset+blockHeight-1);
          }
@@ -429,23 +429,23 @@ void Tron::setVelocity(int newVel)            // set new velocity
     timer->start(velocity);
 }
 
-void Tron::setComputerplayer(Player player, bool flag) {
-  if(player==One)
+void Tron::setComputerplayer(KTronEnum::Player player, bool flag) {
+  if(player==KTronEnum::One)
     players[0].setComputer(flag);
-  else if(player==Two)
+  else if(player==KTronEnum::Two)
     players[1].setComputer(flag);
 
-  if(isComputer(Both))
+  if(isComputer(KTronEnum::Both))
       QTimer::singleShot(1000,this,SLOT(computerStart()));
 }
 
-bool Tron::isComputer(Player player)
+bool Tron::isComputer(KTronEnum::Player player)
 {
-   if(player==One)
+   if(player==KTronEnum::One)
      return players[0].computer;
-   else if(player==Two)
+   else if(player==KTronEnum::Two)
      return players[1].computer;
-   else if(player==Both)
+   else if(player==KTronEnum::Both)
    {
       if(players[0].computer && players[1].computer)
         return true;
@@ -466,7 +466,7 @@ bool Tron::crashed(int playerNr,int xInc, int yInc) const
 
   if(newX<0 || newY <0 || newX>=fieldWidth || newY>=fieldHeight)
      flag=true;
-  else if(playfield[newX][newY] != BACKGROUND)
+  else if(playfield[newX][newY] != KTronEnum::BACKGROUND)
     flag=true;
   else flag=false;
 
@@ -509,21 +509,23 @@ void Tron::updateDirections(int playerNr)
          // unset drawing flags in the moving direction
          case Directions::Up:
          {
-            playfield[x][y] &= (~TOP);
+            playfield[x][y] &= (~KTronEnum::TOP);
             break;
          }
          case Directions::Down:
-            playfield[x][y] &= (~BOTTOM);
+            playfield[x][y] &= (~KTronEnum::BOTTOM);
             break;
          case Directions::Right:
-            playfield[x][y] &= (~RIGHT);
+            playfield[x][y] &= (~KTronEnum::RIGHT);
             break;
          case Directions::Left:
-            playfield[x][y] &= (~LEFT);
+            playfield[x][y] &= (~KTronEnum::LEFT);
             break;
          default:
             break;
       }
+      playfield[x][y] &= (~KTronEnum::HEAD);
+
       players[0].last_dir = players[0].dir;
 
    }
@@ -538,21 +540,23 @@ void Tron::updateDirections(int playerNr)
           // unset drawing flags in the moving direction
      	  case Directions::Up:
      	  {
-             playfield[x][y] &= (~TOP);
+             playfield[x][y] &= (~KTronEnum::TOP);
              break;
        	  }
           case Directions::Down:
-             playfield[x][y] &= (~BOTTOM);
+             playfield[x][y] &= (~KTronEnum::BOTTOM);
              break;
           case Directions::Right:
-             playfield[x][y] &= (~RIGHT);
+             playfield[x][y] &= (~KTronEnum::RIGHT);
              break;
           case Directions::Left:
-             playfield[x][y] &= (~LEFT);
+             playfield[x][y] &= (~KTronEnum::LEFT);
              break;
          default:
             break;
       }
+	  playfield[x][y] &= (~KTronEnum::HEAD);
+
       players[1].last_dir = players[1].dir;
 
    }
@@ -807,11 +811,11 @@ void Tron::doMove()
          int newType; // determine type of rect to set
          if(i==0)
          {
-            newType=PLAYER1;
+            newType=KTronEnum::PLAYER1 | KTronEnum::HEAD;
          }
          else
          {
-            newType=PLAYER2;
+            newType=KTronEnum::PLAYER2 | KTronEnum::HEAD;
          }
          switch(players[i].dir)
          {
@@ -821,7 +825,7 @@ void Tron::doMove()
                else
                {
                   players[i].yCoordinate--;
-                  newType|=(TOP | LEFT | RIGHT);
+                  newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
                }
             break;
             case Directions::Down:
@@ -830,7 +834,7 @@ void Tron::doMove()
                else
                {
                   players[i].yCoordinate++;
-                  newType |= (BOTTOM | LEFT | RIGHT);
+                  newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
                }
             break;
             case Directions::Left:
@@ -839,7 +843,7 @@ void Tron::doMove()
                else
                {
                   players[i].xCoordinate--;
-                  newType |= (LEFT | TOP | BOTTOM);
+                  newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
                }
             break;
             case Directions::Right:
@@ -848,7 +852,7 @@ void Tron::doMove()
                else
                {
                   players[i].xCoordinate++;
-                  newType |= (RIGHT | TOP | BOTTOM);
+                  newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
                }
             break;
             default:
@@ -897,7 +901,7 @@ void Tron::doMove()
          stopGame();
          players[0].score++;
          players[1].score++;
-         showWinner(Both);
+         showWinner(KTronEnum::Both);
       }
       else
       {
@@ -906,7 +910,7 @@ void Tron::doMove()
             if(!players[i].alive)
             {
                stopGame();
-               showWinner((i==0)? Two:One);
+               showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
                players[i].score++;
             }
          }
@@ -935,9 +939,9 @@ void Tron::doMove()
    {
       int newType;
       if(i==0)
-         newType=PLAYER1;
+         newType=KTronEnum::PLAYER1 | KTronEnum::HEAD;
       else
-         newType=PLAYER2;
+         newType=KTronEnum::PLAYER2 | KTronEnum::HEAD;
 
       switch(players[i].dir)
       {
@@ -947,7 +951,7 @@ void Tron::doMove()
             else
             {
                players[i].yCoordinate--;
-               newType |= (TOP | RIGHT | LEFT);
+               newType |= (KTronEnum::TOP | KTronEnum::RIGHT | KTronEnum::LEFT);
             }
          break;
          case Directions::Down:
@@ -956,7 +960,7 @@ void Tron::doMove()
             else
             {
                players[i].yCoordinate++;
-               newType |= (BOTTOM | RIGHT | LEFT);
+               newType |= (KTronEnum::BOTTOM | KTronEnum::RIGHT | KTronEnum::LEFT);
             }
          break;
          case Directions::Left:
@@ -965,7 +969,7 @@ void Tron::doMove()
             else
             {
                players[i].xCoordinate--;
-               newType |= (LEFT | TOP | BOTTOM);
+               newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
             }
          break;
          case Directions::Right:
@@ -974,7 +978,7 @@ void Tron::doMove()
             else
             {
                players[i].xCoordinate++;
-               newType |= (RIGHT | TOP | BOTTOM);
+               newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
             }
          break;
          default:
@@ -1016,7 +1020,7 @@ void Tron::doMove()
       stopGame();
       players[0].score++;
       players[1].score++;
-      showWinner(Both);
+      showWinner(KTronEnum::Both);
    }
    else
       for(i=0;i<2;i++)
@@ -1025,7 +1029,7 @@ void Tron::doMove()
          if(!players[i].alive)
          {
             stopGame();
-            showWinner((i==0)? Two:One);
+            showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
             players[i].score++;
          }
       }
@@ -1121,7 +1125,7 @@ if(opponentSkill() != 1)
   		index[1] = players[playerNr].yCoordinate+flags[1];
   		while (index[0] < fieldWidth && index[0] >= 0 &&
 	 		index[1] < fieldHeight && index[1] >= 0 &&
-	 		playfield[index[0]][index[1]] == BACKGROUND)
+	 		playfield[index[0]][index[1]] == KTronEnum::BACKGROUND)
 	 	{
     		dis_forward++;
     		index[0] += flags[0];
@@ -1133,7 +1137,7 @@ if(opponentSkill() != 1)
     	index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] < fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == BACKGROUND) {
+	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -1144,7 +1148,7 @@ if(opponentSkill() != 1)
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] <  fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == BACKGROUND) {
+	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];
@@ -1518,7 +1522,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   index[1] = players[playerNr].yCoordinate+flags[1];
   while (index[0] < fieldWidth && index[0] >= 0 &&
 	 index[1] < fieldHeight && index[1] >= 0 &&
-	 playfield[index[0]][index[1]] == BACKGROUND) {
+	 playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
     dis_forward++;
     index[0] += flags[0];
     index[1] += flags[1];
@@ -1533,7 +1537,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] < fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == BACKGROUND) {
+	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -1544,7 +1548,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] <  fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == BACKGROUND) {
+	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];

@@ -45,9 +45,13 @@ class KActionCollection;
 #define TRON_PLAYFIELD_WIDTH 70
 #define TRON_PLAYFIELD_HEIGHT 40
 
-enum Player{One,Two,Both,Nobody};
-// Bits that defines the rect and which sides to draw
-enum {BACKGROUND=0, PLAYER1=1,PLAYER2=2,TOP=4,BOTTOM=8,LEFT=16,RIGHT=32};
+namespace KTronEnum
+{
+	enum Player {One,Two,Both,Nobody};
+
+	// Bits that defines the rect and which sides to draw
+	enum SnakePart {BACKGROUND=0, PLAYER1=1, PLAYER2=2, TOP=4, BOTTOM=8, LEFT=16, RIGHT=32, HEAD=64};
+}
 
 /**
 * @short The playingfield
@@ -62,8 +66,8 @@ public:
   void setActionCollection(KActionCollection*);
   void updatePixmap();
   void setBackgroundPix(const QPixmap &);
-  void setComputerplayer(Player player, bool);
-  bool isComputer(Player player);
+  void setComputerplayer(KTronEnum::Player player, bool);
+  bool isComputer(KTronEnum::Player player);
   void setVelocity(int);
   void setRectSize(int newSize);
 
@@ -82,7 +86,7 @@ public slots:
   void loadSettings();
 
 signals:
-  void gameEnds(Player loser);
+  void gameEnds(KTronEnum::Player loser);
   void gameReset();
 
 protected:
@@ -150,7 +154,7 @@ private:
   /** draws a rect in current TronStyle at position x,y of the playingfield */
   void drawRect(QPainter & p, int x, int y);
   /** emits gameEnds(Player) and displays the winner by changing color*/
-  void showWinner(Player winner);
+  void showWinner(KTronEnum::Player winner);
   /** retrieves the opponentSkill */
   int opponentSkill();
   /** retrieves the line speed */

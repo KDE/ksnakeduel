@@ -1,4 +1,3 @@
-
 project(ktron)
 
 find_package(KDE4 REQUIRED)
@@ -9,7 +8,7 @@ include(KDE4Defaults)
 
 include(MacroLibrary)
 
-include_directories(${CMAKE_SOURCE_DIR}/libkdegames ${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} )
+include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${KDEGAMES_INCLUDE_DIR})
 
 add_subdirectory(pics)
 add_subdirectory(themes)
@@ -18,6 +17,7 @@ add_subdirectory(themes)
 ########### next target ###############
 
 set(ktron_SRCS
+	renderer.cpp
     tron.cpp
     player.cpp
     ktron.cpp
@@ -29,7 +29,7 @@ kde4_add_kcfg_files(ktron_SRCS settings.kcfgc)
 
 kde4_add_executable(ktron ${ktron_SRCS})
 
-target_link_libraries(ktron kdegames ${KDE4_KDECORE_LIBS} ${KDE4_KIO_LIBS})
+target_link_libraries(ktron ${KDE4_KDEUI_LIBS} kdegames ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
 
 install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
 
