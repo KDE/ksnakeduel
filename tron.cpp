@@ -207,6 +207,8 @@ void Tron::stopGame()
 {
 	timer->stop();
 	gameEnded = true;
+	players[0].dir = Directions::Up;
+	players[1].dir = Directions::Up;
 	players[0].last_dir = Directions::Up;
 	players[1].last_dir = Directions::Up;
 }

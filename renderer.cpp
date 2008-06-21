@@ -242,7 +242,12 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
 
 QPixmap Renderer::background()
 {
-    return pixmapFromCache(p, "ktron-background", p->m_sceneSize);
+    QSize bgSize = QSize(p->m_sceneSize.height(), p->m_sceneSize.height());
+    if (p->m_sceneSize.width() > p->m_sceneSize.height())
+    {
+        QSize bgSize = QSize(p->m_sceneSize.width(), p->m_sceneSize.width());
+    }
+    return pixmapFromCache(p, "background", bgSize);
 }
 
 void Renderer::boardResized(int width, int height, int leftOffset, int topOffset, int partWidth, int partHeight)
@@ -251,9 +256,15 @@ void Renderer::boardResized(int width, int height, int leftOffset, int topOffset
     p->m_sceneSize = QSize(width, height);
     p->m_partSize = QSize(partWidth, partHeight);
     
-    const QString svgName("ktron-background");
-    
-    QString pixName = svgName + sizeSuffix.arg(width).arg(height);
+    const QString svgName("background");
+   
+    int bgDim = height;
+    if (width > height)
+    {
+        bgDim = width;
+    }
+ 
+    QString pixName = svgName + sizeSuffix.arg(bgDim).arg(bgDim);
     QPixmap pix;
     if (!p->m_cache.find(pixName, pix))
     {
@@ -286,7 +297,7 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	painter.begin(p->m_playField);
 	
 	QPixmap bgPix = background();
-	if (/*!bgPix.isNull()*/false)
+	if (!bgPix.isNull())
 	{
 		int pw = bgPix.width();
 		int ph = bgPix.height();
