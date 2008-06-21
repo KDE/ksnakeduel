@@ -27,6 +27,8 @@
 
 #include <QPainter>
 #include <QPixmap>
+#include <QSize>
+#include <QVector>
 
 #include <KGameTheme>
 #include <KPixmapCache>
@@ -35,17 +37,19 @@
 
 class RendererPrivate
 {
-    public:
-        RendererPrivate();
-        ~RendererPrivate();
+	public:
+		RendererPrivate();
+		~RendererPrivate();
 
 		QSize m_sceneSize;
 		QSize m_partSize;
 
-        KSvgRenderer m_renderer;
-        KPixmapCache m_cache;
+		KSvgRenderer m_renderer;
+		KPixmapCache m_cache;
 
-        QString m_currentTheme;
+		QPixmap *m_playField;
+
+		QString m_currentTheme;
 };
 
 const QString sizeSuffix("_%1-%2");
@@ -57,6 +61,12 @@ RendererPrivate::RendererPrivate()
 {
     m_cache.setCacheLimit(3 * 1024);
     m_cache.discard();
+	m_playField = 0;
+}
+
+RendererPrivate::~RendererPrivate()
+{
+	delete m_playField;
 }
 
 Renderer::Renderer()
@@ -255,4 +265,68 @@ void Renderer::boardResized(int width, int height, int leftOffset, int topOffset
         painter.end();
         p->m_cache.insert(pixName, pix);
     }
+}
+
+void Renderer::resetPlayField()
+{
+	p->m_playField = new QPixmap(p->m_sceneSize);
+	p->m_playField->fill(Settings::color_Background());
+}
+
+void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
+{
+	int i, j;
+
+	if (!p->m_playField)
+	{
+		resetPlayField();
+	}
+
+	QPainter painter;
+	painter.begin(p->m_playField);
+	
+	QPixmap bgPix = background();
+	if (/*!bgPix.isNull()*/false)
+	{
+		int pw = bgPix.width();
+		int ph = bgPix.height();
+		for (int x = 0; x <= p->m_sceneSize.width(); x += pw)
+			for (int y = 0; y <= p->m_sceneSize.height(); y += ph)
+				painter.drawPixmap(x, y, bgPix);
+	}
+	else
+	{
+		p->m_playField->fill(Settings::color_Background());
+	}
+
+	// Examine all pixels and draw
+	for(i = 0; i < TRON_PLAYFIELD_WIDTH; i++)
+	{
+		for(j = 0; j < TRON_PLAYFIELD_HEIGHT; j++)
+		{
+			if(playfield[i][j] != KTronEnum::BACKGROUND)
+			{
+				drawPart(playfield, painter, i, j);
+			}
+		}
+	}
+
+	painter.end();
+}
+
+void Renderer::drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y)
+{
+	int xOffset = x * p->m_partSize.width() + (p->m_sceneSize.width() - TRON_PLAYFIELD_WIDTH * p->m_partSize.width()) / 2;
+	int yOffset = y * p->m_partSize.height() + (p->m_sceneSize.height() - TRON_PLAYFIELD_HEIGHT * p->m_partSize.height()) / 2;
+
+	int type = playfield[x][y];
+
+	QPixmap snakePart = Renderer::self()->snakePart(type);
+
+	painter.drawPixmap(xOffset, yOffset, snakePart);
+}
+
+QPixmap *Renderer::getPlayField()
+{
+	return p->m_playField;
 }

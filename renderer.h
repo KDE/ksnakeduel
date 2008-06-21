@@ -21,11 +21,13 @@
 
   *****************************************************************************/
 
-#ifndef KTRON_RENDERER_H
-#define KTRON_RENDERER_H
+#ifndef RENDERER_H
+#define RENDERER_H
 
+#include <QPainter>
 #include <QString>
 #include <QSize>
+#include <QVector>
 
 class QPixmap;
 class RendererPrivate;
@@ -45,9 +47,14 @@ class Renderer {
 		QString decodePart(int);
         QPixmap background();
 
+		void resetPlayField();
+		void drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y);
+		void updatePlayField(QVector< QVector<int> > &playfield);
+		QPixmap *getPlayField();
+
 		QPixmap pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size);
     private:
         RendererPrivate *p;
 };
 
-#endif // KTRON_RENDERER_H
+#endif // RENDERER_H

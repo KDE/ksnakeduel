@@ -56,8 +56,8 @@
 Tron::Tron(QWidget *parent)
   : QWidget(parent)
 {
-  pixmap=0;
-  playfield=0;
+  //pixmap=0;
+  //playfield = new QVector< QVector<int> >();
   beginHint=false;
   lookForward=15;
 
@@ -67,8 +67,8 @@ Tron::Tron(QWidget *parent)
 
   gameBlocked=false;
   //rectSize=10;
-  blockWidth = width() / TRON_PLAYFIELD_WIDTH;
-  blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
+  //blockWidth = width() / TRON_PLAYFIELD_WIDTH;
+  //blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
 
   timer = new QTimer(this);
   loadSettings();
@@ -79,16 +79,15 @@ Tron::Tron(QWidget *parent)
 void Tron::loadSettings(){
   setPalette(Settings::color_Background());
 
+  createNewPlayfield();
   reset();
 
   // Velocity
   setVelocity( lineSpeed() );
 
   // Style
-  if(pixmap){
-    updatePixmap();
-    update();
-  }
+  updatePixmap();
+  update();
 
   setComputerplayer(KTronEnum::One, Settings::computerplayer1());
   setComputerplayer(KTronEnum::Two, Settings::computerplayer2());
@@ -96,17 +95,14 @@ void Tron::loadSettings(){
 
 Tron::~Tron()
 {
-  delete []  playfield;
-  delete pixmap;
+  //delete []  playfield;
+  //delete pixmap;
   delete timer;
 
 }
 
-void Tron::createNewPlayfield()
+void Tron::resizeRenderer()
 {
-  delete [] playfield;
-  delete pixmap;
-
   // field size
   fieldWidth=TRON_PLAYFIELD_WIDTH;
   fieldHeight=TRON_PLAYFIELD_HEIGHT;
@@ -123,15 +119,20 @@ void Tron::createNewPlayfield()
     blockHeight = blockWidth;
   }
 
-  Renderer::self()->boardResized(fieldWidth, fieldHeight, 0, 0, blockWidth, blockHeight);
+  Renderer::self()->boardResized(width(), height(), 0, 0, blockWidth, blockHeight);
+
+  Renderer::self()->resetPlayField();
+}
+
+void Tron::createNewPlayfield()
+{
+  resizeRenderer();
 
   // start positions
-  playfield=new QVector<int>[fieldWidth];
+  //playfield=new QVector<int>[fieldWidth];
+  playfield.resize(fieldWidth);
   for(int i=0;i<fieldWidth;i++)
     playfield[i].resize(fieldHeight);
-
-  pixmap=new QPixmap(size());
-  pixmap->fill(Settings::color_Background());
 
   //int min=(fieldWidth<fieldHeight) ? fieldWidth : fieldHeight;
   //lookForward=min/4;
@@ -157,8 +158,8 @@ void Tron::reset()
 
 	// If playfield exists, then clean it
 	// ans set start coordinates
-	if(playfield)
-	{
+	//if(playfield)
+	//{
 		int i;
 		for(i = 0; i < fieldWidth; i++)
 			playfield[i].fill(KTronEnum::BACKGROUND);
@@ -175,7 +176,7 @@ void Tron::reset()
 
 		updatePixmap();
 		update();
-	}
+	//}
 
 	setFocus();
 
@@ -231,8 +232,6 @@ void Tron::togglePause() // pause or continue game
 
 void Tron::showWinner(KTronEnum::Player player)
 {
-   int i,j;
-
    update();
 
    emit gameEnds(player);
@@ -249,49 +248,7 @@ void Tron::showWinner(KTronEnum::Player player)
 
 void Tron::updatePixmap()
 {
-	int i, j;
-
-	QPainter p;
-	p.begin(pixmap);
-	
-	if (!bgPix.isNull())
-	{
-		int pw = bgPix.width();
-		int ph = bgPix.height();
-		for (int x = 0; x <= width(); x += pw)
-			for (int y = 0; y <= height(); y += ph)
-				p.drawPixmap(x, y, bgPix);
-	}
-	else
-	{
-		pixmap->fill(Settings::color_Background());
-	}
-
-	// Examine all pixels and draw
-	for(i = 0; i < fieldWidth; i++)
-	{
-		for(j = 0; j < fieldHeight; j++)
-		{
-			if(playfield[i][j] != KTronEnum::BACKGROUND)
-			{
-				drawRect(p, i, j);
-			}
-		}
-	}
-
-	p.end();
-}
-
-void Tron::drawRect(QPainter & p, int x, int y)
-{
-	int xOffset = x*blockWidth+(width()-fieldWidth*blockWidth)/2;
-	int yOffset = y*blockHeight+(height()-fieldHeight*blockHeight)/2;
-
-	int type=playfield[x][y];
-
-	QPixmap snakePart = Renderer::self()->snakePart(type);
-
-	p.drawPixmap(xOffset, yOffset, snakePart);
+	Renderer::self()->updatePlayField(playfield);
 }
 
 /* *************************************************************** **
@@ -301,17 +258,6 @@ void Tron::drawRect(QPainter & p, int x, int y)
 void Tron::setActionCollection(KActionCollection *a)
 {
    actionCollection = a;
-}
-
-void Tron::setBackgroundPix(const QPixmap &pix)
-{
-	bgPix=pix;
-
-	if (pixmap!=0){
-		updatePixmap();
-		// most pictures have colors, that you can read white text
-		setPalette(QColor("black"));
-	}
 }
 
 void Tron::setVelocity(int newVel)            // set new velocity
@@ -435,7 +381,7 @@ void Tron::paintEvent(QPaintEvent *e)
 {
 	QPainter p(this);
 
-	p.drawPixmap(e->rect().topLeft(), *pixmap, e->rect());
+	p.drawPixmap(e->rect().topLeft(), *Renderer::self()->getPlayField(), e->rect());
 
 	if(gamePaused) // if game is paused, print message
 	{
@@ -478,8 +424,12 @@ void Tron::paintEvent(QPaintEvent *e)
 
 void Tron::resizeEvent(QResizeEvent *)
 {
-	createNewPlayfield();
-	reset();
+	//createNewPlayfield();
+	//reset();
+
+	resizeRenderer();
+	updatePixmap();
+	update();
 }
 
 void Tron::keyPressEvent(QKeyEvent *e)

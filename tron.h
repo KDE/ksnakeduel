@@ -67,7 +67,6 @@ public:
   ~Tron();
   void setActionCollection(KActionCollection*);
   void updatePixmap();
-  void setBackgroundPix(const QPixmap &);
   void setComputerplayer(KTronEnum::Player player, bool);
   bool isComputer(KTronEnum::Player player);
   void setVelocity(int);
@@ -106,10 +105,10 @@ protected:
 private:
   /** Stores key shortcuts */
   KActionCollection* actionCollection;
-  /** Drawing buffer */
-  QPixmap *pixmap;
+  ///** Drawing buffer */
+  //QPixmap *pixmap;
   /** The playingfield */
-  QVector<int> *playfield;
+  QVector< QVector<int> > playfield;
   /** game status flag */
   bool gamePaused;
   /** game status flag */
@@ -153,14 +152,14 @@ private:
   void createNewPlayfield();
   /** paints players at current player coordinates */
   void paintPlayers();
-  /** draws a rect in current TronStyle at position x,y of the playingfield */
-  void drawRect(QPainter & p, int x, int y);
   /** emits gameEnds(Player) and displays the winner by changing color*/
   void showWinner(KTronEnum::Player winner);
   /** retrieves the opponentSkill */
   int opponentSkill();
   /** retrieves the line speed */
   int lineSpeed();
+  /** resizes the visual board */
+  void resizeRenderer();
 
   /** calculates if player playerNr would crash
   * if he moves xInc in x-direction and yInc in y-direction
