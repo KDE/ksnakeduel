@@ -264,7 +264,6 @@ void KTron::showSettings(){
   
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General, i18n("General"), "package_settings");
-  dialog->addPage(new Ai, i18n("A.I."), "personal");
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffDisableDownload), i18n("Theme"), "games-config-theme");
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));

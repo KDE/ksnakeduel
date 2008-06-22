@@ -77,7 +77,7 @@ Tron::Tron(QWidget *parent)
 }
 
 void Tron::loadSettings(){
-  setPalette(Settings::color_Background());
+  //setPalette(Qt::green);
 
   createNewPlayfield();
   reset();
@@ -89,8 +89,16 @@ void Tron::loadSettings(){
   updatePixmap();
   update();
 
-  setComputerplayer(KTronEnum::One, Settings::computerplayer1());
-  setComputerplayer(KTronEnum::Two, Settings::computerplayer2());
+  if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer)
+  {
+    setComputerplayer(KTronEnum::One, false);
+    setComputerplayer(KTronEnum::Two, false);
+  }
+  else
+  {
+    setComputerplayer(KTronEnum::One, true);
+    setComputerplayer(KTronEnum::Two, false);
+  }
 }
 
 Tron::~Tron()

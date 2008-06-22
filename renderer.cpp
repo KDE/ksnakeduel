@@ -281,7 +281,7 @@ void Renderer::boardResized(int width, int height, int leftOffset, int topOffset
 void Renderer::resetPlayField()
 {
 	p->m_playField = new QPixmap(p->m_sceneSize);
-	p->m_playField->fill(Settings::color_Background());
+	//p->m_playField->fill(Qt::green);
 }
 
 void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
@@ -307,7 +307,7 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	}
 	else
 	{
-		p->m_playField->fill(Settings::color_Background());
+		p->m_playField->fill(Qt::green);
 	}
 
 	// Examine all pixels and draw

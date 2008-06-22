@@ -11,10 +11,6 @@
     </entry>
   </group>
   <group name="Game">
-    <entry name="Color_Background" type="Color">
-      <label>The background color of the game.</label>
-      <default>black</default>
-    </entry>
     <entry name="AcceleratorBlocked" type="Bool">
       <label>Whether to disable acceleration.</label>
       <default>false</default>
@@ -23,19 +19,19 @@
       <label>The difficulty level.</label>
       <default>30</default>
     </entry>
-    <entry name="Computerplayer1" type="Bool">
-      <label>Whether player 1 is a computer player.</label>
-      <default>true</default>
-    </entry>
-    <entry name="Computerplayer2" type="Bool">
-      <label>Whether player 2 is a computer player.</label>
-      <default>false</default>
-    </entry>
     <entry name="NamePlayer1" type="String" key="Name_Pl1">
       <label>The name of player 1.</label>
     </entry>
     <entry name="NamePlayer2" type="String" key="Name_Pl2">
       <label>The name of player 2.</label>
+    </entry>
+    <entry key="GameType" type="Enum">
+      <label>Type of the game</label>
+      <choices>
+        <choice name="PlayerVSComputer"/>
+        <choice name="PlayerVSPlayer"/>
+      </choices>
+      <default>PlayerVSComputer</default>
     </entry>
   </group>
 </kcfg>
