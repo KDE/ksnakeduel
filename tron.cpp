@@ -116,8 +116,8 @@ void Tron::resizeRenderer()
   fieldHeight=TRON_PLAYFIELD_HEIGHT;
 
   // Block size
-  blockWidth = width() / TRON_PLAYFIELD_WIDTH;
-  blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
+  blockWidth = width() / (TRON_PLAYFIELD_WIDTH + 2);
+  blockHeight = height() / (TRON_PLAYFIELD_HEIGHT + 2);
   if (blockWidth > blockHeight)
   {
     blockWidth = blockHeight;

@@ -203,8 +203,13 @@ QString Renderer::decodePart(int type)
 
 QPixmap Renderer::snakePart(int part)
 {
-    QString frameSvgName = decodePart(part);
+    QString partName = decodePart(part);
 
+	return getPart(partName);
+}
+
+QPixmap Renderer::getPart(QString frameSvgName)
+{
 	QString framePixName = frameSvgName + sizeSuffix.arg(p->m_partSize.width()).arg(p->m_partSize.height());
 	QPixmap pix;
 	if (!p->m_cache.find(framePixName, pix))
@@ -310,6 +315,19 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 		p->m_playField->fill(Qt::green);
 	}
 
+	// Draw border
+	for (i = 0; i < TRON_PLAYFIELD_WIDTH + 2; i++) 
+	{
+		for (j = 0; j < TRON_PLAYFIELD_HEIGHT + 2; j++) 
+		{
+			if (i == 0 || i == TRON_PLAYFIELD_WIDTH + 1 || j == 0 || j == TRON_PLAYFIELD_HEIGHT + 1)
+			{
+				QPixmap part = Renderer::self()->getPart("border");
+				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
+			}
+		}
+	}
+
 	// Examine all pixels and draw
 	for(i = 0; i < TRON_PLAYFIELD_WIDTH; i++)
 	{
@@ -325,10 +343,20 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	painter.end();
 }
 
+int Renderer::calculateOffsetX(int x)
+{
+	return (x * p->m_partSize.width()) + (p->m_sceneSize.width() - (TRON_PLAYFIELD_WIDTH + 2) * p->m_partSize.width()) / 2;
+}
+
+int Renderer::calculateOffsetY(int y)
+{
+	return (y * p->m_partSize.height()) + (p->m_sceneSize.height() - (TRON_PLAYFIELD_HEIGHT + 2) * p->m_partSize.height()) / 2;
+}
+
 void Renderer::drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y)
 {
-	int xOffset = x * p->m_partSize.width() + (p->m_sceneSize.width() - TRON_PLAYFIELD_WIDTH * p->m_partSize.width()) / 2;
-	int yOffset = y * p->m_partSize.height() + (p->m_sceneSize.height() - TRON_PLAYFIELD_HEIGHT * p->m_partSize.height()) / 2;
+	int xOffset = calculateOffsetX(x + 1);
+	int yOffset = calculateOffsetY(y + 1);
 
 	int type = playfield[x][y];
 
