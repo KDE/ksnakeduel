@@ -179,6 +179,7 @@ private:
   * -1 means update both players
   */
   void updateDirections(int playerNr=-1);
+  void movePlayer(int playerNr);
   
 private slots:
     /**

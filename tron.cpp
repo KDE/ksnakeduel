@@ -176,6 +176,8 @@ void Tron::reset()
 
 		players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
 		players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
+		players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
+		players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
 
 		playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
 		playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
@@ -618,6 +620,123 @@ void Tron::showBeginHint()
    }
 }
 
+void Tron::movePlayer(int playerNr)
+{
+	if (playerNr == 0 || playerNr == 1)
+	{
+		updateDirections(playerNr);
+
+		int newType; // determine type of rect to set
+		if(playerNr==0)
+		{
+			newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
+		}
+		else
+		{
+			newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
+		}
+		switch(players[playerNr].dir)
+		{
+			case Directions::Up:
+				if(crashed(playerNr,0,-1))
+					players[playerNr].alive=false;
+				else
+				{
+					players[playerNr].yCoordinate--;
+					newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
+				}
+				break;
+			case Directions::Down:
+				if(crashed(playerNr,0,1))
+					players[playerNr].alive=false;
+				else
+				{
+					players[playerNr].yCoordinate++;
+					newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
+				}
+				break;
+			case Directions::Left:
+				if(crashed(playerNr,-1,0))
+					players[playerNr].alive=false;
+				else
+				{
+					players[playerNr].xCoordinate--;
+					newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
+				}
+				break;
+			case Directions::Right:
+				if(crashed(playerNr,1,0))
+					players[playerNr].alive=false;
+				else
+				{
+					players[playerNr].xCoordinate++;
+					newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
+				}
+				break;
+			default:
+				break;
+		}
+		if(players[playerNr].alive)
+		{
+			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
+		}
+		else
+		{
+			switch (players[playerNr].last_dir)
+			{
+				case Directions::Up:
+					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::TOP;
+					break;
+				case Directions::Down:
+					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::BOTTOM;
+					break;
+				case Directions::Right:
+					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::RIGHT;
+					break;
+				case Directions::Left:
+					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::LEFT;
+					break;
+				default:
+					break;
+			}
+			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::HEAD;
+		}
+
+		if (players[playerNr].alive && Settings::gameType() == Settings::EnumGameType::Snake)
+		{
+			int oldxtail = players[playerNr].xCoordinateTail;
+			int oldytail = players[playerNr].yCoordinateTail;
+
+			if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::TOP))
+			{
+				players[playerNr].yCoordinateTail--;
+
+				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::BOTTOM;
+			}
+			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::BOTTOM))
+			{
+				players[playerNr].yCoordinateTail++;
+
+				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::TOP;
+			}
+			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::LEFT))
+			{
+				players[playerNr].xCoordinateTail--;
+
+				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::RIGHT;
+			}
+			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::RIGHT))
+			{
+				players[playerNr].xCoordinateTail++;
+
+				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::LEFT;
+			}
+
+			playfield[oldxtail][oldytail] = KTronEnum::BACKGROUND;
+		}
+	}
+}
+
 // doMove() is called from QTimer
 void Tron::doMove()
 {
@@ -627,83 +746,7 @@ void Tron::doMove()
 		// Decide if the accelerator key was pressed...
 		if(players[i].accelerated)
 		{
-			updateDirections(i);
-
-			int newType; // determine type of rect to set
-			if(i==0)
-			{
-				newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
-			}
-			else
-			{
-				newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
-			}
-			switch(players[i].dir)
-			{
-				case Directions::Up:
-					if(crashed(i,0,-1))
-						players[i].alive=false;
-					else
-					{
-						players[i].yCoordinate--;
-						newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
-					}
-					break;
-				case Directions::Down:
-					if(crashed(i,0,1))
-						players[i].alive=false;
-					else
-					{
-						players[i].yCoordinate++;
-						newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
-					}
-					break;
-				case Directions::Left:
-					if(crashed(i,-1,0))
-						players[i].alive=false;
-					else
-					{
-						players[i].xCoordinate--;
-						newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
-					}
-					break;
-				case Directions::Right:
-					if(crashed(i,1,0))
-						players[i].alive=false;
-					else
-					{
-						players[i].xCoordinate++;
-						newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
-					}
-					break;
-				default:
-					break;
-			}
-			if(players[i].alive)
-			{
-				playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
-			}
-			else
-			{
-				switch (players[i].last_dir)
-				{
-					case Directions::Up:
-						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::TOP;
-						break;
-					case Directions::Down:
-						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::BOTTOM;
-						break;
-					case Directions::Right:
-						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::RIGHT;
-						break;
-					case Directions::Left:
-						playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::LEFT;
-						break;
-					default:
-						break;
-				}
-				playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::HEAD;
-			}
+			movePlayer(i);
 		}
 	}
 
@@ -782,79 +825,7 @@ void Tron::doMove()
 
 	for(i=0;i<2;i++)
 	{
-		int newType;
-		if(i==0)
-			newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
-		else
-			newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
-
-		switch(players[i].dir)
-		{
-			case Directions::Up:
-				if(crashed(i,0,-1))
-				players[i].alive=false;
-				else
-				{
-				players[i].yCoordinate--;
-				newType |= (KTronEnum::TOP | KTronEnum::RIGHT | KTronEnum::LEFT);
-				}
-			break;
-			case Directions::Down:
-				if(crashed(i,0,1))
-				players[i].alive=false;
-				else
-				{
-				players[i].yCoordinate++;
-				newType |= (KTronEnum::BOTTOM | KTronEnum::RIGHT | KTronEnum::LEFT);
-				}
-			break;
-			case Directions::Left:
-				if(crashed(i,-1,0))
-				players[i].alive=false;
-				else
-				{
-				players[i].xCoordinate--;
-				newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
-				}
-			break;
-			case Directions::Right:
-				if(crashed(i,1,0))
-				players[i].alive=false;
-				else
-				{
-				players[i].xCoordinate++;
-				newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
-				}
-			break;
-			default:
-			break;
-
-		}
-		if(players[i].alive)
-		{
-			playfield[players[i].xCoordinate][players[i].yCoordinate]=newType;
-		}
-		else
-		{
-			switch (players[i].last_dir)
-			{
-				case Directions::Up:
-					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::TOP;
-					break;
-				case Directions::Down:
-					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::BOTTOM;
-					break;
-				case Directions::Right:
-					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::RIGHT;
-					break;
-				case Directions::Left:
-					playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::LEFT;
-					break;
-				default:
-					break;
-			}
-			playfield[players[i].xCoordinate][players[i].yCoordinate] |= KTronEnum::HEAD;
-		}
+		movePlayer(i);
 	}
 
 	/* player collision check */

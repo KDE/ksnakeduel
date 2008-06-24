@@ -38,9 +38,11 @@ public:
   player();
   void reset();
   void setCoordinates(int x, int y);
+  void setCoordinatesTail(int x, int y);
   void setComputer(bool computer);
 
   int xCoordinate,yCoordinate;
+  int xCoordinateTail,yCoordinateTail;
   int score;
   bool alive;
   Directions::Direction dir;

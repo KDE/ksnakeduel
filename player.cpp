@@ -49,6 +49,12 @@ void player::setCoordinates(int x, int y)
   yCoordinate=y;
 }
 
+void player::setCoordinatesTail(int x, int y)
+{
+  xCoordinateTail=x;
+  yCoordinateTail=y;
+}
+
 void player::setComputer(bool isComputer)
 {
   computer=isComputer;

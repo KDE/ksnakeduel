@@ -36,6 +36,6 @@ install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(FILES  ktron.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES  ktron.desktop snake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES  ktronui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)

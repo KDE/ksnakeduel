@@ -1,0 +1,15 @@
+[Desktop Entry]
+Encoding=UTF-8
+Type=Application
+Exec=ktron -snake -caption "%c" %i %m
+Icon=snake
+DocPath=ktron/index.html
+GenericName=Snake-like Game
+GenericName[br]=C'hoari doare Tron
+GenericName[el]=Παιχνίδι τύπου Tron
+GenericName[nl]=Tron-achtig spel
+Terminal=false
+Name=SnaKe
+X-KDE-StartupNotify=true
+X-DCOP-ServiceType=Multi
+Categories=Qt;KDE;Game;ArcadeGame;

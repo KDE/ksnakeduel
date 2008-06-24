@@ -30,6 +30,7 @@
       <choices>
         <choice name="PlayerVSComputer"/>
         <choice name="PlayerVSPlayer"/>
+        <choice name="Snake"/>
       </choices>
       <default>PlayerVSComputer</default>
     </entry>

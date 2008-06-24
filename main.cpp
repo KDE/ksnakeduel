@@ -28,6 +28,7 @@
 
 #include "ktron.h"
 #include "renderer.h"
+#include "settings.h"
 #include "version.h"
 
 static KLocalizedString description = ki18n("A race in hyperspace");
@@ -43,11 +44,26 @@ int main(int argc, char* argv[])
   aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
   aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port"), "legolas@legolasweb.nl");
+
   KCmdLineArgs::init( argc, argv, &aboutData );
+
+  KCmdLineOptions options;
+  options.add("snake", ki18n("Start in snake mode"));
+  KCmdLineArgs::addCmdLineOptions(options);
 
   KApplication a;
   KGlobal::locale()->insertCatalog("libkdegames");
   KStandardDirs::locateLocal("appdata", "themes/");
+
+  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
+  if (args->isSet("snake"))
+  {
+    Settings::setGameType(Settings::EnumGameType::Snake);
+  }
+  else if (Settings::gameType() == Settings::EnumGameType::Snake)
+  {
+    Settings::setGameType(Settings::EnumGameType::PlayerVSComputer);
+  }
 
   Renderer::self(); // Creates Renderer
 
