@@ -148,7 +148,7 @@ QString Renderer::decodePart(int type)
 
 		return name;
 	}
-	else
+	else if (type & KTronEnum::TAIL)
 	{
 		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
@@ -168,6 +168,29 @@ QString Renderer::decodePart(int type)
 		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-west";
+			return name;
+		}
+	}
+	else
+	{
+		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		{
+			name += "tail-south2";
+			return name;
+		}
+		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		{
+			name += "tail-north2";
+			return name;
+		}
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
+		{
+			name += "tail-east2";
+			return name;
+		}
+		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
+		{
+			name += "tail-west2";
 			return name;
 		}
 	}

@@ -83,56 +83,55 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
   // We match up keyboard events ourselves in Tron::keyPressEvent()
   // We must disable the actions, otherwise we don't get the keyPressEvent's
   QAction *act;
-
+ 
   act = actionCollection()->addAction("Pl1Up");
   act->setText(i18n("Player 1 Up"));
-  act->setShortcut(Qt::Key_R);
+  act->setShortcut(Qt::Key_Up);
   act->setEnabled(false);
-
+  
   act = actionCollection()->addAction("Pl1Down");
   act->setText(i18n("Player 1 Down"));
-  act->setShortcut(Qt::Key_F);
-  act->setObjectName("Pl1Down");
+  act->setShortcut(Qt::Key_Down);
   act->setEnabled(false);
-
-  act = actionCollection()->addAction("Pl1Right");;
+  
+  act = actionCollection()->addAction("Pl1Right");
   act->setText(i18n("Player 1 Right"));
-  act->setShortcut(Qt::Key_G);
+  act->setShortcut(Qt::Key_Right);
   act->setEnabled(false);
   
   act = actionCollection()->addAction("Pl1Left");
   act->setText(i18n("Player 1 Left"));
-  act->setShortcut(Qt::Key_D);
+  act->setShortcut(Qt::Key_Left);
   act->setEnabled(false);
   
   act = actionCollection()->addAction("Pl1Ac");
   act->setText(i18n("Player 1 Accelerator"));
-  act->setShortcut(Qt::Key_A);
+  act->setShortcut(Qt::Key_0);
   act->setEnabled(false);
- 
+
   act = actionCollection()->addAction("Pl2Up");
   act->setText(i18n("Player 2 Up"));
-  act->setShortcut(Qt::Key_Up);
+  act->setShortcut(Qt::Key_R);
   act->setEnabled(false);
-  
+
   act = actionCollection()->addAction("Pl2Down");
   act->setText(i18n("Player 2 Down"));
-  act->setShortcut(Qt::Key_Down);
+  act->setShortcut(Qt::Key_F);
   act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl2Right");
+
+  act = actionCollection()->addAction("Pl2Right");;
   act->setText(i18n("Player 2 Right"));
-  act->setShortcut(Qt::Key_Right);
+  act->setShortcut(Qt::Key_G);
   act->setEnabled(false);
   
   act = actionCollection()->addAction("Pl2Left");
   act->setText(i18n("Player 2 Left"));
-  act->setShortcut(Qt::Key_Left);
+  act->setShortcut(Qt::Key_D);
   act->setEnabled(false);
   
   act = actionCollection()->addAction("Pl2Ac");
   act->setText(i18n("Player 2 Accelerator"));
-  act->setShortcut(Qt::Key_0);
+  act->setShortcut(Qt::Key_A);
   act->setEnabled(false);
 
   tron->setActionCollection(actionCollection());

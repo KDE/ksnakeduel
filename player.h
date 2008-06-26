@@ -50,6 +50,7 @@ public:
   bool accelerated;
   bool keyPressed;
   bool computer;
+  int enlarge;
 };
 
 #endif

@@ -96,8 +96,8 @@ void Tron::loadSettings(){
   }
   else
   {
-    setComputerplayer(KTronEnum::One, true);
-    setComputerplayer(KTronEnum::Two, false);
+    setComputerplayer(KTronEnum::One, false);
+    setComputerplayer(KTronEnum::Two, true);
   }
 }
 
@@ -180,9 +180,12 @@ void Tron::reset()
 		players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
 
 		playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-		playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
-		playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-		playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT;
+		playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+		if (Settings::gameType() != Settings::EnumGameType::Snake)
+		{
+			playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+			playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+		}
 
 		updatePixmap();
 		update();
@@ -702,7 +705,7 @@ void Tron::movePlayer(int playerNr)
 			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::HEAD;
 		}
 
-		if (players[playerNr].alive && Settings::gameType() == Settings::EnumGameType::Snake)
+		if (players[playerNr].alive && players[playerNr].enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
 		{
 			int oldxtail = players[playerNr].xCoordinateTail;
 			int oldytail = players[playerNr].yCoordinateTail;
@@ -734,24 +737,118 @@ void Tron::movePlayer(int playerNr)
 
 			playfield[oldxtail][oldytail] = KTronEnum::BACKGROUND;
 		}
+		else if (players[playerNr].enlarge > 0)
+		{
+			players[playerNr].enlarge--;
+		}
 	}
 }
 
 // doMove() is called from QTimer
 void Tron::doMove()
 {
-	int i;
-	for(i=0;i<2;i++)
+	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		// Decide if the accelerator key was pressed...
-		if(players[i].accelerated)
+		movePlayer(0);
+
+		updatePixmap();
+		update();
+
+		if(!players[0].alive)
+		{
+			stopGame();
+		}
+	}
+	else
+	{
+		int i;
+		for(i=0;i<2;i++)
+		{
+			// Decide if the accelerator key was pressed...
+			if (players[i].accelerated)
+			{
+				movePlayer(i);
+			}
+		}
+
+		if(players[0].accelerated || players[1].accelerated)
+		{
+			/* player collision check */
+			if(!players[1].alive)
+			{
+				int xInc=0,yInc=0;
+				switch(players[1].dir)
+				{
+					case Directions::Left:
+					xInc = -1;
+					break;
+					case Directions::Right:
+					xInc = 1;
+					break;
+					case Directions::Up:
+					yInc = -1;
+					break;
+					case Directions::Down:
+					yInc = 1;
+					break;
+					default:
+					break;
+				}
+				if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
+				if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+				{
+					players[0].alive=false;
+				}
+			}
+
+			updatePixmap();
+			update();
+
+			// crashtest
+			if(!players[0].alive && !players[1].alive)
+			{
+				stopGame();
+				players[0].score++;
+				players[1].score++;
+				showWinner(KTronEnum::Both);
+			}
+			else
+			{
+				for(i=0;i<2;i++)
+				{
+					if(!players[i].alive)
+					{
+					stopGame();
+					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
+					players[i].score++;
+					}
+				}
+			}
+
+
+			if(gameEnded)
+			{
+				//this is for waiting 0,5s before starting next game
+				gameBlocked=true;
+				QTimer::singleShot(1000,this,SLOT(unblockGame()));
+			return;
+			}
+		}
+
+		// neue Spielerstandorte festlegen
+		for(i=0;i<2;i++)
+		{
+			if(players[i].computer)
+				think(i);
+		}
+
+		updateDirections(0);
+
+		for(i=0;i<2;i++)
 		{
 			movePlayer(i);
 		}
-	}
 
-	if(players[0].accelerated || players[1].accelerated)
-	{
 		/* player collision check */
 		if(!players[1].alive)
 		{
@@ -759,31 +856,26 @@ void Tron::doMove()
 			switch(players[1].dir)
 			{
 				case Directions::Left:
-				xInc = -1;
-				break;
+					xInc = -1; break;
 				case Directions::Right:
-				xInc = 1;
-				break;
+					xInc = 1; break;
 				case Directions::Up:
-				yInc = -1;
-				break;
+					yInc = -1; break;
 				case Directions::Down:
-				yInc = 1;
-				break;
+					yInc = 1; break;
 				default:
-				break;
+					break;
 			}
 			if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-			if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-			{
-				players[0].alive=false;
-			}
+				if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+				{
+					players[0].alive=false;
+				}
 		}
 
 		updatePixmap();
 		update();
 
-		// crashtest
 		if(!players[0].alive && !players[1].alive)
 		{
 			stopGame();
@@ -795,84 +887,16 @@ void Tron::doMove()
 		{
 			for(i=0;i<2;i++)
 			{
+				// crashtests
 				if(!players[i].alive)
 				{
-				stopGame();
-				showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-				players[i].score++;
+					stopGame();
+					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
+					players[i].score++;
 				}
 			}
 		}
-
-
-		if(gameEnded)
-		{
-			//this is for waiting 0,5s before starting next game
-			gameBlocked=true;
-			QTimer::singleShot(1000,this,SLOT(unblockGame()));
-		return;
-		}
 	}
-
-	// neue Spielerstandorte festlegen
-	for(i=0;i<2;i++)
-	{
-		if(players[i].computer)
-			think(i);
-	}
-
-	updateDirections();
-
-	for(i=0;i<2;i++)
-	{
-		movePlayer(i);
-	}
-
-	/* player collision check */
-	if(!players[1].alive)
-	{
-		int xInc=0,yInc=0;
-		switch(players[1].dir)
-		{
-			case Directions::Left:
-				xInc = -1; break;
-			case Directions::Right:
-				xInc = 1; break;
-			case Directions::Up:
-				yInc = -1; break;
-			case Directions::Down:
-				yInc = 1; break;
-			default:
-				break;
-		}
-		if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-			if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
-			{
-				players[0].alive=false;
-			}
-	}
-
-	updatePixmap();
-	update();
-
-	if(!players[0].alive && !players[1].alive)
-	{
-		stopGame();
-		players[0].score++;
-		players[1].score++;
-		showWinner(KTronEnum::Both);
-	}
-	else
-		for(i=0;i<2;i++)
-		{
-			// crashtests
-			if(!players[i].alive)
-			{
-				stopGame();
-				showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-				players[i].score++;
-			}
-		}
 
 	if(gameEnded)
 	{

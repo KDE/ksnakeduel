@@ -30,6 +30,7 @@ player::player()
   reset();
   dir=Directions::Up;
   last_dir=Directions::Up;
+  enlarge=0;
 }
 
 
@@ -37,6 +38,7 @@ void player::reset()
 {
  alive=true;
  accelerated=false;
+ enlarge=0;
  if(computer)
    keyPressed=true;
  else
