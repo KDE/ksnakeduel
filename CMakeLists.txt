@@ -20,6 +20,7 @@ set(ktron_SRCS
 	renderer.cpp
     tron.cpp
     player.cpp
+	item.cpp
     ktron.cpp
     main.cpp)
 

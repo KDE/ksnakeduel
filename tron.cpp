@@ -46,6 +46,7 @@
 #include <KGameDifficulty>
 
 #include "tron.h"
+#include "item.h"
 #include "settings.h"
 #include "renderer.h"
 
@@ -213,7 +214,28 @@ void Tron::startGame()
 {
 	gameEnded = false;
 	beginHint = false;
+
+	if (Settings::gameType() == Settings::EnumGameType::Snake)
+	{
+		newApple();
+	}
+
 	timer->start(velocity);
+}
+
+void Tron::newApple()
+{
+	int x = rand() % TRON_PLAYFIELD_WIDTH;
+	int y = rand() % TRON_PLAYFIELD_HEIGHT;
+
+	while (playfield[x][y] != KTronEnum::BACKGROUND)
+	{
+		x = rand() % TRON_PLAYFIELD_WIDTH;
+		y = rand() % TRON_PLAYFIELD_HEIGHT;
+	}
+
+	apple.setCoordinates(x, y);
+	playfield[x][y] = KTronEnum::ITEM1;
 }
 
 void Tron::stopGame()
@@ -320,6 +342,8 @@ bool Tron::crashed(int playerNr,int xInc, int yInc) const
 
   if(newX<0 || newY <0 || newX>=fieldWidth || newY>=fieldHeight)
      flag=true;
+  else if(playfield[newX][newY] == KTronEnum::ITEM1)
+    flag=false;
   else if(playfield[newX][newY] != KTronEnum::BACKGROUND)
     flag=true;
   else flag=false;
@@ -681,6 +705,12 @@ void Tron::movePlayer(int playerNr)
 		}
 		if(players[playerNr].alive)
 		{
+			if (playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM1)
+			{
+				newApple();
+				players[playerNr].enlarge = 3;
+			}
+
 			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
 		}
 		else

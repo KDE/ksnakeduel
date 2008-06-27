@@ -116,6 +116,12 @@ QString Renderer::decodePart(int type)
 {
 	QString name;
 
+	if (type & KTronEnum::ITEM1)
+	{
+		name = "item1";
+		return name;
+	}
+
 	// Player
 	if (type & KTronEnum::PLAYER1)
 	{
@@ -153,23 +159,21 @@ QString Renderer::decodePart(int type)
 		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-south";
-			return name;
 		}
 		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-north";
-			return name;
 		}
 		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
 		{
 			name += "tail-east";
-			return name;
 		}
 		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
 		{
 			name += "tail-west";
-			return name;
 		}
+
+		return name;
 	}
 	else
 	{

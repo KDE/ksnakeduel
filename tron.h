@@ -38,6 +38,7 @@
 class KActionCollection;
 
 #include "player.h"
+#include "item.h"
 
 // Old style, board as big as screen
 #define TRON_FRAMESIZE 2
@@ -52,7 +53,18 @@ namespace KTronEnum
 	enum Player {One,Two,Both,Nobody};
 
 	// Bits that defines the rect and which sides to draw
-	enum SnakePart {BACKGROUND=0, PLAYER1=1, PLAYER2=2, TOP=4, BOTTOM=8, LEFT=16, RIGHT=32, HEAD=64, TAIL=128};
+	enum SnakePart {
+		BACKGROUND=0,
+		PLAYER1=1,
+		PLAYER2=2,
+		TOP=4,
+		BOTTOM=8,
+		LEFT=16,
+		RIGHT=32,
+		HEAD=64,
+		TAIL=128,
+		ITEM1=256
+	};
 }
 
 /**
@@ -123,6 +135,7 @@ private:
   int fieldWidth;
   QTimer *timer;
   player players[2];
+  Item apple;
 
   /** Backgroundpixmap **/
   QPixmap bgPix;
@@ -160,6 +173,8 @@ private:
   int lineSpeed();
   /** resizes the visual board */
   void resizeRenderer();
+  /** generates new apple */
+  void newApple();
 
   /** calculates if player playerNr would crash
   * if he moves xInc in x-direction and yInc in y-direction
