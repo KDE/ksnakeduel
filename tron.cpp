@@ -165,6 +165,12 @@ void Tron::reset()
 	players[0].reset();
 	players[1].reset();
 
+	if (Settings::gameType() == Settings::EnumGameType::Snake)
+	{
+		players[0].score = 0;
+		players[1].score = 0;
+	}
+
 	// If playfield exists, then clean it
 	// ans set start coordinates
 	//if(playfield)
@@ -710,6 +716,8 @@ void Tron::movePlayer(int playerNr)
 				newApple();
 				players[playerNr].enlarge = 3;
 				players[playerNr].score++;
+
+				emit updatedScore();
 			}
 
 			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;

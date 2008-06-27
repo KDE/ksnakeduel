@@ -61,6 +61,7 @@ private slots:
   void loadSettings();
   /** updates players points in statusbar and checks if someone has won */
   void changeStatus(KTronEnum::Player);
+  void updateScore();
   
   void showWinner(KTronEnum::Player winner);
   void showSettings();

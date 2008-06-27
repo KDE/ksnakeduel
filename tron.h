@@ -102,6 +102,7 @@ public slots:
 
 signals:
   void gameEnds(KTronEnum::Player loser);
+  void updatedScore();
   void gameReset();
 
 protected:

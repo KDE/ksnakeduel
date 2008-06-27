@@ -73,6 +73,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 
   tron=new Tron(this);
   connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
+  connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
   setCentralWidget(tron);
   tron->setMinimumSize(200,180);
 
@@ -208,10 +209,15 @@ void KTron::updateStatusbar(){
   }
 }
 
+void KTron::updateScore()
+{
+	updateStatusbar();
+}
+
 void KTron::changeStatus(KTronEnum::Player player) {
   // if player=Nobody, then new game
   if(player==KTronEnum::Nobody){
-    ///playerPoints[0]=playerPoints[1]=0;
+    //playerPoints[0]=playerPoints[1]=0;
     updateStatusbar();
     return;
   }
@@ -227,10 +233,13 @@ void KTron::changeStatus(KTronEnum::Player player) {
 
   updateStatusbar();
 
-  if(tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1)
-    showWinner(KTronEnum::One);
-  else if(tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1)
-    showWinner(KTronEnum::Two);
+  if (Settings::gameType() != Settings::EnumGameType::Snake)
+  {
+    if(tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1)
+      showWinner(KTronEnum::One);
+    else if(tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1)
+      showWinner(KTronEnum::Two);
+  }
 }
 
 void KTron::showWinner(KTronEnum::Player winner){
