@@ -39,7 +39,6 @@
 // Settings
 #include "settings.h"
 #include "ui_general.h"
-#include "ui_ai.h"
 
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
