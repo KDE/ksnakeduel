@@ -54,15 +54,6 @@ public:
             setupUi(this);
         }
 };
-class Ai : public QWidget, public Ui::Ai
-{
-public:
-    Ai(QWidget *parent = 0)
-        : QWidget(parent)
-        {
-            setupUi(this);
-        }
-};
 
 /**
  * Constuctor
