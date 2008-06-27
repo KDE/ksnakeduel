@@ -84,6 +84,8 @@ public:
   void setVelocity(int);
   void setRectSize(int newSize);
 
+  player players[2];
+
 public slots:
   /** Starts a new game. The difference to reset is, that the players
   * points are set to zero. Emits gameEnds(Nobody).
@@ -134,7 +136,6 @@ private:
   /** Width of the playingfield in number of rects*/
   int fieldWidth;
   QTimer *timer;
-  player players[2];
   Item apple;
 
   /** Backgroundpixmap **/

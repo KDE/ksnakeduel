@@ -69,7 +69,7 @@ public:
  * Constuctor
  */ 
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
-  playerPoints[0]=playerPoints[1]=0;
+  //playerPoints[0]=playerPoints[1]=0;
 
   tron=new Tron(this);
   connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
@@ -183,44 +183,53 @@ void KTron::loadSettings() {
 }
 
 void KTron::updateStatusbar(){
-  for(int i=0;i<2;i++){
-    KTronEnum::Player player;
-    player=(i==0 ? KTronEnum::One : KTronEnum::Two);
+  if (Settings::gameType() == Settings::EnumGameType::Snake)
+  {
+    QString string = QString("%1: %2").arg(playerName[0]).arg(tron->players[0].score);
+    statusBar()->changeItem(string,ID_STATUS_BASE+1);
+    statusBar()->changeItem(QString(),ID_STATUS_BASE+2);
+  }
+  else
+  {
+    for(int i=0;i<2;i++){
+      KTronEnum::Player player;
+      player=(i==0 ? KTronEnum::One : KTronEnum::Two);
 
-    QString name;
-    if(tron->isComputer(KTronEnum::Both))
-      name=i18n("Computer(%1)", (i+1));
-    else if(tron->isComputer(player))
-      name=i18n("Computer");
-    else
-      name=playerName[i];
-    QString string = QString("%1: %2").arg(name).arg(playerPoints[i]);
-    statusBar()->changeItem(string,ID_STATUS_BASE+i+1);
+      QString name;
+      if(tron->isComputer(KTronEnum::Both))
+        name=i18n("Computer(%1)", (i+1));
+      else if(tron->isComputer(player))
+        name=i18n("Computer");
+      else
+        name=playerName[i];
+      QString string = QString("%1: %2").arg(name).arg(tron->players[i].score);
+      statusBar()->changeItem(string,ID_STATUS_BASE+i+1);
+    }
   }
 }
 
 void KTron::changeStatus(KTronEnum::Player player) {
   // if player=Nobody, then new game
   if(player==KTronEnum::Nobody){
-    playerPoints[0]=playerPoints[1]=0;
+    ///playerPoints[0]=playerPoints[1]=0;
     updateStatusbar();
     return;
   }
   
-  if(player==KTronEnum::One)
-    playerPoints[0]++;
-  else if(player==KTronEnum::Two)
-    playerPoints[1]++;
-  else if(player==KTronEnum::Both){
-    playerPoints[0]++;
-    playerPoints[1]++;
-  }
+  //if(player==KTronEnum::One)
+  //  playerPoints[0]++;
+  //else if(player==KTronEnum::Two)
+  //  playerPoints[1]++;
+  //else if(player==KTronEnum::Both){
+  //  playerPoints[0]++;
+  //  playerPoints[1]++;
+  //}
 
   updateStatusbar();
 
-  if(playerPoints[0]>=WINNING_DIFF && playerPoints[1] < playerPoints[0]-1)
+  if(tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1)
     showWinner(KTronEnum::One);
-  else if(playerPoints[1]>=WINNING_DIFF && playerPoints[0] < playerPoints[1]-1)
+  else if(tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1)
     showWinner(KTronEnum::Two);
 }
 
@@ -242,7 +251,8 @@ void KTron::showWinner(KTronEnum::Player winner){
   QString message=i18n("%1 has won!", winnerName);
   statusBar()->showMessage(message);
 
-  message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, playerPoints[winner], playerPoints[loser]);
+  message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->players[winner].score, tron->players[loser].score);
+
   
   KMessageBox::information(this, message, i18n("Winner"));
   tron->newGame();

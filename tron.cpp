@@ -709,6 +709,7 @@ void Tron::movePlayer(int playerNr)
 			{
 				newApple();
 				players[playerNr].enlarge = 3;
+				players[playerNr].score++;
 			}
 
 			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
@@ -787,6 +788,7 @@ void Tron::doMove()
 		if(!players[0].alive)
 		{
 			stopGame();
+			showWinner(KTronEnum::One);
 		}
 	}
 	else
