@@ -5,6 +5,7 @@ Exec=ktron -snake -caption "%c" %i %m
 Icon=snake
 DocPath=ktron/index.html
 GenericName=Snake-like Game
+GenericName[et]=Ussimäng
 Terminal=false
 Name=SnaKe
 X-KDE-StartupNotify=true

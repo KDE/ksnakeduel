@@ -7,6 +7,7 @@ DocPath=ktron/index.html
 GenericName=Tron-like Game
 GenericName[br]=C'hoari doare Tron
 GenericName[el]=Παιχνίδι τύπου Tron
+GenericName[et]=Troni moodi mäng
 GenericName[nl]=Tron-achtig spel
 Terminal=false
 Name=KTron

@@ -1,7 +1,9 @@
 [KGameTheme]
 VersionFormat=1
 Name=KTron Default Theme
+Name[et]=KTroni vaikimisi teema
 Description=Default theme for KTron.
+Description[et]=KTroni vaikimisi teema.
 FileName=default.svgz
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
