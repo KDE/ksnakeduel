@@ -151,6 +151,7 @@ void Tron::newGame()
 {
   players[0].score=0;
   players[1].score=0;
+  setVelocity( lineSpeed() );
   emit gameEnds(KTronEnum::Nobody);
   reset();
 
@@ -201,6 +202,7 @@ void Tron::reset()
 	setFocus();
 
 	emit gameReset();
+	emit updatedScore();
 }
 
 void Tron::computerStart()
@@ -716,6 +718,12 @@ void Tron::movePlayer(int playerNr)
 				newApple();
 				players[playerNr].enlarge = 3;
 				players[playerNr].score++;
+				if (velocity > 15)
+				{
+					velocity--;
+					timer->stop();
+					timer->start(velocity);
+				}
 
 				emit updatedScore();
 			}
