@@ -869,7 +869,7 @@ void Tron::doMove()
 					{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[i].score++;
+					players[(1 - i)].score++;
 					}
 				}
 			}
@@ -941,7 +941,7 @@ void Tron::doMove()
 				{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[i].score++;
+					players[(1 - i)].score++;
 				}
 			}
 		}
