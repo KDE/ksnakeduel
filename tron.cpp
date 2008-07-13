@@ -128,7 +128,7 @@ void Tron::resizeRenderer()
     blockHeight = blockWidth;
   }
 
-  Renderer::self()->boardResized(width(), height(), 0, 0, blockWidth, blockHeight);
+  Renderer::self()->boardResized(width(), height(), blockWidth, blockHeight);
 
   Renderer::self()->resetPlayField();
 }
@@ -969,6 +969,8 @@ if(opponentSkill() != 1)
 
   // determines left and right side
   Directions::Direction sides[2];
+  sides[0] = Directions::None;
+  sides[1] = Directions::None;
   // increments for moving to the different sides
   int flags[6]={0,0,0,0,0,0};
   int index[2];
@@ -1370,6 +1372,8 @@ if(opponentSkill() != 1)
 else // Settings::skill() == Settings::EnumSkill::Easy
 {
   Directions::Direction sides[2];
+  sides[0] = Directions::None;
+  sides[1] = Directions::None;
   int flags[6] = {0,0,0,0,0,0};
   int index[2];
   int dis_forward,  dis_left, dis_right;

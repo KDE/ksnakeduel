@@ -282,7 +282,7 @@ QPixmap Renderer::background()
     return pixmapFromCache(p, "background", bgSize);
 }
 
-void Renderer::boardResized(int width, int height, int leftOffset, int topOffset, int partWidth, int partHeight)
+void Renderer::boardResized(int width, int height, int partWidth, int partHeight)
 {
     //new metrics
     p->m_sceneSize = QSize(width, height);

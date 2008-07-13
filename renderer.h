@@ -41,7 +41,7 @@ class Renderer {
         static Renderer *self();
 
         bool loadTheme(const QString &);
-		void boardResized(int width, int height, int leftOffset, int topOffset, int partWidth, int partHeight);
+		void boardResized(int width, int height, int partWidth, int partHeight);
 
 		int calculateOffsetX(int x);
 		int calculateOffsetY(int y);
