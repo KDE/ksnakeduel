@@ -24,7 +24,9 @@
 #ifndef KTRON_H
 #define KTRON_H
 
-#include <kxmlguiwindow.h>
+#include <QAction>
+#include <KXmlGuiWindow>
+#include <KToggleAction>
 
 #include "tron.h"
 
@@ -37,34 +39,61 @@ class Tron;
  */
 class KTron : public KXmlGuiWindow {
 
-Q_OBJECT
+	Q_OBJECT
 
-public:
-  KTron(QWidget *parent=0);
+	public:
+		KTron(QWidget *parent=0);
 
-private:
-  KAccel *accel;
-  Tron *tron;
-  QString playerName[2];
-  int playerPoints[2];
-  void updateStatusbar();
+	private:
+		KAccel *accel;
+		Tron *tron;
+		QString playerName[2];
+		int playerPoints[2];
+		void updateStatusbar();
 
-protected:
-  /** calls tron->updatePixmap to draw frame in the new colors */
-  void paletteChange(const QPalette &oldPalette);
-  virtual void closeEvent(QCloseEvent *);
+	protected:
+		/** calls tron->updatePixmap to draw frame in the new colors */
+		void paletteChange(const QPalette &oldPalette);
+		virtual void closeEvent(QCloseEvent *);
 
-public slots:
-  void close();
+	public slots:
+		void close();
 
-private slots:
-  void loadSettings();
-  /** updates players points in statusbar and checks if someone has won */
-  void changeStatus(KTronEnum::Player);
-  void updateScore();
-  
-  void showWinner(KTronEnum::Player winner);
-  void showSettings();
+
+	private slots:
+		void loadSettings();
+		/** updates players points in statusbar and checks if someone has won */
+		void changeStatus(KTronEnum::Player);
+		void updateScore();
+		
+		void showWinner(KTronEnum::Player winner);
+		void showSettings();
+		
+		void optionsConfigureKeys();
+		
+		// Triggers keys
+		void triggerKey0Up(bool);
+		void triggerKey0Down(bool);
+		void triggerKey0Left(bool);
+		void triggerKey0Right(bool);
+		void triggerKey0Accelerate(bool);
+		void triggerKey1Up(bool);
+		void triggerKey1Down(bool);
+		void triggerKey1Left(bool);
+		void triggerKey1Right(bool);
+		void triggerKey1Accelerate(bool);
+		
+	private:
+		QAction *player0Up;
+		QAction *player0Down;
+		QAction *player0Left;
+		QAction *player0Right;
+		KToggleAction *player0Accelerate;
+		QAction *player1Up;
+		QAction *player1Down;
+		QAction *player1Left;
+		QAction *player1Right;
+		KToggleAction *player1Accelerate;
 };
 
 #endif // KTRON_H

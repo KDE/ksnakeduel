@@ -40,8 +40,6 @@
 #include <KApplication>
 #include <KConfig>
 #include <KColorDialog>
-#include <KAction>
-#include <KActionCollection>
 #include <KStandardAction>
 #include <KGameDifficulty>
 
@@ -301,10 +299,10 @@ void Tron::updatePixmap()
 **                    config functions										 **
 ** *************************************************************** */
 
-void Tron::setActionCollection(KActionCollection *a)
-{
-   actionCollection = a;
-}
+//void Tron::setActionCollection(KActionCollection *a)
+//{
+//   actionCollection = a;
+//}
 
 void Tron::setVelocity(int newVel)            // set new velocity
 {
@@ -480,68 +478,52 @@ void Tron::resizeEvent(QResizeEvent *)
 	update();
 }
 
-void Tron::keyPressEvent(QKeyEvent *e)
+void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 {
-	if (!players[1].computer)
+	//kDebug() << "Key hit: " << player << action << trigger;
+	if (action == KBAction::ACCELERATE && !trigger)
 	{
-		if(actionCollection->action("Pl2Up")->shortcuts().contains(e->key()))
+		switchKeyOff(player, action);
+	}
+	else
+	{
+		switchKeyOn(player, action);
+	}
+}
+
+void Tron::switchKeyOn(int player, KBAction::Action action)
+{
+	if (!players[player].computer)
+	{
+		switch (action)
 		{
-			switchDir(1,Directions::Up);
-			players[1].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl2Left")->shortcuts().contains(e->key()))
-		{
-			switchDir(1,Directions::Left);
-			players[1].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl2Right")->shortcuts().contains(e->key()))
-		{
-			switchDir(1,Directions::Right);
-			players[1].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl2Down")->shortcuts().contains(e->key()))
-		{
-			switchDir(1,Directions::Down);
-			players[1].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl2Ac")->shortcuts().contains(e->key()))
-		{
-			if(!Settings::acceleratorBlocked())
-				players[1].accelerated=true;
+			case KBAction::UP:
+				switchDir(player, Directions::Up);
+				players[player].keyPressed = true;
+				break;
+			case KBAction::DOWN:
+				switchDir(player, Directions::Down);
+				players[player].keyPressed = true;
+				break;
+			case KBAction::LEFT:
+				switchDir(player, Directions::Left);
+				players[player].keyPressed = true;
+				break;
+			case KBAction::RIGHT:
+				switchDir(player, Directions::Right);
+				players[player].keyPressed = true;
+				break;
+			case KBAction::ACCELERATE:
+				if(!Settings::acceleratorBlocked())
+				{
+					//kDebug() << "Acceleration on: " << player;
+					players[player].accelerated = true;
+				}
+				break;
+			default:
+				break;
 		}
 	}
-
-	if (!players[0].computer)
-	{
-		if(actionCollection->action("Pl1Left")->shortcuts().contains(e->key()))
-		{
-			switchDir(0,Directions::Left);
-			players[0].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl1Right")->shortcuts().contains(e->key()))
-		{
-			switchDir(0,Directions::Right);
-			players[0].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl1Up")->shortcuts().contains(e->key()))
-		{
-			switchDir(0,Directions::Up);
-			players[0].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl1Down")->shortcuts().contains(e->key()))
-		{
-			switchDir(0,Directions::Down);
-			players[0].keyPressed=true;
-		}
-		else if(actionCollection->action("Pl1Ac")->shortcuts().contains(e->key()))
-		{
-			if(!Settings::acceleratorBlocked())
-				players[0].accelerated=true;
-		}
-	}
-
-	e->ignore();  // if key is unknown: ignore
-
 	// if both players press keys at the same time, start game...
 	if(gameEnded && !gameBlocked)
 	{
@@ -556,73 +538,31 @@ void Tron::keyPressEvent(QKeyEvent *e)
 	{
 		if(players[0].keyPressed && players[1].keyPressed)
 		{
-		togglePause();
+			togglePause();
 		}
 	}
 }
 
-void Tron::keyReleaseEvent(QKeyEvent * e)
+void Tron::switchKeyOff(int player, KBAction::Action action)
 {
-  if(!players[1].computer)
-  {
-      if(actionCollection->action("Pl2Ac")->shortcuts().contains(e->key()))
+	if (!players[player].computer)
+	{
+		switch (action)
 		{
-			players[1].accelerated=false;
-			return;
-  		}
-      else if(actionCollection->action("Pl2Left")->shortcuts().contains(e->key()))
-		{
-			players[1].keyPressed=false;
-			return;
+			case KBAction::UP:
+			case KBAction::DOWN:
+			case KBAction::LEFT:
+			case KBAction::RIGHT:
+				players[player].keyPressed = false;
+				break;
+			case KBAction::ACCELERATE:
+				//kDebug() << "Acceleration off: " << player;
+				players[player].accelerated = false;
+				break;
+			default:
+				break;
 		}
-      else if(actionCollection->action("Pl2Right")->shortcuts().contains(e->key()))
-		{
-	  		players[1].keyPressed=false;
-	  		return;
-		}
-      else if(actionCollection->action("Pl2Up")->shortcuts().contains(e->key()))
-		{
-	  		players[1].keyPressed=false;
-	  		return;
-		}
-      else if(actionCollection->action("Pl2Down")->shortcuts().contains(e->key()))
-		{
-		  players[1].keyPressed=false;
-		  return;
-		}
-  }
-
-   if(!players[0].computer)
-   {
-      if(actionCollection->action("Pl1Left")->shortcuts().contains(e->key()))
-		{
-	 		players[0].keyPressed=false;
-	 		return;
-		}
-      else if(actionCollection->action("Pl1Right")->shortcuts().contains(e->key()))
-		{
-	  		players[0].keyPressed=false;
-	  		return;
-		}
-      else if(actionCollection->action("Pl1Up")->shortcuts().contains(e->key()))
-		{
-	 		players[0].keyPressed=false;
-	  		return;
-		}
-      else if(actionCollection->action("Pl1Down")->shortcuts().contains(e->key()))
-		{
-	 		players[0].keyPressed=false;
-	 		return;
-		}
-      else if(actionCollection->action("Pl1Ac")->shortcuts().contains(e->key()))
-		{
-	  		players[0].accelerated=false;
-	  		return;
-		}
- 	}
-
-   e->ignore();  // if pressed key is unknown, ignore it
-
+	}
 }
 
 // if playingfield loses keyboard focus, pause game

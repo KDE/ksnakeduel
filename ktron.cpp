@@ -35,6 +35,8 @@
 #include <KToggleAction>
 #include <KGameThemeSelector>
 #include <KGameDifficulty>
+#include <KShortcutsDialog>
+#include <KToggleAction>
 
 // Settings
 #include "settings.h"
@@ -59,101 +61,123 @@ public:
  * Constuctor
  */ 
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
-  //playerPoints[0]=playerPoints[1]=0;
+	//playerPoints[0]=playerPoints[1]=0;
 
-  tron=new Tron(this);
-  connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
-  connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
-  setCentralWidget(tron);
-  tron->setMinimumSize(200,180);
+	tron = new Tron(this);
+	connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
+	connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
+	setCentralWidget(tron);
+	tron->setMinimumSize(200,180);
 
-  // create statusbar
-  statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
-  statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
+	// create statusbar
+	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
+	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
 
-  // We match up keyboard events ourselves in Tron::keyPressEvent()
-  // We must disable the actions, otherwise we don't get the keyPressEvent's
-  QAction *act;
- 
-  act = actionCollection()->addAction("Pl1Up");
-  act->setText(i18n("Player 1 Up"));
-  act->setShortcut(Qt::Key_Up);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl1Down");
-  act->setText(i18n("Player 1 Down"));
-  act->setShortcut(Qt::Key_Down);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl1Right");
-  act->setText(i18n("Player 1 Right"));
-  act->setShortcut(Qt::Key_Right);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl1Left");
-  act->setText(i18n("Player 1 Left"));
-  act->setShortcut(Qt::Key_Left);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl1Ac");
-  act->setText(i18n("Player 1 Accelerator"));
-  act->setShortcut(Qt::Key_0);
-  act->setEnabled(false);
+	// We match up keyboard events ourselves in Tron::keyPressEvent()
+	// We must disable the actions, otherwise we don't get the keyPressEvent's
+	QAction *act;
+	
+	player0Up = actionCollection()->addAction("Pl1Up");
+	player0Up->setText(i18n("Player 1 Up"));
+	player0Up->setShortcut(Qt::Key_Up);
+	connect(player0Up, SIGNAL(triggered(bool)), SLOT(triggerKey0Up(bool)));
+	addAction(player0Up);
+	
+	player0Down = actionCollection()->addAction("Pl1Down");
+	player0Down->setText(i18n("Player 1 Down"));
+	player0Down->setShortcut(Qt::Key_Down);
+	connect(player0Down, SIGNAL(triggered(bool)), SLOT(triggerKey0Down(bool)));
+	addAction(player0Down);
+	
+	player0Right = actionCollection()->addAction("Pl1Right");
+	player0Right->setText(i18n("Player 1 Right"));
+	player0Right->setShortcut(Qt::Key_Right);
+	connect(player0Right, SIGNAL(triggered(bool)), SLOT(triggerKey0Right(bool)));
+	addAction(player0Right);
+	
+	player0Left = actionCollection()->addAction("Pl1Left");
+	player0Left->setText(i18n("Player 1 Left"));
+	player0Left->setShortcut(Qt::Key_Left);
+	connect(player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
+	addAction(player0Left);
+	
+	player0Accelerate = new KToggleAction(i18n("Player 1 Accelerator"), this);
+	actionCollection()->addAction("Pl1Ac", player0Accelerate);
+	player0Accelerate->setShortcut(Qt::Key_0);
+	connect(player0Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey0Accelerate(bool)));
+	addAction(player0Accelerate);
 
-  act = actionCollection()->addAction("Pl2Up");
-  act->setText(i18n("Player 2 Up"));
-  act->setShortcut(Qt::Key_R);
-  act->setEnabled(false);
+	player1Up = actionCollection()->addAction("Pl2Up");
+	player1Up->setText(i18n("Player 2 Up"));
+	player1Up->setShortcut(Qt::Key_R);
+	connect(player1Up, SIGNAL(triggered(bool)), SLOT(triggerKey1Up(bool)));
+	addAction(player1Up);
 
-  act = actionCollection()->addAction("Pl2Down");
-  act->setText(i18n("Player 2 Down"));
-  act->setShortcut(Qt::Key_F);
-  act->setEnabled(false);
+	player1Down = actionCollection()->addAction("Pl2Down");
+	player1Down->setText(i18n("Player 2 Down"));
+	player1Down->setShortcut(Qt::Key_F);
+	connect(player1Down, SIGNAL(triggered(bool)), SLOT(triggerKey1Down(bool)));
+	addAction(player1Down);
 
-  act = actionCollection()->addAction("Pl2Right");;
-  act->setText(i18n("Player 2 Right"));
-  act->setShortcut(Qt::Key_G);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl2Left");
-  act->setText(i18n("Player 2 Left"));
-  act->setShortcut(Qt::Key_D);
-  act->setEnabled(false);
-  
-  act = actionCollection()->addAction("Pl2Ac");
-  act->setText(i18n("Player 2 Accelerator"));
-  act->setShortcut(Qt::Key_A);
-  act->setEnabled(false);
+	player1Right = actionCollection()->addAction("Pl2Right");;
+	player1Right->setText(i18n("Player 2 Right"));
+	player1Right->setShortcut(Qt::Key_G);
+	connect(player1Right, SIGNAL(triggered(bool)), SLOT(triggerKey1Right(bool)));
+	addAction(player1Right);
+	
+	player1Left = actionCollection()->addAction("Pl2Left");
+	player1Left->setText(i18n("Player 2 Left"));
+	player1Left->setShortcut(Qt::Key_D);
+	connect(player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
+	addAction(player1Left);
+	
+	player1Accelerate = new KToggleAction(i18n("Player 2 Accelerator"), this);
+	actionCollection()->addAction("Pl2Ac", player1Accelerate);
+	player1Accelerate->setShortcut(Qt::Key_A);
+	connect(player1Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey1Accelerate(bool)));
+	addAction(player1Accelerate);
 
-  tron->setActionCollection(actionCollection());
+	//tron->setActionCollection(actionCollection());
 
-  act = KStandardGameAction::pause(tron, SLOT(togglePause()), this);
-  actionCollection()->addAction(act->objectName(), act);
-  act = KStandardGameAction::gameNew(tron, SLOT( newGame() ), this);
-  actionCollection()->addAction(act->objectName(), act);
-  act = KStandardGameAction::quit(kapp, SLOT(quit()), this);
-  actionCollection()->addAction(act->objectName(), act);
-  act = KStandardAction::preferences(this, SLOT(showSettings()), this);
-  actionCollection()->addAction(act->objectName(), act);
+	// Pause
+	act = KStandardGameAction::pause(tron, SLOT(togglePause()), this);
+	actionCollection()->addAction(act->objectName(), act);
+	addAction(act);
+	// New
+	act = KStandardGameAction::gameNew(tron, SLOT( newGame() ), this);
+	actionCollection()->addAction(act->objectName(), act);
+	addAction(act);
+	// Quit
+	act = KStandardGameAction::quit(kapp, SLOT(quit()), this);
+	actionCollection()->addAction(act->objectName(), act);
+	addAction(act);
+	// Settings
+	act = KStandardAction::preferences(this, SLOT(showSettings()), this);
+	actionCollection()->addAction(act->objectName(), act);
+	addAction(act);
+	// Configure keys
+	act = KStandardAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
+	actionCollection()->addAction(act->objectName(), act);
+	addAction(act);
 
-  //difficulty
-  KGameDifficulty::init(this, tron, SLOT(loadSettings()));
-  KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
-  KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
-  KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
-  KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-  KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
-  int skill = Settings::difficulty();
-  if (skill < (int)KGameDifficulty::VeryEasy || skill > (int)KGameDifficulty::VeryHard) {
-    KGameDifficulty::setLevel(KGameDifficulty::Easy);
-    Settings::setDifficulty((int) KGameDifficulty::Easy);
-  }
-  else {
-    KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (skill));
-  }
+	//difficulty
+	KGameDifficulty::init(this, tron, SLOT(loadSettings()));
+	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
+	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
+	int skill = Settings::difficulty();
+	if (skill < (int)KGameDifficulty::VeryEasy || skill > (int)KGameDifficulty::VeryHard) {
+		KGameDifficulty::setLevel(KGameDifficulty::Easy);
+		Settings::setDifficulty((int) KGameDifficulty::Easy);
+	}
+	else {
+		KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (skill));
+	}
 
-  setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
-  loadSettings();
+	setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
+	loadSettings();
 }
 
 void KTron::loadSettings() {
@@ -290,6 +314,23 @@ void KTron::closeEvent(QCloseEvent *event)
     close();
     event->accept();
 }
+
+void KTron::optionsConfigureKeys()
+{
+    KShortcutsDialog::configure(actionCollection());
+}
+
+// Triggers
+void KTron::triggerKey0Up(bool b) { tron->triggerKey(0, KBAction::UP, b); }
+void KTron::triggerKey0Down(bool b) { tron->triggerKey(0, KBAction::DOWN, b); }
+void KTron::triggerKey0Left(bool b) { tron->triggerKey(0, KBAction::LEFT, b); }
+void KTron::triggerKey0Right(bool b) { tron->triggerKey(0, KBAction::RIGHT, b); }
+void KTron::triggerKey0Accelerate(bool b) { tron->triggerKey(0, KBAction::ACCELERATE, b); }
+void KTron::triggerKey1Up(bool b) { tron->triggerKey(1, KBAction::UP, b); }
+void KTron::triggerKey1Down(bool b) { tron->triggerKey(1, KBAction::DOWN, b); }
+void KTron::triggerKey1Left(bool b) { tron->triggerKey(1, KBAction::LEFT, b); }
+void KTron::triggerKey1Right(bool b) { tron->triggerKey(1, KBAction::RIGHT, b); }
+void KTron::triggerKey1Accelerate(bool b) { tron->triggerKey(1, KBAction::ACCELERATE, b); }
 
 #include "ktron.moc"
 

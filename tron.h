@@ -35,8 +35,6 @@
 #include <math.h>
 #include <krandomsequence.h>
 
-class KActionCollection;
-
 #include "player.h"
 #include "item.h"
 
@@ -67,6 +65,18 @@ namespace KTronEnum
 	};
 }
 
+namespace KBAction
+{
+	enum Action {
+		NONE,
+		UP,
+		DOWN,
+		LEFT,
+		RIGHT,
+		ACCELERATE
+	};
+}
+
 /**
 * @short The playingfield
 */
@@ -77,12 +87,14 @@ class Tron : public QWidget
 public:
   Tron(QWidget *parent=0);
   ~Tron();
-  void setActionCollection(KActionCollection*);
+  //void setActionCollection(KActionCollection*);
   void updatePixmap();
   void setComputerplayer(KTronEnum::Player player, bool);
   bool isComputer(KTronEnum::Player player);
   void setVelocity(int);
   void setRectSize(int newSize);
+
+  void triggerKey(int, KBAction::Action, bool);
 
   player players[2];
 
@@ -112,14 +124,12 @@ protected:
   void paintEvent(QPaintEvent *);
   /** resets game and creates a new playingfield */
   void resizeEvent(QResizeEvent *);
-  void keyPressEvent(QKeyEvent *);
-  void keyReleaseEvent(QKeyEvent *);
   /** pauses game */
   void focusOutEvent(QFocusEvent *);
 
 private:
-  /** Stores key shortcuts */
-  KActionCollection* actionCollection;
+  ///** Stores key shortcuts */
+  //KActionCollection* actionCollection;
   ///** Drawing buffer */
   //QPixmap *pixmap;
   /** The playingfield */
@@ -197,6 +207,11 @@ private:
   */
   void updateDirections(int playerNr=-1);
   void movePlayer(int playerNr);
+
+
+  // Key handling / movement
+  void switchKeyOn(int, KBAction::Action);
+  void switchKeyOff(int, KBAction::Action);
   
 private slots:
     /**
