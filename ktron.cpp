@@ -104,6 +104,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	player0Accelerate = new KToggleAction(i18n("Player 1 Accelerator"), this);
 	actionCollection()->addAction("Pl1Ac", player0Accelerate);
 	player0Accelerate->setShortcut(Qt::Key_0);
+	player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	connect(player0Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey0Accelerate(bool)));
 	addAction(player0Accelerate);
 
@@ -134,10 +135,9 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	player1Accelerate = new KToggleAction(i18n("Player 2 Accelerator"), this);
 	actionCollection()->addAction("Pl2Ac", player1Accelerate);
 	player1Accelerate->setShortcut(Qt::Key_A);
+	player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	connect(player1Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey1Accelerate(bool)));
 	addAction(player1Accelerate);
-
-	//tron->setActionCollection(actionCollection());
 
 	// Pause
 	act = KStandardGameAction::pause(tron, SLOT(togglePause()), this);
@@ -231,19 +231,9 @@ void KTron::updateScore()
 void KTron::changeStatus(KTronEnum::Player player) {
   // if player=Nobody, then new game
   if(player==KTronEnum::Nobody){
-    //playerPoints[0]=playerPoints[1]=0;
     updateStatusbar();
     return;
   }
-  
-  //if(player==KTronEnum::One)
-  //  playerPoints[0]++;
-  //else if(player==KTronEnum::Two)
-  //  playerPoints[1]++;
-  //else if(player==KTronEnum::Both){
-  //  playerPoints[0]++;
-  //  playerPoints[1]++;
-  //}
 
   updateStatusbar();
 
@@ -318,6 +308,31 @@ void KTron::closeEvent(QCloseEvent *event)
 void KTron::optionsConfigureKeys()
 {
     KShortcutsDialog::configure(actionCollection());
+}
+
+// Key events
+void KTron::keyPressEvent(QKeyEvent *e)
+{
+	if (player0Accelerate->shortcuts().contains(e->key()))
+	{
+		triggerKey0Accelerate(true);
+	}
+	else if (player1Accelerate->shortcuts().contains(e->key()))
+	{
+		triggerKey1Accelerate(true);
+	}
+}
+
+void KTron::keyReleaseEvent(QKeyEvent *e)
+{
+	if (player0Accelerate->shortcuts().contains(e->key()))
+	{
+		triggerKey0Accelerate(false);
+	}
+	else if (player1Accelerate->shortcuts().contains(e->key()))
+	{
+		triggerKey1Accelerate(false);
+	}
 }
 
 // Triggers

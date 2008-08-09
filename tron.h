@@ -29,7 +29,6 @@
 #include <QPixmap>
 #include <QResizeEvent>
 #include <QVector>
-#include <QKeyEvent>
 #include <QPaintEvent>
 #include <QFocusEvent>
 #include <math.h>
@@ -82,148 +81,140 @@ namespace KBAction
 */
 class Tron : public QWidget
 {
-  Q_OBJECT
+	Q_OBJECT
 
-public:
-  Tron(QWidget *parent=0);
-  ~Tron();
-  //void setActionCollection(KActionCollection*);
-  void updatePixmap();
-  void setComputerplayer(KTronEnum::Player player, bool);
-  bool isComputer(KTronEnum::Player player);
-  void setVelocity(int);
-  void setRectSize(int newSize);
+	public:
+		Tron(QWidget *parent=0);
+		~Tron();
+		void updatePixmap();
+		void setComputerplayer(KTronEnum::Player player, bool);
+		bool isComputer(KTronEnum::Player player);
+		void setVelocity(int);
+		void setRectSize(int newSize);
 
-  void triggerKey(int, KBAction::Action, bool);
+		void triggerKey(int, KBAction::Action, bool);
 
-  player players[2];
+		player players[2];
 
-public slots:
-  /** Starts a new game. The difference to reset is, that the players
-  * points are set to zero. Emits gameEnds(Nobody).
-  */
-  void newGame();
-  void togglePause();
+	public slots:
+		/** Starts a new game. The difference to reset is, that the players
+		* points are set to zero. Emits gameEnds(Nobody).
+		*/
+		void newGame();
+		void togglePause();
 
-  /**
-  * checks if both players are computer and starts the game
-  */
-  void computerStart();
+		/**
+		* checks if both players are computer and starts the game
+		*/
+		void computerStart();
 
-  void loadSettings();
+		void loadSettings();
 
-signals:
-  void gameEnds(KTronEnum::Player loser);
-  void updatedScore();
-  void gameReset();
+	signals:
+		void gameEnds(KTronEnum::Player loser);
+		void updatedScore();
+		void gameReset();
 
-protected:
-  /** bitBlt's the rect that has to be updated from the
-  * bufferpixmap on the screen and writes eventually text
-  */
-  void paintEvent(QPaintEvent *);
-  /** resets game and creates a new playingfield */
-  void resizeEvent(QResizeEvent *);
-  /** pauses game */
-  void focusOutEvent(QFocusEvent *);
+	protected:
+		/** Calls renderer */
+		void paintEvent(QPaintEvent *);
+		/** resets game and creates a new playingfield */
+		void resizeEvent(QResizeEvent *);
+		/** pauses game */
+		void focusOutEvent(QFocusEvent *);
 
-private:
-  ///** Stores key shortcuts */
-  //KActionCollection* actionCollection;
-  ///** Drawing buffer */
-  //QPixmap *pixmap;
-  /** The playingfield */
-  QVector< QVector<int> > playfield;
-  /** game status flag */
-  bool gamePaused;
-  /** game status flag */
-  bool gameEnded;
-  /**  used for waiting after game ended */
-  bool gameBlocked;
-  /** flag, if a string should be drawn, how to start the game */
-  bool beginHint;
-  /** Height  of the playingfield in number of rects*/
-  int fieldHeight;
-  /** Width of the playingfield in number of rects*/
-  int fieldWidth;
-  QTimer *timer;
-  Item apple;
+	private:
+		/** The playingfield */
+		QVector< QVector<int> > playfield;
+		/** game status flag */
+		bool gamePaused;
+		/** game status flag */
+		bool gameEnded;
+		/**  used for waiting after game ended */
+		bool gameBlocked;
+		/** flag, if a string should be drawn, how to start the game */
+		bool beginHint;
+		/** Height  of the playingfield in number of rects*/
+		int fieldHeight;
+		/** Width of the playingfield in number of rects*/
+		int fieldWidth;
+		QTimer *timer;
+		Item apple;
 
-  /** Backgroundpixmap **/
-  QPixmap bgPix;
+		/** Backgroundpixmap **/
+		QPixmap bgPix;
 
-  /** time in ms between two moves */
-  int velocity;
-  /** size of the rects */
-  //int rectSize;
-  int blockHeight;
-  int blockWidth;
+		/** time in ms between two moves */
+		int velocity;
+		/** size of the rects */
+		int blockHeight;
+		int blockWidth;
 
-  /** The random sequence generator **/
-  KRandomSequence random;
+		/** The random sequence generator **/
+		KRandomSequence random;
 
-  // Options
-  /** determines level of computerplayer */
-  int lookForward;
+		// Options
+		/** determines level of computerplayer */
+		int lookForward;
 
-  // Functions
-  /** resets the game */
-  void reset();
-  /** starts the game timer */
-  void startGame();
-  /** stops the game timer */
-  void stopGame();
-  /** creates a new playfield and a bufferpixmap */
-  void createNewPlayfield();
-  /** paints players at current player coordinates */
-  void paintPlayers();
-  /** emits gameEnds(Player) and displays the winner by changing color*/
-  void showWinner(KTronEnum::Player winner);
-  /** retrieves the opponentSkill */
-  int opponentSkill();
-  /** retrieves the line speed */
-  int lineSpeed();
-  /** resizes the visual board */
-  void resizeRenderer();
-  /** generates new apple */
-  void newApple();
+		// Functions
+		/** resets the game */
+		void reset();
+		/** starts the game timer */
+		void startGame();
+		/** stops the game timer */
+		void stopGame();
+		/** creates a new playfield and a bufferpixmap */
+		void createNewPlayfield();
+		/** paints players at current player coordinates */
+		void paintPlayers();
+		/** emits gameEnds(Player) and displays the winner by changing color*/
+		void showWinner(KTronEnum::Player winner);
+		/** retrieves the opponentSkill */
+		int opponentSkill();
+		/** retrieves the line speed */
+		int lineSpeed();
+		/** resizes the visual board */
+		void resizeRenderer();
+		/** generates new apple */
+		void newApple();
 
-  /** calculates if player playerNr would crash
-  * if he moves xInc in x-direction and yInc in y-direction
-  */
-  bool crashed(int playerNr,int xInc, int yInc) const;
-  /** calculates if player playerNr should change direction */
-  void think(int playerNr);
-  void changeDirection(int playerNr,int dis_right,int dis_left);
+		/** calculates if player playerNr would crash
+		* if he moves xInc in x-direction and yInc in y-direction
+		*/
+		bool crashed(int playerNr,int xInc, int yInc) const;
+		/** calculates if player playerNr should change direction */
+		void think(int playerNr);
+		void changeDirection(int playerNr,int dis_right,int dis_left);
 
-  /** sets the direction of player playerNr to newDirection */
-  void switchDir(int playerNr,Directions::Direction newDirection);
-  /**
-  * updates the the rect at current position to not draw a
-  * border in the direction of the next step.
-  * (only used in mode OLine)
-  *
-  * -1 means update both players
-  */
-  void updateDirections(int playerNr=-1);
-  void movePlayer(int playerNr);
+		/** sets the direction of player playerNr to newDirection */
+		void switchDir(int playerNr,Directions::Direction newDirection);
+		/**
+		* updates the the rect at current position to not draw a
+		* border in the direction of the next step.
+		* (only used in mode OLine)
+		*
+		* -1 means update both players
+		*/
+		void updateDirections(int playerNr=-1);
+		void movePlayer(int playerNr);
 
 
-  // Key handling / movement
-  void switchKeyOn(int, KBAction::Action);
-  void switchKeyOff(int, KBAction::Action);
-  
-private slots:
-    /**
-    * This is the main function of KTron.
-    * It checkes if an accelerator is pressed and than moves this player
-    * forward. Then it checkes if a crash occurred.
-    * If no crash happen it moves both players forward and checks again
-    * if someone crashed.
-    */
-    void doMove();
-    void unblockGame();
-    void showBeginHint();
+		// Key handling / movement
+		void switchKeyOn(int, KBAction::Action);
+		void switchKeyOff(int, KBAction::Action);
+	
+	private slots:
+		/**
+		* This is the main function of KTron.
+		* It checkes if an accelerator is pressed and than moves this player
+		* forward. Then it checkes if a crash occurred.
+		* If no crash happen it moves both players forward and checks again
+		* if someone crashed.
+		*/
+		void doMove();
+		void unblockGame();
+		void showBeginHint();
 };
 
 

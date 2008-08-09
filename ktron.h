@@ -27,6 +27,7 @@
 #include <QAction>
 #include <KXmlGuiWindow>
 #include <KToggleAction>
+#include <QKeyEvent>
 
 #include "tron.h"
 
@@ -55,6 +56,10 @@ class KTron : public KXmlGuiWindow {
 		/** calls tron->updatePixmap to draw frame in the new colors */
 		void paletteChange(const QPalette &oldPalette);
 		virtual void closeEvent(QCloseEvent *);
+		
+		/** Key hits */
+		void keyPressEvent(QKeyEvent *); 	 
+		void keyReleaseEvent(QKeyEvent *);
 
 	public slots:
 		void close();
