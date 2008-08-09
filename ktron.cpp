@@ -32,7 +32,6 @@
 #include <KStandardGameAction>
 #include <KApplication>
 #include <KStatusBar>
-#include <KToggleAction>
 #include <KGameThemeSelector>
 #include <KGameDifficulty>
 #include <KShortcutsDialog>
@@ -101,11 +100,10 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	connect(player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
 	addAction(player0Left);
 	
-	player0Accelerate = new KToggleAction(i18n("Player 1 Accelerator"), this);
-	actionCollection()->addAction("Pl1Ac", player0Accelerate);
+	player0Accelerate = actionCollection()->addAction("Pl1Ac");
+	player0Left->setText(i18n("Player 1 Accelerator"));
 	player0Accelerate->setShortcut(Qt::Key_0);
 	player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
-	connect(player0Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey0Accelerate(bool)));
 	addAction(player0Accelerate);
 
 	player1Up = actionCollection()->addAction("Pl2Up");
@@ -132,11 +130,10 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	connect(player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
 	addAction(player1Left);
 	
-	player1Accelerate = new KToggleAction(i18n("Player 2 Accelerator"), this);
-	actionCollection()->addAction("Pl2Ac", player1Accelerate);
+	player1Accelerate = actionCollection()->addAction("Pl2Ac");
+	player1Left->setText(i18n("Player 2 Accelerator"));
 	player1Accelerate->setShortcut(Qt::Key_A);
 	player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
-	connect(player1Accelerate, SIGNAL(triggered(bool)), SLOT(triggerKey1Accelerate(bool)));
 	addAction(player1Accelerate);
 
 	// Pause
@@ -336,16 +333,56 @@ void KTron::keyReleaseEvent(QKeyEvent *e)
 }
 
 // Triggers
-void KTron::triggerKey0Up(bool b) { tron->triggerKey(0, KBAction::UP, b); }
-void KTron::triggerKey0Down(bool b) { tron->triggerKey(0, KBAction::DOWN, b); }
-void KTron::triggerKey0Left(bool b) { tron->triggerKey(0, KBAction::LEFT, b); }
-void KTron::triggerKey0Right(bool b) { tron->triggerKey(0, KBAction::RIGHT, b); }
-void KTron::triggerKey0Accelerate(bool b) { tron->triggerKey(0, KBAction::ACCELERATE, b); }
-void KTron::triggerKey1Up(bool b) { tron->triggerKey(1, KBAction::UP, b); }
-void KTron::triggerKey1Down(bool b) { tron->triggerKey(1, KBAction::DOWN, b); }
-void KTron::triggerKey1Left(bool b) { tron->triggerKey(1, KBAction::LEFT, b); }
-void KTron::triggerKey1Right(bool b) { tron->triggerKey(1, KBAction::RIGHT, b); }
-void KTron::triggerKey1Accelerate(bool b) { tron->triggerKey(1, KBAction::ACCELERATE, b); }
+void KTron::triggerKey0Up(bool b)
+{
+	tron->triggerKey(0, KBAction::UP, b);
+}
+
+void KTron::triggerKey0Down(bool b)
+{
+	tron->triggerKey(0, KBAction::DOWN, b);
+}
+
+void KTron::triggerKey0Left(bool b)
+{
+	tron->triggerKey(0, KBAction::LEFT, b);
+}
+
+void KTron::triggerKey0Right(bool b)
+{
+	tron->triggerKey(0, KBAction::RIGHT, b);
+}
+
+void KTron::triggerKey0Accelerate(bool b)
+{
+	tron->triggerKey(0, KBAction::ACCELERATE, b);
+}
+
+void KTron::triggerKey1Up(bool b)
+{
+	tron->triggerKey(1, KBAction::UP, b);
+}
+
+void KTron::triggerKey1Down(bool b)
+{
+	tron->triggerKey(1, KBAction::DOWN, b);
+}
+
+void KTron::triggerKey1Left(bool b)
+{
+	tron->triggerKey(1, KBAction::LEFT, b);
+}
+
+void KTron::triggerKey1Right(bool b)
+{
+	tron->triggerKey(1, KBAction::RIGHT, b);
+}
+
+void KTron::triggerKey1Accelerate(bool b)
+{
+	tron->triggerKey(1, KBAction::ACCELERATE, b);
+}
+
 
 #include "ktron.moc"
 

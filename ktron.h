@@ -26,7 +26,6 @@
 
 #include <QAction>
 #include <KXmlGuiWindow>
-#include <KToggleAction>
 #include <QKeyEvent>
 
 #include "tron.h"
@@ -93,12 +92,12 @@ class KTron : public KXmlGuiWindow {
 		QAction *player0Down;
 		QAction *player0Left;
 		QAction *player0Right;
-		KToggleAction *player0Accelerate;
+		QAction *player0Accelerate;
 		QAction *player1Up;
 		QAction *player1Down;
 		QAction *player1Left;
 		QAction *player1Right;
-		KToggleAction *player1Accelerate;
+		QAction *player1Accelerate;
 };
 
 #endif // KTRON_H
