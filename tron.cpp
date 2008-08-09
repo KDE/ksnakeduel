@@ -52,107 +52,94 @@
  * init-functions
  **/
 
-Tron::Tron(QWidget *parent)
-  : QWidget(parent)
+Tron::Tron(QWidget *parent) : QWidget(parent)
 {
-  //pixmap=0;
-  //playfield = new QVector< QVector<int> >();
-  beginHint=false;
-  lookForward=15;
+	beginHint = false;
+	lookForward = 15;
 
-  random.setSeed(0);
+	random.setSeed(0);
 
-  setFocusPolicy(Qt::StrongFocus);
+	setFocusPolicy(Qt::StrongFocus);
 
-  gameBlocked=false;
-  //rectSize=10;
-  //blockWidth = width() / TRON_PLAYFIELD_WIDTH;
-  //blockHeight = height() / TRON_PLAYFIELD_HEIGHT;
+	gameBlocked = false;
 
-  timer = new QTimer(this);
-  loadSettings();
-  connect(timer, SIGNAL(timeout()), SLOT(doMove()));
-  QTimer::singleShot(15000, this,SLOT(showBeginHint()));
+	timer = new QTimer(this);
+	loadSettings();
+	connect(timer, SIGNAL(timeout()), SLOT(doMove()));
+	QTimer::singleShot(15000, this, SLOT(showBeginHint()));
 }
 
 void Tron::loadSettings(){
-  //setPalette(Qt::green);
+	createNewPlayfield();
+	reset();
 
-  createNewPlayfield();
-  reset();
+	// Velocity
+	setVelocity( lineSpeed() );
 
-  // Velocity
-  setVelocity( lineSpeed() );
+	// Style
+	updatePixmap();
+	update();
 
-  // Style
-  updatePixmap();
-  update();
-
-  if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer)
-  {
-    setComputerplayer(KTronEnum::One, false);
-    setComputerplayer(KTronEnum::Two, false);
-  }
-  else
-  {
-    setComputerplayer(KTronEnum::One, false);
-    setComputerplayer(KTronEnum::Two, true);
-  }
+	if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer)
+	{
+		setComputerplayer(KTronEnum::One, false);
+		setComputerplayer(KTronEnum::Two, false);
+	}
+	else
+	{
+		setComputerplayer(KTronEnum::One, false);
+		setComputerplayer(KTronEnum::Two, true);
+	}
 }
 
 Tron::~Tron()
 {
-  //delete []  playfield;
-  //delete pixmap;
-  delete timer;
-
+	delete timer;
 }
 
 void Tron::resizeRenderer()
 {
-  // field size
-  fieldWidth=TRON_PLAYFIELD_WIDTH;
-  fieldHeight=TRON_PLAYFIELD_HEIGHT;
+	// field size
+	fieldWidth=TRON_PLAYFIELD_WIDTH;
+	fieldHeight=TRON_PLAYFIELD_HEIGHT;
 
-  // Block size
-  blockWidth = width() / (TRON_PLAYFIELD_WIDTH + 2);
-  blockHeight = height() / (TRON_PLAYFIELD_HEIGHT + 2);
-  if (blockWidth > blockHeight)
-  {
-    blockWidth = blockHeight;
-  }
-  else
-  {
-    blockHeight = blockWidth;
-  }
+	// Block size
+	blockWidth = width() / (TRON_PLAYFIELD_WIDTH + 2);
+	blockHeight = height() / (TRON_PLAYFIELD_HEIGHT + 2);
+	if (blockWidth > blockHeight)
+	{
+		blockWidth = blockHeight;
+	}
+	else
+	{
+		blockHeight = blockWidth;
+	}
 
-  Renderer::self()->boardResized(width(), height(), blockWidth, blockHeight);
+	Renderer::self()->boardResized(width(), height(), blockWidth, blockHeight);
 
-  Renderer::self()->resetPlayField();
+	Renderer::self()->resetPlayField();
 }
 
 void Tron::createNewPlayfield()
 {
-  resizeRenderer();
+	resizeRenderer();
 
-  // start positions
-  //playfield=new QVector<int>[fieldWidth];
-  playfield.resize(fieldWidth);
-  for(int i=0;i<fieldWidth;i++)
-    playfield[i].resize(fieldHeight);
-
-  //int min=(fieldWidth<fieldHeight) ? fieldWidth : fieldHeight;
-  //lookForward=min/4;
+	// start positions
+	playfield.resize(fieldWidth);
+	for (int i = 0;i < fieldWidth; i++)
+	{
+		playfield[i].resize(fieldHeight);
+	}
 }
 
 void Tron::newGame()
 {
-  players[0].score=0;
-  players[1].score=0;
-  emit gameEnds(KTronEnum::Nobody);
-  reset();
+	players[0].score = 0;
+	players[1].score = 0;
+	emit gameEnds(KTronEnum::Nobody);
+	reset();
 
-  QTimer::singleShot(15000,this,SLOT(showBeginHint()));
+	QTimer::singleShot(15000, this, SLOT(showBeginHint()));
 }
 
 void Tron::reset()
@@ -171,32 +158,29 @@ void Tron::reset()
 		setVelocity( lineSpeed() );
 	}
 
-	// If playfield exists, then clean it
-	// ans set start coordinates
-	//if(playfield)
-	//{
-		int i;
-		for(i = 0; i < fieldWidth; i++)
-			playfield[i].fill(KTronEnum::BACKGROUND);
+	int i;
+	for(i = 0; i < fieldWidth; i++)
+	{
+		playfield[i].fill(KTronEnum::BACKGROUND);
+	}
 
-		// set start coordinates
+	// set start coordinates
+	players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
+	players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
+	players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
+	players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
 
-		players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
-		players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
-		players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
-		players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
+	playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+	playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+	
+	if (Settings::gameType() != Settings::EnumGameType::Snake)
+	{
+		playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
+		playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+	}
 
-		playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-		playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
-		if (Settings::gameType() != Settings::EnumGameType::Snake)
-		{
-			playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-			playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
-		}
-
-		updatePixmap();
-		update();
-	//}
+	updatePixmap();
+	update();
 
 	setFocus();
 
@@ -257,33 +241,33 @@ void Tron::stopGame()
 
 void Tron::togglePause() // pause or continue game
 {
-  if(!gameEnded)
-  {
-     if(gamePaused)
-     {
-        gamePaused=false;
-        update();
-        timer->start(velocity);
-     }
-     else
-     {
-        gamePaused=true;
-        timer->stop();
-        update();
-     }
-  }
+	if (!gameEnded)
+	{
+		if (gamePaused)
+		{
+			gamePaused = false;
+			update();
+			timer->start(velocity);
+		}
+		else
+		{
+			gamePaused = true;
+			timer->stop();
+			update();
+		}
+	}
 }
 
 void Tron::showWinner(KTronEnum::Player player)
 {
-   update();
+	update();
 
-   emit gameEnds(player);
+	emit gameEnds(player);
 
-   if(isComputer(KTronEnum::Both))
-   {
-       QTimer::singleShot(1000,this,SLOT(computerStart()));
-   }
+	if (isComputer(KTronEnum::Both))
+	{
+		QTimer::singleShot(1000, this, SLOT(computerStart()));
+	}
 }
 
 /* *************************************************************** **
@@ -299,42 +283,51 @@ void Tron::updatePixmap()
 **                    config functions										 **
 ** *************************************************************** */
 
-//void Tron::setActionCollection(KActionCollection *a)
-//{
-//   actionCollection = a;
-//}
-
 void Tron::setVelocity(int newVel)            // set new velocity
 {
-  velocity=(10-newVel)*15;
+	velocity = (10 - newVel) * 15;
 
-  if(!gameEnded && !gamePaused)
-    timer->start(velocity);
+	if (!gameEnded && !gamePaused)
+	{
+		timer->start(velocity);
+	}
 }
 
 void Tron::setComputerplayer(KTronEnum::Player player, bool flag) {
-  if(player==KTronEnum::One)
-    players[0].setComputer(flag);
-  else if(player==KTronEnum::Two)
-    players[1].setComputer(flag);
+	if(player == KTronEnum::One)
+	{
+		players[0].setComputer(flag);
+	}
+	else if (player == KTronEnum::Two)
+	{
+		players[1].setComputer(flag);
+	}
 
-  if(isComputer(KTronEnum::Both))
-      QTimer::singleShot(1000,this,SLOT(computerStart()));
+	if (isComputer(KTronEnum::Both))
+	{
+		QTimer::singleShot(1000, this, SLOT(computerStart()));
+	}
 }
 
 bool Tron::isComputer(KTronEnum::Player player)
 {
-   if(player==KTronEnum::One)
-     return players[0].computer;
-   else if(player==KTronEnum::Two)
-     return players[1].computer;
-   else if(player==KTronEnum::Both)
-   {
-      if(players[0].computer && players[1].computer)
-        return true;
-   }
+	if (player == KTronEnum::One)
+	{
+		return players[0].computer;
+	}
+	else if (player == KTronEnum::Two)
+	{
+		return players[1].computer;
+	}
+	else if (player == KTronEnum::Both)
+	{
+		if(players[0].computer && players[1].computer)
+		{
+			return true;
+		}
+	}
 
-   return false;
+	return false;
 }
 
 /* *************************************************************** **
