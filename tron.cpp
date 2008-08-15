@@ -491,20 +491,36 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 		switch (action)
 		{
 			case KBAction::UP:
-				switchDir(player, Directions::Up);
 				players[player].keyPressed = true;
+				if (players[player].dir != Directions::Up)
+				{
+					switchDir(player, Directions::Up);
+					movePlayer(player);
+				}
 				break;
 			case KBAction::DOWN:
-				switchDir(player, Directions::Down);
 				players[player].keyPressed = true;
+				if (players[player].dir != Directions::Down)
+				{
+					switchDir(player, Directions::Down);
+					movePlayer(player);
+				}
 				break;
 			case KBAction::LEFT:
-				switchDir(player, Directions::Left);
 				players[player].keyPressed = true;
+				if (players[player].dir != Directions::Left)
+				{
+					switchDir(player, Directions::Left);
+					movePlayer(player);
+				}
 				break;
 			case KBAction::RIGHT:
-				switchDir(player, Directions::Right);
 				players[player].keyPressed = true;
+				if (players[player].dir != Directions::Right)
+				{
+					switchDir(player, Directions::Right);
+					movePlayer(player);
+				}
 				break;
 			case KBAction::ACCELERATE:
 				if(!Settings::acceleratorBlocked())
