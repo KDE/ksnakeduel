@@ -361,7 +361,7 @@ to configure various options.</action></para></listitem>
 </row>
 <row>
 <entry><keycombo
-action="simul"><keycap>Shift</keycap><keycap>F1</keycap></keycombo></entry>
+action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
 <entry>What's This Help</entry>
 </row>
 </tbody>
