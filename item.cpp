@@ -37,3 +37,4 @@ void Item::setCoordinates(int x, int y)
 	xCoordinate=x;
 	yCoordinate=y;
 }
+

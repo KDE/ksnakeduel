@@ -1,7 +1,6 @@
 [Desktop Entry]
-Encoding=UTF-8
 Type=Application
-Exec=ktron -snake -caption "%c" %i %m
+Exec=ktron -snake -caption "%c" %i
 Icon=snake
 DocPath=ktron/index.html
 GenericName=Snake-like Game

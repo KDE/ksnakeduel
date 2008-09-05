@@ -20,6 +20,9 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   ***************************************************************************/
+
+#include "tron.h"
+
 // Background
 #include <kio/netaccess.h>
 #include <KMessageBox>
@@ -43,7 +46,6 @@
 #include <KStandardAction>
 #include <KGameDifficulty>
 
-#include "tron.h"
 #include "item.h"
 #include "settings.h"
 #include "renderer.h"
