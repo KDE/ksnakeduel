@@ -30,7 +30,7 @@ kde4_add_kcfg_files(ktron_SRCS settings.kcfgc)
 
 kde4_add_executable(ktron ${ktron_SRCS})
 
-target_link_libraries(ktron ${KDE4_KDEUI_LIBS} kdegames ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
+target_link_libraries(ktron ${KDE4_KDEUI_LIBS} ${KDEGAMES_LIBRARY} ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
 
 install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
 
