@@ -1,11 +1,26 @@
 [KGameTheme]
 VersionFormat=1
 Name=KTron Default Theme
+Name[el]=Προκαθορισμένο θέμα KTron
 Name[et]=KTroni vaikimisi teema
+Name[ga]=Téama Réamhshocraithe KTron
+Name[gl]=Tema predeterminado de KTron
+Name[km]=ស្បែក​លំនាំដើម​របស់ KTron
+Name[pt]=Tema Predefinido do KTron
 Name[sv]=Ktron standardtema
+Name[tr]=KTron Öntanımlı Teması
+Name[uk]=Типова тема KTron
+Name[x-test]=xxKTron Default Themexx
 Description=Default theme for KTron.
+Description[el]=Προκαθορισμένο θέμα για το KTron.
 Description[et]=KTroni vaikimisi teema.
+Description[ga]=Téama réamhshocraithe KTron.
+Description[gl]=Tema predeterminado de KTron.
+Description[km]=ស្បែក​លំនាំ​ដើម​សម្រាប់ KTron ។
+Description[pt]=Tema predefinido do KTron.
 Description[sv]=Standardtema för Ktron.
+Description[uk]=Типова тема KTron.
+Description[x-test]=xxDefault theme for KTron.xx
 FileName=default.svgz
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
