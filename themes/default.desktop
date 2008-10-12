@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=KTron Default Theme
 Name[el]=Προκαθορισμένο θέμα KTron
+Name[es]=Tema predeterminado de KTron
 Name[et]=KTroni vaikimisi teema
 Name[ga]=Téama Réamhshocraithe KTron
 Name[gl]=Tema predeterminado de KTron
@@ -13,6 +14,7 @@ Name[uk]=Типова тема KTron
 Name[x-test]=xxKTron Default Themexx
 Description=Default theme for KTron.
 Description[el]=Προκαθορισμένο θέμα για το KTron.
+Description[es]=Tema predterminado para KTron
 Description[et]=KTroni vaikimisi teema.
 Description[ga]=Téama réamhshocraithe KTron.
 Description[gl]=Tema predeterminado de KTron.
