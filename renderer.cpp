@@ -285,12 +285,15 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
 
 QPixmap Renderer::background()
 {
-    QSize bgSize = QSize(p->m_sceneSize.height(), p->m_sceneSize.height());
-    if (p->m_sceneSize.width() > p->m_sceneSize.height())
-    {
-        QSize bgSize = QSize(p->m_sceneSize.width(), p->m_sceneSize.width());
-    }
-    return pixmapFromCache(p, "background", bgSize);
+    //QSize bgSize = QSize(p->m_sceneSize.height(), p->m_sceneSize.height());
+    //if (p->m_sceneSize.width() > p->m_sceneSize.height())
+    //{
+    //    QSize bgSize = QSize(p->m_sceneSize.width(), p->m_sceneSize.width());
+    //}
+    //return pixmapFromCache(p, "background", bgSize);
+    
+    // Tiled background
+    return getPart("bgtile");
 }
 
 void Renderer::boardResized(int width, int height, int partWidth, int partHeight)
@@ -299,26 +302,26 @@ void Renderer::boardResized(int width, int height, int partWidth, int partHeight
     p->m_sceneSize = QSize(width, height);
     p->m_partSize = QSize(partWidth, partHeight);
     
-    const QString svgName("background");
+    //const QString svgName("background");
    
-    int bgDim = height;
-    if (width > height)
-    {
-        bgDim = width;
-    }
+    //int bgDim = height;
+    //if (width > height)
+    //{
+    //    bgDim = width;
+    //}
  
-    QString pixName = svgName + sizeSuffix.arg(bgDim).arg(bgDim);
-    QPixmap pix;
-    if (!p->m_cache.find(pixName, pix))
-    {
-        pix = QPixmap(p->m_sceneSize);
-        pix.fill(Qt::transparent);
-        QPainter painter(&pix);
-        p->m_renderer.render(&painter, svgName);
-        
-        painter.end();
-        p->m_cache.insert(pixName, pix);
-    }
+    //QString pixName = svgName + sizeSuffix.arg(bgDim).arg(bgDim);
+    //QPixmap pix;
+    //if (!p->m_cache.find(pixName, pix))
+    //{
+    //    pix = QPixmap(p->m_sceneSize);
+    //    pix.fill(Qt::transparent);
+    //    QPainter painter(&pix);
+    //    p->m_renderer.render(&painter, svgName);
+    //    
+    //    painter.end();
+    //    p->m_cache.insert(pixName, pix);
+    //}
 }
 
 void Renderer::resetPlayField()
@@ -342,6 +345,7 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	QPixmap bgPix = background();
 	if (!bgPix.isNull())
 	{
+		p->m_playField->fill(Qt::white);
 		int pw = bgPix.width();
 		int ph = bgPix.height();
 		for (int x = 0; x <= p->m_sceneSize.width(); x += pw)
