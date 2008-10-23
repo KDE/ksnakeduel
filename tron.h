@@ -60,7 +60,9 @@ namespace KTronEnum
 		RIGHT=32,
 		HEAD=64,
 		TAIL=128,
-		ITEM1=256
+		ITEM1=256,
+		ITEM2=512,
+		ITEM3=1024
 	};
 }
 

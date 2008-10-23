@@ -228,7 +228,18 @@ void Tron::newApple()
 	}
 
 	apple.setCoordinates(x, y);
-	playfield[x][y] = KTronEnum::ITEM1;
+	switch ((int)(rand() % 3)) {
+		default:
+		case 0:
+			playfield[x][y] = KTronEnum::ITEM1;
+			break;
+		case 1:
+			playfield[x][y] = KTronEnum::ITEM2;
+			break;
+		case 2:
+			playfield[x][y] = KTronEnum::ITEM3;
+			break;
+	}
 }
 
 void Tron::stopGame()
@@ -344,7 +355,7 @@ bool Tron::crashed(int playerNr,int xInc, int yInc) const
 
   if(newX<0 || newY <0 || newX>=fieldWidth || newY>=fieldHeight)
      flag=true;
-  else if(playfield[newX][newY] == KTronEnum::ITEM1)
+  else if(playfield[newX][newY] == KTronEnum::ITEM1 || playfield[newX][newY] == KTronEnum::ITEM2 || playfield[newX][newY] == KTronEnum::ITEM3)
     flag=false;
   else if(playfield[newX][newY] != KTronEnum::BACKGROUND)
     flag=true;
@@ -665,7 +676,7 @@ void Tron::movePlayer(int playerNr)
 		}
 		if(players[playerNr].alive)
 		{
-			if (playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM1)
+			if (playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM1 || playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM2 || playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM3)
 			{
 				newApple();
 				players[playerNr].enlarge = 3;

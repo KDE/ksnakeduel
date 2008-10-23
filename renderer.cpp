@@ -121,6 +121,17 @@ QString Renderer::decodePart(int type)
 		name = "item1";
 		return name;
 	}
+	else if (type & KTronEnum::ITEM2)
+	{
+		name = "item2";
+		return name;
+	}
+	else if (type & KTronEnum::ITEM3)
+	{
+		name = "item3";
+		return name;
+	}
+
 
 	// Player
 	if (type & KTronEnum::PLAYER1)
