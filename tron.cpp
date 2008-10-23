@@ -1462,6 +1462,7 @@ void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
 {
    Directions::Direction currentDir=players[playerNr].dir;
    Directions::Direction sides[2];
+   sides[0] = Directions::None; sides[1] = Directions::None;
    switch (currentDir)
    {
   		case Directions::Left:
