@@ -280,48 +280,50 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
         painter.end();
         p->m_cache.insert(pixName, pix);
     }
+	
     return pix;
 }
 
 QPixmap Renderer::background()
 {
-    //QSize bgSize = QSize(p->m_sceneSize.height(), p->m_sceneSize.height());
-    //if (p->m_sceneSize.width() > p->m_sceneSize.height())
-    //{
-    //    QSize bgSize = QSize(p->m_sceneSize.width(), p->m_sceneSize.width());
-    //}
-    //return pixmapFromCache(p, "background", bgSize);
-    
-    // Tiled background
-    return getPart("bgtile");
+    QPixmap pix;
+    QString pixName = "bgtile" + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
+	if (!p->m_cache.find(pixName, pix))
+	{
+		pix = QPixmap(p->m_sceneSize);
+		pix.fill(Qt::white);
+		QPainter painter(&pix);
+		
+		QPixmap bgPix = getPart("bgtile");
+		if (!bgPix.isNull())
+		{
+			pix.fill(Qt::white);
+			int pw = bgPix.width();
+			int ph = bgPix.height();
+			for (int x = 0; x <= p->m_sceneSize.width(); x += pw) {
+				for (int y = 0; y <= p->m_sceneSize.height(); y += ph) {
+					painter.drawPixmap(x, y, bgPix);
+				}
+			}
+		}
+		else
+		{
+			pix.fill(Qt::green);
+		}
+		
+		painter.end();
+		p->m_cache.insert(pixName, pix);
+	}
+	
+	// Tiled background
+	return pix;
 }
 
 void Renderer::boardResized(int width, int height, int partWidth, int partHeight)
 {
-    //new metrics
-    p->m_sceneSize = QSize(width, height);
-    p->m_partSize = QSize(partWidth, partHeight);
-    
-    //const QString svgName("background");
-   
-    //int bgDim = height;
-    //if (width > height)
-    //{
-    //    bgDim = width;
-    //}
- 
-    //QString pixName = svgName + sizeSuffix.arg(bgDim).arg(bgDim);
-    //QPixmap pix;
-    //if (!p->m_cache.find(pixName, pix))
-    //{
-    //    pix = QPixmap(p->m_sceneSize);
-    //    pix.fill(Qt::transparent);
-    //    QPainter painter(&pix);
-    //    p->m_renderer.render(&painter, svgName);
-    //    
-    //    painter.end();
-    //    p->m_cache.insert(pixName, pix);
-    //}
+	//new metrics
+	p->m_sceneSize = QSize(width, height);
+	p->m_partSize = QSize(partWidth, partHeight);
 }
 
 void Renderer::resetPlayField()
@@ -343,19 +345,7 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	painter.begin(p->m_playField);
 	
 	QPixmap bgPix = background();
-	if (!bgPix.isNull())
-	{
-		p->m_playField->fill(Qt::white);
-		int pw = bgPix.width();
-		int ph = bgPix.height();
-		for (int x = 0; x <= p->m_sceneSize.width(); x += pw)
-			for (int y = 0; y <= p->m_sceneSize.height(); y += ph)
-				painter.drawPixmap(x, y, bgPix);
-	}
-	else
-	{
-		p->m_playField->fill(Qt::green);
-	}
+	painter.drawPixmap(0, 0, bgPix);
 
 	// Draw border
 	for (i = 0; i < TRON_PLAYFIELD_WIDTH + 2; i++) 
