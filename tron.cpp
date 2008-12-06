@@ -261,12 +261,16 @@ void Tron::togglePause() // pause or continue game
 			gamePaused = false;
 			update();
 			timer->start(velocity);
+			
+			emit updatedScore();
 		}
 		else
 		{
 			gamePaused = true;
 			timer->stop();
 			update();
+			
+			emit updatedScore();
 		}
 	}
 }
@@ -1553,6 +1557,14 @@ int Tron::lineSpeed() {
 		case KGameDifficulty::VeryHard:
 			return 8;
 	}
+}
+
+bool Tron::running() {
+	return !gameEnded;
+}
+
+bool Tron::paused() {
+	return !gameEnded && gamePaused;
 }
 
 

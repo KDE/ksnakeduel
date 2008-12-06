@@ -95,6 +95,9 @@ class Tron : public QWidget
 		void setRectSize(int newSize);
 
 		void triggerKey(int, KBAction::Action, bool);
+		
+		bool running();
+		bool paused();
 
 		player players[2];
 

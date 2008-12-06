@@ -69,8 +69,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	tron->setMinimumSize(200,180);
 
 	// create statusbar
-	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+1);
-	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE+2);
+	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE + 1);
+	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE + 2);
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
@@ -183,6 +183,8 @@ void KTron::loadSettings() {
 		KMessageBox::error(this, i18n("Failed to load \"%1\" theme. Please check your installation.", Settings::theme()));
 		return;
 	}
+	
+	Settings::setDifficulty((int) KGameDifficulty::level());
 
 	playerName[0]=Settings::namePlayer1();
 	if ( playerName[0].isEmpty() )
@@ -194,30 +196,58 @@ void KTron::loadSettings() {
 	updateStatusbar();
 }
 
-void KTron::updateStatusbar(){
-  if (Settings::gameType() == Settings::EnumGameType::Snake)
-  {
-    QString string = QString("%1: %2").arg(playerName[0]).arg(tron->players[0].score);
-    statusBar()->changeItem(string,ID_STATUS_BASE+1);
-    statusBar()->changeItem(QString(),ID_STATUS_BASE+2);
-  }
-  else
-  {
-    for(int i=0;i<2;i++){
-      KTronEnum::Player player;
-      player=(i==0 ? KTronEnum::One : KTronEnum::Two);
+void KTron::updateStatusbar() {
+	KTronEnum::Player winner = getWinner();
+	
+	QString message;
+	if (!tron->running() && (winner == KTronEnum::One || winner == KTronEnum::Two)) {
+		QString winnerName = i18n("KTron");
+		if (!tron->isComputer(winner)) {
+			winnerName = playerName[winner];
+		}
+		
+		message = i18n("%1 has won!", winnerName);
+	}
+	//else if (!tron->running() && winner == KTronEnum::Both) {
+	//	message = i18n("No game in progress");
+	//}
+	//else if (!tron->running() && winner == KTronEnum::Nobody) {
+	//	message = i18n("Game in progress");
+	//}
+	else if (tron->paused()) {
+		message = i18n("Game paused");
+	}
+	else {
+		message = QString("");
+	}
+	
+	statusBar()->showMessage(message);
 
-      QString name;
-      if(tron->isComputer(KTronEnum::Both))
-        name=i18n("Computer(%1)", (i+1));
-      else if(tron->isComputer(player))
-        name=i18n("Computer");
-      else
-        name=playerName[i];
-      QString string = QString("%1: %2").arg(name).arg(tron->players[i].score);
-      statusBar()->changeItem(string,ID_STATUS_BASE+i+1);
-    }
-  }
+	if (Settings::gameType() == Settings::EnumGameType::Snake)
+	{
+		QString string = QString("%1: %2").arg(playerName[0]).arg(tron->players[0].score);
+		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
+		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
+	}
+	else
+	{
+		for(int i = 0; i < 2; i++) {
+			KTronEnum::Player player;
+			player = (i == 0 ? KTronEnum::One : KTronEnum::Two);
+
+			QString name;
+			//if(tron->isComputer(KTronEnum::Both))
+			//	name = i18n("Computer(%1)", (i+1));
+			//else if(tron->isComputer(player))
+			if (tron->isComputer(player))
+				name = i18n("KTron");
+			else
+				name = playerName[i];
+			
+			QString string = QString("%1: %2").arg(name).arg(tron->players[i].score);
+			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
+		}
+	}
 }
 
 void KTron::updateScore()
@@ -226,49 +256,63 @@ void KTron::updateScore()
 }
 
 void KTron::changeStatus(KTronEnum::Player player) {
-  // if player=Nobody, then new game
-  if(player==KTronEnum::Nobody){
-    updateStatusbar();
-    return;
-  }
+	// if player=Nobody, then new game
+	if (player == KTronEnum::Nobody){
+		updateStatusbar();
+		return;
+	}
 
-  updateStatusbar();
+	updateStatusbar();
 
-  if (Settings::gameType() != Settings::EnumGameType::Snake)
-  {
-    if(tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1)
-      showWinner(KTronEnum::One);
-    else if(tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1)
-      showWinner(KTronEnum::Two);
-  }
+	if (Settings::gameType() != Settings::EnumGameType::Snake)
+	{
+		KTronEnum::Player winner = getWinner();
+		if (winner == KTronEnum::One || winner == KTronEnum::Two)
+			showWinner(winner);
+	}
+}
+
+KTronEnum::Player KTron::getWinner() {
+	if (Settings::gameType() != Settings::EnumGameType::Snake)
+	{
+		if (tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1) {
+			return KTronEnum::One;
+		}
+		else if (tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1) {
+			return KTronEnum::Two;
+		}
+		else {
+			return KTronEnum::Nobody;
+		}
+	}
+	else {
+		return KTronEnum::Both;
+	}
 }
 
 void KTron::showWinner(KTronEnum::Player winner){
-  if(tron->isComputer(KTronEnum::Both) || (winner != KTronEnum::One && winner != KTronEnum::Two))
-    return;
+	if (tron->isComputer(KTronEnum::Both) || (winner != KTronEnum::One && winner != KTronEnum::Two))
+		return;
 
-  QString loserName = i18n("KTron");
-  KTronEnum::Player loser = KTronEnum::Two;
-  if(winner == KTronEnum::Two)
-    loser = KTronEnum::One;
-  if(!tron->isComputer(loser))
-    loserName = playerName[loser];
-  
-  QString winnerName = i18n("KTron");
-  if(!tron->isComputer(winner))
-    winnerName = playerName[winner];
-  
-  QString message=i18n("%1 has won!", winnerName);
-  statusBar()->showMessage(message);
+	QString loserName = i18n("KTron");
+	KTronEnum::Player loser = KTronEnum::Two;
+	if (winner == KTronEnum::Two)
+		loser = KTronEnum::One;
+	if (!tron->isComputer(loser))
+		loserName = playerName[loser];
+	
+	QString winnerName = i18n("KTron");
+	if (!tron->isComputer(winner))
+		winnerName = playerName[winner];
 
-  message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->players[winner].score, tron->players[loser].score);
+	QString message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->players[winner].score, tron->players[loser].score);
 
-  
-  KMessageBox::information(this, message, i18n("Winner"));
-  tron->newGame();
+	
+	KMessageBox::information(this, message, i18n("Winner"));
+	tron->newGame();
 }
 
-void KTron::paletteChange(const QPalette &/*oldPalette*/){
+void KTron::paletteChange(const QPalette &){
    update();
    tron->updatePixmap();
    tron->update();

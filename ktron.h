@@ -24,7 +24,7 @@
 #ifndef KTRON_H
 #define KTRON_H
 
-#include <QAction>
+#include <KAction>
 #include <KXmlGuiWindow>
 #include <QKeyEvent>
 
@@ -50,6 +50,7 @@ class KTron : public KXmlGuiWindow {
 		QString playerName[2];
 		int playerPoints[2];
 		void updateStatusbar();
+		KTronEnum::Player getWinner();
 
 	protected:
 		/** calls tron->updatePixmap to draw frame in the new colors */
@@ -88,16 +89,16 @@ class KTron : public KXmlGuiWindow {
 		void triggerKey1Accelerate(bool);
 		
 	private:
-		QAction *player0Up;
-		QAction *player0Down;
-		QAction *player0Left;
-		QAction *player0Right;
-		QAction *player0Accelerate;
-		QAction *player1Up;
-		QAction *player1Down;
-		QAction *player1Left;
-		QAction *player1Right;
-		QAction *player1Accelerate;
+		KAction *player0Up;
+		KAction *player0Down;
+		KAction *player0Left;
+		KAction *player0Right;
+		KAction *player0Accelerate;
+		KAction *player1Up;
+		KAction *player1Down;
+		KAction *player1Left;
+		KAction *player1Right;
+		KAction *player1Accelerate;
 };
 
 #endif // KTRON_H
