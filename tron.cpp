@@ -31,6 +31,7 @@
 #include <QTimer>
 #include <QPainter>
 #include <QPaintEvent>
+#include <QPoint>
 #include <QResizeEvent>
 #include <QFocusEvent>
 #include <QPixmap>
@@ -442,39 +443,28 @@ void Tron::paintEvent(QPaintEvent *e)
 	if(gamePaused) // if game is paused, print message
 	{
 		QString message = i18n("Game paused");
-		QFontMetrics fm = p.fontMetrics();
-		int w = fm.width(message);
-		p.drawText(width()/2-w/2,height()/2,message);
+		QPixmap messageBox = Renderer::self()->messageBox(message);
+		QPoint point(width() / 2 - messageBox.width() / 2, height() / 2 - messageBox.height() / 2);
+		p.drawPixmap(point, messageBox, e->rect());
 	}
-	else if(gameEnded) // If game ended, print "Crash!"
+	else if (gameEnded) // If game ended, print "Crash!"
 	{
-		QString message = i18n("Crash!");
-		int w = p.fontMetrics().width(message);
-		int h = p.fontMetrics().height();
-		for (int i=0;i<2;i++)
-		{
-			if (!players[i].alive)
-			{
-				int x = players[i].xCoordinate*blockWidth;
-				int y = players[i].yCoordinate*blockHeight;
-				while(x<0) x+=blockWidth;
-				while(x+w>width()) x-=blockWidth;
-				while(y-h<0) y+=blockHeight;
-				while(y>height()) y-=blockHeight;
-				p.drawText(x,y,message);
-			}
+		QString message = QString("");
+		
+		if (!players[0].alive || !players[1].alive) {
+			message += i18n("Crash!");
+			message += "\n";
 		}
 
 		// draw begin hint
-		if(beginHint)
-		{
-			QString hint=i18n("Press any of your direction keys to start!");
-			int x=p.fontMetrics().width(hint);
-			x=(width()-x)/2;
-			int y=height()/2;
-
-			p.drawText(x,y,hint);
-		}
+		//if (beginHint)
+		//{
+			message += i18n("Press any of your direction keys to start!");
+		//}
+		
+		QPixmap messageBox = Renderer::self()->messageBox(message);
+		QPoint point(width() / 2 - messageBox.width() / 2, height() / 2 - messageBox.height() / 2);
+		p.drawPixmap(point, messageBox, e->rect());
 	}
 }
 

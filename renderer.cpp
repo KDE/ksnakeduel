@@ -24,6 +24,7 @@
 #include "renderer.h"
 #include "settings.h"
 #include "tron.h"
+#include "fontutils.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -248,11 +249,16 @@ QPixmap Renderer::snakePart(int part)
 
 QPixmap Renderer::getPart(QString frameSvgName)
 {
-	QString framePixName = frameSvgName + sizeSuffix.arg(p->m_partSize.width()).arg(p->m_partSize.height());
+	return getPartOfSize(frameSvgName, p->m_partSize);
+}
+
+QPixmap Renderer::getPartOfSize(QString frameSvgName, QSize &partSize)
+{
+	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
 	if (!p->m_cache.find(framePixName, pix))
 	{
-		pix = QPixmap(p->m_partSize);
+		pix = QPixmap(partSize);
 		pix.fill(Qt::transparent);
 		QPainter painter(&pix);
 		p->m_renderer.render(&painter, frameSvgName);
@@ -261,7 +267,7 @@ QPixmap Renderer::getPart(QString frameSvgName)
 	}
 
     //return the static pixmap
-    return pixmapFromCache(p, frameSvgName, p->m_partSize);
+    return pixmapFromCache(p, frameSvgName, partSize);
 }
 
 QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size)
@@ -400,4 +406,24 @@ void Renderer::drawPart(QVector< QVector<int> > &playfield, QPainter & painter, 
 QPixmap *Renderer::getPlayField()
 {
 	return p->m_playField;
+}
+
+QPixmap Renderer::messageBox(QString &message) {
+	int w = p->m_sceneSize.width() / 2;
+	int h = p->m_sceneSize.height() / 3;
+	
+	QSize size(w, h);
+	QPixmap pixmap = getPartOfSize("display",  size);
+	
+	QPainter painter(&pixmap);
+
+	int fontSize = fontUtils::fontSize(painter, message, w * 0.9, h, fontUtils::DoNotAllowWordWrap);
+	
+	painter.setPen(QColor(255, 255, 255, 220));
+	painter.setFont(QFont("Helvetica", fontSize, QFont::Bold));
+	painter.drawText(QRectF(0, 0, w, h), Qt::AlignCenter, message);
+	
+	painter.end();
+	
+	return pixmap;
 }

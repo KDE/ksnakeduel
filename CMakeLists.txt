@@ -17,12 +17,13 @@ add_subdirectory(themes)
 ########### next target ###############
 
 set(ktron_SRCS
+	fontutils.cpp
 	renderer.cpp
-    tron.cpp
-    player.cpp
+	tron.cpp
+	player.cpp
 	item.cpp
-    ktron.cpp
-    main.cpp)
+	ktron.cpp
+	main.cpp)
 
 kde4_add_ui_files(ktron_SRCS general.ui)
 

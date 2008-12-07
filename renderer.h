@@ -33,23 +33,25 @@ class QPixmap;
 class RendererPrivate;
 
 class Renderer {
-    private:
-        Renderer();
-        Renderer(const Renderer &);
-        ~Renderer();
-    public:
-        static Renderer *self();
+	private:
+		Renderer();
+		Renderer(const Renderer &);
+		~Renderer();
+	public:
+		static Renderer *self();
 
-        bool loadTheme(const QString &);
+		bool loadTheme(const QString &);
 		void boardResized(int width, int height, int partWidth, int partHeight);
 
 		int calculateOffsetX(int x);
 		int calculateOffsetY(int y);
 
 		QPixmap getPart(QString partName);
+		QPixmap getPartOfSize(QString partName, QSize &partSize);
 		QPixmap snakePart(int);
 		QString decodePart(int);
-        QPixmap background();
+		QPixmap background();
+		QPixmap messageBox(QString &message);
 
 		void resetPlayField();
 		void drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y);
@@ -57,8 +59,9 @@ class Renderer {
 		QPixmap *getPlayField();
 
 		QPixmap pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size);
+
     private:
-        RendererPrivate *p;
+		RendererPrivate *p;
 };
 
 #endif // RENDERER_H
