@@ -40,8 +40,6 @@
 // Old style, board as big as screen
 #define TRON_FRAMESIZE 2
 // New style, fixed board width
-//#define TRON_PLAYFIELD_WIDTH 70
-//#define TRON_PLAYFIELD_HEIGHT 40
 #define TRON_PLAYFIELD_WIDTH 50
 #define TRON_PLAYFIELD_HEIGHT 30
 
@@ -137,8 +135,6 @@ class Tron : public QWidget
 		bool gameEnded;
 		/**  used for waiting after game ended */
 		bool gameBlocked;
-		/** flag, if a string should be drawn, how to start the game */
-		bool beginHint;
 		/** Height  of the playingfield in number of rects*/
 		int fieldHeight;
 		/** Width of the playingfield in number of rects*/
@@ -219,7 +215,6 @@ class Tron : public QWidget
 		*/
 		void doMove();
 		void unblockGame();
-		void showBeginHint();
 };
 
 

@@ -32,7 +32,10 @@
 #include "version.h"
 
 static KLocalizedString description = ki18n("A race in hyperspace");
-static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n\n"
+static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008, Stas Verberkt\n"
+"\n"
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>");
 

@@ -57,7 +57,6 @@
 
 Tron::Tron(QWidget *parent) : QWidget(parent)
 {
-	beginHint = false;
 	lookForward = 15;
 
 	random.setSeed(0);
@@ -69,7 +68,6 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	timer = new QTimer(this);
 	loadSettings();
 	connect(timer, SIGNAL(timeout()), SLOT(doMove()));
-	QTimer::singleShot(15000, this, SLOT(showBeginHint()));
 }
 
 void Tron::loadSettings(){
@@ -141,8 +139,6 @@ void Tron::newGame()
 	players[1].score = 0;
 	emit gameEnds(KTronEnum::Nobody);
 	reset();
-
-	QTimer::singleShot(15000, this, SLOT(showBeginHint()));
 }
 
 void Tron::reset()
@@ -207,7 +203,6 @@ void Tron::computerStart()
 void Tron::startGame()
 {
 	gameEnded = false;
-	beginHint = false;
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
@@ -456,12 +451,8 @@ void Tron::paintEvent(QPaintEvent *e)
 			message += "\n";
 		}
 
-		// draw begin hint
-		//if (beginHint)
-		//{
-			message += i18n("Press any of your direction keys to start!");
-		//}
-		
+		message += i18n("Press any of your direction keys to start!");
+
 		QPixmap messageBox = Renderer::self()->messageBox(message);
 		QPoint point(width() / 2 - messageBox.width() / 2, height() / 2 - messageBox.height() / 2);
 		p.drawPixmap(point, messageBox, e->rect());
@@ -470,9 +461,6 @@ void Tron::paintEvent(QPaintEvent *e)
 
 void Tron::resizeEvent(QResizeEvent *)
 {
-	//createNewPlayfield();
-	//reset();
-
 	resizeRenderer();
 	updatePixmap();
 	update();
@@ -597,19 +585,6 @@ void Tron::focusOutEvent(QFocusEvent *)
 void Tron::unblockGame()
 {
   gameBlocked=false;
-}
-
-void Tron::showBeginHint()
-{
-   if(gameEnded)
-   {
-      // show only at the beginning of a game
-      if(players[0].score==0 && players[1].score==0)
-      {
-         beginHint=true;
-         update();
-      }
-   }
 }
 
 void Tron::movePlayer(int playerNr)
