@@ -48,7 +48,8 @@ int main(int argc, char* argv[])
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KCmdLineOptions options;
-  options.add("snake", ki18n("Start in snake mode"));
+  options.add("ktron", ki18n("Start in KTron mode"));
+  options.add("snake", ki18n("Start in SnaKe mode"));
   KCmdLineArgs::addCmdLineOptions(options);
 
   KApplication a;
