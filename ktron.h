@@ -73,6 +73,7 @@ class KTron : public KXmlGuiWindow {
 		
 		void showWinner(KTronEnum::Player winner);
 		void showSettings();
+		void showHighscores();
 		
 		void optionsConfigureKeys();
 		

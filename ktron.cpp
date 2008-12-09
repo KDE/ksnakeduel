@@ -31,6 +31,7 @@
 #include <KActionCollection>
 #include <KStandardGameAction>
 #include <KApplication>
+#include <KScoreDialog>
 #include <KStatusBar>
 #include <KGameThemeSelector>
 #include <KGameDifficulty>
@@ -145,6 +146,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 	// Configure keys
 	KStandardAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
+	// Highscores
+	KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
 
 	//difficulty
 	KGameDifficulty::init(this, tron, SLOT(loadSettings()));
@@ -256,6 +259,17 @@ void KTron::changeStatus(KTronEnum::Player player) {
 		if (winner == KTronEnum::One || winner == KTronEnum::Two)
 			showWinner(winner);
 	}
+	else
+	{
+		KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
+		scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+		scoreDialog.setConfigGroup(KGameDifficulty::localizedLevelString());
+
+		KScoreDialog::FieldInfo scoreInfo;
+		scoreInfo[KScoreDialog::Score].setNum(tron->players[0].score);
+		if (scoreDialog.addScore(scoreInfo) != 0)
+			scoreDialog.exec();
+	}
 }
 
 KTronEnum::Player KTron::getWinner() {
@@ -317,6 +331,16 @@ void KTron::showSettings(){
   connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
   dialog->show();
+}
+
+/**
+ * Show highscores
+ */
+void KTron::showHighscores() {
+	KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
+	scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+	scoreDialog.setConfigGroup( KGameDifficulty::localizedLevelString() );
+	scoreDialog.exec();
 }
 
 /**
