@@ -74,7 +74,6 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
-	QAction *act;
 	
 	player0Up = actionCollection()->addAction("Pl1Up");
 	player0Up->setText(i18n("Player 1 Up"));
@@ -137,25 +136,15 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	addAction(player1Accelerate);
 
 	// Pause
-	act = KStandardGameAction::pause(tron, SLOT(togglePause()), this);
-	actionCollection()->addAction(act->objectName(), act);
-	addAction(act);
+	KStandardGameAction::pause(tron, SLOT(togglePause()), actionCollection());
 	// New
-	act = KStandardGameAction::gameNew(tron, SLOT( newGame() ), this);
-	actionCollection()->addAction(act->objectName(), act);
-	addAction(act);
+	KStandardGameAction::gameNew(tron, SLOT( newGame() ), actionCollection());
 	// Quit
-	act = KStandardGameAction::quit(kapp, SLOT(quit()), this);
-	actionCollection()->addAction(act->objectName(), act);
-	addAction(act);
+	KStandardGameAction::quit(kapp, SLOT(quit()), actionCollection());
 	// Settings
-	act = KStandardAction::preferences(this, SLOT(showSettings()), this);
-	actionCollection()->addAction(act->objectName(), act);
-	addAction(act);
+	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 	// Configure keys
-	act = KStandardAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
-	actionCollection()->addAction(act->objectName(), act);
-	addAction(act);
+	KStandardAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
 
 	//difficulty
 	KGameDifficulty::init(this, tron, SLOT(loadSettings()));
