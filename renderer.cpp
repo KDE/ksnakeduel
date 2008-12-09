@@ -354,9 +354,9 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	painter.drawPixmap(0, 0, bgPix);
 
 	// Draw border
-	for (i = 0; i < TRON_PLAYFIELD_WIDTH + 2; i++) 
+	for (i = 0; i < TRON_PLAYFIELD_WIDTH + 2; ++i) 
 	{
-		for (j = 0; j < TRON_PLAYFIELD_HEIGHT + 2; j++) 
+		for (j = 0; j < TRON_PLAYFIELD_HEIGHT + 2; ++j) 
 		{
 			if (i == 0 || i == TRON_PLAYFIELD_WIDTH + 1 || j == 0 || j == TRON_PLAYFIELD_HEIGHT + 1)
 			{
@@ -367,9 +367,9 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	}
 
 	// Examine all pixels and draw
-	for(i = 0; i < TRON_PLAYFIELD_WIDTH; i++)
+	for(i = 0; i < TRON_PLAYFIELD_WIDTH; ++i)
 	{
-		for(j = 0; j < TRON_PLAYFIELD_HEIGHT; j++)
+		for(j = 0; j < TRON_PLAYFIELD_HEIGHT; ++j)
 		{
 			if(playfield[i][j] != KTronEnum::BACKGROUND)
 			{

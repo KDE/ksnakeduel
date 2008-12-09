@@ -231,14 +231,11 @@ void KTron::updateStatusbar() {
 	}
 	else
 	{
-		for(int i = 0; i < 2; i++) {
+		for (int i = 0; i < 2; ++i) {
 			KTronEnum::Player player;
 			player = (i == 0 ? KTronEnum::One : KTronEnum::Two);
 
 			QString name;
-			//if(tron->isComputer(KTronEnum::Both))
-			//	name = i18n("Computer(%1)", (i+1));
-			//else if(tron->isComputer(player))
 			if (tron->isComputer(player))
 				name = i18n("KTron");
 			else

@@ -127,7 +127,7 @@ void Tron::createNewPlayfield()
 
 	// start positions
 	playfield.resize(fieldWidth);
-	for (int i = 0;i < fieldWidth; i++)
+	for (int i = 0; i < fieldWidth; ++i)
 	{
 		playfield[i].resize(fieldHeight);
 	}
@@ -158,7 +158,7 @@ void Tron::reset()
 	}
 
 	int i;
-	for(i = 0; i < fieldWidth; i++)
+	for(i = 0; i < fieldWidth; ++i)
 	{
 		playfield[i].fill(KTronEnum::BACKGROUND);
 	}
@@ -448,7 +448,7 @@ void Tron::paintEvent(QPaintEvent *e)
 		
 		if (!players[0].alive || !players[1].alive) {
 			message += i18n("Crash!");
-			message += "\n";
+			message += '\n';
 		}
 
 		message += i18n("Press any of your direction keys to start!");
@@ -742,7 +742,7 @@ void Tron::doMove()
 	else
 	{
 		int i;
-		for(i=0;i<2;i++)
+		for(i = 0; i < 2; ++i)
 		{
 			// Decide if the accelerator key was pressed...
 			if (players[i].accelerated)
@@ -794,7 +794,7 @@ void Tron::doMove()
 			}
 			else
 			{
-				for(i=0;i<2;i++)
+				for(i = 0; i < 2; ++i)
 				{
 					if(!players[i].alive)
 					{
@@ -816,7 +816,7 @@ void Tron::doMove()
 		}
 
 		// neue Spielerstandorte festlegen
-		for(i=0;i<2;i++)
+		for (i = 0; i < 2; ++i)
 		{
 			if(players[i].computer)
 				think(i);
@@ -824,7 +824,7 @@ void Tron::doMove()
 
 		updateDirections(0);
 
-		for(i=0;i<2;i++)
+		for (i = 0; i < 2; ++i)
 		{
 			movePlayer(i);
 		}
@@ -865,7 +865,7 @@ void Tron::doMove()
 		}
 		else
 		{
-			for(i=0;i<2;i++)
+			for (i = 0; i < 2; ++i)
 			{
 				// crashtests
 				if(!players[i].alive)
