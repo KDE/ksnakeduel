@@ -263,6 +263,7 @@ void KTron::changeStatus(KTronEnum::Player player) {
 	{
 		KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
 		scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+		scoreDialog.setConfigGroupWeights(KGameDifficulty::levelWeights());
 		scoreDialog.setConfigGroup(KGameDifficulty::localizedLevelString());
 
 		KScoreDialog::FieldInfo scoreInfo;
@@ -339,6 +340,7 @@ void KTron::showSettings(){
 void KTron::showHighscores() {
 	KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
 	scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
+	scoreDialog.setConfigGroupWeights(KGameDifficulty::levelWeights());
 	scoreDialog.setConfigGroup( KGameDifficulty::localizedLevelString() );
 	scoreDialog.exec();
 }
