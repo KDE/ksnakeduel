@@ -20,6 +20,7 @@ GenericName[uk]=Гра, схожа на Snake
 GenericName[x-test]=xxSnake-like Gamexx
 Terminal=false
 Name=SnaKe
+Name[ro]=Șarpe
 Name[sv]=Orm
 Name[x-test]=xxSnaKexx
 X-KDE-StartupNotify=true
