@@ -9,7 +9,7 @@ include(KDE4Defaults)
 
 include(MacroLibrary)
 
-include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${KDEGAMES_INCLUDE_DIR})
+include_directories(${KDE4_INCLUDES} ${KDE4_INCLUDE_DIR} ${QT_INCLUDES} ${KDEGAMES_INCLUDE_DIRS})
 
 add_subdirectory(pics)
 add_subdirectory(themes)
