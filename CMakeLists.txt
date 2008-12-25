@@ -22,6 +22,7 @@ set(ktron_SRCS
 	object.cpp
 	snakepart.cpp
 	item.cpp
+	playfield.cpp
 	renderer.cpp
 	tron.cpp
 	player.cpp
