@@ -34,10 +34,10 @@
 class SnakePart : Object
 {
 	public:
-		SnakePart(int partCode);
+		SnakePart(int playerNumber, int partCode);
 
 	private:
-		QString decodePart(int type);
+		QString decodePart(int playerNumber, int type);
 };
 
 #endif // SNAKEPART_H

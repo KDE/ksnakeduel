@@ -21,10 +21,10 @@ set(ktron_SRCS
 	fontutils.cpp
 	object.cpp
 	snakepart.cpp
+	item.cpp
 	renderer.cpp
 	tron.cpp
 	player.cpp
-	item.cpp
 	ktron.cpp
 	main.cpp)
 

@@ -23,13 +23,28 @@
 
 #include "item.h"
 
-Item::Item()
+#include "tron.h"
+
+Item::Item() : Object()
 {
 }
 
 void Item::setType(int t)
 {
-	type=t;
+	type = t;
+	
+	if (type & KTronEnum::ITEM1)
+	{
+		setSVGName("item1");
+	}
+	else if (type & KTronEnum::ITEM2)
+	{
+		setSVGName("item2");
+	}
+	else if (type & KTronEnum::ITEM3)
+	{
+		setSVGName("item3");
+	}
 }
 
 void Item::setCoordinates(int x, int y)

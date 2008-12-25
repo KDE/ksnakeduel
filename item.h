@@ -21,21 +21,23 @@
 
   *******************************************************************************/  
 
+#include "object.h"
+
 #ifndef ITEM_H
 #define ITEM_H
 
 /**
 * @short This class represents a player with current position and several flags
 */
-class Item
+class Item : Object
 {
-public:
-  Item();
-  void setType(int type);
-  void setCoordinates(int x, int y);
+	public:
+		Item();
+		void setType(int type);
+		void setCoordinates(int x, int y);
 
-  int xCoordinate,yCoordinate;
-  int type;
+		int xCoordinate,yCoordinate;
+		int type;
 };
 
 #endif // ITEM_H

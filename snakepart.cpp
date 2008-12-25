@@ -25,38 +25,21 @@
 
 #include "tron.h"
 
-SnakePart::SnakePart(int partCode) : Object()
+SnakePart::SnakePart(int playerNumber, int partCode) : Object()
 {
-	setSVGName(decodePart(partCode));
+	setSVGName(decodePart(playerNumber, partCode));
 }
 
-QString SnakePart::decodePart(int type)
+QString SnakePart::decodePart(int playerNumber, int type)
 {
 	QString name;
 
-	if (type & KTronEnum::ITEM1)
-	{
-		name = "item1";
-		return name;
-	}
-	else if (type & KTronEnum::ITEM2)
-	{
-		name = "item2";
-		return name;
-	}
-	else if (type & KTronEnum::ITEM3)
-	{
-		name = "item3";
-		return name;
-	}
-
-
 	// Player
-	if (type & KTronEnum::PLAYER1)
+	if (playerNumber == 0)
 	{
 		name = "tron1-";
 	}
-	else if (type & KTronEnum::PLAYER2)
+	else if (playerNumber == 1)
 	{
 		name = "tron2-";
 	}
