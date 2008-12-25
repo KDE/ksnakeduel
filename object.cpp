@@ -31,6 +31,10 @@ QString Object::getSVGName() {
 	return svgName;
 }
 
+void Object::setSVGName(QString name) {
+	svgName = name;
+}
+
 void Object::setCoordinates(int x, int y)
 {
 	xCoordinate=x;

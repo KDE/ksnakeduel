@@ -21,27 +21,23 @@
 
   *******************************************************************************/  
 
+#include "object.h"
+
 #include <QString>
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef SNAKEPART_H
+#define SNAKEPART_H
 
 /**
-* @short This class represents a drawable object on the playfield
+* @short This class represents a part of a snake on the playfield
 */
-class Object
+class SnakePart : Object
 {
 	public:
-		Object();
-		void setCoordinates(int x, int y);
-		QString getSVGName();
+		SnakePart(int partCode);
 
 	private:
-		int xCoordinate, yCoordinate;
-		QString svgName;
-		
-	protected:
-		void setSVGName(QString svgName);
+		QString decodePart(int type);
 };
 
-#endif // OBJECT_H
+#endif // SNAKEPART_H
