@@ -23,6 +23,30 @@
   
 #include "playfield.h"
 
+#include "tron.h"
+
 PlayField::PlayField()
 {
+	width = TRON_PLAYFIELD_WIDTH;
+	height = TRON_PLAYFIELD_HEIGHT;
+	
+	initialize();
+}
+
+void PlayField::initialize()
+{
+	playfield.resize(width);
+	for (int i = 0; i < width; ++i)
+	{
+		playfield[i].resize(height);
+	}
+}
+
+//
+// Methods for retrieval
+//
+
+Object *PlayField::getObjectAt(int x, int y)
+{
+	return &playfield[x][y];
 }

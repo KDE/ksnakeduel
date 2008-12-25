@@ -21,6 +21,9 @@
 
   *******************************************************************************/  
 
+#include "object.h"
+
+#include <QVector>
 
 #ifndef PLAYFIELD_H
 #define PLAYFIELD_H
@@ -32,6 +35,13 @@ class PlayField
 {
 	public:
 		PlayField();
+		void initialize();
+		Object *getObjectAt(int x, int y);
+		
+	private:
+		QVector< QVector<Object> > playfield;
+		int width;
+		int height;
 };
 
 #endif // PLAYFIELD_H

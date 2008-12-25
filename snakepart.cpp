@@ -27,6 +27,8 @@
 
 SnakePart::SnakePart(int playerNumber, int partCode) : Object()
 {
+	this->partCode = partCode;
+	
 	setSVGName(decodePart(playerNumber, partCode));
 }
 

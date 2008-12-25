@@ -37,7 +37,9 @@ class SnakePart : Object
 		SnakePart(int playerNumber, int partCode);
 
 	private:
-		QString decodePart(int playerNumber, int type);
+		QString decodePart(int playerNumber, int partCode);
+		
+		int partCode;
 };
 
 #endif // SNAKEPART_H
