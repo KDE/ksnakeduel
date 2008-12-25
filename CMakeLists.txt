@@ -1,6 +1,7 @@
 project(ktron)
 
 find_package(KDE4 REQUIRED)
+find_package(LibKDEGames REQUIRED)
 
 add_definitions(${QT_DEFINITIONS} ${KDE4_DEFINITIONS})
 
@@ -18,6 +19,7 @@ add_subdirectory(themes)
 
 set(ktron_SRCS
 	fontutils.cpp
+	object.cpp
 	renderer.cpp
 	tron.cpp
 	player.cpp
