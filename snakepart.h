@@ -35,11 +35,15 @@ class SnakePart : Object
 {
 	public:
 		SnakePart(int playerNumber, int partCode);
+		int getPlayerNumber();
+		int getPartCode();
+		void setPartCode(int partCode);
 
 	private:
 		QString decodePart(int playerNumber, int partCode);
 		
 		int partCode;
+		int playerNumber;
 };
 
 #endif // SNAKEPART_H

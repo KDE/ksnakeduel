@@ -28,9 +28,35 @@
 SnakePart::SnakePart(int playerNumber, int partCode) : Object()
 {
 	this->partCode = partCode;
+	this->playerNumber = playerNumber;
 	
 	setSVGName(decodePart(playerNumber, partCode));
 }
+
+//
+// Getters / Setters
+//
+
+int SnakePart::getPlayerNumber()
+{
+	return playerNumber;
+}
+
+int SnakePart::getPartCode()
+{
+	return partCode;
+}
+
+void SnakePart::setPartCode(int partCode)
+{
+	this->partCode = partCode;
+	
+	setSVGName(decodePart(playerNumber, partCode));
+}
+
+//
+// Decode type
+//
 
 QString SnakePart::decodePart(int playerNumber, int type)
 {
