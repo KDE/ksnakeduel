@@ -39,7 +39,7 @@ class PlayField
 		Object *getObjectAt(int x, int y);
 		
 	private:
-		QVector< QVector<Object> > playfield;
+		QVector< Object > playfield;
 		int width;
 		int height;
 };

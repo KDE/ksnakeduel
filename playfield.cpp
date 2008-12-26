@@ -35,11 +35,11 @@ PlayField::PlayField()
 
 void PlayField::initialize()
 {
-	playfield.resize(width);
-	for (int i = 0; i < width; ++i)
-	{
-		playfield[i].resize(height);
-	}
+	playfield.resize(width * height);
+	//for (int i = 0; i < width; ++i)
+	//{
+	//	playfield[i].resize(height);
+	//}
 }
 
 //
@@ -48,5 +48,5 @@ void PlayField::initialize()
 
 Object *PlayField::getObjectAt(int x, int y)
 {
-	return &playfield[x][y];
+	return &playfield[x * height + y];
 }
