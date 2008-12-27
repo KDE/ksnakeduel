@@ -29,13 +29,29 @@
 
 SnakePart::SnakePart(int playerNumber, int partCode) : Object(ObjectType::SnakePart)
 {
+	initialize();
+
 	this->partCode = partCode;
 	this->playerNumber = playerNumber;
 	
 	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
 	
-	setSVGName(decodePart(this->playerNumber, this->partCode));
+	generateFromLegacyType(this->partCode);
+	setSVGName(decodePart());
 	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
+}
+
+//
+// Init
+//
+
+void SnakePart::initialize()
+{
+	setPartType(SnakePartType::Empty);
+	setPartTop(false);
+	setPartBottom(false);
+	setPartLeft(false);
+	setPartRight(false);
 }
 
 //
@@ -54,19 +70,125 @@ int SnakePart::getPartCode()
 
 void SnakePart::setPartCode(int partCode)
 {
+	initialize();
 	this->partCode = partCode;
 	
 	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
 	
-	setSVGName(decodePart(this->playerNumber, this->partCode));
+	generateFromLegacyType(this->partCode);
+	setSVGName(decodePart());
 	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
+}
+
+SnakePartType::Types SnakePart::getPartType()
+{
+	return partType;
+}
+
+void SnakePart::setPartType(SnakePartType::Types type)
+{
+	partType = type;
+}
+
+bool SnakePart::getPartTop()
+{
+	return partTop;
+}
+
+void SnakePart::setPartTop(bool value)
+{
+	partTop = value;
+}
+
+bool SnakePart::getPartBottom()
+{
+	return partBottom;
+}
+
+void SnakePart::setPartBottom(bool value)
+{
+	partBottom = value;
+}
+
+bool SnakePart::getPartLeft()
+{
+	return partLeft;
+}
+
+void SnakePart::setPartLeft(bool value)
+{
+	partLeft = value;
+}
+
+bool SnakePart::getPartRight()
+{
+	return partRight;
+}
+
+void SnakePart::setPartRight(bool value)
+{
+	partRight = value;
+}
+
+//
+// Legacy support
+//
+void SnakePart::generateFromLegacyType(int type)
+{
+	int setCount = 0;
+
+	if (type & KTronEnum::TOP)
+	{
+		setPartTop(true);
+		setCount++;
+	}
+	
+	if (type & KTronEnum::BOTTOM)
+	{
+		setPartBottom(true);
+		setCount++;
+	}
+	
+	if (type & KTronEnum::LEFT)
+	{
+		setPartLeft(true);
+		setCount++;
+	}
+	
+	if (type & KTronEnum::RIGHT)
+	{
+		setPartRight(true);
+		setCount++;
+	}
+	
+	if (type & KTronEnum::HEAD)
+	{
+		setPartType(SnakePartType::Head);
+	}
+	else if (type & KTronEnum::TAIL)
+	{
+		setPartType(SnakePartType::Hole);
+	}
+	else if (setCount == 3)
+	{
+		setPartType(SnakePartType::Tail);
+	}
+	else
+	{
+		setPartType(SnakePartType::Body);
+	}
 }
 
 //
 // Decode type
 //
 
-QString SnakePart::decodePart(int playerNumber, int type)
+void SnakePart::generateSVGName()
+{
+	setSVGName(decodePart());
+}
+
+QString SnakePart::decodePart()
 {
 	QString name;
 
@@ -81,96 +203,90 @@ QString SnakePart::decodePart(int playerNumber, int type)
 	}
 
 	// Heads (or tails)
-	if (type & KTronEnum::HEAD)
+	if (getPartType() == SnakePartType::Head)
 	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		if (getPartTop() && getPartLeft() && getPartRight())
 		{
 			name += "head-north";
 		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
 			name += "head-south";
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
+		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
 			name += "head-west";
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
+		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
 			name += "head-east";
 		}
-
-		return name;
 	}
-	else if (type & KTronEnum::TAIL)
+	else if (getPartType() == SnakePartType::Hole)
 	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		if (getPartTop() && getPartLeft() && getPartRight())
 		{
 			name += "tail-south";
 		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
 			name += "tail-north";
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
+		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
 			name += "tail-east";
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
+		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
 			name += "tail-west";
 		}
-
-		return name;
 	}
-	else
+	else if (getPartType() == SnakePartType::Tail)
 	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		if (getPartTop() && getPartLeft() && getPartRight())
 		{
 			name += "tail-south2";
-			return name;
 		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
+		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
 			name += "tail-north2";
-			return name;
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
+		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
 			name += "tail-east2";
-			return name;
 		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
+		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
 			name += "tail-west2";
-			return name;
 		}
 	}
-
-	// Bodys
-	if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM))
+	else if (getPartType() == SnakePartType::Body)
 	{
-		name += "body-h";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-v";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::TOP))
-	{
-		name += "body-nw";
-	}
-	else if ((type & KTronEnum::TOP) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-ne";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::BOTTOM))
-	{
-		name += "body-sw";
-	}
-	else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-se";
+		// Bodys
+		if (getPartTop() && getPartBottom())
+		{
+			name += "body-h";
+		}
+		else if (getPartLeft() && getPartRight())
+		{
+			name += "body-v";
+		}
+		else if (getPartLeft() && getPartTop())
+		{
+			name += "body-nw";
+		}
+		else if (getPartTop() && getPartRight())
+		{
+			name += "body-ne";
+		}
+		else if (getPartLeft() && getPartBottom())
+		{
+			name += "body-sw";
+		}
+		else if (getPartBottom() && getPartRight())
+		{
+			name += "body-se";
+		}
 	}
 
 	return name;

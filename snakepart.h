@@ -28,6 +28,16 @@
 
 #include <QString>
 
+namespace SnakePartType {
+	enum Types {
+		Empty,
+		Body,
+		Head,
+		Tail,
+		Hole
+	};
+}
+
 /**
 * @short This class represents a part of a snake on the playfield
 */
@@ -38,12 +48,30 @@ class SnakePart : public Object
 		int getPlayerNumber();
 		int getPartCode();
 		void setPartCode(int partCode);
+		SnakePartType::Types getPartType();
+		void setPartType(SnakePartType::Types type);
+		bool getPartTop();
+		void setPartTop(bool value);
+		bool getPartBottom();
+		void setPartBottom(bool value);
+		bool getPartLeft();
+		void setPartLeft(bool value);
+		bool getPartRight();
+		void setPartRight(bool value);
+		void generateSVGName();
 
 	private:
-		QString decodePart(int playerNumber, int partCode);
+		void initialize();
+		void generateFromLegacyType(int type);
+		QString decodePart();
 		
 		int partCode;
 		int playerNumber;
+		SnakePartType::Types partType;
+		bool partTop;
+		bool partBottom;
+		bool partLeft;
+		bool partRight;
 };
 
 #endif // SNAKEPART_H
