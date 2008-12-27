@@ -218,7 +218,7 @@ void Tron::newApple()
 
 	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
 
-	apple.setCoordinates(x, y);
+	//apple.setCoordinates(x, y);
 	apple.setType((int)(rand() % 3));
 	
 	pf.setObjectAt(x, y, apple);

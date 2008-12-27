@@ -45,10 +45,20 @@ void Object::setSVGName(QString name) {
 	svgName = name;
 }
 
+int Object::getX()
+{
+	return xCoordinate;
+}
+
+int Object::getY()
+{
+	return yCoordinate;
+}
+
 void Object::setCoordinates(int x, int y)
 {
-	xCoordinate=x;
-	yCoordinate=y;
+	xCoordinate = x;
+	yCoordinate = y;
 }
 
 int Object::getOldType()

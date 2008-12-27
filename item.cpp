@@ -62,9 +62,3 @@ int Item::getType()
 	return type;
 }
 
-void Item::setCoordinates(int x, int y)
-{
-	xCoordinate=x;
-	yCoordinate=y;
-}
-

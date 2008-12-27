@@ -42,10 +42,11 @@ class Object
 	public:
 		Object();
 		Object(ObjectType::Type t);
+		int getX();
+		int getY();
 		void setCoordinates(int x, int y);
 		QString getSVGName();
 		int getOldType();
-		void setOldType(int type);
 		ObjectType::Type getObjectType();
 		//SnakePart *getSnakePart();
 
@@ -57,6 +58,7 @@ class Object
 		
 	protected:
 		void setSVGName(QString svgName);
+		void setOldType(int type);
 };
 
 #endif // OBJECT_H

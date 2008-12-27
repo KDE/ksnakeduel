@@ -84,4 +84,5 @@ void PlayField::setObjectAt(int x, int y, Object &o)
 	}
 	
 	playfield[x * height + y] = o;
+	o.setCoordinates(x, y);
 }

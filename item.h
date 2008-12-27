@@ -35,9 +35,8 @@ class Item : public Object
 		Item();
 		void setType(int type);
 		int getType();
-		void setCoordinates(int x, int y);
 
-		int xCoordinate,yCoordinate;
+	private:
 		int type;
 };
 
