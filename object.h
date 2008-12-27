@@ -48,10 +48,10 @@ class Object
 		QString getSVGName();
 		int getOldType();
 		ObjectType::Type getObjectType();
-		//SnakePart *getSnakePart();
 
 	private:
-		int xCoordinate, yCoordinate;
+		int xCoordinate;
+		int yCoordinate;
 		QString svgName;
 		int oldType;
 		ObjectType::Type objectType;

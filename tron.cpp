@@ -59,10 +59,11 @@
 
 Tron::Tron(QWidget *parent) : QWidget(parent)
 {
-	players[0].setPlayerNumber(0);
-	players[1].setPlayerNumber(1);
-	players[0].referencePlayField(pf);
-	players[1].referencePlayField(pf);
+	players[0] = new Player(pf, 0);
+	players[1] = new Player(pf, 1);
+	
+	connect(players[0], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
+	connect(players[1], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
 
 	lookForward = 15;
 
@@ -133,8 +134,8 @@ void Tron::createNewPlayfield()
 
 void Tron::newGame()
 {
-	players[0].score = 0;
-	players[1].score = 0;
+	players[0]->score = 0;
+	players[1]->score = 0;
 	emit gameEnds(KTronEnum::Nobody);
 	reset();
 }
@@ -144,13 +145,13 @@ void Tron::reset()
 	gamePaused = false;
 	stopGame();
 
-	players[0].reset();
-	players[1].reset();
+	players[0]->reset();
+	players[1]->reset();
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		players[0].score = 0;
-		players[1].score = 0;
+		players[0]->score = 0;
+		players[1]->score = 0;
 
 		setVelocity( lineSpeed() );
 	}
@@ -158,11 +159,11 @@ void Tron::reset()
 	pf.initialize();
 
 	// set start coordinates
-	players[0].setStartPosition();
+	players[0]->setStartPosition();
 	
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
-		players[1].setStartPosition();
+		players[1]->setStartPosition();
 	}
 
 	updatePixmap();
@@ -199,6 +200,23 @@ void Tron::startGame()
 	timer->start(velocity);
 }
 
+void Tron::itemHit(int playerNumber, int, int)
+{
+	//kDebug() << "Got Item Hit for " << playerNumber;
+
+	newApple();
+	players[playerNumber]->enlarge = 3;
+	players[playerNumber]->score++;
+	if (velocity > 15)
+	{
+		velocity--;
+		timer->stop();
+		timer->start(velocity);
+	}
+
+	emit updatedScore();
+}
+
 void Tron::newApple()
 {
 	int x = rand() % pf.getWidth();
@@ -222,8 +240,8 @@ void Tron::stopGame()
 {
 	timer->stop();
 	gameEnded = true;
-	players[0].dir = Directions::Up;
-	players[1].dir = Directions::Up;
+	players[0]->dir = Directions::Up;
+	players[1]->dir = Directions::Up;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -287,11 +305,11 @@ void Tron::setVelocity(int newVel)            // set new velocity
 void Tron::setComputerplayer(KTronEnum::Player player, bool flag) {
 	if(player == KTronEnum::One)
 	{
-		players[0].setComputer(flag);
+		players[0]->setComputer(flag);
 	}
 	else if (player == KTronEnum::Two)
 	{
-		players[1].setComputer(flag);
+		players[1]->setComputer(flag);
 	}
 
 	if (isComputer(KTronEnum::Both))
@@ -304,15 +322,15 @@ bool Tron::isComputer(KTronEnum::Player player)
 {
 	if (player == KTronEnum::One)
 	{
-		return players[0].computer;
+		return players[0]->computer;
 	}
 	else if (player == KTronEnum::Two)
 	{
-		return players[1].computer;
+		return players[1]->computer;
 	}
 	else if (player == KTronEnum::Both)
 	{
-		if(players[0].computer && players[1].computer)
+		if(players[0]->computer && players[1]->computer)
 		{
 			return true;
 		}
@@ -325,28 +343,6 @@ bool Tron::isComputer(KTronEnum::Player player)
 **                    moving functions										 **
 ** *************************************************************** */
 
-bool Tron::crashed(int playerNr,int xInc, int yInc)
-{
-	bool flag;
-	int newX = players[playerNr].xCoordinate + xInc;
-	int newY = players[playerNr].yCoordinate + yInc;
-
-	if (newX < 0 || newY < 0 || newX >= pf.getWidth() || newY >= pf.getHeight())
-		flag=true;
-	else {	
-		ObjectType::Type objType = pf.getObjectAt(newX, newY)->getObjectType();
-
-		if (objType == ObjectType::Item)
-			flag=false;
-		else if (objType != ObjectType::Object)
-			flag=true;
-		else 
-			flag=false;
-	}
-
-	return flag;
-}
-
 void Tron::switchDir(int playerNr, Directions::Direction newDirection)
 {
   if(playerNr !=0 && playerNr != 1)
@@ -355,16 +351,16 @@ void Tron::switchDir(int playerNr, Directions::Direction newDirection)
      return;
   }
 
-    if (newDirection == Directions::Up && players[playerNr].dir == Directions::Down)
+    if (newDirection == Directions::Up && players[playerNr]->dir == Directions::Down)
       return;
-    if (newDirection == Directions::Down && players[playerNr].dir == Directions::Up)
+    if (newDirection == Directions::Down && players[playerNr]->dir == Directions::Up)
       return;
-    if (newDirection == Directions::Left && players[playerNr].dir == Directions::Right)
+    if (newDirection == Directions::Left && players[playerNr]->dir == Directions::Right)
       return;
-    if (newDirection == Directions::Right && players[playerNr].dir == Directions::Left)
+    if (newDirection == Directions::Right && players[playerNr]->dir == Directions::Left)
       return;
 
-  players[playerNr].dir=newDirection;
+  players[playerNr]->dir=newDirection;
 }
 
 /* *************************************************************** **
@@ -388,7 +384,7 @@ void Tron::paintEvent(QPaintEvent *e)
 	{
 		QString message = QString("");
 		
-		if (!players[0].alive || !players[1].alive) {
+		if (!players[0]->alive || !players[1]->alive) {
 			message += i18n("Crash!");
 			message += '\n';
 		}
@@ -423,37 +419,37 @@ void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 
 void Tron::switchKeyOn(int player, KBAction::Action action)
 {
-	if (!players[player].computer)
+	if (!players[player]->computer)
 	{
 		switch (action)
 		{
 			case KBAction::UP:
-				players[player].keyPressed = true;
-				if (players[player].dir != Directions::Up)
+				players[player]->keyPressed = true;
+				if (players[player]->dir != Directions::Up)
 				{
 					switchDir(player, Directions::Up);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::DOWN:
-				players[player].keyPressed = true;
-				if (players[player].dir != Directions::Down)
+				players[player]->keyPressed = true;
+				if (players[player]->dir != Directions::Down)
 				{
 					switchDir(player, Directions::Down);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::LEFT:
-				players[player].keyPressed = true;
-				if (players[player].dir != Directions::Left)
+				players[player]->keyPressed = true;
+				if (players[player]->dir != Directions::Left)
 				{
 					switchDir(player, Directions::Left);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::RIGHT:
-				players[player].keyPressed = true;
-				if (players[player].dir != Directions::Right)
+				players[player]->keyPressed = true;
+				if (players[player]->dir != Directions::Right)
 				{
 					switchDir(player, Directions::Right);
 					movePlayer(player);
@@ -463,7 +459,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 				if(!Settings::acceleratorBlocked())
 				{
 					//kDebug() << "Acceleration on: " << player;
-					players[player].accelerated = true;
+					players[player]->accelerated = true;
 				}
 				break;
 			default:
@@ -473,7 +469,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 	// if both players press keys at the same time, start game...
 	if(gameEnded && !gameBlocked)
 	{
-		if(players[0].keyPressed && players[1].keyPressed)
+		if(players[0]->keyPressed && players[1]->keyPressed)
 		{
 			reset();
 			startGame();
@@ -482,7 +478,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 	// ...or continue
 	else if(gamePaused)
 	{
-		if(players[0].keyPressed && players[1].keyPressed)
+		if(players[0]->keyPressed && players[1]->keyPressed)
 		{
 			togglePause();
 		}
@@ -491,7 +487,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 
 void Tron::switchKeyOff(int player, KBAction::Action action)
 {
-	if (!players[player].computer)
+	if (!players[player]->computer)
 	{
 		switch (action)
 		{
@@ -499,11 +495,11 @@ void Tron::switchKeyOff(int player, KBAction::Action action)
 			case KBAction::DOWN:
 			case KBAction::LEFT:
 			case KBAction::RIGHT:
-				players[player].keyPressed = false;
+				players[player]->keyPressed = false;
 				break;
 			case KBAction::ACCELERATE:
 				//kDebug() << "Acceleration off: " << player;
-				players[player].accelerated = false;
+				players[player]->accelerated = false;
 				break;
 			default:
 				break;
@@ -533,173 +529,7 @@ void Tron::movePlayer(int playerNr)
 {
 	if (playerNr == 0 || playerNr == 1)
 	{
-		//updateDirections(playerNr);
-
-		int oldX = players[playerNr].xCoordinate;
-		int oldY = players[playerNr].yCoordinate;
-
-		int newType; // determine type of rect to set
-		if(playerNr==0)
-		{
-			newType = (KTronEnum::PLAYER1 | KTronEnum::HEAD);
-		}
-		else
-		{
-			newType = (KTronEnum::PLAYER2 | KTronEnum::HEAD);
-		}
-		switch(players[playerNr].dir)
-		{
-			case Directions::Up:
-				if(crashed(playerNr,0,-1))
-					players[playerNr].alive=false;
-				else
-				{
-					players[playerNr].yCoordinate--;
-					newType|=(KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT);
-				}
-				break;
-			case Directions::Down:
-				if(crashed(playerNr,0,1))
-					players[playerNr].alive=false;
-				else
-				{
-					players[playerNr].yCoordinate++;
-					newType |= (KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT);
-				}
-				break;
-			case Directions::Left:
-				if(crashed(playerNr,-1,0))
-					players[playerNr].alive=false;
-				else
-				{
-					players[playerNr].xCoordinate--;
-					newType |= (KTronEnum::LEFT | KTronEnum::TOP | KTronEnum::BOTTOM);
-				}
-				break;
-			case Directions::Right:
-				if(crashed(playerNr,1,0))
-					players[playerNr].alive=false;
-				else
-				{
-					players[playerNr].xCoordinate++;
-					newType |= (KTronEnum::RIGHT | KTronEnum::TOP | KTronEnum::BOTTOM);
-				}
-				break;
-			default:
-				break;
-		}
-		if(players[playerNr].alive)
-		{
-			//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(x, y);
-			//int altType = snakePart->getPartCode();
-			int altType = pf.getObjectAt(oldX, oldY)->getOldType();
-			
-			// necessary for drawing the 3d-line
-			switch(players[playerNr].dir)
-			{
-				// unset drawing flags in the moving direction
-				case Directions::Up:
-				{
-					altType &= (~KTronEnum::TOP);
-					break;
-				}
-				case Directions::Down:
-					altType &= (~KTronEnum::BOTTOM);
-					break;
-				case Directions::Right:
-					altType &= (~KTronEnum::RIGHT);
-					break;
-				case Directions::Left:
-					altType &= (~KTronEnum::LEFT);
-					break;
-				default:
-					break;
-			}
-			altType &= (~KTronEnum::HEAD);
-			
-			//kDebug() << "Altered type: " << altType;
-			
-			//snakePart->setPartCode(altType & (~KTronEnum::HEAD));
-			SnakePart altPart(playerNr, altType);
-			pf.setObjectAt(oldX, oldY, altPart);
-		
-			if (pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getObjectType() == ObjectType::Item)
-			{
-				newApple();
-				players[playerNr].enlarge = 3;
-				players[playerNr].score++;
-				if (velocity > 15)
-				{
-					velocity--;
-					timer->stop();
-					timer->start(velocity);
-				}
-
-				emit updatedScore();
-			}
-
-			SnakePart newPart(playerNr, newType);
-			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, newPart);
-		}
-
-		if (players[playerNr].alive && players[playerNr].enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
-		{
-			int oldxtail = players[playerNr].xCoordinateTail;
-			int oldytail = players[playerNr].yCoordinateTail;
-			
-			int altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
-			//SnakePart *snakePart = 0;
-
-			if (!(altType & KTronEnum::TOP))
-			{
-				players[playerNr].yCoordinateTail--;
-
-				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
-				//altType = snakePart->getPartCode();
-				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
-				altType |= KTronEnum::BOTTOM;
-			}
-			else if (!(altType & KTronEnum::BOTTOM))
-			{
-				players[playerNr].yCoordinateTail++;
-
-				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
-				//altType = snakePart->getPartCode();
-				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
-				altType |= KTronEnum::TOP;
-			}
-			else if (!(altType & KTronEnum::LEFT))
-			{
-				players[playerNr].xCoordinateTail--;
-
-				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
-				//altType = snakePart->getPartCode();
-				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
-				altType |= KTronEnum::RIGHT;
-			}
-			else if (!(altType & KTronEnum::RIGHT))
-			{
-				players[playerNr].xCoordinateTail++;
-
-				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
-				//altType = snakePart->getPartCode();
-				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
-				altType |= KTronEnum::LEFT;
-			}
-			
-			//kDebug() << "Altered type: " << altType;
-			
-			//snakePart->setPartCode(altType);
-			SnakePart altPart(playerNr, altType);
-			pf.setObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail, altPart);
-
-			Object emptyObject = Object();
-			pf.setObjectAt(oldxtail, oldytail, emptyObject);
-		}
-		else if (players[playerNr].enlarge > 0)
-		{
-			players[playerNr].enlarge--;
-		}
+		players[playerNr]->movePlayer();
 	}
 }
 
@@ -713,7 +543,7 @@ void Tron::doMove()
 		updatePixmap();
 		update();
 
-		if(!players[0].alive)
+		if(!players[0]->alive)
 		{
 			stopGame();
 			showWinner(KTronEnum::One);
@@ -725,19 +555,19 @@ void Tron::doMove()
 		for(i = 0; i < 2; ++i)
 		{
 			// Decide if the accelerator key was pressed...
-			if (players[i].accelerated)
+			if (players[i]->accelerated)
 			{
 				movePlayer(i);
 			}
 		}
 
-		if(players[0].accelerated || players[1].accelerated)
+		if(players[0]->accelerated || players[1]->accelerated)
 		{
 			/* player collision check */
-			if(!players[1].alive)
+			if(!players[1]->alive)
 			{
 				int xInc=0,yInc=0;
-				switch(players[1].dir)
+				switch(players[1]->dir)
 				{
 					case Directions::Left:
 					xInc = -1;
@@ -754,10 +584,12 @@ void Tron::doMove()
 					default:
 					break;
 				}
-				if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-				if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+				if ((players[1]->getX() + xInc) == players[0]->getX())
 				{
-					players[0].alive=false;
+					if ((players[1]->getY() + yInc) == players[0]->getY())
+					{
+						players[0]->alive=false;
+					}
 				}
 			}
 
@@ -765,22 +597,22 @@ void Tron::doMove()
 			update();
 
 			// crashtest
-			if(!players[0].alive && !players[1].alive)
+			if(!players[0]->alive && !players[1]->alive)
 			{
 				stopGame();
-				players[0].score++;
-				players[1].score++;
+				players[0]->score++;
+				players[1]->score++;
 				showWinner(KTronEnum::Both);
 			}
 			else
 			{
 				for(i = 0; i < 2; ++i)
 				{
-					if(!players[i].alive)
+					if(!players[i]->alive)
 					{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)].score++;
+					players[(1 - i)]->score++;
 					}
 				}
 			}
@@ -798,11 +630,12 @@ void Tron::doMove()
 		// neue Spielerstandorte festlegen
 		for (i = 0; i < 2; ++i)
 		{
-			if(players[i].computer)
+			if(players[i]->computer)
 				think(i);
 		}
 
 		//updateDirections(0);
+		update();
 
 		for (i = 0; i < 2; ++i)
 		{
@@ -810,10 +643,10 @@ void Tron::doMove()
 		}
 
 		/* player collision check */
-		if(!players[1].alive)
+		if(!players[1]->alive)
 		{
 			int xInc=0,yInc=0;
-			switch(players[1].dir)
+			switch(players[1]->dir)
 			{
 				case Directions::Left:
 					xInc = -1; break;
@@ -826,21 +659,23 @@ void Tron::doMove()
 				default:
 					break;
 			}
-			if ((players[1].xCoordinate+xInc) == players[0].xCoordinate)
-				if ((players[1].yCoordinate+yInc) == players[0].yCoordinate)
+			if ((players[1]->getX() + xInc) == players[0]->getX())
+			{
+				if ((players[1]->getY() + yInc) == players[0]->getY())
 				{
-					players[0].alive=false;
+					players[0]->alive = false;
 				}
+			}
 		}
 
 		updatePixmap();
 		update();
 
-		if(!players[0].alive && !players[1].alive)
+		if(!players[0]->alive && !players[1]->alive)
 		{
 			stopGame();
-			players[0].score++;
-			players[1].score++;
+			players[0]->score++;
+			players[1]->score++;
 			showWinner(KTronEnum::Both);
 		}
 		else
@@ -848,11 +683,11 @@ void Tron::doMove()
 			for (i = 0; i < 2; ++i)
 			{
 				// crashtests
-				if(!players[i].alive)
+				if(!players[i]->alive)
 				{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)].score++;
+					players[(1 - i)]->score++;
 				}
 			}
 		}
@@ -891,7 +726,7 @@ if(opponentSkill() != 1)
   dis_forward = dis_left = dis_right = 1;
 
 
-  	switch (players[playerNr].dir)
+  	switch (players[playerNr]->dir)
    	{
   			case Directions::Left:
     			//forward flags
@@ -946,8 +781,8 @@ if(opponentSkill() != 1)
   		}
 
   		// check forward
-  		index[0] = players[playerNr].xCoordinate+flags[0];
-  		index[1] = players[playerNr].yCoordinate+flags[1];
+  		index[0] = players[playerNr]->getX()+flags[0];
+  		index[1] = players[playerNr]->getY()+flags[1];
   		while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	 		index[1] < pf.getHeight() && index[1] >= 0 &&
 	 		pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
@@ -958,8 +793,8 @@ if(opponentSkill() != 1)
   		}
 
     	// check left
-    	index[0] = players[playerNr].xCoordinate+flags[2];
-    	index[1] = players[playerNr].yCoordinate+flags[3];
+    	index[0] = players[playerNr]->getX()+flags[2];
+    	index[1] = players[playerNr]->getY()+flags[3];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] < pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
@@ -969,8 +804,8 @@ if(opponentSkill() != 1)
     }
 
     // check right
-    index[0] = players[playerNr].xCoordinate+flags[4];
-    index[1] = players[playerNr].yCoordinate+flags[5];
+    index[0] = players[playerNr]->getX()+flags[4];
+    index[1] = players[playerNr]->getY()+flags[5];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] <  pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
@@ -982,8 +817,8 @@ if(opponentSkill() != 1)
   	// distances to opponent
   	int hor_dis=0; // negative is opponent to the right
   	int vert_dis=0; // negative is opponent to the bottom
-  	hor_dis=players[playerNr].xCoordinate-players[opponent].xCoordinate;
-  	vert_dis=players[playerNr].yCoordinate-players[opponent].yCoordinate;
+  	hor_dis=players[playerNr]->getX()-players[opponent]->getX();
+  	vert_dis=players[playerNr]->getY()-players[opponent]->getY();
 
   	int opForwardDis=0; // negative is to the back
   	int opSideDis=0;  // negative is to the left
@@ -992,54 +827,54 @@ if(opponentSkill() != 1)
   	bool opMovesRight=false;
   	bool opMovesLeft=false;
 
-  	switch(players[playerNr].dir)
+  	switch(players[playerNr]->dir)
   	{
   	   case Directions::Up:
   	      opForwardDis=vert_dis;
   	      opSideDis=-hor_dis;
-  	      if(players[opponent].dir==Directions::Down)
+  	      if(players[opponent]->dir==Directions::Down)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Directions::Up)
+  	      else if(players[opponent]->dir==Directions::Up)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Directions::Left)
+  	      else if(players[opponent]->dir==Directions::Left)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Directions::Right)
+  	      else if(players[opponent]->dir==Directions::Right)
   	         opMovesRight=true;
   	      break;
   	   case Directions::Down:
   	      opForwardDis=-vert_dis;
   	      opSideDis=hor_dis;
-  	      if(players[opponent].dir==Directions::Up)
+  	      if(players[opponent]->dir==Directions::Up)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Directions::Down)
+  	      else if(players[opponent]->dir==Directions::Down)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Directions::Left)
+  	      else if(players[opponent]->dir==Directions::Left)
   	         opMovesRight=true;
-  	      else if(players[opponent].dir==Directions::Right)
+  	      else if(players[opponent]->dir==Directions::Right)
   	         opMovesLeft=true;
   	      break;
   	   case Directions::Left:
   	      opForwardDis=hor_dis;
   	      opSideDis=vert_dis;
-  	      if(players[opponent].dir==Directions::Right)
+  	      if(players[opponent]->dir==Directions::Right)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Directions::Left)
+  	      else if(players[opponent]->dir==Directions::Left)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Directions::Down)
+  	      else if(players[opponent]->dir==Directions::Down)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Directions::Up)
+  	      else if(players[opponent]->dir==Directions::Up)
   	         opMovesRight=true;
   	      break;
   	   case Directions::Right:
   	      opForwardDis=-hor_dis;
   	      opSideDis=-vert_dis;
-  	      if(players[opponent].dir==Directions::Left)
+  	      if(players[opponent]->dir==Directions::Left)
   	         opMovesOppositeDir=true;
-  	      else if(players[opponent].dir==Directions::Right)
+  	      else if(players[opponent]->dir==Directions::Right)
   	         opMovesSameDir=true;
-  	      else if(players[opponent].dir==Directions::Up)
+  	      else if(players[opponent]->dir==Directions::Up)
   	         opMovesLeft=true;
-  	      else if(players[opponent].dir==Directions::Down)
+  	      else if(players[opponent]->dir==Directions::Down)
   	         opMovesRight=true;
   	      break;
   	    default:
@@ -1291,7 +1126,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
 
   dis_forward = dis_left = dis_right = 1;
 
-  switch (players[playerNr].dir) {
+  switch (players[playerNr]->dir) {
   case Directions::Left:
 
     //forward flags
@@ -1345,8 +1180,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   }
 
   // check forward
-  index[0] = players[playerNr].xCoordinate+flags[0];
-  index[1] = players[playerNr].yCoordinate+flags[1];
+  index[0] = players[playerNr]->getX()+flags[0];
+  index[1] = players[playerNr]->getY()+flags[1];
   while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	 index[1] < pf.getHeight() && index[1] >= 0 &&
 	 pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
@@ -1360,8 +1195,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
       dis_forward = 100 - 100/dis_forward;
 
     // check left
-    index[0] = players[playerNr].xCoordinate+flags[2];
-    index[1] = players[playerNr].yCoordinate+flags[3];
+    index[0] = players[playerNr]->getX()+flags[2];
+    index[1] = players[playerNr]->getY()+flags[3];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] < pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
@@ -1371,8 +1206,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     }
 
     // check right
-    index[0] = players[playerNr].xCoordinate+flags[4];
-    index[1] = players[playerNr].yCoordinate+flags[5];
+    index[0] = players[playerNr]->getX()+flags[4];
+    index[1] = players[playerNr]->getY()+flags[5];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] <  pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
@@ -1409,7 +1244,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
 
 void Tron::changeDirection(int playerNr,int dis_right,int dis_left)
 {
-   Directions::Direction currentDir=players[playerNr].dir;
+   Directions::Direction currentDir=players[playerNr]->dir;
    Directions::Direction sides[2];
    sides[0] = Directions::None; sides[1] = Directions::None;
    switch (currentDir)

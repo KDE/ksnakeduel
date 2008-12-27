@@ -27,6 +27,13 @@
 
 #include <KDebug>
 
+SnakePart::SnakePart(int playerNumber) : Object(ObjectType::SnakePart)
+{
+	initialize();
+
+	this->playerNumber = playerNumber;
+}
+
 SnakePart::SnakePart(int playerNumber, int partCode) : Object(ObjectType::SnakePart)
 {
 	initialize();

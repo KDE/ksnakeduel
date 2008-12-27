@@ -217,7 +217,7 @@ void KTron::updateStatusbar() {
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		QString string = QString("%1: %2").arg(playerName[0]).arg(tron->players[0].score);
+		QString string = QString("%1: %2").arg(playerName[0]).arg(tron->players[0]->score);
 		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
 		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
 	}
@@ -233,7 +233,7 @@ void KTron::updateStatusbar() {
 			else
 				name = playerName[i];
 			
-			QString string = QString("%1: %2").arg(name).arg(tron->players[i].score);
+			QString string = QString("%1: %2").arg(name).arg(tron->players[i]->score);
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
 		}
 	}
@@ -267,7 +267,7 @@ void KTron::changeStatus(KTronEnum::Player player) {
 		scoreDialog.setConfigGroup(KGameDifficulty::localizedLevelString());
 
 		KScoreDialog::FieldInfo scoreInfo;
-		scoreInfo[KScoreDialog::Score].setNum(tron->players[0].score);
+		scoreInfo[KScoreDialog::Score].setNum(tron->players[0]->score);
 		if (scoreDialog.addScore(scoreInfo) != 0)
 			scoreDialog.exec();
 	}
@@ -276,10 +276,10 @@ void KTron::changeStatus(KTronEnum::Player player) {
 KTronEnum::Player KTron::getWinner() {
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
-		if (tron->players[0].score >= WINNING_DIFF && tron->players[1].score < tron->players[0].score - 1) {
+		if (tron->players[0]->score >= WINNING_DIFF && tron->players[1]->score < tron->players[0]->score - 1) {
 			return KTronEnum::One;
 		}
-		else if (tron->players[1].score >= WINNING_DIFF && tron->players[0].score < tron->players[1].score - 1) {
+		else if (tron->players[1]->score >= WINNING_DIFF && tron->players[0]->score < tron->players[1]->score - 1) {
 			return KTronEnum::Two;
 		}
 		else {
@@ -306,7 +306,7 @@ void KTron::showWinner(KTronEnum::Player winner){
 	if (!tron->isComputer(winner))
 		winnerName = playerName[winner];
 
-	QString message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->players[winner].score, tron->players[loser].score);
+	QString message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->players[winner]->score, tron->players[loser]->score);
 
 	
 	KMessageBox::information(this, message, i18n("Winner"));

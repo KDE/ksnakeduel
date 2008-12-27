@@ -92,7 +92,7 @@ class Tron : public QWidget
 		bool running();
 		bool paused();
 
-		Player players[2];
+		Player *players[2];
 
 	public slots:
 		/** Starts a new game. The difference to reset is, that the players
@@ -107,6 +107,8 @@ class Tron : public QWidget
 		void computerStart();
 
 		void loadSettings();
+		
+		void itemHit(int playerNumber, int x, int y);
 
 	signals:
 		void gameEnds(KTronEnum::Player loser);
@@ -171,10 +173,6 @@ class Tron : public QWidget
 		/** generates new apple */
 		void newApple();
 
-		/** calculates if player playerNr would crash
-		* if he moves xInc in x-direction and yInc in y-direction
-		*/
-		bool crashed(int playerNr,int xInc, int yInc);
 		/** calculates if player playerNr should change direction */
 		void think(int playerNr);
 		void changeDirection(int playerNr,int dis_right,int dis_left);

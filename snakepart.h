@@ -44,6 +44,7 @@ namespace SnakePartType {
 class SnakePart : public Object
 {
 	public:
+		SnakePart(int playerNumber);
 		SnakePart(int playerNumber, int partCode);
 		int getPlayerNumber();
 		int getPartCode();

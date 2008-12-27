@@ -75,13 +75,3 @@ ObjectType::Type Object::getObjectType()
 {
 	return objectType;
 }
-
-// SnakePart *Object::getSnakePart()
-// {
-// 	if (objectType == ObjectType::SnakePart)
-// 	{
-// 		return (SnakePart *)this;
-// 	}
-// 	
-// 	return 0;
-// }
