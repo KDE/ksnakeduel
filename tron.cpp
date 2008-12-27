@@ -210,7 +210,7 @@ void Tron::newApple()
 	int x = rand() % pf.getWidth();
 	int y = rand() % pf.getHeight();
 
-	while (pf.getObjectAt(x, y)->getOldType() != KTronEnum::BACKGROUND)
+	while (pf.getObjectAt(x, y)->getObjectType() != ObjectType::Object)
 	{
 		x = rand() % pf.getWidth();
 		y = rand() % pf.getHeight();
@@ -342,11 +342,11 @@ bool Tron::crashed(int playerNr,int xInc, int yInc)
 	if (newX < 0 || newY < 0 || newX >= pf.getWidth() || newY >= pf.getHeight())
 		flag=true;
 	else {	
-		int oldType = pf.getObjectAt(newX, newY)->getOldType();
+		ObjectType::Type objType = pf.getObjectAt(newX, newY)->getObjectType();
 
-		if (oldType == KTronEnum::ITEM1 || oldType == KTronEnum::ITEM2 || oldType == KTronEnum::ITEM3)
+		if (objType == ObjectType::Item)
 			flag=false;
-		else if (oldType != KTronEnum::BACKGROUND)
+		else if (objType != ObjectType::Object)
 			flag=true;
 		else 
 			flag=false;
@@ -646,7 +646,7 @@ void Tron::movePlayer(int playerNr)
 			SnakePart altPart(playerNr, altType);
 			pf.setObjectAt(oldX, oldY, altPart);
 		
-			if (pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM1 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM2 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM3)
+			if (pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getObjectType() == ObjectType::Item)
 			{
 				newApple();
 				players[playerNr].enlarge = 3;
@@ -973,7 +973,7 @@ if(opponentSkill() != 1)
   		index[1] = players[playerNr].yCoordinate+flags[1];
   		while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	 		index[1] < pf.getHeight() && index[1] >= 0 &&
-	 		pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND)
+	 		pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
 	 	{
     		dis_forward++;
     		index[0] += flags[0];
@@ -985,7 +985,7 @@ if(opponentSkill() != 1)
     	index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] < pf.getHeight() && index[1] >= 0 &&
-	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -996,7 +996,7 @@ if(opponentSkill() != 1)
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] <  pf.getHeight() && index[1] >= 0 &&
-	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];
@@ -1372,7 +1372,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   index[1] = players[playerNr].yCoordinate+flags[1];
   while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	 index[1] < pf.getHeight() && index[1] >= 0 &&
-	 pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
+	 pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
     dis_forward++;
     index[0] += flags[0];
     index[1] += flags[1];
@@ -1387,7 +1387,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] < pf.getHeight() && index[1] >= 0 &&
-	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -1398,7 +1398,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < pf.getWidth() && index[0] >= 0 &&
 	   index[1] <  pf.getHeight() && index[1] >= 0 &&
-	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];
