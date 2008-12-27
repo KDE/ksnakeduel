@@ -384,42 +384,6 @@ void Tron::updateDirections(int playerNr)
 	}
 	else if (playerNr == 0 || playerNr == 1)
 	{
-		int x = players[playerNr].xCoordinate;
-		int y = players[playerNr].yCoordinate;
-
-		//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(x, y);
-		//int altType = snakePart->getPartCode();
-		int altType = pf.getObjectAt(x, y)->getOldType();
-		
-		// necessary for drawing the 3d-line
-		switch(players[playerNr].dir)
-		{
-			// unset drawing flags in the moving direction
-			case Directions::Up:
-			{
-				altType &= (~KTronEnum::TOP);
-				break;
-			}
-			case Directions::Down:
-				altType &= (~KTronEnum::BOTTOM);
-				break;
-			case Directions::Right:
-				altType &= (~KTronEnum::RIGHT);
-				break;
-			case Directions::Left:
-				altType &= (~KTronEnum::LEFT);
-				break;
-			default:
-				break;
-		}
-		altType &= (~KTronEnum::HEAD);
-		
-		//kDebug() << "Altered type: " << altType;
-		
-		//snakePart->setPartCode(altType & (~KTronEnum::HEAD));
-		SnakePart altPart(playerNr, altType);
-		pf.setObjectAt(x, y, altPart);
-
 		players[playerNr].last_dir = players[playerNr].dir;
 	}
 
@@ -594,6 +558,9 @@ void Tron::movePlayer(int playerNr)
 	{
 		updateDirections(playerNr);
 
+		int oldX = players[playerNr].xCoordinate;
+		int oldY = players[playerNr].yCoordinate;
+
 		int newType; // determine type of rect to set
 		if(playerNr==0)
 		{
@@ -646,6 +613,39 @@ void Tron::movePlayer(int playerNr)
 		}
 		if(players[playerNr].alive)
 		{
+			//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(x, y);
+			//int altType = snakePart->getPartCode();
+			int altType = pf.getObjectAt(oldX, oldY)->getOldType();
+			
+			// necessary for drawing the 3d-line
+			switch(players[playerNr].dir)
+			{
+				// unset drawing flags in the moving direction
+				case Directions::Up:
+				{
+					altType &= (~KTronEnum::TOP);
+					break;
+				}
+				case Directions::Down:
+					altType &= (~KTronEnum::BOTTOM);
+					break;
+				case Directions::Right:
+					altType &= (~KTronEnum::RIGHT);
+					break;
+				case Directions::Left:
+					altType &= (~KTronEnum::LEFT);
+					break;
+				default:
+					break;
+			}
+			altType &= (~KTronEnum::HEAD);
+			
+			//kDebug() << "Altered type: " << altType;
+			
+			//snakePart->setPartCode(altType & (~KTronEnum::HEAD));
+			SnakePart altPart(playerNr, altType);
+			pf.setObjectAt(oldX, oldY, altPart);
+		
 			if (pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM1 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM2 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM3)
 			{
 				newApple();
@@ -663,37 +663,6 @@ void Tron::movePlayer(int playerNr)
 
 			SnakePart newPart(playerNr, newType);
 			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, newPart);
-		}
-		else
-		{
-			//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate);
-			//int altType = snakePart->getPartCode();
-			int altType = pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType();
-		
-			switch (players[playerNr].last_dir)
-			{
-				case Directions::Up:
-					altType |= KTronEnum::TOP;
-					break;
-				case Directions::Down:
-					altType |= KTronEnum::BOTTOM;
-					break;
-				case Directions::Right:
-					altType |= KTronEnum::RIGHT;
-					break;
-				case Directions::Left:
-					altType |= KTronEnum::LEFT;
-					break;
-				default:
-					break;
-			}
-			altType |= KTronEnum::HEAD;
-			
-			//kDebug() << "Altered type: " << altType;
-			
-			//snakePart->setPartCode(altType);
-			SnakePart altPart(playerNr, altType);
-			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, altPart);
 		}
 
 		if (players[playerNr].alive && players[playerNr].enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
