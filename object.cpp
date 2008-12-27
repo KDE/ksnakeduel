@@ -61,6 +61,11 @@ void Object::setOldType(int type)
 	oldType = type;
 }
 
+ObjectType::Type Object::getObjectType()
+{
+	return objectType;
+}
+
 // SnakePart *Object::getSnakePart()
 // {
 // 	if (objectType == ObjectType::SnakePart)

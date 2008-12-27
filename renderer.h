@@ -50,7 +50,6 @@ class Renderer {
 
 		QPixmap getPart(QString partName);
 		QPixmap getPartOfSize(QString partName, QSize &partSize);
-		QString decodePart(int);
 		QPixmap background();
 		QPixmap messageBox(QString &message);
 

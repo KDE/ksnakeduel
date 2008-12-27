@@ -46,6 +46,7 @@ class Object
 		QString getSVGName();
 		int getOldType();
 		void setOldType(int type);
+		ObjectType::Type getObjectType();
 		//SnakePart *getSnakePart();
 
 	private:

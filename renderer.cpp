@@ -24,6 +24,7 @@
 #include "renderer.h"
 #include "settings.h"
 #include "tron.h"
+#include "object.h"
 #include "fontutils.h"
 
 #include <QPainter>
@@ -111,133 +112,6 @@ bool Renderer::loadTheme(const QString &name)
     if (discardCache)
         p->m_cache.discard();
     return true;
-}
-
-QString Renderer::decodePart(int type)
-{
-	QString name;
-
-	if (type & KTronEnum::ITEM1)
-	{
-		name = "item1";
-		return name;
-	}
-	else if (type & KTronEnum::ITEM2)
-	{
-		name = "item2";
-		return name;
-	}
-	else if (type & KTronEnum::ITEM3)
-	{
-		name = "item3";
-		return name;
-	}
-
-
-	// Player
-	if (type & KTronEnum::PLAYER1)
-	{
-		name = "tron1-";
-	}
-	else if (type & KTronEnum::PLAYER2)
-	{
-		name = "tron2-";
-	}
-
-	// Heads (or tails)
-	if (type & KTronEnum::HEAD)
-	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "head-north";
-		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "head-south";
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
-		{
-			name += "head-west";
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
-		{
-			name += "head-east";
-		}
-
-		return name;
-	}
-	else if (type & KTronEnum::TAIL)
-	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-south";
-		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-north";
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
-		{
-			name += "tail-east";
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-west";
-		}
-
-		return name;
-	}
-	else
-	{
-		if ((type & KTronEnum::TOP) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-south2";
-			return name;
-		}
-		else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-north2";
-			return name;
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::LEFT))
-		{
-			name += "tail-east2";
-			return name;
-		}
-		else if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
-		{
-			name += "tail-west2";
-			return name;
-		}
-	}
-
-	// Bodys
-	if ((type & KTronEnum::TOP) && (type & KTronEnum::BOTTOM))
-	{
-		name += "body-h";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-v";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::TOP))
-	{
-		name += "body-nw";
-	}
-	else if ((type & KTronEnum::TOP) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-ne";
-	}
-	else if ((type & KTronEnum::LEFT) && (type & KTronEnum::BOTTOM))
-	{
-		name += "body-sw";
-	}
-	else if ((type & KTronEnum::BOTTOM) && (type & KTronEnum::RIGHT))
-	{
-		name += "body-se";
-	}
-
-	return name;
 }
 
 QPixmap Renderer::getPart(QString frameSvgName)
@@ -364,7 +238,7 @@ void Renderer::updatePlayField(PlayField &playfield)
 	{
 		for(j = 0; j < playfield.getHeight(); ++j)
 		{
-			if (playfield.getObjectAt(i, j)->getOldType() != KTronEnum::BACKGROUND)
+			if (playfield.getObjectAt(i, j)->getObjectType() != ObjectType::Object)
 			{
 				drawPart(painter, i, j, playfield.getObjectAt(i, j)->getSVGName());
 			}
