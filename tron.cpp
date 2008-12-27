@@ -102,13 +102,9 @@ Tron::~Tron()
 
 void Tron::resizeRenderer()
 {
-	// field size
-	fieldWidth=TRON_PLAYFIELD_WIDTH;
-	fieldHeight=TRON_PLAYFIELD_HEIGHT;
-
 	// Block size
-	blockWidth = width() / (TRON_PLAYFIELD_WIDTH + 2);
-	blockHeight = height() / (TRON_PLAYFIELD_HEIGHT + 2);
+	blockWidth = width() / (pf.getWidth() + 2);
+	blockHeight = height() / (pf.getHeight() + 2);
 	if (blockWidth > blockHeight)
 	{
 		blockWidth = blockHeight;
@@ -157,8 +153,8 @@ void Tron::reset()
 	pf.initialize();
 
 	// set start coordinates
-	players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
-	players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
+	players[0].setCoordinates(pf.getWidth() / 3, pf.getHeight() / 2);
+	players[1].setCoordinates(2 * pf.getWidth() / 3, pf.getHeight() / 2);
 	players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
 	players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
 	
@@ -211,13 +207,13 @@ void Tron::startGame()
 
 void Tron::newApple()
 {
-	int x = rand() % TRON_PLAYFIELD_WIDTH;
-	int y = rand() % TRON_PLAYFIELD_HEIGHT;
+	int x = rand() % pf.getWidth();
+	int y = rand() % pf.getHeight();
 
 	while (pf.getObjectAt(x, y)->getOldType() != KTronEnum::BACKGROUND)
 	{
-		x = rand() % TRON_PLAYFIELD_WIDTH;
-		y = rand() % TRON_PLAYFIELD_HEIGHT;
+		x = rand() % pf.getWidth();
+		y = rand() % pf.getHeight();
 	}
 
 	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
@@ -343,7 +339,7 @@ bool Tron::crashed(int playerNr,int xInc, int yInc)
 	int newX = players[playerNr].xCoordinate + xInc;
 	int newY = players[playerNr].yCoordinate + yInc;
 
-	if (newX < 0 || newY < 0 || newX >= fieldWidth || newY >= fieldHeight)
+	if (newX < 0 || newY < 0 || newX >= pf.getWidth() || newY >= pf.getHeight())
 		flag=true;
 	else {	
 		int oldType = pf.getObjectAt(newX, newY)->getOldType();
@@ -666,7 +662,6 @@ void Tron::movePlayer(int playerNr)
 			}
 
 			SnakePart newPart(playerNr, newType);
-			//playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
 			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, newPart);
 		}
 		else
@@ -1007,8 +1002,8 @@ if(opponentSkill() != 1)
   		// check forward
   		index[0] = players[playerNr].xCoordinate+flags[0];
   		index[1] = players[playerNr].yCoordinate+flags[1];
-  		while (index[0] < fieldWidth && index[0] >= 0 &&
-	 		index[1] < fieldHeight && index[1] >= 0 &&
+  		while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	 		index[1] < pf.getHeight() && index[1] >= 0 &&
 	 		pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND)
 	 	{
     		dis_forward++;
@@ -1019,8 +1014,8 @@ if(opponentSkill() != 1)
     	// check left
     	index[0] = players[playerNr].xCoordinate+flags[2];
     	index[1] = players[playerNr].yCoordinate+flags[3];
-    while (index[0] < fieldWidth && index[0] >= 0 &&
-	   index[1] < fieldHeight && index[1] >= 0 &&
+    while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	   index[1] < pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
@@ -1030,8 +1025,8 @@ if(opponentSkill() != 1)
     // check right
     index[0] = players[playerNr].xCoordinate+flags[4];
     index[1] = players[playerNr].yCoordinate+flags[5];
-    while (index[0] < fieldWidth && index[0] >= 0 &&
-	   index[1] <  fieldHeight && index[1] >= 0 &&
+    while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	   index[1] <  pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];
@@ -1406,8 +1401,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   // check forward
   index[0] = players[playerNr].xCoordinate+flags[0];
   index[1] = players[playerNr].yCoordinate+flags[1];
-  while (index[0] < fieldWidth && index[0] >= 0 &&
-	 index[1] < fieldHeight && index[1] >= 0 &&
+  while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	 index[1] < pf.getHeight() && index[1] >= 0 &&
 	 pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
     dis_forward++;
     index[0] += flags[0];
@@ -1421,8 +1416,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     // check left
     index[0] = players[playerNr].xCoordinate+flags[2];
     index[1] = players[playerNr].yCoordinate+flags[3];
-    while (index[0] < fieldWidth && index[0] >= 0 &&
-	   index[1] < fieldHeight && index[1] >= 0 &&
+    while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	   index[1] < pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
@@ -1432,8 +1427,8 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     // check right
     index[0] = players[playerNr].xCoordinate+flags[4];
     index[1] = players[playerNr].yCoordinate+flags[5];
-    while (index[0] < fieldWidth && index[0] >= 0 &&
-	   index[1] <  fieldHeight && index[1] >= 0 &&
+    while (index[0] < pf.getWidth() && index[0] >= 0 &&
+	   index[1] <  pf.getHeight() && index[1] >= 0 &&
 	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];

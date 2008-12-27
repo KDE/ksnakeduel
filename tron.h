@@ -129,7 +129,6 @@ class Tron : public QWidget
 
 	private:
 		/** The playingfield */
-		//QVector< QVector<int> > playfield;
 		PlayField pf;
 		/** game status flag */
 		bool gamePaused;
@@ -137,10 +136,6 @@ class Tron : public QWidget
 		bool gameEnded;
 		/**  used for waiting after game ended */
 		bool gameBlocked;
-		/** Height  of the playingfield in number of rects*/
-		int fieldHeight;
-		/** Width of the playingfield in number of rects*/
-		int fieldWidth;
 		QTimer *timer;
 		Item apple;
 
