@@ -224,8 +224,6 @@ void Tron::stopGame()
 	gameEnded = true;
 	players[0].dir = Directions::Up;
 	players[1].dir = Directions::Up;
-	players[0].last_dir = Directions::Up;
-	players[1].last_dir = Directions::Up;
 }
 
 void Tron::togglePause() // pause or continue game
@@ -357,31 +355,16 @@ void Tron::switchDir(int playerNr, Directions::Direction newDirection)
      return;
   }
 
-    if (newDirection==Directions::Up && players[playerNr].last_dir==Directions::Down)
+    if (newDirection == Directions::Up && players[playerNr].dir == Directions::Down)
       return;
-    if (newDirection==Directions::Down && players[playerNr].last_dir==Directions::Up)
+    if (newDirection == Directions::Down && players[playerNr].dir == Directions::Up)
       return;
-    if (newDirection==Directions::Left && players[playerNr].last_dir==Directions::Right)
+    if (newDirection == Directions::Left && players[playerNr].dir == Directions::Right)
       return;
-    if (newDirection==Directions::Right && players[playerNr].last_dir==Directions::Left)
+    if (newDirection == Directions::Right && players[playerNr].dir == Directions::Left)
       return;
 
   players[playerNr].dir=newDirection;
-}
-
-void Tron::updateDirections(int playerNr)
-{
-	if (playerNr == -1)
-	{
-		updateDirections(0);
-		updateDirections(1);
-	}
-	else if (playerNr == 0 || playerNr == 1)
-	{
-		players[playerNr].last_dir = players[playerNr].dir;
-	}
-
-	update();
 }
 
 /* *************************************************************** **
@@ -550,7 +533,7 @@ void Tron::movePlayer(int playerNr)
 {
 	if (playerNr == 0 || playerNr == 1)
 	{
-		updateDirections(playerNr);
+		//updateDirections(playerNr);
 
 		int oldX = players[playerNr].xCoordinate;
 		int oldY = players[playerNr].yCoordinate;
@@ -819,7 +802,7 @@ void Tron::doMove()
 				think(i);
 		}
 
-		updateDirections(0);
+		//updateDirections(0);
 
 		for (i = 0; i < 2; ++i)
 		{

@@ -31,7 +31,6 @@ Player::Player()
 	score=0;
 	reset();
 	dir=Directions::Up;
-	last_dir=Directions::Up;
 	enlarge=0;
 }
 

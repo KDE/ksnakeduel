@@ -181,14 +181,6 @@ class Tron : public QWidget
 
 		/** sets the direction of player playerNr to newDirection */
 		void switchDir(int playerNr,Directions::Direction newDirection);
-		/**
-		* updates the the rect at current position to not draw a
-		* border in the direction of the next step.
-		* (only used in mode OLine)
-		*
-		* -1 means update both players
-		*/
-		void updateDirections(int playerNr=-1);
 		void movePlayer(int playerNr);
 
 

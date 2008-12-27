@@ -62,7 +62,6 @@ class Player
 		int score;
 		bool alive;
 		Directions::Direction dir;
-		Directions::Direction last_dir;
 		bool accelerated;
 		bool keyPressed;
 		bool computer;
