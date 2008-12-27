@@ -77,5 +77,11 @@ int PlayField::getHeight()
 //
 void PlayField::setObjectAt(int x, int y, Object &o)
 {
+	if (x < 0 || x >= width || y < 0 || y >= height) {
+		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
+
+		return;
+	}
+	
 	playfield[x * height + y] = o;
 }
