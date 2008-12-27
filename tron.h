@@ -92,7 +92,7 @@ class Tron : public QWidget
 		bool running();
 		bool paused();
 
-		player players[2];
+		Player players[2];
 
 	public slots:
 		/** Starts a new game. The difference to reset is, that the players

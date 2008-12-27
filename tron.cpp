@@ -59,6 +59,11 @@
 
 Tron::Tron(QWidget *parent) : QWidget(parent)
 {
+	players[0].setPlayerNumber(0);
+	players[1].setPlayerNumber(1);
+	players[0].referencePlayField(pf);
+	players[1].referencePlayField(pf);
+
 	lookForward = 15;
 
 	random.setSeed(0);
@@ -153,22 +158,11 @@ void Tron::reset()
 	pf.initialize();
 
 	// set start coordinates
-	players[0].setCoordinates(pf.getWidth() / 3, pf.getHeight() / 2);
-	players[1].setCoordinates(2 * pf.getWidth() / 3, pf.getHeight() / 2);
-	players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
-	players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
-	
-	SnakePart p1Head(0, KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD);
-	SnakePart p1Tail(0, KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL);
-	pf.setObjectAt(players[0].xCoordinate, players[0].yCoordinate, p1Head);
-	pf.setObjectAt(players[0].xCoordinate, players[0].yCoordinate + 1, p1Tail);
+	players[0].setStartPosition();
 	
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
-		SnakePart p2Head(1, KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD);
-		SnakePart p2Tail(1, KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL);
-		pf.setObjectAt(players[1].xCoordinate, players[1].yCoordinate, p2Head);
-		pf.setObjectAt(players[1].xCoordinate, players[1].yCoordinate + 1, p2Tail);
+		players[1].setStartPosition();
 	}
 
 	updatePixmap();

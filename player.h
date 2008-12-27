@@ -24,6 +24,10 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include "snakepart.h"
+
+#include "playfield.h"
+
 #include <QQueue>
 
 namespace Directions
@@ -40,14 +44,18 @@ namespace Directions
 /**
 * @short This class represents a player with current position and several flags
 */
-class player
+class Player
 {
 	public:
-		player();
+		Player();
+		void referencePlayField(PlayField &pf);
+		void setPlayerNumber(int playerNr);
+		int getPlayerNumber();
 		void reset();
 		void setCoordinates(int x, int y);
 		void setCoordinatesTail(int x, int y);
 		void setComputer(bool computer);
+		void setStartPosition();
 
 		int xCoordinate,yCoordinate;
 		int xCoordinateTail,yCoordinateTail;
@@ -59,6 +67,12 @@ class player
 		bool keyPressed;
 		bool computer;
 		int enlarge;
+		
+	private:
+		int playerNumber;
+		QQueue<SnakePart> snakeParts;
+		SnakePart *snakeHead;
+		PlayField *playField;
 };
 
 #endif //PLAYER_H
