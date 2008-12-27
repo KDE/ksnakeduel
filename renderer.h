@@ -24,6 +24,8 @@
 #ifndef RENDERER_H
 #define RENDERER_H
 
+#include "playfield.h"
+
 #include <QPainter>
 #include <QString>
 #include <QSize>
@@ -48,14 +50,13 @@ class Renderer {
 
 		QPixmap getPart(QString partName);
 		QPixmap getPartOfSize(QString partName, QSize &partSize);
-		QPixmap snakePart(int);
 		QString decodePart(int);
 		QPixmap background();
 		QPixmap messageBox(QString &message);
 
 		void resetPlayField();
-		void drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y);
-		void updatePlayField(QVector< QVector<int> > &playfield);
+		void drawPart(QPainter & painter, int x, int y, QString svgName);
+		void updatePlayField(PlayField &playfield);
 		QPixmap *getPlayField();
 
 		QPixmap pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size);

@@ -21,10 +21,18 @@
 
   *******************************************************************************/  
 
-#include <QString>
-
 #ifndef OBJECT_H
 #define OBJECT_H
+
+#include <QString>
+
+namespace ObjectType {
+	enum Type {
+		Object,
+		Item,
+		SnakePart
+	};
+}
 
 /**
 * @short This class represents a drawable object on the playfield
@@ -33,12 +41,18 @@ class Object
 {
 	public:
 		Object();
+		Object(ObjectType::Type t);
 		void setCoordinates(int x, int y);
 		QString getSVGName();
+		int getOldType();
+		void setOldType(int type);
+		//SnakePart *getSnakePart();
 
 	private:
 		int xCoordinate, yCoordinate;
 		QString svgName;
+		int oldType;
+		ObjectType::Type objectType;
 		
 	protected:
 		void setSVGName(QString svgName);

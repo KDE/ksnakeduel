@@ -25,12 +25,17 @@
 
 #include "tron.h"
 
-SnakePart::SnakePart(int playerNumber, int partCode) : Object()
+#include <KDebug>
+
+SnakePart::SnakePart(int playerNumber, int partCode) : Object(ObjectType::SnakePart)
 {
 	this->partCode = partCode;
 	this->playerNumber = playerNumber;
 	
-	setSVGName(decodePart(playerNumber, partCode));
+	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
+	
+	setSVGName(decodePart(this->playerNumber, this->partCode));
+	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
 }
 
 //
@@ -39,19 +44,22 @@ SnakePart::SnakePart(int playerNumber, int partCode) : Object()
 
 int SnakePart::getPlayerNumber()
 {
-	return playerNumber;
+	return this->playerNumber;
 }
 
 int SnakePart::getPartCode()
 {
-	return partCode;
+	return this->partCode;
 }
 
 void SnakePart::setPartCode(int partCode)
 {
 	this->partCode = partCode;
 	
-	setSVGName(decodePart(playerNumber, partCode));
+	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
+	
+	setSVGName(decodePart(this->playerNumber, this->partCode));
+	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
 }
 
 //

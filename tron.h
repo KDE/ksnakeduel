@@ -24,6 +24,10 @@
 #ifndef TRON_H
 #define TRON_H
 
+#include "player.h"
+#include "item.h"
+#include "playfield.h"
+
 #include <QWidget>
 #include <QPainter>
 #include <QPixmap>
@@ -33,9 +37,6 @@
 #include <QFocusEvent>
 #include <math.h>
 #include <krandomsequence.h>
-
-#include "player.h"
-#include "item.h"
 
 // Old style, board as big as screen
 #define TRON_FRAMESIZE 2
@@ -128,7 +129,8 @@ class Tron : public QWidget
 
 	private:
 		/** The playingfield */
-		QVector< QVector<int> > playfield;
+		//QVector< QVector<int> > playfield;
+		PlayField pf;
 		/** game status flag */
 		bool gamePaused;
 		/** game status flag */
@@ -183,7 +185,7 @@ class Tron : public QWidget
 		/** calculates if player playerNr would crash
 		* if he moves xInc in x-direction and yInc in y-direction
 		*/
-		bool crashed(int playerNr,int xInc, int yInc) const;
+		bool crashed(int playerNr,int xInc, int yInc);
 		/** calculates if player playerNr should change direction */
 		void think(int playerNr);
 		void changeDirection(int playerNr,int dis_right,int dis_left);

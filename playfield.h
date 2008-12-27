@@ -36,7 +36,12 @@ class PlayField
 	public:
 		PlayField();
 		void initialize();
+		
 		Object *getObjectAt(int x, int y);
+		int getWidth();
+		int getHeight();
+		
+		void setObjectAt(int x, int y, Object &o);
 		
 	private:
 		QVector< Object > playfield;

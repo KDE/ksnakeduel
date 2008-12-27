@@ -240,13 +240,6 @@ QString Renderer::decodePart(int type)
 	return name;
 }
 
-QPixmap Renderer::snakePart(int part)
-{
-    QString partName = decodePart(part);
-
-	return getPart(partName);
-}
-
 QPixmap Renderer::getPart(QString frameSvgName)
 {
 	return getPartOfSize(frameSvgName, p->m_partSize);
@@ -338,7 +331,7 @@ void Renderer::resetPlayField()
 	//p->m_playField->fill(Qt::green);
 }
 
-void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
+void Renderer::updatePlayField(PlayField &playfield)
 {
 	int i, j;
 
@@ -354,11 +347,11 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	painter.drawPixmap(0, 0, bgPix);
 
 	// Draw border
-	for (i = 0; i < TRON_PLAYFIELD_WIDTH + 2; ++i) 
+	for (i = 0; i < playfield.getWidth() + 2; ++i) 
 	{
-		for (j = 0; j < TRON_PLAYFIELD_HEIGHT + 2; ++j) 
+		for (j = 0; j < playfield.getHeight() + 2; ++j) 
 		{
-			if (i == 0 || i == TRON_PLAYFIELD_WIDTH + 1 || j == 0 || j == TRON_PLAYFIELD_HEIGHT + 1)
+			if (i == 0 || i == playfield.getWidth() + 1 || j == 0 || j == playfield.getHeight() + 1)
 			{
 				QPixmap part = Renderer::self()->getPart("border");
 				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
@@ -367,13 +360,13 @@ void Renderer::updatePlayField(QVector< QVector<int> > &playfield)
 	}
 
 	// Examine all pixels and draw
-	for(i = 0; i < TRON_PLAYFIELD_WIDTH; ++i)
+	for(i = 0; i < playfield.getWidth(); ++i)
 	{
-		for(j = 0; j < TRON_PLAYFIELD_HEIGHT; ++j)
+		for(j = 0; j < playfield.getHeight(); ++j)
 		{
-			if(playfield[i][j] != KTronEnum::BACKGROUND)
+			if (playfield.getObjectAt(i, j)->getOldType() != KTronEnum::BACKGROUND)
 			{
-				drawPart(playfield, painter, i, j);
+				drawPart(painter, i, j, playfield.getObjectAt(i, j)->getSVGName());
 			}
 		}
 	}
@@ -391,14 +384,16 @@ int Renderer::calculateOffsetY(int y)
 	return (y * p->m_partSize.height()) + (p->m_sceneSize.height() - (TRON_PLAYFIELD_HEIGHT + 2) * p->m_partSize.height()) / 2;
 }
 
-void Renderer::drawPart(QVector< QVector<int> > &playfield, QPainter & painter, int x, int y)
+void Renderer::drawPart(QPainter & painter, int x, int y, QString svgName)
 {
+	//kDebug() << "Drawing part: " << svgName;
+
 	int xOffset = calculateOffsetX(x + 1);
 	int yOffset = calculateOffsetY(y + 1);
 
-	int type = playfield[x][y];
+	//int type = playfield[x][y];
 
-	QPixmap snakePart = Renderer::self()->snakePart(type);
+	QPixmap snakePart = Renderer::self()->getPart(svgName);
 
 	painter.drawPixmap(xOffset, yOffset, snakePart);
 }

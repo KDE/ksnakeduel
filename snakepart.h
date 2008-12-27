@@ -31,7 +31,7 @@
 /**
 * @short This class represents a part of a snake on the playfield
 */
-class SnakePart : Object
+class SnakePart : public Object
 {
 	public:
 		SnakePart(int playerNumber, int partCode);

@@ -25,26 +25,41 @@
 
 #include "tron.h"
 
-Item::Item() : Object()
+Item::Item() : Object(ObjectType::Item)
 {
+	setSVGName("item1");
+	setOldType(KTronEnum::ITEM1);
 }
+
+//
+// Getters / Setters
+//
 
 void Item::setType(int t)
 {
 	type = t;
 	
-	if (type & KTronEnum::ITEM1)
+	switch (type)
 	{
-		setSVGName("item1");
+		default:
+		case 0:
+			setSVGName("item1");
+			setOldType(KTronEnum::ITEM1);
+			break;
+		case 1:
+			setSVGName("item2");
+			setOldType(KTronEnum::ITEM2);
+			break;
+		case 2:
+			setSVGName("item3");
+			setOldType(KTronEnum::ITEM3);
+			break;
 	}
-	else if (type & KTronEnum::ITEM2)
-	{
-		setSVGName("item2");
-	}
-	else if (type & KTronEnum::ITEM3)
-	{
-		setSVGName("item3");
-	}
+}
+
+int Item::getType()
+{
+	return type;
 }
 
 void Item::setCoordinates(int x, int y)

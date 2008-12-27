@@ -29,11 +29,12 @@
 /**
 * @short This class represents a player with current position and several flags
 */
-class Item : Object
+class Item : public Object
 {
 	public:
 		Item();
 		void setType(int type);
+		int getType();
 		void setCoordinates(int x, int y);
 
 		int xCoordinate,yCoordinate;

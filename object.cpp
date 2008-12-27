@@ -23,8 +23,18 @@
   
 #include "object.h"
 
+#include "tron.h"
+
 Object::Object()
 {
+	objectType = ObjectType::Object;
+	setOldType(KTronEnum::BACKGROUND);
+}
+
+Object::Object(ObjectType::Type t)
+{
+	objectType = t;
+	setOldType(KTronEnum::BACKGROUND);
 }
 
 QString Object::getSVGName() {
@@ -40,3 +50,23 @@ void Object::setCoordinates(int x, int y)
 	xCoordinate=x;
 	yCoordinate=y;
 }
+
+int Object::getOldType()
+{
+	return oldType;
+}
+
+void Object::setOldType(int type)
+{
+	oldType = type;
+}
+
+// SnakePart *Object::getSnakePart()
+// {
+// 	if (objectType == ObjectType::SnakePart)
+// 	{
+// 		return (SnakePart *)this;
+// 	}
+// 	
+// 	return 0;
+// }

@@ -50,6 +50,8 @@
 #include "item.h"
 #include "settings.h"
 #include "renderer.h"
+#include "snakepart.h"
+#include "object.h"
 
 /**
  * init-functions
@@ -124,13 +126,8 @@ void Tron::resizeRenderer()
 void Tron::createNewPlayfield()
 {
 	resizeRenderer();
-
-	// start positions
-	playfield.resize(fieldWidth);
-	for (int i = 0; i < fieldWidth; ++i)
-	{
-		playfield[i].resize(fieldHeight);
-	}
+	
+	pf.initialize();
 }
 
 void Tron::newGame()
@@ -157,25 +154,25 @@ void Tron::reset()
 		setVelocity( lineSpeed() );
 	}
 
-	int i;
-	for(i = 0; i < fieldWidth; ++i)
-	{
-		playfield[i].fill(KTronEnum::BACKGROUND);
-	}
+	pf.initialize();
 
 	// set start coordinates
 	players[0].setCoordinates(fieldWidth/3, fieldHeight/2);
 	players[1].setCoordinates(2*fieldWidth/3, fieldHeight/2);
 	players[0].setCoordinatesTail(players[0].xCoordinate, players[0].yCoordinate + 1);
 	players[1].setCoordinatesTail(players[1].xCoordinate, players[1].yCoordinate + 1);
-
-	playfield[players[0].xCoordinate][players[0].yCoordinate] = KTronEnum::PLAYER1 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-	playfield[players[0].xCoordinate][players[0].yCoordinate + 1] = KTronEnum::PLAYER1 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+	
+	SnakePart p1Head(0, KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD);
+	SnakePart p1Tail(0, KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL);
+	pf.setObjectAt(players[0].xCoordinate, players[0].yCoordinate, p1Head);
+	pf.setObjectAt(players[0].xCoordinate, players[0].yCoordinate + 1, p1Tail);
 	
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
-		playfield[players[1].xCoordinate][players[1].yCoordinate] = KTronEnum::PLAYER2 | KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD;
-		playfield[players[1].xCoordinate][players[1].yCoordinate + 1] = KTronEnum::PLAYER2 | KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL;
+		SnakePart p2Head(1, KTronEnum::TOP | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::HEAD);
+		SnakePart p2Tail(1, KTronEnum::BOTTOM | KTronEnum::LEFT | KTronEnum::RIGHT | KTronEnum::TAIL);
+		pf.setObjectAt(players[1].xCoordinate, players[1].yCoordinate, p2Head);
+		pf.setObjectAt(players[1].xCoordinate, players[1].yCoordinate + 1, p2Tail);
 	}
 
 	updatePixmap();
@@ -217,25 +214,18 @@ void Tron::newApple()
 	int x = rand() % TRON_PLAYFIELD_WIDTH;
 	int y = rand() % TRON_PLAYFIELD_HEIGHT;
 
-	while (playfield[x][y] != KTronEnum::BACKGROUND)
+	while (pf.getObjectAt(x, y)->getOldType() != KTronEnum::BACKGROUND)
 	{
 		x = rand() % TRON_PLAYFIELD_WIDTH;
 		y = rand() % TRON_PLAYFIELD_HEIGHT;
 	}
 
+	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
+
 	apple.setCoordinates(x, y);
-	switch ((int)(rand() % 3)) {
-		default:
-		case 0:
-			playfield[x][y] = KTronEnum::ITEM1;
-			break;
-		case 1:
-			playfield[x][y] = KTronEnum::ITEM2;
-			break;
-		case 2:
-			playfield[x][y] = KTronEnum::ITEM3;
-			break;
-	}
+	apple.setType((int)(rand() % 3));
+	
+	pf.setObjectAt(x, y, apple);
 }
 
 void Tron::stopGame()
@@ -289,7 +279,7 @@ void Tron::showWinner(KTronEnum::Player player)
 
 void Tron::updatePixmap()
 {
-	Renderer::self()->updatePlayField(playfield);
+	Renderer::self()->updatePlayField(pf);
 }
 
 /* *************************************************************** **
@@ -347,21 +337,26 @@ bool Tron::isComputer(KTronEnum::Player player)
 **                    moving functions										 **
 ** *************************************************************** */
 
-bool Tron::crashed(int playerNr,int xInc, int yInc) const
+bool Tron::crashed(int playerNr,int xInc, int yInc)
 {
-  bool flag;
-  int newX=players[playerNr].xCoordinate+xInc;
-  int newY=players[playerNr].yCoordinate+yInc;
+	bool flag;
+	int newX = players[playerNr].xCoordinate + xInc;
+	int newY = players[playerNr].yCoordinate + yInc;
 
-  if(newX<0 || newY <0 || newX>=fieldWidth || newY>=fieldHeight)
-     flag=true;
-  else if(playfield[newX][newY] == KTronEnum::ITEM1 || playfield[newX][newY] == KTronEnum::ITEM2 || playfield[newX][newY] == KTronEnum::ITEM3)
-    flag=false;
-  else if(playfield[newX][newY] != KTronEnum::BACKGROUND)
-    flag=true;
-  else flag=false;
+	if (newX < 0 || newY < 0 || newX >= fieldWidth || newY >= fieldHeight)
+		flag=true;
+	else {	
+		int oldType = pf.getObjectAt(newX, newY)->getOldType();
 
-  return flag;
+		if (oldType == KTronEnum::ITEM1 || oldType == KTronEnum::ITEM2 || oldType == KTronEnum::ITEM3)
+			flag=false;
+		else if (oldType != KTronEnum::BACKGROUND)
+			flag=true;
+		else 
+			flag=false;
+	}
+
+	return flag;
 }
 
 void Tron::switchDir(int playerNr, Directions::Direction newDirection)
@@ -396,28 +391,38 @@ void Tron::updateDirections(int playerNr)
 		int x = players[playerNr].xCoordinate;
 		int y = players[playerNr].yCoordinate;
 
+		//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(x, y);
+		//int altType = snakePart->getPartCode();
+		int altType = pf.getObjectAt(x, y)->getOldType();
+		
 		// necessary for drawing the 3d-line
 		switch(players[playerNr].dir)
 		{
 			// unset drawing flags in the moving direction
 			case Directions::Up:
 			{
-				playfield[x][y] &= (~KTronEnum::TOP);
+				altType &= (~KTronEnum::TOP);
 				break;
 			}
 			case Directions::Down:
-				playfield[x][y] &= (~KTronEnum::BOTTOM);
+				altType &= (~KTronEnum::BOTTOM);
 				break;
 			case Directions::Right:
-				playfield[x][y] &= (~KTronEnum::RIGHT);
+				altType &= (~KTronEnum::RIGHT);
 				break;
 			case Directions::Left:
-				playfield[x][y] &= (~KTronEnum::LEFT);
+				altType &= (~KTronEnum::LEFT);
 				break;
 			default:
 				break;
 		}
-		playfield[x][y] &= (~KTronEnum::HEAD);
+		altType &= (~KTronEnum::HEAD);
+		
+		//kDebug() << "Altered type: " << altType;
+		
+		//snakePart->setPartCode(altType & (~KTronEnum::HEAD));
+		SnakePart altPart(playerNr, altType);
+		pf.setObjectAt(x, y, altPart);
 
 		players[playerNr].last_dir = players[playerNr].dir;
 	}
@@ -645,7 +650,7 @@ void Tron::movePlayer(int playerNr)
 		}
 		if(players[playerNr].alive)
 		{
-			if (playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM1 || playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM2 || playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] == KTronEnum::ITEM3)
+			if (pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM1 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM2 || pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType() == KTronEnum::ITEM3)
 			{
 				newApple();
 				players[playerNr].enlarge = 3;
@@ -660,61 +665,95 @@ void Tron::movePlayer(int playerNr)
 				emit updatedScore();
 			}
 
-			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
+			SnakePart newPart(playerNr, newType);
+			//playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate]=newType;
+			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, newPart);
 		}
 		else
 		{
+			//SnakePart *snakePart = (SnakePart *)pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate);
+			//int altType = snakePart->getPartCode();
+			int altType = pf.getObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate)->getOldType();
+		
 			switch (players[playerNr].last_dir)
 			{
 				case Directions::Up:
-					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::TOP;
+					altType |= KTronEnum::TOP;
 					break;
 				case Directions::Down:
-					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::BOTTOM;
+					altType |= KTronEnum::BOTTOM;
 					break;
 				case Directions::Right:
-					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::RIGHT;
+					altType |= KTronEnum::RIGHT;
 					break;
 				case Directions::Left:
-					playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::LEFT;
+					altType |= KTronEnum::LEFT;
 					break;
 				default:
 					break;
 			}
-			playfield[players[playerNr].xCoordinate][players[playerNr].yCoordinate] |= KTronEnum::HEAD;
+			altType |= KTronEnum::HEAD;
+			
+			//kDebug() << "Altered type: " << altType;
+			
+			//snakePart->setPartCode(altType);
+			SnakePart altPart(playerNr, altType);
+			pf.setObjectAt(players[playerNr].xCoordinate, players[playerNr].yCoordinate, altPart);
 		}
 
 		if (players[playerNr].alive && players[playerNr].enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
 		{
 			int oldxtail = players[playerNr].xCoordinateTail;
 			int oldytail = players[playerNr].yCoordinateTail;
+			
+			int altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
+			//SnakePart *snakePart = 0;
 
-			if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::TOP))
+			if (!(altType & KTronEnum::TOP))
 			{
 				players[playerNr].yCoordinateTail--;
 
-				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::BOTTOM;
+				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
+				//altType = snakePart->getPartCode();
+				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
+				altType |= KTronEnum::BOTTOM;
 			}
-			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::BOTTOM))
+			else if (!(altType & KTronEnum::BOTTOM))
 			{
 				players[playerNr].yCoordinateTail++;
 
-				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::TOP;
+				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
+				//altType = snakePart->getPartCode();
+				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
+				altType |= KTronEnum::TOP;
 			}
-			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::LEFT))
+			else if (!(altType & KTronEnum::LEFT))
 			{
 				players[playerNr].xCoordinateTail--;
 
-				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::RIGHT;
+				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
+				//altType = snakePart->getPartCode();
+				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
+				altType |= KTronEnum::RIGHT;
 			}
-			else if (!(playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] & KTronEnum::RIGHT))
+			else if (!(altType & KTronEnum::RIGHT))
 			{
 				players[playerNr].xCoordinateTail++;
 
-				playfield[players[playerNr].xCoordinateTail][players[playerNr].yCoordinateTail] |= KTronEnum::LEFT;
+				//snakePart = ((SnakePart *) pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail));
+				//altType = snakePart->getPartCode();
+				altType = pf.getObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail)->getOldType();
+				altType |= KTronEnum::LEFT;
 			}
+			
+			//kDebug() << "Altered type: " << altType;
+			
+			//snakePart->setPartCode(altType);
+			SnakePart altPart(playerNr, altType);
+			pf.setObjectAt(players[playerNr].xCoordinateTail, players[playerNr].yCoordinateTail, altPart);
 
-			playfield[oldxtail][oldytail] = KTronEnum::BACKGROUND;
+			Object emptyObject = Object();
+			pf.setObjectAt(oldxtail, oldytail, emptyObject);
 		}
 		else if (players[playerNr].enlarge > 0)
 		{
@@ -970,7 +1009,7 @@ if(opponentSkill() != 1)
   		index[1] = players[playerNr].yCoordinate+flags[1];
   		while (index[0] < fieldWidth && index[0] >= 0 &&
 	 		index[1] < fieldHeight && index[1] >= 0 &&
-	 		playfield[index[0]][index[1]] == KTronEnum::BACKGROUND)
+	 		pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND)
 	 	{
     		dis_forward++;
     		index[0] += flags[0];
@@ -982,7 +1021,7 @@ if(opponentSkill() != 1)
     	index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] < fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -993,7 +1032,7 @@ if(opponentSkill() != 1)
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] <  fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];
@@ -1369,7 +1408,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
   index[1] = players[playerNr].yCoordinate+flags[1];
   while (index[0] < fieldWidth && index[0] >= 0 &&
 	 index[1] < fieldHeight && index[1] >= 0 &&
-	 playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
+	 pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
     dis_forward++;
     index[0] += flags[0];
     index[1] += flags[1];
@@ -1384,7 +1423,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[3];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] < fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_left++;
       index[0] += flags[2];
       index[1] += flags[3];
@@ -1395,7 +1434,7 @@ else // Settings::skill() == Settings::EnumSkill::Easy
     index[1] = players[playerNr].yCoordinate+flags[5];
     while (index[0] < fieldWidth && index[0] >= 0 &&
 	   index[1] <  fieldHeight && index[1] >= 0 &&
-	   playfield[index[0]][index[1]] == KTronEnum::BACKGROUND) {
+	   pf.getObjectAt(index[0], index[1])->getOldType() == KTronEnum::BACKGROUND) {
       dis_right++;
       index[0] += flags[4];
       index[1] += flags[5];

@@ -25,21 +25,26 @@
 
 #include "tron.h"
 
+#include "KDebug"
+
 PlayField::PlayField()
 {
 	width = TRON_PLAYFIELD_WIDTH;
 	height = TRON_PLAYFIELD_HEIGHT;
 	
+	playfield.resize(width * height);
 	initialize();
 }
 
 void PlayField::initialize()
-{
-	playfield.resize(width * height);
-	//for (int i = 0; i < width; ++i)
-	//{
-	//	playfield[i].resize(height);
-	//}
+{	
+	int i, j;
+	for (i = 0; i < width; ++i) {
+		for (j = 0; j < height; ++j) {
+			Object newObj = Object();
+			this->setObjectAt(i, j, newObj);
+		}
+	}
 }
 
 //
@@ -48,5 +53,29 @@ void PlayField::initialize()
 
 Object *PlayField::getObjectAt(int x, int y)
 {
+	if (x < 0 || x >= width || y < 0 || y >= height) {
+		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
+
+		return 0;
+	}
+
 	return &playfield[x * height + y];
+}
+
+int PlayField::getWidth()
+{
+	return width;
+}
+
+int PlayField::getHeight()
+{
+	return height;
+}
+
+//
+// Methods for setting
+//
+void PlayField::setObjectAt(int x, int y, Object &o)
+{
+	playfield[x * height + y] = o;
 }
