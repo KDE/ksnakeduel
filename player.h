@@ -24,9 +24,17 @@
 #ifndef PLAYER_H
 #define PLAYER_H
 
+#include <QQueue>
+
 namespace Directions
 {
-  enum Direction{ None, Up, Down, Left, Right};
+	enum Direction {
+		None,
+		Up,
+		Down,
+		Left,
+		Right
+	};
 }
 
 /**
@@ -34,24 +42,24 @@ namespace Directions
 */
 class player
 {
-public:
-  player();
-  void reset();
-  void setCoordinates(int x, int y);
-  void setCoordinatesTail(int x, int y);
-  void setComputer(bool computer);
+	public:
+		player();
+		void reset();
+		void setCoordinates(int x, int y);
+		void setCoordinatesTail(int x, int y);
+		void setComputer(bool computer);
 
-  int xCoordinate,yCoordinate;
-  int xCoordinateTail,yCoordinateTail;
-  int score;
-  bool alive;
-  Directions::Direction dir;
-  Directions::Direction last_dir;
-  bool accelerated;
-  bool keyPressed;
-  bool computer;
-  int enlarge;
+		int xCoordinate,yCoordinate;
+		int xCoordinateTail,yCoordinateTail;
+		int score;
+		bool alive;
+		Directions::Direction dir;
+		Directions::Direction last_dir;
+		bool accelerated;
+		bool keyPressed;
+		bool computer;
+		int enlarge;
 };
 
-#endif
+#endif //PLAYER_H
 
