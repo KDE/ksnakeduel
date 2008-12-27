@@ -21,12 +21,15 @@
 
   *******************************************************************************/  
 
+#ifndef PLAYFIELD_H
+#define PLAYFIELD_H
+
 #include "object.h"
 
 #include <QVector>
 
-#ifndef PLAYFIELD_H
-#define PLAYFIELD_H
+#define TRON_PLAYFIELD_WIDTH 50
+#define TRON_PLAYFIELD_HEIGHT 30
 
 /**
 * @short This class represents the playfield

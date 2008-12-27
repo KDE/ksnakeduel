@@ -38,12 +38,6 @@
 #include <math.h>
 #include <krandomsequence.h>
 
-// Old style, board as big as screen
-#define TRON_FRAMESIZE 2
-// New style, fixed board width
-#define TRON_PLAYFIELD_WIDTH 50
-#define TRON_PLAYFIELD_HEIGHT 30
-
 namespace KTronEnum
 {
 	enum Player {One,Two,Both,Nobody};

@@ -21,10 +21,10 @@
 
   *******************************************************************************/  
 
-#include "object.h"
-
 #ifndef ITEM_H
 #define ITEM_H
+
+#include "object.h"
 
 /**
 * @short This class represents a player with current position and several flags

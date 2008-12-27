@@ -21,12 +21,12 @@
 
   *******************************************************************************/  
 
+#ifndef SNAKEPART_H
+#define SNAKEPART_H
+
 #include "object.h"
 
 #include <QString>
-
-#ifndef SNAKEPART_H
-#define SNAKEPART_H
 
 /**
 * @short This class represents a part of a snake on the playfield
