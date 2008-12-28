@@ -27,6 +27,7 @@
 #include "player.h"
 #include "item.h"
 #include "playfield.h"
+#include "intelligence.h"
 
 #include <QWidget>
 #include <QPainter>
@@ -35,8 +36,6 @@
 #include <QVector>
 #include <QPaintEvent>
 #include <QFocusEvent>
-#include <math.h>
-#include <krandomsequence.h>
 
 namespace KTronEnum
 {
@@ -86,14 +85,15 @@ class Tron : public QWidget
 		bool isComputer(KTronEnum::Player player);
 		void setVelocity(int);
 		void setRectSize(int newSize);
-
 		void triggerKey(int, KBAction::Action, bool);
-		
 		bool running();
 		bool paused();
+		/** sets the direction of player playerNr to newDirection */
+		void switchDir(int playerNr, PlayerDirections::Direction newDirection);
+		PlayField *getPlayField();
+		Player *getPlayer(int playerNr);
 
 		Player *players[2];
-
 	public slots:
 		/** Starts a new game. The difference to reset is, that the players
 		* points are set to zero. Emits gameEnds(Nobody).
@@ -134,6 +134,9 @@ class Tron : public QWidget
 		bool gameBlocked;
 		QTimer *timer;
 		Item apple;
+		
+		/** Intelligence for computer */
+		Intelligence intelligence;
 
 		/** Backgroundpixmap **/
 		QPixmap bgPix;
@@ -143,13 +146,6 @@ class Tron : public QWidget
 		/** size of the rects */
 		int blockHeight;
 		int blockWidth;
-
-		/** The random sequence generator **/
-		KRandomSequence random;
-
-		// Options
-		/** determines level of computerplayer */
-		int lookForward;
 
 		// Functions
 		/** resets the game */
@@ -164,8 +160,6 @@ class Tron : public QWidget
 		void paintPlayers();
 		/** emits gameEnds(Player) and displays the winner by changing color*/
 		void showWinner(KTronEnum::Player winner);
-		/** retrieves the opponentSkill */
-		int opponentSkill();
 		/** retrieves the line speed */
 		int lineSpeed();
 		/** resizes the visual board */
@@ -175,10 +169,8 @@ class Tron : public QWidget
 
 		/** calculates if player playerNr should change direction */
 		void think(int playerNr);
-		void changeDirection(int playerNr,int dis_right,int dis_left);
 
-		/** sets the direction of player playerNr to newDirection */
-		void switchDir(int playerNr, PlayerDirections::Direction newDirection);
+		/** moves player */
 		void movePlayer(int playerNr);
 
 

@@ -19,13 +19,14 @@ add_subdirectory(themes)
 
 set(ktron_SRCS
 	fontutils.cpp
+	renderer.cpp
 	object.cpp
 	snakepart.cpp
 	item.cpp
 	playfield.cpp
-	renderer.cpp
-	tron.cpp
 	player.cpp
+	intelligence.cpp
+	tron.cpp
 	ktron.cpp
 	main.cpp)
 
