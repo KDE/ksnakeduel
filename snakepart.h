@@ -45,10 +45,7 @@ class SnakePart : public Object
 {
 	public:
 		SnakePart(int playerNumber);
-		SnakePart(int playerNumber, int partCode);
 		int getPlayerNumber();
-		int getPartCode();
-		void setPartCode(int partCode);
 		SnakePartType::Types getPartType();
 		void setPartType(SnakePartType::Types type);
 		bool getPartTop();
@@ -63,10 +60,8 @@ class SnakePart : public Object
 
 	private:
 		void initialize();
-		void generateFromLegacyType(int type);
 		QString decodePart();
 		
-		int partCode;
 		int playerNumber;
 		SnakePartType::Types partType;
 		bool partTop;

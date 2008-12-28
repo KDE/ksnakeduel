@@ -28,7 +28,6 @@
 Item::Item() : Object(ObjectType::Item)
 {
 	setSVGName("item1");
-	setOldType(KTronEnum::ITEM1);
 }
 
 //
@@ -44,15 +43,12 @@ void Item::setType(int t)
 		default:
 		case 0:
 			setSVGName("item1");
-			setOldType(KTronEnum::ITEM1);
 			break;
 		case 1:
 			setSVGName("item2");
-			setOldType(KTronEnum::ITEM2);
 			break;
 		case 2:
 			setSVGName("item3");
-			setOldType(KTronEnum::ITEM3);
 			break;
 	}
 }

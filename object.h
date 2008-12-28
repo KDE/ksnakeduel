@@ -46,19 +46,16 @@ class Object
 		int getY();
 		void setCoordinates(int x, int y);
 		QString getSVGName();
-		int getOldType();
 		ObjectType::Type getObjectType();
 
 	private:
 		int xCoordinate;
 		int yCoordinate;
 		QString svgName;
-		int oldType;
 		ObjectType::Type objectType;
 		
 	protected:
 		void setSVGName(QString svgName);
-		void setOldType(int type);
 };
 
 #endif // OBJECT_H

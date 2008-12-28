@@ -28,13 +28,11 @@
 Object::Object()
 {
 	objectType = ObjectType::Object;
-	setOldType(KTronEnum::BACKGROUND);
 }
 
 Object::Object(ObjectType::Type t)
 {
 	objectType = t;
-	setOldType(KTronEnum::BACKGROUND);
 }
 
 QString Object::getSVGName() {
@@ -59,16 +57,6 @@ void Object::setCoordinates(int x, int y)
 {
 	xCoordinate = x;
 	yCoordinate = y;
-}
-
-int Object::getOldType()
-{
-	return oldType;
-}
-
-void Object::setOldType(int type)
-{
-	oldType = type;
 }
 
 ObjectType::Type Object::getObjectType()

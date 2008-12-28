@@ -34,20 +34,6 @@ SnakePart::SnakePart(int playerNumber) : Object(ObjectType::SnakePart)
 	this->playerNumber = playerNumber;
 }
 
-SnakePart::SnakePart(int playerNumber, int partCode) : Object(ObjectType::SnakePart)
-{
-	initialize();
-
-	this->partCode = partCode;
-	this->playerNumber = playerNumber;
-	
-	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
-	
-	generateFromLegacyType(this->partCode);
-	setSVGName(decodePart());
-	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
-}
-
 //
 // Init
 //
@@ -68,23 +54,6 @@ void SnakePart::initialize()
 int SnakePart::getPlayerNumber()
 {
 	return this->playerNumber;
-}
-
-int SnakePart::getPartCode()
-{
-	return this->partCode;
-}
-
-void SnakePart::setPartCode(int partCode)
-{
-	initialize();
-	this->partCode = partCode;
-	
-	//kDebug() << this->playerNumber << this->partCode << decodePart(this->playerNumber, this->partCode);
-	
-	generateFromLegacyType(this->partCode);
-	setSVGName(decodePart());
-	setOldType((this->playerNumber == 0 ? KTronEnum::PLAYER1 : KTronEnum::PLAYER2) | this->partCode);
 }
 
 SnakePartType::Types SnakePart::getPartType()
@@ -135,55 +104,6 @@ bool SnakePart::getPartRight()
 void SnakePart::setPartRight(bool value)
 {
 	partRight = value;
-}
-
-//
-// Legacy support
-//
-void SnakePart::generateFromLegacyType(int type)
-{
-	int setCount = 0;
-
-	if (type & KTronEnum::TOP)
-	{
-		setPartTop(true);
-		setCount++;
-	}
-	
-	if (type & KTronEnum::BOTTOM)
-	{
-		setPartBottom(true);
-		setCount++;
-	}
-	
-	if (type & KTronEnum::LEFT)
-	{
-		setPartLeft(true);
-		setCount++;
-	}
-	
-	if (type & KTronEnum::RIGHT)
-	{
-		setPartRight(true);
-		setCount++;
-	}
-	
-	if (type & KTronEnum::HEAD)
-	{
-		setPartType(SnakePartType::Head);
-	}
-	else if (type & KTronEnum::TAIL)
-	{
-		setPartType(SnakePartType::Hole);
-	}
-	else if (setCount == 3)
-	{
-		setPartType(SnakePartType::Tail);
-	}
-	else
-	{
-		setPartType(SnakePartType::Body);
-	}
 }
 
 //

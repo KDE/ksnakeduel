@@ -40,22 +40,6 @@
 namespace KTronEnum
 {
 	enum Player {One,Two,Both,Nobody};
-
-	// Bits that defines the rect and which sides to draw
-	enum SnakePart {
-		BACKGROUND=0,
-		PLAYER1=1,
-		PLAYER2=2,
-		TOP=4,
-		BOTTOM=8,
-		LEFT=16,
-		RIGHT=32,
-		HEAD=64,
-		TAIL=128,
-		ITEM1=256,
-		ITEM2=512,
-		ITEM3=1024
-	};
 }
 
 namespace KBAction
