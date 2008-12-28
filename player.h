@@ -53,6 +53,7 @@ class Player : public QObject
 		int getPlayerNumber();
 		void reset();
 		void setCoordinates(int x, int y);
+		bool isComputer();
 		void setComputer(bool computer);
 		void setStartPosition();
 		void movePlayer();
@@ -62,19 +63,27 @@ class Player : public QObject
 		int getScore();
 		void addScore(int increment);
 		void resetScore();
-
-		bool alive;
-		PlayerDirections::Direction dir;
-		bool accelerated;
-		bool keyPressed;
-		bool computer;
-		int enlarge;
+		void setEnlargement(int enlargement);
+		PlayerDirections::Direction getDirection();
+		void setDirection(PlayerDirections::Direction direction);
+		bool isAlive();
+		void die();
+		bool isAccelerated();
+		void setAccelerated(bool value);
+		bool hasKeyPressed();
+		void setKeyPressed(bool value);
 		
 	private:
 		int playerNumber;
 		QQueue<SnakePart> snakeParts;
 		PlayField *playField;
 		int score;
+		int enlarge;
+		PlayerDirections::Direction dir;
+		bool alive;
+		bool computer;
+		bool accelerated;
+		bool keyPressed;
 		
 	signals:
 		void fetchedItem(int playerNumber, int x, int y);

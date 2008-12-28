@@ -224,7 +224,7 @@ void Tron::itemHit(int playerNumber, int, int)
 	//kDebug() << "Got Item Hit for " << playerNumber;
 
 	newApple();
-	players[playerNumber]->enlarge = 3;
+	players[playerNumber]->setEnlargement(3);
 	players[playerNumber]->addScore(1);
 	if (velocity > 15)
 	{
@@ -259,8 +259,8 @@ void Tron::stopGame()
 {
 	timer->stop();
 	gameEnded = true;
-	players[0]->dir = PlayerDirections::Up;
-	players[1]->dir = PlayerDirections::Up;
+	players[0]->setDirection(PlayerDirections::Up);
+	players[1]->setDirection(PlayerDirections::Up);
 }
 
 void Tron::togglePause() // pause or continue game
@@ -341,15 +341,15 @@ bool Tron::isComputer(KTronEnum::Player player)
 {
 	if (player == KTronEnum::One)
 	{
-		return players[0]->computer;
+		return players[0]->isComputer();
 	}
 	else if (player == KTronEnum::Two)
 	{
-		return players[1]->computer;
+		return players[1]->isComputer();
 	}
 	else if (player == KTronEnum::Both)
 	{
-		if(players[0]->computer && players[1]->computer)
+		if(players[0]->isComputer() && players[1]->isComputer())
 		{
 			return true;
 		}
@@ -370,16 +370,16 @@ void Tron::switchDir(int playerNr, PlayerDirections::Direction newDirection)
 		return;
 	}
 
-	if (newDirection == PlayerDirections::Up && players[playerNr]->dir == PlayerDirections::Down)
+	if (newDirection == PlayerDirections::Up && players[playerNr]->getDirection() == PlayerDirections::Down)
 		return;
-	if (newDirection == PlayerDirections::Down && players[playerNr]->dir == PlayerDirections::Up)
+	if (newDirection == PlayerDirections::Down && players[playerNr]->getDirection() == PlayerDirections::Up)
 		return;
-	if (newDirection == PlayerDirections::Left && players[playerNr]->dir == PlayerDirections::Right)
+	if (newDirection == PlayerDirections::Left && players[playerNr]->getDirection() == PlayerDirections::Right)
 		return;
-	if (newDirection == PlayerDirections::Right && players[playerNr]->dir == PlayerDirections::Left)
+	if (newDirection == PlayerDirections::Right && players[playerNr]->getDirection() == PlayerDirections::Left)
 		return;
 
-	players[playerNr]->dir = newDirection;
+	players[playerNr]->setDirection(newDirection);
 }
 
 /* *************************************************************** **
@@ -403,7 +403,7 @@ void Tron::paintEvent(QPaintEvent *e)
 	{
 		QString message = QString("");
 		
-		if (!players[0]->alive || !players[1]->alive) {
+		if (!players[0]->isAlive() || !players[1]->isAlive()) {
 			message += i18n("Crash!");
 			message += '\n';
 		}
@@ -438,37 +438,37 @@ void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 
 void Tron::switchKeyOn(int player, KBAction::Action action)
 {
-	if (!players[player]->computer)
+	if (!players[player]->isComputer())
 	{
 		switch (action)
 		{
 			case KBAction::UP:
-				players[player]->keyPressed = true;
-				if (players[player]->dir != PlayerDirections::Up)
+				players[player]->setKeyPressed(true);
+				if (players[player]->getDirection() != PlayerDirections::Up)
 				{
 					switchDir(player, PlayerDirections::Up);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::DOWN:
-				players[player]->keyPressed = true;
-				if (players[player]->dir != PlayerDirections::Down)
+				players[player]->setKeyPressed(true);
+				if (players[player]->getDirection() != PlayerDirections::Down)
 				{
 					switchDir(player, PlayerDirections::Down);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::LEFT:
-				players[player]->keyPressed = true;
-				if (players[player]->dir != PlayerDirections::Left)
+				players[player]->setKeyPressed(true);
+				if (players[player]->getDirection() != PlayerDirections::Left)
 				{
 					switchDir(player, PlayerDirections::Left);
 					movePlayer(player);
 				}
 				break;
 			case KBAction::RIGHT:
-				players[player]->keyPressed = true;
-				if (players[player]->dir != PlayerDirections::Right)
+				players[player]->setKeyPressed(true);
+				if (players[player]->getDirection() != PlayerDirections::Right)
 				{
 					switchDir(player, PlayerDirections::Right);
 					movePlayer(player);
@@ -478,7 +478,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 				if(!Settings::acceleratorBlocked())
 				{
 					//kDebug() << "Acceleration on: " << player;
-					players[player]->accelerated = true;
+					players[player]->setAccelerated(true);
 				}
 				break;
 			default:
@@ -488,7 +488,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 	// if both players press keys at the same time, start game...
 	if(gameEnded && !gameBlocked)
 	{
-		if(players[0]->keyPressed && players[1]->keyPressed)
+		if(players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
 		{
 			reset();
 			startGame();
@@ -497,7 +497,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 	// ...or continue
 	else if(gamePaused)
 	{
-		if(players[0]->keyPressed && players[1]->keyPressed)
+		if(players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
 		{
 			togglePause();
 		}
@@ -506,7 +506,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 
 void Tron::switchKeyOff(int player, KBAction::Action action)
 {
-	if (!players[player]->computer)
+	if (!players[player]->isComputer())
 	{
 		switch (action)
 		{
@@ -514,11 +514,11 @@ void Tron::switchKeyOff(int player, KBAction::Action action)
 			case KBAction::DOWN:
 			case KBAction::LEFT:
 			case KBAction::RIGHT:
-				players[player]->keyPressed = false;
+				players[player]->setKeyPressed(false);
 				break;
 			case KBAction::ACCELERATE:
 				//kDebug() << "Acceleration off: " << player;
-				players[player]->accelerated = false;
+				players[player]->setAccelerated(false);
 				break;
 			default:
 				break;
@@ -541,7 +541,7 @@ void Tron::focusOutEvent(QFocusEvent *)
 
 void Tron::unblockGame()
 {
-  gameBlocked=false;
+	gameBlocked = false;
 }
 
 void Tron::movePlayer(int playerNr)
@@ -562,7 +562,7 @@ void Tron::doMove()
 		updatePixmap();
 		update();
 
-		if(!players[0]->alive)
+		if(!players[0]->isAlive())
 		{
 			stopGame();
 			showWinner(KTronEnum::One);
@@ -574,19 +574,19 @@ void Tron::doMove()
 		for(i = 0; i < 2; ++i)
 		{
 			// Decide if the accelerator key was pressed...
-			if (players[i]->accelerated)
+			if (players[i]->isAccelerated())
 			{
 				movePlayer(i);
 			}
 		}
 
-		if(players[0]->accelerated || players[1]->accelerated)
+		if(players[0]->isAccelerated() || players[1]->isAccelerated())
 		{
 			/* player collision check */
-			if(!players[1]->alive)
+			if(!players[1]->isAlive())
 			{
 				int xInc=0,yInc=0;
-				switch(players[1]->dir)
+				switch(players[1]->getDirection())
 				{
 					case PlayerDirections::Left:
 					xInc = -1;
@@ -607,7 +607,7 @@ void Tron::doMove()
 				{
 					if ((players[1]->getY() + yInc) == players[0]->getY())
 					{
-						players[0]->alive=false;
+						players[0]->die();
 					}
 				}
 			}
@@ -616,7 +616,7 @@ void Tron::doMove()
 			update();
 
 			// crashtest
-			if(!players[0]->alive && !players[1]->alive)
+			if(!players[0]->isAlive() && !players[1]->isAlive())
 			{
 				stopGame();
 				players[0]->addScore(1);
@@ -627,7 +627,7 @@ void Tron::doMove()
 			{
 				for(i = 0; i < 2; ++i)
 				{
-					if(!players[i]->alive)
+					if(!players[i]->isAlive())
 					{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
@@ -649,7 +649,7 @@ void Tron::doMove()
 		// neue Spielerstandorte festlegen
 		for (i = 0; i < 2; ++i)
 		{
-			if(players[i]->computer)
+			if(players[i]->isComputer())
 				think(i);
 		}
 
@@ -662,10 +662,10 @@ void Tron::doMove()
 		}
 
 		/* player collision check */
-		if(!players[1]->alive)
+		if(!players[1]->isAlive())
 		{
 			int xInc=0,yInc=0;
-			switch(players[1]->dir)
+			switch(players[1]->getDirection())
 			{
 				case PlayerDirections::Left:
 					xInc = -1; break;
@@ -682,7 +682,7 @@ void Tron::doMove()
 			{
 				if ((players[1]->getY() + yInc) == players[0]->getY())
 				{
-					players[0]->alive = false;
+					players[0]->die();
 				}
 			}
 		}
@@ -690,7 +690,7 @@ void Tron::doMove()
 		updatePixmap();
 		update();
 
-		if(!players[0]->alive && !players[1]->alive)
+		if(!players[0]->isAlive() && !players[1]->isAlive())
 		{
 			stopGame();
 			players[0]->addScore(1);
@@ -702,7 +702,7 @@ void Tron::doMove()
 			for (i = 0; i < 2; ++i)
 			{
 				// crashtests
-				if(!players[i]->alive)
+				if(!players[i]->isAlive())
 				{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);

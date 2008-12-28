@@ -78,6 +78,48 @@ int Player::getScore()
 }
 
 //
+// Snake growing
+//
+
+void Player::setEnlargement(int enlargement)
+{
+	if (enlargement < 0)
+	{
+		return;
+	}
+
+	enlarge += enlargement;
+}
+
+//
+// Directions
+//
+
+PlayerDirections::Direction Player::getDirection()
+{
+	return dir;
+}
+
+void Player::setDirection(PlayerDirections::Direction direction)
+{
+	dir = direction;
+}
+
+//
+// Live Control
+//
+
+bool Player::isAlive()
+{
+	return alive;
+}
+
+void Player::die()
+{
+	alive = false;
+}
+
+//
 // Score updating
 //
 
@@ -85,7 +127,7 @@ void Player::addScore(int increment)
 {
 	if (increment < 0)
 	{
-		increment = 0;
+		return;
 	}
 
 	score += increment;
@@ -304,11 +346,50 @@ void Player::reset()
 // Computer powered
 //
 
+bool Player::isComputer()
+{
+	return computer;
+}
+
 void Player::setComputer(bool isComputer)
 {
-  computer=isComputer;
-  if(computer)
-    keyPressed=true;
-  else keyPressed=false;
+	computer = isComputer;
+	if (computer)
+	{
+		keyPressed = true;
+	}
+	else
+	{
+		keyPressed = false;
+	}
+}
+
+//
+// Acceleration
+//
+
+bool Player::isAccelerated()
+{
+	return accelerated;
+}
+
+void Player::setAccelerated(bool value)
+{
+	accelerated = value;
+}
+
+
+//
+// Key pressed
+//
+
+bool Player::hasKeyPressed()
+{
+	return keyPressed;
+}
+
+void Player::setKeyPressed(bool value)
+{
+	keyPressed = value;
 }
 

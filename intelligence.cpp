@@ -70,7 +70,7 @@ int Intelligence::opponentSkill() {
 
 void Intelligence::changeDirection(int playerNr,int dis_right,int dis_left)
 {
-   PlayerDirections::Direction currentDir = tron->getPlayer(playerNr)->dir;
+   PlayerDirections::Direction currentDir = tron->getPlayer(playerNr)->getDirection();
    PlayerDirections::Direction sides[2];
    sides[0] = PlayerDirections::None;
    sides[1] = PlayerDirections::None;
@@ -143,7 +143,7 @@ void Intelligence::think(int playerNr)
 
 		dis_forward = dis_left = dis_right = 1;
 
-		switch (tron->getPlayer(playerNr)->dir)
+		switch (tron->getPlayer(playerNr)->getDirection())
 		{
 			case PlayerDirections::Left:
 				//forward flags
@@ -239,54 +239,54 @@ void Intelligence::think(int playerNr)
 		bool opMovesRight=false;
 		bool opMovesLeft=false;
 
-		switch (tron->getPlayer(playerNr)->dir)
+		switch (tron->getPlayer(playerNr)->getDirection())
 		{
 			case PlayerDirections::Up:
 				opForwardDis=vert_dis;
 				opSideDis=-hor_dis;
-				if(tron->getPlayer(opponent)->dir==PlayerDirections::Down)
+				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Up)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Left)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Right)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesRight=true;
 				break;
 			case PlayerDirections::Down:
 				opForwardDis=-vert_dis;
 				opSideDis=hor_dis;
-				if(tron->getPlayer(opponent)->dir==PlayerDirections::Up)
+				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Down)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Left)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesRight=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Right)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesLeft=true;
 				break;
 			case PlayerDirections::Left:
 				opForwardDis=hor_dis;
 				opSideDis=vert_dis;
-				if(tron->getPlayer(opponent)->dir==PlayerDirections::Right)
+				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Left)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Down)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Up)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesRight=true;
 				break;
 			case PlayerDirections::Right:
 				opForwardDis=-hor_dis;
 				opSideDis=-vert_dis;
-				if(tron->getPlayer(opponent)->dir==PlayerDirections::Left)
+				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Right)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Up)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->dir==PlayerDirections::Down)
+				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesRight=true;
 				break;
 			default:
@@ -532,7 +532,7 @@ void Intelligence::think(int playerNr)
 
 		dis_forward = dis_left = dis_right = 1;
 
-		switch (tron->getPlayer(playerNr)->dir) {
+		switch (tron->getPlayer(playerNr)->getDirection()) {
 			case PlayerDirections::Left:
 				//forward flags
 				flags[0] = -1;
