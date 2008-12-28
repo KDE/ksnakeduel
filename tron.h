@@ -93,7 +93,6 @@ class Tron : public QWidget
 		PlayField *getPlayField();
 		Player *getPlayer(int playerNr);
 
-		Player *players[2];
 	public slots:
 		/** Starts a new game. The difference to reset is, that the players
 		* points are set to zero. Emits gameEnds(Nobody).
@@ -126,6 +125,8 @@ class Tron : public QWidget
 	private:
 		/** The playingfield */
 		PlayField pf;
+		/** The players */
+		Player *players[2];
 		/** game status flag */
 		bool gamePaused;
 		/** game status flag */
