@@ -59,8 +59,10 @@ class Player : public QObject
 		bool crashed(int x, int y);
 		int getX();
 		int getY();
+		int getScore();
+		void addScore(int increment);
+		void resetScore();
 
-		int score;
 		bool alive;
 		PlayerDirections::Direction dir;
 		bool accelerated;
@@ -72,6 +74,7 @@ class Player : public QObject
 		int playerNumber;
 		QQueue<SnakePart> snakeParts;
 		PlayField *playField;
+		int score;
 		
 	signals:
 		void fetchedItem(int playerNumber, int x, int y);

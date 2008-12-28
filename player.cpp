@@ -72,6 +72,30 @@ int Player::getY()
 	return snakeParts.last().getY();
 }
 
+int Player::getScore()
+{
+	return score;
+}
+
+//
+// Score updating
+//
+
+void Player::addScore(int increment)
+{
+	if (increment < 0)
+	{
+		increment = 0;
+	}
+
+	score += increment;
+}
+
+void Player::resetScore()
+{
+	score = 0;
+}
+
 //
 // Start
 //
@@ -267,13 +291,13 @@ bool Player::crashed(int x, int y)
 
 void Player::reset()
 {
- alive=true;
- accelerated=false;
- enlarge=0;
- if(computer)
-   keyPressed=true;
- else
-   keyPressed=false;
+	alive=true;
+	accelerated=false;
+	enlarge=0;
+	if(computer)
+		keyPressed=true;
+	else
+		keyPressed=false;
 }
 
 //

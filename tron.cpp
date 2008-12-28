@@ -132,8 +132,8 @@ void Tron::createNewPlayfield()
 
 void Tron::newGame()
 {
-	players[0]->score = 0;
-	players[1]->score = 0;
+	players[0]->resetScore();
+	players[1]->resetScore();
 	emit gameEnds(KTronEnum::Nobody);
 	reset();
 }
@@ -148,8 +148,8 @@ void Tron::reset()
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		players[0]->score = 0;
-		players[1]->score = 0;
+		players[0]->resetScore();
+		players[1]->resetScore();
 
 		setVelocity( lineSpeed() );
 	}
@@ -225,7 +225,7 @@ void Tron::itemHit(int playerNumber, int, int)
 
 	newApple();
 	players[playerNumber]->enlarge = 3;
-	players[playerNumber]->score++;
+	players[playerNumber]->addScore(1);
 	if (velocity > 15)
 	{
 		velocity--;
@@ -619,8 +619,8 @@ void Tron::doMove()
 			if(!players[0]->alive && !players[1]->alive)
 			{
 				stopGame();
-				players[0]->score++;
-				players[1]->score++;
+				players[0]->addScore(1);
+				players[1]->addScore(1);
 				showWinner(KTronEnum::Both);
 			}
 			else
@@ -631,7 +631,7 @@ void Tron::doMove()
 					{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)]->score++;
+					players[(1 - i)]->addScore(1);
 					}
 				}
 			}
@@ -693,8 +693,8 @@ void Tron::doMove()
 		if(!players[0]->alive && !players[1]->alive)
 		{
 			stopGame();
-			players[0]->score++;
-			players[1]->score++;
+			players[0]->addScore(1);
+			players[1]->addScore(1);
 			showWinner(KTronEnum::Both);
 		}
 		else
@@ -706,7 +706,7 @@ void Tron::doMove()
 				{
 					stopGame();
 					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)]->score++;
+					players[(1 - i)]->addScore(1);
 				}
 			}
 		}
