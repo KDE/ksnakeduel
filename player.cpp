@@ -35,7 +35,7 @@ Player::Player(PlayField &pf, int playerNr) : QObject()
 	playerNumber = playerNr;
 	computer = false;
 	score = 0;
-	dir = Directions::Up;
+	dir = PlayerDirections::Up;
 	enlarge = 0;
 	
 	reset();
@@ -131,25 +131,25 @@ void Player::movePlayer()
 
 	switch (dir)
 	{
-		case Directions::Up:
+		case PlayerDirections::Up:
 			newY--;
 			newHead.setPartTop(true);
 			newHead.setPartLeft(true);
 			newHead.setPartRight(true);
 			break;
-		case Directions::Down:
+		case PlayerDirections::Down:
 			newY++;
 			newHead.setPartBottom(true);
 			newHead.setPartLeft(true);
 			newHead.setPartRight(true);
 			break;
-		case Directions::Left:
+		case PlayerDirections::Left:
 			newX--;
 			newHead.setPartTop(true);
 			newHead.setPartBottom(true);
 			newHead.setPartLeft(true);
 			break;
-		case Directions::Right:
+		case PlayerDirections::Right:
 			newX++;
 			newHead.setPartTop(true);
 			newHead.setPartBottom(true);
@@ -170,16 +170,16 @@ void Player::movePlayer()
 		switch (dir)
 		{
 			// unset drawing flags in the moving direction
-			case Directions::Up:
+			case PlayerDirections::Up:
 				snakeParts.last().setPartTop(false);
 				break;
-			case Directions::Down:
+			case PlayerDirections::Down:
 				snakeParts.last().setPartBottom(false);
 				break;
-			case Directions::Right:
+			case PlayerDirections::Right:
 				snakeParts.last().setPartRight(false);
 				break;
-			case Directions::Left:
+			case PlayerDirections::Left:
 				snakeParts.last().setPartLeft(false);
 				break;
 			default:

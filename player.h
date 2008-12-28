@@ -30,7 +30,7 @@
 #include <QObject>
 #include <QQueue>
 
-namespace Directions
+namespace PlayerDirections
 {
 	enum Direction {
 		None,
@@ -62,7 +62,7 @@ class Player : public QObject
 
 		int score;
 		bool alive;
-		Directions::Direction dir;
+		PlayerDirections::Direction dir;
 		bool accelerated;
 		bool keyPressed;
 		bool computer;
