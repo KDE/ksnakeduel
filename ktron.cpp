@@ -200,12 +200,6 @@ void KTron::updateStatusbar() {
 		
 		message = i18n("%1 has won!", winnerName);
 	}
-	//else if (!tron->running() && winner == KTronEnum::Both) {
-	//	message = i18n("No game in progress");
-	//}
-	//else if (!tron->running() && winner == KTronEnum::Nobody) {
-	//	message = i18n("Game in progress");
-	//}
 	else if (tron->paused()) {
 		message = i18n("Game paused");
 	}
@@ -287,7 +281,7 @@ KTronEnum::Player KTron::getWinner() {
 		}
 	}
 	else {
-		return KTronEnum::Both;
+		return KTronEnum::Nobody;
 	}
 }
 

@@ -171,15 +171,6 @@ void Tron::reset()
 	emit updatedScore();
 }
 
-void Tron::computerStart()
-{
-	if(isComputer(KTronEnum::Both))
-	{
-		reset();
-		startGame();
-	}
-}
-
 //
 // Getters / Setters
 //
@@ -289,11 +280,6 @@ void Tron::showWinner(KTronEnum::Player player)
 	update();
 
 	emit gameEnds(player);
-
-	if (isComputer(KTronEnum::Both))
-	{
-		QTimer::singleShot(1000, this, SLOT(computerStart()));
-	}
 }
 
 /* *************************************************************** **
@@ -327,11 +313,6 @@ void Tron::setComputerplayer(KTronEnum::Player player, bool flag) {
 	else if (player == KTronEnum::Two)
 	{
 		players[1]->setComputer(flag);
-	}
-
-	if (isComputer(KTronEnum::Both))
-	{
-		QTimer::singleShot(1000, this, SLOT(computerStart()));
 	}
 }
 

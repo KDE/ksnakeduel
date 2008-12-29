@@ -83,14 +83,7 @@ class Tron : public QWidget
 		*/
 		void newGame();
 		void togglePause();
-
-		/**
-		* checks if both players are computer and starts the game
-		*/
-		void computerStart();
-
 		void loadSettings();
-		
 		void itemHit(int playerNumber, int x, int y);
 
 	signals:
@@ -119,13 +112,10 @@ class Tron : public QWidget
 		bool gameBlocked;
 		QTimer *timer;
 		Item apple;
-		
 		/** Intelligence for computer */
 		Intelligence intelligence;
-
 		/** Backgroundpixmap **/
 		QPixmap bgPix;
-
 		/** time in ms between two moves */
 		int velocity;
 		/** size of the rects */
