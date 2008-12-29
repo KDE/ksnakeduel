@@ -30,10 +30,6 @@
 
 #include "tron.h"
 
-class KAccel;
-class KSelectAction;
-class Tron;
-
 /**
  * @short The main window of KTron
  */
@@ -43,12 +39,9 @@ class KTron : public KXmlGuiWindow {
 
 	public:
 		KTron(QWidget *parent=0);
+		~KTron();
 
 	private:
-		KAccel *accel;
-		Tron *tron;
-		QString playerName[2];
-		int playerPoints[2];
 		void updateStatusbar();
 		KTronEnum::Player getWinner();
 
@@ -56,7 +49,6 @@ class KTron : public KXmlGuiWindow {
 		/** calls tron->updatePixmap to draw frame in the new colors */
 		void paletteChange(const QPalette &oldPalette);
 		virtual void closeEvent(QCloseEvent *);
-		
 		/** Key hits */
 		void keyPressEvent(QKeyEvent *); 	 
 		void keyReleaseEvent(QKeyEvent *);
@@ -64,19 +56,15 @@ class KTron : public KXmlGuiWindow {
 	public slots:
 		void close();
 
-
 	private slots:
 		void loadSettings();
 		/** updates players points in statusbar and checks if someone has won */
 		void changeStatus(KTronEnum::Player);
 		void updateScore();
-		
 		void showWinner(KTronEnum::Player winner);
 		void showSettings();
 		void showHighscores();
-		
 		void optionsConfigureKeys();
-		
 		// Triggers keys
 		void triggerKey0Up(bool);
 		void triggerKey0Down(bool);
@@ -90,6 +78,9 @@ class KTron : public KXmlGuiWindow {
 		void triggerKey1Accelerate(bool);
 		
 	private:
+		Tron *tron;
+		QString playerName[2];
+		int playerPoints[2];
 		KAction *player0Up;
 		KAction *player0Down;
 		KAction *player0Left;

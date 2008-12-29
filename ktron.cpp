@@ -169,6 +169,11 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	loadSettings();
 }
 
+KTron::~KTron()
+{
+	delete tron;
+}
+
 void KTron::loadSettings() {
 	if (!Renderer::self()->loadTheme(Settings::theme()))
     {

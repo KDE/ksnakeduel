@@ -100,6 +100,8 @@ void Tron::loadSettings(){
 Tron::~Tron()
 {
 	delete timer;
+	delete players[0];
+	delete players[1];
 }
 
 void Tron::resizeRenderer()
