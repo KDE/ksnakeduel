@@ -72,6 +72,8 @@ class Player : public QObject
 		void setAccelerated(bool value);
 		bool hasKeyPressed();
 		void setKeyPressed(bool value);
+		QString getName();
+		void setName(QString name);
 		
 	private:
 		int playerNumber;
@@ -84,6 +86,7 @@ class Player : public QObject
 		bool computer;
 		bool accelerated;
 		bool keyPressed;
+		QString name;
 		
 	signals:
 		void fetchedItem(int playerNumber, int x, int y);

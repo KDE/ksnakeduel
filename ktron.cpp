@@ -180,15 +180,8 @@ void KTron::loadSettings() {
 		KMessageBox::error(this, i18n("Failed to load \"%1\" theme. Please check your installation.", Settings::theme()));
 	}
 	
-	Settings::setDifficulty((int) KGameDifficulty::level());
-
-	playerName[0] = Settings::namePlayer1();
-	if (playerName[0].isEmpty())
-		playerName[0] = i18n("Player 1");
-	
-	playerName[1] = Settings::namePlayer2();
-	if (playerName[1].isEmpty())
-		playerName[1] = i18n("Player 2");
+	tron->getPlayer(0)->setName(Settings::namePlayer1());
+	tron->getPlayer(1)->setName(Settings::namePlayer2());
 	
 	updateStatusbar();
 }
@@ -198,10 +191,7 @@ void KTron::updateStatusbar() {
 	
 	QString message;
 	if (!tron->running() && (winner == KTronEnum::One || winner == KTronEnum::Two)) {
-		QString winnerName = i18n("KTron");
-		if (!tron->isComputer(winner)) {
-			winnerName = playerName[winner];
-		}
+		QString winnerName = tron->getPlayer(winner)->getName();
 		
 		message = i18n("%1 has won!", winnerName);
 	}
@@ -216,7 +206,7 @@ void KTron::updateStatusbar() {
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		QString string = QString("%1: %2").arg(playerName[0]).arg(tron->getPlayer(0)->getScore());
+		QString string = QString("%1: %2").arg(tron->getPlayer(0)->getName()).arg(tron->getPlayer(0)->getScore());
 		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
 		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
 	}
@@ -226,11 +216,7 @@ void KTron::updateStatusbar() {
 			KTronEnum::Player player;
 			player = (i == 0 ? KTronEnum::One : KTronEnum::Two);
 
-			QString name;
-			if (tron->isComputer(player))
-				name = i18n("KTron");
-			else
-				name = playerName[i];
+			QString name = tron->getPlayer(i)->getName();
 			
 			QString string = QString("%1: %2").arg(name).arg(tron->getPlayer(i)->getScore());
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
@@ -291,19 +277,16 @@ KTronEnum::Player KTron::getWinner() {
 }
 
 void KTron::showWinner(KTronEnum::Player winner){
-	if (tron->isComputer(KTronEnum::Both) || (winner != KTronEnum::One && winner != KTronEnum::Two))
+	if (winner != KTronEnum::One && winner != KTronEnum::Two)
 		return;
 
-	QString loserName = i18n("KTron");
 	KTronEnum::Player loser = KTronEnum::Two;
 	if (winner == KTronEnum::Two)
 		loser = KTronEnum::One;
-	if (!tron->isComputer(loser))
-		loserName = playerName[loser];
 	
-	QString winnerName = i18n("KTron");
-	if (!tron->isComputer(winner))
-		winnerName = playerName[winner];
+	QString loserName = tron->getPlayer(loser)->getName();
+	
+	QString winnerName = tron->getPlayer(winner)->getName();
 
 	QString message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->getPlayer(winner)->getScore(), tron->getPlayer(loser)->getScore());
 

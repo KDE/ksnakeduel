@@ -28,12 +28,14 @@
 #include "settings.h"
 
 #include <KDebug>
+#include <KLocale>
 
 Player::Player(PlayField &pf, int playerNr) : QObject()
 {
 	playField = &pf;
 	playerNumber = playerNr;
 	computer = false;
+	name = i18n("Player ") + (playerNumber + 1);
 	score = 0;
 	dir = PlayerDirections::Up;
 	enlarge = 0;
@@ -75,6 +77,34 @@ int Player::getY()
 int Player::getScore()
 {
 	return score;
+}
+
+//
+// Player name
+//
+
+QString Player::getName()
+{
+	if (isComputer())
+	{
+		return i18n("KTron");
+	}
+	else
+	{
+		return name;
+	}
+}
+
+void Player::setName(QString name)
+{
+	if (name.isEmpty())
+	{
+		this->name = i18n("Player %1").arg(playerNumber + 1);
+	}
+	else
+	{
+		this->name = name;
+	}
 }
 
 //

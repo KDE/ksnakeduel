@@ -65,7 +65,6 @@ class Tron : public QWidget
 		Tron(QWidget *parent=0);
 		~Tron();
 		void updatePixmap();
-		bool isComputer(KTronEnum::Player player);
 		void setVelocity(int);
 		void setRectSize(int newSize);
 		void triggerKey(int, KBAction::Action, bool);

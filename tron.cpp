@@ -75,6 +75,8 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 }
 
 void Tron::loadSettings(){
+	Settings::setDifficulty((int) KGameDifficulty::level());
+
 	createNewPlayfield();
 	reset();
 
@@ -301,27 +303,6 @@ void Tron::setVelocity(int newVel)            // set new velocity
 	{
 		timer->start(velocity);
 	}
-}
-
-bool Tron::isComputer(KTronEnum::Player player)
-{
-	if (player == KTronEnum::One)
-	{
-		return players[0]->isComputer();
-	}
-	else if (player == KTronEnum::Two)
-	{
-		return players[1]->isComputer();
-	}
-	else if (player == KTronEnum::Both)
-	{
-		if(players[0]->isComputer() && players[1]->isComputer())
-		{
-			return true;
-		}
-	}
-
-	return false;
 }
 
 /* *************************************************************** **

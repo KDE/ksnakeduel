@@ -79,7 +79,6 @@ class KTron : public KXmlGuiWindow {
 		
 	private:
 		Tron *tron;
-		QString playerName[2];
 		int playerPoints[2];
 		KAction *player0Up;
 		KAction *player0Down;
