@@ -135,7 +135,8 @@ void Tron::newGame()
 {
 	players[0]->resetScore();
 	players[1]->resetScore();
-	emit gameEnds(KTronEnum::Nobody);
+	//emit gameEnds(KTronEnum::Nobody);
+	emit updatedScore();
 	reset();
 }
 
@@ -275,11 +276,11 @@ void Tron::togglePause() // pause or continue game
 	}
 }
 
-void Tron::showWinner(KTronEnum::Player player)
+void Tron::showWinner()
 {
 	update();
 
-	emit gameEnds(player);
+	emit gameEnds();
 }
 
 /* *************************************************************** **
@@ -353,11 +354,37 @@ void Tron::paintEvent(QPaintEvent *e)
 	else if (gameEnded) // If game ended, print "Crash!"
 	{
 		QString message = QString("");
-		
-		if (!players[0]->isAlive() || !players[1]->isAlive()) {
-			message += i18n("Crash!");
-			message += '\n';
+
+		if (Settings::gameType() != Settings::EnumGameType::Snake) {
+			if (hasWinner())
+			{
+				int winner = getWinner();
+				int loser = 1 - winner;
+				
+				QString winnerName = players[winner]->getName();
+				QString loserName = players[loser]->getName();
+				int winnerScore = players[winner]->getScore();
+				int loserScore = players[loser]->getScore();
+
+				message += i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, winnerScore, loserScore);
+				message += '\n';
+			}
+			else
+			{
+				QString name1 = players[0]->getName();
+				QString name2 = players[1]->getName();
+				int points1 = players[0]->getScore();
+				int points2 = players[1]->getScore();
+				
+				message += i18n("%1 (%2 points) vs %3 (%4 points)").arg(name1).arg(points1).arg(name2).arg(points2);
+				message += '\n';
+			}
 		}
+
+		//if (!players[0]->isAlive() || !players[1]->isAlive()) {
+		//	message += i18n("Crash!");
+		//	message += '\n';
+		//}
 
 		message += i18n("Press any of your direction keys to start!");
 
@@ -438,6 +465,11 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 		// Start game
 		if (gameEnded && !gameBlocked)
 		{
+			if (hasWinner())
+			{
+				newGame();
+			}
+			
 			reset();
 			startGame();
 		}
@@ -510,7 +542,7 @@ void Tron::doMove()
 		if(!players[0]->isAlive())
 		{
 			stopGame();
-			showWinner(KTronEnum::One);
+			showWinner();
 		}
 	}
 	else
@@ -572,18 +604,17 @@ void Tron::doMove()
 				{
 					players[0]->addScore(1);
 					players[1]->addScore(1);
-					showWinner(KTronEnum::Both);
 				}
 				else if (!players[0]->isAlive())
 				{
-					showWinner(KTronEnum::Two);
 					players[1]->addScore(1);
 				}
 				else if (!players[1]->isAlive())
 				{
-					showWinner(KTronEnum::One);
 					players[0]->addScore(1);
 				}
+				
+				showWinner();
 			}
 
 			if (gameEnded)
@@ -649,18 +680,17 @@ void Tron::doMove()
 			{
 				players[0]->addScore(1);
 				players[1]->addScore(1);
-				showWinner(KTronEnum::Both);
 			}
 			else if (!players[0]->isAlive())
 			{
-				showWinner(KTronEnum::Two);
 				players[1]->addScore(1);
 			}
 			else if (!players[1]->isAlive())
 			{
-				showWinner(KTronEnum::One);
 				players[0]->addScore(1);
 			}
+			
+			showWinner();
 		}
 	}
 
@@ -703,6 +733,26 @@ bool Tron::paused() {
 	return !gameEnded && gamePaused;
 }
 
+bool Tron::hasWinner()
+{
+	return getWinner() == 0 || getWinner() == 1;
+}
+
+int Tron::getWinner()
+{
+	if (Settings::gameType() != Settings::EnumGameType::Snake)
+	{
+		if (players[0]->getScore() >= WINNING_DIFF && players[1]->getScore() < players[0]->getScore() - 1) {
+			return 0;
+		}
+		else if (players[1]->getScore() >= WINNING_DIFF && players[0]->getScore() < players[1]->getScore() - 1) {
+			return 1;
+		}
+
+	}
+
+	return -1;
+}
 
 #include "tron.moc"
 

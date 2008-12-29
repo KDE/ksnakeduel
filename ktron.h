@@ -30,6 +30,9 @@
 
 #include "tron.h"
 
+#define ID_STATUS_BASE 40
+#define MESSAGE_TIME 2000
+
 /**
  * @short The main window of KTron
  */
@@ -43,7 +46,6 @@ class KTron : public KXmlGuiWindow {
 
 	private:
 		void updateStatusbar();
-		KTronEnum::Player getWinner();
 
 	protected:
 		/** calls tron->updatePixmap to draw frame in the new colors */
@@ -59,9 +61,8 @@ class KTron : public KXmlGuiWindow {
 	private slots:
 		void loadSettings();
 		/** updates players points in statusbar and checks if someone has won */
-		void changeStatus(KTronEnum::Player);
+		void changeStatus();
 		void updateScore();
-		void showWinner(KTronEnum::Player winner);
 		void showSettings();
 		void showHighscores();
 		void optionsConfigureKeys();

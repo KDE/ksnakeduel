@@ -23,6 +23,8 @@
 
 #include "ktron.h"
 #include "renderer.h"
+#include "settings.h"
+#include "ui_general.h"
 
 #include <KConfigDialog>
 #include <KLocale>
@@ -37,14 +39,6 @@
 #include <KGameDifficulty>
 #include <KShortcutsDialog>
 #include <KToggleAction>
-
-// Settings
-#include "settings.h"
-#include "ui_general.h"
-
-#define ID_STATUS_BASE 40
-#define MESSAGE_TIME 2000
-#define WINNING_DIFF 5
 
 //UI
 class General : public QWidget, public Ui::General
@@ -64,7 +58,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	//playerPoints[0]=playerPoints[1]=0;
 
 	tron = new Tron(this);
-	connect(tron,SIGNAL(gameEnds(KTronEnum::Player)),SLOT(changeStatus(KTronEnum::Player)));
+	connect(tron,SIGNAL(gameEnds()),SLOT(changeStatus()));
 	connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
 	setCentralWidget(tron);
 	tron->setMinimumSize(200,180);
@@ -187,11 +181,10 @@ void KTron::loadSettings() {
 }
 
 void KTron::updateStatusbar() {
-	KTronEnum::Player winner = getWinner();
-	
 	QString message;
-	if (!tron->running() && (winner == KTronEnum::One || winner == KTronEnum::Two)) {
-		QString winnerName = tron->getPlayer(winner)->getName();
+	
+	if (!tron->running() && tron->hasWinner()) {
+		QString winnerName = tron->getPlayer(tron->getWinner())->getName();
 		
 		message = i18n("%1 has won!", winnerName);
 	}
@@ -213,12 +206,10 @@ void KTron::updateStatusbar() {
 	else
 	{
 		for (int i = 0; i < 2; ++i) {
-			KTronEnum::Player player;
-			player = (i == 0 ? KTronEnum::One : KTronEnum::Two);
-
 			QString name = tron->getPlayer(i)->getName();
+			int score = tron->getPlayer(i)->getScore();
 			
-			QString string = QString("%1: %2").arg(name).arg(tron->getPlayer(i)->getScore());
+			QString string = QString("%1: %2").arg(name).arg(score);
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
 		}
 	}
@@ -229,22 +220,10 @@ void KTron::updateScore()
 	updateStatusbar();
 }
 
-void KTron::changeStatus(KTronEnum::Player player) {
-	// if player=Nobody, then new game
-	if (player == KTronEnum::Nobody){
-		updateStatusbar();
-		return;
-	}
-
+void KTron::changeStatus() {
 	updateStatusbar();
 
-	if (Settings::gameType() != Settings::EnumGameType::Snake)
-	{
-		KTronEnum::Player winner = getWinner();
-		if (winner == KTronEnum::One || winner == KTronEnum::Two)
-			showWinner(winner);
-	}
-	else
+	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
 		KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
 		scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
@@ -256,43 +235,6 @@ void KTron::changeStatus(KTronEnum::Player player) {
 		if (scoreDialog.addScore(scoreInfo) != 0)
 			scoreDialog.exec();
 	}
-}
-
-KTronEnum::Player KTron::getWinner() {
-	if (Settings::gameType() != Settings::EnumGameType::Snake)
-	{
-		if (tron->getPlayer(0)->getScore() >= WINNING_DIFF && tron->getPlayer(1)->getScore() < tron->getPlayer(0)->getScore() - 1) {
-			return KTronEnum::One;
-		}
-		else if (tron->getPlayer(1)->getScore() >= WINNING_DIFF && tron->getPlayer(0)->getScore() < tron->getPlayer(1)->getScore() - 1) {
-			return KTronEnum::Two;
-		}
-		else {
-			return KTronEnum::Nobody;
-		}
-	}
-	else {
-		return KTronEnum::Nobody;
-	}
-}
-
-void KTron::showWinner(KTronEnum::Player winner){
-	if (winner != KTronEnum::One && winner != KTronEnum::Two)
-		return;
-
-	KTronEnum::Player loser = KTronEnum::Two;
-	if (winner == KTronEnum::Two)
-		loser = KTronEnum::One;
-	
-	QString loserName = tron->getPlayer(loser)->getName();
-	
-	QString winnerName = tron->getPlayer(winner)->getName();
-
-	QString message = i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, tron->getPlayer(winner)->getScore(), tron->getPlayer(loser)->getScore());
-
-	
-	KMessageBox::information(this, message, i18n("Winner"));
-	tron->newGame();
 }
 
 void KTron::paletteChange(const QPalette &){

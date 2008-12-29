@@ -37,10 +37,7 @@
 #include <QPaintEvent>
 #include <QFocusEvent>
 
-namespace KTronEnum
-{
-	enum Player {One,Two,Both,Nobody};
-}
+#define WINNING_DIFF 5
 
 namespace KBAction
 {
@@ -74,6 +71,8 @@ class Tron : public QWidget
 		bool switchDir(int playerNr, PlayerDirections::Direction newDirection);
 		PlayField *getPlayField();
 		Player *getPlayer(int playerNr);
+		bool hasWinner();
+		int getWinner();
 
 	public slots:
 		/** Starts a new game. The difference to reset is, that the players
@@ -85,7 +84,7 @@ class Tron : public QWidget
 		void itemHit(int playerNumber, int x, int y);
 
 	signals:
-		void gameEnds(KTronEnum::Player loser);
+		void gameEnds();
 		void updatedScore();
 		void gameReset();
 
@@ -132,8 +131,8 @@ class Tron : public QWidget
 		void createNewPlayfield();
 		/** paints players at current player coordinates */
 		void paintPlayers();
-		/** emits gameEnds(Player) and displays the winner by changing color*/
-		void showWinner(KTronEnum::Player winner);
+		/** emits gameEnds(Player) */
+		void showWinner();
 		/** retrieves the line speed */
 		int lineSpeed();
 		/** resizes the visual board */
