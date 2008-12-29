@@ -416,6 +416,28 @@ void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 
 void Tron::switchKeyOn(int player, KBAction::Action action)
 {
+	// if both players press keys at the same time, start game...
+	if (players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
+	{
+		// Start game
+		if (gameEnded && !gameBlocked)
+		{
+			if (hasWinner())
+			{
+				newGame();
+			}
+			
+			reset();
+			startGame();
+		}
+		// ...or continue
+		else if (gamePaused)
+		{
+			togglePause();
+		}
+	}
+
+	// Key handling for movement
 	if (!players[player]->isComputer())
 	{
 		switch (action)
@@ -457,26 +479,6 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 				break;
 			default:
 				break;
-		}
-	}
-	// if both players press keys at the same time, start game...
-	if (players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
-	{
-		// Start game
-		if (gameEnded && !gameBlocked)
-		{
-			if (hasWinner())
-			{
-				newGame();
-			}
-			
-			reset();
-			startGame();
-		}
-		// ...or continue
-		else if (gamePaused)
-		{
-			togglePause();
 		}
 	}
 }
