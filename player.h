@@ -87,6 +87,7 @@ class Player : public QObject
 		bool accelerated;
 		bool keyPressed;
 		QString name;
+		bool blockSwitchDir;
 		
 	signals:
 		void fetchedItem(int playerNumber, int x, int y);

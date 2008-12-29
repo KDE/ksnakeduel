@@ -39,6 +39,7 @@ Player::Player(PlayField &pf, int playerNr) : QObject()
 	score = 0;
 	dir = PlayerDirections::Up;
 	enlarge = 0;
+	blockSwitchDir = false;
 	
 	reset();
 }
@@ -132,7 +133,13 @@ PlayerDirections::Direction Player::getDirection()
 
 void Player::setDirection(PlayerDirections::Direction direction)
 {
+	if (blockSwitchDir)
+	{
+		return;
+	}
+	
 	dir = direction;
+	blockSwitchDir = true;
 }
 
 //
@@ -209,7 +216,29 @@ void Player::setStartPosition()
 	snakeParts.enqueue(tail);
 	snakeParts.enqueue(head);
 	
-	dir = PlayerDirections::Up;
+	// Make the computer player start some random direction
+	if (isComputer())
+	{
+		switch ((int)(rand() % 3))
+		{
+			default:
+			case 0:
+				dir = PlayerDirections::Up;
+				break;
+			case 1:
+				dir = PlayerDirections::Left;
+				break;
+			case 2:
+				dir = PlayerDirections::Right;
+				break;
+		}
+		
+		blockSwitchDir = true;
+	}
+	else
+	{
+		dir = PlayerDirections::Up;
+	}
 }
 
 //
@@ -330,6 +359,8 @@ void Player::movePlayer()
 	{
 		enlarge--;
 	}
+	
+	blockSwitchDir = false;
 }
 
 //
@@ -369,9 +400,10 @@ void Player::reset()
 	accelerated = false;
 	enlarge = 0;
 	if (computer)
-		keyPressed=true;
+		keyPressed = true;
 	else
-		keyPressed=false;
+		keyPressed = false;
+	blockSwitchDir = false;
 }
 
 //

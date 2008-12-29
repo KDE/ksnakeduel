@@ -446,28 +446,28 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 				players[player]->setKeyPressed(true);
 				if (switchDir(player, PlayerDirections::Up))
 				{
-					players[player]->movePlayer();
+					//players[player]->movePlayer();
 				}
 				break;
 			case KBAction::DOWN:
 				players[player]->setKeyPressed(true);
 				if (switchDir(player, PlayerDirections::Down))
 				{
-					players[player]->movePlayer();
+					//players[player]->movePlayer();
 				}
 				break;
 			case KBAction::LEFT:
 				players[player]->setKeyPressed(true);
 				if (switchDir(player, PlayerDirections::Left))
 				{
-					players[player]->movePlayer();
+					//players[player]->movePlayer();
 				}
 				break;
 			case KBAction::RIGHT:
 				players[player]->setKeyPressed(true);
 				if (switchDir(player, PlayerDirections::Right))
 				{
-					players[player]->movePlayer();
+					//players[player]->movePlayer();
 				}
 				break;
 			case KBAction::ACCELERATE:
