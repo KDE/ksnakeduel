@@ -534,39 +534,42 @@ void Tron::doMove()
 	}
 	else
 	{
-		int i;
-		for(i = 0; i < 2; ++i)
-		{
-			// Decide if the accelerator key was pressed...
-			if (players[i]->isAccelerated())
-			{
-				movePlayer(i);
-			}
-		}
-
 		if(players[0]->isAccelerated() || players[1]->isAccelerated())
 		{
-			/* player collision check */
-			if(!players[1]->isAlive())
+			if (players[0]->isAccelerated())
 			{
-				int xInc=0,yInc=0;
-				switch(players[1]->getDirection())
+				players[0]->movePlayer();
+			}
+			
+			if (players[1]->isAccelerated())
+			{
+				players[1]->movePlayer();
+			}
+			
+			/* player collision check */
+			if (!players[1]->isAlive())
+			{
+				int xInc = 0;
+				int yInc = 0;
+				
+				switch (players[1]->getDirection())
 				{
 					case PlayerDirections::Left:
-					xInc = -1;
-					break;
+						xInc = -1;
+						break;
 					case PlayerDirections::Right:
-					xInc = 1;
-					break;
+						xInc = 1;
+						break;
 					case PlayerDirections::Up:
-					yInc = -1;
-					break;
+						yInc = -1;
+						break;
 					case PlayerDirections::Down:
-					yInc = 1;
-					break;
+						yInc = 1;
+						break;
 					default:
-					break;
+						break;
 				}
+				
 				if ((players[1]->getX() + xInc) == players[0]->getX())
 				{
 					if ((players[1]->getY() + yInc) == players[0]->getY())
@@ -580,68 +583,70 @@ void Tron::doMove()
 			update();
 
 			// crashtest
-			if(!players[0]->isAlive() && !players[1]->isAlive())
+			if (!players[0]->isAlive() || !players[1]->isAlive())
 			{
 				stopGame();
-				players[0]->addScore(1);
-				players[1]->addScore(1);
-				showWinner(KTronEnum::Both);
-			}
-			else
-			{
-				for(i = 0; i < 2; ++i)
+				
+				if (!players[0]->isAlive() && !players[1]->isAlive())
 				{
-					if(!players[i]->isAlive())
-					{
-					stopGame();
-					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)]->addScore(1);
-					}
+					players[0]->addScore(1);
+					players[1]->addScore(1);
+					showWinner(KTronEnum::Both);
+				}
+				else if (!players[0]->isAlive())
+				{
+					showWinner(KTronEnum::Two);
+					players[1]->addScore(1);
+				}
+				else if (!players[1]->isAlive())
+				{
+					showWinner(KTronEnum::One);
+					players[0]->addScore(1);
 				}
 			}
 
-
-			if(gameEnded)
+			if (gameEnded)
 			{
 				//this is for waiting 0,5s before starting next game
-				gameBlocked=true;
-				QTimer::singleShot(1000,this,SLOT(unblockGame()));
-			return;
+				gameBlocked = true;
+				QTimer::singleShot(1000, this, SLOT(unblockGame()));
+				return;
 			}
 		}
 
-		// neue Spielerstandorte festlegen
-		for (i = 0; i < 2; ++i)
+		// Player 0 is never a computer nowadays...
+		if (players[1]->isComputer())
 		{
-			if(players[i]->isComputer())
-				think(i);
+			intelligence.think(1);
 		}
 
-		//updateDirections(0);
-		update();
-
-		for (i = 0; i < 2; ++i)
-		{
-			movePlayer(i);
-		}
+		players[0]->movePlayer();
+		players[1]->movePlayer();
 
 		/* player collision check */
-		if(!players[1]->isAlive())
+		if (!players[1]->isAlive())
 		{
-			int xInc=0,yInc=0;
-			switch(players[1]->getDirection())
+			int xInc = 0;
+			int yInc = 0;
+			
+			switch (players[1]->getDirection())
 			{
 				case PlayerDirections::Left:
-					xInc = -1; break;
+					xInc = -1;
+					break;
 				case PlayerDirections::Right:
-					xInc = 1; break;
+					xInc = 1;
+					break;
 				case PlayerDirections::Up:
-					yInc = -1; break;
+					yInc = -1;
+					break;
 				case PlayerDirections::Down:
-					yInc = 1; break;
+					yInc = 1;
+					break;
 				default:
 					break;
 			}
+			
 			if ((players[1]->getX() + xInc) == players[0]->getX())
 			{
 				if ((players[1]->getY() + yInc) == players[0]->getY())
@@ -654,43 +659,36 @@ void Tron::doMove()
 		updatePixmap();
 		update();
 
-		if(!players[0]->isAlive() && !players[1]->isAlive())
+		// crashtest
+		if (!players[0]->isAlive() || !players[1]->isAlive())
 		{
 			stopGame();
-			players[0]->addScore(1);
-			players[1]->addScore(1);
-			showWinner(KTronEnum::Both);
-		}
-		else
-		{
-			for (i = 0; i < 2; ++i)
+			
+			if (!players[0]->isAlive() && !players[1]->isAlive())
 			{
-				// crashtests
-				if(!players[i]->isAlive())
-				{
-					stopGame();
-					showWinner((i==0)? KTronEnum::Two : KTronEnum::One);
-					players[(1 - i)]->addScore(1);
-				}
+				players[0]->addScore(1);
+				players[1]->addScore(1);
+				showWinner(KTronEnum::Both);
+			}
+			else if (!players[0]->isAlive())
+			{
+				showWinner(KTronEnum::Two);
+				players[1]->addScore(1);
+			}
+			else if (!players[1]->isAlive())
+			{
+				showWinner(KTronEnum::One);
+				players[0]->addScore(1);
 			}
 		}
 	}
 
-	if(gameEnded)
+	if (gameEnded)
 	{
 		//this is for waiting 1s before starting next game
-		gameBlocked=true;
-		QTimer::singleShot(1000,this,SLOT(unblockGame()));
+		gameBlocked = true;
+		QTimer::singleShot(1000, this, SLOT(unblockGame()));
 	}
-}
-
-/* *************************************************************** **
-**                 algoritm for the computerplayer                 **
-** *************************************************************** */
-
-void Tron::think(int playerNr)
-{
-	intelligence.think(playerNr);
 }
 
 /**
@@ -700,7 +698,6 @@ void Tron::think(int playerNr)
 /** retrieves the line speed */
 int Tron::lineSpeed() {
 	KGameDifficulty::standardLevel level = KGameDifficulty::level();
-	Settings::setDifficulty((int) level);
 
 	switch (level) {
 		case KGameDifficulty::VeryEasy:

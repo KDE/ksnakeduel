@@ -47,7 +47,6 @@ void Intelligence::referenceTron(Tron *t)
 /** retrieves the opponentSkill */
 int Intelligence::opponentSkill() {
 	KGameDifficulty::standardLevel level = KGameDifficulty::level();
-	Settings::setDifficulty((int) level);
 
 	switch (level) {
 		case KGameDifficulty::VeryEasy:

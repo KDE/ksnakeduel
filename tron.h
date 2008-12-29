@@ -121,6 +121,7 @@ class Tron : public QWidget
 		int blockHeight;
 		int blockWidth;
 
+	private:
 		// Functions
 		/** resets the game */
 		void reset();
@@ -140,14 +141,8 @@ class Tron : public QWidget
 		void resizeRenderer();
 		/** generates new apple */
 		void newApple();
-
-		/** calculates if player playerNr should change direction */
-		void think(int playerNr);
-
 		/** moves player */
 		void movePlayer(int playerNr);
-
-
 		// Key handling / movement
 		void switchKeyOn(int, KBAction::Action);
 		void switchKeyOff(int, KBAction::Action);
