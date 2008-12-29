@@ -65,7 +65,6 @@ class Tron : public QWidget
 		Tron(QWidget *parent=0);
 		~Tron();
 		void updatePixmap();
-		void setComputerplayer(KTronEnum::Player player, bool);
 		bool isComputer(KTronEnum::Player player);
 		void setVelocity(int);
 		void setRectSize(int newSize);
@@ -73,7 +72,7 @@ class Tron : public QWidget
 		bool running();
 		bool paused();
 		/** sets the direction of player playerNr to newDirection */
-		void switchDir(int playerNr, PlayerDirections::Direction newDirection);
+		bool switchDir(int playerNr, PlayerDirections::Direction newDirection);
 		PlayField *getPlayField();
 		Player *getPlayer(int playerNr);
 

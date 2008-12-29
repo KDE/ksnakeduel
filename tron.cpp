@@ -85,15 +85,14 @@ void Tron::loadSettings(){
 	updatePixmap();
 	update();
 
+	// Player 0 is always human
 	if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer)
 	{
-		setComputerplayer(KTronEnum::One, false);
-		setComputerplayer(KTronEnum::Two, false);
+		players[1]->setComputer(false);
 	}
 	else
 	{
-		setComputerplayer(KTronEnum::One, false);
-		setComputerplayer(KTronEnum::Two, true);
+		players[1]->setComputer(true);
 	}
 }
 
@@ -240,7 +239,6 @@ void Tron::newApple()
 
 	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
 
-	//apple.setCoordinates(x, y);
 	apple.setType((int)(rand() % 3));
 	
 	pf.setObjectAt(x, y, apple);
@@ -250,8 +248,6 @@ void Tron::stopGame()
 {
 	timer->stop();
 	gameEnded = true;
-	players[0]->setDirection(PlayerDirections::Up);
-	players[1]->setDirection(PlayerDirections::Up);
 }
 
 void Tron::togglePause() // pause or continue game
@@ -307,17 +303,6 @@ void Tron::setVelocity(int newVel)            // set new velocity
 	}
 }
 
-void Tron::setComputerplayer(KTronEnum::Player player, bool flag) {
-	if(player == KTronEnum::One)
-	{
-		players[0]->setComputer(flag);
-	}
-	else if (player == KTronEnum::Two)
-	{
-		players[1]->setComputer(flag);
-	}
-}
-
 bool Tron::isComputer(KTronEnum::Player player)
 {
 	if (player == KTronEnum::One)
@@ -343,24 +328,28 @@ bool Tron::isComputer(KTronEnum::Player player)
 **                    moving functions										 **
 ** *************************************************************** */
 
-void Tron::switchDir(int playerNr, PlayerDirections::Direction newDirection)
+bool Tron::switchDir(int playerNr, PlayerDirections::Direction newDirection)
 {
 	if (playerNr != 0 && playerNr != 1)
 	{
 		Q_ASSERT_X(true, "Tron::switchDir", "wrong playerNr");
-		return;
+		return false;
 	}
 
+	if (newDirection == players[playerNr]->getDirection())
+		return false;
 	if (newDirection == PlayerDirections::Up && players[playerNr]->getDirection() == PlayerDirections::Down)
-		return;
+		return false;
 	if (newDirection == PlayerDirections::Down && players[playerNr]->getDirection() == PlayerDirections::Up)
-		return;
+		return false;
 	if (newDirection == PlayerDirections::Left && players[playerNr]->getDirection() == PlayerDirections::Right)
-		return;
+		return false;
 	if (newDirection == PlayerDirections::Right && players[playerNr]->getDirection() == PlayerDirections::Left)
-		return;
+		return false;
 
 	players[playerNr]->setDirection(newDirection);
+	
+	return true;
 }
 
 /* *************************************************************** **
@@ -373,7 +362,7 @@ void Tron::paintEvent(QPaintEvent *e)
 
 	p.drawPixmap(e->rect().topLeft(), *Renderer::self()->getPlayField(), e->rect());
 
-	if(gamePaused) // if game is paused, print message
+	if (gamePaused) // if game is paused, print message
 	{
 		QString message = i18n("Game paused");
 		QPixmap messageBox = Renderer::self()->messageBox(message);
@@ -425,34 +414,30 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 		{
 			case KBAction::UP:
 				players[player]->setKeyPressed(true);
-				if (players[player]->getDirection() != PlayerDirections::Up)
+				if (switchDir(player, PlayerDirections::Up))
 				{
-					switchDir(player, PlayerDirections::Up);
-					movePlayer(player);
+					players[player]->movePlayer();
 				}
 				break;
 			case KBAction::DOWN:
 				players[player]->setKeyPressed(true);
-				if (players[player]->getDirection() != PlayerDirections::Down)
+				if (switchDir(player, PlayerDirections::Down))
 				{
-					switchDir(player, PlayerDirections::Down);
-					movePlayer(player);
+					players[player]->movePlayer();
 				}
 				break;
 			case KBAction::LEFT:
 				players[player]->setKeyPressed(true);
-				if (players[player]->getDirection() != PlayerDirections::Left)
+				if (switchDir(player, PlayerDirections::Left))
 				{
-					switchDir(player, PlayerDirections::Left);
-					movePlayer(player);
+					players[player]->movePlayer();
 				}
 				break;
 			case KBAction::RIGHT:
 				players[player]->setKeyPressed(true);
-				if (players[player]->getDirection() != PlayerDirections::Right)
+				if (switchDir(player, PlayerDirections::Right))
 				{
-					switchDir(player, PlayerDirections::Right);
-					movePlayer(player);
+					players[player]->movePlayer();
 				}
 				break;
 			case KBAction::ACCELERATE:
@@ -467,18 +452,16 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 		}
 	}
 	// if both players press keys at the same time, start game...
-	if(gameEnded && !gameBlocked)
+	if (players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
 	{
-		if(players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
+		// Start game
+		if (gameEnded && !gameBlocked)
 		{
 			reset();
 			startGame();
 		}
-	}
-	// ...or continue
-	else if(gamePaused)
-	{
-		if(players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
+		// ...or continue
+		else if (gamePaused)
 		{
 			togglePause();
 		}

@@ -178,6 +178,8 @@ void Player::setStartPosition()
 	
 	snakeParts.enqueue(tail);
 	snakeParts.enqueue(head);
+	
+	dir = PlayerDirections::Up;
 }
 
 //
@@ -333,10 +335,10 @@ bool Player::crashed(int x, int y)
 
 void Player::reset()
 {
-	alive=true;
-	accelerated=false;
-	enlarge=0;
-	if(computer)
+	alive = true;
+	accelerated = false;
+	enlarge = 0;
+	if (computer)
 		keyPressed=true;
 	else
 		keyPressed=false;
