@@ -23,9 +23,7 @@
   
 #include "playfield.h"
 
-#include "tron.h"
-
-#include "KDebug"
+#include <KDebug>
 
 PlayField::PlayField()
 {

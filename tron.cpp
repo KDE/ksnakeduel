@@ -47,10 +47,8 @@
 #include <KStandardAction>
 #include <KGameDifficulty>
 
-#include "item.h"
 #include "settings.h"
 #include "renderer.h"
-#include "snakepart.h"
 #include "object.h"
 
 /**

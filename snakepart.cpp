@@ -23,8 +23,6 @@
   
 #include "snakepart.h"
 
-#include "tron.h"
-
 #include <KDebug>
 
 SnakePart::SnakePart(int playerNumber) : Object(ObjectType::SnakePart)

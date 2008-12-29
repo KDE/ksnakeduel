@@ -26,7 +26,7 @@
 #include "tron.h"
 #include "settings.h"
 
-#include "KGameDifficulty"
+#include <KGameDifficulty>
 
 Intelligence::Intelligence()
 {

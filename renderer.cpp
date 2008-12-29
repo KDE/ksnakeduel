@@ -23,7 +23,6 @@
 
 #include "renderer.h"
 #include "settings.h"
-#include "tron.h"
 #include "object.h"
 #include "fontutils.h"
 

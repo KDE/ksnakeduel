@@ -23,8 +23,6 @@
   
 #include "object.h"
 
-#include "tron.h"
-
 Object::Object()
 {
 	objectType = ObjectType::Object;

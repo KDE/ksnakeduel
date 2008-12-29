@@ -23,8 +23,6 @@
 
 #include "item.h"
 
-#include "tron.h"
-
 Item::Item() : Object(ObjectType::Item)
 {
 	setSVGName("item1");

@@ -17,7 +17,7 @@
 
 #include "fontutils.h"
 
-#include <qpainter.h>
+#include <QPainter>
 
 int fontUtils::fontSize(QPainter &p, const QString &str, 
                         int w, int h, Flags flags)
