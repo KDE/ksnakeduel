@@ -634,3 +634,4 @@ void Intelligence::think(int playerNr)
 		}
 	}
 }
+

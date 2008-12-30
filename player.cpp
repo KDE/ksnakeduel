@@ -35,7 +35,7 @@ Player::Player(PlayField &pf, int playerNr) : QObject()
 	playField = &pf;
 	playerNumber = playerNr;
 	computer = false;
-	name = i18n("Player ") + (playerNumber + 1);
+	name = i18n("Player %1", playerNumber + 1);
 	score = 0;
 	dir = PlayerDirections::Up;
 	enlarge = 0;
@@ -100,7 +100,7 @@ void Player::setName(QString name)
 {
 	if (name.isEmpty())
 	{
-		this->name = i18n("Player %1").arg(playerNumber + 1);
+		this->name = i18n("Player %1", playerNumber + 1);
 	}
 	else
 	{

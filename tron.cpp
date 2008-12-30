@@ -376,7 +376,7 @@ void Tron::paintEvent(QPaintEvent *e)
 				int points1 = players[0]->getScore();
 				int points2 = players[1]->getScore();
 				
-				message += i18n("%1 (%2 points) vs %3 (%4 points)").arg(name1).arg(points1).arg(name2).arg(points2);
+				message += i18n("%1 (%2 points) vs %3 (%4 points)", name1, points1, name2, points2);
 				message += '\n';
 			}
 		}
