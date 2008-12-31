@@ -137,11 +137,13 @@ class Tron : public QWidget
 		void resizeRenderer();
 		/** generates new apple */
 		void newApple();
-		/** moves player */
-		void movePlayer(int playerNr);
 		// Key handling / movement
 		void switchKeyOn(int, KBAction::Action);
 		void switchKeyOff(int, KBAction::Action);
+		/** Check head to head collissions */
+		void checkHeadToHeadCollission();
+		/** Helper for the doMove() function */
+		void movementHelper(bool onlyAcceleratedPlayers);
 	
 	private slots:
 		/**

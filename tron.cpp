@@ -489,25 +489,17 @@ void Tron::unblockGame()
 	gameBlocked = false;
 }
 
-void Tron::movePlayer(int playerNr)
-{
-	if (playerNr == 0 || playerNr == 1)
-	{
-		players[playerNr]->movePlayer();
-	}
-}
-
 // doMove() is called from QTimer
 void Tron::doMove()
 {
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		movePlayer(0);
+		players[0]->movePlayer();
 
 		updatePixmap();
 		update();
 
-		if(!players[0]->isAlive())
+		if (!players[0]->isAlive())
 		{
 			stopGame();
 			showWinner();
@@ -515,150 +507,20 @@ void Tron::doMove()
 	}
 	else
 	{
-		if(players[0]->isAccelerated() || players[1]->isAccelerated())
+		if (players[0]->isAccelerated() || players[1]->isAccelerated())
 		{
-			if (players[0]->isAccelerated())
-			{
-				players[0]->movePlayer();
-			}
-			
-			if (players[1]->isAccelerated())
-			{
-				players[1]->movePlayer();
-			}
-			
-			/* player collision check */
-			if (!players[1]->isAlive())
-			{
-				int xInc = 0;
-				int yInc = 0;
-				
-				switch (players[1]->getDirection())
-				{
-					case PlayerDirections::Left:
-						xInc = -1;
-						break;
-					case PlayerDirections::Right:
-						xInc = 1;
-						break;
-					case PlayerDirections::Up:
-						yInc = -1;
-						break;
-					case PlayerDirections::Down:
-						yInc = 1;
-						break;
-					default:
-						break;
-				}
-				
-				if ((players[1]->getX() + xInc) == players[0]->getX())
-				{
-					if ((players[1]->getY() + yInc) == players[0]->getY())
-					{
-						players[0]->die();
-					}
-				}
-			}
-
-			updatePixmap();
-			update();
-
-			// crashtest
-			if (!players[0]->isAlive() || !players[1]->isAlive())
-			{
-				stopGame();
-				
-				if (!players[0]->isAlive() && !players[1]->isAlive())
-				{
-					players[0]->addScore(1);
-					players[1]->addScore(1);
-				}
-				else if (!players[0]->isAlive())
-				{
-					players[1]->addScore(1);
-				}
-				else if (!players[1]->isAlive())
-				{
-					players[0]->addScore(1);
-				}
-				
-				showWinner();
-			}
-
-			if (gameEnded)
-			{
-				//this is for waiting 0,5s before starting next game
-				gameBlocked = true;
-				QTimer::singleShot(1000, this, SLOT(unblockGame()));
-				return;
-			}
+			movementHelper(true);
 		}
 
-		// Player 0 is never a computer nowadays...
-		if (players[1]->isComputer())
+		if (!gameEnded)
 		{
-			intelligence.think(1);
-		}
+			// Player 0 is never a computer nowadays...
+			if (players[1]->isComputer())
+			{
+				intelligence.think(1);
+			}
 
-		players[0]->movePlayer();
-		players[1]->movePlayer();
-
-		/* player collision check */
-		if (!players[1]->isAlive())
-		{
-			int xInc = 0;
-			int yInc = 0;
-			
-			switch (players[1]->getDirection())
-			{
-				case PlayerDirections::Left:
-					xInc = -1;
-					break;
-				case PlayerDirections::Right:
-					xInc = 1;
-					break;
-				case PlayerDirections::Up:
-					yInc = -1;
-					break;
-				case PlayerDirections::Down:
-					yInc = 1;
-					break;
-				default:
-					break;
-			}
-			
-			if ((players[1]->getX() + xInc) == players[0]->getX())
-			{
-				if ((players[1]->getY() + yInc) == players[0]->getY())
-				{
-					players[0]->die();
-				}
-			}
-		}
-
-		updatePixmap();
-		update();
-
-		// crashtest
-		if (!players[0]->isAlive() || !players[1]->isAlive())
-		{
-			stopGame();
-			
-			if (!players[0]->isAlive() && !players[1]->isAlive())
-			{
-				players[0]->addScore(1);
-				players[1]->addScore(1);
-			}
-			else if (!players[0]->isAlive())
-			{
-				players[1]->addScore(1);
-			}
-			else if (!players[1]->isAlive())
-			{
-				players[0]->addScore(1);
-			}
-			
-			showWinner();
+			movementHelper(false);
 		}
 	}
 
@@ -667,6 +529,88 @@ void Tron::doMove()
 		//this is for waiting 1s before starting next game
 		gameBlocked = true;
 		QTimer::singleShot(1000, this, SLOT(unblockGame()));
+	}
+}
+
+void Tron::movementHelper(bool onlyAcceleratedPlayers)
+{
+	if (!onlyAcceleratedPlayers || players[0]->isAccelerated())
+	{
+		players[0]->movePlayer();
+	}
+	
+	if (!onlyAcceleratedPlayers || players[1]->isAccelerated())
+	{
+		players[1]->movePlayer();
+	}
+	
+	/* player collision check */
+	if (!players[1]->isAlive())
+	{
+		checkHeadToHeadCollission();
+	}
+
+	updatePixmap();
+	update();
+
+	// crashtest
+	if (!players[0]->isAlive() || !players[1]->isAlive())
+	{
+		stopGame();
+		
+		if (!players[0]->isAlive() && !players[1]->isAlive())
+		{
+			players[0]->addScore(1);
+			players[1]->addScore(1);
+		}
+		else if (!players[0]->isAlive())
+		{
+			players[1]->addScore(1);
+		}
+		else if (!players[1]->isAlive())
+		{
+			players[0]->addScore(1);
+		}
+		
+		showWinner();
+	}
+}
+
+void Tron::checkHeadToHeadCollission()
+{
+	// As player 1 and player 2 move at the same time
+	// a head to head collission is possible
+	// but tough movement actually is done sequential
+	// we have to check back if player 1 should die when player 2 did so
+	// that's where this function comes in :)
+	
+	int xInc = 0;
+	int yInc = 0;
+	
+	switch (players[1]->getDirection())
+	{
+		case PlayerDirections::Left:
+			xInc = -1;
+			break;
+		case PlayerDirections::Right:
+			xInc = 1;
+			break;
+		case PlayerDirections::Up:
+			yInc = -1;
+			break;
+		case PlayerDirections::Down:
+			yInc = 1;
+			break;
+		default:
+			break;
+	}
+	
+	if ((players[1]->getX() + xInc) == players[0]->getX())
+	{
+		if ((players[1]->getY() + yInc) == players[0]->getY())
+		{
+			players[0]->die();
+		}
 	}
 }
 
