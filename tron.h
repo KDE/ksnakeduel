@@ -67,8 +67,6 @@ class Tron : public QWidget
 		void triggerKey(int, KBAction::Action, bool);
 		bool running();
 		bool paused();
-		/** sets the direction of player playerNr to newDirection */
-		bool switchDir(int playerNr, PlayerDirections::Direction newDirection);
 		PlayField *getPlayField();
 		Player *getPlayer(int playerNr);
 		bool hasWinner();

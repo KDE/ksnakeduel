@@ -137,6 +137,22 @@ void Player::setDirection(PlayerDirections::Direction direction)
 	{
 		return;
 	}
+	else if (direction == PlayerDirections::Up && dir == PlayerDirections::Down)
+	{
+		return;
+	}
+	else if (direction == PlayerDirections::Down && dir == PlayerDirections::Up)
+	{
+		return;
+	}
+	else if (direction == PlayerDirections::Left && dir == PlayerDirections::Right)
+	{
+		return;
+	}
+	else if (direction == PlayerDirections::Right && dir == PlayerDirections::Left)
+	{
+		return;
+	}
 	
 	dir = direction;
 	blockSwitchDir = true;

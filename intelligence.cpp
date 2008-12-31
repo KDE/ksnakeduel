@@ -105,19 +105,19 @@ void Intelligence::changeDirection(int playerNr,int dis_right,int dis_left)
 			{
 	  			if (dis_left != 1)
 		    		// turn to the left
-		    		tron->switchDir(playerNr,sides[0]);
+		    		tron->getPlayer(playerNr)->setDirection(sides[0]);
 	  			else
 	   	 		// turn to the right
-	    			tron->switchDir(playerNr,sides[1]);
+	    			tron->getPlayer(playerNr)->setDirection(sides[1]);
 	    	}
 			else
 			{
 	  				if (dis_right != 1)
 	  					// turn to the right
-	    				tron->switchDir(playerNr,sides[1]);
+	    				tron->getPlayer(playerNr)->setDirection(sides[1]);
 	  				else
 	    				// turn to the left
-	    				tron->switchDir(playerNr,sides[0]);
+	    				tron->getPlayer(playerNr)->setDirection(sides[0]);
           }
     }
 }
@@ -316,13 +316,13 @@ void Intelligence::think(int playerNr)
 				if(opSideDis>0 && opSideDis < opForwardDis && opSideDis < dis_right && opForwardDis < lookForward)
 				{
 					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->switchDir(playerNr,sides[1]); // turn right
+						tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
 				else if(opSideDis<0 && -opSideDis < opForwardDis && -opSideDis < dis_left && opForwardDis < lookForward)
 				{
 					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->switchDir(playerNr,sides[0]); // turn left
+						tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
 				else if(dis_forward < lookForward)
@@ -353,13 +353,13 @@ void Intelligence::think(int playerNr)
 				if(opSideDis>0 && opSideDis < -opForwardDis && opSideDis < dis_right)
 				{
 					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->switchDir(playerNr,sides[1]); // turn right
+						tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
 				else if(opSideDis<0 && -opSideDis < -opForwardDis && -opSideDis < dis_left)
 				{
 					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->switchDir(playerNr,sides[0]); // turn left
+						tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
 				else if(dis_forward < lookForward)
@@ -409,7 +409,7 @@ void Intelligence::think(int playerNr)
 					if(opForwardDis < lookForward && dis_right > lookForward)
 					{
 						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
-							tron->switchDir(playerNr,sides[1]); // turn right
+							tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 					}
 					else if(dis_forward < lookForward)
 					{
@@ -476,7 +476,7 @@ void Intelligence::think(int playerNr)
 					if(opForwardDis < lookForward && dis_left > lookForward)
 					{
 						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
-							tron->switchDir(playerNr,sides[0]); // turn left
+							tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 						}
 					else if(dis_forward < lookForward)
 					{
@@ -616,18 +616,18 @@ void Intelligence::think(int playerNr)
 					if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right)) {
 						if (dis_left != 1)
 							// turn to the left
-							tron->switchDir(playerNr,sides[0]);
+							tron->getPlayer(playerNr)->setDirection(sides[0]);
 						else
 							// turn to the right
-							tron->switchDir(playerNr,sides[1]);
+							tron->getPlayer(playerNr)->setDirection(sides[1]);
 					}
 					else {
 						if (dis_right != 1)
 							// turn to the right
-							tron->switchDir(playerNr,sides[1]);
+							tron->getPlayer(playerNr)->setDirection(sides[1]);
 						else
 							// turn to the left
-							tron->switchDir(playerNr,sides[0]);
+							tron->getPlayer(playerNr)->setDirection(sides[0]);
 					}
 				}
 			}

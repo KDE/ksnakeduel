@@ -152,9 +152,9 @@ void Tron::reset()
 	{
 		players[0]->resetScore();
 		players[1]->resetScore();
-
-		setVelocity( lineSpeed() );
 	}
+
+	setVelocity( lineSpeed() );
 
 	pf.initialize();
 
@@ -307,34 +307,6 @@ void Tron::setVelocity(int newVel)            // set new velocity
 }
 
 /* *************************************************************** **
-**                    moving functions										 **
-** *************************************************************** */
-
-bool Tron::switchDir(int playerNr, PlayerDirections::Direction newDirection)
-{
-	if (playerNr != 0 && playerNr != 1)
-	{
-		Q_ASSERT_X(true, "Tron::switchDir", "wrong playerNr");
-		return false;
-	}
-
-	if (newDirection == players[playerNr]->getDirection())
-		return false;
-	if (newDirection == PlayerDirections::Up && players[playerNr]->getDirection() == PlayerDirections::Down)
-		return false;
-	if (newDirection == PlayerDirections::Down && players[playerNr]->getDirection() == PlayerDirections::Up)
-		return false;
-	if (newDirection == PlayerDirections::Left && players[playerNr]->getDirection() == PlayerDirections::Right)
-		return false;
-	if (newDirection == PlayerDirections::Right && players[playerNr]->getDirection() == PlayerDirections::Left)
-		return false;
-
-	players[playerNr]->setDirection(newDirection);
-	
-	return true;
-}
-
-/* *************************************************************** **
 **                    			Events										 **
 ** *************************************************************** */
 
@@ -381,11 +353,6 @@ void Tron::paintEvent(QPaintEvent *e)
 			}
 		}
 
-		//if (!players[0]->isAlive() || !players[1]->isAlive()) {
-		//	message += i18n("Crash!");
-		//	message += '\n';
-		//}
-
 		message += i18n("Press any of your direction keys to start!");
 
 		QPixmap messageBox = Renderer::self()->messageBox(message);
@@ -403,7 +370,6 @@ void Tron::resizeEvent(QResizeEvent *)
 
 void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 {
-	//kDebug() << "Key hit: " << player << action << trigger;
 	if (action == KBAction::ACCELERATE && !trigger)
 	{
 		switchKeyOff(player, action);
@@ -416,6 +382,24 @@ void Tron::triggerKey(int player, KBAction::Action action, bool trigger)
 
 void Tron::switchKeyOn(int player, KBAction::Action action)
 {
+	// Set key pressed
+	if (!players[player]->isComputer())
+	{
+		switch (action)
+		{
+			case KBAction::UP:
+			case KBAction::DOWN:
+			case KBAction::LEFT:
+			case KBAction::RIGHT:
+				players[player]->setKeyPressed(true);
+				break;
+			case KBAction::ACCELERATE:
+				break;
+			default:
+				break;
+		}
+	}
+
 	// if both players press keys at the same time, start game...
 	if (players[0]->hasKeyPressed() && players[1]->hasKeyPressed())
 	{
@@ -443,37 +427,20 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 		switch (action)
 		{
 			case KBAction::UP:
-				players[player]->setKeyPressed(true);
-				if (switchDir(player, PlayerDirections::Up))
-				{
-					//players[player]->movePlayer();
-				}
+				players[player]->setDirection(PlayerDirections::Up);
 				break;
 			case KBAction::DOWN:
-				players[player]->setKeyPressed(true);
-				if (switchDir(player, PlayerDirections::Down))
-				{
-					//players[player]->movePlayer();
-				}
+				players[player]->setDirection(PlayerDirections::Down);
 				break;
 			case KBAction::LEFT:
-				players[player]->setKeyPressed(true);
-				if (switchDir(player, PlayerDirections::Left))
-				{
-					//players[player]->movePlayer();
-				}
+				players[player]->setDirection(PlayerDirections::Left);
 				break;
 			case KBAction::RIGHT:
-				players[player]->setKeyPressed(true);
-				if (switchDir(player, PlayerDirections::Right))
-				{
-					//players[player]->movePlayer();
-				}
+				players[player]->setDirection(PlayerDirections::Right);
 				break;
 			case KBAction::ACCELERATE:
-				if(!Settings::acceleratorBlocked())
+				if (!Settings::acceleratorBlocked())
 				{
-					//kDebug() << "Acceleration on: " << player;
 					players[player]->setAccelerated(true);
 				}
 				break;
@@ -496,7 +463,6 @@ void Tron::switchKeyOff(int player, KBAction::Action action)
 				players[player]->setKeyPressed(false);
 				break;
 			case KBAction::ACCELERATE:
-				//kDebug() << "Acceleration off: " << player;
 				players[player]->setAccelerated(false);
 				break;
 			default:
