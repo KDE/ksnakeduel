@@ -1,5 +1,5 @@
-/* ********************************************************************************
-  This file is part of the kde-game 'KTron'
+/********************************************************************************** 
+  This file is part of the game 'KTron'
 
   Copyright (C) 1998-2000 by Matthias Kiefer <matthias.kiefer@gmx.de>
   Copyright (C) 2005 Benjamin C. Meyer <ben at meyerhome dot net>
@@ -21,42 +21,32 @@
 
   *******************************************************************************/  
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#include "obstacle.h"
 
-#include <QString>
-
-namespace ObjectType {
-	enum Type {
-		Object,
-		Item,
-		SnakePart,
-		Obstacle
-	};
+Obstacle::Obstacle() : Object(ObjectType::Obstacle)
+{
+	setSVGName("bush");
 }
 
-/**
-* @short This class represents a drawable object on the playfield
-*/
-class Object
+//
+// Getters / Setters
+//
+
+void Obstacle::setType(ObstacleType::Type t)
 {
-	public:
-		Object();
-		Object(ObjectType::Type t);
-		int getX();
-		int getY();
-		void setCoordinates(int x, int y);
-		QString getSVGName();
-		ObjectType::Type getObjectType();
+	type = t;
+	
+	switch (type)
+	{
+		default:
+		case ObstacleType::Bush:
+			setSVGName("bush");
+			break;
+	}
+}
 
-	private:
-		int xCoordinate;
-		int yCoordinate;
-		QString svgName;
-		ObjectType::Type objectType;
-		
-	protected:
-		void setSVGName(QString svgName);
-};
+ObstacleType::Type Obstacle::getType()
+{
+	return type;
+}
 
-#endif // OBJECT_H

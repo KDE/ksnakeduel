@@ -23,6 +23,7 @@ set(ktron_SRCS
 	object.cpp
 	snakepart.cpp
 	item.cpp
+	obstacle.cpp
 	playfield.cpp
 	player.cpp
 	intelligence.cpp

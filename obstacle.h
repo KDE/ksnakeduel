@@ -21,42 +21,30 @@
 
   *******************************************************************************/  
 
-#ifndef OBJECT_H
-#define OBJECT_H
+#ifndef OBSTACLE_H
+#define OBSTACLE_H
 
-#include <QString>
+#include "object.h"
 
-namespace ObjectType {
+namespace ObstacleType {
 	enum Type {
-		Object,
-		Item,
-		SnakePart,
-		Obstacle
+		Bush
 	};
 }
 
 /**
-* @short This class represents a drawable object on the playfield
+* @short This class represents a player with current position and several flags
 */
-class Object
+class Obstacle : public Object
 {
 	public:
-		Object();
-		Object(ObjectType::Type t);
-		int getX();
-		int getY();
-		void setCoordinates(int x, int y);
-		QString getSVGName();
-		ObjectType::Type getObjectType();
+		Obstacle();
+		ObstacleType::Type getType();
+		void setType(ObstacleType::Type t);
 
 	private:
-		int xCoordinate;
-		int yCoordinate;
-		QString svgName;
-		ObjectType::Type objectType;
-		
-	protected:
-		void setSVGName(QString svgName);
+		ObstacleType::Type type;
 };
 
-#endif // OBJECT_H
+#endif // OBSTACLE_H
+

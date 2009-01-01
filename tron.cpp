@@ -352,6 +352,13 @@ void Tron::paintEvent(QPaintEvent *e)
 				message += '\n';
 			}
 		}
+		else
+		{
+			int points = players[0]->getScore();
+
+			message += i18n("SnaKe game ended with %1 points", points);
+			message += '\n';
+		}
 
 		message += i18n("Press any of your direction keys to start!");
 
