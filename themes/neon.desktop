@@ -1,7 +1,13 @@
 [KGameTheme]
 VersionFormat=1
 Name=Neon K Tron
+Name[pt]=KTron em Néon
+Name[pt_BR]=KTron em Néon
 Description=A retro KTron theme with a deistinctive touch of early 50s.
+Description[gl]=Un tema retro do KTron cun toque ao estilo dos anos 50.
+Description[pt]=Um tema antigo do KTron com um toque distinto do início dos anos 50.
+Description[pt_BR]=Um tema antigo do KTron com um toque distinto do início dos anos 50.
+Description[uk]=Ретро-тема для KTron з невловимим присмаком ранніх 50-их.
 FileName=neon.svg
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
