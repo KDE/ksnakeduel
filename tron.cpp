@@ -356,7 +356,7 @@ void Tron::paintEvent(QPaintEvent *e)
 		{
 			int points = players[0]->getScore();
 
-			message += i18n("SnaKe game ended with %1 points", points);
+			message += i18np("SnaKe game ended with 1 point", "SnaKe game ended with %1 points", points);
 			message += '\n';
 		}
 
