@@ -200,6 +200,8 @@ void Renderer::boardResized(int width, int height, int partWidth, int partHeight
 
 void Renderer::resetPlayField()
 {
+	if (p->m_playField != 0)
+		delete p->m_playField;
 	p->m_playField = new QPixmap(p->m_sceneSize);
 	//p->m_playField->fill(Qt::green);
 }
