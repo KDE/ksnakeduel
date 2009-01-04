@@ -627,9 +627,7 @@ void Tron::checkHeadToHeadCollission()
 
 /** retrieves the line speed */
 int Tron::lineSpeed() {
-	KGameDifficulty::standardLevel level = KGameDifficulty::level();
-
-	switch (level) {
+	switch (KGameDifficulty::level()) {
 		case KGameDifficulty::VeryEasy:
 			return 2;
 		default:
