@@ -29,13 +29,17 @@
 
 #include <KDebug>
 #include <KLocale>
+#include <KUser>
 
 Player::Player(PlayField &pf, int playerNr) : QObject()
 {
 	playField = &pf;
 	playerNumber = playerNr;
 	computer = false;
-	name = i18n("Player %1", playerNumber + 1);
+
+	// Calling setName() with an empty string will cause the defaults
+	setName(QString());
+
 	score = 0;
 	dir = PlayerDirections::Up;
 	enlarge = 0;
@@ -100,7 +104,17 @@ void Player::setName(QString name)
 {
 	if (name.isEmpty())
 	{
-		this->name = i18n("Player %1", playerNumber + 1);
+		// If first player, name it after the user
+		KUser thisUser = KUser();
+
+		if (playerNumber == 0 && thisUser.property(KUser::FullName).isValid())
+		{
+			this->name = thisUser.property(KUser::FullName).toString();
+		}
+		else
+		{
+			this->name = i18n("Player %1", playerNumber + 1);
+		}
 	}
 	else
 	{
