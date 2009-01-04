@@ -161,6 +161,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 
 	setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
 	loadSettings();
+	tron->loadSettings();
 }
 
 KTron::~KTron()

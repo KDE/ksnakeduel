@@ -70,7 +70,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	gameBlocked = false;
 
 	timer = new QTimer(this);
-	loadSettings();
+	//loadSettings();
 	connect(timer, SIGNAL(timeout()), SLOT(doMove()));
 }
 
