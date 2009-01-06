@@ -221,7 +221,7 @@ void Tron::itemHit(int playerNumber, int, int)
 
 	newApple();
 	players[playerNumber]->setEnlargement(3);
-	players[playerNumber]->addScore(1);
+	players[playerNumber]->addScore(5);
 	if (velocity > 15)
 	{
 		velocity--;
@@ -268,8 +268,8 @@ void Tron::newObstacle()
 	Obstacle obst;
 	pf.setObjectAt(x, y, obst);
 
-	// Score +5
-	players[0]->addScore(5);
+	// Score +2
+	players[0]->addScore(2);
 	emit updatedScore();
 }
 
