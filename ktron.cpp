@@ -60,6 +60,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	tron = new Tron(this);
 	connect(tron,SIGNAL(gameEnds()),SLOT(changeStatus()));
 	connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
+	connect(tron,SIGNAL(pauseBlocked(bool)),SLOT(blockPause(bool)));
 	setCentralWidget(tron);
 	tron->setMinimumSize(200,180);
 
@@ -131,7 +132,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	addAction(player1Accelerate);
 
 	// Pause
-	KStandardGameAction::pause(tron, SLOT(togglePause()), actionCollection());
+	pauseButton = KStandardGameAction::pause(tron, SLOT(togglePause()), actionCollection());
+	pauseButton->setEnabled(false);
 	// New
 	KStandardGameAction::gameNew(tron, SLOT( newGame() ), actionCollection());
 	// Quit
@@ -214,6 +216,12 @@ void KTron::updateStatusbar() {
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
 		}
 	}
+}
+
+void KTron::blockPause(bool block)
+{
+	//kDebug() << "Setting pause button state to: "  << !block;
+	pauseButton->setEnabled(!block);
 }
 
 void KTron::updateScore()

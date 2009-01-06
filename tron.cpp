@@ -206,6 +206,7 @@ Player *Tron::getPlayer(int playerNr)
 void Tron::startGame()
 {
 	gameEnded = false;
+	emit pauseBlocked(false);
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
@@ -307,6 +308,7 @@ void Tron::showWinner()
 	update();
 
 	emit gameEnds();
+	emit pauseBlocked(true);
 }
 
 /* *************************************************************** **

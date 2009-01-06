@@ -85,6 +85,7 @@ class Tron : public QWidget
 		void gameEnds();
 		void updatedScore();
 		void gameReset();
+		void pauseBlocked(bool block);
 
 	protected:
 		/** Calls renderer */

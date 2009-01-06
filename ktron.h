@@ -66,6 +66,7 @@ class KTron : public KXmlGuiWindow {
 		void showSettings();
 		void showHighscores();
 		void optionsConfigureKeys();
+		void blockPause(bool block);
 		// Triggers keys
 		void triggerKey0Up(bool);
 		void triggerKey0Down(bool);
@@ -91,6 +92,7 @@ class KTron : public KXmlGuiWindow {
 		KAction *player1Left;
 		KAction *player1Right;
 		KAction *player1Accelerate;
+		KAction *pauseButton;
 };
 
 #endif // KTRON_H
