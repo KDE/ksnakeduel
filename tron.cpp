@@ -50,6 +50,7 @@
 #include "settings.h"
 #include "renderer.h"
 #include "object.h"
+#include "obstacle.h"
 
 /**
  * init-functions
@@ -155,6 +156,8 @@ void Tron::reset()
 	}
 
 	setVelocity( lineSpeed() );
+	
+	modMoves = 0;
 
 	pf.initialize();
 
@@ -245,6 +248,29 @@ void Tron::newApple()
 	apple.setType((int)(rand() % 3));
 	
 	pf.setObjectAt(x, y, apple);
+}
+
+void Tron::newObstacle()
+{
+	// SnaKe only
+	if (Settings::gameType() != Settings::EnumGameType::Snake)
+		return;
+
+	int x = rand() % pf.getWidth();
+	int y = rand() % pf.getHeight();
+
+	// Don't render if it's at an unwanted place
+	if (pf.getObjectAt(x, y)->getObjectType() != ObjectType::Object)
+		return;
+	else if (x == players[0]->getX() || y == players[0]->getY())
+		return;
+
+	Obstacle obst;
+	pf.setObjectAt(x, y, obst);
+
+	// Score +5
+	players[0]->addScore(5);
+	emit updatedScore();
 }
 
 void Tron::stopGame()
@@ -502,6 +528,14 @@ void Tron::doMove()
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
 		players[0]->movePlayer();
+
+		modMoves++;
+
+		if (modMoves == 20)
+		{
+			modMoves = 0;
+			newObstacle();
+		}
 
 		updatePixmap();
 		update();

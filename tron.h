@@ -116,6 +116,8 @@ class Tron : public QWidget
 		/** size of the rects */
 		int blockHeight;
 		int blockWidth;
+		/** counter for the number of moves, modulo 20 */
+		int modMoves;
 
 	private:
 		// Functions
@@ -144,6 +146,8 @@ class Tron : public QWidget
 		void checkHeadToHeadCollission();
 		/** Helper for the doMove() function */
 		void movementHelper(bool onlyAcceleratedPlayers);
+		/** Tries to generate a new obstacle */
+		void newObstacle();
 	
 	private slots:
 		/**
