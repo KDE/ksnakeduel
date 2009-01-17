@@ -53,7 +53,7 @@ public:
 
 /**
  * Constuctor
- */ 
+ */
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	//playerPoints[0]=playerPoints[1]=0;
 
@@ -61,8 +61,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	connect(tron,SIGNAL(gameEnds()),SLOT(changeStatus()));
 	connect(tron,SIGNAL(updatedScore()),SLOT(updateScore()));
 	connect(tron,SIGNAL(pauseBlocked(bool)),SLOT(blockPause(bool)));
+	tron->setMinimumSize(700,420);
 	setCentralWidget(tron);
-	tron->setMinimumSize(200,180);
 
 	// create statusbar
 	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE + 1);
@@ -70,31 +70,31 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
-	
+
 	player0Up = actionCollection()->addAction("Pl1Up");
 	player0Up->setText(i18n("Player 1 Up"));
 	player0Up->setShortcut(Qt::Key_Up);
 	connect(player0Up, SIGNAL(triggered(bool)), SLOT(triggerKey0Up(bool)));
 	addAction(player0Up);
-	
+
 	player0Down = actionCollection()->addAction("Pl1Down");
 	player0Down->setText(i18n("Player 1 Down"));
 	player0Down->setShortcut(Qt::Key_Down);
 	connect(player0Down, SIGNAL(triggered(bool)), SLOT(triggerKey0Down(bool)));
 	addAction(player0Down);
-	
+
 	player0Right = actionCollection()->addAction("Pl1Right");
 	player0Right->setText(i18n("Player 1 Right"));
 	player0Right->setShortcut(Qt::Key_Right);
 	connect(player0Right, SIGNAL(triggered(bool)), SLOT(triggerKey0Right(bool)));
 	addAction(player0Right);
-	
+
 	player0Left = actionCollection()->addAction("Pl1Left");
 	player0Left->setText(i18n("Player 1 Left"));
 	player0Left->setShortcut(Qt::Key_Left);
 	connect(player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
 	addAction(player0Left);
-	
+
 	player0Accelerate = actionCollection()->addAction("Pl1Ac");
 	player0Left->setText(i18n("Player 1 Accelerator"));
 	player0Accelerate->setShortcut(Qt::Key_0);
@@ -118,13 +118,13 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	player1Right->setShortcut(Qt::Key_G);
 	connect(player1Right, SIGNAL(triggered(bool)), SLOT(triggerKey1Right(bool)));
 	addAction(player1Right);
-	
+
 	player1Left = actionCollection()->addAction("Pl2Left");
 	player1Left->setText(i18n("Player 2 Left"));
 	player1Left->setShortcut(Qt::Key_D);
 	connect(player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
 	addAction(player1Left);
-	
+
 	player1Accelerate = actionCollection()->addAction("Pl2Ac");
 	player1Left->setText(i18n("Player 2 Accelerator"));
 	player1Accelerate->setShortcut(Qt::Key_A);
@@ -176,7 +176,7 @@ void KTron::loadSettings() {
     {
 		KMessageBox::error(this, i18n("Failed to load \"%1\" theme. Please check your installation.", Settings::theme()));
 	}
-	
+
 	tron->getPlayer(0)->setName(Settings::namePlayer1());
 	tron->getPlayer(1)->setName(Settings::namePlayer2());
 	
