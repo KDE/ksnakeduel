@@ -282,10 +282,22 @@ Menu</link>.
 <varlistentry>
 <term><menuchoice>
 <shortcut>
+<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Show High Scores</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays the highscore dialog
+(for &snake;).</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<shortcut>
 <keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
 </shortcut>
 <guimenu>Game</guimenu>
-<guimenuitem>Exit</guimenuitem>
+<guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Quits.</action></para></listitem>
 </varlistentry>
@@ -303,6 +315,15 @@ Menu</link>.
 <guimenuitem>Show Statusbar</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Shows or hides the Statusbar.</action></para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Difficulty</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Lets you alter the difficulty level of the
+game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -344,38 +365,6 @@ to configure various options.</action></para></listitem>
 <thead>
 <row>
 <entry>Key Combo</entry>
-<entry>Action</entry></row></thead>
-<tbody>
-<row>
-<entry><keycap>R</keycap></entry>
-<entry>Up</entry>
-</row>
-<row>
-<entry><keycap>F</keycap></entry>
-<entry>Down</entry>
-</row>
-<row>
-<entry><keycap>G</keycap></entry>
-<entry>Right</entry>
-</row>
-<row>
-<entry><keycap>D</keycap></entry>
-<entry>Left</entry>
-</row>
-<row>
-<entry><keycap>A</keycap></entry>
-<entry>Accelerate</entry>
-</row>
-</tbody>
-</tgroup>
-</table>
-
-<table>
-<title>Player 2 Shortcuts</title>
-<tgroup cols="2">
-<thead>
-<row>
-<entry>Key Combo</entry>
 <entry>Action</entry>
 </row>
 </thead>
@@ -405,6 +394,38 @@ to configure various options.</action></para></listitem>
 </table>
 
 <table>
+<title>Player 2 Shortcuts</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry>Key Combo</entry>
+<entry>Action</entry></row></thead>
+<tbody>
+<row>
+<entry><keycap>R</keycap></entry>
+<entry>Up</entry>
+</row>
+<row>
+<entry><keycap>F</keycap></entry>
+<entry>Down</entry>
+</row>
+<row>
+<entry><keycap>G</keycap></entry>
+<entry>Right</entry>
+</row>
+<row>
+<entry><keycap>D</keycap></entry>
+<entry>Left</entry>
+</row>
+<row>
+<entry><keycap>A</keycap></entry>
+<entry>Accelerate</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
 <title>General Shortcuts</title>
 <tgroup cols="2">
 <thead>
@@ -417,6 +438,10 @@ to configure various options.</action></para></listitem>
 <row>
 <entry><keycap>P</keycap></entry>
 <entry>Pause/Resume Game</entry>
+</row>
+<row>
+<entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry>
+<entry>High Scores</entry>
 </row>
 <row>
 <entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
@@ -457,10 +482,22 @@ These shortcuts can be changed by selecting <menuchoice>
 in the <guimenu>Settings</guimenu> menu will open a further dialog which lets
 you tweak &kappname;'s behavior.</para>
 
-<para>This dialog is divided into three pages.</para>
+<para>This dialog is divided into two pages.</para>
 
 <sect1 id="configuration-general">
 <title>General Configuration</title>
+
+<screenshot>
+<screeninfo>Configure KTron - General</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>General Configuration</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
 
 <variablelist>
 <varlistentry>
