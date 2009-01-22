@@ -83,17 +83,18 @@ play alone or against a friend.
 &ktron; is a simple Tron-Clone for the
 <ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
 &ktron; against the computer or a friend.
+The aim of the game is to live longer than your opponent. To do that,
+avoid running into a wall, your own tail and that of your opponent.
 </para>
 
 <para>
-SnaKe is a simple Snake-like game for the <ulink url="http://www.kde.org">K
-Desktop Environment</ulink>. The aim of SnaKe is to survive as long as
+&snake; is a simple Snake-like game for the <ulink url="http://www.kde.org">K
+Desktop Environment</ulink>. The aim of &snake; is to survive as long as
 possible and eat as many fruits as you can.
 </para>
 
 <para>
-The aim of the game is to live longer than your opponent. To do that,
-avoid running into a wall, your own tail and that of your opponent.
+You can switch between these games using the game type selector in the configuration dialog.
 </para>
 
 </chapter>
@@ -112,7 +113,7 @@ possible to increase the velocity by pressing your accelerator key.
 </para>
 
 <para>
-A round starts when all human players press a direction key.  The initial moving
+A round starts when all human players press a direction key. The initial moving
 direction is then in this direction.
 </para>
 
@@ -132,35 +133,29 @@ But be careful, your player switches to this direction immediately.
 
 
 <para>A game consists of several rounds, and ends if a player has at least
-nine points, and additionally two more points than the opponent.
-The current score is always displayed in the status bar.
+nine points, and additionally two more points than the opponent. The current
+score is always displayed in the status bar.
 </para>
 
+<para>
+You can change the difficulty level of the game using the game menu item or
+the select box on the status bar. The difficulty influences the speed of the
+game and the computer player.
+</para>
 </sect1>
 
 <sect1 id="computerplayer">
 <title>The Computer Player</title>
 
 <para>
-You can let the computer be Player One, Player Two or both players.
-There are three difficulty levels:  Beginner, Average and Expert.</para>
-
-<itemizedlist>
-<listitem>
-<para>If you choose Beginner, the computer doesn't care about
-the opponent and just moves around. This is the same algorithm as used by
-xtron-1.1.</para>
-</listitem>
-<listitem>
-<para>At skill levels Average and Expert, the computer tries to hinder the
-opponent when he comes near.</para>
-</listitem>
-</itemizedlist>
-
-<note><para>See the <link linkend="settings-menu"><guimenu>Settings</guimenu>
-Menu</link> section for information on how to configure the computer player.
-</para></note>
-
+You can play against a computer. The difficulty level of the game influences the 
+intelligence of the computer player.
+</para>
+<para>
+At low levels the computer doesn't care about the opponent and just moves
+around. At higher skill levels the computer tries to hinder the opponent when he
+comes near.
+</para>
 </sect1>
 
 <sect1 id="using-keyboard">
@@ -172,7 +167,8 @@ accelerate.
 </para>
 
 <para>
-The direction keys do not have to be held down. Simply press them once to change
+The direction keys do not have to be held down. Simply press them once to
+change
 the direction of your player.
 </para>
 
@@ -182,10 +178,74 @@ release the acceleration key, velocity returns to normal.
 </para>
 
 <note><para>
-See section <link linkend="settings-menu"><guimenu>Settings</guimenu>
-Menu</link> for information how to change the default keys.
+You can alter the keys using the shortcuts option in the <link
+linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link>.
 </para></note>
 </sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title>Playing &snake;</title>
+
+<sect1 id="playing-snake-rules">
+<title>Rules</title>
+
+<para>
+Once the game is started, the player does not stop moving forward (unless the
+game is paused). All you have to do is avoid crashing by changing your
+direction. A game starts when you press a direction key. The initial moving
+direction is then in this direction.
+</para>
+
+<para>
+If you want to pause playing, select Pause from the Game menu or hit the
+keyboard shortcut (see section Default Shortcuts). Additionally the game is
+paused when the game loses the keyboard focus, &eg; when switching to an other
+window.
+</para>
+
+<para>
+To continue the game, select the menu item Pause or hit the keyboard shortcut
+again. The game will also continue if you press one of the direction keys. But
+be careful, your player switches to this direction immediately.
+</para>
+
+<para>
+In the game there will allways be a piece of fruit on the map. If you collect it
+your score will increase with 5 points. The current score is always displayed in
+the status bar.
+</para>
+
+<para>
+When you are moving through the map there will appear obstacles. Hitting them
+will also result in a crash. However, every time an obstacle appears and you
+survive you'll be rewarded 2 points
+</para>
+
+<para>
+You can change the difficulty level of the game using the game menu item or the
+select box on the status bar. The difficulty influences the speed of the game.
+</para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title>Using the keyboard</title>
+
+<para>
+Each player has four keys. These are used for changing the direction.
+The direction keys do not have to be held down. Simply press them once to change
+the direction of your player.
+</para>
+
+<note><para>
+You can alter the keys using the shortcuts option in the <link
+linkend="settings-menu"><guimenu>Settings</guimenu>
+Menu</link>.
+</para></note>
+</sect1>
+
 </chapter>
 
 <chapter id="command">
