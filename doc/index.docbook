@@ -19,14 +19,13 @@
 </affiliation>
 </author>
 
-<othercredit role="developer">
-<firstname>Matthias</firstname>
-<surname>Kiefer</surname>
+<author>
+<firstname>Stas</firstname>
+<surname>Verberkt</surname>
 <affiliation>
-<address>&Matthias.Kiefer.mail;</address>
+<address>&Stas.Verberkt.mail;</address>
 </affiliation>
-<contrib>Developer</contrib>
-</othercredit>
+</author>
 
 <othercredit role="reviewer">
 <firstname>Lauri</firstname>
@@ -50,10 +49,15 @@
 <holder>&Fabian.Dal.Santo;</holder>
 </copyright>
 
+<copyright>
+<year>2009</year>
+<holder>&Stas.Verberkt;</holder>
+</copyright>
+
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2005-12-16</date>
-<releaseinfo>1.1</releaseinfo>
+<date>2009-01-22</date>
+<releaseinfo>2.0</releaseinfo>
 
 <abstract>
 <para>
@@ -68,6 +72,7 @@ play alone or against a friend.
 <keyword>KTron</keyword>
 <keyword>game</keyword>
 <keyword>tron</keyword>
+<keyword>SnaKe</keyword>
 </keywordset>
 </bookinfo>
 
@@ -78,6 +83,12 @@ play alone or against a friend.
 &ktron; is a simple Tron-Clone for the
 <ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
 &ktron; against the computer or a friend.
+</para>
+
+<para>
+SnaKe is a simple Snake-like game for the <ulink url="http://www.kde.org">K
+Desktop Environment</ulink>. The aim of SnaKe is to survive as long as
+possible and eat as many fruits as you can.
 </para>
 
 <para>
