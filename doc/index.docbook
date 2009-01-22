@@ -488,7 +488,7 @@ you tweak &kappname;'s behavior.</para>
 <title>General Configuration</title>
 
 <screenshot>
-<screeninfo>Configure KTron - General</screeninfo>
+<screeninfo>Configure &ktron; - General</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-general.png" format="PNG"/>
@@ -501,10 +501,28 @@ you tweak &kappname;'s behavior.</para>
 
 <variablelist>
 <varlistentry>
-<term><guilabel>Show winner by changing color</guilabel></term>
-<listitem><para>Enable this box to improve visualizing that the game is over
-by making &ktron; change the color of the loser's trail to the color of
-the winner.</para></listitem>
+<term><guilabel>Game type</guilabel></term>
+<listitem><para>This will let you change the game type. There are three options:
+
+<variablelist>
+<varlistentry>
+<term>&ktron;: Player vs Player</term><listitem><para> a
+KTron game between two human players</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>&ktron;: Player vs Computer</term>
+<listitem><para> a KTron game between a human player and the
+computer</para></listitem>
+</varlistentry>
+
+<varlistentry>
+<term>&snake;: Single player</term><listitem><para> 
+a single player &snake; game</para></listitem>
+</varlistentry>
+</variablelist>
+
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -515,99 +533,36 @@ travel with constant velocity.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term><guilabel>Crash when moving in the opposite direction</guilabel></term>
-<listitem><para>Enable this to make a vehicle crash into itself as soon as a
-player attempts to move into the opposite direction (&ie; a vehicle moves left,
-and the player tries to move to the right in one step). If this box is
-not checked, nothing happens when a player attempts to move into the opposite
-direction.</para></listitem>
-</varlistentry>
-
-<varlistentry>
 <term><guilabel>Player Names</guilabel></term>
-<listitem><para>Specify custom names to use for the players to override the use of default ones.</para></listitem>
+<listitem><para>Specify custom names to use for the players to override the
+use of default ones.</para>
+<para>
+The default name for player one is the name of the current logged in
+user.
+</para></listitem>
 </varlistentry>
 
-<varlistentry>
-<term><guilabel>Speed</guilabel></term>
-<listitem><para>Use this slider to define how fast the vehicles move; moving the
-slider to the left will make the vehicles move slower, moving it to the right
-will make them move faster.</para></listitem>
-</varlistentry>
 </variablelist>
 </sect1>
 
-<sect1 id="configuration-ai">
-<title><acronym>AI</acronym> Configuration</title>
+<sect1 id="configuration-theme">
+<title>Theme Configuration</title>
 
-<variablelist>
-<varlistentry>
-<term><guilabel>Computer Controls</guilabel></term>
-<listitem><para>Use these two checkable boxes to define which players should
-be controlled by the computer.</para></listitem>
-</varlistentry>
+<screenshot>
+<screeninfo>Configure KTron - Theme</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase>Theme Configuration</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
 
-<varlistentry>
-<term><guilabel>Intelligence:</guilabel></term>
-<listitem><para>Selects the skill level of the computer player,
-<guimenuitem>Beginner</guimenuitem>, <guimenuitem>Average</guimenuitem> or
-<guimenuitem>Expert</guimenuitem></para>
-<para><guimenuitem>Beginner</guimenuitem> ignores the opponent, and just moves
-randomly. <guimenuitem>Average</guimenuitem> or
-<guimenuitem>Expert</guimenuitem> causes the computer to actively hinder the
-opponent.</para></listitem>
-</varlistentry>
-</variablelist>
-</sect1>
-
-<sect1 id="configuration-appearance">
-<title>Appearance Configuration</title>
-
-<variablelist>
-<varlistentry>
-<term><guilabel>Line style:</guilabel></term>
-<listitem><para>Here you can choose one of four different line styles to be
-used for drawing the vehicles. The names of the styles are self-explanatory:
-<guimenuitem>3D Line</guimenuitem>, <guimenuitem>3D Rectangles</guimenuitem>,
-<guimenuitem>Flat</guimenuitem> and <guimenuitem>Circles</guimenuitem>.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Line Size</guilabel></term>
-<listitem><para>Use this slider to define how broad the trail of a vehicle should
-be. Moving the slider towards the left will make the trail more narrow, moving
-it to the right will result in a wider trail.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Background</guilabel></term>
-<listitem><para>Here you can define the appearance of the playground's
-background. If you prefer a simple solid color, select the
-<guilabel>Color:</guilabel> option and click on the button at the right of it
-to open a convenient color-selection dialog.</para>
-<para>You can also choose a background image for the playground. To do so,
-select the <guilabel>Image:</guilabel> option, and then provide the filename
-of a wallpaper image to use in the input field at the right. Alternatively you
-can click on the little button at the very right to open the well-known
-file-selection dialog.</para>
-</listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Player 1 color:</guilabel></term>
-<listitem><para>Click on the colored rectangle to open a color-selection dialog
-which lets you define the color to be used for the vehicle of the first
-player.</para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><guilabel>Player 2 color:</guilabel></term>
-<listitem><para>Click on the colored rectangle to open a color-selection dialog
-which lets you define the color to be used for the vehicle of the second
-player.</para></listitem>
-</varlistentry>
-</variablelist>
+<para>
+This page will allow you to change the theme KTron uses.
+</para>
 </sect1>
 </chapter>
 
