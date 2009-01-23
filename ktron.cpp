@@ -173,7 +173,7 @@ KTron::~KTron()
 
 void KTron::loadSettings() {
 	if (!Renderer::self()->loadTheme(Settings::theme()))
-    {
+	{
 		KMessageBox::error(this, i18n("Failed to load \"%1\" theme. Please check your installation.", Settings::theme()));
 	}
 
@@ -262,8 +262,8 @@ void KTron::showSettings(){
   KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
   dialog->addPage(new General, i18n("General"), "games-config-options");
   dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), "games-config-theme");
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
+  connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
   dialog->show();
 }
 
