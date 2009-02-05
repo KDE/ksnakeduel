@@ -287,7 +287,7 @@ Menu</link>.
 <guimenu>Game</guimenu>
 <guimenuitem>Show High Scores</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Displays the highscore dialog
+<listitem><para><action>Displays the high score dialog
 (for &snake;).</action></para></listitem>
 </varlistentry>
 
@@ -507,12 +507,12 @@ you tweak &kappname;'s behavior.</para>
 <variablelist>
 <varlistentry>
 <term>&ktron;: Player vs Player</term><listitem><para> a
-KTron game between two human players</para></listitem>
+&ktron; game between two human players</para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term>&ktron;: Player vs Computer</term>
-<listitem><para> a KTron game between a human player and the
+<listitem><para> a &ktron; game between a human player and the
 computer</para></listitem>
 </varlistentry>
 
@@ -549,7 +549,7 @@ user.
 <title>Theme Configuration</title>
 
 <screenshot>
-<screeninfo>Configure KTron - Theme</screeninfo>
+<screeninfo>Configure &ktron; - Theme</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-theme.png" format="PNG"/>
@@ -561,7 +561,7 @@ user.
 </screenshot>
 
 <para>
-This page will allow you to change the theme KTron uses.
+This page will allow you to change the theme &ktron; uses.
 </para>
 </sect1>
 </chapter>
