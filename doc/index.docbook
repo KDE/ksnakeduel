@@ -626,10 +626,6 @@ required libraries as well as &kappname; itself can be found on &kde-ftp;.</para
 
 &install.compile.documentation;
 
-<para>Should you run into problems, please report them to the
-<ulink url="mailto:kde-games-devel@kde.org">mailinglist</ulink>.
-</para>
-
 </sect1>
 </appendix>
 
