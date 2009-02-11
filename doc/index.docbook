@@ -574,8 +574,13 @@ This page will allow you to change the theme &kappname; uses.
 <para>
 &kappname; 
 </para>
-<para>Program Copyright 1999 &Matthias.Kiefer;
+
+<para>Program Copyright 1998-2000 &Matthias.Kiefer;
 &Matthias.Kiefer.mail;
+</para>
+
+<para>Program Copyright 2008-2009 &Stas.Verberkt;
+&Stas.Verberkt.mail;
 </para>
 
 <para>
@@ -612,7 +617,7 @@ Documentation Copyright 1999 &Matthias.Kiefer;
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &kappname;, you need &kde; 3.0. All
+In order to successfully compile &kappname;, you need &kde; 4. All
 required libraries as well as &kappname; itself can be found on &kde-ftp;.</para>
 </sect1>
 
@@ -621,8 +626,8 @@ required libraries as well as &kappname; itself can be found on &kde-ftp;.</para
 
 &install.compile.documentation;
 
-<para>Should you run into problems, please report them to the the
-author at <ulink url="mailto:matthias.kiefer@gmx.de">&Matthias.Kiefer;</ulink>
+<para>Should you run into problems, please report them to the
+<ulink url="mailto:kde-games-devel@kde.org">mailinglist</ulink>.
 </para>
 
 </sect1>
