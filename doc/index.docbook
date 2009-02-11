@@ -8,7 +8,7 @@
 
 <book lang="&language;">
 <bookinfo>
-<title>The &ktron; Handbook</title>
+<title>The &kappname; Handbook</title>
 
 <authorgroup>
 <author>
@@ -61,7 +61,7 @@
 
 <abstract>
 <para>
-&ktron; is a simple <quote>Tron</quote> clone for &kde;, which you can
+&kappname; is a simple <quote>Tron</quote> clone for &kde;, which you can
 play alone or against a friend.
 </para>
 </abstract>
@@ -80,9 +80,9 @@ play alone or against a friend.
 <title>Introduction</title>
 
 <para>
-&ktron; is a simple Tron-Clone for the
+&kappname; is a simple Tron-Clone for the
 <ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
-&ktron; against the computer or a friend.
+&kappname; against the computer or a friend.
 The aim of the game is to live longer than your opponent. To do that,
 avoid running into a wall, your own tail and that of your opponent.
 </para>
@@ -100,7 +100,7 @@ You can switch between these games using the game type selector in the configura
 </chapter>
 
 <chapter id="playing-ktron">
-<title>Playing &ktron;</title>
+<title>Playing &kappname;</title>
 
 <sect1 id="playing-ktron-rules">
 <title>Rules</title>
@@ -199,14 +199,15 @@ direction is then in this direction.
 </para>
 
 <para>
-If you want to pause playing, select Pause from the Game menu or hit the
-keyboard shortcut (see section Default Shortcuts). Additionally the game is
+If you want to pause playing, select <guimenu>Pause</guimenu> from the <guimenuitem>Game</guimenuitem> menu or hit the
+keyboard shortcut (see section <link linkend="keys">Default 
+Shortcuts</link>). Additionally the game is
 paused when the game loses the keyboard focus, &eg; when switching to an other
 window.
 </para>
 
 <para>
-To continue the game, select the menu item Pause or hit the keyboard shortcut
+To continue the game, select the menu item <guimenuitem>Pause</guimenuitem> or hit the keyboard shortcut
 again. The game will also continue if you press one of the direction keys. But
 be careful, your player switches to this direction immediately.
 </para>
@@ -449,7 +450,7 @@ to configure various options.</action></para></listitem>
 </row>
 <row>
 <entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
-<entry>Quit &ktron;</entry>
+<entry>Quit &kappname;</entry>
 </row>
 <row>
 <entry><keycap>F1</keycap></entry>
@@ -488,7 +489,7 @@ you tweak &kappname;'s behavior.</para>
 <title>General Configuration</title>
 
 <screenshot>
-<screeninfo>Configure &ktron; - General</screeninfo>
+<screeninfo>Configure &kappname; - General</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-general.png" format="PNG"/>
@@ -506,13 +507,13 @@ you tweak &kappname;'s behavior.</para>
 
 <variablelist>
 <varlistentry>
-<term>&ktron;: Player vs Player</term><listitem><para> a
-&ktron; game between two human players</para></listitem>
+<term>&kappname;: Player vs Player</term><listitem><para> a
+&kappname; game between two human players</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term>&ktron;: Player vs Computer</term>
-<listitem><para> a &ktron; game between a human player and the
+<term>&kappname;: Player vs Computer</term>
+<listitem><para> a &kappname; game between a human player and the
 computer</para></listitem>
 </varlistentry>
 
@@ -549,7 +550,7 @@ user.
 <title>Theme Configuration</title>
 
 <screenshot>
-<screeninfo>Configure &ktron; - Theme</screeninfo>
+<screeninfo>Configure &kappname; - Theme</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-theme.png" format="PNG"/>
@@ -561,7 +562,7 @@ user.
 </screenshot>
 
 <para>
-This page will allow you to change the theme &ktron; uses.
+This page will allow you to change the theme &kappname; uses.
 </para>
 </sect1>
 </chapter>
@@ -571,7 +572,7 @@ This page will allow you to change the theme &ktron; uses.
 <title>Credits and License</title>
 
 <para>
-&ktron; 
+&kappname; 
 </para>
 <para>Program Copyright 1999 &Matthias.Kiefer;
 &Matthias.Kiefer.mail;
@@ -601,7 +602,7 @@ Documentation Copyright 1999 &Matthias.Kiefer;
 <title>Installation</title>
 
 <sect1 id="getting-ktron">
-<title>How to obtain &ktron;</title>
+<title>How to obtain &kappname;</title>
 
 &install.intro.documentation;
 
@@ -611,8 +612,8 @@ Documentation Copyright 1999 &Matthias.Kiefer;
 <title>Requirements</title>
 
 <para>
-In order to successfully compile &ktron;, you need &kde; 3.0. All
-required libraries as well as &ktron; itself can be found on &kde-ftp;.</para>
+In order to successfully compile &kappname;, you need &kde; 3.0. All
+required libraries as well as &kappname; itself can be found on &kde-ftp;.</para>
 </sect1>
 
 <sect1 id="compilation">
