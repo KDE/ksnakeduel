@@ -96,7 +96,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	addAction(player0Left);
 
 	player0Accelerate = actionCollection()->addAction("Pl1Ac");
-	player0Left->setText(i18n("Player 1 Accelerator"));
+	player0Accelerate->setText(i18n("Player 1 Accelerator"));
 	player0Accelerate->setShortcut(Qt::Key_0);
 	player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(player0Accelerate);
@@ -126,7 +126,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	addAction(player1Left);
 
 	player1Accelerate = actionCollection()->addAction("Pl2Ac");
-	player1Left->setText(i18n("Player 2 Accelerator"));
+	player1Accelerate->setText(i18n("Player 2 Accelerator"));
 	player1Accelerate->setShortcut(Qt::Key_A);
 	player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(player1Accelerate);
