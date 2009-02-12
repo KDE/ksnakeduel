@@ -213,7 +213,7 @@ be careful, your player switches to this direction immediately.
 </para>
 
 <para>
-In the game there will allways be a piece of fruit on the map. If you collect it
+In the game there will always be a piece of fruit on the map. If you collect it
 your score will increase with 5 points. The current score is always displayed in
 the status bar.
 </para>
