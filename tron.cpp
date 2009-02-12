@@ -25,7 +25,6 @@
 
 // Background
 #include <kio/netaccess.h>
-#include <KMessageBox>
 
 // Normal class
 #include <QTimer>
@@ -35,16 +34,9 @@
 #include <QResizeEvent>
 #include <QFocusEvent>
 #include <QPixmap>
-#include <QKeyEvent>
-#include <QVector>
-#include <QKeySequence>
 
 #include <KDebug>
 #include <KLocale>
-#include <KApplication>
-#include <KConfig>
-#include <KColorDialog>
-#include <KStandardAction>
 #include <KGameDifficulty>
 
 #include "settings.h"

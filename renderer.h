@@ -29,7 +29,6 @@
 #include <QPainter>
 #include <QString>
 #include <QSize>
-#include <QVector>
 
 class QPixmap;
 class RendererPrivate;

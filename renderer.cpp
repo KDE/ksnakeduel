@@ -29,7 +29,6 @@
 #include <QPainter>
 #include <QPixmap>
 #include <QSize>
-#include <QVector>
 
 #include <KGameTheme>
 #include <KPixmapCache>

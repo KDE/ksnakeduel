@@ -32,14 +32,13 @@
 #include <KAction>
 #include <KActionCollection>
 #include <KStandardGameAction>
-#include <KApplication>
 #include <KScoreDialog>
-#include <KStatusBar>
 #include <KGameThemeSelector>
 #include <KGameDifficulty>
 #include <KShortcutsDialog>
+#include <KStatusBar>
 #include <KToggleAction>
-
+#include <KApplication>
 //UI
 class General : public QWidget, public Ui::General
 {

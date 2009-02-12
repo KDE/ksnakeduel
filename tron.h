@@ -30,10 +30,8 @@
 #include "intelligence.h"
 
 #include <QWidget>
-#include <QPainter>
 #include <QPixmap>
 #include <QResizeEvent>
-#include <QVector>
 #include <QPaintEvent>
 #include <QFocusEvent>
 

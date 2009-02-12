@@ -21,7 +21,6 @@
 
   *******************************************************************************/
 #include <KApplication>
-#include <KImageIO>
 #include <KCmdLineArgs>
 #include <KAboutData>
 #include <KStandardDirs>
