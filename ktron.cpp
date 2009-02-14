@@ -102,31 +102,31 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 
 	player1Up = actionCollection()->addAction("Pl2Up");
 	player1Up->setText(i18n("Player 2 Up"));
-	player1Up->setShortcut(Qt::Key_R);
+	player1Up->setShortcut(Qt::Key_W);
 	connect(player1Up, SIGNAL(triggered(bool)), SLOT(triggerKey1Up(bool)));
 	addAction(player1Up);
 
 	player1Down = actionCollection()->addAction("Pl2Down");
 	player1Down->setText(i18n("Player 2 Down"));
-	player1Down->setShortcut(Qt::Key_F);
+	player1Down->setShortcut(Qt::Key_S);
 	connect(player1Down, SIGNAL(triggered(bool)), SLOT(triggerKey1Down(bool)));
 	addAction(player1Down);
 
 	player1Right = actionCollection()->addAction("Pl2Right");;
 	player1Right->setText(i18n("Player 2 Right"));
-	player1Right->setShortcut(Qt::Key_G);
+	player1Right->setShortcut(Qt::Key_D);
 	connect(player1Right, SIGNAL(triggered(bool)), SLOT(triggerKey1Right(bool)));
 	addAction(player1Right);
 
 	player1Left = actionCollection()->addAction("Pl2Left");
 	player1Left->setText(i18n("Player 2 Left"));
-	player1Left->setShortcut(Qt::Key_D);
+	player1Left->setShortcut(Qt::Key_A);
 	connect(player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
 	addAction(player1Left);
 
 	player1Accelerate = actionCollection()->addAction("Pl2Ac");
 	player1Accelerate->setText(i18n("Player 2 Accelerator"));
-	player1Accelerate->setShortcut(Qt::Key_A);
+	player1Accelerate->setShortcut(Qt::Key_Q);
 	player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(player1Accelerate);
 
