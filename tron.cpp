@@ -595,8 +595,9 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 		
 		if (!players[0]->isAlive() && !players[1]->isAlive())
 		{
-			players[0]->addScore(1);
-			players[1]->addScore(1);
+			// Don't award points when both players die
+			//players[0]->addScore(1);
+			//players[1]->addScore(1);
 		}
 		else if (!players[0]->isAlive())
 		{
