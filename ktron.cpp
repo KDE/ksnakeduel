@@ -208,8 +208,8 @@ void KTron::updateStatusbar() {
 	else
 	{
 		for (int i = 0; i < 2; ++i) {
-			QString name = tron->getPlayer(i)->getName();
-			int score = tron->getPlayer(i)->getScore();
+			QString name = tron->getPlayer(1 - i)->getName();
+			int score = tron->getPlayer(1 - i)->getScore();
 			
 			QString string = QString("%1: %2").arg(name).arg(score);
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);

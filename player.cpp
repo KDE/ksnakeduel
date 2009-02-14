@@ -216,7 +216,7 @@ void Player::setStartPosition()
 		snakeParts.dequeue();
 	}
 	
-	int x = (getPlayerNumber() + 1) * playField->getWidth() / 3;
+	int x = (2 - getPlayerNumber()) * playField->getWidth() / 3;
 	int y = playField->getHeight() / 2;
 	
 	SnakePart head(getPlayerNumber());

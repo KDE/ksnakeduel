@@ -358,7 +358,7 @@ void Tron::paintEvent(QPaintEvent *e)
 				int winnerScore = players[winner]->getScore();
 				int loserScore = players[loser]->getScore();
 
-				message += i18n("%1 has won versus %2 with %3 : %4 points!", winnerName, loserName, winnerScore, loserScore);
+				message += i18n("%1 has won versus %2 with %3 versus %4 points!", winnerName, loserName, winnerScore, loserScore);
 				message += '\n';
 			}
 			else
@@ -368,7 +368,7 @@ void Tron::paintEvent(QPaintEvent *e)
 				int points1 = players[0]->getScore();
 				int points2 = players[1]->getScore();
 				
-				message += i18n("%1 (%2 points) vs %3 (%4 points)", name1, points1, name2, points2);
+				message += i18n("%1 (%2 points) versus %3 (%4 points)", name2, points2, name1, points1);
 				message += '\n';
 			}
 		}
