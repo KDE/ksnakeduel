@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=KTron Default Theme
 Name[ga]=Téama Réamhshocraithe KTron
+Name[ja]=KTron 標準テーマ
 Name[nds]=KTron-Standardmuster
 Name[pt]=Tema Predefinido do KTron
 Name[pt_BR]=Tema Predefinido do KTron
@@ -10,6 +11,7 @@ Name[tr]=KTron Öntanımlı Teması
 Name[uk]=Типова тема KTron
 Description=Default theme for KTron.
 Description[ga]=Téama réamhshocraithe le haghaidh KTron.
+Description[ja]=KTron の標準テーマ
 Description[nds]=Standardmuster för KTron
 Description[pt]=O tema por omissão para o KTron.
 Description[pt_BR]=O tema por omissão para o KTron.
