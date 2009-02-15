@@ -380,7 +380,12 @@ void Tron::paintEvent(QPaintEvent *e)
 			message += '\n';
 		}
 
-		message += i18n("Press any of your direction keys to start!");
+		if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer) {
+			message += i18n("The game starts when each player has pressed one of their direction keys!");
+		}
+		else {
+			message += i18n("Press any of your direction keys to start!");
+		}
 
 		QPixmap messageBox = Renderer::self()->messageBox(message);
 		QPoint point(width() / 2 - messageBox.width() / 2, height() / 2 - messageBox.height() / 2);
