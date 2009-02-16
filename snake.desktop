@@ -12,6 +12,7 @@ GenericName[pt_BR]=Jogo semelhante ao Snake
 GenericName[sv]=Ormliknande spel
 GenericName[tr]=Snake Benzeri bir Oyun
 GenericName[uk]=Гра, схожа на Snake
+GenericName[zh_TW]=類似吞食蛇遊戲
 Terminal=false
 Name=SnaKe
 Name[sv]=Orm
