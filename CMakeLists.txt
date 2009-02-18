@@ -41,9 +41,11 @@ target_link_libraries(ktron ${KDE4_KDEUI_LIBS} ${KDEGAMES_LIBRARY} ${KDE4_KNOTIF
 
 install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
 
+configure_file(kdesnake.cmake ${CMAKE_CURRENT_BINARY_DIR}/kdesnake  @ONLY)
 
 ########### install files ###############
 
+install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/kdesnake DESTINATION ${BIN_INSTALL_DIR})
 install(FILES  ktron.desktop snake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES  ktronui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)
