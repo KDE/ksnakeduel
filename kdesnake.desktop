@@ -1,7 +1,7 @@
 [Desktop Entry]
 Type=Application
 Exec=ktron -snake -caption "%c" %i
-Icon=snake
+Icon=kdesnake
 DocPath=ktron/index.html
 GenericName=Snake-like Game
 GenericName[ga]=Cluiche cosúil le Snake
