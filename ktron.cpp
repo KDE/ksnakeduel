@@ -71,25 +71,25 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
 
 	player0Up = actionCollection()->addAction("Pl1Up");
-	player0Up->setText(i18n("Right Player / SnaKe: Up"));
+	player0Up->setText(i18n("Right Player / KSnake: Up"));
 	player0Up->setShortcut(Qt::Key_Up);
 	connect(player0Up, SIGNAL(triggered(bool)), SLOT(triggerKey0Up(bool)));
 	addAction(player0Up);
 
 	player0Down = actionCollection()->addAction("Pl1Down");
-	player0Down->setText(i18n("Right Player / SnaKe: Down"));
+	player0Down->setText(i18n("Right Player / KSnake: Down"));
 	player0Down->setShortcut(Qt::Key_Down);
 	connect(player0Down, SIGNAL(triggered(bool)), SLOT(triggerKey0Down(bool)));
 	addAction(player0Down);
 
 	player0Right = actionCollection()->addAction("Pl1Right");
-	player0Right->setText(i18n("Right Player / SnaKe: Right"));
+	player0Right->setText(i18n("Right Player / KSnake: Right"));
 	player0Right->setShortcut(Qt::Key_Right);
 	connect(player0Right, SIGNAL(triggered(bool)), SLOT(triggerKey0Right(bool)));
 	addAction(player0Right);
 
 	player0Left = actionCollection()->addAction("Pl1Left");
-	player0Left->setText(i18n("Right Player / SnaKe: Left"));
+	player0Left->setText(i18n("Right Player / KSnake: Left"));
 	player0Left->setShortcut(Qt::Key_Left);
 	connect(player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
 	addAction(player0Left);

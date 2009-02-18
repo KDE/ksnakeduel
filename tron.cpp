@@ -245,7 +245,7 @@ void Tron::newApple()
 
 void Tron::newObstacle()
 {
-	// SnaKe only
+	// KSnake only
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 		return;
 
@@ -376,7 +376,7 @@ void Tron::paintEvent(QPaintEvent *e)
 		{
 			int points = players[0]->getScore();
 
-			message += i18np("SnaKe game ended with 1 point", "SnaKe game ended with %1 points", points);
+			message += i18np("KSnake game ended with 1 point", "KSnake game ended with %1 points", points);
 			message += '\n';
 		}
 

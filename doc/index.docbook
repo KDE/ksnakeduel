@@ -72,7 +72,8 @@ play alone or against a friend.
 <keyword>KTron</keyword>
 <keyword>game</keyword>
 <keyword>tron</keyword>
-<keyword>SnaKe</keyword>
+<keyword>KSnake</keyword>
+<keyword>snake</keyword>
 </keywordset>
 </bookinfo>
 
@@ -88,8 +89,8 @@ avoid running into a wall, your own tail and that of your opponent.
 </para>
 
 <para>
-&snake; is a simple Snake-like game for the <ulink url="http://www.kde.org">K
-Desktop Environment</ulink>. The aim of &snake; is to survive as long as
+&ksnake; is a simple Snake-like game for the <ulink url="http://www.kde.org">K
+Desktop Environment</ulink>. The aim of &ksnake; is to survive as long as
 possible and eat as many fruits as you can.
 </para>
 
@@ -186,7 +187,7 @@ Menu</link>.
 </chapter>
 
 <chapter id="playing-snake">
-<title>Playing &snake;</title>
+<title>Playing &ksnake;</title>
 
 <sect1 id="playing-snake-rules">
 <title>Rules</title>
@@ -289,7 +290,7 @@ Menu</link>.
 <guimenuitem>Show High Scores</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Displays the high score dialog
-(for &snake;).</action></para></listitem>
+(for &ksnake;).</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -518,8 +519,8 @@ computer</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term>&snake;: Single player</term><listitem><para> 
-a single player &snake; game</para></listitem>
+<term>&ksnake;: Single player</term><listitem><para> 
+a single player &ksnake; game</para></listitem>
 </varlistentry>
 </variablelist>
 

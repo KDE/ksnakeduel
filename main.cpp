@@ -45,13 +45,13 @@ int main(int argc, char* argv[])
     KTRON_VERSION, description, KAboutData::License_GPL, notice);
   aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
-  aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and SnaKe mode"), "legolas@legolasweb.nl");
+  aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 
   KCmdLineOptions options;
   options.add("ktron", ki18n("Start in KTron mode"));
-  options.add("snake", ki18n("Start in SnaKe mode"));
+  options.add("snake", ki18n("Start in KSnake mode"));
   KCmdLineArgs::addCmdLineOptions(options);
 
   KApplication a;
