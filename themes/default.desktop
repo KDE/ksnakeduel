@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=KTron Default Theme
+Name[es]=Tema predeterminado de KTron
 Name[fr]=Thème KTron par défaut
 Name[ga]=Téama Réamhshocraithe KTron
 Name[ja]=KTron 標準テーマ
@@ -12,12 +13,13 @@ Name[tr]=KTron Öntanımlı Teması
 Name[uk]=Типова тема KTron
 Name[zh_TW]=KTron 的預設主題
 Description=Default theme for KTron.
+Description[es]=Tema predeterminado para KTron
 Description[fr]=Thème par défaut pour KTron
-Description[ga]=Téama réamhshocraithe le haghaidh KTron.
+Description[ga]=Téama réamhshocraithe KTron.
 Description[ja]=KTron の標準テーマ
 Description[nds]=Standardmuster för KTron
 Description[pt]=O tema por omissão para o KTron.
-Description[pt_BR]=O tema por omissão para o KTron.
+Description[pt_BR]=Tema padrão para o KTron.
 Description[sv]=Standardtema för Ktron.
 Description[tr]=KTron için öntanımlı tema.
 Description[uk]=Типова тема KTron.
