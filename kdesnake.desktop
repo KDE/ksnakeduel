@@ -17,6 +17,7 @@ GenericName[uk]=Гра, схожа на Snake
 GenericName[zh_TW]=類似吞食蛇遊戲
 Terminal=false
 Name=KSnake
+Name[fr]=KSnaKe
 Name[sv]=Ormspel
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
