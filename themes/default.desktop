@@ -1,7 +1,13 @@
 [KGameTheme]
 VersionFormat=1
 Name=KTron Default Theme
+Name[ga]=Téama Réamhshocraithe KTron
+Name[uk]=Типова тема KTron
+Name[zh_TW]=KTron 的預設主題
 Description=Default theme for KTron.
+Description[ga]=Téama réamhshocraithe le haghaidh KTron.
+Description[uk]=Типова тема KTron.
+Description[zh_TW]=KTron 的預設主題。
 FileName=default.svgz
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
