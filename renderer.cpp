@@ -81,6 +81,7 @@ Renderer::Renderer(const Renderer &)
 
 Renderer::~Renderer()
 {
+    delete p;
 }
 
 Renderer *Renderer::self()
