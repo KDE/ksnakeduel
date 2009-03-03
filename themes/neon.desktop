@@ -1,11 +1,13 @@
 [KGameTheme]
 VersionFormat=1
 Name=Neon K Tron
+Name[et]=KTroni Neon
 Name[ga]=K Tron Neoin
 Name[pt]=K Tron Néon
 Name[pt_BR]=K Tron Néon
 Name[sv]=Neon Ktron
 Description=A retro KTron theme with a deistinctive touch of early 50s.
+Description[et]=KTroni retroteema 1950. aastate alguse stiilis.
 Description[pt]=Um tema retro do KTron com um toque distinto do início dos anos 50.
 Description[pt_BR]=Um tema retro do KTron com um toque distinto do início dos anos 50.
 Description[sv]=Ett gammaldags Ktron tema med en distinkt känsla av tidigt 50-tal.
