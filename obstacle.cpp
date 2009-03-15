@@ -32,20 +32,20 @@ Obstacle::Obstacle() : Object(ObjectType::Obstacle)
 // Getters / Setters
 //
 
-void Obstacle::setType(ObstacleType::Type t)
+void Obstacle::setType(Obstacle::Type t)
 {
 	type = t;
 	
 	switch (type)
 	{
 		default:
-		case ObstacleType::Bush:
+		case Obstacle::Bush:
 			setSVGName("bush");
 			break;
 	}
 }
 
-ObstacleType::Type Obstacle::getType()
+Obstacle::Type Obstacle::getType()
 {
 	return type;
 }

@@ -26,24 +26,22 @@
 
 #include "object.h"
 
-namespace ObstacleType {
-	enum Type {
-		Bush
-	};
-}
-
 /**
 * @short This class represents a player with current position and several flags
 */
 class Obstacle : public Object
 {
 	public:
+		enum Type {
+			Bush
+		};
+
 		Obstacle();
-		ObstacleType::Type getType();
-		void setType(ObstacleType::Type t);
+		Obstacle::Type getType();
+		void setType(Obstacle::Type t);
 
 	private:
-		ObstacleType::Type type;
+		Type type;
 };
 
 #endif // OBSTACLE_H
