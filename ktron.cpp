@@ -239,6 +239,7 @@ void KTron::changeStatus() {
 		scoreDialog.setConfigGroup(KGameDifficulty::localizedLevelString());
 
 		KScoreDialog::FieldInfo scoreInfo;
+		scoreInfo[KScoreDialog::Name] = tron->getPlayer(0)->getName();
 		scoreInfo[KScoreDialog::Score].setNum(tron->getPlayer(0)->getScore());
 		if (scoreDialog.addScore(scoreInfo) != 0)
 			scoreDialog.exec();
