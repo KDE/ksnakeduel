@@ -178,6 +178,10 @@ void KTron::loadSettings() {
 
 	tron->getPlayer(0)->setName(Settings::namePlayer1());
 	tron->getPlayer(1)->setName(Settings::namePlayer2());
+	Settings::setNamePlayer1(tron->getPlayer(0)->getName());
+	if (!tron->getPlayer(1)->isComputer()) {
+		Settings::setNamePlayer2(tron->getPlayer(1)->getName());
+	}
 	
 	updateStatusbar();
 }
