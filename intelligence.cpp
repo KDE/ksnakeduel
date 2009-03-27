@@ -30,14 +30,14 @@
 
 Intelligence::Intelligence()
 {
-	random.setSeed(0);
+	m_random.setSeed(0);
 
-	lookForward = 15;
+	m_lookForward = 15;
 }
 
 void Intelligence::referenceTron(Tron *t)
 {
-	tron = t;
+	m_tron = t;
 }
 
 //
@@ -69,7 +69,7 @@ int Intelligence::opponentSkill() {
 
 void Intelligence::changeDirection(int playerNr,int dis_right,int dis_left)
 {
-   PlayerDirections::Direction currentDir = tron->getPlayer(playerNr)->getDirection();
+   PlayerDirections::Direction currentDir = m_tron->getPlayer(playerNr)->getDirection();
    PlayerDirections::Direction sides[2];
    sides[0] = PlayerDirections::None;
    sides[1] = PlayerDirections::None;
@@ -101,23 +101,23 @@ void Intelligence::changeDirection(int playerNr,int dis_right,int dis_left)
    if(!(dis_left == 1 && dis_right == 1))
    {
 			// change direction
-			if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
+			if ((int)m_random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
 			{
 	  			if (dis_left != 1)
 		    		// turn to the left
-		    		tron->getPlayer(playerNr)->setDirection(sides[0]);
+		    		m_tron->getPlayer(playerNr)->setDirection(sides[0]);
 	  			else
 	   	 		// turn to the right
-	    			tron->getPlayer(playerNr)->setDirection(sides[1]);
+	    			m_tron->getPlayer(playerNr)->setDirection(sides[1]);
 	    	}
 			else
 			{
 	  				if (dis_right != 1)
 	  					// turn to the right
-	    				tron->getPlayer(playerNr)->setDirection(sides[1]);
+	    				m_tron->getPlayer(playerNr)->setDirection(sides[1]);
 	  				else
 	    				// turn to the left
-	    				tron->getPlayer(playerNr)->setDirection(sides[0]);
+	    				m_tron->getPlayer(playerNr)->setDirection(sides[0]);
           }
     }
 }
@@ -142,7 +142,7 @@ void Intelligence::think(int playerNr)
 
 		dis_forward = dis_left = dis_right = 1;
 
-		switch (tron->getPlayer(playerNr)->getDirection())
+		switch (m_tron->getPlayer(playerNr)->getDirection())
 		{
 			case PlayerDirections::Left:
 				//forward flags
@@ -196,9 +196,9 @@ void Intelligence::think(int playerNr)
 		}
 
 		// check forward
-		index[0] = tron->getPlayer(playerNr)->getX()+flags[0];
-		index[1] = tron->getPlayer(playerNr)->getY()+flags[1];
-		while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
+		index[0] = m_tron->getPlayer(playerNr)->getX()+flags[0];
+		index[1] = m_tron->getPlayer(playerNr)->getY()+flags[1];
+		while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
 		{
 			dis_forward++;
 			index[0] += flags[0];
@@ -206,9 +206,9 @@ void Intelligence::think(int playerNr)
 		}
 
 		// check left
-		index[0] = tron->getPlayer(playerNr)->getX()+flags[2];
-		index[1] = tron->getPlayer(playerNr)->getY()+flags[3];
-		while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
+		index[0] = m_tron->getPlayer(playerNr)->getX()+flags[2];
+		index[1] = m_tron->getPlayer(playerNr)->getY()+flags[3];
+		while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
 		{
 			dis_left++;
 			index[0] += flags[2];
@@ -216,9 +216,9 @@ void Intelligence::think(int playerNr)
 		}
 
 		// check right
-		index[0] = tron->getPlayer(playerNr)->getX()+flags[4];
-		index[1] = tron->getPlayer(playerNr)->getY()+flags[5];
-		while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] <  tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
+		index[0] = m_tron->getPlayer(playerNr)->getX()+flags[4];
+		index[1] = m_tron->getPlayer(playerNr)->getY()+flags[5];
+		while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] <  m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object)
 		{
 			dis_right++;
 			index[0] += flags[4];
@@ -228,8 +228,8 @@ void Intelligence::think(int playerNr)
 		// distances to opponent
 		int hor_dis=0; // negative is opponent to the right
 		int vert_dis=0; // negative is opponent to the bottom
-		hor_dis = tron->getPlayer(playerNr)->getX() - tron->getPlayer(opponent)->getX();
-		vert_dis = tron->getPlayer(playerNr)->getY() - tron->getPlayer(opponent)->getY();
+		hor_dis = m_tron->getPlayer(playerNr)->getX() - m_tron->getPlayer(opponent)->getX();
+		vert_dis = m_tron->getPlayer(playerNr)->getY() - m_tron->getPlayer(opponent)->getY();
 
 		int opForwardDis=0; // negative is to the back
 		int opSideDis=0;  // negative is to the left
@@ -238,54 +238,54 @@ void Intelligence::think(int playerNr)
 		bool opMovesRight=false;
 		bool opMovesLeft=false;
 
-		switch (tron->getPlayer(playerNr)->getDirection())
+		switch (m_tron->getPlayer(playerNr)->getDirection())
 		{
 			case PlayerDirections::Up:
 				opForwardDis=vert_dis;
 				opSideDis=-hor_dis;
-				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
+				if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesRight=true;
 				break;
 			case PlayerDirections::Down:
 				opForwardDis=-vert_dis;
 				opSideDis=hor_dis;
-				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
+				if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesRight=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesLeft=true;
 				break;
 			case PlayerDirections::Left:
 				opForwardDis=hor_dis;
 				opSideDis=vert_dis;
-				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
+				if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesRight=true;
 				break;
 			case PlayerDirections::Right:
 				opForwardDis=-hor_dis;
 				opSideDis=-vert_dis;
-				if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
+				if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Left)
 					opMovesOppositeDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Right)
 					opMovesSameDir=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Up)
 					opMovesLeft=true;
-				else if(tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
+				else if(m_tron->getPlayer(opponent)->getDirection()==PlayerDirections::Down)
 					opMovesRight=true;
 				break;
 			default:
@@ -313,34 +313,34 @@ void Intelligence::think(int playerNr)
 			if(opForwardDis>0)
 			{
 				// opponent is to the right and we have the chance to block the way
-				if(opSideDis>0 && opSideDis < opForwardDis && opSideDis < dis_right && opForwardDis < lookForward)
+				if(opSideDis>0 && opSideDis < opForwardDis && opSideDis < dis_right && opForwardDis < m_lookForward)
 				{
-					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
+					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+						m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
-				else if(opSideDis<0 && -opSideDis < opForwardDis && -opSideDis < dis_left && opForwardDis < lookForward)
+				else if(opSideDis<0 && -opSideDis < opForwardDis && -opSideDis < dis_left && opForwardDis < m_lookForward)
 				{
-					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
+					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+						m_tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
 			// opponent is in back of us and moves away: do nothing
-			else if(dis_forward < lookForward)
+			else if(dis_forward < m_lookForward)
 			{
 				dis_forward = 100 - 100/dis_forward;
 
 				if(!(dis_left == 1 && dis_right == 1))
-					if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+					if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 			}
 		} // end  if(opMovesOppositeDir)
@@ -352,32 +352,32 @@ void Intelligence::think(int playerNr)
 					// opponent is to the right and we have the chance to block the way
 				if(opSideDis>0 && opSideDis < -opForwardDis && opSideDis < dis_right)
 				{
-					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
+					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+						m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
 				else if(opSideDis<0 && -opSideDis < -opForwardDis && -opSideDis < dis_left)
 				{
-					if ((int)random.getLong(100) <= doPercentage || dis_forward==1)
-						tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
+					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+						m_tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
 			// opponent is in front of us and moves away
-			else if(dis_forward < lookForward)
+			else if(dis_forward < m_lookForward)
 			{
 				dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 			}
 		} // end if(opMovesSameDir)
@@ -389,43 +389,43 @@ void Intelligence::think(int playerNr)
 				// opponent is to the left
 				if(opSideDis < 0 && -opSideDis < opForwardDis && -opSideDis < dis_left)
 				{
-					if(opForwardDis < lookForward && dis_left > lookForward)
+					if(opForwardDis < m_lookForward && dis_left > m_lookForward)
 					{
-						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
 							changeDirection(playerNr,dis_right,dis_left);
 					}
-					else if(dis_forward < lookForward)
+					else if(dis_forward < m_lookForward)
 					{
 						dis_forward = 100 - 100/dis_forward;
 
 							if(!(dis_left == 1 && dis_right == 1))
-								if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+								if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 									changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
 				// op is to the right and moves away, but maybe we can block him
 				else if(opSideDis>=0 && opSideDis < dis_right)
 				{
-					if(opForwardDis < lookForward && dis_right > lookForward)
+					if(opForwardDis < m_lookForward && dis_right > m_lookForward)
 					{
-						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
-							tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
+						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+							m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 					}
-					else if(dis_forward < lookForward)
+					else if(dis_forward < m_lookForward)
 					{
 						dis_forward = 100 - 100/dis_forward;
 
 							if(!(dis_left == 1 && dis_right == 1))
-								if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+								if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 									changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -433,17 +433,17 @@ void Intelligence::think(int playerNr)
 			else
 			{
 				// opponent is right from us and we already blocked him
-				if(opSideDis>0 && opForwardDis < lookForward && opSideDis < dis_right)
+				if(opSideDis>0 && opForwardDis < m_lookForward && opSideDis < dis_right)
 				{
-					if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
+					if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
 						changeDirection(playerNr,dis_right,dis_left);
 				}
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -456,44 +456,44 @@ void Intelligence::think(int playerNr)
 				// opponent is to the right, moves towards us and could block us
 				if(opSideDis > 0 && opSideDis < opForwardDis && opSideDis < dis_right)
 				{
-					if(opForwardDis < lookForward && dis_right > lookForward)
+					if(opForwardDis < m_lookForward && dis_right > m_lookForward)
 					{
-						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
 							changeDirection(playerNr,dis_right,dis_left);
 					}
-					else if(dis_forward < lookForward)
+					else if(dis_forward < m_lookForward)
 					{
 						dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
 				// op is to the left and moves away, but maybe we can block him
 				else if(opSideDis<=0 && opSideDis < dis_left)
 				{
-					if(opForwardDis < lookForward && dis_left > lookForward)
+					if(opForwardDis < m_lookForward && dis_left > m_lookForward)
 					{
-						if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
-							tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
+						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+							m_tron->getPlayer(playerNr)->setDirection(sides[0]); // m_turn left
 						}
-					else if(dis_forward < lookForward)
+					else if(dis_forward < m_lookForward)
 					{
 						dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 					}
 
 				}
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -501,17 +501,17 @@ void Intelligence::think(int playerNr)
 			else //if(opForwardDis<=0)
 			{
 				// opponent is left from us and we already blocked him
-				if(opSideDis<0 && opForwardDis < lookForward && -opSideDis < dis_left)
+				if(opSideDis<0 && opForwardDis < m_lookForward && -opSideDis < dis_left)
 				{
-					if ((int)random.getLong(100) <= doPercentage/2 || dis_forward==1)
+					if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
 						changeDirection(playerNr,dis_right,dis_left);
 				}
-				else if(dis_forward < lookForward)
+				else if(dis_forward < m_lookForward)
 				{
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)random.getLong(100) >= dis_forward || dis_forward == 1)
+						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -531,7 +531,7 @@ void Intelligence::think(int playerNr)
 
 		dis_forward = dis_left = dis_right = 1;
 
-		switch (tron->getPlayer(playerNr)->getDirection()) {
+		switch (m_tron->getPlayer(playerNr)->getDirection()) {
 			case PlayerDirections::Left:
 				//forward flags
 				flags[0] = -1;
@@ -581,53 +581,53 @@ void Intelligence::think(int playerNr)
 		}
 
 		// check forward
-		index[0] = tron->getPlayer(playerNr)->getX() + flags[0];
-		index[1] = tron->getPlayer(playerNr)->getY() + flags[1];
-		while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
+		index[0] = m_tron->getPlayer(playerNr)->getX() + flags[0];
+		index[1] = m_tron->getPlayer(playerNr)->getY() + flags[1];
+		while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
 			dis_forward++;
 			index[0] += flags[0];
 			index[1] += flags[1];
 		}
 
-		if (dis_forward < lookForward)
+		if (dis_forward < m_lookForward)
 		{
 			dis_forward = 100 - 100 / dis_forward;
 
 			// check left
-			index[0] = tron->getPlayer(playerNr)->getX() + flags[2];
-			index[1] = tron->getPlayer(playerNr)->getY() + flags[3];
-			while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
+			index[0] = m_tron->getPlayer(playerNr)->getX() + flags[2];
+			index[1] = m_tron->getPlayer(playerNr)->getY() + flags[3];
+			while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] < m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
 				dis_left++;
 				index[0] += flags[2];
 				index[1] += flags[3];
 			}
 
 			// check right
-			index[0] = tron->getPlayer(playerNr)->getX() + flags[4];
-			index[1] = tron->getPlayer(playerNr)->getY() + flags[5];
-			while (index[0] < tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] <  tron->getPlayField()->getHeight() && index[1] >= 0 && tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
+			index[0] = m_tron->getPlayer(playerNr)->getX() + flags[4];
+			index[1] = m_tron->getPlayer(playerNr)->getY() + flags[5];
+			while (index[0] < m_tron->getPlayField()->getWidth() && index[0] >= 0 && index[1] <  m_tron->getPlayField()->getHeight() && index[1] >= 0 && m_tron->getPlayField()->getObjectAt(index[0], index[1])->getObjectType() == ObjectType::Object) {
 				dis_right++;
 				index[0] += flags[4];
 				index[1] += flags[5];
 			}
 			if(!(dis_left == 1 && dis_right == 1)) {
-				if ((int)random.getLong(100) >= dis_forward || dis_forward == 0) {
+				if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 0) {
 					// change direction
-					if ((int)random.getLong(100) <= (100*dis_left)/(dis_left+dis_right)) {
+					if ((int)m_random.getLong(100) <= (100*dis_left)/(dis_left+dis_right)) {
 						if (dis_left != 1)
 							// turn to the left
-							tron->getPlayer(playerNr)->setDirection(sides[0]);
+							m_tron->getPlayer(playerNr)->setDirection(sides[0]);
 						else
 							// turn to the right
-							tron->getPlayer(playerNr)->setDirection(sides[1]);
+							m_tron->getPlayer(playerNr)->setDirection(sides[1]);
 					}
 					else {
 						if (dis_right != 1)
 							// turn to the right
-							tron->getPlayer(playerNr)->setDirection(sides[1]);
+							m_tron->getPlayer(playerNr)->setDirection(sides[1]);
 						else
 							// turn to the left
-							tron->getPlayer(playerNr)->setDirection(sides[0]);
+							m_tron->getPlayer(playerNr)->setDirection(sides[0]);
 					}
 				}
 			}

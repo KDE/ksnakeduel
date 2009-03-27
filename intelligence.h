@@ -45,11 +45,11 @@ class Intelligence
 		/** changeDirection helper for think(playerNr) */
 		void changeDirection(int playerNr,int dis_right,int dis_left);
 		
-		Tron *tron;
+		Tron *m_tron;
 		/** The random sequence generator **/
-		KRandomSequence random;
+		KRandomSequence m_random;
 		/** determines level of computerplayer */
-		int lookForward;
+		int m_lookForward;
 };
 
 #endif // INTELLIGENCE_H

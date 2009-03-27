@@ -33,6 +33,8 @@
 #define ID_STATUS_BASE 40
 #define MESSAGE_TIME 2000
 
+class General;
+
 /**
  * @short The main window of KTron
  */
@@ -93,6 +95,7 @@ class KTron : public KXmlGuiWindow {
 		KAction *player1Right;
 		KAction *player1Accelerate;
 		KAction *pauseButton;
+		General *generalConfigDialog;
 };
 
 #endif // KTRON_H

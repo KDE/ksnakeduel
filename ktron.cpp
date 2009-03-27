@@ -260,15 +260,26 @@ void KTron::paletteChange(const QPalette &){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-  if(KConfigDialog::showDialog("settings"))
-    return;
+	if (KConfigDialog::showDialog("settings"))
+		return;
   
-  KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
-  dialog->addPage(new General, i18n("General"), "games-config-options");
-  dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), "games-config-theme");
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
-  connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
-  dialog->show();
+	generalConfigDialog = new General();
+
+	if (Settings::gameType() == Settings::EnumGameType::Snake) {
+		generalConfigDialog->namePlayer1Label->setText(i18n("Player Name:"));
+		generalConfigDialog->namePlayer2Label->setText(i18n("Opponent:"));
+	}
+	else {
+		generalConfigDialog->namePlayer1Label->setText(i18n("Right Player:"));
+		generalConfigDialog->namePlayer2Label->setText(i18n("Left Player:"));
+	}
+
+	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
+	dialog->addPage(generalConfigDialog, i18n("General"), "games-config-options");
+	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), "games-config-theme");
+	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
+	connect(dialog, SIGNAL(settingsChanged(const QString &)), tron, SLOT(loadSettings()));
+	dialog->show();
 }
 
 /**
