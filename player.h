@@ -76,18 +76,18 @@ class Player : public QObject
 		void setName(QString name);
 		
 	private:
-		int playerNumber;
-		QQueue<SnakePart> snakeParts;
-		PlayField *playField;
-		int score;
-		int enlarge;
-		PlayerDirections::Direction dir;
-		bool alive;
-		bool computer;
-		bool accelerated;
-		bool keyPressed;
-		QString name;
-		bool blockSwitchDir;
+		int m_playerNumber;
+		QQueue<SnakePart> m_snakeParts;
+		PlayField *m_playField;
+		int m_score;
+		int m_enlarge;
+		PlayerDirections::Direction m_dir;
+		bool m_alive;
+		bool m_computer;
+		bool m_accelerated;
+		bool m_keyPressed;
+		QString m_name;
+		bool m_blockSwitchDir;
 		
 	signals:
 		void fetchedItem(int playerNumber, int x, int y);

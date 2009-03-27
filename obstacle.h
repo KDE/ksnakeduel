@@ -41,7 +41,7 @@ class Obstacle : public Object
 		void setType(Obstacle::Type t);
 
 	private:
-		Type type;
+		Type m_type;
 };
 
 #endif // OBSTACLE_H

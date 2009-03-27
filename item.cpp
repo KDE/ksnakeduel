@@ -34,9 +34,9 @@ Item::Item() : Object(ObjectType::Item)
 
 void Item::setType(int t)
 {
-	type = t;
+	m_type = t;
 	
-	switch (type)
+	switch (m_type)
 	{
 		default:
 		case 0:
@@ -53,6 +53,6 @@ void Item::setType(int t)
 
 int Item::getType()
 {
-	return type;
+	return m_type;
 }
 

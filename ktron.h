@@ -82,20 +82,19 @@ class KTron : public KXmlGuiWindow {
 		void triggerKey1Accelerate(bool);
 		
 	private:
-		Tron *tron;
-		int playerPoints[2];
-		KAction *player0Up;
-		KAction *player0Down;
-		KAction *player0Left;
-		KAction *player0Right;
-		KAction *player0Accelerate;
-		KAction *player1Up;
-		KAction *player1Down;
-		KAction *player1Left;
-		KAction *player1Right;
-		KAction *player1Accelerate;
-		KAction *pauseButton;
-		General *generalConfigDialog;
+		Tron *m_tron;
+		KAction *m_player0Up;
+		KAction *m_player0Down;
+		KAction *m_player0Left;
+		KAction *m_player0Right;
+		KAction *m_player0Accelerate;
+		KAction *m_player1Up;
+		KAction *m_player1Down;
+		KAction *m_player1Left;
+		KAction *m_player1Right;
+		KAction *m_player1Accelerate;
+		KAction *m_pauseButton;
+		General *m_generalConfigDialog;
 };
 
 #endif // KTRON_H

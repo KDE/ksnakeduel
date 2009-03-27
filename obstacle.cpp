@@ -34,9 +34,9 @@ Obstacle::Obstacle() : Object(ObjectType::Obstacle)
 
 void Obstacle::setType(Obstacle::Type t)
 {
-	type = t;
+	m_type = t;
 	
-	switch (type)
+	switch (m_type)
 	{
 		default:
 		case Obstacle::Bush:
@@ -47,6 +47,6 @@ void Obstacle::setType(Obstacle::Type t)
 
 Obstacle::Type Obstacle::getType()
 {
-	return type;
+	return m_type;
 }
 

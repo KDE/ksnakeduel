@@ -25,39 +25,39 @@
 
 Object::Object()
 {
-	objectType = ObjectType::Object;
+	m_objectType = ObjectType::Object;
 }
 
 Object::Object(ObjectType::Type t)
 {
-	objectType = t;
+	m_objectType = t;
 }
 
 QString Object::getSVGName() {
-	return svgName;
+	return m_svgName;
 }
 
 void Object::setSVGName(QString name) {
-	svgName = name;
+	m_svgName = name;
 }
 
 int Object::getX()
 {
-	return xCoordinate;
+	return m_xCoordinate;
 }
 
 int Object::getY()
 {
-	return yCoordinate;
+	return m_yCoordinate;
 }
 
 void Object::setCoordinates(int x, int y)
 {
-	xCoordinate = x;
-	yCoordinate = y;
+	m_xCoordinate = x;
+	m_yCoordinate = y;
 }
 
 ObjectType::Type Object::getObjectType()
 {
-	return objectType;
+	return m_objectType;
 }

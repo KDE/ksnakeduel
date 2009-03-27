@@ -33,17 +33,17 @@
 
 Player::Player(PlayField &pf, int playerNr) : QObject()
 {
-	playField = &pf;
-	playerNumber = playerNr;
-	computer = false;
+	m_playField = &pf;
+	m_playerNumber = playerNr;
+	m_computer = false;
 
 	// Calling setName() with an empty string will cause the defaults
 	setName(QString());
 
-	score = 0;
-	dir = PlayerDirections::Up;
-	enlarge = 0;
-	blockSwitchDir = false;
+	m_score = 0;
+	m_dir = PlayerDirections::Up;
+	m_enlarge = 0;
+	m_blockSwitchDir = false;
 	
 	reset();
 }
@@ -54,34 +54,34 @@ Player::Player(PlayField &pf, int playerNr) : QObject()
 
 int Player::getPlayerNumber()
 {
-	return playerNumber;
+	return m_playerNumber;
 }
 
 int Player::getX()
 {
-	if (snakeParts.isEmpty())
+	if (m_snakeParts.isEmpty())
 	{
 		kDebug() << "Requested coordinate of inexistant snake";
 		return 0;
 	}
 	
-	return snakeParts.last().getX();
+	return m_snakeParts.last().getX();
 }
 
 int Player::getY()
 {
-	if (snakeParts.isEmpty())
+	if (m_snakeParts.isEmpty())
 	{
 		kDebug() << "Requested coordinate of inexistant snake";
 		return 0;
 	}
 	
-	return snakeParts.last().getY();
+	return m_snakeParts.last().getY();
 }
 
 int Player::getScore()
 {
-	return score;
+	return m_score;
 }
 
 //
@@ -96,7 +96,7 @@ QString Player::getName()
 	}
 	else
 	{
-		return name;
+		return m_name;
 	}
 }
 
@@ -107,18 +107,18 @@ void Player::setName(QString name)
 		// If first player, name it after the user
 		KUser thisUser = KUser();
 
-		if (playerNumber == 0 && thisUser.property(KUser::FullName).isValid())
+		if (m_playerNumber == 0 && thisUser.property(KUser::FullName).isValid())
 		{
-			this->name = thisUser.property(KUser::FullName).toString();
+			this->m_name = thisUser.property(KUser::FullName).toString();
 		}
 		else
 		{
-			this->name = i18n("Player %1", playerNumber + 1);
+			this->m_name = i18n("Player %1", m_playerNumber + 1);
 		}
 	}
 	else
 	{
-		this->name = name;
+		this->m_name = name;
 	}
 }
 
@@ -133,7 +133,7 @@ void Player::setEnlargement(int enlargement)
 		return;
 	}
 
-	enlarge += enlargement;
+	m_enlarge += enlargement;
 }
 
 //
@@ -142,34 +142,34 @@ void Player::setEnlargement(int enlargement)
 
 PlayerDirections::Direction Player::getDirection()
 {
-	return dir;
+	return m_dir;
 }
 
 void Player::setDirection(PlayerDirections::Direction direction)
 {
-	if (blockSwitchDir)
+	if (m_blockSwitchDir)
 	{
 		return;
 	}
-	else if (direction == PlayerDirections::Up && dir == PlayerDirections::Down)
+	else if (direction == PlayerDirections::Up && m_dir == PlayerDirections::Down)
 	{
 		return;
 	}
-	else if (direction == PlayerDirections::Down && dir == PlayerDirections::Up)
+	else if (direction == PlayerDirections::Down && m_dir == PlayerDirections::Up)
 	{
 		return;
 	}
-	else if (direction == PlayerDirections::Left && dir == PlayerDirections::Right)
+	else if (direction == PlayerDirections::Left && m_dir == PlayerDirections::Right)
 	{
 		return;
 	}
-	else if (direction == PlayerDirections::Right && dir == PlayerDirections::Left)
+	else if (direction == PlayerDirections::Right && m_dir == PlayerDirections::Left)
 	{
 		return;
 	}
 	
-	dir = direction;
-	blockSwitchDir = true;
+	m_dir = direction;
+	m_blockSwitchDir = true;
 }
 
 //
@@ -178,12 +178,12 @@ void Player::setDirection(PlayerDirections::Direction direction)
 
 bool Player::isAlive()
 {
-	return alive;
+	return m_alive;
 }
 
 void Player::die()
 {
-	alive = false;
+	m_alive = false;
 }
 
 //
@@ -197,12 +197,12 @@ void Player::addScore(int increment)
 		return;
 	}
 
-	score += increment;
+	m_score += increment;
 }
 
 void Player::resetScore()
 {
-	score = 0;
+	m_score = 0;
 }
 
 //
@@ -211,13 +211,13 @@ void Player::resetScore()
 
 void Player::setStartPosition()
 {
-	while (!snakeParts.isEmpty())
+	while (!m_snakeParts.isEmpty())
 	{
-		snakeParts.dequeue();
+		m_snakeParts.dequeue();
 	}
 	
-	int x = (2 - getPlayerNumber()) * playField->getWidth() / 3;
-	int y = playField->getHeight() / 2;
+	int x = (2 - getPlayerNumber()) * m_playField->getWidth() / 3;
+	int y = m_playField->getHeight() / 2;
 	
 	SnakePart head(getPlayerNumber());
 	head.setPartTop(true);
@@ -240,11 +240,11 @@ void Player::setStartPosition()
 	}
 	tail.generateSVGName();
 	
-	playField->setObjectAt(x, y, head);
-	playField->setObjectAt(x, y + 1, tail);
+	m_playField->setObjectAt(x, y, head);
+	m_playField->setObjectAt(x, y + 1, tail);
 	
-	snakeParts.enqueue(tail);
-	snakeParts.enqueue(head);
+	m_snakeParts.enqueue(tail);
+	m_snakeParts.enqueue(head);
 	
 	// Make the computer player start some random direction
 	if (isComputer())
@@ -253,21 +253,21 @@ void Player::setStartPosition()
 		{
 			default:
 			case 0:
-				dir = PlayerDirections::Up;
+				m_dir = PlayerDirections::Up;
 				break;
 			case 1:
-				dir = PlayerDirections::Left;
+				m_dir = PlayerDirections::Left;
 				break;
 			case 2:
-				dir = PlayerDirections::Right;
+				m_dir = PlayerDirections::Right;
 				break;
 		}
 		
-		blockSwitchDir = true;
+		m_blockSwitchDir = true;
 	}
 	else
 	{
-		dir = PlayerDirections::Up;
+		m_dir = PlayerDirections::Up;
 	}
 }
 
@@ -277,16 +277,16 @@ void Player::setStartPosition()
 
 void Player::movePlayer()
 {
-	int oldX = snakeParts.last().getX();
-	int oldY = snakeParts.last().getY();
-	SnakePart newHead(playerNumber);
+	int oldX = m_snakeParts.last().getX();
+	int oldY = m_snakeParts.last().getY();
+	SnakePart newHead(m_playerNumber);
 
 	int newX = oldX;
 	int newY = oldY;
 
 	newHead.setPartType(SnakePartType::Head);
 
-	switch (dir)
+	switch (m_dir)
 	{
 		case PlayerDirections::Up:
 			newY--;
@@ -319,78 +319,78 @@ void Player::movePlayer()
 	if (crashed(newX, newY))
 	{
 		//kDebug() << "Crashed at: (" << newX << ", " << newY << ")";
-		alive = false;
+		m_alive = false;
 	}
 	
-	if (alive)
+	if (m_alive)
 	{
-		switch (dir)
+		switch (m_dir)
 		{
 			// unset drawing flags in the moving direction
 			case PlayerDirections::Up:
-				snakeParts.last().setPartTop(false);
+				m_snakeParts.last().setPartTop(false);
 				break;
 			case PlayerDirections::Down:
-				snakeParts.last().setPartBottom(false);
+				m_snakeParts.last().setPartBottom(false);
 				break;
 			case PlayerDirections::Right:
-				snakeParts.last().setPartRight(false);
+				m_snakeParts.last().setPartRight(false);
 				break;
 			case PlayerDirections::Left:
-				snakeParts.last().setPartLeft(false);
+				m_snakeParts.last().setPartLeft(false);
 				break;
 			default:
 				break;
 		}
-		snakeParts.last().setPartType(SnakePartType::Body);
-		snakeParts.last().generateSVGName();
-		playField->setObjectAt(snakeParts.last().getX(), snakeParts.last().getY(), snakeParts.last());
+		m_snakeParts.last().setPartType(SnakePartType::Body);
+		m_snakeParts.last().generateSVGName();
+		m_playField->setObjectAt(m_snakeParts.last().getX(), m_snakeParts.last().getY(), m_snakeParts.last());
 		
-		if (playField->getObjectAt(newX, newY)->getObjectType() == ObjectType::Item)
+		if (m_playField->getObjectAt(newX, newY)->getObjectType() == ObjectType::Item)
 		{
 			//kDebug() << "Boom!";
-			emit fetchedItem(playerNumber, newX, newY);
+			emit fetchedItem(m_playerNumber, newX, newY);
 		}
 
 		newHead.generateSVGName();
-		playField->setObjectAt(newX, newY, newHead);
-		snakeParts.enqueue(newHead);
+		m_playField->setObjectAt(newX, newY, newHead);
+		m_snakeParts.enqueue(newHead);
 	}
 
-	if (alive && enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
+	if (m_alive && m_enlarge == 0 && Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		SnakePart oldTail = snakeParts.dequeue();
+		SnakePart oldTail = m_snakeParts.dequeue();
 		
 		if (!oldTail.getPartTop())
 		{
-			snakeParts.head().setPartBottom(true);
+			m_snakeParts.head().setPartBottom(true);
 		}
 		else if (!oldTail.getPartBottom())
 		{
-			snakeParts.head().setPartTop(true);
+			m_snakeParts.head().setPartTop(true);
 		}
 		else if (!oldTail.getPartLeft())
 		{
-			snakeParts.head().setPartRight(true);
+			m_snakeParts.head().setPartRight(true);
 		}
 		else if (!oldTail.getPartRight())
 		{
-			snakeParts.head().setPartLeft(true);
+			m_snakeParts.head().setPartLeft(true);
 		}
 		
-		snakeParts.head().setPartType(SnakePartType::Tail);
-		snakeParts.head().generateSVGName();
-		playField->setObjectAt(snakeParts.head().getX(), snakeParts.head().getY(), snakeParts.head());
+		m_snakeParts.head().setPartType(SnakePartType::Tail);
+		m_snakeParts.head().generateSVGName();
+		m_playField->setObjectAt(m_snakeParts.head().getX(), m_snakeParts.head().getY(), m_snakeParts.head());
 		
 		Object emptyObject = Object();
-		playField->setObjectAt(oldTail.getX(), oldTail.getY(), emptyObject);
+		m_playField->setObjectAt(oldTail.getX(), oldTail.getY(), emptyObject);
 	}
-	else if (enlarge > 0)
+	else if (m_enlarge > 0)
 	{
-		enlarge--;
+		m_enlarge--;
 	}
 	
-	blockSwitchDir = false;
+	m_blockSwitchDir = false;
 }
 
 //
@@ -401,13 +401,13 @@ bool Player::crashed(int x, int y)
 {
 	bool flag;
 
-	if (x < 0 || y < 0 || x >= playField->getWidth() || y >= playField->getHeight())
+	if (x < 0 || y < 0 || x >= m_playField->getWidth() || y >= m_playField->getHeight())
 	{
 		flag = true;
 	}
 	else
 	{	
-		ObjectType::Type objType = playField->getObjectAt(x, y)->getObjectType();
+		ObjectType::Type objType = m_playField->getObjectAt(x, y)->getObjectType();
 
 		if (objType == ObjectType::Item)
 			flag = false;
@@ -426,14 +426,14 @@ bool Player::crashed(int x, int y)
 
 void Player::reset()
 {
-	alive = true;
-	accelerated = false;
-	enlarge = 0;
-	if (computer)
-		keyPressed = true;
+	m_alive = true;
+	m_accelerated = false;
+	m_enlarge = 0;
+	if (m_computer)
+		m_keyPressed = true;
 	else
-		keyPressed = false;
-	blockSwitchDir = false;
+		m_keyPressed = false;
+	m_blockSwitchDir = false;
 }
 
 //
@@ -442,19 +442,19 @@ void Player::reset()
 
 bool Player::isComputer()
 {
-	return computer;
+	return m_computer;
 }
 
 void Player::setComputer(bool isComputer)
 {
-	computer = isComputer;
-	if (computer)
+	m_computer = isComputer;
+	if (m_computer)
 	{
-		keyPressed = true;
+		m_keyPressed = true;
 	}
 	else
 	{
-		keyPressed = false;
+		m_keyPressed = false;
 	}
 }
 
@@ -464,12 +464,12 @@ void Player::setComputer(bool isComputer)
 
 bool Player::isAccelerated()
 {
-	return accelerated;
+	return m_accelerated;
 }
 
 void Player::setAccelerated(bool value)
 {
-	accelerated = value;
+	m_accelerated = value;
 }
 
 
@@ -479,11 +479,11 @@ void Player::setAccelerated(bool value)
 
 bool Player::hasKeyPressed()
 {
-	return keyPressed;
+	return m_keyPressed;
 }
 
 void Player::setKeyPressed(bool value)
 {
-	keyPressed = value;
+	m_keyPressed = value;
 }
 

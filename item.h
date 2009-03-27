@@ -37,7 +37,7 @@ class Item : public Object
 		int getType();
 
 	private:
-		int type;
+		int m_type;
 };
 
 #endif // ITEM_H

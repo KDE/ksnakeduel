@@ -50,10 +50,10 @@ class Object
 		ObjectType::Type getObjectType();
 
 	private:
-		int xCoordinate;
-		int yCoordinate;
-		QString svgName;
-		ObjectType::Type objectType;
+		int m_xCoordinate;
+		int m_yCoordinate;
+		QString m_svgName;
+		ObjectType::Type m_objectType;
 		
 	protected:
 		void setSVGName(QString svgName);
