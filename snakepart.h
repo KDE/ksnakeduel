@@ -62,12 +62,12 @@ class SnakePart : public Object
 		void initialize();
 		QString decodePart();
 		
-		int playerNumber;
-		SnakePartType::Types partType;
-		bool partTop;
-		bool partBottom;
-		bool partLeft;
-		bool partRight;
+		int m_playerNumber;
+		SnakePartType::Types m_partType;
+		bool m_partTop;
+		bool m_partBottom;
+		bool m_partLeft;
+		bool m_partRight;
 };
 
 #endif // SNAKEPART_H

@@ -47,9 +47,9 @@ class PlayField
 		void setObjectAt(int x, int y, Object &o);
 		
 	private:
-		QVector< Object > playfield;
-		int width;
-		int height;
+		QVector< Object > m_playfield;
+		int m_width;
+		int m_height;
 };
 
 #endif // PLAYFIELD_H

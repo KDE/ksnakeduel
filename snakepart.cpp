@@ -29,7 +29,7 @@ SnakePart::SnakePart(int playerNumber) : Object(ObjectType::SnakePart)
 {
 	initialize();
 
-	this->playerNumber = playerNumber;
+	this->m_playerNumber = playerNumber;
 }
 
 //
@@ -51,57 +51,57 @@ void SnakePart::initialize()
 
 int SnakePart::getPlayerNumber()
 {
-	return this->playerNumber;
+	return this->m_playerNumber;
 }
 
 SnakePartType::Types SnakePart::getPartType()
 {
-	return partType;
+	return m_partType;
 }
 
 void SnakePart::setPartType(SnakePartType::Types type)
 {
-	partType = type;
+	m_partType = type;
 }
 
 bool SnakePart::getPartTop()
 {
-	return partTop;
+	return m_partTop;
 }
 
 void SnakePart::setPartTop(bool value)
 {
-	partTop = value;
+	m_partTop = value;
 }
 
 bool SnakePart::getPartBottom()
 {
-	return partBottom;
+	return m_partBottom;
 }
 
 void SnakePart::setPartBottom(bool value)
 {
-	partBottom = value;
+	m_partBottom = value;
 }
 
 bool SnakePart::getPartLeft()
 {
-	return partLeft;
+	return m_partLeft;
 }
 
 void SnakePart::setPartLeft(bool value)
 {
-	partLeft = value;
+	m_partLeft = value;
 }
 
 bool SnakePart::getPartRight()
 {
-	return partRight;
+	return m_partRight;
 }
 
 void SnakePart::setPartRight(bool value)
 {
-	partRight = value;
+	m_partRight = value;
 }
 
 //
@@ -118,11 +118,11 @@ QString SnakePart::decodePart()
 	QString name;
 
 	// Player
-	if (playerNumber == 0)
+	if (getPlayerNumber() == 0)
 	{
 		name = "tron1-";
 	}
-	else if (playerNumber == 1)
+	else if (getPlayerNumber() == 1)
 	{
 		name = "tron2-";
 	}

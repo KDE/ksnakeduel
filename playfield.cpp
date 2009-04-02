@@ -27,18 +27,18 @@
 
 PlayField::PlayField()
 {
-	width = TRON_PLAYFIELD_WIDTH;
-	height = TRON_PLAYFIELD_HEIGHT;
+	m_width = TRON_PLAYFIELD_WIDTH;
+	m_height = TRON_PLAYFIELD_HEIGHT;
 	
-	playfield.resize(width * height);
+	m_playfield.resize(m_width * m_height);
 	initialize();
 }
 
 void PlayField::initialize()
 {	
 	int i, j;
-	for (i = 0; i < width; ++i) {
-		for (j = 0; j < height; ++j) {
+	for (i = 0; i < m_width; ++i) {
+		for (j = 0; j < m_height; ++j) {
 			Object newObj = Object();
 			this->setObjectAt(i, j, newObj);
 		}
@@ -51,23 +51,23 @@ void PlayField::initialize()
 
 Object *PlayField::getObjectAt(int x, int y)
 {
-	if (x < 0 || x >= width || y < 0 || y >= height) {
+	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
 		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
 
 		return 0;
 	}
 
-	return &playfield[x * height + y];
+	return &m_playfield[x * m_height + y];
 }
 
 int PlayField::getWidth()
 {
-	return width;
+	return m_width;
 }
 
 int PlayField::getHeight()
 {
-	return height;
+	return m_height;
 }
 
 //
@@ -75,12 +75,12 @@ int PlayField::getHeight()
 //
 void PlayField::setObjectAt(int x, int y, Object &o)
 {
-	if (x < 0 || x >= width || y < 0 || y >= height) {
+	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
 		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
 
 		return;
 	}
 	
-	playfield[x * height + y] = o;
+	m_playfield[x * m_height + y] = o;
 	o.setCoordinates(x, y);
 }
