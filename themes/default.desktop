@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=KTron Default Theme
+Name[de]=Standard
 Name[et]=KTroni vaiketeema
 Name[ga]=Téama Réamhshocraithe KTron
 Name[ja]=KTron 標準テーマ
@@ -12,6 +13,7 @@ Name[uk]=Типова тема KTron
 Name[x-test]=xxKTron Default Themexx
 Name[zh_TW]=KTron 的預設主題
 Description=Default theme for KTron.
+Description[de]=Das Standard-Design für KTron.
 Description[et]=KTroni vaiketeema
 Description[ga]=Téama réamhshocraithe le haghaidh KTron.
 Description[ja]=KTron の標準テーマ
