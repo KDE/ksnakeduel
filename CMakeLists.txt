@@ -24,6 +24,8 @@ kde4_add_ui_files(ktron_SRCS general.ui)
 
 kde4_add_kcfg_files(ktron_SRCS settings.kcfgc)
 
+kde4_add_app_icon(ktron_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ktron.png")
+
 kde4_add_executable(ktron ${ktron_SRCS})
 
 target_link_libraries(ktron kdegames ${KDE4_KDEUI_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS} ${KDE4_KNEWSTUFF2_LIBS})
