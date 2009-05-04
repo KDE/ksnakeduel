@@ -32,7 +32,7 @@
       <item>
        <widget class="QGroupBox" name="gameTypeGroup">
         <property name="title">
-         <string>Game type</string>
+         <string>Game Type</string>
         </property>
         <layout class="QGridLayout">
          <item row="0" column="1">
@@ -98,7 +98,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="namePlayer1Label">
            <property name="text">
-            <string>Right Player / KSnake:</string>
+            <string>Right player / KSnake:</string>
            </property>
            <property name="wordWrap">
             <bool>false</bool>
@@ -108,7 +108,7 @@
          <item row="1" column="0">
           <widget class="QLabel" name="namePlayer2Label">
            <property name="text">
-            <string>Left Player:</string>
+            <string>Left player:</string>
            </property>
            <property name="wordWrap">
             <bool>false</bool>
