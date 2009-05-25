@@ -16,6 +16,7 @@ GenericName[pt_BR]=Jogo Semelhante ao Snake
 GenericName[sv]=Ormliknande spel
 GenericName[uk]=Гра, схожа на Snake
 GenericName[x-test]=xxSnake-like Gamexx
+GenericName[zh_CN]=类似贪吃蛇的游戏
 GenericName[zh_TW]=類似吞食蛇遊戲
 Terminal=false
 Name=KSnake
