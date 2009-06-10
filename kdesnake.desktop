@@ -4,6 +4,7 @@ Exec=ktron -snake -caption "%c" %i
 Icon=kdesnake
 DocPath=ktron/index.html
 GenericName=Snake-like Game
+GenericName[ca]=Joc a l'estil de l'snake
 GenericName[da]=Snake-lignende spil
 GenericName[de]=„Snake“-Spiel
 GenericName[el]=Παιχνίδι παρόμοιο με το Snake
