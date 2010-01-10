@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=Neon K Tron
 Name[ca]=Neó K Tron
+Name[ca@valencia]=Neó K Tron
 Name[cs]=Neon K Tron
 Name[da]=Neon K Tron
 Name[de]=Leuchtendes KTron
@@ -36,6 +37,7 @@ Name[zh_CN]=Neon K Tron
 Name[zh_TW]=Neon K Tron
 Description=A retro KTron theme with a distinctive touch of early 50s.
 Description[ca]=Un tema retro pel KTron amb un toc distintiu dels anys 50.
+Description[ca@valencia]=Un tema retro pel KTron amb un toc distintiu dels anys 50.
 Description[da]=Et retro-tema med et karakteristisk træk fra først i halvtredsere.
 Description[de]=Ein Retro-Design für KTron mit einem unverwechselbaren Hauch der 50er Jahre.
 Description[el]=Ένα ρετρό θέμα KTron με μια πινελιά από την αρχή της δεκαετίας του 50.

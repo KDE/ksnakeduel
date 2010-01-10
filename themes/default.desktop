@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=KTron Default Theme
 Name[ca]=Tema predeterminat del KTron
+Name[ca@valencia]=Tema predeterminat del KTron
 Name[da]=KTron standardtema
 Name[de]=Standard
 Name[el]=Προκαθορισμένο θέμα KTron
@@ -36,6 +37,7 @@ Name[zh_CN]=KTron 默认主题
 Name[zh_TW]=KTron 的預設主題
 Description=Default theme for KTron.
 Description[ca]=Tema predeterminat pel KTron.
+Description[ca@valencia]=Tema predeterminat pel KTron.
 Description[da]=Standardtema for KTron
 Description[de]=Das Standard-Design für KTron.
 Description[el]=Προκαθορισμένο θέμα για το KTron.
