@@ -32,7 +32,7 @@
 
 #include <KGameTheme>
 #include <KPixmapCache>
-#include <KSvgRenderer>
+#include <QSvgRenderer>
 #include <KDebug>
 
 class RendererPrivate
@@ -44,7 +44,7 @@ class RendererPrivate
 		QSize m_sceneSize;
 		QSize m_partSize;
 
-		KSvgRenderer m_renderer;
+		QSvgRenderer m_renderer;
 		KPixmapCache m_cache;
 
 		QPixmap *m_playField;
