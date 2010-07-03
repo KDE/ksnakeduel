@@ -399,25 +399,15 @@ void Player::movePlayer()
 
 bool Player::crashed(int x, int y)
 {
-	bool flag;
-
 	if (x < 0 || y < 0 || x >= m_playField->getWidth() || y >= m_playField->getHeight())
 	{
-		flag = true;
+		return true;
 	}
 	else
-	{	
+	{
 		ObjectType::Type objType = m_playField->getObjectAt(x, y)->getObjectType();
-
-		if (objType == ObjectType::Item)
-			flag = false;
-		else if (objType != ObjectType::Object)
-			flag = true;
-		else 
-			flag = false;
+		return (objType != ObjectType::Item && objType != ObjectType::Object);
 	}
-
-	return flag;
 }
 
 //
@@ -429,10 +419,7 @@ void Player::reset()
 	m_alive = true;
 	m_accelerated = false;
 	m_enlarge = 0;
-	if (m_computer)
-		m_keyPressed = true;
-	else
-		m_keyPressed = false;
+	m_keyPressed = m_computer;
 	m_blockSwitchDir = false;
 }
 
@@ -448,14 +435,7 @@ bool Player::isComputer()
 void Player::setComputer(bool isComputer)
 {
 	m_computer = isComputer;
-	if (m_computer)
-	{
-		m_keyPressed = true;
-	}
-	else
-	{
-		m_keyPressed = false;
-	}
+	m_keyPressed = m_computer;
 }
 
 //
