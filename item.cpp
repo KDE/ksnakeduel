@@ -25,7 +25,7 @@
 
 Item::Item() : Object(ObjectType::Item)
 {
-	setSVGName("item1");
+	setSVGName(QLatin1String( "item1" ));
 }
 
 //
@@ -35,23 +35,23 @@ Item::Item() : Object(ObjectType::Item)
 void Item::setType(int t)
 {
 	m_type = t;
-	
+
 	switch (m_type)
 	{
 		default:
 		case 0:
-			setSVGName("item1");
+			setSVGName(QLatin1String( "item1" ));
 			break;
 		case 1:
-			setSVGName("item2");
+			setSVGName(QLatin1String( "item2" ));
 			break;
 		case 2:
-			setSVGName("item3");
+			setSVGName(QLatin1String( "item3" ));
 			break;
 	}
 }
 
-int Item::getType()
+int Item::getType() const
 {
 	return m_type;
 }

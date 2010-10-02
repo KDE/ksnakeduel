@@ -25,7 +25,7 @@
 
 Obstacle::Obstacle() : Object(ObjectType::Obstacle)
 {
-	setSVGName("bush");
+	setSVGName(QLatin1String( "bush" ));
 }
 
 //
@@ -35,17 +35,17 @@ Obstacle::Obstacle() : Object(ObjectType::Obstacle)
 void Obstacle::setType(Obstacle::Type t)
 {
 	m_type = t;
-	
+
 	switch (m_type)
 	{
 		default:
 		case Obstacle::Bush:
-			setSVGName("bush");
+			setSVGName(QLatin1String( "bush" ));
 			break;
 	}
 }
 
-Obstacle::Type Obstacle::getType()
+Obstacle::Type Obstacle::getType() const
 {
 	return m_type;
 }

@@ -52,12 +52,12 @@ class RendererPrivate
 		QString m_currentTheme;
 };
 
-const QString sizeSuffix("_%1-%2");
-const QString frameSuffix("-%1");
+const QString sizeSuffix(QLatin1String( "_%1-%2" ));
+const QString frameSuffix(QLatin1String( "-%1" ));
 
 RendererPrivate::RendererPrivate()
     : m_renderer()
-    , m_cache("ktron-cache")
+    , m_cache(QLatin1String( "ktron-cache" ))
 {
     m_cache.setCacheLimit(3 * 1024);
     m_cache.discard();
@@ -152,21 +152,21 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
         painter.end();
         p->m_cache.insert(pixName, pix);
     }
-	
+
     return pix;
 }
 
 QPixmap Renderer::background()
 {
     QPixmap pix;
-    QString pixName = "bgtile" + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
+    QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
 	if (!p->m_cache.find(pixName, pix))
 	{
 		pix = QPixmap(p->m_sceneSize);
 		pix.fill(Qt::white);
 		QPainter painter(&pix);
-		
-		QPixmap bgPix = getPart("bgtile");
+
+		QPixmap bgPix = getPart(QLatin1String( "bgtile" ));
 		if (!bgPix.isNull())
 		{
 			pix.fill(Qt::white);
@@ -182,11 +182,11 @@ QPixmap Renderer::background()
 		{
 			pix.fill(Qt::green);
 		}
-		
+
 		painter.end();
 		p->m_cache.insert(pixName, pix);
 	}
-	
+
 	// Tiled background
 	return pix;
 }
@@ -216,18 +216,18 @@ void Renderer::updatePlayField(PlayField &playfield)
 
 	QPainter painter;
 	painter.begin(p->m_playField);
-	
+
 	QPixmap bgPix = background();
 	painter.drawPixmap(0, 0, bgPix);
 
 	// Draw border
-	for (i = 0; i < playfield.getWidth() + 2; ++i) 
+	for (i = 0; i < playfield.getWidth() + 2; ++i)
 	{
-		for (j = 0; j < playfield.getHeight() + 2; ++j) 
+		for (j = 0; j < playfield.getHeight() + 2; ++j)
 		{
 			if (i == 0 || i == playfield.getWidth() + 1 || j == 0 || j == playfield.getHeight() + 1)
 			{
-				QPixmap part = Renderer::self()->getPart("border");
+				QPixmap part = Renderer::self()->getPart(QLatin1String( "border" ));
 				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
 			}
 		}
@@ -280,19 +280,19 @@ QPixmap *Renderer::getPlayField()
 QPixmap Renderer::messageBox(QString &message) {
 	int w = p->m_sceneSize.width() / 2;
 	int h = p->m_sceneSize.height() / 3;
-	
+
 	QSize size(w, h);
-	QPixmap pixmap = getPartOfSize("display",  size);
-	
+	QPixmap pixmap = getPartOfSize(QLatin1String( "display" ),  size);
+
 	QPainter painter(&pixmap);
 
 	int fontSize = fontUtils::fontSize(painter, message, w * 0.9, h, fontUtils::DoNotAllowWordWrap);
-	
+
 	painter.setPen(QColor(255, 255, 255, 220));
-	painter.setFont(QFont("Helvetica", fontSize, QFont::Bold));
+	painter.setFont(QFont(QLatin1String( "Helvetica" ), fontSize, QFont::Bold));
 	painter.drawText(QRectF(0, 0, w, h), Qt::AlignCenter, message);
-	
+
 	painter.end();
-	
+
 	return pixmap;
 }

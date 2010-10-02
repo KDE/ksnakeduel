@@ -52,7 +52,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 {
 	players[0] = new Player(pf, 0);
 	players[1] = new Player(pf, 1);
-	
+
 	connect(players[0], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
 	connect(players[1], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
 
@@ -120,7 +120,7 @@ void Tron::resizeRenderer()
 void Tron::createNewPlayfield()
 {
 	resizeRenderer();
-	
+
 	pf.initialize();
 }
 
@@ -148,14 +148,14 @@ void Tron::reset()
 	}
 
 	setVelocity( lineSpeed() );
-	
+
 	modMoves = 0;
 
 	pf.initialize();
 
 	// set start coordinates
 	players[0]->setStartPosition();
-	
+
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
 		players[1]->setStartPosition();
@@ -189,7 +189,7 @@ Player *Tron::getPlayer(int playerNr)
 
 	return players[playerNr];
 }
-		
+
 
 /* *************************************************************** **
 **                   	??? functions										 **
@@ -239,7 +239,7 @@ void Tron::newApple()
 	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
 
 	apple.setType((int)(rand() % 3));
-	
+
 	pf.setObjectAt(x, y, apple);
 }
 
@@ -281,7 +281,7 @@ void Tron::togglePause() // pause or continue game
 			gamePaused = false;
 			update();
 			timer->start(velocity);
-			
+
 			emit updatedScore();
 		}
 		else
@@ -289,7 +289,7 @@ void Tron::togglePause() // pause or continue game
 			gamePaused = true;
 			timer->stop();
 			update();
-			
+
 			emit updatedScore();
 		}
 	}
@@ -345,21 +345,21 @@ void Tron::paintEvent(QPaintEvent *e)
 	}
 	else if (gameEnded) // If game ended, print "Crash!"
 	{
-		QString message = QString("");
+		QString message = QString();
 
 		if (Settings::gameType() != Settings::EnumGameType::Snake) {
 			if (hasWinner())
 			{
 				int winner = getWinner();
 				int loser = 1 - winner;
-				
+
 				QString winnerName = players[winner]->getName();
 				QString loserName = players[loser]->getName();
 				int winnerScore = players[winner]->getScore();
 				int loserScore = players[loser]->getScore();
 
 				message += i18np("%1 has won versus %2 with %4 versus %3 point!", "%1 has won versus %2 with %4 versus %3 points!", winnerName, loserName, loserScore, winnerScore);
-				message += '\n';
+				message += QLatin1Char( '\n' );
 			}
 			else
 			{
@@ -367,12 +367,12 @@ void Tron::paintEvent(QPaintEvent *e)
 				QString name2 = players[1]->getName();
 				int points1 = players[0]->getScore();
 				int points2 = players[1]->getScore();
-				
+
 				message += i18nc("%2 = 'x points' [player %1], %4 = 'x points' [player %3]",
 					"%1 (%2) versus %3 (%4)",
 					name2, i18np("%1 point", "%1 points", points2),
 					name1, i18np("%1 point", "%1 points", points1));
-				message += '\n';
+				message += QLatin1Char( '\n' );
 			}
 		}
 		else
@@ -380,7 +380,7 @@ void Tron::paintEvent(QPaintEvent *e)
 			int points = players[0]->getScore();
 
 			message += i18np("KSnake game ended with 1 point", "KSnake game ended with %1 points", points);
-			message += '\n';
+			message += QLatin1Char( '\n' );
 		}
 
 		if (Settings::gameType() == Settings::EnumGameType::PlayerVSPlayer) {
@@ -445,7 +445,7 @@ void Tron::switchKeyOn(int player, KBAction::Action action)
 			{
 				newGame();
 			}
-			
+
 			reset();
 			startGame();
 		}
@@ -581,12 +581,12 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 	{
 		players[0]->movePlayer();
 	}
-	
+
 	if (!onlyAcceleratedPlayers || players[1]->isAccelerated())
 	{
 		players[1]->movePlayer();
 	}
-	
+
 	/* player collision check */
 	if (!players[1]->isAlive())
 	{
@@ -600,7 +600,7 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 	if (!players[0]->isAlive() || !players[1]->isAlive())
 	{
 		stopGame();
-		
+
 		if (!players[0]->isAlive() && !players[1]->isAlive())
 		{
 			// Don't award points when both players die
@@ -615,7 +615,7 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 		{
 			players[0]->addScore(1);
 		}
-		
+
 		showWinner();
 	}
 }
@@ -627,10 +627,10 @@ void Tron::checkHeadToHeadCollission()
 	// but tough movement actually is done sequential
 	// we have to check back if player 1 should die when player 2 did so
 	// that's where this function comes in :)
-	
+
 	int xInc = 0;
 	int yInc = 0;
-	
+
 	switch (players[1]->getDirection())
 	{
 		case PlayerDirections::Left:
@@ -648,7 +648,7 @@ void Tron::checkHeadToHeadCollission()
 		default:
 			break;
 	}
-	
+
 	if ((players[1]->getX() + xInc) == players[0]->getX())
 	{
 		if ((players[1]->getY() + yInc) == players[0]->getY())

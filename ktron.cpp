@@ -62,8 +62,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	setCentralWidget(m_tron);
 
 	// create statusbar
-	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE + 1);
-	statusBar()->insertItem("abcdefghijklmnopqrst: 0  ",ID_STATUS_BASE + 2);
+	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 1);
+	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 2);
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
@@ -180,30 +180,30 @@ void KTron::loadSettings() {
 	if (!m_tron->getPlayer(1)->isComputer()) {
 		Settings::setNamePlayer2(m_tron->getPlayer(1)->getName());
 	}
-	
+
 	updateStatusbar();
 }
 
 void KTron::updateStatusbar() {
 	QString message;
-	
+
 	if (!m_tron->running() && m_tron->hasWinner()) {
 		QString winnerName = m_tron->getPlayer(m_tron->getWinner())->getName();
-		
+
 		message = i18n("%1 has won!", winnerName);
 	}
 	else if (m_tron->paused()) {
 		message = i18n("Game paused");
 	}
 	else {
-		message = QString("");
+		message = QString();
 	}
-	
+
 	statusBar()->showMessage(message);
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		QString string = QString("%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
+		QString string = QString::fromLatin1( "%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
 		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
 		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
 	}
@@ -212,8 +212,8 @@ void KTron::updateStatusbar() {
 		for (int i = 0; i < 2; ++i) {
 			QString name = m_tron->getPlayer(1 - i)->getName();
 			int score = m_tron->getPlayer(1 - i)->getScore();
-			
-			QString string = QString("%1: %2").arg(name).arg(score);
+
+			QString string = QString::fromLatin1( "%1: %2").arg(name).arg(score);
 			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
 		}
 	}
@@ -258,9 +258,9 @@ void KTron::paletteChange(const QPalette &){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-	if (KConfigDialog::showDialog("settings"))
+	if (KConfigDialog::showDialog(QLatin1String( "settings" )))
 		return;
-  
+
 	m_generalConfigDialog = new General();
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake) {
@@ -272,9 +272,9 @@ void KTron::showSettings(){
 		m_generalConfigDialog->namePlayer2Label->setText(i18n("Left Player:"));
 	}
 
-	KConfigDialog *dialog = new KConfigDialog(this, "settings", Settings::self());
-	dialog->addPage(m_generalConfigDialog, i18n("General"), "games-config-options");
-	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), "games-config-theme");
+	KConfigDialog *dialog = new KConfigDialog(this, QLatin1String( "settings" ), Settings::self());
+	dialog->addPage(m_generalConfigDialog, i18n("General"), QLatin1String( "games-config-options" ));
+	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QLatin1String( "games-config-theme" ));
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
 	connect(dialog, SIGNAL(settingsChanged(const QString &)), m_tron, SLOT(loadSettings()));
 	dialog->show();

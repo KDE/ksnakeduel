@@ -34,7 +34,7 @@ class Item : public Object
 	public:
 		Item();
 		void setType(int type);
-		int getType();
+		int getType() const;
 
 	private:
 		int m_type;

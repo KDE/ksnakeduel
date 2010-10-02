@@ -20,7 +20,7 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   *******************************************************************************/
-  
+
 #include "snakepart.h"
 
 #include <KDebug>
@@ -120,11 +120,11 @@ QString SnakePart::decodePart()
 	// Player
 	if (getPlayerNumber() == 0)
 	{
-		name = "tron1-";
+		name = QLatin1String( "tron1-" );
 	}
 	else if (getPlayerNumber() == 1)
 	{
-		name = "tron2-";
+		name = QLatin1String( "tron2-" );
 	}
 
 	// Heads (or tails)
@@ -132,57 +132,57 @@ QString SnakePart::decodePart()
 	{
 		if (getPartTop() && getPartLeft() && getPartRight())
 		{
-			name += "head-north";
+			name += QLatin1String( "head-north" );
 		}
 		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
-			name += "head-south";
+			name += QLatin1String( "head-south" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
-			name += "head-west";
+			name += QLatin1String( "head-west" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
-			name += "head-east";
+			name += QLatin1String( "head-east" );
 		}
 	}
 	else if (getPartType() == SnakePartType::Hole)
 	{
 		if (getPartTop() && getPartLeft() && getPartRight())
 		{
-			name += "tail-south";
+			name += QLatin1String( "tail-south" );
 		}
 		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
-			name += "tail-north";
+			name += QLatin1String( "tail-north" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
-			name += "tail-east";
+			name += QLatin1String( "tail-east" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
-			name += "tail-west";
+			name += QLatin1String( "tail-west" );
 		}
 	}
 	else if (getPartType() == SnakePartType::Tail)
 	{
 		if (getPartTop() && getPartLeft() && getPartRight())
 		{
-			name += "tail-south2";
+			name += QLatin1String( "tail-south2" );
 		}
 		else if (getPartBottom() && getPartLeft() && getPartRight())
 		{
-			name += "tail-north2";
+			name += QLatin1String( "tail-north2" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartLeft())
 		{
-			name += "tail-east2";
+			name += QLatin1String( "tail-east2" );
 		}
 		else if (getPartTop() && getPartBottom() && getPartRight())
 		{
-			name += "tail-west2";
+			name += QLatin1String( "tail-west2" );
 		}
 	}
 	else if (getPartType() == SnakePartType::Body)
@@ -190,27 +190,27 @@ QString SnakePart::decodePart()
 		// Bodys
 		if (getPartTop() && getPartBottom())
 		{
-			name += "body-h";
+			name += QLatin1String( "body-h" );
 		}
 		else if (getPartLeft() && getPartRight())
 		{
-			name += "body-v";
+			name += QLatin1String( "body-v" );
 		}
 		else if (getPartLeft() && getPartTop())
 		{
-			name += "body-nw";
+			name += QLatin1String( "body-nw" );
 		}
 		else if (getPartTop() && getPartRight())
 		{
-			name += "body-ne";
+			name += QLatin1String( "body-ne" );
 		}
 		else if (getPartLeft() && getPartBottom())
 		{
-			name += "body-sw";
+			name += QLatin1String( "body-sw" );
 		}
 		else if (getPartBottom() && getPartRight())
 		{
-			name += "body-se";
+			name += QLatin1String( "body-se" );
 		}
 	}
 

@@ -37,7 +37,7 @@ class Obstacle : public Object
 		};
 
 		Obstacle();
-		Obstacle::Type getType();
+		Obstacle::Type getType() const;
 		void setType(Obstacle::Type t);
 
 	private:
