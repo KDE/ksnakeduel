@@ -37,7 +37,7 @@ configure_file(kdesnake.cmake ${CMAKE_CURRENT_BINARY_DIR}/kdesnake  @ONLY)
 ########### install files ###############
 
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/kdesnake DESTINATION ${BIN_INSTALL_DIR})
-install(FILES  ktron.desktop kdesnake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS  ktron.desktop kdesnake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES  ktronui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)
 install(FILES  ktron.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
