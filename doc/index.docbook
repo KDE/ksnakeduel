@@ -1,6 +1,6 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.2-Based Variant V1.1//EN" "dtd/kdex.dtd" [
-  <!ENTITY kappname "&ktron;">
+  <!ENTITY kappname "<application>KSnakeDuel</application>">
   <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
@@ -61,7 +61,7 @@
 
 <abstract>
 <para>
-&kappname; is a simple <quote>Tron</quote> clone for &kde;, which you can
+&kappname; is a simple snake duel game for &kde;, which you can
 play alone or against a friend.
 </para>
 </abstract>
@@ -70,10 +70,13 @@ play alone or against a friend.
 <keyword>KDE</keyword>
 <keyword>kdegames</keyword>
 <keyword>KTron</keyword>
+<keyword>KSnakeDuel</keyword>
 <keyword>game</keyword>
 <keyword>tron</keyword>
+<keyword>snakeduel</keyword>
 <keyword>KSnake</keyword>
 <keyword>snake</keyword>
+<keyword>duel</keyword>
 </keywordset>
 </bookinfo>
 
@@ -81,7 +84,7 @@ play alone or against a friend.
 <title>Introduction</title>
 
 <para>
-&kappname; is a simple Tron-Clone for the
+&kappname; is a simple snake duel game for the
 <ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
 &kappname; against the computer or a friend.
 The aim of the game is to live longer than your opponent. To do that,

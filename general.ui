@@ -39,12 +39,12 @@
           <widget class="KComboBox" name="kcfg_GameType">
            <item>
             <property name="text">
-             <string>KTron: Player vs Computer</string>
+             <string>KSnakeDuel: Player vs Computer</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>KTron: Player vs Player</string>
+             <string>KSnakeDuel: Player vs Player</string>
             </property>
            </item>
            <item>

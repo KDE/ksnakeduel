@@ -1,6 +1,6 @@
 [KGameTheme]
 VersionFormat=1
-Name=KTron Default Theme
+Name=Default Theme
 Name[ca]=Tema predeterminat del KTron
 Name[ca@valencia]=Tema predeterminat del KTron
 Name[da]=KTron standardtema
@@ -39,7 +39,7 @@ Name[uk]=Типова тема KTron
 Name[x-test]=xxKTron Default Themexx
 Name[zh_CN]=KTron 默认主题
 Name[zh_TW]=KTron 的預設主題
-Description=Default theme for KTron.
+Description=Default theme.
 Description[ca]=Tema predeterminat pel KTron.
 Description[ca@valencia]=Tema predeterminat pel KTron.
 Description[da]=Standardtema for KTron

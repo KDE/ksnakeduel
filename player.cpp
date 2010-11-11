@@ -92,7 +92,7 @@ QString Player::getName()
 {
 	if (isComputer())
 	{
-		return i18n("KTron");
+		return i18n("KSnakeDuel");
 	}
 	else
 	{
