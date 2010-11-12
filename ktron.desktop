@@ -2,7 +2,7 @@
 Type=Application
 Exec=ktron -caption "%c" %i
 Icon=ktron
-DocPath=ktron/index.html
+X-DocPath=ktron/index.html
 GenericName[ca]=Joc similar al Tron
 GenericName[ca@valencia]=Joc similar al Tron
 GenericName[cs]=Hra typu Tron
