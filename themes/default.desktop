@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=Default Theme
+Name[de]=Standard-Design
 Name[et]=Vaikimisi teema
 Name[nl]=Standaardthema
 Name[pt]=Tema Predefinido
@@ -10,6 +11,7 @@ Name[uk]=Типова тема
 Name[x-test]=xxDefault Themexx
 Name[zh_TW]=預設主題
 Description=Default theme.
+Description[de]=Standard-Design.
 Description[et]=Vaikimisi teema.
 Description[nl]=Standaardthema.
 Description[pt]=O tema predefinido.
