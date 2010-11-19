@@ -5,6 +5,7 @@ Icon=ktron
 X-DocPath=ktron/index.html
 Terminal=false
 Name=KSnakeDuel
+Name[ca]=KSnakeDuel
 Name[et]=KSnakeDuel
 Name[nl]=KSnakeDuel
 Name[pt]=KSnakeDuel
