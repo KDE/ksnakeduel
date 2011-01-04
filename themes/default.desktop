@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=Default Theme
 Name[ca]=Tema predeterminat
+Name[ca@valencia]=Tema predeterminat
 Name[da]=Standardtema
 Name[de]=Standard-Design
 Name[en_GB]=Default Theme
@@ -23,6 +24,7 @@ Name[x-test]=xxDefault Themexx
 Name[zh_TW]=預設主題
 Description=Default theme.
 Description[ca]=Tema predeterminat.
+Description[ca@valencia]=Tema predeterminat.
 Description[da]=Standardtema.
 Description[de]=Standard-Design.
 Description[en_GB]=Default theme.

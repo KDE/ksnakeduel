@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=Neon
 Name[ca]=Neó
+Name[ca@valencia]=Neó
 Name[da]=Neon
 Name[de]=Neon
 Name[en_GB]=Neon
@@ -22,6 +23,7 @@ Name[x-test]=xxNeonxx
 Name[zh_TW]=Neon
 Description=A retro theme with a distinctive touch of early 50s.
 Description[ca]=Un tema retro amb un toc distintiu dels anys 50.
+Description[ca@valencia]=Un tema retro amb un toc distintiu dels anys 50.
 Description[da]=Et retro-tema med et karakteristisk strøg fra først i 1950'erne.
 Description[de]=Ein Retro-Design mit einem unverwechselbaren Hauch der 50er Jahre.
 Description[en_GB]=A retro theme with a distinctive touch of early 50s.
