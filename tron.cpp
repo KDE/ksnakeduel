@@ -53,8 +53,8 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	players[0] = new Player(pf, 0);
 	players[1] = new Player(pf, 1);
 
-	connect(players[0], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
-	connect(players[1], SIGNAL(fetchedItem(int, int, int)), SLOT(itemHit(int, int, int)));
+	connect(players[0], SIGNAL(fetchedItem(int,int,int)), SLOT(itemHit(int,int,int)));
+	connect(players[1], SIGNAL(fetchedItem(int,int,int)), SLOT(itemHit(int,int,int)));
 
 	intelligence.referenceTron(this);
 

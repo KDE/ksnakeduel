@@ -132,7 +132,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_pauseButton = KStandardGameAction::pause(m_tron, SLOT(togglePause()), actionCollection());
 	m_pauseButton->setEnabled(false);
 	// New
-	KStandardGameAction::gameNew(m_tron, SLOT( newGame() ), actionCollection());
+	KStandardGameAction::gameNew(m_tron, SLOT(newGame()), actionCollection());
 	// Quit
 	KStandardGameAction::quit(kapp, SLOT(quit()), actionCollection());
 	// Settings
@@ -275,8 +275,8 @@ void KTron::showSettings(){
 	KConfigDialog *dialog = new KConfigDialog(this, QLatin1String( "settings" ), Settings::self());
 	dialog->addPage(m_generalConfigDialog, i18n("General"), QLatin1String( "games-config-options" ));
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QLatin1String( "games-config-theme" ));
-	connect(dialog, SIGNAL(settingsChanged(const QString &)), this, SLOT(loadSettings()));
-	connect(dialog, SIGNAL(settingsChanged(const QString &)), m_tron, SLOT(loadSettings()));
+	connect(dialog, SIGNAL(settingsChanged(QString)), this, SLOT(loadSettings()));
+	connect(dialog, SIGNAL(settingsChanged(QString)), m_tron, SLOT(loadSettings()));
 	dialog->show();
 }
 
