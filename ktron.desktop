@@ -34,6 +34,7 @@ Name[sv]=Ormspel
 Name[ug]=KSnakeDuel
 Name[uk]=KSnakeDuel
 Name[x-test]=xxKSnakeDuelxx
+Name[zh_CN]=KSnakeDuel
 Name[zh_TW]=KSnakeDuel
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
