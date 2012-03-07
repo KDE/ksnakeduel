@@ -34,7 +34,7 @@
 #include <KStandardGameAction>
 #include <KScoreDialog>
 #include <KGameThemeSelector>
-#include <KGameDifficulty>
+#include <KgDifficulty>
 #include <KShortcutsDialog>
 #include <KStatusBar>
 #include <KToggleAction>
@@ -143,20 +143,12 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
 
 	//difficulty
-	KGameDifficulty::init(this, m_tron, SLOT(loadSettings()));
-	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryEasy);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Easy);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Medium);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::Hard);
-	KGameDifficulty::addStandardLevel(KGameDifficulty::VeryHard);
-	int skill = Settings::difficulty();
-	if (skill < (int)KGameDifficulty::VeryEasy || skill > (int)KGameDifficulty::VeryHard) {
-		KGameDifficulty::setLevel(KGameDifficulty::Easy);
-		Settings::setDifficulty((int) KGameDifficulty::Easy);
-	}
-	else {
-		KGameDifficulty::setLevel((KGameDifficulty::standardLevel) (skill));
-	}
+    Kg::difficulty()->addStandardLevelRange(
+        KgDifficultyLevel::VeryEasy, KgDifficultyLevel::VeryHard,
+        KgDifficultyLevel::Easy //default
+    );
+    KgDifficultyGUI::init(this);
+    connect(Kg::difficulty(), SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), m_tron, SLOT(loadSettings()));
 
 	setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
 	loadSettings();
@@ -236,9 +228,7 @@ void KTron::changeStatus() {
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
 		KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
-		scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
-		scoreDialog.setConfigGroupWeights(KGameDifficulty::levelWeights());
-		scoreDialog.setConfigGroup(KGameDifficulty::localizedLevelString());
+		scoreDialog.initFromDifficulty(Kg::difficulty());
 
 		KScoreDialog::FieldInfo scoreInfo;
 		scoreInfo[KScoreDialog::Name] = m_tron->getPlayer(0)->getName();
@@ -285,9 +275,7 @@ void KTron::showSettings(){
  */
 void KTron::showHighscores() {
 	KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
-	scoreDialog.addLocalizedConfigGroupNames(KGameDifficulty::localizedLevelStrings());
-	scoreDialog.setConfigGroupWeights(KGameDifficulty::levelWeights());
-	scoreDialog.setConfigGroup( KGameDifficulty::localizedLevelString() );
+	scoreDialog.initFromDifficulty(Kg::difficulty());
 	scoreDialog.exec();
 }
 

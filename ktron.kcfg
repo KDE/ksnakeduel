@@ -15,10 +15,6 @@
       <label>Whether to disable acceleration.</label>
       <default>false</default>
     </entry>
-    <entry name="Difficulty" type="Int">
-      <label>The difficulty level.</label>
-      <default>30</default>
-    </entry>
     <entry name="NamePlayer1" type="String" key="Name_Pl1">
       <label>The name of player 1.</label>
     </entry>

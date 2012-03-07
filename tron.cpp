@@ -37,7 +37,7 @@
 
 #include <KDebug>
 #include <KLocale>
-#include <KGameDifficulty>
+#include <KgDifficulty>
 
 #include "settings.h"
 #include "renderer.h"
@@ -68,8 +68,6 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 }
 
 void Tron::loadSettings(){
-	Settings::setDifficulty((int) KGameDifficulty::level());
-
 	createNewPlayfield();
 	reset();
 
@@ -664,17 +662,17 @@ void Tron::checkHeadToHeadCollission()
 
 /** retrieves the line speed */
 int Tron::lineSpeed() {
-	switch (KGameDifficulty::level()) {
-		case KGameDifficulty::VeryEasy:
+	switch (Kg::difficultyLevel()) {
+		case KgDifficultyLevel::VeryEasy:
 			return 2;
 		default:
-		case KGameDifficulty::Easy:
+		case KgDifficultyLevel::Easy:
 			return 3;
-		case KGameDifficulty::Medium:
+		case KgDifficultyLevel::Medium:
 			return 5;
-		case KGameDifficulty::Hard:
+		case KgDifficultyLevel::Hard:
 			return 7;
-		case KGameDifficulty::VeryHard:
+		case KgDifficultyLevel::VeryHard:
 			return 8;
 	}
 }

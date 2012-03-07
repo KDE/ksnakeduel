@@ -26,7 +26,7 @@
 #include "tron.h"
 #include "settings.h"
 
-#include <KGameDifficulty>
+#include <KgDifficulty>
 
 Intelligence::Intelligence()
 {
@@ -46,19 +46,17 @@ void Intelligence::referenceTron(Tron *t)
 
 /** retrieves the opponentSkill */
 int Intelligence::opponentSkill() {
-	KGameDifficulty::standardLevel level = KGameDifficulty::level();
-
-	switch (level) {
-		case KGameDifficulty::VeryEasy:
+	switch (Kg::difficultyLevel()) {
+		case KgDifficultyLevel::VeryEasy:
 			return 1;
 		default:
-		case KGameDifficulty::Easy:
+		case KgDifficultyLevel::Easy:
 			return 1;
-		case KGameDifficulty::Medium:
+		case KgDifficultyLevel::Medium:
 			return 2;
-		case KGameDifficulty::Hard:
+		case KgDifficultyLevel::Hard:
 			return 3;
-		case KGameDifficulty::VeryHard:
+		case KgDifficultyLevel::VeryHard:
 			return 3;
 	}
 }
