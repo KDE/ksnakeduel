@@ -30,10 +30,12 @@
 #include <QPixmap>
 #include <QSize>
 
-#include <KGameTheme>
 #include <KPixmapCache>
 #include <QSvgRenderer>
 #include <KDebug>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgametheme.h>
 
 class RendererPrivate
 {

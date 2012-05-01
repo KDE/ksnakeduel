@@ -33,12 +33,15 @@
 #include <KActionCollection>
 #include <KStandardGameAction>
 #include <KScoreDialog>
-#include <KGameThemeSelector>
 #include <KgDifficulty>
 #include <KShortcutsDialog>
 #include <KStatusBar>
 #include <KToggleAction>
 #include <KApplication>
+
+#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
+#include <libkdegamesprivate/kgamethemeselector.h>
+
 //UI
 class General : public QWidget, public Ui::General
 {
