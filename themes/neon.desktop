@@ -1,7 +1,11 @@
 [KGameTheme]
 VersionFormat=1
 Name=Neon
+Name[uk]=Неон
+Name[x-test]=xxNeonxx
 Description=A retro theme with a distinctive touch of early 50s.
+Description[uk]=Ретро-тема з невловимим присмаком ранніх 50-их.
+Description[x-test]=xxA retro theme with a distinctive touch of early 50s.xx
 FileName=neon.svg
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com

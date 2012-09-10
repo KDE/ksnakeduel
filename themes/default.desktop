@@ -1,7 +1,11 @@
 [KGameTheme]
 VersionFormat=1
 Name=Default Theme
+Name[uk]=Типова тема
+Name[x-test]=xxDefault Themexx
 Description=Default theme.
+Description[uk]=Типова тема.
+Description[x-test]=xxDefault theme.xx
 FileName=default.svgz
 Author=Eugene Trounev
 AuthorEmail=eugene.trounev@gmail.com
