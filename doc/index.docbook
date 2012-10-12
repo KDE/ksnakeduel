@@ -6,8 +6,8 @@
   <!ENTITY % English "INCLUDE">
 ]>
 
-<book lang="&language;">
-<bookinfo>
+<book id="ksnakeduel" lang="&language;">
+<book id="ksnakeduel"info>
 <title>The &kappname; Handbook</title>
 
 <authorgroup>
