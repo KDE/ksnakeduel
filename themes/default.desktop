@@ -1,7 +1,6 @@
 [KGameTheme]
 VersionFormat=1
 Name=Default Theme
-Name[bs]=Podrazumijevana tema
 Name[ca]=Tema predeterminat
 Name[ca@valencia]=Tema predeterminat
 Name[cs]=Výchozí motiv
@@ -40,7 +39,6 @@ Name[x-test]=xxDefault Themexx
 Name[zh_CN]=默认主题
 Name[zh_TW]=預設主題
 Description=Default theme.
-Description[bs]=Podrazumijevana tema
 Description[ca]=Tema predeterminat.
 Description[ca@valencia]=Tema predeterminat.
 Description[cs]=Výchozí motiv.
