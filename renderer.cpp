@@ -24,7 +24,6 @@
 #include "renderer.h"
 #include "settings.h"
 #include "object.h"
-#include "fontutils.h"
 
 #include <QPainter>
 #include <QPixmap>
@@ -33,6 +32,7 @@
 #include <KPixmapCache>
 #include <QSvgRenderer>
 #include <KDebug>
+#include <kfontutils.h>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
@@ -288,7 +288,7 @@ QPixmap Renderer::messageBox(const QString &message) {
 
 	QPainter painter(&pixmap);
 
-	int fontSize = fontUtils::fontSize(painter, message, w * 0.9, h, fontUtils::DoNotAllowWordWrap);
+	const int fontSize = KFontUtils::adaptFontSize(painter, message, w * 0.9, h, 28, 1, KFontUtils::DoNotAllowWordWrap);
 
 	painter.setPen(QColor(255, 255, 255, 220));
 	painter.setFont(QFont(QLatin1String( "Helvetica" ), fontSize, QFont::Bold));

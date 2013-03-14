@@ -18,7 +18,6 @@ add_subdirectory(doc)
 ########### next target ###############
 
 set(ktron_SRCS
-	fontutils.cpp
 	renderer.cpp
 	object.cpp
 	snakepart.cpp
