@@ -115,12 +115,12 @@ bool Renderer::loadTheme(const QString &name)
     return true;
 }
 
-QPixmap Renderer::getPart(QString frameSvgName)
+QPixmap Renderer::getPart(const QString &frameSvgName)
 {
 	return getPartOfSize(frameSvgName, p->m_partSize);
 }
 
-QPixmap Renderer::getPartOfSize(QString frameSvgName, QSize &partSize)
+QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSize)
 {
 	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
@@ -279,7 +279,7 @@ QPixmap *Renderer::getPlayField()
 	return p->m_playField;
 }
 
-QPixmap Renderer::messageBox(QString &message) {
+QPixmap Renderer::messageBox(const QString &message) {
 	int w = p->m_sceneSize.width() / 2;
 	int h = p->m_sceneSize.height() / 3;
 

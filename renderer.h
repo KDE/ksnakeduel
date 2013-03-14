@@ -47,10 +47,10 @@ class Renderer {
 		int calculateOffsetX(int x);
 		int calculateOffsetY(int y);
 
-		QPixmap getPart(QString partName);
-		QPixmap getPartOfSize(QString partName, QSize &partSize);
+		QPixmap getPart(const QString &partName);
+		QPixmap getPartOfSize(const QString &partName, const QSize &partSize);
 		QPixmap background();
-		QPixmap messageBox(QString &message);
+		QPixmap messageBox(const QString &message);
 
 		void resetPlayField();
 		void drawPart(QPainter & painter, int x, int y, QString svgName);
