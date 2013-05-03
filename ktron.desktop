@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=ktron -caption "%c" %i
+Exec=ktron -caption %c %i
 Icon=ktron
 X-DocPath=ktron/index.html
 Terminal=false
