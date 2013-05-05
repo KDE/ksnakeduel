@@ -182,9 +182,8 @@ release the acceleration key, velocity returns to normal.
 </para>
 
 <note><para>
-You can alter the keys using the shortcuts option in the <link
-linkend="settings-menu"><guimenu>Settings</guimenu>
-Menu</link>.
+You can alter the keys using the shortcuts option in the <ulink
+url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>.
 </para></note>
 </sect1>
 </chapter>
@@ -245,21 +244,20 @@ the direction of your player.
 </para>
 
 <note><para>
-You can alter the keys using the shortcuts option in the <link
-linkend="settings-menu"><guimenu>Settings</guimenu>
-Menu</link>.
+You can alter the keys using the shortcuts option in the <ulink
+url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>.
 </para></note>
 </sect1>
 
 </chapter>
 
-<chapter id="command">
-<title>Command Reference</title>
+<chapter id="interface-overview">
+<title>Interface Overview</title>
 
-<para>The following sections briefly describe each menubar option.</para>
-
-<sect1 id="game-menu">
-<title>The <guimenu>Game</guimenu> Menu</title>
+<sect1 id="menu-items">
+<title>Menu Items</title>
+  
+<para>The following list briefly describes each menubar option.</para>
 
 <variablelist>
 <varlistentry>
@@ -306,21 +304,6 @@ Menu</link>.
 </menuchoice></term>
 <listitem><para><action>Quits.</action></para></listitem>
 </varlistentry>
-</variablelist>
-</sect1>
-
-
-<sect1 id="settings-menu">
-<title>The <guimenu>Settings</guimenu> Menu</title>
-
-<variablelist>
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
-<guimenuitem>Show Statusbar</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Shows or hides the Statusbar.</action></para></listitem>
-</varlistentry>
 
 <varlistentry>
 <term><menuchoice>
@@ -334,14 +317,6 @@ game.</action></para></listitem>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure Shortcuts...</guimenuitem>
-</menuchoice></term>
-<listitem><para><action>Displays a standard &kde; shortcuts configurator.</action></para></listitem>
-</varlistentry>
-
-<varlistentry>
-<term><menuchoice>
-<guimenu>Settings</guimenu>
 <guimenuitem>Configure &kappname;...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
@@ -349,12 +324,12 @@ to configure various options.</action></para></listitem>
 </varlistentry>
 </variablelist>
 
-</sect1>
-
-<sect1 id="help">
-<title>The <guimenu>Help</guimenu> Menu</title>
-
-&help.menu.documentation;
+<para>
+Additionally &ksnake; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the
+<ulink url="help:/fundamentals/ui.html#menus-settings">Settings Menu</ulink> and
+<ulink url="help:/fundamentals/ui.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
@@ -470,7 +445,7 @@ action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
 </table>
 
 <para>
-These shortcuts can be changed by selecting <menuchoice>
+These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</ulink> by selecting <menuchoice>
 <guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem>
 </menuchoice> from the menubar.
 </para>
