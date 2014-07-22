@@ -61,7 +61,7 @@ int Player::getX()
 {
 	if (m_snakeParts.isEmpty())
 	{
-		kDebug() << "Requested coordinate of inexistant snake";
+		kDebug() << "Requested coordinate of nonexistent snake";
 		return 0;
 	}
 	
@@ -72,7 +72,7 @@ int Player::getY()
 {
 	if (m_snakeParts.isEmpty())
 	{
-		kDebug() << "Requested coordinate of inexistant snake";
+		kDebug() << "Requested coordinate of nonexistent snake";
 		return 0;
 	}
 	
