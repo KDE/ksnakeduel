@@ -22,7 +22,7 @@
   *******************************************************************************/
 #include <KApplication>
 #include <KCmdLineArgs>
-#include <KAboutData>
+#include <K4AboutData>
 #include <KStandardDirs>
 
 #include "ktron.h"
@@ -41,8 +41,8 @@ static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
-  KAboutData aboutData( "ktron", 0, ki18n("KSnakeDuel"),
-    KTRON_VERSION, description, KAboutData::License_GPL, notice);
+  K4AboutData aboutData( "ktron", 0, ki18n("KSnakeDuel"),
+    KTRON_VERSION, description, K4AboutData::License_GPL, notice);
   aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
   aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
@@ -54,7 +54,6 @@ int main(int argc, char* argv[])
   KCmdLineArgs::addCmdLineOptions(options);
 
   KApplication a;
-  KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
   KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
   KCmdLineArgs *args = KCmdLineArgs::parsedArgs();

@@ -29,7 +29,7 @@
 #include <KConfigDialog>
 #include <KLocale>
 #include <KMessageBox>
-#include <KAction>
+#include <QAction>
 #include <KActionCollection>
 #include <KStandardGameAction>
 #include <KScoreDialog>
@@ -65,8 +65,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	setCentralWidget(m_tron);
 
 	// create statusbar
-	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 1);
-	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 2);
+	//QT5 statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 1);
+	//QT5 statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 2);
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
@@ -199,8 +199,8 @@ void KTron::updateStatusbar() {
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
 		QString string = QString::fromLatin1( "%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
-		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
-		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
+		//QT5 statusBar()->changeItem(string, ID_STATUS_BASE + 1);
+		//QT5 statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
 	}
 	else
 	{
@@ -209,7 +209,7 @@ void KTron::updateStatusbar() {
 			int score = m_tron->getPlayer(1 - i)->getScore();
 
 			QString string = QString::fromLatin1( "%1: %2").arg(name).arg(score);
-			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
+			//QT5 statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
 		}
 	}
 }

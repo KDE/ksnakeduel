@@ -24,7 +24,7 @@
 #ifndef KTRON_H
 #define KTRON_H
 
-#include <KAction>
+#include <QAction>
 #include <KXmlGuiWindow>
 #include <QKeyEvent>
 
@@ -83,17 +83,17 @@ class KTron : public KXmlGuiWindow {
 		
 	private:
 		Tron *m_tron;
-		KAction *m_player0Up;
-		KAction *m_player0Down;
-		KAction *m_player0Left;
-		KAction *m_player0Right;
-		KAction *m_player0Accelerate;
-		KAction *m_player1Up;
-		KAction *m_player1Down;
-		KAction *m_player1Left;
-		KAction *m_player1Right;
-		KAction *m_player1Accelerate;
-		KAction *m_pauseButton;
+		QAction *m_player0Up;
+		QAction *m_player0Down;
+		QAction *m_player0Left;
+		QAction *m_player0Right;
+		QAction *m_player0Accelerate;
+		QAction *m_player1Up;
+		QAction *m_player1Down;
+		QAction *m_player1Left;
+		QAction *m_player1Right;
+		QAction *m_player1Accelerate;
+		QAction *m_pauseButton;
 		General *m_generalConfigDialog;
 };
 
