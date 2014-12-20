@@ -64,7 +64,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 
 	timer = new QTimer(this);
 	//loadSettings();
-	connect(timer, SIGNAL(timeout()), SLOT(doMove()));
+	connect(timer, &QTimer::timeout, this, &Tron::doMove);
 }
 
 void Tron::loadSettings(){

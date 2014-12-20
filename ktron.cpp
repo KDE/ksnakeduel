@@ -58,9 +58,9 @@ public:
  */
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_tron = new Tron(this);
-	connect(m_tron,SIGNAL(gameEnds()),SLOT(changeStatus()));
-	connect(m_tron,SIGNAL(updatedScore()),SLOT(updateScore()));
-	connect(m_tron,SIGNAL(pauseBlocked(bool)),SLOT(blockPause(bool)));
+	connect(m_tron, &Tron::gameEnds, this, &KTron::changeStatus);
+	connect(m_tron, &Tron::updatedScore, this, &KTron::updateScore);
+	connect(m_tron, &Tron::pauseBlocked, this, &KTron::blockPause);
 	m_tron->setMinimumSize(700,420);
 	setCentralWidget(m_tron);
 
@@ -74,25 +74,25 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_player0Up = actionCollection()->addAction( QLatin1String( "Pl1Up" ));
 	m_player0Up->setText(i18n("Right Player / KSnake: Up"));
 	actionCollection()->setDefaultShortcut(m_player0Up,Qt::Key_Up);
-	connect(m_player0Up, SIGNAL(triggered(bool)), SLOT(triggerKey0Up(bool)));
+	connect(m_player0Up, &QAction::triggered, this, &KTron::triggerKey0Up);
 	addAction(m_player0Up);
 
 	m_player0Down = actionCollection()->addAction( QLatin1String( "Pl1Down" ));
 	m_player0Down->setText(i18n("Right Player / KSnake: Down"));
 	actionCollection()->setDefaultShortcut(m_player0Down,Qt::Key_Down);
-	connect(m_player0Down, SIGNAL(triggered(bool)), SLOT(triggerKey0Down(bool)));
+	connect(m_player0Down, &QAction::triggered, this, &KTron::triggerKey0Down);
 	addAction(m_player0Down);
 
 	m_player0Right = actionCollection()->addAction( QLatin1String( "Pl1Right" ));
 	m_player0Right->setText(i18n("Right Player / KSnake: Right"));
 	actionCollection()->setDefaultShortcut(m_player0Right,Qt::Key_Right);
-	connect(m_player0Right, SIGNAL(triggered(bool)), SLOT(triggerKey0Right(bool)));
+	connect(m_player0Right, &QAction::triggered, this, &KTron::triggerKey0Right);
 	addAction(m_player0Right);
 
 	m_player0Left = actionCollection()->addAction( QLatin1String( "Pl1Left" ));
 	m_player0Left->setText(i18n("Right Player / KSnake: Left"));
 	actionCollection()->setDefaultShortcut(m_player0Left,Qt::Key_Left);
-	connect(m_player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
+	connect(m_player0Left, &QAction::triggered, this, &KTron::triggerKey0Left);
 	addAction(m_player0Left);
 
 	m_player0Accelerate = actionCollection()->addAction( QLatin1String( "Pl1Ac" ));
@@ -104,25 +104,25 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_player1Up = actionCollection()->addAction( QLatin1String( "Pl2Up" ));
 	m_player1Up->setText(i18n("Left Player: Up"));
 	actionCollection()->setDefaultShortcut(m_player1Up,Qt::Key_W);
-	connect(m_player1Up, SIGNAL(triggered(bool)), SLOT(triggerKey1Up(bool)));
+	connect(m_player1Up, &QAction::triggered, this, &KTron::triggerKey1Up);
 	addAction(m_player1Up);
 
 	m_player1Down = actionCollection()->addAction( QLatin1String( "Pl2Down" ));
 	m_player1Down->setText(i18n("Left Player: Down"));
 	actionCollection()->setDefaultShortcut(m_player1Down,Qt::Key_S);
-	connect(m_player1Down, SIGNAL(triggered(bool)), SLOT(triggerKey1Down(bool)));
+	connect(m_player1Down, &QAction::triggered, this, &KTron::triggerKey1Down);
 	addAction(m_player1Down);
 
 	m_player1Right = actionCollection()->addAction( QLatin1String( "Pl2Right" ));;
 	m_player1Right->setText(i18n("Left Player: Right"));
 	actionCollection()->setDefaultShortcut(m_player1Right,Qt::Key_D);
-	connect(m_player1Right, SIGNAL(triggered(bool)), SLOT(triggerKey1Right(bool)));
+	connect(m_player1Right, &QAction::triggered, this, &KTron::triggerKey1Right);
 	addAction(m_player1Right);
 
 	m_player1Left = actionCollection()->addAction( QLatin1String( "Pl2Left" ));
 	m_player1Left->setText(i18n("Left Player: Left"));
 	actionCollection()->setDefaultShortcut(m_player1Left,Qt::Key_A);
-	connect(m_player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
+	connect(m_player1Left, &QAction::triggered, this, &KTron::triggerKey1Left);
 	addAction(m_player1Left);
 
 	m_player1Accelerate = actionCollection()->addAction( QLatin1String( "Pl2Ac" ));
@@ -268,8 +268,8 @@ void KTron::showSettings(){
 	KConfigDialog *dialog = new KConfigDialog(this, QLatin1String( "settings" ), Settings::self());
 	dialog->addPage(m_generalConfigDialog, i18n("General"), QLatin1String( "games-config-options" ));
 	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QLatin1String( "games-config-theme" ));
-	connect(dialog, SIGNAL(settingsChanged(QString)), this, SLOT(loadSettings()));
-	connect(dialog, SIGNAL(settingsChanged(QString)), m_tron, SLOT(loadSettings()));
+	connect(dialog, &KConfigDialog::settingsChanged, this, &KTron::loadSettings);
+	connect(dialog, &KConfigDialog::settingsChanged, m_tron, &Tron::loadSettings);
 	dialog->show();
 }
 
