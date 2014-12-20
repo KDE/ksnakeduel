@@ -286,7 +286,7 @@ void KTron::showHighscores() {
  * Close KTron
  */
 void KTron::close() {
-	Settings::self()->writeConfig();
+	Settings::self()->save();
 }
 
 void KTron::closeEvent(QCloseEvent *event)
