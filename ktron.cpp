@@ -27,7 +27,7 @@
 #include "ui_general.h"
 
 #include <KConfigDialog>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KMessageBox>
 #include <QAction>
 #include <KActionCollection>

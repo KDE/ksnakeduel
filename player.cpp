@@ -28,7 +28,7 @@
 #include "settings.h"
 
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KUser>
 
 Player::Player(PlayField &pf, int playerNr) : QObject()

@@ -36,7 +36,7 @@
 #include <QPixmap>
 
 #include <KDebug>
-#include <KLocale>
+#include <KLocalizedString>
 #include <KgDifficulty>
 
 #include "settings.h"
