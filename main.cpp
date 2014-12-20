@@ -21,17 +21,22 @@
 
   *******************************************************************************/
 #include <KApplication>
-#include <KCmdLineArgs>
-#include <K4AboutData>
+
+#include <KLocalizedString>
+#include <KAboutData>
 #include <KStandardDirs>
+
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+#include <QStandardPaths>
 
 #include "ktron.h"
 #include "renderer.h"
 #include "settings.h"
 #include "version.h"
 
-static KLocalizedString description = ki18n("A race in hyperspace");
-static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
+static QString description = i18n("A race in hyperspace");
+static QString notice = i18n("(c) 1998-2000, Matthias Kiefer\n"
 "(c) 2005, Benjamin Meyer\n"
 "(c) 2008-2009, Stas Verberkt\n"
 "\n"
@@ -41,23 +46,28 @@ static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
-  K4AboutData aboutData( "ktron", 0, ki18n("KSnakeDuel"),
-    KTRON_VERSION, description, K4AboutData::License_GPL, notice);
-  aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
-  aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
-  aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
+  KAboutData aboutData( "ktron", i18n("KSnakeDuel"),
+    KTRON_VERSION, description, KAboutLicense::GPL, notice);
+  aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), "matthias.kiefer@gmx.de");
+  aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), "ben+ktron@meyerhome.net");
+  aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
 
-  KCmdLineArgs::init( argc, argv, &aboutData );
+    QApplication app(argc, argv);
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    parser.addVersionOption();
+    parser.addHelpOption();
+  parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("snake"), i18n("Start in KSnake mode")));
 
-  KCmdLineOptions options;
-  options.add("snake", ki18n("Start in KSnake mode"));
-  KCmdLineArgs::addCmdLineOptions(options);
+    //PORTING SCRIPT: adapt aboutdata variable if necessary
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
 
-  KApplication a;
+
   KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  if (args->isSet("snake"))
+  if (parser.isSet("snake"))
   {
     Settings::setGameType(Settings::EnumGameType::Snake);
   }
@@ -71,6 +81,6 @@ int main(int argc, char* argv[])
   KTron *ktron = new KTron();
   ktron->show();
 
-  return a.exec();
+  return app.exec();
 }
 
