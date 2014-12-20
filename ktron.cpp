@@ -377,5 +377,5 @@ void KTron::triggerKey1Accelerate(bool b)
 }
 
 
-#include "ktron.moc"
+
 

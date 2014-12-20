@@ -706,5 +706,5 @@ int Tron::getWinner()
 	return -1;
 }
 
-#include "tron.moc"
+
 
