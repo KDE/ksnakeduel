@@ -35,9 +35,9 @@
 #include <KScoreDialog>
 #include <KgDifficulty>
 #include <KShortcutsDialog>
-#include <KStatusBar>
+#include <QStatusBar>
 #include <KToggleAction>
-#include <KApplication>
+#include <QApplication>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -137,7 +137,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	// New
 	KStandardGameAction::gameNew(m_tron, SLOT(newGame()), actionCollection());
 	// Quit
-	KStandardGameAction::quit(kapp, SLOT(quit()), actionCollection());
+	KStandardGameAction::quit(qApp, SLOT(quit()), actionCollection());
 	// Settings
 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 	// Configure keys
