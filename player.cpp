@@ -27,7 +27,7 @@
 #include "snakepart.h"
 #include "settings.h"
 
-#include <KDebug>
+#include "ksnakeduel_debug.h"
 #include <KLocalizedString>
 #include <KUser>
 
@@ -61,7 +61,7 @@ int Player::getX()
 {
 	if (m_snakeParts.isEmpty())
 	{
-		kDebug() << "Requested coordinate of nonexistent snake";
+		qCDebug(KSNAKEDUEL_LOG) << "Requested coordinate of nonexistent snake";
 		return 0;
 	}
 	
@@ -72,7 +72,7 @@ int Player::getY()
 {
 	if (m_snakeParts.isEmpty())
 	{
-		kDebug() << "Requested coordinate of nonexistent snake";
+		qCDebug(KSNAKEDUEL_LOG) << "Requested coordinate of nonexistent snake";
 		return 0;
 	}
 	
@@ -318,7 +318,7 @@ void Player::movePlayer()
 	
 	if (crashed(newX, newY))
 	{
-		//kDebug() << "Crashed at: (" << newX << ", " << newY << ")";
+		//qCDebug(KSNAKEDUEL_LOG) << "Crashed at: (" << newX << ", " << newY << ")";
 		m_alive = false;
 	}
 	
@@ -348,7 +348,7 @@ void Player::movePlayer()
 		
 		if (m_playField->getObjectAt(newX, newY)->getObjectType() == ObjectType::Item)
 		{
-			//kDebug() << "Boom!";
+			//qCDebug(KSNAKEDUEL_LOG) << "Boom!";
 			emit fetchedItem(m_playerNumber, newX, newY);
 		}
 

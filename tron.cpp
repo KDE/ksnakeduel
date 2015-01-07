@@ -35,7 +35,7 @@
 #include <QFocusEvent>
 #include <QPixmap>
 
-#include <KDebug>
+#include "ksnakeduel_debug.h"
 #include <KLocalizedString>
 #include <KgDifficulty>
 
@@ -181,7 +181,7 @@ Player *Tron::getPlayer(int playerNr)
 {
 	if (playerNr != 0 && playerNr != 1)
 	{
-		kDebug() << "Inexistent player requested: " << playerNr;
+		qCDebug(KSNAKEDUEL_LOG) << "Inexistent player requested: " << playerNr;
 		return 0;
 	}
 
@@ -208,7 +208,7 @@ void Tron::startGame()
 
 void Tron::itemHit(int playerNumber, int, int)
 {
-	//kDebug() << "Got Item Hit for " << playerNumber;
+	//qCDebug(KSNAKEDUEL_LOG) << "Got Item Hit for " << playerNumber;
 
 	newApple();
 	players[playerNumber]->setEnlargement(3);
@@ -234,7 +234,7 @@ void Tron::newApple()
 		y = rand() % pf.getHeight();
 	}
 
-	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
+	//qCDebug(KSNAKEDUEL_LOG) << "Drawn apple at (" << x << ", " << y << ")";
 
 	apple.setType((int)(rand() % 3));
 

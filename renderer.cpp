@@ -31,7 +31,7 @@
 
 #include <KPixmapCache>
 #include <QSvgRenderer>
-#include <KDebug>
+#include "ksnakeduel_debug.h"
 #include <kfontutils.h>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
@@ -262,7 +262,7 @@ int Renderer::calculateOffsetY(int y)
 
 void Renderer::drawPart(QPainter & painter, int x, int y, QString svgName)
 {
-	//kDebug() << "Drawing part: " << svgName;
+	//qCDebug(KSNAKEDUEL_LOG) << "Drawing part: " << svgName;
 
 	int xOffset = calculateOffsetX(x + 1);
 	int yOffset = calculateOffsetY(y + 1);

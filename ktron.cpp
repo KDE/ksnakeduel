@@ -216,7 +216,7 @@ void KTron::updateStatusbar() {
 
 void KTron::blockPause(bool block)
 {
-	//kDebug() << "Setting pause button state to: "  << !block;
+	//qCDebug(KSNAKEDUEL_LOG) << "Setting pause button state to: "  << !block;
 	m_pauseButton->setEnabled(!block);
 }
 

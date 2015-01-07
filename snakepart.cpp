@@ -23,7 +23,7 @@
 
 #include "snakepart.h"
 
-#include <KDebug>
+#include "ksnakeduel_debug.h"
 
 SnakePart::SnakePart(int playerNumber) : Object(ObjectType::SnakePart)
 {

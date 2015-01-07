@@ -23,7 +23,7 @@
   
 #include "playfield.h"
 
-#include <KDebug>
+#include "ksnakeduel_debug.h"
 
 PlayField::PlayField()
 {
@@ -52,7 +52,7 @@ void PlayField::initialize()
 Object *PlayField::getObjectAt(int x, int y)
 {
 	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
-		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
+		qCDebug(KSNAKEDUEL_LOG) << "Inexistent place accessed: (" << x << ", " << y << ")";
 
 		return 0;
 	}
@@ -76,7 +76,7 @@ int PlayField::getHeight()
 void PlayField::setObjectAt(int x, int y, Object &o)
 {
 	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
-		kDebug() << "Inexistent place accessed: (" << x << ", " << y << ")";
+		qCDebug(KSNAKEDUEL_LOG) << "Inexistent place accessed: (" << x << ", " << y << ")";
 
 		return;
 	}

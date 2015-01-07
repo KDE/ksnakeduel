@@ -47,6 +47,7 @@ add_subdirectory(doc)
 ########### next target ###############
 
 set(ktron_SRCS
+        ksnakeduel_debug.cpp
 	renderer.cpp
 	object.cpp
 	snakepart.cpp
