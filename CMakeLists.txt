@@ -1,4 +1,4 @@
-project(ktron)
+project(ksnakeduel)
 
 if(NOT COMPILING_KDEGAMES)
 	find_package(KDE4 REQUIRED)
@@ -17,7 +17,7 @@ add_subdirectory(doc)
 
 ########### next target ###############
 
-set(ktron_SRCS
+set(ksnakeduel_SRCS
 	renderer.cpp
 	object.cpp
 	snakepart.cpp
@@ -30,24 +30,21 @@ set(ktron_SRCS
 	ktron.cpp
 	main.cpp)
 
-kde4_add_ui_files(ktron_SRCS general.ui)
+kde4_add_ui_files(ksnakeduel_SRCS general.ui)
 
-kde4_add_kcfg_files(ktron_SRCS settings.kcfgc)
+kde4_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
 
-kde4_add_app_icon(ktron_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ktron.png")
+kde4_add_app_icon(ksnakeduel_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ktron.png")
 
-kde4_add_executable(ktron ${ktron_SRCS})
+kde4_add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
-target_link_libraries(ktron kdegames kdegamesprivate ${KDE4_KDEUI_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS})
+target_link_libraries(ksnakeduel kdegames kdegamesprivate ${KDE4_KDEUI_LIBS} ${KDE4_KNOTIFYCONFIG_LIBS})
 
-install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-configure_file(kdesnake.cmake ${CMAKE_CURRENT_BINARY_DIR}/kdesnake  @ONLY)
+install(TARGETS ksnakeduel ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/kdesnake DESTINATION ${BIN_INSTALL_DIR})
-install(PROGRAMS  ktron.desktop kdesnake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(PROGRAMS ktron.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
 install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
 install(FILES  ktronui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)
 install(FILES  ktron.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
