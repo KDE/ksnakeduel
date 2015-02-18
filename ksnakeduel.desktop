@@ -1,8 +1,8 @@
 [Desktop Entry]
 Type=Application
-Exec=ktron -caption %c %i
-Icon=ktron
-X-DocPath=ktron/index.html
+Exec=ksnakeduel -caption %c %i
+Icon=ksnakeduel
+X-DocPath=ksnakeduel/index.html
 Terminal=false
 Name=KSnakeDuel
 Name[bs]=KSnakeDuel

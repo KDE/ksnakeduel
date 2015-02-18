@@ -44,7 +44,7 @@ install(TARGETS ksnakeduel ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(PROGRAMS ktron.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
-install(FILES  ktronui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)
-install(FILES  ktron.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
+install(PROGRAMS ksnakeduel.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES  ksnakeduel.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES  ksnakeduelui.rc DESTINATION ${DATA_INSTALL_DIR}/ktron)
+install(FILES  ksnakeduel.knsrc DESTINATION ${CONFIG_INSTALL_DIR})

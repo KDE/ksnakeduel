@@ -41,7 +41,7 @@ static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
-  KAboutData aboutData( "ktron", 0, ki18n("KSnakeDuel"),
+  KAboutData aboutData( "ksnakeduel", 0, ki18n("KSnakeDuel"),
     KTRON_VERSION, description, KAboutData::License_GPL, notice);
   aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
