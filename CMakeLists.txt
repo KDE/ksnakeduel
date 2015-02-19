@@ -34,7 +34,7 @@ kde4_add_ui_files(ksnakeduel_SRCS general.ui)
 
 kde4_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
 
-kde4_add_app_icon(ksnakeduel_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ktron.png")
+kde4_add_app_icon(ksnakeduel_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ksnakeduel.png")
 
 kde4_add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
