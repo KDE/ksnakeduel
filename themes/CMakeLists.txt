@@ -1,4 +1,4 @@
-set(ktron_THEME_SRCS
+set(ksnakeduel_THEME_SRCS
         default.desktop
         default.png
         default.svgz
@@ -6,4 +6,4 @@ set(ktron_THEME_SRCS
         neon.svg
         neon.png
 )
-install(FILES ${ktron_THEME_SRCS} DESTINATION ${DATA_INSTALL_DIR}/ktron/themes)
+install(FILES ${ksnakeduel_THEME_SRCS} DESTINATION ${DATA_INSTALL_DIR}/ksnakeduel/themes)

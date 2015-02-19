@@ -46,7 +46,7 @@ static QString notice = i18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
-  KAboutData aboutData( "ktron", i18n("KSnakeDuel"),
+  KAboutData aboutData( "ksnakeduel", i18n("KSnakeDuel"),
     KTRON_VERSION, description, KAboutLicense::GPL, notice);
   aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), "ben+ktron@meyerhome.net");

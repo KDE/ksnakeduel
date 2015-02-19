@@ -1,4 +1,4 @@
-project(ktron)
+project(ksnakeduel)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
@@ -46,7 +46,7 @@ add_subdirectory(doc)
 
 ########### next target ###############
 
-set(ktron_SRCS
+set(ksnakeduel_SRCS
         ksnakeduel_debug.cpp
 	renderer.cpp
 	object.cpp
@@ -60,26 +60,23 @@ set(ktron_SRCS
 	ktron.cpp
 	main.cpp)
 
-ki18n_wrap_ui(ktron_SRCS general.ui)
+ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
-kconfig_add_kcfg_files(ktron_SRCS settings.kcfgc)
+kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
 
-kde4_add_app_icon(ktron_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ktron.png")
+kde4_add_app_icon(ksnakeduel_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-app-ksnakeduel.png")
 
-add_executable(ktron ${ktron_SRCS})
+add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
-target_link_libraries(ktron KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::KDELibs4Support Qt5::Svg)
+target_link_libraries(ksnakeduel KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::KDELibs4Support Qt5::Svg)
 
-install(TARGETS ktron ${INSTALL_TARGETS_DEFAULT_ARGS})
-
-configure_file(kdesnake.cmake ${CMAKE_CURRENT_BINARY_DIR}/kdesnake  @ONLY)
+install(TARGETS ksnakeduel ${INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/kdesnake DESTINATION ${BIN_INSTALL_DIR})
-install(PROGRAMS  ktron.desktop kdesnake.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-install(FILES  ktron.kcfg DESTINATION ${KCFG_INSTALL_DIR})
-install(FILES  ktronui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/ktron)
-install(FILES  ktron.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
+install(PROGRAMS  ksnakeduel.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
+install(FILES  ksnakeduel.kcfg DESTINATION ${KCFG_INSTALL_DIR})
+install(FILES  ksnakeduelui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/ksnakeduel)
+install(FILES  ksnakeduel.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)
