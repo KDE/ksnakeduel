@@ -3,7 +3,7 @@ project(ksnakeduel)
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
 
-find_package(ECM 1.3.0 REQUIRED CONFIG)
+find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
@@ -30,6 +30,7 @@ find_package(Phonon4Qt5 CONFIG REQUIRED)
 include_directories(BEFORE ${PHONON_INCLUDES})
 
 include(FeatureSummary)
+include(ECMAddAppIcon)
 include(ECMInstallIcons)
 include(KDEInstallDirs)
 include(KDECompilerSettings)
@@ -70,13 +71,13 @@ add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
 target_link_libraries(ksnakeduel KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::KDELibs4Support Qt5::Svg)
 
-install(TARGETS ksnakeduel ${INSTALL_TARGETS_DEFAULT_ARGS})
+install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 ########### install files ###############
 
-install(PROGRAMS  ksnakeduel.desktop DESTINATION ${XDG_APPS_INSTALL_DIR})
-install(FILES  ksnakeduel.kcfg DESTINATION ${KCFG_INSTALL_DIR})
-install(FILES  ksnakeduelui.rc DESTINATION ${KXMLGUI_INSTALL_DIR}/ksnakeduel)
-install(FILES  ksnakeduel.knsrc DESTINATION ${CONFIG_INSTALL_DIR})
+install(PROGRAMS  ksnakeduel.desktop DESTINATION ${KDE_INSTALL_APPDIR})
+install(FILES  ksnakeduel.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
+install(FILES  ksnakeduelui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/ksnakeduel)
+install(FILES  ksnakeduel.knsrc DESTINATION ${KDE_INSTALL_CONFDIR})
 
 feature_summary(WHAT ALL INCLUDE_QUIET_PACKAGES FATAL_ON_MISSING_REQUIRED_PACKAGES)

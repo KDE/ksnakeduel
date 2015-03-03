@@ -6,4 +6,4 @@ set(ksnakeduel_THEME_SRCS
         neon.svg
         neon.png
 )
-install(FILES ${ksnakeduel_THEME_SRCS} DESTINATION ${DATA_INSTALL_DIR}/ksnakeduel/themes)
+install(FILES ${ksnakeduel_THEME_SRCS} DESTINATION ${KDE_INSTALL_DATADIR}/ksnakeduel/themes)

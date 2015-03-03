@@ -7,4 +7,4 @@ ecm_install_icons(ICONS
   hi48-apps-ksnakeduel.png
   hi64-apps-ksnakeduel.png
   DESTINATION
-  ${ICON_INSTALL_DIR})
+  ${KDE_INSTALL_ICONDIR})
