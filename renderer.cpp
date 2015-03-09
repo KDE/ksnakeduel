@@ -29,7 +29,7 @@
 #include <QPixmap>
 #include <QSize>
 
-#include <KPixmapCache>
+#include <QPixmapCache>
 #include <QSvgRenderer>
 #include "ksnakeduel_debug.h"
 #include <kfontutils.h>
@@ -47,7 +47,6 @@ class RendererPrivate
 		QSize m_partSize;
 
 		QSvgRenderer m_renderer;
-		KPixmapCache m_cache;
 
 		QPixmap *m_playField;
 
@@ -59,10 +58,9 @@ const QString frameSuffix(QLatin1String( "-%1" ));
 
 RendererPrivate::RendererPrivate()
     : m_renderer()
-    , m_cache(QLatin1String( "ktron-cache" ))
 {
-    m_cache.setCacheLimit(3 * 1024);
-    m_cache.discard();
+    QPixmapCache::setCacheLimit(3);
+    QPixmapCache::clear();
 	m_playField = 0;
 }
 
@@ -111,7 +109,7 @@ bool Renderer::loadTheme(const QString &name)
         return false;
     //flush cache
     if (discardCache)
-        p->m_cache.discard();
+        QPixmapCache::clear();
     return true;
 }
 
@@ -124,14 +122,14 @@ QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSi
 {
 	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
-	if (!p->m_cache.find(framePixName, pix))
+	if (!QPixmapCache::find(framePixName, pix))
 	{
 		pix = QPixmap(partSize);
 		pix.fill(Qt::transparent);
 		QPainter painter(&pix);
 		p->m_renderer.render(&painter, frameSvgName);
 		painter.end();
-		p->m_cache.insert(framePixName, pix);
+		QPixmapCache::insert(framePixName, pix);
 	}
 
     //return the static pixmap
@@ -145,14 +143,14 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
     QPixmap pix;
     QString pixName = svgName + sizeSuffix.arg(size.width()).arg(size.height());
 
-    if (!p->m_cache.find(pixName, pix))
+    if (!QPixmapCache::find(pixName, pix))
     {
         pix = QPixmap(size);
         pix.fill(Qt::transparent);
         QPainter painter(&pix);
         p->m_renderer.render(&painter, svgName);
         painter.end();
-        p->m_cache.insert(pixName, pix);
+        QPixmapCache::insert(pixName, pix);
     }
 
     return pix;
@@ -162,7 +160,7 @@ QPixmap Renderer::background()
 {
     QPixmap pix;
     QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
-	if (!p->m_cache.find(pixName, pix))
+	if (!QPixmapCache::find(pixName, pix))
 	{
 		pix = QPixmap(p->m_sceneSize);
 		pix.fill(Qt::white);
@@ -186,7 +184,7 @@ QPixmap Renderer::background()
 		}
 
 		painter.end();
-		p->m_cache.insert(pixName, pix);
+		QPixmapCache::insert(pixName, pix);
 	}
 
 	// Tiled background
