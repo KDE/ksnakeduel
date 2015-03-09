@@ -49,5 +49,7 @@ Name[x-test]=xxKSnakeDuelxx
 Name[zh_CN]=KSnakeDuel
 Name[zh_TW]=KSnakeDuel
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
+X-DBUS-StartupType=Multi
+X-DBUS-ServiceName=org.kde.ksnakeduel
+
