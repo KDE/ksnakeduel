@@ -22,7 +22,8 @@ find_package(KF5 REQUIRED COMPONENTS
     KIO
     NotifyConfig
     NewStuff
-    KDELibs4Support)
+    KDELibs4Support
+    )
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
@@ -36,7 +37,6 @@ include(KDEInstallDirs)
 include(KDECompilerSettings)
 include(KDECMakeSettings)
 
-add_definitions(${QT_DEFINITIONS})
 add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
 add_definitions(-DTRANSLATION_DOMAIN="ksnakeduel")
 
@@ -70,7 +70,7 @@ ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
-target_link_libraries(ksnakeduel KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::KDELibs4Support Qt5::Svg)
+target_link_libraries(ksnakeduel KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::I18n Qt5::Svg KF5::GuiAddons KF5::KDELibs4Support)
 
 install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 

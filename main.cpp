@@ -24,7 +24,6 @@
 
 #include <KLocalizedString>
 #include <KAboutData>
-#include <KStandardDirs>
 
 #include <QCommandLineParser>
 #include <QCommandLineOption>
@@ -59,13 +58,12 @@ int main(int argc, char* argv[])
     parser.addHelpOption();
   parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("snake"), i18n("Start in KSnake mode")));
 
-    //PORTING SCRIPT: adapt aboutdata variable if necessary
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
 
 
-  KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
+  //KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
   if (parser.isSet("snake"))
   {
