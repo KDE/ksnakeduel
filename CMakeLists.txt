@@ -65,7 +65,7 @@ ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
 kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/hi*-apps-ksnakeduel.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-ksnakeduel.png")
 ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(ksnakeduel ${ksnakeduel_SRCS})

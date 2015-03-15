@@ -1,10 +1,10 @@
 ecm_install_icons(ICONS
-  hi128-apps-ksnakeduel.png
-  hi16-apps-ksnakeduel.png
-  hi22-apps-ksnakeduel.png
-  hi256-apps-ksnakeduel.png
-  hi32-apps-ksnakeduel.png
-  hi48-apps-ksnakeduel.png
-  hi64-apps-ksnakeduel.png
+  128-apps-ksnakeduel.png
+  16-apps-ksnakeduel.png
+  22-apps-ksnakeduel.png
+  256-apps-ksnakeduel.png
+  32-apps-ksnakeduel.png
+  48-apps-ksnakeduel.png
+  64-apps-ksnakeduel.png
   DESTINATION
-  ${KDE_INSTALL_ICONDIR})
+  ${KDE_INSTALL_ICONDIR} THEME hicolor)
