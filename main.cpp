@@ -24,7 +24,7 @@
 
 #include <KLocalizedString>
 #include <KAboutData>
-
+#include <Kdelibs4ConfigMigrator>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 #include <QStandardPaths>
@@ -45,6 +45,11 @@ static QString notice = i18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("ksnakeduel"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("ksnakeduelrc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
+    migrate.migrate();
+
   KAboutData aboutData( "ksnakeduel", i18n("KSnakeDuel"),
     KTRON_VERSION, description, KAboutLicense::GPL, notice);
   aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), "matthias.kiefer@gmx.de");
