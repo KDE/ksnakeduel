@@ -45,6 +45,8 @@ static QString notice = i18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
+    QApplication app(argc, argv);
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("ksnakeduel"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("ksnakeduelrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
@@ -56,7 +58,6 @@ int main(int argc, char* argv[])
   aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), "ben+ktron@meyerhome.net");
   aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
 
-    QApplication app(argc, argv);
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
