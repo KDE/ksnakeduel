@@ -120,11 +120,11 @@ QString SnakePart::decodePart()
 	// Player
 	if (getPlayerNumber() == 0)
 	{
-		name = QLatin1String( "tron1-" );
+		name = QStringLiteral( "tron1-" );
 	}
 	else if (getPlayerNumber() == 1)
 	{
-		name = QLatin1String( "tron2-" );
+		name = QStringLiteral( "tron2-" );
 	}
 
 	// Heads (or tails)

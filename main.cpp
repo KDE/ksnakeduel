@@ -52,17 +52,17 @@ int main(int argc, char* argv[])
     migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
     migrate.migrate();
 
-  KAboutData aboutData( "ksnakeduel", i18n("KSnakeDuel"),
+  KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
     KTRON_VERSION, description, KAboutLicense::GPL, notice);
-  aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), "matthias.kiefer@gmx.de");
-  aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), "ben+ktron@meyerhome.net");
-  aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
+  aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), QStringLiteral("matthias.kiefer@gmx.de"));
+  aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), QStringLiteral("ben+ktron@meyerhome.net"));
+  aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));
 
     QCommandLineParser parser;
     KAboutData::setApplicationData(aboutData);
     parser.addVersionOption();
     parser.addHelpOption();
-  parser.addOption(QCommandLineOption(QStringList() <<  QLatin1String("snake"), i18n("Start in KSnake mode")));
+  parser.addOption(QCommandLineOption(QStringList() <<  QStringLiteral("snake"), i18n("Start in KSnake mode")));
 
     aboutData.setupCommandLine(&parser);
     parser.process(app);
@@ -71,7 +71,7 @@ int main(int argc, char* argv[])
 
   //KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
-  if (parser.isSet("snake"))
+  if (parser.isSet(QStringLiteral("snake")))
   {
     Settings::setGameType(Settings::EnumGameType::Snake);
   }

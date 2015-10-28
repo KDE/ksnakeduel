@@ -53,8 +53,8 @@ class RendererPrivate
 		QString m_currentTheme;
 };
 
-const QString sizeSuffix(QLatin1String( "_%1-%2" ));
-const QString frameSuffix(QLatin1String( "-%1" ));
+const QString sizeSuffix(QStringLiteral( "_%1-%2" ));
+const QString frameSuffix(QStringLiteral( "-%1" ));
 
 RendererPrivate::RendererPrivate()
     : m_renderer()
@@ -166,7 +166,7 @@ QPixmap Renderer::background()
 		pix.fill(Qt::white);
 		QPainter painter(&pix);
 
-		QPixmap bgPix = getPart(QLatin1String( "bgtile" ));
+		QPixmap bgPix = getPart(QStringLiteral( "bgtile" ));
 		if (!bgPix.isNull())
 		{
 			pix.fill(Qt::white);
@@ -227,7 +227,7 @@ void Renderer::updatePlayField(PlayField &playfield)
 		{
 			if (i == 0 || i == playfield.getWidth() + 1 || j == 0 || j == playfield.getHeight() + 1)
 			{
-				QPixmap part = Renderer::self()->getPart(QLatin1String( "border" ));
+				QPixmap part = Renderer::self()->getPart(QStringLiteral( "border" ));
 				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
 			}
 		}
@@ -282,14 +282,14 @@ QPixmap Renderer::messageBox(const QString &message) {
 	int h = p->m_sceneSize.height() / 3;
 
 	QSize size(w, h);
-	QPixmap pixmap = getPartOfSize(QLatin1String( "display" ),  size);
+	QPixmap pixmap = getPartOfSize(QStringLiteral( "display" ),  size);
 
 	QPainter painter(&pixmap);
 
 	const int fontSize = KFontUtils::adaptFontSize(painter, message, w * 0.9, h, 28, 1, KFontUtils::DoNotAllowWordWrap);
 
 	painter.setPen(QColor(255, 255, 255, 220));
-	painter.setFont(QFont(QLatin1String( "Helvetica" ), fontSize, QFont::Bold));
+	painter.setFont(QFont(QStringLiteral( "Helvetica" ), fontSize, QFont::Bold));
 	painter.drawText(QRectF(0, 0, w, h), Qt::AlignCenter, message);
 
 	painter.end();
