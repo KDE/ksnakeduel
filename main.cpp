@@ -46,6 +46,7 @@ int main(int argc, char* argv[])
   aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
   aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
   aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
+  aboutData.setHomepage("https://www.kde.org/applications/games/ksnakeduel/");
 
   KCmdLineArgs::init( argc, argv, &aboutData );
 
