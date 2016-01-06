@@ -47,6 +47,8 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
+    KLocalizedString::setApplicationDomain("ksnakeduel");
+
     Kdelibs4ConfigMigrator migrate(QStringLiteral("ksnakeduel"));
     migrate.setConfigFiles(QStringList() << QStringLiteral("ksnakeduelrc"));
     migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
