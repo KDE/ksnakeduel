@@ -87,6 +87,8 @@ int main(int argc, char* argv[])
   KTron *ktron = new KTron();
   ktron->show();
 
+  app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksnakeduel")));
+
   return app.exec();
 }
 
