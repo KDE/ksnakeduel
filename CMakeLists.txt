@@ -2,28 +2,29 @@ project(ksnakeduel)
 
 cmake_minimum_required (VERSION 2.8.12 FATAL_ERROR)
 set (QT_MIN_VERSION "5.3.0")
+set (KF5_MIN_VERSION "5.15.0")
 
 find_package(ECM 1.7.0 REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
 
 find_package(Qt5 ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Qml Quick QuickWidgets Svg Test)
-find_package(KF5 REQUIRED COMPONENTS 
+find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
+    Config
+    ConfigWidgets
     CoreAddons
-    Config
-    ItemModels
-    WidgetsAddons
-    WindowSystem
-    Config
+    Crash
     DBusAddons
     I18n
-    ConfigWidgets
-    TextWidgets
-    XmlGui
-    KIO
-    NotifyConfig
-    NewStuff
+    ItemModels
     KDELibs4Support
-    )
+    KIO
+    NewStuff
+    NotifyConfig
+    TextWidgets
+    WidgetsAddons
+    WindowSystem
+    XmlGui
+)
 
 find_package(KF5KDEGames 4.9.0 REQUIRED)
 find_package(Phonon4Qt5 CONFIG REQUIRED)
@@ -46,18 +47,19 @@ add_subdirectory(doc)
 ########### next target ###############
 
 set(ksnakeduel_SRCS
-        ksnakeduel_debug.cpp
-	renderer.cpp
-	object.cpp
-	snakepart.cpp
-	item.cpp
-	obstacle.cpp
-	playfield.cpp
-	player.cpp
-	intelligence.cpp
-	tron.cpp
-	ktron.cpp
-	main.cpp)
+    ksnakeduel_debug.cpp
+    renderer.cpp
+    object.cpp
+    snakepart.cpp
+    item.cpp
+    obstacle.cpp
+    playfield.cpp
+    player.cpp
+    intelligence.cpp
+    tron.cpp
+    ktron.cpp
+    main.cpp
+)
 
 ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
@@ -68,7 +70,16 @@ ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(ksnakeduel ${ksnakeduel_SRCS})
 
-target_link_libraries(ksnakeduel KF5KDEGames KF5KDEGamesPrivate  KF5::NotifyConfig KF5::I18n Qt5::Svg KF5::GuiAddons KF5::KDELibs4Support)
+target_link_libraries(ksnakeduel
+    Qt5::Svg
+    KF5::Crash
+    KF5::GuiAddons
+    KF5::I18n
+    KF5::KDELibs4Support
+    KF5::NotifyConfig
+    KF5KDEGames
+    KF5KDEGamesPrivate
+)
 
 install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
