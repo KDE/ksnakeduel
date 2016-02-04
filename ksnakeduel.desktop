@@ -49,6 +49,7 @@ Name[uk]=KSnakeDuel
 Name[x-test]=xxKSnakeDuelxx
 Name[zh_CN]=KSnakeDuel
 Name[zh_TW]=KSnakeDuel
+GenericName=A race in hyperspace
 X-KDE-StartupNotify=true
 X-DCOP-ServiceType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
