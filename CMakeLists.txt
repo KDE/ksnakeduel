@@ -70,6 +70,7 @@ add_executable(ksnakeduel ${ksnakeduel_SRCS})
 target_link_libraries(ksnakeduel
     Qt5::Svg
     KF5::Crash
+    KF5::DBusAddons
     KF5::GuiAddons
     KF5::I18n
     KF5::KDELibs4Support

@@ -25,6 +25,7 @@
 #include <KLocalizedString>
 #include <KAboutData>
 #include <KCrash>
+#include <KDBusService>
 #include <Kdelibs4ConfigMigrator>
 #include <QCommandLineParser>
 #include <QCommandLineOption>
@@ -71,7 +72,7 @@ int main(int argc, char* argv[])
     aboutData.setupCommandLine(&parser);
     parser.process(app);
     aboutData.processCommandLine(&parser);
-
+    KDBusService service;
 
     //KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
