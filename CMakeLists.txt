@@ -17,7 +17,6 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
     DBusAddons
     GuiAddons
     I18n
-    KDELibs4Support
     WidgetsAddons
     XmlGui
 )
@@ -73,7 +72,7 @@ target_link_libraries(ksnakeduel
     KF5::DBusAddons
     KF5::GuiAddons
     KF5::I18n
-    KF5::KDELibs4Support
+    KF5::XmlGui
     KF5KDEGames
     KF5KDEGamesPrivate
 )

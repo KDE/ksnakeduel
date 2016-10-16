@@ -23,9 +23,6 @@
 
 #include "tron.h"
 
-// Background
-#include <kio/netaccess.h>
-
 // Normal class
 #include <QTimer>
 #include <QPainter>
