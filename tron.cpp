@@ -58,6 +58,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	setFocusPolicy(Qt::StrongFocus);
 
 	gameBlocked = false;
+	gameEnded = true;
 
 	timer = new QTimer(this);
 	//loadSettings();
