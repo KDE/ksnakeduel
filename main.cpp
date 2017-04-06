@@ -36,8 +36,8 @@
 #include "settings.h"
 #include "version.h"
 
-static QString description = i18n("A race in hyperspace");
-static QString notice = i18n("(c) 1998-2000, Matthias Kiefer\n"
+static const char description[] = I18N_NOOP("A race in hyperspace");
+static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n"
 "(c) 2005, Benjamin Meyer\n"
 "(c) 2008-2009, Stas Verberkt\n"
 "\n"
@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
     migrate.migrate();
 
     KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
-            KTRON_VERSION, description, KAboutLicense::GPL, notice);
+            KTRON_VERSION, i18n(description), KAboutLicense::GPL, i18n(notice));
     aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), QStringLiteral("matthias.kiefer@gmx.de"));
     aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), QStringLiteral("ben+ktron@meyerhome.net"));
     aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));
