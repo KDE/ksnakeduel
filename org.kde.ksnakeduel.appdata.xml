@@ -4,13 +4,26 @@
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
   <name>KSnakeDuel</name>
+  <name xml:lang="ca">KSnakeDuel</name>
+  <name xml:lang="pt">KSnakeDuel</name>
+  <name xml:lang="sk">KSnakeDuel</name>
+  <name xml:lang="uk">KSnakeDuel</name>
+  <name xml:lang="x-test">xxKSnakeDuelxx</name>
   <summary>Tron-like Game</summary>
-    <description>
+  <summary xml:lang="ca">Joc a l'estil del Tron</summary>
+  <summary xml:lang="pt">Jogo Semelhante ao Tron</summary>
+  <summary xml:lang="uk">Гра, подібна до Tron</summary>
+  <summary xml:lang="x-test">xxTron-like Gamexx</summary>
+  <description>
     <p>
       KSnakeDuel is a simple Tron-Clone. You can play KSnakeDuel against the computer or a friend.
       The aim of the game is to live longer than your opponent. To do that, avoid running into a
       wall, your own tail and that of your opponent.
     </p>
+    <p xml:lang="ca">El KSnakeDuel és un clon senzill del Tron. Pots jugar al KSnakeDuel contra l'ordinador o un amic. L'objectiu del joc és viure més que el contrari. Per fer-ho, evita córrer per una paret, la pròpia cua i la del contrari.</p>
+    <p xml:lang="pt">O KSnakeDuel é um clone simples do Tron. Poderá jogar o KSnakeDuel contra o computador ou com um amigo. O objectivo do jogo é sobreviver mais tempo que o seu adversário. Para o fazer, evite bater contra uma parede, a sua própria cauda ou a do seu adversário.</p>
+    <p xml:lang="uk">KSnakeDuel — це проста гра «дуель змій» (Tron). Грати у KSnakeDuel можна або з комп’ютерним гравцем, або з другом (подругою). Метою гри є вижити у грі довше, ніж ваш суперник. Щоб зробити це, уникайте контакту зі стінами, хвостом вашої змійки або вашим опонентом.</p>
+    <p xml:lang="x-test">xxKSnakeDuel is a simple Tron-Clone. You can play KSnakeDuel against the computer or a friend. The aim of the game is to live longer than your opponent. To do that, avoid running into a wall, your own tail and that of your opponent.xx</p>
   </description>
   <url type="bugtracker">https://bugs.kde.org/enter_bug.cgi?format=guided&amp;product=ksnakeduel</url>
   <url type="help">https://docs.kde.org/?application=ksnakeduel</url>
