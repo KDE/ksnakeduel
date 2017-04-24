@@ -34,6 +34,7 @@
 #define MESSAGE_TIME 2000
 
 class General;
+class QLabel;
 
 /**
  * @short The main window of KTron
@@ -95,6 +96,7 @@ class KTron : public KXmlGuiWindow {
 		QAction *m_player1Accelerate;
 		QAction *m_pauseButton;
 		General *m_generalConfigDialog;
+		QLabel *m_statusBarLabel[3];
 };
 
 #endif // KTRON_H

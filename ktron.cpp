@@ -26,18 +26,19 @@
 #include "settings.h"
 #include "ui_general.h"
 
+#include <QAction>
+#include <QApplication>
+#include <QStatusBar>
+
+#include <KActionCollection>
 #include <KConfigDialog>
+#include <KgDifficulty>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <QAction>
-#include <KActionCollection>
 #include <KStandardGameAction>
 #include <KScoreDialog>
-#include <KgDifficulty>
 #include <KShortcutsDialog>
-#include <QStatusBar>
 #include <KToggleAction>
-#include <QApplication>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -65,8 +66,11 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	setCentralWidget(m_tron);
 
 	// create statusbar
-	//QT5 statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 1);
-	//QT5 statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 2);
+	for (auto &label : m_statusBarLabel) {
+		label = new QLabel(this);
+		label->setAlignment(Qt::AlignCenter);
+		statusBar()->addWidget(label, 1);
+	}
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
@@ -194,13 +198,13 @@ void KTron::updateStatusbar() {
 		message = QString();
 	}
 
-	statusBar()->showMessage(message);
+	m_statusBarLabel[0]->setText(message);
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
 		QString string = QStringLiteral( "%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
-		//QT5 statusBar()->changeItem(string, ID_STATUS_BASE + 1);
-		//QT5 statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
+		m_statusBarLabel[1]->setText(string);
+		m_statusBarLabel[2]->clear();
 	}
 	else
 	{
@@ -209,7 +213,7 @@ void KTron::updateStatusbar() {
 			int score = m_tron->getPlayer(1 - i)->getScore();
 
 			QString string = QStringLiteral( "%1: %2").arg(name).arg(score);
-			//QT5 statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
+			m_statusBarLabel[i+1]->setText(string);
 		}
 	}
 }
