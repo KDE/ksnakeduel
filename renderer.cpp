@@ -27,12 +27,12 @@
 
 #include <QPainter>
 #include <QPixmap>
-#include <QSize>
-
 #include <QPixmapCache>
+#include <QSize>
 #include <QSvgRenderer>
+
+#include <KFontUtils>
 #include "ksnakeduel_debug.h"
-#include <kfontutils.h>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
@@ -59,8 +59,8 @@ const QString frameSuffix(QStringLiteral( "-%1" ));
 RendererPrivate::RendererPrivate()
     : m_renderer()
 {
-    QPixmapCache::setCacheLimit(3);
-    QPixmapCache::clear();
+	QPixmapCache::setCacheLimit(100);
+	QPixmapCache::clear();
 	m_playField = 0;
 }
 
