@@ -59,7 +59,7 @@ const QString frameSuffix(QStringLiteral( "-%1" ));
 RendererPrivate::RendererPrivate()
     : m_renderer()
 {
-	QPixmapCache::setCacheLimit(100);
+	QPixmapCache::setCacheLimit(40);
 	QPixmapCache::clear();
 	m_playField = 0;
 }
