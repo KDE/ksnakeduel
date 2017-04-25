@@ -20,18 +20,24 @@
   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA  02110-1301, USA.
 
   *******************************************************************************/
-#include <KApplication>
-#include <KCmdLineArgs>
+#include <QApplication>
+
+#include <KLocalizedString>
 #include <KAboutData>
-#include <KStandardDirs>
+#include <KCrash>
+#include <KDBusService>
+#include <Kdelibs4ConfigMigrator>
+#include <QCommandLineParser>
+#include <QCommandLineOption>
+#include <QStandardPaths>
 
 #include "ktron.h"
 #include "renderer.h"
 #include "settings.h"
 #include "version.h"
 
-static KLocalizedString description = ki18n("A race in hyperspace");
-static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
+static const char description[] = I18N_NOOP("A race in hyperspace");
+static const char notice[] = I18N_NOOP("(c) 1998-2000, Matthias Kiefer\n"
 "(c) 2005, Benjamin Meyer\n"
 "(c) 2008-2009, Stas Verberkt\n"
 "\n"
@@ -41,38 +47,51 @@ static KLocalizedString notice = ki18n("(c) 1998-2000, Matthias Kiefer\n"
 
 int main(int argc, char* argv[])
 {
-  KAboutData aboutData( "ksnakeduel", 0, ki18n("KSnakeDuel"),
-    KTRON_VERSION, description, KAboutData::License_GPL, notice);
-  aboutData.addAuthor(ki18n("Matthias Kiefer"), ki18n("Original author"), "matthias.kiefer@gmx.de");
-  aboutData.addAuthor(ki18n("Benjamin Meyer"), ki18n("Various improvements"), "ben+ktron@meyerhome.net");
-  aboutData.addAuthor(ki18n("Stas Verberkt"), ki18n("KDE 4 Port, interface revision and KSnake mode"), "legolas@legolasweb.nl");
-  aboutData.setHomepage("https://www.kde.org/applications/games/ksnakeduel/");
+    QApplication app(argc, argv);
 
-  KCmdLineArgs::init( argc, argv, &aboutData );
+    KLocalizedString::setApplicationDomain("ksnakeduel");
 
-  KCmdLineOptions options;
-  options.add("snake", ki18n("Start in KSnake mode"));
-  KCmdLineArgs::addCmdLineOptions(options);
+    Kdelibs4ConfigMigrator migrate(QStringLiteral("ksnakeduel"));
+    migrate.setConfigFiles(QStringList() << QStringLiteral("ksnakeduelrc"));
+    migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
+    migrate.migrate();
 
-  KApplication a;
-  KGlobal::locale()->insertCatalog( QLatin1String( "libkdegames" ));
-  KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
+    KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
+            KTRON_VERSION, i18n(description), KAboutLicense::GPL, i18n(notice));
+    aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), QStringLiteral("matthias.kiefer@gmx.de"));
+    aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), QStringLiteral("ben+ktron@meyerhome.net"));
+    aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));
 
-  KCmdLineArgs *args = KCmdLineArgs::parsedArgs();
-  if (args->isSet("snake"))
-  {
-    Settings::setGameType(Settings::EnumGameType::Snake);
-  }
-  else if (Settings::gameType() == Settings::EnumGameType::Snake)
-  {
-    Settings::setGameType(Settings::EnumGameType::PlayerVSComputer);
-  }
+    QCommandLineParser parser;
+    KAboutData::setApplicationData(aboutData);
+    KCrash::initialize();
+    parser.addVersionOption();
+    parser.addHelpOption();
+    parser.addOption(QCommandLineOption(QStringList() <<  QStringLiteral("snake"), i18n("Start in KSnake mode")));
 
-  Renderer::self(); // Creates Renderer
+    aboutData.setupCommandLine(&parser);
+    parser.process(app);
+    aboutData.processCommandLine(&parser);
+    KDBusService service;
 
-  KTron *ktron = new KTron();
-  ktron->show();
+    //KStandardDirs::locateLocal("appdata", QLatin1String( "themes/" ));
 
-  return a.exec();
+    if (parser.isSet(QStringLiteral("snake")))
+    {
+        Settings::setGameType(Settings::EnumGameType::Snake);
+    }
+    else if (Settings::gameType() == Settings::EnumGameType::Snake)
+    {
+        Settings::setGameType(Settings::EnumGameType::PlayerVSComputer);
+    }
+
+    Renderer::self(); // Creates Renderer
+
+    KTron *ktron = new KTron();
+    ktron->show();
+
+    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksnakeduel")));
+
+    return app.exec();
 }
 

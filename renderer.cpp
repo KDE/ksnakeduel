@@ -27,12 +27,12 @@
 
 #include <QPainter>
 #include <QPixmap>
+#include <QPixmapCache>
 #include <QSize>
-
-#include <KPixmapCache>
 #include <QSvgRenderer>
-#include <KDebug>
-#include <kfontutils.h>
+
+#include <KFontUtils>
+#include "ksnakeduel_debug.h"
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
@@ -47,22 +47,20 @@ class RendererPrivate
 		QSize m_partSize;
 
 		QSvgRenderer m_renderer;
-		KPixmapCache m_cache;
 
 		QPixmap *m_playField;
 
 		QString m_currentTheme;
 };
 
-const QString sizeSuffix(QLatin1String( "_%1-%2" ));
-const QString frameSuffix(QLatin1String( "-%1" ));
+const QString sizeSuffix(QStringLiteral( "_%1-%2" ));
+const QString frameSuffix(QStringLiteral( "-%1" ));
 
 RendererPrivate::RendererPrivate()
     : m_renderer()
-    , m_cache(QLatin1String( "ktron-cache" ))
 {
-    m_cache.setCacheLimit(3 * 1024);
-    m_cache.discard();
+	QPixmapCache::setCacheLimit(40);
+	QPixmapCache::clear();
 	m_playField = 0;
 }
 
@@ -111,7 +109,7 @@ bool Renderer::loadTheme(const QString &name)
         return false;
     //flush cache
     if (discardCache)
-        p->m_cache.discard();
+        QPixmapCache::clear();
     return true;
 }
 
@@ -124,14 +122,14 @@ QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSi
 {
 	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
-	if (!p->m_cache.find(framePixName, pix))
+	if (!QPixmapCache::find(framePixName, pix))
 	{
 		pix = QPixmap(partSize);
 		pix.fill(Qt::transparent);
 		QPainter painter(&pix);
 		p->m_renderer.render(&painter, frameSvgName);
 		painter.end();
-		p->m_cache.insert(framePixName, pix);
+		QPixmapCache::insert(framePixName, pix);
 	}
 
     //return the static pixmap
@@ -145,14 +143,14 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
     QPixmap pix;
     QString pixName = svgName + sizeSuffix.arg(size.width()).arg(size.height());
 
-    if (!p->m_cache.find(pixName, pix))
+    if (!QPixmapCache::find(pixName, pix))
     {
         pix = QPixmap(size);
         pix.fill(Qt::transparent);
         QPainter painter(&pix);
         p->m_renderer.render(&painter, svgName);
         painter.end();
-        p->m_cache.insert(pixName, pix);
+        QPixmapCache::insert(pixName, pix);
     }
 
     return pix;
@@ -162,13 +160,13 @@ QPixmap Renderer::background()
 {
     QPixmap pix;
     QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
-	if (!p->m_cache.find(pixName, pix))
+	if (!QPixmapCache::find(pixName, pix))
 	{
 		pix = QPixmap(p->m_sceneSize);
 		pix.fill(Qt::white);
 		QPainter painter(&pix);
 
-		QPixmap bgPix = getPart(QLatin1String( "bgtile" ));
+		QPixmap bgPix = getPart(QStringLiteral( "bgtile" ));
 		if (!bgPix.isNull())
 		{
 			pix.fill(Qt::white);
@@ -186,7 +184,7 @@ QPixmap Renderer::background()
 		}
 
 		painter.end();
-		p->m_cache.insert(pixName, pix);
+		QPixmapCache::insert(pixName, pix);
 	}
 
 	// Tiled background
@@ -229,7 +227,7 @@ void Renderer::updatePlayField(PlayField &playfield)
 		{
 			if (i == 0 || i == playfield.getWidth() + 1 || j == 0 || j == playfield.getHeight() + 1)
 			{
-				QPixmap part = Renderer::self()->getPart(QLatin1String( "border" ));
+				QPixmap part = Renderer::self()->getPart(QStringLiteral( "border" ));
 				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
 			}
 		}
@@ -262,7 +260,7 @@ int Renderer::calculateOffsetY(int y)
 
 void Renderer::drawPart(QPainter & painter, int x, int y, QString svgName)
 {
-	//kDebug() << "Drawing part: " << svgName;
+	//qCDebug(KSNAKEDUEL_LOG) << "Drawing part: " << svgName;
 
 	int xOffset = calculateOffsetX(x + 1);
 	int yOffset = calculateOffsetY(y + 1);
@@ -284,14 +282,14 @@ QPixmap Renderer::messageBox(const QString &message) {
 	int h = p->m_sceneSize.height() / 3;
 
 	QSize size(w, h);
-	QPixmap pixmap = getPartOfSize(QLatin1String( "display" ),  size);
+	QPixmap pixmap = getPartOfSize(QStringLiteral( "display" ),  size);
 
 	QPainter painter(&pixmap);
 
 	const int fontSize = KFontUtils::adaptFontSize(painter, message, w * 0.9, h, 28, 1, KFontUtils::DoNotAllowWordWrap);
 
 	painter.setPen(QColor(255, 255, 255, 220));
-	painter.setFont(QFont(QLatin1String( "Helvetica" ), fontSize, QFont::Bold));
+	painter.setFont(QFont(QStringLiteral( "Helvetica" ), fontSize, QFont::Bold));
 	painter.drawText(QRectF(0, 0, w, h), Qt::AlignCenter, message);
 
 	painter.end();

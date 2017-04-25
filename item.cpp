@@ -25,7 +25,7 @@
 
 Item::Item() : Object(ObjectType::Item)
 {
-	setSVGName(QLatin1String( "item1" ));
+	setSVGName(QStringLiteral( "item1" ));
 }
 
 //
@@ -40,13 +40,13 @@ void Item::setType(int t)
 	{
 		default:
 		case 0:
-			setSVGName(QLatin1String( "item1" ));
+			setSVGName(QStringLiteral( "item1" ));
 			break;
 		case 1:
-			setSVGName(QLatin1String( "item2" ));
+			setSVGName(QStringLiteral( "item2" ));
 			break;
 		case 2:
-			setSVGName(QLatin1String( "item3" ));
+			setSVGName(QStringLiteral( "item3" ));
 			break;
 	}
 }

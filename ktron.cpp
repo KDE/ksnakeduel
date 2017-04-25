@@ -26,18 +26,19 @@
 #include "settings.h"
 #include "ui_general.h"
 
-#include <KConfigDialog>
-#include <KLocale>
-#include <KMessageBox>
-#include <KAction>
+#include <QAction>
+#include <QApplication>
+#include <QStatusBar>
+
 #include <KActionCollection>
+#include <KConfigDialog>
+#include <KgDifficulty>
+#include <KLocalizedString>
+#include <KMessageBox>
 #include <KStandardGameAction>
 #include <KScoreDialog>
-#include <KgDifficulty>
 #include <KShortcutsDialog>
-#include <KStatusBar>
 #include <KToggleAction>
-#include <KApplication>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
@@ -58,76 +59,79 @@ public:
  */
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_tron = new Tron(this);
-	connect(m_tron,SIGNAL(gameEnds()),SLOT(changeStatus()));
-	connect(m_tron,SIGNAL(updatedScore()),SLOT(updateScore()));
-	connect(m_tron,SIGNAL(pauseBlocked(bool)),SLOT(blockPause(bool)));
+	connect(m_tron, &Tron::gameEnds, this, &KTron::changeStatus);
+	connect(m_tron, &Tron::updatedScore, this, &KTron::updateScore);
+	connect(m_tron, &Tron::pauseBlocked, this, &KTron::blockPause);
 	m_tron->setMinimumSize(700,420);
 	setCentralWidget(m_tron);
 
 	// create statusbar
-	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 1);
-	statusBar()->insertItem(QLatin1String( "abcdefghijklmnopqrst: 0  " ),ID_STATUS_BASE + 2);
+	for (auto &label : m_statusBarLabel) {
+		label = new QLabel(this);
+		label->setAlignment(Qt::AlignCenter);
+		statusBar()->addWidget(label, 1);
+	}
 
 	// We match up keyboard events ourselves in Tron::keyPressEvent()
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
 
-	m_player0Up = actionCollection()->addAction( QLatin1String( "Pl1Up" ));
+	m_player0Up = actionCollection()->addAction( QStringLiteral( "Pl1Up" ));
 	m_player0Up->setText(i18n("Right Player / KSnake: Up"));
-	m_player0Up->setShortcut(Qt::Key_Up);
-	connect(m_player0Up, SIGNAL(triggered(bool)), SLOT(triggerKey0Up(bool)));
+	actionCollection()->setDefaultShortcut(m_player0Up,Qt::Key_Up);
+	connect(m_player0Up, &QAction::triggered, this, &KTron::triggerKey0Up);
 	addAction(m_player0Up);
 
-	m_player0Down = actionCollection()->addAction( QLatin1String( "Pl1Down" ));
+	m_player0Down = actionCollection()->addAction( QStringLiteral( "Pl1Down" ));
 	m_player0Down->setText(i18n("Right Player / KSnake: Down"));
-	m_player0Down->setShortcut(Qt::Key_Down);
-	connect(m_player0Down, SIGNAL(triggered(bool)), SLOT(triggerKey0Down(bool)));
+	actionCollection()->setDefaultShortcut(m_player0Down,Qt::Key_Down);
+	connect(m_player0Down, &QAction::triggered, this, &KTron::triggerKey0Down);
 	addAction(m_player0Down);
 
-	m_player0Right = actionCollection()->addAction( QLatin1String( "Pl1Right" ));
+	m_player0Right = actionCollection()->addAction( QStringLiteral( "Pl1Right" ));
 	m_player0Right->setText(i18n("Right Player / KSnake: Right"));
-	m_player0Right->setShortcut(Qt::Key_Right);
-	connect(m_player0Right, SIGNAL(triggered(bool)), SLOT(triggerKey0Right(bool)));
+	actionCollection()->setDefaultShortcut(m_player0Right,Qt::Key_Right);
+	connect(m_player0Right, &QAction::triggered, this, &KTron::triggerKey0Right);
 	addAction(m_player0Right);
 
-	m_player0Left = actionCollection()->addAction( QLatin1String( "Pl1Left" ));
+	m_player0Left = actionCollection()->addAction( QStringLiteral( "Pl1Left" ));
 	m_player0Left->setText(i18n("Right Player / KSnake: Left"));
-	m_player0Left->setShortcut(Qt::Key_Left);
-	connect(m_player0Left, SIGNAL(triggered(bool)), SLOT(triggerKey0Left(bool)));
+	actionCollection()->setDefaultShortcut(m_player0Left,Qt::Key_Left);
+	connect(m_player0Left, &QAction::triggered, this, &KTron::triggerKey0Left);
 	addAction(m_player0Left);
 
-	m_player0Accelerate = actionCollection()->addAction( QLatin1String( "Pl1Ac" ));
+	m_player0Accelerate = actionCollection()->addAction( QStringLiteral( "Pl1Ac" ));
 	m_player0Accelerate->setText(i18n("Right Player: Accelerator"));
-	m_player0Accelerate->setShortcut(Qt::Key_0);
+	actionCollection()->setDefaultShortcut(m_player0Accelerate,Qt::Key_0);
 	m_player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player0Accelerate);
 
-	m_player1Up = actionCollection()->addAction( QLatin1String( "Pl2Up" ));
+	m_player1Up = actionCollection()->addAction( QStringLiteral( "Pl2Up" ));
 	m_player1Up->setText(i18n("Left Player: Up"));
-	m_player1Up->setShortcut(Qt::Key_W);
-	connect(m_player1Up, SIGNAL(triggered(bool)), SLOT(triggerKey1Up(bool)));
+	actionCollection()->setDefaultShortcut(m_player1Up,Qt::Key_W);
+	connect(m_player1Up, &QAction::triggered, this, &KTron::triggerKey1Up);
 	addAction(m_player1Up);
 
-	m_player1Down = actionCollection()->addAction( QLatin1String( "Pl2Down" ));
+	m_player1Down = actionCollection()->addAction( QStringLiteral( "Pl2Down" ));
 	m_player1Down->setText(i18n("Left Player: Down"));
-	m_player1Down->setShortcut(Qt::Key_S);
-	connect(m_player1Down, SIGNAL(triggered(bool)), SLOT(triggerKey1Down(bool)));
+	actionCollection()->setDefaultShortcut(m_player1Down,Qt::Key_S);
+	connect(m_player1Down, &QAction::triggered, this, &KTron::triggerKey1Down);
 	addAction(m_player1Down);
 
-	m_player1Right = actionCollection()->addAction( QLatin1String( "Pl2Right" ));;
+	m_player1Right = actionCollection()->addAction( QStringLiteral( "Pl2Right" ));;
 	m_player1Right->setText(i18n("Left Player: Right"));
-	m_player1Right->setShortcut(Qt::Key_D);
-	connect(m_player1Right, SIGNAL(triggered(bool)), SLOT(triggerKey1Right(bool)));
+	actionCollection()->setDefaultShortcut(m_player1Right,Qt::Key_D);
+	connect(m_player1Right, &QAction::triggered, this, &KTron::triggerKey1Right);
 	addAction(m_player1Right);
 
-	m_player1Left = actionCollection()->addAction( QLatin1String( "Pl2Left" ));
+	m_player1Left = actionCollection()->addAction( QStringLiteral( "Pl2Left" ));
 	m_player1Left->setText(i18n("Left Player: Left"));
-	m_player1Left->setShortcut(Qt::Key_A);
-	connect(m_player1Left, SIGNAL(triggered(bool)), SLOT(triggerKey1Left(bool)));
+	actionCollection()->setDefaultShortcut(m_player1Left,Qt::Key_A);
+	connect(m_player1Left, &QAction::triggered, this, &KTron::triggerKey1Left);
 	addAction(m_player1Left);
 
-	m_player1Accelerate = actionCollection()->addAction( QLatin1String( "Pl2Ac" ));
+	m_player1Accelerate = actionCollection()->addAction( QStringLiteral( "Pl2Ac" ));
 	m_player1Accelerate->setText(i18n("Left Player: Accelerator"));
-	m_player1Accelerate->setShortcut(Qt::Key_Q);
+	actionCollection()->setDefaultShortcut(m_player1Accelerate,Qt::Key_Q);
 	m_player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player1Accelerate);
 
@@ -137,7 +141,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	// New
 	KStandardGameAction::gameNew(m_tron, SLOT(newGame()), actionCollection());
 	// Quit
-	KStandardGameAction::quit(kapp, SLOT(quit()), actionCollection());
+	KStandardGameAction::quit(qApp, SLOT(quit()), actionCollection());
 	// Settings
 	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
 	// Configure keys
@@ -151,7 +155,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
         KgDifficultyLevel::Easy //default
     );
     KgDifficultyGUI::init(this);
-    connect(Kg::difficulty(), SIGNAL(currentLevelChanged(const KgDifficultyLevel*)), m_tron, SLOT(loadSettings()));
+    connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged, m_tron, &Tron::loadSettings);
 
 	setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
 	loadSettings();
@@ -194,13 +198,13 @@ void KTron::updateStatusbar() {
 		message = QString();
 	}
 
-	statusBar()->showMessage(message);
+	m_statusBarLabel[0]->setText(message);
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		QString string = QString::fromLatin1( "%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
-		statusBar()->changeItem(string, ID_STATUS_BASE + 1);
-		statusBar()->changeItem(QString(), ID_STATUS_BASE + 2);
+		QString string = QStringLiteral( "%1: %2").arg(m_tron->getPlayer(0)->getName()).arg(m_tron->getPlayer(0)->getScore());
+		m_statusBarLabel[1]->setText(string);
+		m_statusBarLabel[2]->clear();
 	}
 	else
 	{
@@ -208,15 +212,15 @@ void KTron::updateStatusbar() {
 			QString name = m_tron->getPlayer(1 - i)->getName();
 			int score = m_tron->getPlayer(1 - i)->getScore();
 
-			QString string = QString::fromLatin1( "%1: %2").arg(name).arg(score);
-			statusBar()->changeItem(string, ID_STATUS_BASE + i + 1);
+			QString string = QStringLiteral( "%1: %2").arg(name).arg(score);
+			m_statusBarLabel[i+1]->setText(string);
 		}
 	}
 }
 
 void KTron::blockPause(bool block)
 {
-	//kDebug() << "Setting pause button state to: "  << !block;
+	//qCDebug(KSNAKEDUEL_LOG) << "Setting pause button state to: "  << !block;
 	m_pauseButton->setEnabled(!block);
 }
 
@@ -251,7 +255,7 @@ void KTron::paletteChange(const QPalette &){
  * Show Settings dialog.
  */
 void KTron::showSettings(){
-	if (KConfigDialog::showDialog(QLatin1String( "settings" )))
+	if (KConfigDialog::showDialog(QStringLiteral( "settings" )))
 		return;
 
 	m_generalConfigDialog = new General();
@@ -265,11 +269,11 @@ void KTron::showSettings(){
 		m_generalConfigDialog->namePlayer2Label->setText(i18n("Left Player:"));
 	}
 
-	KConfigDialog *dialog = new KConfigDialog(this, QLatin1String( "settings" ), Settings::self());
-	dialog->addPage(m_generalConfigDialog, i18n("General"), QLatin1String( "games-config-options" ));
-	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QLatin1String( "games-config-theme" ));
-	connect(dialog, SIGNAL(settingsChanged(QString)), this, SLOT(loadSettings()));
-	connect(dialog, SIGNAL(settingsChanged(QString)), m_tron, SLOT(loadSettings()));
+	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral( "settings" ), Settings::self());
+	dialog->addPage(m_generalConfigDialog, i18n("General"), QStringLiteral( "games-config-options" ));
+	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QStringLiteral( "games-config-theme" ));
+	connect(dialog, &KConfigDialog::settingsChanged, this, &KTron::loadSettings);
+	connect(dialog, &KConfigDialog::settingsChanged, m_tron, &Tron::loadSettings);
 	dialog->show();
 }
 
@@ -286,7 +290,7 @@ void KTron::showHighscores() {
  * Close KTron
  */
 void KTron::close() {
-	Settings::self()->writeConfig();
+	Settings::self()->save();
 }
 
 void KTron::closeEvent(QCloseEvent *event)
@@ -377,5 +381,5 @@ void KTron::triggerKey1Accelerate(bool b)
 }
 
 
-#include "ktron.moc"
+
 

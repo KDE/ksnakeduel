@@ -1,6 +1,6 @@
 [Desktop Entry]
 Type=Application
-Exec=ksnakeduel -caption %c %i
+Exec=ksnakeduel
 Icon=ksnakeduel
 X-DocPath=ksnakeduel/index.html
 Terminal=false
@@ -72,5 +72,7 @@ GenericName[sv]=En kapplöpning i hyperrymden
 GenericName[uk]=Перегони у гіперпросторі
 GenericName[x-test]=xxA race in hyperspacexx
 X-KDE-StartupNotify=true
-X-DCOP-ServiceType=Multi
 Categories=Qt;KDE;Game;ArcadeGame;
+X-DBUS-StartupType=Multi
+X-DBUS-ServiceName=org.kde.ksnakeduel
+

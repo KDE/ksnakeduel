@@ -23,9 +23,6 @@
 
 #include "tron.h"
 
-// Background
-#include <kio/netaccess.h>
-
 // Normal class
 #include <QTimer>
 #include <QPainter>
@@ -35,8 +32,8 @@
 #include <QFocusEvent>
 #include <QPixmap>
 
-#include <KDebug>
-#include <KLocale>
+#include "ksnakeduel_debug.h"
+#include <KLocalizedString>
 #include <KgDifficulty>
 
 #include "settings.h"
@@ -53,18 +50,19 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	players[0] = new Player(pf, 0);
 	players[1] = new Player(pf, 1);
 
-	connect(players[0], SIGNAL(fetchedItem(int,int,int)), SLOT(itemHit(int,int,int)));
-	connect(players[1], SIGNAL(fetchedItem(int,int,int)), SLOT(itemHit(int,int,int)));
+	connect(players[0], &Player::fetchedItem, this, &Tron::itemHit);
+	connect(players[1], &Player::fetchedItem, this, &Tron::itemHit);
 
 	intelligence.referenceTron(this);
 
 	setFocusPolicy(Qt::StrongFocus);
 
 	gameBlocked = false;
+	gameEnded = true;
 
 	timer = new QTimer(this);
 	//loadSettings();
-	connect(timer, SIGNAL(timeout()), SLOT(doMove()));
+	connect(timer, &QTimer::timeout, this, &Tron::doMove);
 }
 
 void Tron::loadSettings(){
@@ -181,7 +179,7 @@ Player *Tron::getPlayer(int playerNr)
 {
 	if (playerNr != 0 && playerNr != 1)
 	{
-		kDebug() << "Inexistent player requested: " << playerNr;
+		qCDebug(KSNAKEDUEL_LOG) << "Inexistent player requested: " << playerNr;
 		return 0;
 	}
 
@@ -208,7 +206,7 @@ void Tron::startGame()
 
 void Tron::itemHit(int playerNumber, int, int)
 {
-	//kDebug() << "Got Item Hit for " << playerNumber;
+	//qCDebug(KSNAKEDUEL_LOG) << "Got Item Hit for " << playerNumber;
 
 	newApple();
 	players[playerNumber]->setEnlargement(3);
@@ -234,7 +232,7 @@ void Tron::newApple()
 		y = rand() % pf.getHeight();
 	}
 
-	//kDebug() << "Drawn apple at (" << x << ", " << y << ")";
+	//qCDebug(KSNAKEDUEL_LOG) << "Drawn apple at (" << x << ", " << y << ")";
 
 	apple.setType((int)(rand() % 3));
 
@@ -569,7 +567,7 @@ void Tron::doMove()
 	{
 		//this is for waiting 1s before starting next game
 		gameBlocked = true;
-		QTimer::singleShot(1000, this, SLOT(unblockGame()));
+		QTimer::singleShot(1000, this, &Tron::unblockGame);
 	}
 }
 
@@ -706,5 +704,5 @@ int Tron::getWinner()
 	return -1;
 }
 
-#include "tron.moc"
+
 
