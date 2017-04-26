@@ -24,6 +24,6 @@
 #ifndef VERSION_H
 #define VERSION_H
 
-#define KTRON_VERSION "2.0"
+#define KTRON_VERSION "2.1"
 
 #endif /* VERSION_H */
