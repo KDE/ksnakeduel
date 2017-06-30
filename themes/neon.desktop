@@ -1,6 +1,7 @@
 [KGameTheme]
 VersionFormat=1
 Name=Neon
+Name[ast]=Neon
 Name[bs]=Neon
 Name[ca]=Neó
 Name[ca@valencia]=Neó
@@ -46,6 +47,7 @@ Name[x-test]=xxNeonxx
 Name[zh_CN]=霓虹灯
 Name[zh_TW]=Neon
 Description=A retro theme with a distinctive touch of early 50s.
+Description[ast]=Un tema retro con un toque distintivu de los años 50.
 Description[bs]=Retro tema sa osjećajem ranih pedesetih.
 Description[ca]=Un tema retro amb un toc distintiu dels anys 50.
 Description[ca@valencia]=Un tema retro amb un toc distintiu dels anys 50.
