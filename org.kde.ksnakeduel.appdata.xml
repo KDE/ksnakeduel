@@ -22,6 +22,7 @@
   <name xml:lang="sr-ijekavian">К‑змијски-двобој</name>
   <name xml:lang="sr-ijekavianlatin">K‑zmijski-dvoboj</name>
   <name xml:lang="sv">Ormspel</name>
+  <name xml:lang="tr">KSnakeDuel</name>
   <name xml:lang="uk">KSnakeDuel</name>
   <name xml:lang="x-test">xxKSnakeDuelxx</name>
   <name xml:lang="zh-CN">KSnakeDuel</name>
@@ -43,6 +44,7 @@
   <summary xml:lang="sr-ijekavian">Игра налик на трон</summary>
   <summary xml:lang="sr-ijekavianlatin">Igra nalik na tron</summary>
   <summary xml:lang="sv">Tron-liknande spel</summary>
+  <summary xml:lang="tr">Tron benzeri Oyun</summary>
   <summary xml:lang="uk">Гра, подібна до Tron</summary>
   <summary xml:lang="x-test">xxTron-like Gamexx</summary>
   <description>
@@ -66,6 +68,7 @@
     <p xml:lang="sr-ijekavian">К‑змијски-двобој је једноставан клон трона. Можете играти против рачунара или пријатеља. Циљ партије је надживети свог противника. То чините избегавањем судара са зидом, сопственим репом или репом противника.</p>
     <p xml:lang="sr-ijekavianlatin">K‑zmijski-dvoboj je jednostavan klon trona. Možete igrati protiv računara ili prijatelja. Cilj partije je nadživeti svog protivnika. To činite izbegavanjem sudara sa zidom, sopstvenim repom ili repom protivnika.</p>
     <p xml:lang="sv">Ormspelet är en enkel klon av Tron. Man kan spela ormspelet mot datorn eller mot en vän. Spelets mål är att överleva längre än motspelaren. För att göra det, undvik att träffa en vägg, din egen kropp eller motspelaren.</p>
+    <p xml:lang="tr">KSnakeDuel, basit bir Tron klonudur. KSnakeDuel'i bilgisayara veya bir arkadaşınıza karşı oynayabilirsiniz. Oyunun amacı, rakibinizden daha uzun yaşamaktır. Bunu yapmak için, bir duvara, kendi kuyruğunuza ve rakibinizin duvarına çarpmayın.</p>
     <p xml:lang="uk">KSnakeDuel — це проста гра «дуель змій» (Tron). Грати у KSnakeDuel можна або з комп’ютерним гравцем, або з другом (подругою). Метою гри є вижити у грі довше, ніж ваш суперник. Щоб зробити це, уникайте контакту зі стінами, хвостом вашої змійки або вашим опонентом.</p>
     <p xml:lang="x-test">xxKSnakeDuel is a simple Tron-Clone. You can play KSnakeDuel against the computer or a friend. The aim of the game is to live longer than your opponent. To do that, avoid running into a wall, your own tail and that of your opponent.xx</p>
   </description>
