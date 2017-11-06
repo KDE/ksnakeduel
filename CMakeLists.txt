@@ -60,6 +60,7 @@ set(ksnakeduel_SRCS
 ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
 kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
+qt5_add_resources(ksnakeduel_SRCS ksnakeduel.qrc)
 
 file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-ksnakeduel.png")
 ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
@@ -83,7 +84,6 @@ install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(PROGRAMS  org.kde.ksnakeduel.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES  ksnakeduel.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES  ksnakeduelui.rc DESTINATION ${KDE_INSTALL_KXMLGUI5DIR}/ksnakeduel)
 install(FILES  ksnakeduel.knsrc DESTINATION ${KDE_INSTALL_CONFDIR})
 install(FILES  org.kde.ksnakeduel.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
