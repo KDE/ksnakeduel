@@ -141,8 +141,8 @@ class Tron : public QWidget
 		// Key handling / movement
 		void switchKeyOn(int, KBAction::Action);
 		void switchKeyOff(int, KBAction::Action);
-		/** Check head to head collissions */
-		void checkHeadToHeadCollission();
+		/** Check head to head collisions */
+		void checkHeadToHeadCollision();
 		/** Helper for the doMove() function */
 		void movementHelper(bool onlyAcceleratedPlayers);
 		/** Tries to generate a new obstacle */
@@ -151,8 +151,8 @@ class Tron : public QWidget
 	private slots:
 		/**
 		* This is the main function of KTron.
-		* It checkes if an accelerator is pressed and than moves this player
-		* forward. Then it checkes if a crash occurred.
+		* It checks if an accelerator is pressed and than moves this player
+		* forward. Then it checks if a crash occurred.
 		* If no crash happen it moves both players forward and checks again
 		* if someone crashed.
 		*/

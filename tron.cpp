@@ -586,7 +586,7 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 	/* player collision check */
 	if (!players[1]->isAlive())
 	{
-		checkHeadToHeadCollission();
+		checkHeadToHeadCollision();
 	}
 
 	updatePixmap();
@@ -616,10 +616,10 @@ void Tron::movementHelper(bool onlyAcceleratedPlayers)
 	}
 }
 
-void Tron::checkHeadToHeadCollission()
+void Tron::checkHeadToHeadCollision()
 {
 	// As player 1 and player 2 move at the same time
-	// a head to head collission is possible
+	// a head to head collision is possible
 	// but tough movement actually is done sequential
 	// we have to check back if player 1 should die when player 2 did so
 	// that's where this function comes in :)

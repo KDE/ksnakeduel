@@ -55,7 +55,7 @@ public:
 };
 
 /**
- * Constuctor
+ * Constructor
  */
 KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
 	m_tron = new Tron(this);
