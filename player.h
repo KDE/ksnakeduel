@@ -53,7 +53,7 @@ class Player : public QObject
 		int getPlayerNumber();
 		void reset();
 		void setCoordinates(int x, int y);
-		bool isComputer();
+        bool isComputer() const;
 		void setComputer(bool computer);
 		void setStartPosition();
 		void movePlayer();
@@ -72,8 +72,8 @@ class Player : public QObject
 		void setAccelerated(bool value);
 		bool hasKeyPressed();
 		void setKeyPressed(bool value);
-		QString getName();
-		void setName(QString name);
+        QString getName() const;
+        void setName(const QString &name);
 		
 	private:
 		int m_playerNumber;
@@ -89,7 +89,7 @@ class Player : public QObject
 		QString m_name;
 		bool m_blockSwitchDir;
 		
-	signals:
+	Q_SIGNALS:
 		void fetchedItem(int playerNumber, int x, int y);
 };
 

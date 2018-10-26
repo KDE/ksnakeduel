@@ -58,10 +58,10 @@ class KTron : public KXmlGuiWindow {
 		void keyPressEvent(QKeyEvent *) Q_DECL_OVERRIDE;
 		void keyReleaseEvent(QKeyEvent *) Q_DECL_OVERRIDE;
 
-	public slots:
+	public Q_SLOTS:
 		void close();
 
-	private slots:
+	private Q_SLOTS:
 		void loadSettings();
 		/** updates players points in statusbar and checks if someone has won */
 		void changeStatus();

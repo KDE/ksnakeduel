@@ -43,11 +43,11 @@ class Object
 	public:
 		Object();
 		Object(ObjectType::Type t);
-		int getX();
-		int getY();
+        int getX() const;
+        int getY() const;
 		void setCoordinates(int x, int y);
-		QString getSVGName();
-		ObjectType::Type getObjectType();
+        QString getSVGName() const;
+        ObjectType::Type getObjectType() const;
 
 	private:
 		int m_xCoordinate;
@@ -56,7 +56,7 @@ class Object
 		ObjectType::Type m_objectType;
 		
 	protected:
-		void setSVGName(QString svgName);
+        void setSVGName(const QString &svgName);
 };
 
 #endif // OBJECT_H

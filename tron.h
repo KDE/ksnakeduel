@@ -57,7 +57,7 @@ class Tron : public QWidget
 	Q_OBJECT
 
 	public:
-		Tron(QWidget *parent=0);
+        explicit Tron(QWidget *parent=nullptr);
 		~Tron();
 		void updatePixmap();
 		void setVelocity(int);
@@ -70,7 +70,7 @@ class Tron : public QWidget
 		bool hasWinner();
 		int getWinner();
 
-	public slots:
+	public Q_SLOTS:
 		/** Starts a new game. The difference to reset is, that the players
 		* points are set to zero. Emits gameEnds(Nobody).
 		*/
@@ -79,7 +79,7 @@ class Tron : public QWidget
 		void loadSettings();
 		void itemHit(int playerNumber, int x, int y);
 
-	signals:
+	Q_SIGNALS:
 		void gameEnds();
 		void updatedScore();
 		void gameReset();
@@ -148,7 +148,7 @@ class Tron : public QWidget
 		/** Tries to generate a new obstacle */
 		void newObstacle();
 	
-	private slots:
+	private Q_SLOTS:
 		/**
 		* This is the main function of KTron.
 		* It checks if an accelerator is pressed and than moves this player

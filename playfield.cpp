@@ -54,7 +54,7 @@ Object *PlayField::getObjectAt(int x, int y)
 	if (x < 0 || x >= m_width || y < 0 || y >= m_height) {
 		qCDebug(KSNAKEDUEL_LOG) << "Inexistent place accessed: (" << x << ", " << y << ")";
 
-		return 0;
+        return nullptr;
 	}
 
 	return &m_playfield[x * m_height + y];

@@ -33,20 +33,21 @@ Object::Object(ObjectType::Type t)
 	m_objectType = t;
 }
 
-QString Object::getSVGName() {
+QString Object::getSVGName() const
+{
 	return m_svgName;
 }
 
-void Object::setSVGName(QString name) {
+void Object::setSVGName(const QString &name) {
 	m_svgName = name;
 }
 
-int Object::getX()
+int Object::getX() const
 {
 	return m_xCoordinate;
 }
 
-int Object::getY()
+int Object::getY() const
 {
 	return m_yCoordinate;
 }
@@ -57,7 +58,7 @@ void Object::setCoordinates(int x, int y)
 	m_yCoordinate = y;
 }
 
-ObjectType::Type Object::getObjectType()
+ObjectType::Type Object::getObjectType() const
 {
 	return m_objectType;
 }

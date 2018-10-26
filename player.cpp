@@ -88,7 +88,7 @@ int Player::getScore()
 // Player name
 //
 
-QString Player::getName()
+QString Player::getName() const
 {
 	if (isComputer())
 	{
@@ -100,7 +100,7 @@ QString Player::getName()
 	}
 }
 
-void Player::setName(QString name)
+void Player::setName(const QString &name)
 {
 	if (name.isEmpty())
 	{
@@ -427,7 +427,7 @@ void Player::reset()
 // Computer powered
 //
 
-bool Player::isComputer()
+bool Player::isComputer() const
 {
 	return m_computer;
 }

@@ -46,15 +46,15 @@ class SnakePart : public Object
 	public:
 		SnakePart(int playerNumber);
 		int getPlayerNumber();
-		SnakePartType::Types getPartType();
+        SnakePartType::Types getPartType() const;
 		void setPartType(SnakePartType::Types type);
-		bool getPartTop();
+        bool getPartTop() const;
 		void setPartTop(bool value);
-		bool getPartBottom();
+        bool getPartBottom() const;
 		void setPartBottom(bool value);
-		bool getPartLeft();
+        bool getPartLeft() const;
 		void setPartLeft(bool value);
-		bool getPartRight();
+        bool getPartRight() const;
 		void setPartRight(bool value);
 		void generateSVGName();
 

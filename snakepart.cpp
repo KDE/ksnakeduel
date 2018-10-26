@@ -54,7 +54,7 @@ int SnakePart::getPlayerNumber()
 	return this->m_playerNumber;
 }
 
-SnakePartType::Types SnakePart::getPartType()
+SnakePartType::Types SnakePart::getPartType() const
 {
 	return m_partType;
 }
@@ -64,7 +64,7 @@ void SnakePart::setPartType(SnakePartType::Types type)
 	m_partType = type;
 }
 
-bool SnakePart::getPartTop()
+bool SnakePart::getPartTop() const
 {
 	return m_partTop;
 }
@@ -74,7 +74,7 @@ void SnakePart::setPartTop(bool value)
 	m_partTop = value;
 }
 
-bool SnakePart::getPartBottom()
+bool SnakePart::getPartBottom() const
 {
 	return m_partBottom;
 }
@@ -84,7 +84,7 @@ void SnakePart::setPartBottom(bool value)
 	m_partBottom = value;
 }
 
-bool SnakePart::getPartLeft()
+bool SnakePart::getPartLeft() const
 {
 	return m_partLeft;
 }
@@ -94,7 +94,7 @@ void SnakePart::setPartLeft(bool value)
 	m_partLeft = value;
 }
 
-bool SnakePart::getPartRight()
+bool SnakePart::getPartRight() const
 {
 	return m_partRight;
 }

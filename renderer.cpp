@@ -61,7 +61,7 @@ RendererPrivate::RendererPrivate()
 {
 	QPixmapCache::setCacheLimit(40);
 	QPixmapCache::clear();
-	m_playField = 0;
+    m_playField = nullptr;
 }
 
 RendererPrivate::~RendererPrivate()
