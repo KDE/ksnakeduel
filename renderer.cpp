@@ -122,7 +122,7 @@ QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSi
 {
 	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
-	if (!QPixmapCache::find(framePixName, pix))
+        if (!QPixmapCache::find(framePixName, &pix))
 	{
 		pix = QPixmap(partSize);
 		pix.fill(Qt::transparent);
@@ -143,7 +143,7 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
     QPixmap pix;
     QString pixName = svgName + sizeSuffix.arg(size.width()).arg(size.height());
 
-    if (!QPixmapCache::find(pixName, pix))
+    if (!QPixmapCache::find(pixName, &pix))
     {
         pix = QPixmap(size);
         pix.fill(Qt::transparent);
@@ -160,7 +160,7 @@ QPixmap Renderer::background()
 {
     QPixmap pix;
     QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
-	if (!QPixmapCache::find(pixName, pix))
+        if (!QPixmapCache::find(pixName, &pix))
 	{
 		pix = QPixmap(p->m_sceneSize);
 		pix.fill(Qt::white);
