@@ -34,8 +34,6 @@ include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
 
 
-add_definitions(-DQT_USE_FAST_CONCATENATION -DQT_USE_FAST_OPERATOR_PLUS)
-
 add_subdirectory(pics)
 add_subdirectory(themes)
 if (KF5DocTools_FOUND)
