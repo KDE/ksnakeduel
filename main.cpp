@@ -57,7 +57,7 @@ int main(int argc, char* argv[])
     migrate.migrate();
 
     KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
-            QLatin1String(KTRON_VERSION), i18n(description), KAboutLicense::GPL, i18n(notice));
+            QStringLiteral(KTRON_VERSION), i18n(description), KAboutLicense::GPL, i18n(notice));
     aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), QStringLiteral("matthias.kiefer@gmx.de"));
     aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), QStringLiteral("ben+ktron@meyerhome.net"));
     aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));

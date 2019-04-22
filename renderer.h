@@ -53,7 +53,7 @@ class Renderer {
 		QPixmap messageBox(const QString &message);
 
 		void resetPlayField();
-		void drawPart(QPainter & painter, int x, int y, QString svgName);
+		void drawPart(QPainter & painter, int x, int y, const QString &svgName);
 		void updatePlayField(PlayField &playfield);
 		QPixmap *getPlayField();
 

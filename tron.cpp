@@ -180,7 +180,7 @@ Player *Tron::getPlayer(int playerNr)
 	if (playerNr != 0 && playerNr != 1)
 	{
 		qCDebug(KSNAKEDUEL_LOG) << "Inexistent player requested: " << playerNr;
-		return 0;
+		return nullptr;
 	}
 
 	return players[playerNr];

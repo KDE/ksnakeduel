@@ -258,7 +258,7 @@ int Renderer::calculateOffsetY(int y)
 	return (y * p->m_partSize.height()) + (p->m_sceneSize.height() - (TRON_PLAYFIELD_HEIGHT + 2) * p->m_partSize.height()) / 2;
 }
 
-void Renderer::drawPart(QPainter & painter, int x, int y, QString svgName)
+void Renderer::drawPart(QPainter & painter, int x, int y, const QString &svgName)
 {
 	//qCDebug(KSNAKEDUEL_LOG) << "Drawing part: " << svgName;
 
