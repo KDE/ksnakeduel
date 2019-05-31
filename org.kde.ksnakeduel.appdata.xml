@@ -15,6 +15,7 @@
   <name xml:lang="gl">KSnakeDuel</name>
   <name xml:lang="id">KSnakeDuel</name>
   <name xml:lang="it">KSnakeDuel</name>
+  <name xml:lang="ko">KSnakeDuel</name>
   <name xml:lang="nl">KSnakeDuel</name>
   <name xml:lang="nn">KSnakeDuel</name>
   <name xml:lang="pl">KPojedynekWęży</name>
@@ -45,6 +46,7 @@
   <summary xml:lang="gl">Xogo similar a Tron</summary>
   <summary xml:lang="id">Permainan Seperti Tron</summary>
   <summary xml:lang="it">Gioco simile a Tron</summary>
+  <summary xml:lang="ko">트론 게임</summary>
   <summary xml:lang="nl">Tronachtig spel</summary>
   <summary xml:lang="nn">Tron-liknande spel</summary>
   <summary xml:lang="pl">Gra typu Tron</summary>
@@ -76,6 +78,7 @@
     <p xml:lang="gl">KSnakeDuel é un clon simple de Tron. Pódese xogar a KSnakeDuel contra o computador ou contra un amigo. O obxectivo é vivir máis tempo que o adversario. Para o facer, evita bater nunha parede, na túa propia cola ou na do adversario.</p>
     <p xml:lang="id">KSnakeDuel adalah Tron-Clone sederhana. Kamu bisa memainkan KSnakeDuel melawan komputer atau teman. Tujuan permainan ini adalah untuk hidup lebih lama dari lawanmu. Untuk melakukan itu, hindari berlari ke dinding, ekormu sendiri dan lawanmu.</p>
     <p xml:lang="it">KSnakeDuel è una replica semplice di Tron. Puoi giocare a KSnakeDuel contro il computer o un amico. Lo scopo del gioco è vivere più a lungo del tuo avversario. Per fare questo, evita di sbattere contro il muro, contro la tua coda o quella del tuo avversario.</p>
+    <p xml:lang="ko">KSnakeDuel은 트론 게임 클론입니다. 컴퓨터나 다른 사람과 게임을 즐길 수 있습니다. 게임의 목표는 상대방보다 더 오래 살아남는 것입니다. 벽을 들이받거나, 자기 자신이나 상대방의 궤적을 들이받으면 게임이 끝납니다.</p>
     <p xml:lang="nl">KSnakeDuel is een eenvoudig Tron-kloon. U kunt KSnakeDuel spelen tegen de computer of een vriend. Het doel van het spel is langer dan uw tegenstander in leven te blijven. Om dit te bereiken moet u een botsing met een muur, uw eigen staart en de staart van uw tegenstander vermijden.</p>
     <p xml:lang="pl">KPojedynekWęży jest prostym klonem Tronu. Możesz zagrać w KPojedynekWęży przeciwko komputerowi lub koledze. Celem gry jest przeżycie dłużej niż twój przecinik. Aby to osiągnąć unikaj wpadanie na ściany, swój ogon i ogon przeciwnika.</p>
     <p xml:lang="pt">O KSnakeDuel é um clone simples do Tron. Poderá jogar o KSnakeDuel contra o computador ou com um amigo. O objectivo do jogo é sobreviver mais tempo que o seu adversário. Para o fazer, evite bater contra uma parede, a sua própria cauda ou a do seu adversário.</p>
