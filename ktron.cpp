@@ -57,7 +57,7 @@ public:
 /**
  * Constructor
  */
-KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, KDE_DEFAULT_WINDOWFLAGS) {
+KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 	m_tron = new Tron(this);
 	connect(m_tron, &Tron::gameEnds, this, &KTron::changeStatus);
 	connect(m_tron, &Tron::updatedScore, this, &KTron::updateScore);
