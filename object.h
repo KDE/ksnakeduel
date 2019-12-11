@@ -42,7 +42,7 @@ class Object
 {
 	public:
 		Object();
-		Object(ObjectType::Type t);
+		explicit Object(ObjectType::Type t);
         int getX() const;
         int getY() const;
 		void setCoordinates(int x, int y);

@@ -44,7 +44,7 @@ class KTron : public KXmlGuiWindow {
 	Q_OBJECT
 
 	public:
-		KTron(QWidget *parent=nullptr);
+		explicit KTron(QWidget *parent=nullptr);
 		~KTron();
 
 	private:

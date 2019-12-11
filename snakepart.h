@@ -44,7 +44,7 @@ namespace SnakePartType {
 class SnakePart : public Object
 {
 	public:
-		SnakePart(int playerNumber);
+		explicit SnakePart(int playerNumber);
 		int getPlayerNumber();
         SnakePartType::Types getPartType() const;
 		void setPartType(SnakePartType::Types type);
