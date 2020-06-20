@@ -690,6 +690,7 @@ bool Tron::hasWinner()
 
 int Tron::getWinner()
 {
+	const unsigned short int WINNING_DIFF = Settings::rounds();
 	if (Settings::gameType() != Settings::EnumGameType::Snake)
 	{
 		if (players[0]->getScore() >= WINNING_DIFF && players[1]->getScore() < players[0]->getScore() - 1) {

@@ -35,7 +35,6 @@
 #include <QPaintEvent>
 #include <QFocusEvent>
 
-#define WINNING_DIFF 5
 
 namespace KBAction
 {
