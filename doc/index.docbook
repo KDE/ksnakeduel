@@ -56,8 +56,8 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2013-05-05</date>
-<releaseinfo>2.0 (&kde; 4.11)</releaseinfo>
+<date>2020-06-20</date>
+<releaseinfo>2.1 (Applications 20.08)</releaseinfo>
 
 <abstract>
 <para>
@@ -522,6 +522,12 @@ user.
 </para></listitem>
 </varlistentry>
 
+<varlistentry>
+<term><guilabel>Game Options</guilabel></term>
+<listitem><para>Specify the <guilabel>Rounds to win</guilabel> to define how many
+rounds are required before a winner is declared.</para></listitem>
+</varlistentry>
+
 </variablelist>
 </sect1>
 
@@ -579,34 +585,6 @@ Documentation Copyright 1999 &Matthias.Kiefer;
 &underFDL;
 &underGPL;
 </chapter>
-
-<!-- appendix finished -->
-
-<appendix id="installation">
-<title>Installation</title>
-
-<sect1 id="getting-ktron">
-<title>How to obtain &kappname;</title>
-
-&install.intro.documentation;
-
-</sect1>
-
-<sect1 id="requirements">
-<title>Requirements</title>
-
-<para>
-In order to successfully compile &kappname;, you need &kde; 4. All
-required libraries as well as &kappname; itself can be found on &kde-ftp;.</para>
-</sect1>
-
-<sect1 id="compilation">
-<title>Compilation and Installation</title>
-
-&install.compile.documentation;
-
-</sect1>
-</appendix>
 
 </book>
 <!--
