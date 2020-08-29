@@ -2,7 +2,7 @@ cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
 project(ksnakeduel)
 
 set (QT_MIN_VERSION "5.10.0")
-set (KF5_MIN_VERSION "5.40.0")
+set (KF5_MIN_VERSION "5.57.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH} ${ECM_KDE_MODULE_DIR})
@@ -88,7 +88,7 @@ install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
 
 install(PROGRAMS  org.kde.ksnakeduel.desktop DESTINATION ${KDE_INSTALL_APPDIR})
 install(FILES  ksnakeduel.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
-install(FILES  ksnakeduel.knsrc DESTINATION ${KDE_INSTALL_CONFDIR})
+install(FILES  ksnakeduel.knsrc DESTINATION "${KDE_INSTALL_DATADIR}/knsrcfiles")
 install(FILES  org.kde.ksnakeduel.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
 if (${ECM_VERSION} STRGREATER "5.58.0")
