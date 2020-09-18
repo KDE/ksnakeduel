@@ -25,7 +25,7 @@
 #define INTELLIGENCE_H
 
 #include <math.h>
-#include <krandomsequence.h>
+#include <QRandomGenerator>
 
 class Tron;
 
@@ -47,7 +47,7 @@ class Intelligence
 		
 		Tron *m_tron;
 		/** The random sequence generator **/
-		KRandomSequence m_random;
+		QRandomGenerator m_random;
 		/** determines level of computerplayer */
 		int m_lookForward;
 };

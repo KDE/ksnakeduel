@@ -29,9 +29,8 @@
 #include <KgDifficulty>
 
 Intelligence::Intelligence()
+    : m_random(QRandomGenerator::global()->generate())
 {
-	m_random.setSeed(0);
-
 	m_lookForward = 15;
 }
 
@@ -99,7 +98,7 @@ void Intelligence::changeDirection(int playerNr,int dis_right,int dis_left)
    if(!(dis_left == 1 && dis_right == 1))
    {
 			// change direction
-			if ((int)m_random.getLong(100) <= (100*dis_left)/(dis_left+dis_right))
+			if (m_random.bounded(100) <= (100*dis_left)/(dis_left+dis_right))
 			{
 	  			if (dis_left != 1)
 		    		// turn to the left
@@ -313,13 +312,13 @@ void Intelligence::think(int playerNr)
 				// opponent is to the right and we have the chance to block the way
 				if(opSideDis>0 && opSideDis < opForwardDis && opSideDis < dis_right && opForwardDis < m_lookForward)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage || dis_forward==1)
 						m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
 				else if(opSideDis<0 && -opSideDis < opForwardDis && -opSideDis < dis_left && opForwardDis < m_lookForward)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage || dis_forward==1)
 						m_tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
@@ -328,7 +327,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+						if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -338,7 +337,7 @@ void Intelligence::think(int playerNr)
 				dis_forward = 100 - 100/dis_forward;
 
 				if(!(dis_left == 1 && dis_right == 1))
-					if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+					if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 			}
 		} // end  if(opMovesOppositeDir)
@@ -350,13 +349,13 @@ void Intelligence::think(int playerNr)
 					// opponent is to the right and we have the chance to block the way
 				if(opSideDis>0 && opSideDis < -opForwardDis && opSideDis < dis_right)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage || dis_forward==1)
 						m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 				}
 				// opponent is to the left and we have the chance to block the way
 				else if(opSideDis<0 && -opSideDis < -opForwardDis && -opSideDis < dis_left)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage || dis_forward==1)
 						m_tron->getPlayer(playerNr)->setDirection(sides[0]); // turn left
 				}
 				// if we can do nothing, go forward
@@ -365,7 +364,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+							if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -375,7 +374,7 @@ void Intelligence::think(int playerNr)
 				dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+						if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 			}
 		} // end if(opMovesSameDir)
@@ -389,7 +388,7 @@ void Intelligence::think(int playerNr)
 				{
 					if(opForwardDis < m_lookForward && dis_left > m_lookForward)
 					{
-						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 							changeDirection(playerNr,dis_right,dis_left);
 					}
 					else if(dis_forward < m_lookForward)
@@ -397,7 +396,7 @@ void Intelligence::think(int playerNr)
 						dis_forward = 100 - 100/dis_forward;
 
 							if(!(dis_left == 1 && dis_right == 1))
-								if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+								if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 									changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
@@ -406,7 +405,7 @@ void Intelligence::think(int playerNr)
 				{
 					if(opForwardDis < m_lookForward && dis_right > m_lookForward)
 					{
-						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 							m_tron->getPlayer(playerNr)->setDirection(sides[1]); // turn right
 					}
 					else if(dis_forward < m_lookForward)
@@ -414,7 +413,7 @@ void Intelligence::think(int playerNr)
 						dis_forward = 100 - 100/dis_forward;
 
 							if(!(dis_left == 1 && dis_right == 1))
-								if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+								if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 									changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
@@ -423,7 +422,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+							if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -433,7 +432,7 @@ void Intelligence::think(int playerNr)
 				// opponent is right from us and we already blocked him
 				if(opSideDis>0 && opForwardDis < m_lookForward && opSideDis < dis_right)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 						changeDirection(playerNr,dis_right,dis_left);
 				}
 				else if(dis_forward < m_lookForward)
@@ -441,7 +440,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+							if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -456,7 +455,7 @@ void Intelligence::think(int playerNr)
 				{
 					if(opForwardDis < m_lookForward && dis_right > m_lookForward)
 					{
-						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 							changeDirection(playerNr,dis_right,dis_left);
 					}
 					else if(dis_forward < m_lookForward)
@@ -464,7 +463,7 @@ void Intelligence::think(int playerNr)
 						dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+							if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 					}
 				}
@@ -473,7 +472,7 @@ void Intelligence::think(int playerNr)
 				{
 					if(opForwardDis < m_lookForward && dis_left > m_lookForward)
 					{
-						if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+						if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 							m_tron->getPlayer(playerNr)->setDirection(sides[0]); // m_turn left
 						}
 					else if(dis_forward < m_lookForward)
@@ -481,7 +480,7 @@ void Intelligence::think(int playerNr)
 						dis_forward = 100 - 100/dis_forward;
 
 						if(!(dis_left == 1 && dis_right == 1))
-							if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+							if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 								changeDirection(playerNr,dis_right,dis_left);
 					}
 
@@ -491,7 +490,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+						if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -501,7 +500,7 @@ void Intelligence::think(int playerNr)
 				// opponent is left from us and we already blocked him
 				if(opSideDis<0 && opForwardDis < m_lookForward && -opSideDis < dis_left)
 				{
-					if ((int)m_random.getLong(100) <= doPercentage/2 || dis_forward==1)
+					if (m_random.bounded(100) <= doPercentage/2 || dis_forward==1)
 						changeDirection(playerNr,dis_right,dis_left);
 				}
 				else if(dis_forward < m_lookForward)
@@ -509,7 +508,7 @@ void Intelligence::think(int playerNr)
 					dis_forward = 100 - 100/dis_forward;
 
 					if(!(dis_left == 1 && dis_right == 1))
-						if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 1)
+						if (m_random.bounded(100) >= dis_forward || dis_forward == 1)
 							changeDirection(playerNr,dis_right,dis_left);
 				}
 			}
@@ -609,9 +608,9 @@ void Intelligence::think(int playerNr)
 				index[1] += flags[5];
 			}
 			if(!(dis_left == 1 && dis_right == 1)) {
-				if ((int)m_random.getLong(100) >= dis_forward || dis_forward == 0) {
+				if (m_random.bounded(100) >= dis_forward || dis_forward == 0) {
 					// change direction
-					if ((int)m_random.getLong(100) <= (100*dis_left)/(dis_left+dis_right)) {
+					if (m_random.bounded(100) <= (100*dis_left)/(dis_left+dis_right)) {
 						if (dis_left != 1)
 							// turn to the left
 							m_tron->getPlayer(playerNr)->setDirection(sides[0]);
