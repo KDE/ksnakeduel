@@ -124,8 +124,8 @@ void Tron::newGame()
 {
 	players[0]->resetScore();
 	players[1]->resetScore();
-	//emit gameEnds(KTronEnum::Nobody);
-	emit updatedScore();
+	//Q_EMIT gameEnds(KTronEnum::Nobody);
+	Q_EMIT updatedScore();
 	reset();
 }
 
@@ -162,8 +162,8 @@ void Tron::reset()
 
 	setFocus();
 
-	emit gameReset();
-	emit updatedScore();
+	Q_EMIT gameReset();
+	Q_EMIT updatedScore();
 }
 
 //
@@ -194,7 +194,7 @@ Player *Tron::getPlayer(int playerNr)
 void Tron::startGame()
 {
 	gameEnded = false;
-	emit pauseBlocked(false);
+	Q_EMIT pauseBlocked(false);
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
@@ -218,7 +218,7 @@ void Tron::itemHit(int playerNumber, int, int)
 		timer->start(velocity);
 	}
 
-	emit updatedScore();
+	Q_EMIT updatedScore();
 }
 
 void Tron::newApple()
@@ -259,7 +259,7 @@ void Tron::newObstacle()
 
 	// Score +2
 	players[0]->addScore(2);
-	emit updatedScore();
+	Q_EMIT updatedScore();
 }
 
 void Tron::stopGame()
@@ -278,7 +278,7 @@ void Tron::togglePause() // pause or continue game
 			update();
 			timer->start(velocity);
 
-			emit updatedScore();
+			Q_EMIT updatedScore();
 		}
 		else
 		{
@@ -286,7 +286,7 @@ void Tron::togglePause() // pause or continue game
 			timer->stop();
 			update();
 
-			emit updatedScore();
+			Q_EMIT updatedScore();
 		}
 	}
 }
@@ -295,8 +295,8 @@ void Tron::showWinner()
 {
 	update();
 
-	emit gameEnds();
-	emit pauseBlocked(true);
+	Q_EMIT gameEnds();
+	Q_EMIT pauseBlocked(true);
 }
 
 /* *************************************************************** **

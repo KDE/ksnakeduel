@@ -349,7 +349,7 @@ void Player::movePlayer()
 		if (m_playField->getObjectAt(newX, newY)->getObjectType() == ObjectType::Item)
 		{
 			//qCDebug(KSNAKEDUEL_LOG) << "Boom!";
-			emit fetchedItem(m_playerNumber, newX, newY);
+			Q_EMIT fetchedItem(m_playerNumber, newX, newY);
 		}
 
 		newHead.generateSVGName();
