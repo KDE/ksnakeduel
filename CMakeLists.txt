@@ -1,5 +1,16 @@
 cmake_minimum_required (VERSION 3.5 FATAL_ERROR)
-project(ksnakeduel)
+
+# Release Service version, managed by release script
+set (RELEASE_SERVICE_VERSION_MAJOR "20")
+set (RELEASE_SERVICE_VERSION_MINOR "11")
+set (RELEASE_SERVICE_VERSION_MICRO "70")
+set (RELEASE_SERVICE_COMPACT_VERSION "${RELEASE_SERVICE_VERSION_MAJOR}${RELEASE_SERVICE_VERSION_MINOR}${RELEASE_SERVICE_VERSION_MICRO}")
+
+# Bump KSNAKEDUEL_BASE_VERSION once new features are added
+set(KSNAKEDUEL_BASE_VERSION "2.1")
+set(KSNAKEDUEL_VERSION "${KSNAKEDUEL_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VERSION}")
+
+project(ksnakeduel VERSION ${KSNAKEDUEL_VERSION})
 
 set (QT_MIN_VERSION "5.10.0")
 set (KF5_MIN_VERSION "5.57.0")
@@ -32,6 +43,8 @@ include(KDEInstallDirs)
 include(KDEFrameworkCompilerSettings NO_POLICY_SCOPE)
 include(KDECMakeSettings)
 include(ECMQtDeclareLoggingCategory)
+include(ECMSetupVersion)
+
 if (${KF5Config_VERSION} STRGREATER "5.56.0")
         add_definitions(-DQT_NO_FOREACH)
         MESSAGE(STATUS "compile without foreach")
@@ -44,6 +57,11 @@ if (KF5DocTools_FOUND)
 endif()
 
 ########### next target ###############
+
+ecm_setup_version(${KSNAKEDUEL_VERSION}
+    VARIABLE_PREFIX KSNAKEDUEL
+    VERSION_HEADER ksnakeduel_version.h
+)
 
 set(ksnakeduel_SRCS
     renderer.cpp
