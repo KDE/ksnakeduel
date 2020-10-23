@@ -26,7 +26,6 @@
 #include "settings.h"
 #include "ui_general.h"
 
-#include <QAction>
 #include <QApplication>
 #include <QStatusBar>
 

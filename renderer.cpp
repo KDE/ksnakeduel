@@ -25,10 +25,8 @@
 #include "settings.h"
 #include "object.h"
 
-#include <QPainter>
 #include <QPixmap>
 #include <QPixmapCache>
-#include <QSize>
 #include <QSvgRenderer>
 
 #include <KFontUtils>

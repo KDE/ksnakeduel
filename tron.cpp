@@ -26,11 +26,7 @@
 // Normal class
 #include <QTimer>
 #include <QPainter>
-#include <QPaintEvent>
 #include <QPoint>
-#include <QResizeEvent>
-#include <QFocusEvent>
-#include <QPixmap>
 
 #include "ksnakeduel_debug.h"
 #include <KLocalizedString>

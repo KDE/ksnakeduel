@@ -24,7 +24,6 @@
 #include "player.h"
 
 #include "tron.h"
-#include "snakepart.h"
 #include "settings.h"
 
 #include "ksnakeduel_debug.h"
