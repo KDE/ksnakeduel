@@ -51,7 +51,7 @@ add_definitions(
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x053900
 )
 
-add_subdirectory(pics)
+add_subdirectory(icons)
 add_subdirectory(themes)
 add_subdirectory(doc)
 
@@ -89,7 +89,7 @@ ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
 qt5_add_resources(ksnakeduel_SRCS ksnakeduel.qrc)
 
-file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/pics/*-apps-ksnakeduel.png")
+file(GLOB ICONS_SRCS "${CMAKE_CURRENT_SOURCE_DIR}/icons/*-apps-ksnakeduel.png")
 ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
 
 add_executable(ksnakeduel ${ksnakeduel_SRCS})
