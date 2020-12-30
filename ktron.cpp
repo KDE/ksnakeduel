@@ -123,18 +123,18 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 	addAction(m_player1Accelerate);
 
 	// Pause
-	m_pauseButton = KStandardGameAction::pause(m_tron, SLOT(togglePause()), actionCollection());
+	m_pauseButton = KStandardGameAction::pause(m_tron, &Tron::togglePause, actionCollection());
 	m_pauseButton->setEnabled(false);
 	// New
-	KStandardGameAction::gameNew(m_tron, SLOT(newGame()), actionCollection());
+	KStandardGameAction::gameNew(m_tron, &Tron::newGame, actionCollection());
 	// Quit
-	KStandardGameAction::quit(qApp, SLOT(quit()), actionCollection());
+	KStandardGameAction::quit(qApp, &QApplication::quit, actionCollection());
 	// Settings
-	KStandardAction::preferences(this, SLOT(showSettings()), actionCollection());
+	KStandardAction::preferences(this, &KTron::showSettings, actionCollection());
 	// Configure keys
-	KStandardAction::keyBindings(this, SLOT(optionsConfigureKeys()), actionCollection());
+	KStandardAction::keyBindings(this, &KTron::optionsConfigureKeys, actionCollection());
 	// Highscores
-	KStandardGameAction::highscores(this, SLOT(showHighscores()), actionCollection());
+	KStandardGameAction::highscores(this, &KTron::showHighscores, actionCollection());
 
 	//difficulty
     Kg::difficulty()->addStandardLevelRange(
