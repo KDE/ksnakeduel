@@ -12,8 +12,8 @@ set(KSNAKEDUEL_VERSION "${KSNAKEDUEL_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VER
 
 project(ksnakeduel VERSION ${KSNAKEDUEL_VERSION})
 
-set (QT_MIN_VERSION "5.10.0")
-set (KF5_MIN_VERSION "5.57.0")
+set (QT_MIN_VERSION "5.12.0")
+set (KF5_MIN_VERSION "5.68.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
@@ -76,7 +76,13 @@ set(ksnakeduel_SRCS
     main.cpp
 )
 
-ecm_qt_declare_logging_category(ksnakeduel_SRCS HEADER ksnakeduel_debug.h IDENTIFIER KSNAKEDUEL_LOG CATEGORY_NAME ksnakeduel_smtp)
+ecm_qt_declare_logging_category(ksnakeduel_SRCS
+    HEADER ksnakeduel_debug.h
+    IDENTIFIER KSNAKEDUEL_LOG
+    CATEGORY_NAME ksnakeduel
+    DESCRIPTION "KSnakeDuel"
+    EXPORT KSNAKEDUEL
+)
 
 ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
@@ -108,11 +114,11 @@ install(FILES  ksnakeduel.kcfg DESTINATION ${KDE_INSTALL_KCFGDIR})
 install(FILES  ksnakeduel.knsrc DESTINATION "${KDE_INSTALL_DATADIR}/knsrcfiles")
 install(FILES  org.kde.ksnakeduel.appdata.xml DESTINATION ${KDE_INSTALL_METAINFODIR})
 
-if (${ECM_VERSION} STRGREATER "5.58.0")
-    install(FILES ksnakeduel.categories  DESTINATION  ${KDE_INSTALL_LOGGINGCATEGORIESDIR})
-else()
-    install(FILES ksnakeduel.categories  DESTINATION ${KDE_INSTALL_CONFDIR})
-endif()
+ecm_qt_install_logging_categories(
+    EXPORT KSNAKEDUEL
+    FILE ksnakeduel.categories
+    DESTINATION ${KDE_INSTALL_LOGGINGCATEGORIESDIR}
+)
 
 ki18n_install(po)
 kdoctools_install(po)
