@@ -74,11 +74,11 @@ class Tron : public QWidget
 
 	protected:
 		/** Calls renderer */
-		void paintEvent(QPaintEvent *) Q_DECL_OVERRIDE;
+		void paintEvent(QPaintEvent *) override;
 		/** resets game and creates a new playingfield */
-		void resizeEvent(QResizeEvent *) Q_DECL_OVERRIDE;
+		void resizeEvent(QResizeEvent *) override;
 		/** pauses game */
-		void focusOutEvent(QFocusEvent *) Q_DECL_OVERRIDE;
+		void focusOutEvent(QFocusEvent *) override;
 
 	private:
 		/** The playingfield */

@@ -41,10 +41,10 @@ class KTron : public KXmlGuiWindow {
 	protected:
 		/** calls tron->updatePixmap to draw frame in the new colors */
 		void paletteChange(const QPalette &oldPalette);
-		void closeEvent(QCloseEvent *) Q_DECL_OVERRIDE;
+		void closeEvent(QCloseEvent *) override;
 		/** Key hits */
-		void keyPressEvent(QKeyEvent *) Q_DECL_OVERRIDE;
-		void keyReleaseEvent(QKeyEvent *) Q_DECL_OVERRIDE;
+		void keyPressEvent(QKeyEvent *) override;
+		void keyReleaseEvent(QKeyEvent *) override;
 
 	public Q_SLOTS:
 		void close();
