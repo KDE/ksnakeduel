@@ -15,6 +15,7 @@ set(ksnakeduel_SRCS
     tron.cpp
     ktron.cpp
     main.cpp
+    ksnakeduel.qrc
 )
 
 ecm_qt_declare_logging_category(ksnakeduel_SRCS
@@ -28,7 +29,6 @@ ecm_qt_declare_logging_category(ksnakeduel_SRCS
 ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
 
 kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
-qt5_add_resources(ksnakeduel_SRCS ksnakeduel.qrc)
 
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-ksnakeduel.png")
 ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
