@@ -3,7 +3,9 @@ ecm_setup_version(${KSNAKEDUEL_VERSION}
     VERSION_HEADER ksnakeduel_version.h
 )
 
-set(ksnakeduel_SRCS
+add_executable(ksnakeduel)
+
+target_sources(ksnakeduel PRIVATE
     renderer.cpp
     object.cpp
     snakepart.cpp
@@ -15,10 +17,11 @@ set(ksnakeduel_SRCS
     tron.cpp
     ktron.cpp
     main.cpp
+
     ksnakeduel.qrc
 )
 
-ecm_qt_declare_logging_category(ksnakeduel_SRCS
+ecm_qt_declare_logging_category(ksnakeduel
     HEADER ksnakeduel_debug.h
     IDENTIFIER KSNAKEDUEL_LOG
     CATEGORY_NAME ksnakeduel
@@ -26,23 +29,21 @@ ecm_qt_declare_logging_category(ksnakeduel_SRCS
     EXPORT KSNAKEDUEL
 )
 
-ki18n_wrap_ui(ksnakeduel_SRCS general.ui)
+ki18n_wrap_ui(ksnakeduel general.ui)
 
-kconfig_add_kcfg_files(ksnakeduel_SRCS settings.kcfgc)
+kconfig_add_kcfg_files(ksnakeduel settings.kcfgc)
 
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-ksnakeduel.png")
-ecm_add_app_icon(ksnakeduel_SRCS ICONS ${ICONS_SRCS})
-
-add_executable(ksnakeduel ${ksnakeduel_SRCS})
+ecm_add_app_icon(ksnakeduel ICONS ${ICONS_SRCS})
 
 target_link_libraries(ksnakeduel
+    KF5KDEGames
+    KF5KDEGamesPrivate
     KF5::Crash
     KF5::DBusAddons
     KF5::GuiAddons
     KF5::I18n
     KF5::XmlGui
-    KF5KDEGames
-    KF5KDEGamesPrivate
     Qt5::Svg
 )
 
