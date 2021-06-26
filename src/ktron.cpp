@@ -288,7 +288,11 @@ void KTron::closeEvent(QCloseEvent *event)
 
 void KTron::optionsConfigureKeys()
 {
+#if KXMLGUI_VERSION >= QT_VERSION_CHECK(5,84,0)
+    KShortcutsDialog::showDialog(actionCollection(), KShortcutsEditor::LetterShortcutsAllowed, this);
+#else
     KShortcutsDialog::configure(actionCollection());
+#endif
 }
 
 // Key events
