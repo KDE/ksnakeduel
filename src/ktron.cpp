@@ -26,6 +26,7 @@
 #include <KScoreDialog>
 #include <KShortcutsDialog>
 #include <KToggleAction>
+#include <kxmlgui_version.h>
 
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgamethemeselector.h>
