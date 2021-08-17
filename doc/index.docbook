@@ -1,14 +1,13 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "<application>KSnakeDuel</application>">
-  <!ENTITY package "kdegames">
+  <!ENTITY ksnakeduel "<application>KSnakeDuel</application>">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % English "INCLUDE">
 ]>
 
 <book id="ksnakeduel" lang="&language;">
 <bookinfo>
-<title>The &kappname; Handbook</title>
+<title>The &ksnakeduel; Handbook</title>
 
 <authorgroup>
 <author>
@@ -56,13 +55,12 @@
 
 <legalnotice>&FDLNotice;</legalnotice>
 
-<date>2020-06-20</date>
-<releaseinfo>2.1 (Applications 20.08)</releaseinfo>
+<date>2021-08-17</date>
+<releaseinfo>2.1 (KDE Gear 21.08)</releaseinfo>
 
 <abstract>
 <para>
-&kappname; is a simple snake duel game for &kde;, which you can
-play alone or against a friend.
+&ksnakeduel; is a simple snake duel game, which you can play alone or against a friend.
 </para>
 </abstract>
 
@@ -84,16 +82,13 @@ play alone or against a friend.
 <title>Introduction</title>
 
 <para>
-&kappname; is a simple snake duel game for the
-<ulink url="http://www.kde.org">K Desktop Environment</ulink>. You can play
-&kappname; against the computer or a friend.
-The aim of the game is to live longer than your opponent. To do that,
-avoid running into a wall, your own tail and that of your opponent.
+&ksnakeduel; is a simple snake duel game. You can play against the computer
+or a friend. The aim of the game is to live longer than your opponent. To do
+that, avoid running into a wall, your own tail and that of your opponent.
 </para>
 
 <para>
-&ksnake; is a simple Snake-like game for the <ulink url="http://www.kde.org">K
-Desktop Environment</ulink>. The aim of &ksnake; is to survive as long as
+&ksnakeduel; is a simple Snake-like game. The aim is to survive as long as
 possible and eat as many fruits as you can.
 </para>
 
@@ -104,7 +99,7 @@ You can switch between these games using the game type selector in the configura
 </chapter>
 
 <chapter id="playing-ktron">
-<title>Playing &kappname;</title>
+<title>Playing &ksnakeduel;</title>
 
 <sect1 id="playing-ktron-rules">
 <title>Rules</title>
@@ -122,17 +117,16 @@ direction is then in this direction.
 </para>
 
 <para>
-If you want to interrupt playing, select
-<guimenuitem>Pause</guimenuitem> from the <guimenu>Game</guimenu> menu
-or hit the keyboard shortcut (see section <link linkend="keys">Default 
-Shortcuts</link>).  Additionally the game is paused when the game loses the
-keyboard focus, &eg; when switching to an other window.
+If you want to interrupt playing, select the <menuchoice> <shortcut><keycombo
+action="simul"><keycap>P</keycap></keycombo></shortcut> <guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem></menuchoice> menu item.  Additionally the game
+is paused when the game loses the keyboard focus, &eg; when switching to an other window.
 </para>
 
-<para>To continue the game, select the menu item
-<guimenuitem>Pause</guimenuitem> again, or the keyboard shortcut.  The
-game will also continue if the human players press one of their direction keys.
-But be careful, your player switches to this direction immediately.
+<para>
+To continue the game, select again this menu item or hit the keyboard shortcut.
+The game will also continue if you press one of the direction keys. But be
+careful, your player switches to this direction immediately.
 </para>
 
 
@@ -142,9 +136,10 @@ score is always displayed in the status bar.
 </para>
 
 <para>
-You can change the difficulty level of the game using the game menu item or
-the select box on the status bar. The difficulty influences the speed of the
-game and the computer player.
+You can change the difficulty level of the game using the
+<menuchoice><guimenu>Settings</guimenu> <guisubmenu>Difficulty</guisubmenu></menuchoice>
+submenu or the drop-down box on the status bar. The difficulty influences
+the speed of the game and the computer player.
 </para>
 </sect1>
 
@@ -152,7 +147,7 @@ game and the computer player.
 <title>The Computer Player</title>
 
 <para>
-You can play against a computer. The difficulty level of the game influences the 
+You can play against a computer. The difficulty level of the game influences the
 intelligence of the computer player.
 </para>
 <para>
@@ -182,14 +177,15 @@ release the acceleration key, velocity returns to normal.
 </para>
 
 <note><para>
-You can alter the keys using the shortcuts option in the <ulink
-url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>.
+You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
 </para></note>
 </sect1>
 </chapter>
 
 <chapter id="playing-snake">
-<title>Playing &ksnake;</title>
+<title>Playing &ksnakeduel;</title>
 
 <sect1 id="playing-snake-rules">
 <title>Rules</title>
@@ -202,17 +198,17 @@ direction is then in this direction.
 </para>
 
 <para>
-If you want to pause playing, select <guimenu>Pause</guimenu> from the <guimenuitem>Game</guimenuitem> menu or hit the
-keyboard shortcut (see section <link linkend="keys">Default 
-Shortcuts</link>). Additionally the game is
-paused when the game loses the keyboard focus, &eg; when switching to an other
-window.
+If you want to pause playing, select the <menuchoice> <shortcut><keycombo
+action="simul"><keycap>P</keycap></keycombo></shortcut> <guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem></menuchoice> menu item or hit the keyboard
+shortcut. Additionally the game is paused when the game loses the keyboard
+focus, &eg; when switching to an other window.
 </para>
 
 <para>
-To continue the game, select the menu item <guimenuitem>Pause</guimenuitem> or hit the keyboard shortcut
-again. The game will also continue if you press one of the direction keys. But
-be careful, your player switches to this direction immediately.
+To continue the game, select again this menu item or hit the keyboard shortcut.
+The game will also continue if you press one of the direction keys. But be
+careful, your player switches to this direction immediately.
 </para>
 
 <para>
@@ -228,8 +224,10 @@ survive you'll be rewarded 2 points
 </para>
 
 <para>
-You can change the difficulty level of the game using the game menu item or the
-select box on the status bar. The difficulty influences the speed of the game.
+You can change the difficulty level of the game using the
+<menuchoice><guimenu>Settings</guimenu> <guisubmenu>Difficulty</guisubmenu></menuchoice>
+submenu or the drop-down box on the status bar. The difficulty influences
+the speed of the game and the computer player.
 </para>
 
 </sect1>
@@ -244,8 +242,9 @@ the direction of your player.
 </para>
 
 <note><para>
-You can alter the keys using the shortcuts option in the <ulink
-url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>.
+You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
 </para></note>
 </sect1>
 
@@ -256,7 +255,7 @@ url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>
 
 <sect1 id="menu-items">
 <title>Menu Items</title>
-  
+
 <para>The following list briefly describes each menubar option.</para>
 
 <variablelist>
@@ -290,8 +289,7 @@ url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>
 <guimenu>Game</guimenu>
 <guimenuitem>Show High Scores</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Displays the high score dialog
-(for &ksnake;).</action></para></listitem>
+<listitem><para><action>Displays the high score table.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -302,7 +300,7 @@ url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>
 <guimenu>Game</guimenu>
 <guimenuitem>Quit</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Quits.</action></para></listitem>
+<listitem><para><action>Quit &ksnakeduel;.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
@@ -310,14 +308,14 @@ url="help:/fundamentals/shortcuts.html"><guimenu>Settings</guimenu> menu</ulink>
 <guimenu>Settings</guimenu>
 <guimenuitem>Difficulty</guimenuitem>
 </menuchoice></term>
-<listitem><para><action>Lets you alter the difficulty level of the
-game.</action></para></listitem>
+<listitem><para><action>A submenu that allows you to change the difficulty
+level of the game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure &kappname;...</guimenuitem>
+<guimenuitem>Configure &ksnakeduel;...</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
 to configure various options.</action></para></listitem>
@@ -325,7 +323,7 @@ to configure various options.</action></para></listitem>
 </variablelist>
 
 <para>
-Additionally &ksnake; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+Additionally &ksnakeduel; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
 menu items, for more information read the sections about the
 <ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink> and
 <ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.
@@ -350,20 +348,20 @@ menu items, for more information read the sections about the
 </thead>
 <tbody>
 <row>
-<entry><keycap>Up Arrow</keycap></entry>
-<entry>Up</entry>
+<entry>&Up; arrow</entry>
+<entry>Move up</entry>
 </row>
 <row>
-<entry><keycap>Down Arrow</keycap></entry>
-<entry>Down</entry>
+<entry>&Down; arrow</entry>
+<entry>Move down</entry>
 </row>
 <row>
-<entry><keycap>Right Arrow</keycap></entry>
-<entry>Right</entry>
+<entry>&Right; arrow</entry>
+<entry>Move on the right</entry>
 </row>
 <row>
-<entry><keycap>Left Arrow</keycap></entry>
-<entry>Left</entry>
+<entry>&Left; arrow</entry>
+<entry>Move on the left</entry>
 </row>
 <row>
 <entry><keycap>0</keycap></entry>
@@ -383,19 +381,19 @@ menu items, for more information read the sections about the
 <tbody>
 <row>
 <entry><keycap>R</keycap></entry>
-<entry>Up</entry>
+<entry>Move up</entry>
 </row>
 <row>
 <entry><keycap>F</keycap></entry>
-<entry>Down</entry>
+<entry>Move down</entry>
 </row>
 <row>
 <entry><keycap>G</keycap></entry>
-<entry>Right</entry>
+<entry>Move on the right</entry>
 </row>
 <row>
 <entry><keycap>D</keycap></entry>
-<entry>Left</entry>
+<entry>Move on the left</entry>
 </row>
 <row>
 <entry><keycap>A</keycap></entry>
@@ -417,7 +415,7 @@ menu items, for more information read the sections about the
 <tbody>
 <row>
 <entry><keycap>P</keycap></entry>
-<entry>Pause/Resume Game</entry>
+<entry>Pause/Resume the Game</entry>
 </row>
 <row>
 <entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry>
@@ -429,25 +427,25 @@ menu items, for more information read the sections about the
 </row>
 <row>
 <entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
-<entry>Quit &kappname;</entry>
+<entry>Quit &ksnakeduel;</entry>
 </row>
 <row>
 <entry><keycap>F1</keycap></entry>
-<entry>Help Contents</entry>
+<entry>This Manual</entry>
 </row>
 <row>
 <entry><keycombo
 action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
-<entry>What's This Help</entry>
+<entry>What's This help</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 
 <para>
-These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</ulink> by selecting <menuchoice>
-<guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem>
-</menuchoice> from the menubar.
+These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</ulink> by selecting the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
 </para>
 
 </sect1>
@@ -458,9 +456,9 @@ These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</u
 
 <title>The Configuration Dialog</title>
 
-<para>Selecting the <guimenuitem>Configure &kappname;...</guimenuitem> option
-in the <guimenu>Settings</guimenu> menu will open a further dialog which lets
-you tweak &kappname;'s behavior.</para>
+<para>Selecting the <menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Configure &ksnakeduel;...</guimenuitem></menuchoice> menu item will open a further dialog
+which lets you tweak &ksnakeduel;'s behavior.</para>
 
 <para>This dialog is divided into two pages.</para>
 
@@ -468,7 +466,7 @@ you tweak &kappname;'s behavior.</para>
 <title>General Configuration</title>
 
 <screenshot>
-<screeninfo>Configure &kappname; - General</screeninfo>
+<screeninfo>Configure &ksnakeduel; - General</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-general.png" format="PNG"/>
@@ -485,21 +483,20 @@ you tweak &kappname;'s behavior.</para>
 <listitem><para>This will let you change the game type. There are three options:
 
 <variablelist>
-<varlistentry>
-<term>&kappname;: Player vs Player</term><listitem><para> a
-&kappname; game between two human players</para></listitem>
-</varlistentry>
+  <varlistentry>
+    <term><guimenuitem>&ksnakeduel;: Player vs Player</guimenuitem></term>
+    <listitem><para>A &ksnakeduel; game between two human players.</para></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term>&kappname;: Player vs Computer</term>
-<listitem><para> a &kappname; game between a human player and the
-computer</para></listitem>
-</varlistentry>
+  <varlistentry>
+    <term><guimenuitem>&ksnakeduel;: Player vs Computer</guimenuitem></term>
+    <listitem><para>A &ksnakeduel; game between a human player and the computer.</para></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term>&ksnake;: Single player</term><listitem><para> 
-a single player &ksnake; game</para></listitem>
-</varlistentry>
+  <varlistentry>
+    <term><guimenuitem>&ksnakeduel;: Single player</guimenuitem></term>
+    <listitem><para>A single player &ksnakeduel; game.</para></listitem>
+  </varlistentry>
 </variablelist>
 
 </para></listitem>
@@ -507,7 +504,7 @@ a single player &ksnake; game</para></listitem>
 
 <varlistentry>
 <term><guilabel>Disable acceleration</guilabel></term>
-<listitem><para>Checking this box will disable the acceleration feature - 
+<listitem><para>Checking this box will disable the acceleration feature -
 pressing the acceleration key will have no effect, both vehicles will always
 travel with constant velocity.</para></listitem>
 </varlistentry>
@@ -524,7 +521,7 @@ user.
 
 <varlistentry>
 <term><guilabel>Game Options</guilabel></term>
-<listitem><para>Specify the <guilabel>Rounds to win</guilabel> to define how many
+<listitem><para>Specify the <guilabel>Rounds to win:</guilabel> to define how many
 rounds are required before a winner is declared.</para></listitem>
 </varlistentry>
 
@@ -535,7 +532,7 @@ rounds are required before a winner is declared.</para></listitem>
 <title>Theme Configuration</title>
 
 <screenshot>
-<screeninfo>Configure &kappname; - Theme</screeninfo>
+<screeninfo>Configure &ksnakeduel; - Theme</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-theme.png" format="PNG"/>
@@ -547,17 +544,17 @@ rounds are required before a winner is declared.</para></listitem>
 </screenshot>
 
 <para>
-This page will allow you to change the theme &kappname; uses.
+This page will allow you to change the theme &ksnakeduel; uses.
 </para>
 </sect1>
 </chapter>
 
-<!-- credits chapter done --> 
+<!-- credits chapter done -->
 <chapter id="credits">
 <title>Credits and License</title>
 
 <para>
-&kappname; 
+&ksnakeduel;
 </para>
 
 <para>Program Copyright 1998-2000 &Matthias.Kiefer;
