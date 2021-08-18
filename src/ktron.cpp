@@ -63,25 +63,25 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
 
 	m_player0Up = actionCollection()->addAction( QStringLiteral( "Pl1Up" ));
-	m_player0Up->setText(i18n("Right Player / KSnakeDuel: Up"));
+	m_player0Up->setText(i18n("Right Player / KSnake mode: Up"));
 	actionCollection()->setDefaultShortcut(m_player0Up,Qt::Key_Up);
 	connect(m_player0Up, &QAction::triggered, this, &KTron::triggerKey0Up);
 	addAction(m_player0Up);
 
 	m_player0Down = actionCollection()->addAction( QStringLiteral( "Pl1Down" ));
-	m_player0Down->setText(i18n("Right Player / KSnakeDuel: Down"));
+	m_player0Down->setText(i18n("Right Player / KSnake mode: Down"));
 	actionCollection()->setDefaultShortcut(m_player0Down,Qt::Key_Down);
 	connect(m_player0Down, &QAction::triggered, this, &KTron::triggerKey0Down);
 	addAction(m_player0Down);
 
 	m_player0Right = actionCollection()->addAction( QStringLiteral( "Pl1Right" ));
-	m_player0Right->setText(i18n("Right Player / KSnakeDuel: Right"));
+	m_player0Right->setText(i18n("Right Player / KSnake mode: Right"));
 	actionCollection()->setDefaultShortcut(m_player0Right,Qt::Key_Right);
 	connect(m_player0Right, &QAction::triggered, this, &KTron::triggerKey0Right);
 	addAction(m_player0Right);
 
 	m_player0Left = actionCollection()->addAction( QStringLiteral( "Pl1Left" ));
-	m_player0Left->setText(i18n("Right Player / KSnakeDuel: Left"));
+	m_player0Left->setText(i18n("Right Player / KSnake mode: Left"));
 	actionCollection()->setDefaultShortcut(m_player0Left,Qt::Key_Left);
 	connect(m_player0Left, &QAction::triggered, this, &KTron::triggerKey0Left);
 	addAction(m_player0Left);

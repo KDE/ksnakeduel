@@ -185,7 +185,7 @@ menu item.
 </chapter>
 
 <chapter id="playing-snake">
-<title>Playing &ksnakeduel;</title>
+<title>Playing KSnake mode</title>
 
 <sect1 id="playing-snake-rules">
 <title>Rules</title>
@@ -218,7 +218,7 @@ the status bar.
 </para>
 
 <para>
-When you are moving through the map there will appear obstacles. Hitting them
+When you are moving through the map there will also appear obstacles. Hitting them
 will also result in a crash. However, every time an obstacle appears and you
 survive you'll be rewarded 2 points
 </para>
@@ -494,7 +494,7 @@ which lets you tweak &ksnakeduel;'s behavior.</para>
   </varlistentry>
 
   <varlistentry>
-    <term><guimenuitem>&ksnakeduel;: Single player</guimenuitem></term>
+    <term><guimenuitem>KSnake mode: Single player</guimenuitem></term>
     <listitem><para>A single player &ksnakeduel; game.</para></listitem>
   </varlistentry>
 </variablelist>

@@ -49,7 +49,7 @@
            </item>
            <item>
             <property name="text">
-             <string>KSnakeDuel: Single player</string>
+             <string>KSnake mode: Single player</string>
             </property>
            </item>
           </widget>
@@ -98,7 +98,7 @@
          <item row="0" column="0">
           <widget class="QLabel" name="namePlayer1Label">
            <property name="text">
-            <string>Right player / KSnakeDuel:</string>
+            <string>Right player / KSnake mode:</string>
            </property>
            <property name="wordWrap">
             <bool>false</bool>
