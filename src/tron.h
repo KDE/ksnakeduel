@@ -45,7 +45,7 @@ class Tron : public QWidget
 
 	public:
         explicit Tron(QWidget *parent=nullptr);
-		~Tron();
+		~Tron() override;
 		void updatePixmap();
 		void setVelocity(int);
 		void setRectSize(int newSize);

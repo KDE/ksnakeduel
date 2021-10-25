@@ -33,7 +33,7 @@ class KTron : public KXmlGuiWindow {
 
 	public:
 		explicit KTron(QWidget *parent=nullptr);
-		~KTron();
+		~KTron() override;
 
 	private:
 		void updateStatusbar();
