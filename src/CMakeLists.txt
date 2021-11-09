@@ -6,17 +6,28 @@ ecm_setup_version(${KSNAKEDUEL_VERSION}
 add_executable(ksnakeduel)
 
 target_sources(ksnakeduel PRIVATE
-    renderer.cpp
-    object.cpp
-    snakepart.cpp
-    item.cpp
-    obstacle.cpp
-    playfield.cpp
-    player.cpp
     intelligence.cpp
-    tron.cpp
+    intelligence.h
+    item.cpp
+    item.h
     ktron.cpp
+    ktron.h
     main.cpp
+    object.cpp
+    object.h
+    obstacle.cpp
+    obstacle.h
+    player.cpp
+    player.h
+    playfield.cpp
+    playfield.h
+    renderer.cpp
+    renderer.h
+    snakepart.cpp
+    snakepart.h
+    tron.cpp
+    tron.h
+
 
     ksnakeduel.qrc
 )
