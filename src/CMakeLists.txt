@@ -55,7 +55,7 @@ target_link_libraries(ksnakeduel
     KF5::GuiAddons
     KF5::I18n
     KF5::XmlGui
-    Qt5::Svg
+    Qt${QT_MAJOR_VERSION}::Svg
 )
 
 install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})
