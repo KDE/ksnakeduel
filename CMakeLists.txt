@@ -16,7 +16,7 @@ set (QT_MIN_VERSION "5.15.0")
 set (KF5_MIN_VERSION "5.90.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
-set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${ECM_MODULE_PATH})
+set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
 
 include(KDEInstallDirs)
 include(KDECMakeSettings)
@@ -53,6 +53,8 @@ add_definitions(
     -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
     -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
 )
+
+include(InternalMacros)
 
 add_subdirectory(icons)
 add_subdirectory(themes)
