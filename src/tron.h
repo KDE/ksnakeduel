@@ -145,6 +145,7 @@ class Tron : public QWidget
 		*/
 		void doMove();
 		void unblockGame();
+		void resetOnThemeChange();
 };
 
 

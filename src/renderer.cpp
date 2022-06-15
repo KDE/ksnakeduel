@@ -10,37 +10,34 @@
 */
 
 #include "renderer.h"
-#include "settings.h"
+
 #include "object.h"
-
-#include <QPixmap>
-#include <QPixmapCache>
-
-#include <KFontUtils>
 #include "ksnakeduel_debug.h"
+// KDEGames
+#include <kdegames_version.h>
+#include <KgThemeProvider>
+// KF
+#include <KFontUtils>
 
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgametheme.h>
+static KgThemeProvider *provider()
+{
+    auto *prov = new KgThemeProvider;
+    prov->discoverThemes(
+#if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
+        "appdata",
+#endif
+        QStringLiteral("themes"), // theme file location
+        QStringLiteral("default") // default theme file name
+    );
+    return prov;
+}
 
-
-const QString sizeSuffix(QStringLiteral( "_%1-%2" ));
-const QString frameSuffix(QStringLiteral( "-%1" ));
 
 Renderer::Renderer()
-{
-	QPixmapCache::setCacheLimit(40);
-	QPixmapCache::clear();
-    loadTheme(Settings::theme());
-}
-
-Renderer::Renderer(const Renderer &)
+    : KGameRenderer(provider())
 {
 }
 
-Renderer::~Renderer()
-{
-	delete m_playField;
-}
 
 Renderer *Renderer::self()
 {
@@ -50,25 +47,16 @@ Renderer *Renderer::self()
 
 bool Renderer::loadTheme(const QString &name)
 {
-    bool discardCache = !m_currentTheme.isEmpty();
-    if (!m_currentTheme.isEmpty() && m_currentTheme == name)
-        return true; //requested to load the theme that is already loaded
-    KGameTheme theme;
-    //try to load theme
-    if (!theme.load(name))
-    {
-        if (!theme.loadDefault())
-            return false;
-    }
-    m_currentTheme = name;
-
-    //load graphics
-    if (!m_renderer.load(theme.graphics()))
-        return false;
-    //flush cache
-    if (discardCache)
-        QPixmapCache::clear();
-    return true;
+	const QByteArray identifier = name.toUtf8();
+	KgThemeProvider *provider = themeProvider();
+	const QList<const KgTheme *> themes = provider->themes();
+	for (auto* theme : themes) {
+	    if (theme->identifier() == identifier) {
+		provider->setCurrentTheme(theme);
+		return true;
+	    }
+	}
+	return false;
 }
 
 QPixmap Renderer::getPart(const QString &frameSvgName)
@@ -78,38 +66,21 @@ QPixmap Renderer::getPart(const QString &frameSvgName)
 
 QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSize)
 {
-    if (partSize.isEmpty())
-        return QPixmap();
-
-	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
-	QPixmap pix;
-        if (!QPixmapCache::find(framePixName, &pix))
-	{
-		pix = QPixmap(partSize);
-		pix.fill(Qt::transparent);
-		QPainter painter(&pix);
-		m_renderer.render(&painter, frameSvgName);
-		painter.end();
-		QPixmapCache::insert(framePixName, pix);
-	}
-
-    return pix;
+    return spritePixmap(frameSvgName, partSize);
 }
 
 QPixmap Renderer::background()
 {
-    QPixmap pix;
-    QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(m_sceneSize.width()).arg(m_sceneSize.height());
-        if (!QPixmapCache::find(pixName, &pix))
+        if (m_background.isNull())
 	{
-		pix = QPixmap(m_sceneSize);
-		pix.fill(Qt::white);
-		QPainter painter(&pix);
+		m_background = QPixmap(m_sceneSize);
+		m_background.fill(Qt::white);
+		QPainter painter(&m_background);
 
 		QPixmap bgPix = getPart(QStringLiteral( "bgtile" ));
 		if (!bgPix.isNull())
 		{
-			pix.fill(Qt::white);
+			m_background.fill(Qt::white);
 			int pw = bgPix.width();
 			int ph = bgPix.height();
 			for (int x = 0; x <= m_sceneSize.width(); x += pw) {
@@ -120,15 +91,14 @@ QPixmap Renderer::background()
 		}
 		else
 		{
-			pix.fill(Qt::green);
+			m_background.fill(Qt::green);
 		}
 
 		painter.end();
-		QPixmapCache::insert(pixName, pix);
 	}
 
 	// Tiled background
-	return pix;
+	return m_background;
 }
 
 void Renderer::boardResized(int width, int height, int partWidth, int partHeight)
@@ -136,26 +106,30 @@ void Renderer::boardResized(int width, int height, int partWidth, int partHeight
 	//new metrics
 	m_sceneSize = QSize(width, height);
 	m_partSize = QSize(partWidth, partHeight);
+
+	clearPixmapCache();
 }
 
-void Renderer::resetPlayField()
+void Renderer::clearPixmapCache()
 {
-	delete m_playField;
-	m_playField = new QPixmap(m_sceneSize);
-	//m_playField->fill(Qt::green);
+	m_background = QPixmap();
+	m_playField = QPixmap();
 }
 
 void Renderer::updatePlayField(PlayField &playfield)
 {
 	int i, j;
 
-	if (!m_playField)
+	if (m_playField.isNull())
 	{
-		resetPlayField();
+		if (m_sceneSize.isEmpty()) {
+		    return;
+		}
+		m_playField = QPixmap(m_sceneSize);
 	}
 
 	QPainter painter;
-	painter.begin(m_playField);
+	painter.begin(&m_playField);
 
 	QPixmap bgPix = background();
 	painter.drawPixmap(0, 0, bgPix);
@@ -214,7 +188,7 @@ void Renderer::drawPart(QPainter & painter, int x, int y, const QString &svgName
 
 QPixmap *Renderer::getPlayField()
 {
-	return m_playField;
+	return &m_playField;
 }
 
 QPixmap Renderer::messageBox(const QString &message) {

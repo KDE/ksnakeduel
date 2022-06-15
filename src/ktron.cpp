@@ -14,21 +14,20 @@
 #include "settings.h"
 #include "ui_general.h"
 
+#include <KgDifficulty>
+#include <KStandardGameAction>
+#include <KScoreDialog>
+#include <KgThemeSelector>
+
 #include <QApplication>
 #include <QStatusBar>
 
 #include <KActionCollection>
 #include <KConfigDialog>
-#include <KgDifficulty>
 #include <KLocalizedString>
 #include <KMessageBox>
-#include <KStandardGameAction>
-#include <KScoreDialog>
 #include <KShortcutsDialog>
 #include <KToggleAction>
-
-#define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
-#include <libkdegamesprivate/kgamethemeselector.h>
 
 //UI
 class General : public QWidget, public Ui::General
@@ -143,6 +142,10 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
     );
     KgDifficultyGUI::init(this);
     connect(Kg::difficulty(), &KgDifficulty::currentLevelChanged, m_tron, &Tron::loadSettings);
+    connect(Renderer::self()->themeProvider(), &KgThemeProvider::currentThemeChanged,
+	    [this](const KgTheme *theme) {
+		Settings::setTheme(QString::fromUtf8(theme->identifier()));
+	    });
 
 	setupGUI( KXmlGuiWindow::Keys | StatusBar | Save | Create);
 	loadSettings();
@@ -258,7 +261,7 @@ void KTron::showSettings(){
 
 	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral( "settings" ), Settings::self());
 	dialog->addPage(m_generalConfigDialog, i18n("General"), QStringLiteral( "games-config-options" ));
-	dialog->addPage(new KGameThemeSelector(dialog, Settings::self(), KGameThemeSelector::NewStuffEnableDownload), i18n("Theme"), QStringLiteral( "games-config-theme" ));
+	dialog->addPage(new KgThemeSelector(Renderer::self()->themeProvider(), KgThemeSelector::EnableNewStuffDownload, dialog), i18n("Theme"), QStringLiteral( "games-config-theme" ));
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KTron::loadSettings);
 	connect(dialog, &KConfigDialog::settingsChanged, m_tron, &Tron::loadSettings);
 	dialog->show();

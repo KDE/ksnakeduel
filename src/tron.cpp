@@ -18,7 +18,9 @@
 
 #include "ksnakeduel_debug.h"
 #include <KLocalizedString>
+// KDEGames
 #include <KgDifficulty>
+#include <KgThemeProvider>
 
 #include "settings.h"
 #include "renderer.h"
@@ -47,6 +49,8 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	timer = new QTimer(this);
 	//loadSettings();
 	connect(timer, &QTimer::timeout, this, &Tron::doMove);
+	connect(Renderer::self()->themeProvider(), &KgThemeProvider::currentThemeChanged,
+		this, &Tron::resetOnThemeChange);
 }
 
 void Tron::loadSettings(){
@@ -93,8 +97,6 @@ void Tron::resizeRenderer()
 	}
 
 	Renderer::self()->boardResized(width(), height(), blockWidth, blockHeight);
-
-	Renderer::self()->resetPlayField();
 }
 
 void Tron::createNewPlayfield()
@@ -379,6 +381,13 @@ void Tron::paintEvent(QPaintEvent *e)
 void Tron::resizeEvent(QResizeEvent *)
 {
 	resizeRenderer();
+	updatePixmap();
+	update();
+}
+
+void Tron::resetOnThemeChange()
+{
+	Renderer::self()->clearPixmapCache();
 	updatePixmap();
 	update();
 }

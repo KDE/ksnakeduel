@@ -13,19 +13,19 @@
 #define RENDERER_H
 
 #include "playfield.h"
-
-#include <QSvgRenderer>
+// KDEGames
+#include <KGameRenderer>
+// Qt
+#include <QPixmap>
 #include <QPainter>
 #include <QString>
 #include <QSize>
 
-class QPixmap;
-
-class Renderer {
+class Renderer : public KGameRenderer
+{
 	private:
 		Renderer();
-		Renderer(const Renderer &);
-		~Renderer();
+
 	public:
 		static Renderer *self();
 
@@ -40,20 +40,17 @@ class Renderer {
 		QPixmap background();
 		QPixmap messageBox(const QString &message);
 
-		void resetPlayField();
 		void drawPart(QPainter & painter, int x, int y, const QString &svgName);
 		void updatePlayField(PlayField &playfield);
 		QPixmap *getPlayField();
+		void clearPixmapCache();
 
     private:
 		QSize m_sceneSize;
 		QSize m_partSize;
 
-		QSvgRenderer m_renderer;
-
-		QPixmap *m_playField = nullptr;
-
-		QString m_currentTheme;
+		QPixmap m_playField;
+		QPixmap m_background;
 };
 
 #endif // RENDERER_H
