@@ -161,13 +161,13 @@ void Renderer::updatePlayField(PlayField &playfield)
 	painter.drawPixmap(0, 0, bgPix);
 
 	// Draw border
+	const QPixmap part = Renderer::self()->getPart(QStringLiteral( "border" ));
 	for (i = 0; i < playfield.getWidth() + 2; ++i)
 	{
 		for (j = 0; j < playfield.getHeight() + 2; ++j)
 		{
 			if (i == 0 || i == playfield.getWidth() + 1 || j == 0 || j == playfield.getHeight() + 1)
 			{
-				QPixmap part = Renderer::self()->getPart(QStringLiteral( "border" ));
 				painter.drawPixmap(calculateOffsetX(i), calculateOffsetY(j), part);
 			}
 		}
