@@ -15,7 +15,6 @@
 
 #include <QPixmap>
 #include <QPixmapCache>
-#include <QSvgRenderer>
 
 #include <KFontUtils>
 #include "ksnakeduel_debug.h"
@@ -23,41 +22,14 @@
 #define USE_UNSTABLE_LIBKDEGAMESPRIVATE_API
 #include <libkdegamesprivate/kgametheme.h>
 
-class RendererPrivate
-{
-	public:
-		RendererPrivate();
-		~RendererPrivate();
-
-		QSize m_sceneSize;
-		QSize m_partSize;
-
-		QSvgRenderer m_renderer;
-
-		QPixmap *m_playField;
-
-		QString m_currentTheme;
-};
 
 const QString sizeSuffix(QStringLiteral( "_%1-%2" ));
 const QString frameSuffix(QStringLiteral( "-%1" ));
 
-RendererPrivate::RendererPrivate()
-    : m_renderer()
+Renderer::Renderer()
 {
 	QPixmapCache::setCacheLimit(40);
 	QPixmapCache::clear();
-    m_playField = nullptr;
-}
-
-RendererPrivate::~RendererPrivate()
-{
-	delete m_playField;
-}
-
-Renderer::Renderer()
-    : p(new RendererPrivate)
-{
     loadTheme(Settings::theme());
 }
 
@@ -67,7 +39,7 @@ Renderer::Renderer(const Renderer &)
 
 Renderer::~Renderer()
 {
-    delete p;
+	delete m_playField;
 }
 
 Renderer *Renderer::self()
@@ -78,8 +50,8 @@ Renderer *Renderer::self()
 
 bool Renderer::loadTheme(const QString &name)
 {
-    bool discardCache = !p->m_currentTheme.isEmpty();
-    if (!p->m_currentTheme.isEmpty() && p->m_currentTheme == name)
+    bool discardCache = !m_currentTheme.isEmpty();
+    if (!m_currentTheme.isEmpty() && m_currentTheme == name)
         return true; //requested to load the theme that is already loaded
     KGameTheme theme;
     //try to load theme
@@ -88,10 +60,10 @@ bool Renderer::loadTheme(const QString &name)
         if (!theme.loadDefault())
             return false;
     }
-    p->m_currentTheme = name;
+    m_currentTheme = name;
 
     //load graphics
-    if (!p->m_renderer.load(theme.graphics()))
+    if (!m_renderer.load(theme.graphics()))
         return false;
     //flush cache
     if (discardCache)
@@ -101,11 +73,14 @@ bool Renderer::loadTheme(const QString &name)
 
 QPixmap Renderer::getPart(const QString &frameSvgName)
 {
-	return getPartOfSize(frameSvgName, p->m_partSize);
+	return getPartOfSize(frameSvgName, m_partSize);
 }
 
 QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSize)
 {
+    if (partSize.isEmpty())
+        return QPixmap();
+
 	QString framePixName = frameSvgName + sizeSuffix.arg(partSize.width()).arg(partSize.height());
 	QPixmap pix;
         if (!QPixmapCache::find(framePixName, &pix))
@@ -113,31 +88,10 @@ QPixmap Renderer::getPartOfSize(const QString &frameSvgName, const QSize &partSi
 		pix = QPixmap(partSize);
 		pix.fill(Qt::transparent);
 		QPainter painter(&pix);
-		p->m_renderer.render(&painter, frameSvgName);
+		m_renderer.render(&painter, frameSvgName);
 		painter.end();
 		QPixmapCache::insert(framePixName, pix);
 	}
-
-    //return the static pixmap
-    return pixmapFromCache(p, frameSvgName, partSize);
-}
-
-QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size)
-{
-    if (size.isEmpty())
-        return QPixmap();
-    QPixmap pix;
-    QString pixName = svgName + sizeSuffix.arg(size.width()).arg(size.height());
-
-    if (!QPixmapCache::find(pixName, &pix))
-    {
-        pix = QPixmap(size);
-        pix.fill(Qt::transparent);
-        QPainter painter(&pix);
-        p->m_renderer.render(&painter, svgName);
-        painter.end();
-        QPixmapCache::insert(pixName, pix);
-    }
 
     return pix;
 }
@@ -145,10 +99,10 @@ QPixmap Renderer::pixmapFromCache(RendererPrivate *p, const QString &svgName, co
 QPixmap Renderer::background()
 {
     QPixmap pix;
-    QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(p->m_sceneSize.width()).arg(p->m_sceneSize.height());
+    QString pixName = QLatin1String( "bgtile" ) + sizeSuffix.arg(m_sceneSize.width()).arg(m_sceneSize.height());
         if (!QPixmapCache::find(pixName, &pix))
 	{
-		pix = QPixmap(p->m_sceneSize);
+		pix = QPixmap(m_sceneSize);
 		pix.fill(Qt::white);
 		QPainter painter(&pix);
 
@@ -158,8 +112,8 @@ QPixmap Renderer::background()
 			pix.fill(Qt::white);
 			int pw = bgPix.width();
 			int ph = bgPix.height();
-			for (int x = 0; x <= p->m_sceneSize.width(); x += pw) {
-				for (int y = 0; y <= p->m_sceneSize.height(); y += ph) {
+			for (int x = 0; x <= m_sceneSize.width(); x += pw) {
+				for (int y = 0; y <= m_sceneSize.height(); y += ph) {
 					painter.drawPixmap(x, y, bgPix);
 				}
 			}
@@ -180,28 +134,28 @@ QPixmap Renderer::background()
 void Renderer::boardResized(int width, int height, int partWidth, int partHeight)
 {
 	//new metrics
-	p->m_sceneSize = QSize(width, height);
-	p->m_partSize = QSize(partWidth, partHeight);
+	m_sceneSize = QSize(width, height);
+	m_partSize = QSize(partWidth, partHeight);
 }
 
 void Renderer::resetPlayField()
 {
-	delete p->m_playField;
-	p->m_playField = new QPixmap(p->m_sceneSize);
-	//p->m_playField->fill(Qt::green);
+	delete m_playField;
+	m_playField = new QPixmap(m_sceneSize);
+	//m_playField->fill(Qt::green);
 }
 
 void Renderer::updatePlayField(PlayField &playfield)
 {
 	int i, j;
 
-	if (!p->m_playField)
+	if (!m_playField)
 	{
 		resetPlayField();
 	}
 
 	QPainter painter;
-	painter.begin(p->m_playField);
+	painter.begin(m_playField);
 
 	QPixmap bgPix = background();
 	painter.drawPixmap(0, 0, bgPix);
@@ -236,12 +190,12 @@ void Renderer::updatePlayField(PlayField &playfield)
 
 int Renderer::calculateOffsetX(int x)
 {
-	return (x * p->m_partSize.width()) + (p->m_sceneSize.width() - (TRON_PLAYFIELD_WIDTH + 2) * p->m_partSize.width()) / 2;
+	return (x * m_partSize.width()) + (m_sceneSize.width() - (TRON_PLAYFIELD_WIDTH + 2) * m_partSize.width()) / 2;
 }
 
 int Renderer::calculateOffsetY(int y)
 {
-	return (y * p->m_partSize.height()) + (p->m_sceneSize.height() - (TRON_PLAYFIELD_HEIGHT + 2) * p->m_partSize.height()) / 2;
+	return (y * m_partSize.height()) + (m_sceneSize.height() - (TRON_PLAYFIELD_HEIGHT + 2) * m_partSize.height()) / 2;
 }
 
 void Renderer::drawPart(QPainter & painter, int x, int y, const QString &svgName)
@@ -260,12 +214,12 @@ void Renderer::drawPart(QPainter & painter, int x, int y, const QString &svgName
 
 QPixmap *Renderer::getPlayField()
 {
-	return p->m_playField;
+	return m_playField;
 }
 
 QPixmap Renderer::messageBox(const QString &message) {
-	int w = p->m_sceneSize.width() / 2;
-	int h = p->m_sceneSize.height() / 3;
+	int w = m_sceneSize.width() / 2;
+	int h = m_sceneSize.height() / 3;
 
 	QSize size(w, h);
 	QPixmap pixmap = getPartOfSize(QStringLiteral( "display" ),  size);

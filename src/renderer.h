@@ -14,12 +14,12 @@
 
 #include "playfield.h"
 
+#include <QSvgRenderer>
 #include <QPainter>
 #include <QString>
 #include <QSize>
 
 class QPixmap;
-class RendererPrivate;
 
 class Renderer {
 	private:
@@ -45,10 +45,15 @@ class Renderer {
 		void updatePlayField(PlayField &playfield);
 		QPixmap *getPlayField();
 
-		QPixmap pixmapFromCache(RendererPrivate *p, const QString &svgName, const QSize &size);
-
     private:
-		RendererPrivate *p;
+		QSize m_sceneSize;
+		QSize m_partSize;
+
+		QSvgRenderer m_renderer;
+
+		QPixmap *m_playField = nullptr;
+
+		QString m_currentTheme;
 };
 
 #endif // RENDERER_H
