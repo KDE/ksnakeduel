@@ -54,7 +54,7 @@ int main(int argc, char* argv[])
                  "Parts of the algorithms for the computer player are from\n"
                  "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"),
             QString(),
-            QStringLiteral("https://kde.org/applications/games/org.kde.ksnakeduel"));
+            QStringLiteral("https://apps.kde.org/ksnakeduel"));
     aboutData.addAuthor(i18n("Matthias Kiefer"), i18n("Original author"), QStringLiteral("matthias.kiefer@gmx.de"));
     aboutData.addAuthor(i18n("Benjamin Meyer"), i18n("Various improvements"), QStringLiteral("ben+ktron@meyerhome.net"));
     aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));
