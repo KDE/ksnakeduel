@@ -49,8 +49,8 @@ ecm_add_app_icon(ksnakeduel ICONS ${ICONS_SRCS})
 
 target_link_libraries(ksnakeduel
     KF5KDEGames
-    KF5KDEGamesPrivate
     KF5::CoreAddons
+    KF5::Completion
     KF5::Crash
     KF5::DBusAddons
     KF5::GuiAddons
