@@ -21,7 +21,7 @@
 
 static KgThemeProvider *provider()
 {
-    auto *prov = new KgThemeProvider;
+    auto *prov = new KgThemeProvider(QByteArray()); // empty config key to disable internal config storage
     prov->discoverThemes(
 #if KDEGAMES_VERSION < QT_VERSION_CHECK(7, 4, 0)
         "appdata",
