@@ -2,6 +2,7 @@
 VersionFormat=1
 Name=Default Theme
 Name[ar]=السّمة المبدئيّة
+Name[bg]=Стандартна тема
 Name[bs]=Podrazumijevana tema
 Name[ca]=Tema predeterminat
 Name[ca@valencia]=Tema predeterminat
@@ -49,6 +50,7 @@ Name[zh_CN]=默认主题
 Name[zh_TW]=預設主題
 Description=Default theme.
 Description[ar]=السّمة الافتراضيّة.
+Description[bg]=Стандартна тема.
 Description[bs]=Podrazumijevana tema
 Description[ca]=Tema predeterminat.
 Description[ca@valencia]=Tema predeterminat.
