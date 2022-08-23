@@ -3,7 +3,6 @@ Type=Application
 Exec=ksnakeduel
 Icon=ksnakeduel
 X-DocPath=ksnakeduel/index.html
-Terminal=false
 Name=KSnakeDuel
 Name[ar]=مبارزة الأفعى
 Name[bg]=KSnakeDuel
