@@ -27,7 +27,6 @@
 #include <KLocalizedString>
 #include <KMessageBox>
 #include <KShortcutsDialog>
-#include <KToggleAction>
 
 //UI
 class General : public QWidget, public Ui::General
