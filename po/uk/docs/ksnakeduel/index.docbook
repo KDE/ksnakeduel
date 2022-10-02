@@ -1,0 +1,831 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Ukrainian "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Підручник з &ksnakeduel;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Рецензент</contrib>
+</othercredit>
+<othercredit role="translator"
+><firstname
+>Юрій</firstname
+><surname
+>Чорноіван</surname
+><affiliation
+><address
+><email
+>yurchor@ukr.net</email
+></address
+></affiliation
+><contrib
+>Переклад українською</contrib
+></othercredit>
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>17 серпня 2021 року</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&ksnakeduel; — це проста гра у «дуель змій», у цю гру можна гратися самому або разом з другом. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>гра</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>snakeduel</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>змія</keyword>
+<keyword
+>дуель</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Вступ</title>
+
+<para
+>&ksnakeduel; — це проста гра «дуель змій». Грати у &ksnakeduel; можна або з комп’ютерним гравцем, або з другом (подругою). Метою гри є вижити у грі довше, ніж ваш суперник. Щоб зробити це, уникайте контакту зі стінами, хвостом вашої змійки або вашим опонентом. </para>
+
+<para
+>&ksnakeduel; — це простий клон гри Tron для. Метою гри є вижити якомога довше і з’їсти якнайбільше фруктів. </para>
+
+<para
+>Ви можете перемикатися між цими двома типами гри за допомогою інструменту вибору типу гри у діалоговому вікні налаштування. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Як грати у &ksnakeduel;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Правила</title>
+
+<para
+>Після початку раунду гравці почнуть безупинний рух (якщо гру не буде призупинено). Вам слід уникати аварій зміною напрямку руху. Крім того, ви можете намагатися призвести до аварії вашого суперника. Для виконання ваших завдань ви можете збільшувати швидкість руху натисканням вашої клавіші прискорення. </para>
+
+<para
+>Раунд починається після того, як гравець-людина натисне клавішу напрямку. Початковий рух буде здійснено у вказаному гравцем напрямку. </para>
+
+<para
+>Якщо ви бажаєте перервати гру, скористайтеся пунктом меню <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+></menuchoice
+>. Крім того, гру буде призупинено, якщо гра втратить фокус клавіатури, наприклад, якщо ви перемкнетеся до іншого вікна. </para>
+
+<para
+>Щоб продовжити гру, знову скористайтеся цим пунктом меню або відповідним клавіатурним скороченням. Крім того, гру буде продовжено, якщо один з гравців-людей натисне одну з клавіш зміни напрямку руху. Але будьте уважні, після натискання цієї клавіші напрям руху у грі також негайно буде змінено. </para>
+
+
+<para
+>Гра складається з декількох раундів і завершується, якщо один з гравців набере принаймні дев’ять очок і на два очки більше за суперника. Поточний рахунок буде постійно показуватися у смужці стану. </para>
+
+<para
+>Ви можете змінити рівень складності гри за допомогою підменю <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Складність</guisubmenu
+></menuchoice
+> або вибрати рівень за допомогою спадного списку на смужці стану. Рівень складності впливає на швидкість гри і рівень гри комп’ютерного суперника. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>Комп’ютерний гравець</title>
+
+<para
+>Ви можете грати проти комп’ютера. Рівень складності гри визначатиме те, наскільки «розумно» поводитиметься ваш опонент. </para>
+<para
+>На низьких рівнях комп’ютер не стежить за рухами суперника і просто здійснює рух. На вищих рівнях комп’ютер намагатиметься заважати рухам суперника. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Використання клавіатури</title>
+
+<para
+>У розпорядження кожного з гравців надається по п’ять клавіш. Чотири клавіші призначено для зміни напрямку, а п’яту — для прискорення. </para>
+
+<para
+>Вам не слід весь час тримати клавіші напрямку натиснутими. Просто натисніть їх одного разу, щоб змінити напрямок руху для вашого гравця. </para>
+
+<para
+>Прискорення відбувається лише під час натискання клавіші прискорення. Після того, як ви відпустите клавішу прискорення, швидкість стане звичайною. </para>
+
+<note
+><para
+>Ви можете <ulink url="help:/fundamentals/shortcuts.html"
+>змінити клавіші керування</ulink
+> за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати скорочення...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Як грати у KSnake</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Правила</title>
+
+<para
+>Після початку гри рух гравця вперед зупинити неможливо (хіба що ви призупините гру). Вам потрібно уникати аварій змінюючи напрям руху. Гра розпочнеться після натискання клавіші зміни напрямку. Початковий напрямок руху відповідатиме натиснутій клавіші. </para>
+
+<para
+>Якщо ви бажаєте перервати гру, скористайтеся пунктом <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+></menuchoice
+> або відповідним клавіатурним скороченням. Крім того, гру буде призупинено, якщо гра втратить фокус клавіатури, наприклад, якщо ви перемкнетеся до іншого вікна. </para>
+
+<para
+>Щоб продовжити гру, знову скористайтеся цим пунктом меню або відповідним клавіатурним скороченням. Крім того, гру буде продовжено, якщо один з гравців-людей натисне одну з клавіш зміни напрямку руху. Але будьте уважні, після натискання цієї клавіші напрям руху у грі також негайно буде змінено. </para>
+
+<para
+>Під час гри на карті завжди буде один фрукт. Якщо вам вдасться підібрати його, ваш рахунок поповниться 5 очками. Поточний рахунок можна буде постійно переглядати у смужці стану. </para>
+
+<para
+>Під час руху картою перед вами також виникатимуть перешкоди. Зіткнення з ними призведе до аварії. Але кожного разу, коли вам вдаватиметься оминути перешкоду, до вашого рахунку додаватиметься 2 очки. </para>
+
+<para
+>Ви можете змінити рівень складності гри за допомогою підменю <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guisubmenu
+>Складність</guisubmenu
+></menuchoice
+> або вибрати рівень за допомогою спадного списку на смужці стану. Рівень складності впливає на швидкість гри і рівень гри комп’ютерного суперника. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Використання клавіатури</title>
+
+<para
+>У розпорядженні кожного з гравців буде чотири клавіші. Ними можна скористатися для зміни напрямку руху. Потреби в утримуванні клавіш зміни напрямку немає. Вам достатньо натиснути їх один раз, щоб змінити напрям руху. </para>
+
+<note
+><para
+>Ви можете <ulink url="help:/fundamentals/shortcuts.html"
+>змінити клавіші керування</ulink
+> за допомогою пункту меню <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати скорочення...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Огляд інтерфейсу</title>
+
+<sect1 id="menu-items">
+<title
+>Пункти меню</title>
+
+<para
+>У цьому списку коротко описано кожен з пунктів меню програми.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Створити</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Починає нову гру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Призупиняє або поновлює гру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Показати найкращі результати</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Показує таблицю найкращих результатів.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Гра</guimenu
+> <guimenuitem
+>Вийти</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Вийти з &ksnakeduel;.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Складність</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Підменю, яке надає вам змогу змінити рівень складності гри.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати &ksnakeduel;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Відкриває <link linkend="configuration"
+>комплексне діалогове вікно</link
+>, призначене для налаштування різноманітних параметрів.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Крім того, у &ksnakeduel; передбачено типові для &kde; пункти меню <guimenu
+>Параметри</guimenu
+> і <guimenu
+>Довідка</guimenu
+>. Щоб дізнатися більше, ознайомтеся з розділами щодо <ulink url="help:/fundamentals/menus.html#menus-settings"
+>меню «Параметри»</ulink
+> та <ulink url="help:/fundamentals/menus.html#menus-help"
+>меню «Довідка»</ulink
+> підручника з основ роботи у &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Типові клавіатурні скорочення</title>
+
+<para
+>Нижче у таблицях наведено типові клавіатурні скорочення.</para>
+
+
+<table>
+<title
+>Клавіатурні скорочення гравця 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбінація клавіш</entry>
+<entry
+>Дія</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>Стрілка вгору</entry>
+<entry
+>Рухатися вгору</entry>
+</row>
+<row>
+<entry
+>Стрілка вниз</entry>
+<entry
+>Рухатися вниз</entry>
+</row>
+<row>
+<entry
+>Стрілка праворуч</entry>
+<entry
+>Рухатися праворуч</entry>
+</row>
+<row>
+<entry
+>Стрілка ліворуч</entry>
+<entry
+>Рухатися ліворуч</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Прискоритися</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Клавіші керування гравця 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбінація клавіш</entry>
+<entry
+>Дія</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Рухатися вгору</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Рухатися вниз</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Рухатися праворуч</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Рухатися ліворуч</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Прискоритися</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Загальні скорочення</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбінація клавіш</entry>
+<entry
+>Дія</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Призупинити/Поновити гру.</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Найкращі результати</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Нова гра</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Вийти з &ksnakeduel;</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Цей підручник</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>Довідка «Що це?»</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Ці клавіатурні скорочення можна змінити за допомогою пункту меню <menuchoice
+> <guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати скорочення...</guimenuitem
+> </menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>Діалогове вікно налаштування</title>
+
+<para
+>Вибір пункту <menuchoice
+><guimenu
+>Параметри</guimenu
+> <guimenuitem
+>Налаштувати &ksnakeduel;...</guimenuitem
+></menuchoice
+> призведе до відкриття діалогового вікна, за допомогою якого ви зможете налаштувати поведінку &ksnakeduel;.</para>
+
+<para
+>Це діалогове вікно поділено на дві сторінки.</para>
+
+<sect1 id="configuration-general">
+<title
+>Загальне налаштування</title>
+
+<screenshot>
+<screeninfo
+>Налаштувати &ksnakeduel; — Загальне</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Загальне налаштування</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Тип гри</guilabel
+></term>
+<listitem
+><para
+>За допомогою цього пункту ви зможете змінити тип гри. Існує три варіанти: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: людина проти людини</guimenuitem
+></term>
+    <listitem
+><para
+>Гра у &ksnakeduel; між двома людьми.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: людина проти комп’ютера</guimenuitem
+></term>
+    <listitem
+><para
+>Гра у &ksnakeduel; між людиною і комп’ютером</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Режим KSnake: один гравець</guimenuitem
+></term>
+    <listitem
+><para
+>Гра у &ksnake; з одним гравцем</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Вимкнути прискорення</guilabel
+></term>
+<listitem
+><para
+>Позначення цього пункту призведе до вимикання функціональної можливості прискорення, — натискання клавіші прискорення не матиме жодних наслідків, обидва гравці завжди рухатимуться з однаковою швидкістю.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Імена гравців</guilabel
+></term>
+<listitem
+><para
+>Тут можна вказати імена гравців, які замінять собою типові імена гравців.</para>
+<para
+>Типовим іменем гравця буде ім’я поточного користувача системи. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Параметри гри</guilabel
+></term>
+<listitem
+><para
+>Вкажіть значення <guilabel
+>Кількості раундів для виграшу</guilabel
+>, щоб визначити кількість раундів, які слід виграти, щоб вважатися переможцем гри.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Налаштування теми</title>
+
+<screenshot>
+<screeninfo
+>Налаштувати &ksnakeduel; — Тема</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Налаштування теми</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>За допомогою цієї сторінки ви можете змінити тему, яку використовуватиме &ksnakeduel;. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Подяки і ліцензія</title>
+
+<para
+>&ksnakeduel; </para>
+
+<para
+>Авторські права на програму належать &Matthias.Kiefer; &Matthias.Kiefer.mail;, ©1998-2000 </para>
+
+<para
+>Авторські права на програму належать &Stas.Verberkt; &Stas.Verberkt.mail;, ©2008–2009 </para>
+
+<para
+>Частину коду було запозичено з програми xtron-1.1, автором якої є Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+> </para>
+
+<para
+>Авторські права на документацію &Matthias.Kiefer; &Matthias.Kiefer.mail;, ©1999 </para>
+
+<para
+>Автором оновлення документації для &kde; 2.0 є &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Переклад українською: Юрій Чорноіван <email
+>yurchor@ukr.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+

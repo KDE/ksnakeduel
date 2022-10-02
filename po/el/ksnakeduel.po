@@ -1,0 +1,393 @@
+# translation of ktron.po to Greek
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Spiros Georgaras <sng@hellug.gr>, 2008.
+# Toussis Manolis <manolis@koppermind.homelinux.org>, 2008, 2009.
+# Dimitris Kardarakos <dimkard@gmail.com>, 2013.
+# Dimitrios Glentadakis <dglent@gmail.com>, 2013.
+# Stelios <sstavra@gmail.com>, 2021.
+msgid ""
+msgstr ""
+"Project-Id-Version: ktron\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:44+0000\n"
+"PO-Revision-Date: 2021-09-04 09:09+0300\n"
+"Last-Translator: Stelios <sstavra@gmail.com>\n"
+"Language-Team: Greek <kde-i18n-el@kde.org>\n"
+"Language: el\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Lokalize 20.04.2\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Τούσης Μανώλης"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "manolis@koppermind.homelinux.org"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
+#: general.ui:35
+#, kde-format
+msgid "Game Type"
+msgstr "Τύπος παιχνιδιού"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:42
+#, kde-format
+msgid "KSnakeDuel: Player vs Computer"
+msgstr "KSnakeDuel: Παίκτης εναντίον υπολογιστή"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:47
+#, kde-format
+msgid "KSnakeDuel: Player vs Player"
+msgstr "KSnakeDuel: Παίκτης εναντίον παίκτη"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:52
+#, kde-format
+msgid "KSnake mode: Single player"
+msgstr "Λειτουργία KSnake: Ένας παίκτης"
+
+#. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
+#: general.ui:60
+#, kde-format
+msgid "Game type:"
+msgstr "Τύπος παιχνιδιού:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
+#: general.ui:73
+#, kde-format
+msgid "Behavior"
+msgstr "Συμπεριφορά"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
+#: general.ui:79
+#, kde-format
+msgid "&Disable acceleration"
+msgstr "&Απενεργοποίηση επιτάχυνσης"
+
+#. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
+#: general.ui:89
+#, kde-format
+msgid "Player Names"
+msgstr "Ονόματα παικτών"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
+#: general.ui:101
+#, kde-format
+msgid "Right player / KSnake mode:"
+msgstr "Δεξιός παίκτης / Λειτουργία KSnake:"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
+#: general.ui:111 ktron.cpp:258
+#, kde-format
+msgid "Left player:"
+msgstr "Αριστερός παίκτης:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
+#: general.ui:124
+#, kde-format
+msgid "Game Options"
+msgstr "Επιλογές παιχνιδιού"
+
+#. i18n: ectx: property (text), widget (QLabel, roundsLabel)
+#: general.ui:130
+#, kde-format
+msgid "Rounds to win:"
+msgstr "Γύροι για τη νίκη:"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: ksnakeduel.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Το γραφικό θέμα που θα χρησιμοποιηθεί."
+
+#. i18n: ectx: label, entry (AcceleratorBlocked), group (Game)
+#: ksnakeduel.kcfg:15
+#, kde-format
+msgid "Whether to disable acceleration."
+msgstr "Αν θα απενεργοποιηθεί η επιτάχυνση."
+
+#. i18n: ectx: label, entry (NamePlayer1), group (Game)
+#: ksnakeduel.kcfg:19
+#, kde-format
+msgid "The name of player 1."
+msgstr "Το όνομα του παίκτη 1."
+
+#. i18n: ectx: label, entry (NamePlayer2), group (Game)
+#: ksnakeduel.kcfg:22
+#, kde-format
+msgid "The name of player 2."
+msgstr "Το όνομα του παίκτη 2."
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:25
+#, kde-format
+msgid "Type of the game"
+msgstr "Τύπος του παιχνιδιού"
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:34
+#, kde-format
+msgid "Rounds"
+msgstr "Γύροι"
+
+#: ktron.cpp:64
+#, kde-format
+msgid "Right Player / KSnake mode: Up"
+msgstr "Δεξιός παίκτης / Λειτουργία ΚSnake: Πάνω"
+
+#: ktron.cpp:70
+#, kde-format
+msgid "Right Player / KSnake mode: Down"
+msgstr "Δεξιός παίκτης / Λειτουργία KSnake: Κάτω"
+
+#: ktron.cpp:76
+#, kde-format
+msgid "Right Player / KSnake mode: Right"
+msgstr "Δεξιός παίκτης / Λειτουργία KSnake: Δεξιά"
+
+#: ktron.cpp:82
+#, kde-format
+msgid "Right Player / KSnake mode: Left"
+msgstr "Δεξιός παίκτης / Λειτουργία KSnake: Αριστερά"
+
+#: ktron.cpp:88
+#, kde-format
+msgid "Right Player: Accelerator"
+msgstr "Δεξιός παίκτης: Επιτάχυνση"
+
+#: ktron.cpp:94
+#, kde-format
+msgid "Left Player: Up"
+msgstr "Αριστερός παίκτης: Πάνω"
+
+#: ktron.cpp:100
+#, kde-format
+msgid "Left Player: Down"
+msgstr "Αριστερός παίκτης: Κάτω"
+
+#: ktron.cpp:106
+#, kde-format
+msgid "Left Player: Right"
+msgstr "Αριστερός παίκτης: Δεξιά"
+
+#: ktron.cpp:112
+#, kde-format
+msgid "Left Player: Left"
+msgstr "Αριστερός παίκτης: Αριστερά"
+
+#: ktron.cpp:118
+#, kde-format
+msgid "Left Player: Accelerator"
+msgstr "Αριστερός παίκτης: Επιτάχυνση"
+
+#: ktron.cpp:162
+#, kde-format
+msgid "Failed to load \"%1\" theme. Please check your installation."
+msgstr ""
+"Αποτυχία φόρτωσης θέματος \"%1\". Παρακαλώ ελέγξτε την εγκατάστασή σας."
+
+#: ktron.cpp:181
+#, kde-format
+msgid "%1 has won!"
+msgstr "Ο %1 νίκησε!"
+
+#: ktron.cpp:184 tron.cpp:323
+#, kde-format
+msgid "Game paused"
+msgstr "Παύση παιχνιδιού"
+
+#: ktron.cpp:253
+#, kde-format
+msgid "Player Name:"
+msgstr "Όνομα παίκτη:"
+
+#: ktron.cpp:254
+#, kde-format
+msgid "Opponent:"
+msgstr "Αντίπαλος:"
+
+#: ktron.cpp:257
+#, kde-format
+msgid "Right player:"
+msgstr "Δεξιός παίκτης:"
+
+#: ktron.cpp:262
+#, kde-format
+msgid "General"
+msgstr "Γενικά"
+
+#: ktron.cpp:263
+#, kde-format
+msgid "Theme"
+msgstr "Θέμα"
+
+#: main.cpp:46 player.cpp:82
+#, kde-format
+msgid "KSnakeDuel"
+msgstr "KSnakeDuel"
+
+#: main.cpp:48
+#, kde-format
+msgid "A race in hyperspace"
+msgstr "Μια κούρσα στον υπερχώρο"
+
+#: main.cpp:50
+#, kde-format
+msgid ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Parts of the algorithms for the computer player are from\n"
+"xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+msgstr ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Τμήματα των αλγορίθμων του παίκτη υπολογιστή είναι από το\n"
+"xtron-1.1 του Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+
+#: main.cpp:58
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:58
+#, kde-format
+msgid "Original author"
+msgstr "Αρχικός συγγραφέας"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:59
+#, kde-format
+msgid "Various improvements"
+msgstr "Διάφορες βελτιώσεις"
+
+#: main.cpp:60
+#, kde-format
+msgid "Stas Verberkt"
+msgstr "Stas Verberkt"
+
+#: main.cpp:60
+#, kde-format
+msgid "KDE 4 Port, interface revision and KSnake mode"
+msgstr "Μεταφορά στο KDE 4, αναθεώρηση περιβάλλοντος και λειτουργία KSnake"
+
+#: main.cpp:65
+#, kde-format
+msgid "Start in KSnake mode"
+msgstr "Έναρξη σε λειτουργία KSnake"
+
+#: player.cpp:103
+#, kde-format
+msgid "Player %1"
+msgstr "Παίκτης %1"
+
+#: tron.cpp:343
+#, kde-format
+msgid "%1 has won versus %2 with %4 versus %3 point!"
+msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
+msgstr[0] "Ο %1 νίκησε εναντίον του %2 με %4 έναντι %3 βαθμού!"
+msgstr[1] "Ο %1 νίκησε εναντίον του %2 με %4 έναντι %3 βαθμών!"
+
+#: tron.cpp:354
+#, kde-format
+msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
+msgid "%1 (%2) versus %3 (%4)"
+msgstr "%1 (%2) εναντίον %3 (%4)"
+
+#: tron.cpp:355 tron.cpp:356
+#, kde-format
+msgid "%1 point"
+msgid_plural "%1 points"
+msgstr[0] "%1 πόντος"
+msgstr[1] "%1 πόντοι"
+
+#: tron.cpp:364
+#, kde-format
+msgid "KSnake game ended with 1 point"
+msgid_plural "KSnake game ended with %1 points"
+msgstr[0] "Το παιχνίδι KSnake τελείωσε με 1 βαθμό"
+msgstr[1] "Το παιχνίδι KSnake τελείωσε με %1 βαθμούς"
+
+#: tron.cpp:369
+#, kde-format
+msgid ""
+"The game starts when each player has pressed one of their direction keys!"
+msgstr ""
+"Το παιχνίδι ξεκινά όταν κάθε παίκτης πιέσει ένα από τα πλήκτρα κατεύθυνσης!"
+
+#: tron.cpp:372
+#, kde-format
+msgid "Press any of your direction keys to start!"
+msgstr "Πιέστε οποιοδήποτε από τα πλήκτρα κατεύθυνσης για έναρξη!"
+
+#~ msgid "Left Player:"
+#~ msgstr "Αριστερός παίκτης:"
+
+#~ msgid "The difficulty level."
+#~ msgstr "Το επίπεδο δυσκολίας."
+
+#~ msgid "KTron"
+#~ msgstr "KTron"
+
+#~ msgid "Start in KTron mode"
+#~ msgstr "Έναρξη σε λειτουργία KTron"
+
+#~ msgid "%1 (%2 point) versus %3 (%4 points)"
+#~ msgid_plural "%1 (%2 points) versus %3 (%4 points)"
+#~ msgstr[0] "Ο %1 (%2 βαθμός) εναντίον του %3 (%4 βαθμοί)"
+#~ msgstr[1] "Ο %1 (%2 βαθμοί) εναντίον του %3 (%4 βαθμοί)"
+
+#~ msgid "Player 2 Up"
+#~ msgstr "Παίκτης 2 πάνω"
+
+#~ msgid "Player 2 Down"
+#~ msgstr "Παίκτης 2 κάτω"
+
+#~ msgid "Player 2 Right"
+#~ msgstr "Παίκτης 2 δεξιά"
+
+#~ msgid "Player 2 Left"
+#~ msgstr "Παίκτης 2 αριστερά"
+
+#~ msgid "Player 2 Accelerator"
+#~ msgstr "Παίκτης 2 επιτάχυνση"
+
+#~ msgid "Player 2:"
+#~ msgstr "Παίκτης 2:"
+
+#, fuzzy
+#~| msgid "Player 1"
+#~ msgid "Player "
+#~ msgstr "Παίκτης 1"
+
+#~ msgid "Player 2"
+#~ msgstr "Παίκτης 2"
+
+#~ msgid "Winner"
+#~ msgstr "Νικητής"
+
+#~ msgid "Crash!"
+#~ msgstr "Κατάρρευση!"
+
+#~ msgid "Computer(%1)"
+#~ msgstr "Υπολογιστής(%1)"
+
+#~ msgid "Computer"
+#~ msgstr "Υπολογιστής"

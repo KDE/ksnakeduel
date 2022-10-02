@@ -1,0 +1,331 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+# Shinjo Park <kde@peremen.name>, 2011, 2013, 2020, 2021.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:44+0000\n"
+"PO-Revision-Date: 2021-11-12 00:49+0100\n"
+"Last-Translator: Shinjo Park <kde@peremen.name>\n"
+"Language-Team: Korean <kde-kr@kde.org>\n"
+"Language: ko\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Lokalize 21.08.1\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "박신조"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde@peremen.name"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
+#: general.ui:35
+#, kde-format
+msgid "Game Type"
+msgstr "게임 종류"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:42
+#, kde-format
+msgid "KSnakeDuel: Player vs Computer"
+msgstr "KSnakeDuel: 플레이어 대 컴퓨터"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:47
+#, kde-format
+msgid "KSnakeDuel: Player vs Player"
+msgstr "KSnakeDuel: 플레이어 대 플레이어"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:52
+#, kde-format
+msgid "KSnake mode: Single player"
+msgstr "KSnake 모드: 단일 플레이어"
+
+#. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
+#: general.ui:60
+#, kde-format
+msgid "Game type:"
+msgstr "게임 종류:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
+#: general.ui:73
+#, kde-format
+msgid "Behavior"
+msgstr "행동"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
+#: general.ui:79
+#, kde-format
+msgid "&Disable acceleration"
+msgstr "가속도 끄기(&D)"
+
+#. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
+#: general.ui:89
+#, kde-format
+msgid "Player Names"
+msgstr "플레이어 이름"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
+#: general.ui:101
+#, kde-format
+msgid "Right player / KSnake mode:"
+msgstr "오른쪽 플레이어/KSnake 모드:"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
+#: general.ui:111 ktron.cpp:258
+#, kde-format
+msgid "Left player:"
+msgstr "왼쪽 플레이어:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
+#: general.ui:124
+#, kde-format
+msgid "Game Options"
+msgstr "게임 옵션"
+
+#. i18n: ectx: property (text), widget (QLabel, roundsLabel)
+#: general.ui:130
+#, kde-format
+msgid "Rounds to win:"
+msgstr "승리해야 할 라운드:"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: ksnakeduel.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "사용할 그래픽 테마입니다."
+
+#. i18n: ectx: label, entry (AcceleratorBlocked), group (Game)
+#: ksnakeduel.kcfg:15
+#, kde-format
+msgid "Whether to disable acceleration."
+msgstr "가속도를 비활성화할지 여부입니다."
+
+#. i18n: ectx: label, entry (NamePlayer1), group (Game)
+#: ksnakeduel.kcfg:19
+#, kde-format
+msgid "The name of player 1."
+msgstr "플레이어 1의 이름입니다."
+
+#. i18n: ectx: label, entry (NamePlayer2), group (Game)
+#: ksnakeduel.kcfg:22
+#, kde-format
+msgid "The name of player 2."
+msgstr "플레이어 2의 이름입니다."
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:25
+#, kde-format
+msgid "Type of the game"
+msgstr "게임 종류"
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:34
+#, kde-format
+msgid "Rounds"
+msgstr "라운드"
+
+#: ktron.cpp:64
+#, kde-format
+msgid "Right Player / KSnake mode: Up"
+msgstr "오른쪽 플레이어/KSnake 모드: 위"
+
+#: ktron.cpp:70
+#, kde-format
+msgid "Right Player / KSnake mode: Down"
+msgstr "오른쪽 플레이어/KSnake 모드: 아래"
+
+#: ktron.cpp:76
+#, kde-format
+msgid "Right Player / KSnake mode: Right"
+msgstr "오른쪽 플레이어/KSnake 모드: 오른쪽"
+
+#: ktron.cpp:82
+#, kde-format
+msgid "Right Player / KSnake mode: Left"
+msgstr "오른쪽 플레이어/KSnake 모드: 왼쪽"
+
+#: ktron.cpp:88
+#, kde-format
+msgid "Right Player: Accelerator"
+msgstr "오른쪽 플레이어: 가속"
+
+#: ktron.cpp:94
+#, kde-format
+msgid "Left Player: Up"
+msgstr "왼쪽 플레이어: 위"
+
+#: ktron.cpp:100
+#, kde-format
+msgid "Left Player: Down"
+msgstr "왼쪽 플레이어: 아래"
+
+#: ktron.cpp:106
+#, kde-format
+msgid "Left Player: Right"
+msgstr "왼쪽 플레이어: 오른쪽"
+
+#: ktron.cpp:112
+#, kde-format
+msgid "Left Player: Left"
+msgstr "왼쪽 플레이어: 왼쪽"
+
+#: ktron.cpp:118
+#, kde-format
+msgid "Left Player: Accelerator"
+msgstr "왼쪽 플레이어: 가속"
+
+#: ktron.cpp:162
+#, kde-format
+msgid "Failed to load \"%1\" theme. Please check your installation."
+msgstr "테마 \"%1\"을(를) 불러올 수 없습니다. 설치 상태를 확인하십시오."
+
+#: ktron.cpp:181
+#, kde-format
+msgid "%1 has won!"
+msgstr "%1이(가) 이겼습니다!"
+
+#: ktron.cpp:184 tron.cpp:323
+#, kde-format
+msgid "Game paused"
+msgstr "게임이 일시 정지됨"
+
+#: ktron.cpp:253
+#, kde-format
+msgid "Player Name:"
+msgstr "플레이어 이름:"
+
+#: ktron.cpp:254
+#, kde-format
+msgid "Opponent:"
+msgstr "상대:"
+
+#: ktron.cpp:257
+#, kde-format
+msgid "Right player:"
+msgstr "오른쪽 플레이어:"
+
+#: ktron.cpp:262
+#, kde-format
+msgid "General"
+msgstr "일반"
+
+#: ktron.cpp:263
+#, kde-format
+msgid "Theme"
+msgstr "테마"
+
+#: main.cpp:46 player.cpp:82
+#, kde-format
+msgid "KSnakeDuel"
+msgstr "KSnakeDuel"
+
+#: main.cpp:48
+#, kde-format
+msgid "A race in hyperspace"
+msgstr "하이퍼스페이스에서의 경주"
+
+#: main.cpp:50
+#, kde-format
+msgid ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Parts of the algorithms for the computer player are from\n"
+"xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+msgstr ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"컴퓨터 플레이어의 알고리즘의 일부는\n"
+"Rhett D. Jacobs <rhett@hotel.canberra.edu.au>의 xtron-1.1에서 발췌함"
+
+#: main.cpp:58
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:58
+#, kde-format
+msgid "Original author"
+msgstr "원 작성자"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:59
+#, kde-format
+msgid "Various improvements"
+msgstr "다양한 개선"
+
+#: main.cpp:60
+#, kde-format
+msgid "Stas Verberkt"
+msgstr "Stas Verberkt"
+
+#: main.cpp:60
+#, kde-format
+msgid "KDE 4 Port, interface revision and KSnake mode"
+msgstr "KDE 4 포트, 인터페이스 개선 및 KSnake 모드"
+
+#: main.cpp:65
+#, kde-format
+msgid "Start in KSnake mode"
+msgstr "KSnake 모드로 시작하기"
+
+#: player.cpp:103
+#, kde-format
+msgid "Player %1"
+msgstr "플레이어 %1"
+
+#: tron.cpp:343
+#, kde-format
+msgid "%1 has won versus %2 with %4 versus %3 point!"
+msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
+msgstr[0] "%1이(가) %2을(를) %4 대 %3점으로 이겼습니다!"
+
+#: tron.cpp:354
+#, kde-format
+msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
+msgid "%1 (%2) versus %3 (%4)"
+msgstr "%1 (%2) 대 %3 (%4)"
+
+#: tron.cpp:355 tron.cpp:356
+#, kde-format
+msgid "%1 point"
+msgid_plural "%1 points"
+msgstr[0] "%1점"
+
+#: tron.cpp:364
+#, kde-format
+msgid "KSnake game ended with 1 point"
+msgid_plural "KSnake game ended with %1 points"
+msgstr[0] "KSnake 게임이 %1점으로 끝남"
+
+#: tron.cpp:369
+#, kde-format
+msgid ""
+"The game starts when each player has pressed one of their direction keys!"
+msgstr "각각 플레이어가 방향 키를 하나라도 누르면 시작합니다!"
+
+#: tron.cpp:372
+#, kde-format
+msgid "Press any of your direction keys to start!"
+msgstr "방향 키를 눌러서 시작하십시오!"
+
+#~ msgid "Left Player:"
+#~ msgstr "왼쪽 플레이어:"

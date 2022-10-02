@@ -1,0 +1,881 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Spanish "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Manual de &ksnakeduel;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+<othercredit role="translator"
+> <firstname
+>Rocío</firstname
+><surname
+>Gallego</surname
+> <affiliation
+><address
+><email
+>traducciones@rociogallego.com</email
+></address
+></affiliation
+> <contrib
+>Traducción</contrib
+> </othercredit
+><othercredit role="translator"
+><firstname
+>Rafael</firstname
+><surname
+>Osuna</surname
+><affiliation
+><address
+><email
+>rosuna@wol.es</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Santiago</firstname
+><surname
+>Fernández</surname
+><affiliation
+><address
+><email
+>santi@kde-es.org</email
+></address
+></affiliation
+><contrib
+>Traductor</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Kira</firstname
+><surname
+>J. Fernández</surname
+><affiliation
+><address
+> <email
+>kirajfdez@gmail.com</email
+></address
+></affiliation
+> <contrib
+>Traductora</contrib
+></othercredit>
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-17</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&ksnakeduel; es un sencillo juego de duelo de serpientes al que podrá jugar solo o con un amigo. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>juego</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>duelo de serpientes</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>serpiente</keyword>
+<keyword
+>duelo</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducción</title>
+
+<para
+>&ksnakeduel; es un sencillo juego de duelo de serpientes. Podrá jugar contra el ordenador o contra un amigo. El objetivo del juego es vivir más que su oponente. Para ello, evite estrellarse contra una pared, su propia estela o la de su oponente. </para>
+
+<para
+>&ksnakeduel; es un sencillo juego estilo Snake. El objetivo es sobrevivir tanto como sea posible y comer tantas frutas como pueda. </para>
+
+<para
+>Puede cambiar entre estos juegos usando el selector de tipo de juego en el diálogo de configuración. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Cómo jugar a &ksnakeduel;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Reglas</title>
+
+<para
+>Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia delante (a menos que pare el juego). Todo lo que debe hacer es evitar estrellarse cambiando la dirección de sus jugadores. Adicionalmente puede tratar de estorbar a su oponente. Para ello es posible incrementar la velocidad pulsando la tecla de aceleración. </para>
+
+<para
+>Una ronda empieza cuando un humano pulsa una tecla de dirección. El movimiento inicial se produce en la dirección de la tecla pulsada. </para>
+
+<para
+>Si quiere interrumpir el juego, seleccione la opción del menú <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+></menuchoice
+>. El juego también se pone en pausa al cambiar a otra ventana. </para>
+
+<para
+>Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla de acceso rápido. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+
+
+<para
+>Un juego consiste en varias rondas, y finaliza si un jugador consigue nueve puntos, además de dos puntos más que su oponente. La puntuación actual se muestra en la barra de estado. </para>
+
+<para
+>Puede cambiar el nivel de dificultad del juego usando el submenú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Dificultad</guisubmenu
+></menuchoice
+> o la lista desplegable de la barra de estado. La dificultad afecta a la velocidad del juego y del jugador controlado por la máquina. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>El jugador del ordenador</title>
+
+<para
+>Puede jugar contra la máquina. El nivel de dificultad del juego afecta a la inteligencia del jugador controlado por la máquina. </para>
+<para
+>En los niveles medio y experto, la máquina no se preocupa del oponente y solo se mueve por ahí. En los niveles más altos de habilidad, la máquina intenta perjudicar al oponente cuando se le acerca. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Uso del teclado</title>
+
+<para
+>Cada jugador usará cinco teclas. Cuatro teclas para cambiar de dirección y una para acelerar. </para>
+
+<para
+>La teclas de dirección no necesitan mantenerse pulsadas. Simplemente púlselas una vez para cambiar la dirección de su jugador. </para>
+
+<para
+>La aceleración solo se produce mientras se mantenga la tecla pulsada. Cuando suelte la tecla de aceleración, se vuelve a la velocidad normal. </para>
+
+<note
+><para
+>Se pueden <ulink url="help:/fundamentals/shortcuts.html"
+>modificar las teclas</ulink
+> usando la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar accesos rápidos...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Cómo jugar a KSnake</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Reglas</title>
+
+<para
+>Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia delante (a menos que pare el juego). Todo lo que debe hacer es evitar estrellarse cambiando de dirección. El juego comienza cuando presiona una tecla de dirección. El movimiento inicial se hará hacia esta. </para>
+
+<para
+>Si quiere pausar el juego, use la opción del menú <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+></menuchoice
+> o pulse la tecla de acceso rápido. El juego también se pone en pausa al cambiar a otra ventana. </para>
+
+<para
+>Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla de acceso rápido. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+
+<para
+>En el juego siempre habrá una pieza de fruta en el mapa. Si la recoge, su puntuación aumentará 5 puntos. La puntuación actual siempre se muestra en la barra de estado. </para>
+
+<para
+>Cuando se esté moviendo por el mapa aparecerán obstáculos. Golpearse contra ellos también resultará en un choque. Sin embargo, cada vez que aparezca un obstáculo y usted sobreviva, ganará 2 puntos. </para>
+
+<para
+>Puede cambiar el nivel de dificultad del juego usando el submenú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guisubmenu
+>Dificultad</guisubmenu
+></menuchoice
+> o la lista desplegable de la barra de estado. La dificultad afecta a la velocidad del juego y del jugador controlado por la máquina. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Usando el teclado</title>
+
+<para
+>Cada jugador dispone de cuatro teclas que se usan para cambiar de dirección. Las teclas de dirección no tienen que mantenerse pulsadas. Simplemente presiónelas una vez para cambiar la dirección de su jugador. </para>
+
+<note
+><para
+>Se pueden <ulink url="help:/fundamentals/shortcuts.html"
+>modificar las teclas</ulink
+> usando la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar accesos rápidos...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Visión general de la interfaz</title>
+
+<sect1 id="menu-items">
+<title
+>Opciones de menú</title>
+
+<para
+>Las siguientes secciones describen brevemente las opciones de la barra de menús.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Nuevo</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Comienza una nueva partida.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycap
+>P</keycap
+></shortcut
+><guimenu
+> Juego</guimenu
+><guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Para o reinicia el juego.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
+>Mostrar puntuaciones más altas</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Muestra la tabla de las puntuaciones más altas.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+> Q</keycap
+></keycombo
+></shortcut
+><guimenu
+> Juego</guimenu
+><guimenuitem
+>Salir</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Salir de &ksnakeduel;.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Dificultad</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Un submenú que le permite cambiar el nivel de dificultad del juego.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar &ksnakeduel;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Abre el diálogo <link linkend="configuration"
+>para configurar varias opciones</link
+>.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Además &ksnakeduel; tiene las opciones de menú <guimenu
+>Preferencias</guimenu
+> y <guimenu
+>Ayuda</guimenu
+> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menú «Preferencias»</ulink
+> y <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menú «Ayuda» </ulink
+> de «Aspectos básicos de &kde;». </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Accesos rápidos predeterminados</title>
+
+<para
+>Las siguientes tablas muestran las asociaciones de teclas predeterminadas.</para>
+
+
+<table>
+<title
+>Accesos rápidos del jugador 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinación de teclas</entry>
+<entry
+>Acción</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>Flecha &Up;</entry>
+<entry
+>Mover hacia arriba</entry>
+</row>
+<row>
+<entry
+>Flecha &Down;</entry>
+<entry
+>Mover hacia abajo</entry>
+</row>
+<row>
+<entry
+>Flecha &Right;</entry>
+<entry
+>Mover hacia la derecha</entry>
+</row>
+<row>
+<entry
+>Flecha &Left;</entry>
+<entry
+>Mover hacia la izquierda</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Acelerar</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Acceso rápido del jugador 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinación de teclas</entry>
+<entry
+>Acción</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Mover hacia arriba</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Mover hacia abajo</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Mover hacia la derecha</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Mover hacia la izquierda</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Acelerar</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Accesos rápidos generales</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinación de teclas</entry>
+<entry
+>Acción</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Pausar/continuar la partida</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Puntuaciones más altas</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Nueva partida</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Salir de &ksnakeduel;</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Este manual</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>Ayuda «¿Qué es esto?»</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Estas asociaciones <ulink url="help:/fundamentals/shortcuts.html"
+>se pueden modificar</ulink
+> usando la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar accesos rápidos...</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>El diálogo de configuración</title>
+
+<para
+>Al seleccionar la opción del menú <menuchoice
+><guimenu
+>Preferencias</guimenu
+> <guimenuitem
+>Configurar &ksnakeduel;...</guimenuitem
+></menuchoice
+> se mostrará un diálogo que le permitirá ajustar el comportamiento de &ksnakeduel;.</para>
+
+<para
+>Este diálogo se divide en dos páginas.</para>
+
+<sect1 id="configuration-general">
+<title
+>Configuración general</title>
+
+<screenshot>
+<screeninfo
+>Configurar &ksnakeduel; - General</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configuración general</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Tipo de juego</guilabel
+></term>
+<listitem
+><para
+>Esto le permitirá cambiar el tipo de juego. Hay tres opciones: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jugador contra jugador</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida de &ksnakeduel; entre dos jugadores humanos.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jugador contra máquina</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida de &ksnakeduel; entre un jugador humano y la máquina.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Modo KSnake: un solo jugador</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida de &ksnakeduel; para un solo jugador.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Desactiva aceleración</guilabel
+></term>
+<listitem
+><para
+>Activando esta opción se desactivará la aceleración - pulsar la tecla de aceleración no tendrá efecto, ambas serpientes viajarán con velocidad constante.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Nombres de los jugadores</guilabel
+></term>
+<listitem
+><para
+>Establece los nombres que utilizarán los jugadores sobreescribiendo los que existían de forma predeterminada.</para>
+<para
+>El nombre predeterminado para el jugador 1 es el nombre del usuario registrado actualmente. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Opciones del juego</guilabel
+></term>
+<listitem
+><para
+>Indique las <guilabel
+>Rondas para ganar:</guilabel
+> para definir cuántas rondas son necesarias antes de declarar un ganador.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Configuración de temas</title>
+
+<screenshot>
+<screeninfo
+>Configurar &ksnakeduel; - Tema</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configuración de temas</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>Esta página le permite cambiar el tema que usa &ksnakeduel;. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Créditos y licencia</title>
+
+<para
+>&ksnakeduel; </para>
+
+<para
+>Copyright del programa 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Copyright del programa 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+
+<para
+>Partes del código provienen de xtron-1.1 de Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+>. </para>
+
+<para
+>Copyright de la documentación 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Documentación actualizada para &kde; 2.0 por &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Traducido por Rocío Gallego <email
+>traducciones@rociogallego.com</email
+>, Rafael Osuna<email
+>rosuna@wol.es</email
+>, Santiago Fernández<email
+>santi@est.unileonl.es</email
+> y Kira J. Fernández <email
+>kirajfdez@gmail.com</email
+>.</para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+

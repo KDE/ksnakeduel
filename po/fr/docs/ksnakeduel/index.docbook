@@ -1,0 +1,795 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY kappname "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY package "kdegames">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % French "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Manuel de &kappname;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Relecteur</contrib>
+</othercredit>
+&traducteurStanislasZeller;
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>20-06-2020</date>
+<releaseinfo
+>2.1 (Applications 20.08)</releaseinfo>
+
+<abstract>
+<para
+>&kappname; est un simple jeu de duel de serpent pour &kde;, où vous pouvez jouer seul ou contre un ami. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>jeux kde</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>jeu</keyword>
+<keyword
+>Tron</keyword>
+<keyword
+>Snakeduel</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>Snake</keyword>
+<keyword
+>duel</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introduction</title>
+
+<para
+>&kappname; est un simple jeu de duel de serpent pour l'environnement de bureau <ulink url="http://www.kde.org"
+>KDE</ulink
+>. Vous pouvez jouer à &kappname; contre l'ordinateur ou un ami. Le but du jeu est de survivre plus longtemps que votre opposant. Pour ce faire, esquivez des murs, vos propres murs et ceux de votre adversaire. </para>
+
+<para
+>&ksnake; est un simple clone de Tron pour l'environnement de bureau <ulink url="http://www.kde.org"
+>KDE</ulink
+>. Le but de &ksnake; est de survivre le plus longtemps possible et de manger le plus de fruits que vous pouvez. </para>
+
+<para
+>Vous pouvez passer d'un jeu à l'autre en utilisant le sélecteur de type de jeu dans la boîte de dialogue de configuration. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Jouer à &kappname;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Règles</title>
+
+<para
+>Une fois qu'un tour est démarré, les joueurs ne peuvent pas s'arrêter d'avancer (à moins que la partie ne soit mise en pause). Tous ce que vous avez à faire est d'éviter de vous pulvériser en modifiant la direction de votre joueur. De plus, vous pouvez essayer de gêner votre adversaire. Pour ce faire, il est possible d'augmenter la vélocité en pressant la touche d'accélération. </para>
+
+<para
+>Un tour démarre quand tous les joueurs humains appuient sur une touche de direction. La direction de ce mouvement dirige ensuite dans cette direction. </para>
+
+<para
+>Si vous voulez interrompre la partie, sélectionnez <guimenuitem
+>Pause</guimenuitem
+> dans le menu <guimenu
+>Jeu</guimenu
+> ou appuyez sur le raccourci clavier (voir la section <link linkend="keys"
+>Raccourcis par défaut</link
+>). En plus, la partie est mise en pause quand la fenêtre de jeu perd le focus, &pex; en passant à une autre fenêtre. </para>
+
+<para
+>Pour continuer la partie, sélectionnez l'élément <guimenuitem
+>Pause</guimenuitem
+> du menu ou le raccourci clavier. La partie continuera aussi si les joueurs humains appuient sur une des touches de direction. Mais soyez vigilant, votre joueur se dirige dans cette direction immédiatement. </para>
+
+
+<para
+>Une partie consiste en plusieurs tours, et prend fin si un joueur a au moins neuf points, et également deux points de plus que son adversaire. Le score courant est toujours affiché dans la barre d'état. </para>
+
+<para
+>Vous pouvez modifier le niveau de difficulté de la partie en utilisant l'élément du menu jeu ou la boîte fléchée de sélection sur la barre d'état (en bas). La difficulté influence la vitesse de la partie et l'ordinateur. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>Le joueur ordinateur</title>
+
+<para
+>Vous pouvez jouer contre l'ordinateur. Le niveau de difficulté de la partie influence l'intelligence de l'ordinateur. </para>
+<para
+>Dans les faibles niveaux de difficulté, l'ordinateur ne prête pas attention à son adversaire et se déplace simplement autour de lui. Dans les niveaux plus élevés, l'ordinateur essaie de gêner l'adversaire quand il vient près de lui. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Utilisation du clavier</title>
+
+<para
+>Chaque joueur dispose de cinq touches. Quatre touches pour la modification de la direction et une pour l'accélération. </para>
+
+<para
+>Les touches de direction n'ont pas à être tenues appuyées. Appuyez juste une fois sur celles-ci pour modifier la direction du joueur. </para>
+
+<para
+>L'accélération se produit seulement quand la touche d'accélération reste appuyée. Quand vous libérez la touche, la vélocité revient à la normale. </para>
+
+<note
+><para
+>Vous pouvez ajuster les touches en utilisant les options de raccourcis clavier dans le menu <ulink url="help:/fundamentals/shortcuts.html"
+><guimenu
+>Configuration</guimenu
+></ulink
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Jouer à &ksnake;</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Règles</title>
+
+<para
+>Une fois que la partie est démarrée, les joueurs ne peuvent pas s'arrêter d'avancer (à moins que la partie ne soit mise en pause). Tous ce que vous avez à faire est d'éviter de vous pulvériser en modifiant la direction de votre joueur. Une partie démarre quand vous appuyez sur une touche de direction. La direction du mouvement initial va dans cette direction. </para>
+
+<para
+>Si vous voulez interrompre la partie, sélectionnez <guimenu
+>Pause</guimenu
+> dans le menu <guimenuitem
+>Jeu</guimenuitem
+> ou appuyez sur le raccourci clavier (voir la section <link linkend="keys"
+>Raccourcis par défaut</link
+>). De plus, la partie est mise en pause quand la fenêtre de jeu perd le focus, &pex; en passant à une autre fenêtre. </para>
+
+<para
+>Pour continuer la partie, sélectionnez l'élément <guimenuitem
+>Pause</guimenuitem
+> du menu ou le raccourci clavier. La partie continuera aussi si les joueurs humains appuient sur une des touches de direction. Mais soyez vigilant, votre joueur se dirige dans cette direction immédiatement. </para>
+
+<para
+>Dans le jeu, il y aura toujours un fruit sur l'aire de jeu. Si vous le collectez, votre score augmentera de 5 points. Le score courant est toujours affiché dans la barre d'état. </para>
+
+<para
+>Quand vous vous déplacez sur l'aire de jeu, des obstacles apparaîtront. Les toucher provoquera une collision. Cependant, chaque fois qu'un obstacle apparaît et que vous survivez, vous recevez 2 points. </para>
+
+<para
+>Vous pouvez modifier le niveau de difficulté du jeu en utilisant l'élément du menu Jeu ou la boîte fléchée de sélection sur la barre d'état (en bas). La difficulté influence la vitesse de la partie. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Utilisation du clavier</title>
+
+<para
+>Chaque joueur dispose de quatre touches. Elles sont utilisées pour changer de direction. Les touches de direction n'ont pas à être enfoncées. Appuyez simplement une fois dessus pour modifier la direction de votre joueur. </para>
+
+<note
+><para
+>Vous pouvez ajuster les touches en utilisant les options de raccourcis clavier dans le menu <ulink url="help:/fundamentals/shortcuts.html"
+><guimenu
+>Configuration</guimenu
+></ulink
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Tour d'horizon de l'interface</title>
+
+<sect1 id="menu-items">
+<title
+>Éléments des menus</title>
+  
+<para
+>La liste suivante décrit brièvement chaque option de la barre de menu.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Nouveau</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Démarre une nouvelle partie.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Pause</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Met en pause ou redémarre la partie.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Afficher les meilleurs scores</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Affiche la boîte de dialogue des meilleurs scores (pour &ksnake;).</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Jeu</guimenu
+> <guimenuitem
+>Quitter</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Quitte le jeu.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Difficulté</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Définit le niveau de difficulté du jeu.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer &kappname;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Ouvre une <link linkend="configuration"
+>boîte de dialogue de configuration</link
+> pour configurer diverses options.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>De plus, &ksnake; possède les éléments standards de menu s<guimenu
+>Configuration</guimenu
+> et <guimenu
+>Aide</guimenu
+> de &kde;, pour plus d'informations, veuillez consulter la section à propos du <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Configuration</ulink
+> et du <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Aide</ulink
+> des fondamentaux de &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Raccourcis par défaut</title>
+
+<para
+>Les tableaux suivants affichent les raccourcis clavier par défaut.</para>
+
+
+<table>
+<title
+>Raccourcis joueur 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinaison de touches</entry>
+<entry
+>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>Flèche haut</keycap
+></entry>
+<entry
+>Haut</entry>
+</row>
+<row>
+<entry
+><keycap
+>Flèche bas</keycap
+></entry>
+<entry
+>Bas</entry>
+</row>
+<row>
+<entry
+><keycap
+>Flèche droite</keycap
+></entry>
+<entry
+>Droite</entry>
+</row>
+<row>
+<entry
+><keycap
+>Flèche gauche</keycap
+></entry>
+<entry
+>Gauche</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Accélération</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Raccourcis joueur 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinaison de touches</entry>
+<entry
+>Action</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Haut</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Bas</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Droite</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Gauche</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Accélération</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Raccourcis généraux</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinaison de touches</entry>
+<entry
+>Action</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Met en pause ou reprend la partie</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Meilleurs scores</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Nouvelle partie</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Quitter &kappname;</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Affiche le manuel d'aide</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>Qu'est-ce que c'est ?</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Ces raccourcis <ulink url="help:/fundamentals/shortcuts.html"
+>peuvent être modifiés</ulink
+> en choisissant <menuchoice
+> <guimenu
+>Configuration</guimenu
+> <guimenuitem
+>Configurer les raccourcis clavier...</guimenuitem
+> </menuchoice
+> dans la barre de menu. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>La boîte de dialogue de configuration</title>
+
+<para
+>Sélectionner l'option <guimenuitem
+>Configurer &kappname;...</guimenuitem
+> dans le menu <guimenu
+>Configuration</guimenu
+> ouvre une boîte de dialogue qui permet d'affiner le comportement de &kappname;.</para>
+
+<para
+>La boîte de dialogue est divisée en deux parties.</para>
+
+<sect1 id="configuration-general">
+<title
+>Configuration générale</title>
+
+<screenshot>
+<screeninfo
+>Configurer &kappname; - général</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configuration générale</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Type de jeu</guilabel
+></term>
+<listitem
+><para
+>Cela vous permet de modifier le type de jeu. Il y a trois options. <variablelist>
+<varlistentry>
+<term
+>&kappname; : joueur contre joueur</term
+><listitem
+><para
+>&kappname;, jeu entre deux joueurs humain</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>&kappname; : joueur contre ordinateur</term>
+<listitem
+><para
+>&kappname;, jeu entre un humain et un ordinateur</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+>&ksnake; : un joueur</term
+><listitem
+><para
+>&ksnake;, un jeu à un joueur</para
+></listitem>
+</varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Désactiver l'accélération</guilabel
+></term>
+<listitem
+><para
+>Si cette case est activée, la fonctionnalité d'accélération est désactivée. Appuyer sur la touche d'accélération n'a aucun effet, les deux véhicules iront toujours à la même vitesse.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Noms des joueurs</guilabel
+></term>
+<listitem
+><para
+>Vous pouvez donner un pseudo personnalisé à un joueur pour remplacer le pseudo par défaut.</para>
+<para
+>Le nom par défaut du joueur 1 est le nom de la session courante de l'utilisateur. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Options du jeu</guilabel
+></term>
+<listitem
+><para
+>Spécifier le <guilabel
+>nombre de parties pour gagner</guilabel
+> pour définir combien de parties sont nécessaires pour déclarer un vainqueur.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Configuration du thème</title>
+
+<screenshot>
+<screeninfo
+>Configurer &kappname; - thème</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configuration du thème</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>Cette page vous permet de modifier le thème de &kappname; utilisé. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done --> 
+<chapter id="credits">
+<title
+>Remerciements et licence</title>
+
+<para
+>&kappname; </para>
+
+<para
+>Copyright du programme 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Copyright du programme 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+
+<para
+>Des parties du code proviennent de xtron-1.1 par Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+> </para>
+
+<para
+>Copyright de la documentation 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Documentation mise à jour pour &kde; 2.0 par &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Traduction française par &StanislasZeller;.</para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+

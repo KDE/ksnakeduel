@@ -1,0 +1,833 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Swedish "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Handbok Ormspel</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Granskare</contrib>
+</othercredit>
+<othercredit role="translator"
+> <firstname
+>Stefan</firstname
+> <surname
+>Asserhäll</surname
+> <affiliation
+><address
+><email
+>stefan.asserhall@bredband.net</email
+></address
+></affiliation
+> <contrib
+>Översättare</contrib
+></othercredit>
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-17</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>Ormspel är ett enkelt ormspel, som du kan spela ensam eller mot en vän. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>Ormspel</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>ormspel</keyword>
+<keyword
+>Ormspel</keyword>
+<keyword
+>ormspel</keyword>
+<keyword
+>duell</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inledning</title>
+
+<para
+>Ormspel är ett enkelt ormspel. Du kan spela mot datorn eller mot en vän. Spelets mål är att överleva längre än motspelaren. För att göra det, undvik att träffa en vägg, din egen svans och den som tillhör motspelaren. </para>
+
+<para
+>Ormspel är ett enkelt ormliknande spel. Spelets mål är att överleva så länge som möjligt och äta så mycket frukt du kan. </para>
+
+<para
+>Du kan byta mellan spelen med val av speltyp i inställningsdialogrutan. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Att spela Ormspel</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Regler</title>
+
+<para
+>När en omgång väl har startat, slutar inte spelarna röra sig framåt (om inte spelet pausas). Allt du måste göra är att undvika att krascha genom att ändra din spelares riktning. Dessutom kan du försöka hindra motspelaren. För att göra det här är det möjligt att öka hastigheten genom att trycka på accelerationstangenten. </para>
+
+<para
+>En omgång börjar när alla mänskliga spelare trycker på en riktningstangent. Den ursprungliga rörelseriktningen är åt det hållet. </para>
+
+<para
+>Om du vill avbryta spelet, använd menyalternativet <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+></menuchoice
+>. Dessutom pausas spelet när det förlorar tangentbordsfokus, t.ex. om du byter till ett annat fönster. </para>
+
+<para
+>För att fortsätta spelet, använd menyalternativet igen eller tryck på tangentbordets snabbtangent. Spelet fortsätter också om du trycker på en av riktningstangenterna. Men var försiktig, spelaren byter omedelbart till den riktningen. </para>
+
+
+<para
+>Ett spel består av flera omgångar, och slutar om en spelare har åtminstone nio poäng, och dessutom två poäng mer än motspelaren. Det nuvarande resultatet visas alltid i statusraden. </para>
+
+<para
+>Du kan ändra spelets svårighetsnivå genom att använda undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Svårighetsnivå</guisubmenu
+></menuchoice
+> eller kombinationsrutan i statusraden. Svårighetsnivån påverkar spelets hastighet och datorspelaren. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>Datorspelaren</title>
+
+<para
+>Du kan spela mot datorn. Spelets svårighetsnivå påverkar hur intelligent datorspelaren är. </para>
+<para
+>För låga svårighetsgrader bryr sig datorn inte om motspelaren utan flyttar bara omkring. För högre svårighetsgrader försöker datorn hindra motspelaren när han kommer nära. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Att använda tangentbordet</title>
+
+<para
+>Varje spelare har fem tangenter. Fyra tangenter för att ändra riktning och en för att accelerera. </para>
+
+<para
+>Riktningstangenterna behöver inte hållas nere. Tryck bara på dem en gång för att ändra riktning för din spelare. </para>
+
+<para
+>Acceleration sker bara medan accelerationstangenten hålls nere. När du släpper accelerationstangenten återgår hastigheten till den normala. </para>
+
+<note
+><para
+>Du kan <ulink url="help:/fundamentals/shortcuts.html"
+>ändra tangenterna</ulink
+> genom att använda menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Att spela Ormläge</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Regler</title>
+
+<para
+>När spelet väl har startat, slutar inte spelaren röra sig framåt (om inte spelet pausas). Allt du måste göra är att undvika att krascha genom att ändra riktning. Spelet startar när du trycker på en riktningstangent. Den inledande rörelseriktningen är då åt samma håll. </para>
+
+<para
+>Om du vill avbryta spelet, använd menyalternativet <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+></menuchoice
+> eller tryck på tangentbordets snabbtangent. Dessutom pausas spelet när det förlorar tangentbordsfokus, t.ex. om du byter till ett annat fönster. </para>
+
+<para
+>För att fortsätta spelet, använd menyalternativet igen eller tryck på tangentbordets snabbtangent. Spelet fortsätter också om du trycker på en av riktningstangenterna. Men var försiktig, spelaren byter omedelbart till den riktningen. </para>
+
+<para
+>Det kommer alltid att finnas en frukt på spelplanen i spelet. Om du samlar in den ökas ditt resultat med 5 poäng. Det nuvarande resultatet visas alltid i statusraden. </para>
+
+<para
+>När du rör dig på spelplanen kommer hinder också att dyka upp. Att träffa dem orsakar också en krasch. Varje gång ett hinder dyker upp och du överlever det, erhåller du dock två poäng. </para>
+
+<para
+>Du kan ändra spelets svårighetsnivå genom att använda undermenyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guisubmenu
+>Svårighetsnivå</guisubmenu
+></menuchoice
+> eller kombinationsrutan i statusraden. Svårighetsnivån påverkar spelets hastighet och datorspelaren. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Att använda tangentbordet</title>
+
+<para
+>Varje spelare har fyra tangenter. De används för att byta riktning. Riktningstangenterna behöver inte hållas nere. Tryck bara på dem en gång för att ändra riktning för din spelare. </para>
+
+<note
+><para
+>Du kan <ulink url="help:/fundamentals/shortcuts.html"
+>ändra tangenterna</ulink
+> genom att använda menyalternativet <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Översikt av gränssnittet</title>
+
+<sect1 id="menu-items">
+<title
+>Menyalternativ</title>
+
+<para
+>Följande lista beskriver kortfattat varje alternativ i menyraden.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Ny</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Startar ett nytt spel.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Paus</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Väljer om spelet är i pausläge eller inte.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Visa poängtoppen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Visar tabellen med poängtoppen.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Avsluta</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Avsluta Ormspel.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Svårighetsnivå</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>En undermeny som låter dig ändra spelets svårighetsnivå.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Ormspel...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Öppnar en <link linkend="configuration"
+>omfattande dialogruta</link
+> för att anpassa olika alternativ.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Dessutom har Ormspel de vanliga menyalternativen <guimenu
+>Inställningar</guimenu
+> och <guimenu
+>Hjälp</guimenu
+> i &kde;. För mer information, läs avsnitten <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menyn Inställningar</ulink
+> och <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menyn Hjälp</ulink
+> i &kde;:s Grunder. </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Förvalda genvägar</title>
+
+<para
+>Följande tabeller visar de förvalda genvägarna.</para>
+
+
+<table>
+<title
+>Genvägar för spelare 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Tangentkombination</entry>
+<entry
+>Åtgärd</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>Uppåtpil</entry>
+<entry
+>Flytta upp</entry>
+</row>
+<row>
+<entry
+>Neråtpil</entry>
+<entry
+>Flytta ner</entry>
+</row>
+<row>
+<entry
+>Högerpil</entry>
+<entry
+>Flytta åt höger</entry>
+</row>
+<row>
+<entry
+>Vänsterpil</entry>
+<entry
+>Flytta åt vänster</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Accelerera</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Genvägar för spelare 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Tangentkombination</entry>
+<entry
+>Åtgärd</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Flytta upp</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Flytta ner</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Flytta åt höger</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Flytta åt vänster</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Accelerera</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Allmänna genvägar</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Tangentkombination</entry>
+<entry
+>Åtgärd</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Gör paus eller återuppta spelet</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Poängtoppen</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl; <keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Nytt spel</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Avsluta Ormspel</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Den här handboken</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>Vad är det här hjälp</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>De här tangentbindningarna kan <ulink url="help:/fundamentals/shortcuts.html"
+>ändras</ulink
+> genom att använda menyalternativet <menuchoice
+> <guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa genvägar...</guimenuitem
+> </menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>Inställningsdialogrutan</title>
+
+<para
+>Genom att använda menyalternativet i menyn <menuchoice
+><guimenu
+>Inställningar</guimenu
+> <guimenuitem
+>Anpassa Ormspel...</guimenuitem
+></menuchoice
+>, visas ytterligare en dialogruta som låter dig finjustera beteendet hos Ormspel.</para>
+
+<para
+>Dialogrutan är uppdelad i två sidor.</para>
+
+<sect1 id="configuration-general">
+<title
+>Allmänna inställningar</title>
+
+<screenshot>
+<screeninfo
+>Anpassa Ormspel - Allmänt</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Allmänna inställningar</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Speltyp</guilabel
+></term>
+<listitem
+><para
+>Detta låter dig ändra speltypen. Det finns tre alternativ: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>Ormspel: spelare mot spelare</guimenuitem
+></term>
+    <listitem
+><para
+>Ett Ormspel mellan två mänskliga spelare.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Ormspel: spelare mot dator</guimenuitem
+></term>
+    <listitem
+><para
+>Ett Ormspel mellan en mänsklig spelare och datorn.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Ormläge: ensam spelare</guimenuitem
+></term>
+    <listitem
+><para
+>Ett Ormspel med en ensam spelare.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Inaktivera acceleration</guilabel
+></term>
+<listitem
+><para
+>Markeras den här rutan inaktiveras accelerationsfunktionen. Tryck på accelerationstangenten har ingen effekt, utan båda farkosterna rör sig alltid med konstant hastighet.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Spelarnamn</guilabel
+></term>
+<listitem
+><para
+>Ange egna namn att använda för spelarna som överskrider användning av de fördefinierade.</para>
+<para
+>Förvalt namn för den första spelaren är namnet på användaren som för närvarande är inloggad. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Spelalternativ</guilabel
+></term>
+<listitem
+><para
+>Ange <guilabel
+>Omgångar för att vinna:</guilabel
+> för att definiera hur många omgångar som krävs innan en vinnare deklareras.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Inställning av tema</title>
+
+<screenshot>
+<screeninfo
+>Anpassa Ormspel - Tema</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Inställning av tema</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>Sidan låter dig ändra temat som Ormspel använder. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Tack till och licens</title>
+
+<para
+>Ormspel </para>
+
+<para
+>Program Copyright 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Program Copyright 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+
+<para
+>Delar av koden kommer från xtron-1.1 av Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+> </para>
+
+<para
+>Dokumentation Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Dokumentation uppdaterad för &kde; 2.0 av &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Översättning Stefan Asserhäll <email
+>stefan.asserhall@bredband.net</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+

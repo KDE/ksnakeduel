@@ -1,0 +1,358 @@
+# Copyright (C) YEAR This_file_is_part_of_KDE
+# This file is distributed under the same license as the PACKAGE package.
+#
+# Jan Madsen <jan-portugal@opensuse.org>, 2009.
+# Martin Schlander <mschlander@opensuse.org>, 2010, 2020.
+msgid ""
+msgstr ""
+"Project-Id-Version: ktron\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2022-09-28 00:44+0000\n"
+"PO-Revision-Date: 2020-07-21 18:04+0200\n"
+"Last-Translator: Martin Schlander <mschlander@opensuse.org>\n"
+"Language-Team: Danish <dansk@dansk-gruppen.dk>\n"
+"Language: da\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"X-Generator: Lokalize 20.04.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "Jan Madsen"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "jan-portugal@opensuse.org"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
+#: general.ui:35
+#, kde-format
+msgid "Game Type"
+msgstr "Spiltype"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:42
+#, kde-format
+msgid "KSnakeDuel: Player vs Computer"
+msgstr "KSnakeDuel: Spiller mod computer"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:47
+#, kde-format
+msgid "KSnakeDuel: Player vs Player"
+msgstr "KSnakeDuel: Spiller mod spiller"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:52
+#, fuzzy, kde-format
+#| msgid "KSnake: Single player"
+msgid "KSnake mode: Single player"
+msgstr "KSnake: Enkelt spiller"
+
+#. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
+#: general.ui:60
+#, kde-format
+msgid "Game type:"
+msgstr "Spiltype:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
+#: general.ui:73
+#, kde-format
+msgid "Behavior"
+msgstr "Opførsel"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
+#: general.ui:79
+#, kde-format
+msgid "&Disable acceleration"
+msgstr "&Deaktivér acceleration"
+
+#. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
+#: general.ui:89
+#, kde-format
+msgid "Player Names"
+msgstr "Spillernavne"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
+#: general.ui:101
+#, fuzzy, kde-format
+#| msgid "Right player / KSnake:"
+msgid "Right player / KSnake mode:"
+msgstr "Højre spiller/ KSnake:"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
+#: general.ui:111 ktron.cpp:258
+#, kde-format
+msgid "Left player:"
+msgstr "Venstre spiller:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
+#: general.ui:124
+#, kde-format
+msgid "Game Options"
+msgstr "Spilindstillinger"
+
+#. i18n: ectx: property (text), widget (QLabel, roundsLabel)
+#: general.ui:130
+#, fuzzy, kde-format
+#| msgid "Rounds to win"
+msgid "Rounds to win:"
+msgstr "Runder der skal vindes"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: ksnakeduel.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "Det grafiske tema der skal bruges."
+
+#. i18n: ectx: label, entry (AcceleratorBlocked), group (Game)
+#: ksnakeduel.kcfg:15
+#, kde-format
+msgid "Whether to disable acceleration."
+msgstr "Om acceleration skal deaktiveres."
+
+#. i18n: ectx: label, entry (NamePlayer1), group (Game)
+#: ksnakeduel.kcfg:19
+#, kde-format
+msgid "The name of player 1."
+msgstr "Navnet på spiller 1."
+
+#. i18n: ectx: label, entry (NamePlayer2), group (Game)
+#: ksnakeduel.kcfg:22
+#, kde-format
+msgid "The name of player 2."
+msgstr "Navnet på spiller 2."
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:25
+#, kde-format
+msgid "Type of the game"
+msgstr "Spillets type"
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:34
+#, kde-format
+msgid "Rounds"
+msgstr "Runder"
+
+#: ktron.cpp:64
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Up"
+msgid "Right Player / KSnake mode: Up"
+msgstr "Højre spiller/ KSnake: Op"
+
+#: ktron.cpp:70
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Down"
+msgid "Right Player / KSnake mode: Down"
+msgstr "Højre spiller/ KSnake: Ned"
+
+#: ktron.cpp:76
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Right"
+msgid "Right Player / KSnake mode: Right"
+msgstr "Højre spiller/ KSnake: Højre"
+
+#: ktron.cpp:82
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Left"
+msgid "Right Player / KSnake mode: Left"
+msgstr "Højre spiller/ KSnake: Venstre"
+
+#: ktron.cpp:88
+#, kde-format
+msgid "Right Player: Accelerator"
+msgstr "Højre spiller: Accelerator"
+
+#: ktron.cpp:94
+#, kde-format
+msgid "Left Player: Up"
+msgstr "Venstre spiller: Op"
+
+#: ktron.cpp:100
+#, kde-format
+msgid "Left Player: Down"
+msgstr "Venstre spiller: Ned"
+
+#: ktron.cpp:106
+#, kde-format
+msgid "Left Player: Right"
+msgstr "Venstre spiller: Højre"
+
+#: ktron.cpp:112
+#, kde-format
+msgid "Left Player: Left"
+msgstr "Venstre spiller: Venstre"
+
+#: ktron.cpp:118
+#, kde-format
+msgid "Left Player: Accelerator"
+msgstr "Venstre spiller: Accelerator"
+
+#: ktron.cpp:162
+#, kde-format
+msgid "Failed to load \"%1\" theme. Please check your installation."
+msgstr "Kunne ikke indlæse temaet \"%1\". Tjek din installation."
+
+#: ktron.cpp:181
+#, kde-format
+msgid "%1 has won!"
+msgstr "%1 vandt!"
+
+#: ktron.cpp:184 tron.cpp:323
+#, kde-format
+msgid "Game paused"
+msgstr "Spillet er på pause"
+
+#: ktron.cpp:253
+#, kde-format
+msgid "Player Name:"
+msgstr "Spillernavn:"
+
+#: ktron.cpp:254
+#, kde-format
+msgid "Opponent:"
+msgstr "Modstander:"
+
+#: ktron.cpp:257
+#, fuzzy, kde-format
+#| msgid "Right Player:"
+msgid "Right player:"
+msgstr "Højre spiller:"
+
+#: ktron.cpp:262
+#, kde-format
+msgid "General"
+msgstr "Generelt"
+
+#: ktron.cpp:263
+#, kde-format
+msgid "Theme"
+msgstr "Tema"
+
+#: main.cpp:46 player.cpp:82
+#, kde-format
+msgid "KSnakeDuel"
+msgstr "KSnakeDuel"
+
+#: main.cpp:48
+#, kde-format
+msgid "A race in hyperspace"
+msgstr "Et væddeløb i hyperspace"
+
+#: main.cpp:50
+#, kde-format
+msgid ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Parts of the algorithms for the computer player are from\n"
+"xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+msgstr ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Dele af algoritmer for computerspilleren er fra\n"
+"xtron-1.1 ved Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+
+#: main.cpp:58
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "Matthias Kiefer"
+
+#: main.cpp:58
+#, kde-format
+msgid "Original author"
+msgstr "Oprindelig udvikler"
+
+#: main.cpp:59
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "Benjamin Meyer"
+
+#: main.cpp:59
+#, kde-format
+msgid "Various improvements"
+msgstr "Forskellige forbedringer"
+
+#: main.cpp:60
+#, kde-format
+msgid "Stas Verberkt"
+msgstr "Stas Verberkt"
+
+#: main.cpp:60
+#, kde-format
+msgid "KDE 4 Port, interface revision and KSnake mode"
+msgstr "KDE 4-portering, revision af brugerflade og KSnake-tilstand"
+
+#: main.cpp:65
+#, kde-format
+msgid "Start in KSnake mode"
+msgstr "Start i KSnake-tilstand"
+
+#: player.cpp:103
+#, kde-format
+msgid "Player %1"
+msgstr "Spiller %1"
+
+#: tron.cpp:343
+#, kde-format
+msgid "%1 has won versus %2 with %4 versus %3 point!"
+msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
+msgstr[0] "%1 har vundet over %2 med %4 mod %3 point!"
+msgstr[1] "%1 har vundet over %2 med %4 mod %3 point!"
+
+#: tron.cpp:354
+#, kde-format
+msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
+msgid "%1 (%2) versus %3 (%4)"
+msgstr "%1 (%2) mod %3 (%4)"
+
+#: tron.cpp:355 tron.cpp:356
+#, kde-format
+msgid "%1 point"
+msgid_plural "%1 points"
+msgstr[0] "%1 point"
+msgstr[1] "%1 points"
+
+#: tron.cpp:364
+#, kde-format
+msgid "KSnake game ended with 1 point"
+msgid_plural "KSnake game ended with %1 points"
+msgstr[0] "KSnake-spillet sluttede med 1 point"
+msgstr[1] "KSnake-spillet sluttede med %1 point"
+
+#: tron.cpp:369
+#, kde-format
+msgid ""
+"The game starts when each player has pressed one of their direction keys!"
+msgstr ""
+"Spillet starter når hver spiller har trykket på en af deres retningstaster!"
+
+#: tron.cpp:372
+#, kde-format
+msgid "Press any of your direction keys to start!"
+msgstr "Tryk på en af dine retningstaster for at starte!"
+
+#~ msgid "Left Player:"
+#~ msgstr "Venstre spiller:"
+
+#~ msgid "The difficulty level."
+#~ msgstr "Sværhedsgraden."
+
+#~ msgid "KTron"
+#~ msgstr "KTron"
+
+#~ msgid "Start in KTron mode"
+#~ msgstr "Start i KTron-tilstand"
+
+#~ msgid "%1 (%2 point) versus %3 (%4 points)"
+#~ msgid_plural "%1 (%2 points) versus %3 (%4 points)"
+#~ msgstr[0] "%1 (%2 point) mod %3 (%4 point)"
+#~ msgstr[1] "%1 (%2 point) mod %3 (%4 point)"

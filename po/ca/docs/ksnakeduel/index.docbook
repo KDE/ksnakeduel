@@ -1,0 +1,818 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Catalan  "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>El manual del &ksnakeduel;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Revisor</contrib>
+</othercredit>
+&traductor.Antoni.Bella;
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>17 d'agost de 2021</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>El &ksnakeduel; és un joc senzill de dol amb una serp, al qual podeu jugar sol o contra un amic. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>joc</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>snakeduel</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>serp</keyword>
+<keyword
+>duel</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Introducció</title>
+
+<para
+>El &ksnakeduel; és un joc senzill de dol amb una serp. Podeu jugar-hi contra l'ordinador o un amic. L'objectiu del joc és viure més temps que l'oponent. Per a fer això, eviteu córrer cap a dins d'una paret, la vostra pròpia cua i la de l'oponent. </para>
+
+<para
+>El &ksnakeduel; és un joc senzill amb una serp. L'objectiu és sobreviure el temps més gran possible i menjar tants fruits com es pugui. </para>
+
+<para
+>Podeu canviar entre aquests jocs utilitzant el selector del tipus de joc en el diàleg de configuració. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Jugar al &ksnakeduel;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Regles</title>
+
+<para
+>Una vegada s'inicia una tanda, els jugadors no deixaran d'avançar (a menys que la partida estigui en pausa). Tot el que heu de fer és evitar estavellar-vos canviant la direcció del vostre jugador. A més, podeu intentar obstaculitzar a l'oponent. Per a això, és possible augmentar la velocitat prement la tecla de l'accelerador. </para>
+
+<para
+>Una tanda començarà quan tots els jugadors humans premin una tecla de direcció. La direcció del moviment inicial serà llavors en aquesta direcció. </para>
+
+<para
+>Si voleu interrompre la partida, seleccioneu l'element de menú <menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+></menuchoice
+>. A més, la partida s'aturarà quan el joc perdi el focus del teclat, &pex;, quan es canvia a una altra finestra. </para>
+
+<para
+>Per a continuar la partida, seleccioneu una altra vegada aquest element de menú o premeu la drecera del teclat. La partida també continuarà si els jugadors humans premen una de les seves tecles de direcció. Però aneu amb compte, el jugador canviarà immediatament a aquesta direcció. </para>
+
+
+<para
+>Una partida consisteix en diverses tandes, i acabarà si un jugador té almenys nou punts, i a més de dos punts que l'oponent. La puntuació actual sempre es mostrarà a la barra d'estat. </para>
+
+<para
+>Podeu canviar el nivell de dificultat de la partida utilitzant el submenú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Dificultat</guisubmenu
+></menuchoice
+> o la llista desplegable que hi ha a la barra d'estat. La dificultat influirà en la velocitat de la partida i en el jugador de l'ordinador. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>El jugador de l'ordinador</title>
+
+<para
+>Podeu jugar contra un ordinador. El nivell de dificultat del joc influirà en la intel·ligència del jugador de l'ordinador. </para>
+<para
+>En els nivells baixos, a l'ordinador no li importa l'oponent i senzillament es mou al seu voltant. En els nivells de major habilitat, l'ordinador intentarà obstaculitzar a l'oponent quan s'hi acosti. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Usar el teclat</title>
+
+<para
+>Cada jugador disposa de cinc tecles. Quatre tecles per a canviar la direcció i una per a accelerar. </para>
+
+<para
+>Les tecles de direcció no s'han de retenir. Senzillament premeu-les un cop per a canviar la direcció del jugador. </para>
+
+<para
+>L'acceleració només succeirà mentre roman premuda la tecla d'acceleració. Quan la deixeu anar, la velocitat tornarà a la normalitat. </para>
+
+<note
+><para
+>Aquestes dreceres <ulink url="help:/fundamentals/shortcuts.html"
+>es poden canviar</ulink
+> seleccionant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Jugar al mode KSnake</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Regles</title>
+
+<para
+>Una vegada s'inicia la partida, el jugador no deixarà d'avançar (a menys que la partida estigui en pausa). Tot el que heu de fer és evitar estavellar-vos canviant la seva direcció. Una partida començarà quan premeu una tecla de direcció. La direcció del moviment inicial serà llavors en aquesta direcció. </para>
+
+<para
+>Si voleu fer una pausa en la partida, seleccioneu l'element de menú <menuchoice
+><shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+></menuchoice
+> o premeu la drecera del teclat. A més, la partida s'aturarà quan el joc perdi el focus del teclat, &pex;, quan es canvia a una altra finestra. </para>
+
+<para
+>Per a continuar la partida, seleccioneu una altra vegada aquest element de menú o premeu la drecera del teclat. La partida també continuarà si els jugadors humans premen una de les seves tecles de direcció. Però aneu amb compte, el jugador canviarà immediatament a aquesta direcció. </para>
+
+<para
+>En la partida sempre hi haurà un tros de fruita en el mapa. Si el recolliu, la vostra puntuació augmentarà amb 5 punts. La puntuació actual sempre es mostra a la barra d'estat. </para>
+
+<para
+>Quan esteu movent-vos pel mapa, també apareixeran obstacles. Colpejar-los resultarà en un accident. No obstant això, cada vegada que aparegui un obstacle i sobreviviu, sereu recompensat amb 2 punts. </para>
+
+<para
+>Podeu canviar el nivell de dificultat de la partida utilitzant el submenú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Dificultat</guisubmenu
+></menuchoice
+> o la llista desplegable que hi ha a la barra d'estat. La dificultat influirà en la velocitat de la partida i en el jugador de l'ordinador. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Usar el teclat</title>
+
+<para
+>Cada jugador disposa de quatre tecles. Aquestes s'utilitzen per a canviar la direcció. Les tecles de direcció no s'han de retenir. Senzillament premeu-les un cop per a canviar la direcció del jugador. </para>
+
+<note
+><para
+>Aquestes dreceres <ulink url="help:/fundamentals/shortcuts.html"
+>es poden canviar</ulink
+> seleccionant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Resum de la interfície</title>
+
+<sect1 id="menu-items">
+<title
+>Elements de menú</title>
+
+<para
+>La llista següent descriu breument cada opció de la barra de menús.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Nova</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Comença una partida nova.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Pausa</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Canvia si la partida està en pausa.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Mostra les puntuacions</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Mostra la taula de puntuacions.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Joc</guimenu
+> <guimenuitem
+>Surt</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Surt del &ksnakeduel;.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guisubmenu
+>Dificultat</guisubmenu
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Un submenú que permet canviar el nivell de dificultat del joc.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &ksnakeduel;...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Obre un <link linkend="configuration"
+>diàleg integral</link
+> per a configurar diverses opcions.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>De manera addicional, el &ksnakeduel; té la configuració comuna al &kde; i els elements dels menús <guimenu
+>Arranjament</guimenu
+> i <guimenu
+>Ajuda</guimenu
+>. Per a obtenir més informació, llegiu les seccions sobre <ulink url="help:/fundamentals/menus.html#menus-settings"
+>El menú Arranjament</ulink
+> i <ulink url="help:/fundamentals/menus.html#menus-help"
+>El menú Ajuda</ulink
+> en els Fonaments del &kde;. </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Dreceres predeterminades</title>
+
+<para
+>La taula següent mostra les dreceres de teclat predeterminades.</para>
+
+
+<table>
+<title
+>Dreceres del jugador 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinació de tecles&nbsp;</entry>
+<entry
+>Acció</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>&Up;</entry>
+<entry
+>Mou amunt</entry>
+</row>
+<row>
+<entry
+>&Down;</entry>
+<entry
+>Mou avall</entry>
+</row>
+<row>
+<entry
+>&Right;</entry>
+<entry
+>Mou a la dreta</entry>
+</row>
+<row>
+<entry
+>&Left;</entry>
+<entry
+>Mou a l'esquerra</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Accelera</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Dreceres del jugador 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinació de tecles&nbsp;</entry>
+<entry
+>Acció</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Mou amunt</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Mou avall</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Mou a la dreta</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Mou a l'esquerra</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Accelera</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Dreceres generals</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Combinació de tecles&nbsp;</entry>
+<entry
+>Acció</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Posa en pausa/Reprèn la partida</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Puntuacions màximes</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Partida nova</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Surt del &ksnakeduel;</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Aquest manual</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Maj;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>L'ajuda «Què és això?»</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Aquestes dreceres <ulink url="help:/fundamentals/shortcuts.html"
+>es poden canviar</ulink
+> seleccionant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura les dreceres de teclat...</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>El diàleg de configuració</title>
+
+<para
+>Seleccionant l'element de menú <menuchoice
+><guimenu
+>Arranjament</guimenu
+> <guimenuitem
+>Configura el &ksnakeduel;...</guimenuitem
+></menuchoice
+> s'obrirà un diàleg addicional que us permetrà modificar el comportament del &ksnakeduel;.</para>
+
+<para
+>Aquest diàleg està dividit en dues pàgines.</para>
+
+<sect1 id="configuration-general">
+<title
+>Configuració general</title>
+
+<screenshot>
+<screeninfo
+>Configura el &ksnakeduel; - General</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configuració general</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Tipus de joc</guilabel
+></term>
+<listitem
+><para
+>Us permetrà canviar el tipus de joc. Hi ha tres opcions: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jugador contra jugador</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida del &ksnakeduel; entre dos jugadors humans.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jugador contra ordinador</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida del &ksnakeduel; entre un jugador humà i l'ordinador.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Mode KSnake: Un sol jugador</guimenuitem
+></term>
+    <listitem
+><para
+>Una partida del &ksnakeduel; amb un sol jugador.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Desactiva l'acceleració</guilabel
+></term>
+<listitem
+><para
+>Marcar aquesta casella inhabilitarà la característica de l'acceleració: prémer la tecla de l'acceleració no tindrà cap efecte, els dos vehicles sempre viatjaran amb una velocitat constant.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Noms dels jugadors</guilabel
+></term>
+<listitem
+><para
+>Especifiqueu els noms personalitzats a utilitzar perquè els jugadors superposin els predeterminats.</para>
+<para
+>El nom predeterminat del jugador u és el nom de l'usuari que ha iniciat la sessió actual. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Opcions del joc</guilabel
+></term>
+<listitem
+><para
+>Especifiqueu les <guilabel
+>Tandes per a guanyar:</guilabel
+> per a definir quantes tandes es requereixen abans que es declari un guanyador.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Configurar el tema</title>
+
+<screenshot>
+<screeninfo
+>Configurant el &ksnakeduel; - Tema</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Configurant el tema</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>Aquesta pàgina permet canviar el tema que utilitza el &ksnakeduel;. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Crèdits i llicència</title>
+
+<para
+>&ksnakeduel; </para>
+
+<para
+>Copyright del programa 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Copyright del programa 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+
+<para
+>Hi ha parts del codi que són del xtron-1.1 per en Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+> </para>
+
+<para
+>Copyright de la documentació 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Documentació actualitzada per al &kde; 2.0 per en &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Traductor de la documentació: &credits.Antoni.Bella;</para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+

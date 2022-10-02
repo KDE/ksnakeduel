@@ -1,0 +1,816 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Dutch "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Het handboek van &ksnakeduel;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Nalezer</contrib>
+</othercredit>
+&Freek.de.Kruijf;&Ronald.Stroethoff;
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>2021-08-17</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&ksnakeduel; is een eenvoudig slangengevechtspel, dat u alleen kunt spelen of tegen een vriend. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>spel</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>slangengevecht</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>slang</keyword>
+<keyword
+>duel</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Inleiding</title>
+
+<para
+>&ksnakeduel; is een eenvoudig duelleer spel met slangen. U kunt het tegen de computer of een vriend spelen. Het doel van het spel is langer dan uw tegenstander in leven te blijven. Om dit te bereiken moet u een botsing met een muur, uw eigen staart en de staart van uw tegenstander vermijden. </para>
+
+<para
+>&ksnakeduel; is een eenvoudig Snake-achtig spel. Het doel is zo lang mogelijk te blijven leven en zoveel mogelijk fruit te eten. </para>
+
+<para
+>U kunt tussen deze spelvarianten kiezen door gebruik van de kiezer van het speltype in de instellingendialoog. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Het spelen van &ksnakeduel;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Regels</title>
+
+<para
+>Nadat een speelronde is gestart kunnen de spelers niet meer stoppen met het voorwaarts gaan (tenzij het spel is gepauzeerd). Het enige wat u moet doen is het vermijden van een botsing door het wijzigen van de speelrichting. Daarnaast kunt u proberen uw tegenstander te hinderen. Hiervoor is het mogelijk om de snelheid te verhogen door op de versnellingstoets te drukken. </para>
+
+<para
+>Een speelronde start nadat alle menselijke spelers een richtingtoets hebben ingedrukt. Deze richting is vervolgens de richting van bewegen. </para>
+
+<para
+>Als u het spelen wilt onderbreken, selecteer het menu-item <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauzeren</guimenuitem
+></menuchoice
+>. Daarnaast pauzeert het spel als het spel het toetsenbord focus verliest, &eg; tijdens het omschakelen naar een ander venster. </para>
+
+<para
+>Om door te gaan met het spel, selecteert u opnieuw het menu-item of drukt u opnieuw de sneltoets in. Het spel zal ook doorgaan als u op een van de richtingstoetsen drukt. Maar wees voorzichtig, uw speler zal onmiddellijk deze richting uitgaan. </para>
+
+
+<para
+>Een spel bestaat uit verschillende rondes en eindigt als een speler tenminste negen punten heeft en bovendien tenminste twee punten meer dan de tegenstander. U kunt altijd de huidige stand op de statusbalk zien. </para>
+
+<para
+>U kunt de moeilijkheidsgraad van het spel instellen in het submenu <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Moeilijkheidsgraad</guisubmenu
+></menuchoice
+> of met het afrolmenu in de statusbalk. De moeilijkheidsgraad beïnvloed de snelheid van het spel en de computerspeler. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>De computerspeler</title>
+
+<para
+>U kunt tegen de computer spelen. De moeilijkheidsgraad van het spel beïnvloed de intelligentie van de computerspeler. </para>
+<para
+>Bij lagere moeilijkheidsgraden geeft de computer geen aandacht aan de tegenstander en verplaatst zich alleen maar. Maar bij de hogere moeilijkheidsgraden probeert de computer de tegenstander te hinderen als deze in de nabijheid komt. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Het gebruik van het toetsenbord</title>
+
+<para
+>Elke speler gebruikt vijf toetsen. vier toetsen om de richting te veranderen en een om sneller te gaan. </para>
+
+<para
+>U hoeft de richtingtoetsen niet ingedrukt te houden. Druk ze eenvoudig een keer in om de bewegingsrichting van uw speler te wijzigen. </para>
+
+<para
+>De speler blijft alleen sneller gaan zolang de toets voor het sneller gaan ingedrukt blijft. Als u deze toets niet meer ingedrukt houdt dan gaat de snelheid weer naar normaal. </para>
+
+<note
+><para
+>U kunt <ulink url="help:/fundamentals/shortcuts.html"
+>de toetsen wijzigen</ulink
+> met het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Sneltoetsen configureren...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Modus KSnake spelen</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Regels</title>
+
+<para
+>Nadat het spel is gestart, kan de speler niet meer stoppen met het voorwaarts bewegen (tenzij het spel op pauzeren staat). Het enige wat u kan doen is het vermijden van een botsing door het veranderen van uw richting. Een spel start wanneer u op een richtingstoets drukt. De speler zal vervolgens in deze richting gaan bewegen. </para>
+
+<para
+>Als u het spel wilt pauzeren dan selecteert u menu-item <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauzeren</guimenuitem
+></menuchoice
+> of u drukt op de sneltoets. Daarnaast pauzeert het spel als het spel de toetsenbordfocus verliest, &eg; tijdens het omschakelen naar een ander venster. </para>
+
+<para
+>Om door te gaan met het spel, selecteert u opnieuw het menu-item of drukt u opnieuw de sneltoets in. Het spel zal ook doorgaan als u op een van de richtingstoetsen drukt. Maar wees voorzichtig, uw speler zal onmiddellijk deze richting uitgaan. </para>
+
+<para
+>In het spel zal er altijd een stuk fruit ergens in het speelveld aanwezig zijn. Als u deze verzameld dan wordt uw score verhoogd met 5 punten. U kunt altijd de handige stand op de statusbalk zien. </para>
+
+<para
+>Als u zich over het speelveld beweegt zullen er ook obstakels verschijnen. Als u deze raakt dan resulteert dat in een crash. Maar als u iedere keer dat een obstakel verschijnt dit overleeft dan krijgt u 2 punten extra. </para>
+
+<para
+>U kunt de moeilijkheidsgraad van het spel instellen in het submenu <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guisubmenu
+>Moeilijkheidsgraad</guisubmenu
+></menuchoice
+> of met het afrolmenu in de statusbalk. De moeilijkheidsgraad beïnvloed de snelheid van het spel en de computerspeler. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Het gebruik van het toetsenbord</title>
+
+<para
+>Elke speler heeft de beschikking over vier toetsen. U gebruikt ze voor het veranderen van de richting. De richtingtoetsen hoeft u niet ingedrukt te houden. Druk ze eenmaal in om de richting van uw speler te wijzigen. </para>
+
+<note
+><para
+>U kunt <ulink url="help:/fundamentals/shortcuts.html"
+>de toetsen wijzigen</ulink
+> met het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Sneltoetsen configureren...</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Overzicht van het interface</title>
+
+<sect1 id="menu-items">
+<title
+>Menu-items</title>
+
+<para
+>De volgende secties geven een korte omschrijving van elke optie op de menubalk.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Nieuw</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Start een nieuw spel.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+></shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Pauze</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Schakelt het pauzeren van het spel om.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Topscores tonen</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Toont de tabel met de hoogste scores.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Spel</guimenu
+> <guimenuitem
+>Afsluiten</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>&ksnakeduel; afsluiten.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+><guimenuitem
+>Moeilijkheidsgraad</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Een submenu dat u de moeilijkheidsgraad van het spel laat wijzigen.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&ksnakeduel; configureren...</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Opent een <link linkend="configuration"
+>uitgebreid dialoogvenster</link
+> waarin u verschillende keuzes kunt instellen.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Daarnaast heeft &ksnakeduel; de standaard &kde;-menu-items <guimenu
+>Instellingen</guimenu
+> en <guimenu
+>Help</guimenu
+>, lees voor meer informatie de secties over het <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Menu Instellingen</ulink
+> en <ulink url="help:/fundamentals/menus.html#menus-help"
+>Menu Help</ulink
+> van de &kde; Fundamentals. </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Standaard sneltoetsen</title>
+
+<para
+>De volgende tabel geeft u de standaard sneltoetsen.</para>
+
+
+<table>
+<title
+>Sneltoetsen speler 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Toetsencombinatie</entry>
+<entry
+>Actie</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>Pijl &Up;</entry>
+<entry
+>Omhoog verplaatsen</entry>
+</row>
+<row>
+<entry
+>Pijl &Down;</entry>
+<entry
+>Omlaag verplaatsen</entry>
+</row>
+<row>
+<entry
+>Pijl &Right;</entry>
+<entry
+>Naar rechts verplaatsen</entry>
+</row>
+<row>
+<entry
+>Pijl &Left;</entry>
+<entry
+>Naar links verplaatsen</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Versnellen</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Sneltoetsen speler 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Toetsencombinatie</entry>
+<entry
+>Actie</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Omhoog verplaatsen</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Omlaag verplaatsen</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Naar rechts verplaatsen</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Naar links verplaatsen</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Versnellen</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Algemene sneltoetsen</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Toetsencombinatie</entry>
+<entry
+>Actie</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Het spel pauzeren/hervatten</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Topscores</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Nieuw spel</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>&ksnakeduel; afsluiten</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Dit handboek</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>"Wat is dit"-help</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Deze sneltoetsen <ulink url="help:/fundamentals/shortcuts.html"
+>kunt u veranderen</ulink
+> door het menu-item <menuchoice
+> <guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>Sneltoetsen configureren...</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>Het configuratievenster</title>
+
+<para
+>Door het selecteren van het menu-item <menuchoice
+><guimenu
+>Instellingen</guimenu
+> <guimenuitem
+>&ksnakeduel; configureren...</guimenuitem
+></menuchoice
+> opent u een verdere dialoog waarin u het gedrag van &ksnakeduel; kunt aanpassen.</para>
+
+<para
+>Dit dialoogvenster is opgedeeld in twee pagina's.</para>
+
+<sect1 id="configuration-general">
+<title
+>Algemene instellingen</title>
+
+<screenshot>
+<screeninfo
+>&ksnakeduel; configureren - Algemeen</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Algemene instellingen</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Speltype</guilabel
+></term>
+<listitem
+><para
+>Hier kunt u de spelvariant instellen. Er zijn drie keuzemogelijkheden: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: speler tegen speler</guimenuitem
+></term>
+    <listitem
+><para
+>Een &ksnakeduel;-spel tussen twee menselijke spelers.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: speler tegen computer</guimenuitem
+></term>
+    <listitem
+><para
+>Een &ksnakeduel;-spel tussen een menselijke speler en de computer</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Modus KSnake: één speler</guimenuitem
+></term>
+    <listitem
+><para
+>Een &ksnakeduel;-spel voor één speler</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Versnelling uitschakelen</guilabel
+></term>
+<listitem
+><para
+>Als u dit vakje activeert dan zal de mogelijkheid tot versnellen uitgeschakeld zijn - het indrukken van de versnellingstoets zal geen effect hebben, beide vehikels zullen altijd met dezelfde snelheid gaan. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Spelernamen</guilabel
+></term>
+<listitem
+><para
+>U kunt hier aangepaste namen opgeven voor de spelers in plaats van de standaard namen.</para>
+<para
+>De standaard naam voor speler één is de naam van de op dit moment ingelogde gebruiker. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Spelopties</guilabel
+></term>
+<listitem
+><para
+>De <guilabel
+>Te winnen ronden:</guilabel
+> specificeren om te definiëren hoeveel ronden vereist zijn voordat een winnaar wordt verklaard.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Thema-instellingen</title>
+
+<screenshot>
+<screeninfo
+>&ksnakeduel; configureren - thema</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Thema-instellingen</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>Deze pagina stelt u in staat het thema van &ksnakeduel; te wijzigen. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Dankbetuiging en licentie</title>
+
+<para
+>&ksnakeduel; </para>
+
+<para
+>Programma copyright 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Programma copyright 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+
+<para
+>Gedeeltes van de code komen uit xtron-1.1 van Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au</email
+> </para>
+
+<para
+>Documentatie copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+
+<para
+>Documentatie bijgewerkt voor &kde; 2.0 door &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+&meld.fouten;&vertaling.freek;&vertaling.ronald;&nagelezen.freek; &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+
