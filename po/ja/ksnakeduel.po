@@ -342,6 +342,3 @@ msgstr "ゲームは各プレイヤーが方向キーのどれかを押したと
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr "方向キーのどれかを押してスタート!"
-
-#~ msgid "Left Player:"
-#~ msgstr "左プレイヤー:"
