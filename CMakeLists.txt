@@ -13,7 +13,7 @@ set(KSNAKEDUEL_VERSION "${KSNAKEDUEL_BASE_VERSION}.${RELEASE_SERVICE_COMPACT_VER
 project(ksnakeduel VERSION ${KSNAKEDUEL_VERSION})
 
 set (QT_MIN_VERSION "5.15.0")
-set (KF5_MIN_VERSION "5.90.0")
+set (KF5_MIN_VERSION "5.92.0")
 
 find_package(ECM ${KF5_MIN_VERSION} REQUIRED CONFIG)
 set(CMAKE_MODULE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/cmake ${ECM_MODULE_PATH})
@@ -27,6 +27,7 @@ include(ECMInstallIcons)
 include(ECMQtDeclareLoggingCategory)
 include(ECMSetupVersion)
 include(FeatureSummary)
+include(ECMDeprecationSettings)
 
 find_package(Qt${QT_MAJOR_VERSION} ${QT_MIN_VERSION} REQUIRED NO_MODULE COMPONENTS Widgets Svg)
 
@@ -46,12 +47,12 @@ find_package(KF5 ${KF5_MIN_VERSION} REQUIRED COMPONENTS
 
 find_package(KF5KDEGames 7.3.0 REQUIRED)
 
-add_definitions(
-    -DQT_DISABLE_DEPRECATED_BEFORE=0x050F00
-    -DQT_DEPRECATED_WARNINGS_SINCE=0x060000
-    -DKF_DISABLE_DEPRECATED_BEFORE_AND_AT=0x055800
-    -DKF_DEPRECATED_WARNINGS_SINCE=0x060000
+ecm_set_disabled_deprecation_versions(
+    QT 5.15.2
+    KF 5.101
+    KDEGAMES 7.3
 )
+
 
 include(InternalMacros)
 
