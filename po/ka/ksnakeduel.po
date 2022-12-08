@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:44+0000\n"
-"PO-Revision-Date: 2022-10-08 10:47+0200\n"
+"PO-Revision-Date: 2022-12-07 15:42+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.1.1\n"
+"X-Generator: Poedit 3.2.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -38,19 +38,19 @@ msgstr "თამაშის ტიპი"
 #: general.ui:42
 #, kde-format
 msgid "KSnakeDuel: Player vs Computer"
-msgstr ""
+msgstr "KSnakeDuel: მოთამაშე vs კომპიუტერი"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:47
 #, kde-format
 msgid "KSnakeDuel: Player vs Player"
-msgstr ""
+msgstr "KSnakeDuel: მოთამაშე vs მოთამაშე"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:52
 #, kde-format
 msgid "KSnake mode: Single player"
-msgstr ""
+msgstr "KSnake -ის რეჟიმი: ერთი"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
 #: general.ui:60
@@ -68,7 +68,7 @@ msgstr "ქცევა"
 #: general.ui:79
 #, kde-format
 msgid "&Disable acceleration"
-msgstr ""
+msgstr "&აჩქარების გათიშვა"
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
 #: general.ui:89
@@ -80,13 +80,13 @@ msgstr "მოთამაშეების სახელები"
 #: general.ui:101
 #, kde-format
 msgid "Right player / KSnake mode:"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:111 ktron.cpp:258
 #, kde-format
 msgid "Left player:"
-msgstr ""
+msgstr "მარცხენა მოთამაშე:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
 #: general.ui:124
@@ -98,7 +98,7 @@ msgstr "თამაშის მორგება"
 #: general.ui:130
 #, kde-format
 msgid "Rounds to win:"
-msgstr ""
+msgstr "მოსაგები ხელები:"
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: ksnakeduel.kcfg:9
@@ -110,96 +110,96 @@ msgstr "გრაფიკული თემა."
 #: ksnakeduel.kcfg:15
 #, kde-format
 msgid "Whether to disable acceleration."
-msgstr ""
+msgstr "აჩქარების სტატუსი."
 
 #. i18n: ectx: label, entry (NamePlayer1), group (Game)
 #: ksnakeduel.kcfg:19
 #, kde-format
 msgid "The name of player 1."
-msgstr ""
+msgstr "პირველი მოთამაშის სახელი."
 
 #. i18n: ectx: label, entry (NamePlayer2), group (Game)
 #: ksnakeduel.kcfg:22
 #, kde-format
 msgid "The name of player 2."
-msgstr ""
+msgstr "მეორე მოთამაშის სახელი."
 
 #. i18n: ectx: label, entry, group (Game)
 #: ksnakeduel.kcfg:25
 #, kde-format
 msgid "Type of the game"
-msgstr ""
+msgstr "თამაშის ტიპი"
 
 #. i18n: ectx: label, entry, group (Game)
 #: ksnakeduel.kcfg:34
 #, kde-format
 msgid "Rounds"
-msgstr ""
+msgstr "ხელი"
 
 #: ktron.cpp:64
 #, kde-format
 msgid "Right Player / KSnake mode: Up"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მაღლა"
 
 #: ktron.cpp:70
 #, kde-format
 msgid "Right Player / KSnake mode: Down"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: დაბლა"
 
 #: ktron.cpp:76
 #, kde-format
 msgid "Right Player / KSnake mode: Right"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მარჯვნივ"
 
 #: ktron.cpp:82
 #, kde-format
 msgid "Right Player / KSnake mode: Left"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მარცხნივ"
 
 #: ktron.cpp:88
 #, kde-format
 msgid "Right Player: Accelerator"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე: ამაჩქარებელი"
 
 #: ktron.cpp:94
 #, kde-format
 msgid "Left Player: Up"
-msgstr ""
+msgstr "მარცხენა მოთამაშე: მაღლა"
 
 #: ktron.cpp:100
 #, kde-format
 msgid "Left Player: Down"
-msgstr ""
+msgstr "მარცხენა მოთამაშე: დაბლა"
 
 #: ktron.cpp:106
 #, kde-format
 msgid "Left Player: Right"
-msgstr ""
+msgstr "მარცხენა მოთამაშე: მარჯვნივ"
 
 #: ktron.cpp:112
 #, kde-format
 msgid "Left Player: Left"
-msgstr ""
+msgstr "მარცხენა მოთამაშე: მარცხნივ"
 
 #: ktron.cpp:118
 #, kde-format
 msgid "Left Player: Accelerator"
-msgstr ""
+msgstr "მარცხენა მოთამაშე: ამაჩქარებელი"
 
 #: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
-msgstr ""
+msgstr "თემის (\"%1\") ჩატვირთვის შეცდომა. შეამოწმეთ თქვენი ფაილები."
 
 #: ktron.cpp:181
 #, kde-format
 msgid "%1 has won!"
-msgstr ""
+msgstr "%1-მა მოიგო!"
 
 #: ktron.cpp:184 tron.cpp:323
 #, kde-format
 msgid "Game paused"
-msgstr ""
+msgstr "თამაში შეჩერებულია"
 
 #: ktron.cpp:253
 #, kde-format
@@ -209,12 +209,12 @@ msgstr "მოთამაშის სახელი:"
 #: ktron.cpp:254
 #, kde-format
 msgid "Opponent:"
-msgstr ""
+msgstr "მეტოქე:"
 
 #: ktron.cpp:257
 #, kde-format
 msgid "Right player:"
-msgstr ""
+msgstr "მარჯვენა მოთამაშე:"
 
 #: ktron.cpp:262
 #, kde-format
@@ -270,7 +270,7 @@ msgstr "სხვადასხვა გაუმჯობესებებ�
 #: main.cpp:60
 #, kde-format
 msgid "Stas Verberkt"
-msgstr ""
+msgstr "Stas Verberkt"
 
 #: main.cpp:60
 #, kde-format
@@ -280,7 +280,7 @@ msgstr ""
 #: main.cpp:65
 #, kde-format
 msgid "Start in KSnake mode"
-msgstr ""
+msgstr "KSnake-ის რეჟიმში გაშვება"
 
 #: player.cpp:103
 #, kde-format
@@ -304,8 +304,8 @@ msgstr ""
 #, kde-format
 msgid "%1 point"
 msgid_plural "%1 points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1 ქულა"
+msgstr[1] "%1 ქულა"
 
 #: tron.cpp:364
 #, kde-format
