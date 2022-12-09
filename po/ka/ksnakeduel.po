@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:44+0000\n"
-"PO-Revision-Date: 2022-12-07 15:42+0100\n"
+"PO-Revision-Date: 2022-12-08 07:01+0100\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -246,6 +246,12 @@ msgid ""
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 msgstr ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"კომპიუტერის მოთამაშის ზოგიერთი ალგორითმი აღებულია პროგრამიდან xtron-1.1 \n"
+"ავტორი Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 
 #: main.cpp:58
 #, kde-format
@@ -275,7 +281,7 @@ msgstr "Stas Verberkt"
 #: main.cpp:60
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
-msgstr ""
+msgstr "KDE4-ზე გადატანა, ინტერფეისის გადახედვა და KSnake-ის რეჟიმი"
 
 #: main.cpp:65
 #, kde-format
@@ -291,14 +297,14 @@ msgstr "მოთამაშე %1"
 #, kde-format
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "%1-მა %2-ის წინააღმდეგ %4-ით %3 მოიგო!"
+msgstr[1] "%1-მა %2-ის წინააღმდეგ %4-ით %3 მოიგო!"
 
 #: tron.cpp:354
 #, kde-format
 msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
 msgid "%1 (%2) versus %3 (%4)"
-msgstr ""
+msgstr "%1 (%2) წინააღმდეგ %3 (%4)"
 
 #: tron.cpp:355 tron.cpp:356
 #, kde-format
@@ -311,16 +317,18 @@ msgstr[1] "%1 ქულა"
 #, kde-format
 msgid "KSnake game ended with 1 point"
 msgid_plural "KSnake game ended with %1 points"
-msgstr[0] ""
-msgstr[1] ""
+msgstr[0] "KSnake 1 ქულით დასრულდა"
+msgstr[1] "KSnake %1 ქულით დასრულდა"
 
 #: tron.cpp:369
 #, kde-format
 msgid ""
 "The game starts when each player has pressed one of their direction keys!"
 msgstr ""
+"თამაში მაშინ დაიწყება, როცა ორივე მოთამაშე მიმართულების რომელიმე ღილაკს "
+"დააწვება!"
 
 #: tron.cpp:372
 #, kde-format
 msgid "Press any of your direction keys to start!"
-msgstr ""
+msgstr "დასაწყებად მიმართულების ნებისმიერ ღილაკს დააწექით!"
