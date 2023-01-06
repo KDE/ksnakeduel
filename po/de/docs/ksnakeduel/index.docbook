@@ -1,654 +1,452 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "<application
->KSnakeDuel</application
->">
-  <!ENTITY package "kdegames">
+  <!ENTITY ksnakeduel "<application>KSnakeDuel</application>">
   <!ENTITY % addindex "IGNORE">
-  <!ENTITY % German "INCLUDE">
+  <!ENTITY % English "INCLUDE">
 ]>
 
 <book id="ksnakeduel" lang="&language;">
 <bookinfo>
-<title
->Das Handbuch zu &kappname;</title>
+<title>The &ksnakeduel; Handbook</title>
 
 <authorgroup>
-<author
-><firstname
->Fabian</firstname
-> <surname
->Dal Santo</surname
-> <affiliation
-> <address
->&Fabian.DalSanto.mail;</address>
+<author>
+<firstname>Fabian</firstname>
+<surname>Dal Santo</surname>
+<affiliation>
+<address>&Fabian.DalSanto.mail;</address>
 </affiliation>
 </author>
 
-<author
-><firstname
->Stas</firstname
-> <surname
->Verberkt</surname
-> <affiliation
-> <address
->&Stas.Verberkt.mail;</address>
+<author>
+<firstname>Stas</firstname>
+<surname>Verberkt</surname>
+<affiliation>
+<address>&Stas.Verberkt.mail;</address>
 </affiliation>
 </author>
 
-<othercredit role="reviewer"
-><firstname
->Lauri</firstname
-> <surname
->Watts</surname
-> <affiliation
-> <address
->&Lauri.Watts.mail;</address>
+<othercredit role="reviewer">
+<firstname>Lauri</firstname>
+<surname>Watts</surname>
+<affiliation>
+<address>&Lauri.Watts.mail;</address>
 </affiliation>
-<contrib
->Korrektur</contrib>
+<contrib>Reviewer</contrib>
 </othercredit>
-<othercredit role="translator"
-><firstname
->Maren</firstname
-><surname
->Pakura</surname
-><affiliation
-><address
-><email
->maren@kde.org</email
-></address
-></affiliation
-><contrib
->Deutsche Übersetzung</contrib
-></othercredit
-><othercredit role="translator"
-><firstname
->Johannes</firstname
-><surname
->Obermayr</surname
-><affiliation
-><address
-><email
->johannesobermayr@gmx.de</email
-></address
-></affiliation
-><contrib
->Überarbeitung der Übersetzung</contrib
-></othercredit
-> 
+<!-- TRANS:ROLES_OF_TRANSLATORS-->
 </authorgroup>
 
 <copyright>
-<year
->1999</year>
-<year
->2000</year>
-<holder
->&Matthias.Kiefer;</holder>
+<year>1999</year>
+<year>2000</year>
+<holder>&Matthias.Kiefer;</holder>
 </copyright>
 
 <copyright>
-<year
->2001</year>
-<holder
->&Fabian.Dal.Santo;</holder>
+<year>2001</year>
+<holder>&Fabian.Dal.Santo;</holder>
 </copyright>
 
 <copyright>
-<year
->2009</year>
-<holder
->&Stas.Verberkt;</holder>
+<year>2009</year>
+<holder>&Stas.Verberkt;</holder>
 </copyright>
 
-<legalnotice
->&FDLNotice;</legalnotice>
+<legalnotice>&FDLNotice;</legalnotice>
 
-<date
->2020-06-20</date>
-<releaseinfo
->2.1 (Anwendungen 20.08)</releaseinfo>
+<date>2021-08-17</date>
+<releaseinfo>2.1 (KDE Gear 21.08)</releaseinfo>
 
 <abstract>
-<para
->&kappname; ist eine einfache Kopie des Spiels „Schlangenduell“ für &kde; und kann alleine oder gegen einen Freund gespielt werden. </para>
+<para>
+&ksnakeduel; is a simple snake duel game, which you can play alone or against a friend.
+</para>
 </abstract>
 
 <keywordset>
-<keyword
->KDE</keyword>
-<keyword
->KDE-Spiele</keyword>
-<keyword
->KTron</keyword>
-<keyword
->KSnakeDuel</keyword>
-<keyword
->Spiel </keyword>
-<keyword
->Tron</keyword>
-<keyword
->snakeduel</keyword>
-<keyword
->KSnake</keyword>
-<keyword
->Snake</keyword>
-<keyword
->duell</keyword>
+<keyword>KDE</keyword>
+<keyword>kdegames</keyword>
+<keyword>KTron</keyword>
+<keyword>KSnakeDuel</keyword>
+<keyword>game</keyword>
+<keyword>tron</keyword>
+<keyword>snakeduel</keyword>
+<keyword>KSnake</keyword>
+<keyword>snake</keyword>
+<keyword>duel</keyword>
 </keywordset>
 </bookinfo>
 
 <chapter id="introduction">
-<title
->Einleitung</title>
+<title>Introduction</title>
 
-<para
->&kappname; ist eine einfache Kopie des Spiels „Schlangenduell“ für die <ulink url="http://www.kde.org"
->K-Arbeitsflächenumgebung</ulink
->. &kappname; kann gegen den Computer oder einen Freund gespielt werden. Das Ziel ist länger zu leben als der Gegner. Dazu darf man weder in eine Mauer noch in den eigenen oder gegnerischen „Körper“ rennen. </para>
+<para>
+&ksnakeduel; is a simple snake duel game. You can play against the computer
+or a friend. The aim of the game is to live longer than your opponent. To do
+that, avoid running into a wall, your own tail and that of your opponent.
+</para>
 
-<para
->&ksnake; ist ein einfaches „Snake“-Spiel für die <ulink url="http://www.kde.org"
->K-Arbeitsflächenumgebung</ulink
->. Das Ziel von &ksnake; ist so lange wie möglich zu überleben und dabei möglichst viele „Früchte“ zu „fressen“. </para>
+<para>
+&ksnakeduel; is a simple Snake-like game. The aim is to survive as long as
+possible and eat as many fruits as you can.
+</para>
 
-<para
->Zwischen den beiden Spielen kann mittels Auswahl der Spielart im Einrichtungsmenü gewechselt werden. </para>
+<para>
+You can switch between these games using the game type selector in the configuration dialog.
+</para>
 
 </chapter>
 
 <chapter id="playing-ktron">
-<title
->&kappname; spielen</title>
+<title>Playing &ksnakeduel;</title>
 
 <sect1 id="playing-ktron-rules">
-<title
->Spielregeln</title>
+<title>Rules</title>
 
-<para
->Wenn eine Spielrunde gestartet wurde, hören die Spieler nicht mehr auf, sich vorwärts zu bewegen (bis das Spiel unterbrochen wird). Alles was jetzt zu tun ist, ist einen Unfall zu vermeiden, indem die Bewegungsrichtung geändert wird. Zusätzlich kann versucht werden, den Gegner zu behindern. Dazu gibt es noch die Möglichkeit, die Geschwindigkeit - durch Drücken der Beschleunigungstaste - zu erhöhen. </para>
+<para>
+Once a round is started, the players do not stop moving forward (unless the game
+is paused).  All you have to do is avoid crashing by changing your players
+direction. Additionally you can try to hinder your opponent.  For this it is
+possible to increase the velocity by pressing your accelerator key.
+</para>
 
-<para
->Die Spielrunde startet, wenn alle Spieler eine Ihrer Richtungstasten gedrückt haben. Die „Würmer“ bewegen sich dann anfangs in diese Richtung. </para>
+<para>
+A round starts when all human players press a direction key. The initial moving
+direction is then in this direction.
+</para>
 
-<para
->Das Spiel kann mittels <guimenuitem
->Pause</guimenuitem
-> aus dem Menü <guimenu
->Spiel</guimenu
-> oder Verwenden des entsprechenden Tastenkürzels (siehe Kapitel <link linkend="keys"
->Tastenbelegung</link
->) unterbrochen werden. Außerdem wird das Spiel unterbrochen, wenn das Spiel den Tastaturfokus verliert (z. B. durch Wechsel zu einem anderen Fenster). </para>
+<para>
+If you want to interrupt playing, select the <menuchoice> <shortcut><keycombo
+action="simul"><keycap>P</keycap></keycombo></shortcut> <guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem></menuchoice> menu item.  Additionally the game
+is paused when the game loses the keyboard focus, &eg; when switching to an other window.
+</para>
 
-<para
->Fortgesetzt wird das Spiel mittels <guimenuitem
->Pause</guimenuitem
-> aus dem Menü <guimenu
->Spiel</guimenu
-> oder Verwenden des entsprechenden Tastenkürzels. Weiterhin wird das Spiel durch Drücken der Richtungstaste durch die menschlichen Spieler fortgesetzt. Hier sollte Vorsicht walten, denn die „Würmer“ bewegen sich sofort in diese Richtung weiter. </para>
+<para>
+To continue the game, select again this menu item or hit the keyboard shortcut.
+The game will also continue if you press one of the direction keys. But be
+careful, your player switches to this direction immediately.
+</para>
 
 
-<para
->Ein Spiel besteht aus mehreren Runden und endet, wenn ein Spieler mindestens neun Punkte und zusätzlich zwei Punkte mehr als der Gegner hat. Der aktuelle Punktestand wird ständig in der Statusleiste angezeigt. </para>
+<para>A game consists of several rounds, and ends if a player has at least
+nine points, and additionally two more points than the opponent. The current
+score is always displayed in the status bar.
+</para>
 
-<para
->Der Schwierigkeitsgrad des Spiels kann entweder über das Menü <guimenu
->Einstellungen</guimenu
-> oder die Auswahlliste in der Statusleiste geändert werden und beeinflusst die Spielgeschwindigkeit und den Computerspieler. </para>
+<para>
+You can change the difficulty level of the game using the
+<menuchoice><guimenu>Settings</guimenu> <guisubmenu>Difficulty</guisubmenu></menuchoice>
+submenu or the drop-down box on the status bar. The difficulty influences
+the speed of the game and the computer player.
+</para>
 </sect1>
 
 <sect1 id="computerplayer">
-<title
->Der Computerspieler</title>
+<title>The Computer Player</title>
 
-<para
->Es kann gegen den Computer gespielt werden. Der Schwierigkeitsgrad beeinflusst die Intelligenz des Computerspielers. </para>
-<para
->In den niedrigen Schwierigkeitsgraden beachtet der Computerspieler seinen Gegner (menschlicher Spieler) nicht und bewegt sich nur umher. In den oberen Schwierigkeitsgraden versucht der Computerspieler den Gegner zu behindern, wenn sie sich nähern. </para>
+<para>
+You can play against a computer. The difficulty level of the game influences the
+intelligence of the computer player.
+</para>
+<para>
+At low levels the computer doesn't care about the opponent and just moves
+around. At higher skill levels the computer tries to hinder the opponent when he
+comes near.
+</para>
 </sect1>
 
 <sect1 id="using-keyboard">
-<title
->Tastatursteuerung</title>
+<title>Using the Keyboard</title>
 
-<para
->Jeder Spieler benötigt fünf Tasten. Vier Tasten zum Ändern der Richtung und eine zum Beschleunigen. </para>
+<para>
+Each player has five keys. Four keys for changing the direction and one to
+accelerate.
+</para>
 
-<para
->Die Richtungstasten müssen nicht gedrückt gehalten werden. Ein einmaliges Drücken reicht aus, damit der „Wurm“ seine Richtung entsprechend ändert. </para>
+<para>
+The direction keys do not have to be held down. Simply press them once to
+change
+the direction of your player.
+</para>
 
-<para
->Das Beschleunigen funktioniert nur, solange die Beschleunigungstaste gedrückt wird. Wenn sie losgelassen wird, verringert sich die Geschwindigkeit wieder auf normal. </para>
+<para>
+Acceleration only occurs while the acceleration key remains depressed.  When you
+release the acceleration key, velocity returns to normal.
+</para>
 
-<note
-><para
->Die Tastenbelegung kann über das Menü <ulink url="help:/fundamentals/shortcuts.html"
-><guimenu
->Einstellungen</guimenu
-></ulink
-> geändert werden. </para
-></note>
+<note><para>
+You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
+</para></note>
 </sect1>
 </chapter>
 
 <chapter id="playing-snake">
-<title
->&ksnake; spielen</title>
+<title>Playing KSnake mode</title>
 
 <sect1 id="playing-snake-rules">
-<title
->Spielregeln</title>
+<title>Rules</title>
 
-<para
->Wenn eine Spielrunde gestartet wurde, hört der Spieler nicht mehr auf, sich vorwärts zu bewegen (bis das Spiel unterbrochen wird). Alles was jetzt zu tun ist, ist einen Unfall zu vermeiden, indem die Bewegungsrichtung geändert wird. Das Spiel beginnt, sobald eine Richtungstaste gedrückt wurde. Der „Wurm“ bewegt sich dann anfangs in diese Richtung. </para>
+<para>
+Once the game is started, the player does not stop moving forward (unless the
+game is paused). All you have to do is avoid crashing by changing your
+direction. A game starts when you press a direction key. The initial moving
+direction is then in this direction.
+</para>
 
-<para
->Das Spiel kann mittels <guimenuitem
->Pause</guimenuitem
-> aus dem Menü <guimenu
->Spiel</guimenu
-> oder Verwenden des entsprechenden Tastenkürzels (siehe Kapitel <link linkend="keys"
->Tastenbelegung</link
->) unterbrochen werden. Außerdem wird das Spiel unterbrochen, wenn das Spiel den Tastaturfokus verliert (z. B. durch Wechsel zu einem anderen Fenster). </para>
+<para>
+If you want to pause playing, select the <menuchoice> <shortcut><keycombo
+action="simul"><keycap>P</keycap></keycombo></shortcut> <guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem></menuchoice> menu item or hit the keyboard
+shortcut. Additionally the game is paused when the game loses the keyboard
+focus, &eg; when switching to an other window.
+</para>
 
-<para
->Fortgesetzt wird das Spiel mittels <guimenuitem
->Pause</guimenuitem
-> aus dem Menü <guimenu
->Spiel</guimenu
-> oder Verwenden des entsprechenden Tastenkürzels. Weiterhin wird das Spiel durch Drücken einer Richtungstaste fortgesetzt. Hier sollte Vorsicht walten, denn der „Wurm“ bewegt sich sofort in diese Richtung weiter. </para>
+<para>
+To continue the game, select again this menu item or hit the keyboard shortcut.
+The game will also continue if you press one of the direction keys. But be
+careful, your player switches to this direction immediately.
+</para>
 
-<para
->Während des Spiels wird sich immer eine „Frucht“ auf der Karte befinden. Beim Einsammeln dieser erhöht sich der Punktestand um 5 Punkte. Der aktuelle Punktestand wird in der Statusleiste angezeigt. </para>
+<para>
+In the game there will always be a piece of fruit on the map. If you collect it
+your score will increase with 5 points. The current score is always displayed in
+the status bar.
+</para>
 
-<para
->Beim Bewegen durch die Karte erscheinen Hindernisse. Eine Berührung mit ihnen endet in einem Unfall. Sollte bei Erscheinen eines Hindernisses kein Unfall verursacht werden, gibt es jedes Mal zwei Belohnungspunkte. </para>
+<para>
+When you are moving through the map there will also appear obstacles. Hitting them
+will also result in a crash. However, every time an obstacle appears and you
+survive you'll be rewarded 2 points
+</para>
 
-<para
->Der Schwierigkeitsgrad des Spiels kann entweder über das Menü <guimenu
->Einstellungen</guimenu
-> oder die Auswahlliste in der Statusleiste geändert werden und beeinflusst die Spielgeschwindigkeit. </para>
+<para>
+You can change the difficulty level of the game using the
+<menuchoice><guimenu>Settings</guimenu> <guisubmenu>Difficulty</guisubmenu></menuchoice>
+submenu or the drop-down box on the status bar. The difficulty influences
+the speed of the game and the computer player.
+</para>
 
 </sect1>
 
 <sect1 id="using-keyboard-snake">
-<title
->Tastatursteuerung</title>
+<title>Using the keyboard</title>
 
-<para
->Jeder Spieler hat vier Tasten für die Richtungsänderung. Hierzu muss die jeweilige Taste nur einmal kurz gedrückt werden und der Spieler ändert unverzüglich seine Richtung. </para>
+<para>
+Each player has four keys. These are used for changing the direction.
+The direction keys do not have to be held down. Simply press them once to change
+the direction of your player.
+</para>
 
-<note
-><para
->Die Tastenbelegung kann über das Menü <ulink url="help:/fundamentals/shortcuts.html"
-><guimenu
->Einstellungen</guimenu
-></ulink
-> geändert werden. </para
-></note>
+<note><para>
+You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
+</para></note>
 </sect1>
 
 </chapter>
 
 <chapter id="interface-overview">
-<title
->Die Benutzeroberfläche</title>
+<title>Interface Overview</title>
 
 <sect1 id="menu-items">
-<title
->Menüeinträge</title>
-  
-<para
->Der folgende Abschnitt beschreibt kurz die Einstellungen in der Menüleiste.</para>
+<title>Menu Items</title>
+
+<para>The following list briefly describes each menubar option.</para>
 
 <variablelist>
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Neu</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Startet ein neues Spiel.</action
-></para
-></listitem>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>New</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Starts a new game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycap
->P</keycap
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Pause</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Unterbricht das Spiel bzw. setzt ein unterbrochenes Spiel fort.</action
-></para
-></listitem>
+<term><menuchoice>
+<shortcut>
+<keycap>P</keycap>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Pause</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Toggles whether the game is paused.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-> <keycombo action="simul"
->&Ctrl;<keycap
->H</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Bestenliste anzeigen</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Zeigt die Bestenliste (für &ksnake;).</action
-></para
-></listitem>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Show High Scores</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Displays the high score table.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><shortcut
-><keycombo action="simul"
->&Ctrl;<keycap
->Q</keycap
-></keycombo
-> </shortcut
-> <guimenu
->Spiel</guimenu
-> <guimenuitem
->Beenden</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Beendet das Spiel.</action
-></para
-></listitem>
+<term><menuchoice>
+<shortcut>
+<keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo>
+</shortcut>
+<guimenu>Game</guimenu>
+<guimenuitem>Quit</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Quit &ksnakeduel;.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Einstellungen</guimenu
-><guimenuitem
->Schwierigkeitsgrad</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Dient zur Einstellung des Schwierigkeitsgrads des Spiels.</action
-></para
-></listitem>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Difficulty</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>A submenu that allows you to change the difficulty
+level of the game.</action></para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><menuchoice
-><guimenu
->Einstellungen</guimenu
-><guimenuitem
->&kappname; einrichten ...</guimenuitem
-> </menuchoice
-></term>
-<listitem
-><para
-><action
->Öffnet einen <link linkend="configuration"
->umfangreichen Dialog</link
-> zum Festlegen verschiedener Einstellungen.</action
-></para
-></listitem>
+<term><menuchoice>
+<guimenu>Settings</guimenu>
+<guimenuitem>Configure &ksnakeduel;...</guimenuitem>
+</menuchoice></term>
+<listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
+to configure various options.</action></para></listitem>
 </varlistentry>
 </variablelist>
 
-<para
->Zusätzlich hat &ksnake; die bekannten &kde;-Einträge im Menü <guimenu
->Einstellungen</guimenu
-> und <guimenu
->Hilfe</guimenu
->, weitere Informationen dazu finden Sie in den Abschnitten über die Menüs <ulink url="help:/fundamentals/menus.html#menus-settings"
->Einstellungen</ulink
-> und <ulink url="help:/fundamentals/menus.html#menus-help"
->Hilfe</ulink
-> der &kde;-Grundlagen. </para>
+<para>
+Additionally &ksnakeduel; has the common &kde; <guimenu>Settings</guimenu> and <guimenu>Help</guimenu>
+menu items, for more information read the sections about the
+<ulink url="help:/fundamentals/menus.html#menus-settings">Settings Menu</ulink> and
+<ulink url="help:/fundamentals/menus.html#menus-help">Help Menu</ulink> of the &kde; Fundamentals.
+</para>
 
 </sect1>
 
 <sect1 id="keys">
-<title
->Tastenbelegung</title>
+<title>Default Shortcuts</title>
 
-<para
->Die folgenden Tabellen zeigen die voreingestellte Tastenbelegung.</para>
+<para>The following tables show you the default shortcuts.</para>
 
 
 <table>
-<title
->Tastenkürzel für den (rechten) Spieler</title>
+<title>Player 1 Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
-<entry
->Tastenkombination</entry>
-<entry
->Aktion</entry>
+<entry>Key Combo</entry>
+<entry>Action</entry>
 </row>
 </thead>
 <tbody>
 <row>
-<entry
-><keycap
->Pfeil hoch</keycap
-></entry>
-<entry
->Hoch</entry>
+<entry>&Up; arrow</entry>
+<entry>Move up</entry>
 </row>
 <row>
-<entry
-><keycap
->Pfeil runter</keycap
-></entry>
-<entry
->Runter</entry>
+<entry>&Down; arrow</entry>
+<entry>Move down</entry>
 </row>
 <row>
-<entry
-><keycap
->Pfeil rechts</keycap
-></entry>
-<entry
->Rechts</entry>
+<entry>&Right; arrow</entry>
+<entry>Move on the right</entry>
 </row>
 <row>
-<entry
-><keycap
->Pfeil links</keycap
-></entry>
-<entry
->Links</entry>
+<entry>&Left; arrow</entry>
+<entry>Move on the left</entry>
 </row>
 <row>
-<entry
-><keycap
->0</keycap
-></entry>
-<entry
->Beschleunigung</entry>
+<entry><keycap>0</keycap></entry>
+<entry>Accelerate</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 
 <table>
-<title
->Tastenkürzel für den linken Spieler</title>
+<title>Player 2 Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
-<entry
->Tastenkombination</entry>
-<entry
->Aktion</entry
-></row
-></thead>
+<entry>Key Combo</entry>
+<entry>Action</entry></row></thead>
 <tbody>
 <row>
-<entry
-><keycap
->R</keycap
-></entry>
-<entry
->Hoch</entry>
+<entry><keycap>R</keycap></entry>
+<entry>Move up</entry>
 </row>
 <row>
-<entry
-><keycap
->F</keycap
-></entry>
-<entry
->Runter</entry>
+<entry><keycap>F</keycap></entry>
+<entry>Move down</entry>
 </row>
 <row>
-<entry
-><keycap
->G</keycap
-></entry>
-<entry
->Rechts</entry>
+<entry><keycap>G</keycap></entry>
+<entry>Move on the right</entry>
 </row>
 <row>
-<entry
-><keycap
->D</keycap
-></entry>
-<entry
->Links</entry>
+<entry><keycap>D</keycap></entry>
+<entry>Move on the left</entry>
 </row>
 <row>
-<entry
-><keycap
->A</keycap
-></entry>
-<entry
->Beschleunigung</entry>
+<entry><keycap>A</keycap></entry>
+<entry>Accelerate</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 
 <table>
-<title
->Allgemeine Tastenkürzel</title>
+<title>General Shortcuts</title>
 <tgroup cols="2">
 <thead>
 <row>
-<entry
->Tastenkombination</entry>
-<entry
->Aktion</entry>
+<entry>Key Combo</entry>
+<entry>Action</entry>
 </row>
 </thead>
 <tbody>
 <row>
-<entry
-><keycap
->P</keycap
-></entry>
-<entry
->Das Spiel unterbrechen oder fortsetzen.</entry>
+<entry><keycap>P</keycap></entry>
+<entry>Pause/Resume the Game</entry>
 </row>
 <row>
-<entry
-><keycombo action="simul"
->&Ctrl;<keycap
->H</keycap
-></keycombo
-></entry>
-<entry
->Die Bestenliste aufrufen.</entry>
+<entry><keycombo action="simul">&Ctrl;<keycap>H</keycap></keycombo></entry>
+<entry>High Scores</entry>
 </row>
 <row>
-<entry
-><keycombo action="simul"
->&Ctrl;<keycap
->N</keycap
-></keycombo
-></entry>
-<entry
->Ein neues Spiel starten.</entry>
+<entry><keycombo action="simul">&Ctrl;<keycap>N</keycap></keycombo></entry>
+<entry>New Game</entry>
 </row>
 <row>
-<entry
-><keycombo action="simul"
->&Ctrl;<keycap
->Q</keycap
-></keycombo
-></entry>
-<entry
->&kappname; beenden</entry>
+<entry><keycombo action="simul">&Ctrl;<keycap>Q</keycap></keycombo></entry>
+<entry>Quit &ksnakeduel;</entry>
 </row>
 <row>
-<entry
-><keycap
->F1</keycap
-></entry>
-<entry
->Das Handbuch zu &ktron;.</entry>
+<entry><keycap>F1</keycap></entry>
+<entry>This Manual</entry>
 </row>
 <row>
-<entry
-><keycombo
-action="simul"
->&Shift;<keycap
->F1</keycap
-></keycombo
-></entry>
-<entry
->Die „Was ist das?“-Hilfe.</entry>
+<entry><keycombo
+action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
+<entry>What's This help</entry>
 </row>
 </tbody>
 </tgroup>
 </table>
 
-<para
->Alle Tastenkürzel können über das Menü <menuchoice
-><guimenu
->Einstellungen</guimenu
-><guimenuitem
->Kurzbefehle festlegen ...</guimenuitem
-> </menuchoice
-> <ulink url="help:/fundamentals/shortcuts.html"
->geändert</ulink
-> werden. </para>
+<para>
+These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</ulink> by selecting the
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+menu item.
+</para>
 
 </sect1>
 
@@ -656,178 +454,134 @@ action="simul"
 
 <chapter id="configuration">
 
-<title
->Der Einrichtungsdialog</title>
+<title>The Configuration Dialog</title>
 
-<para
->Die Auswahl von <guimenuitem
->&kappname; einrichten ...</guimenuitem
-> im Menü <guimenu
->Einstellungen</guimenu
-> öffnet ein Fenster, in dem das Verhalten von &kappname; eingestellt werden kann.</para>
+<para>Selecting the <menuchoice><guimenu>Settings</guimenu>
+<guimenuitem>Configure &ksnakeduel;...</guimenuitem></menuchoice> menu item will open a further dialog
+which lets you tweak &ksnakeduel;'s behavior.</para>
 
-<para
->Der Dialog unterteilt sich in zwei Seiten.</para>
+<para>This dialog is divided into two pages.</para>
 
 <sect1 id="configuration-general">
-<title
->Allgemeine Einstellungen</title>
+<title>General Configuration</title>
 
 <screenshot>
-<screeninfo
->&kappname; einrichten - Allgemein</screeninfo>
+<screeninfo>Configure &ksnakeduel; - General</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-general.png" format="PNG"/>
 	  </imageobject>
 	    <textobject>
-	    <phrase
->Allgemeine Einstellungen</phrase>
+	    <phrase>General Configuration</phrase>
 	  </textobject>
 	</mediaobject>
 </screenshot>
 
 <variablelist>
 <varlistentry>
-<term
-><guilabel
->Spielart</guilabel
-></term>
-<listitem
-><para
->Hiermit kann die Spielart in eine der folgenden geändert werden: <variablelist>
-<varlistentry>
-<term
->&kappname;: Mensch gegen Mensch</term
-><listitem
-><para
->Ein &kappname;-Spiel zwischen zwei Menschen.</para
-></listitem>
-</varlistentry>
+<term><guilabel>Game type</guilabel></term>
+<listitem><para>This will let you change the game type. There are three options:
 
-<varlistentry>
-<term
->&kappname;: Mensch gegen Computer</term>
-<listitem
-><para
->Ein &kappname;-Spiel zwischen einen Menschen und den Computer.</para
-></listitem>
-</varlistentry>
+<variablelist>
+  <varlistentry>
+    <term><guimenuitem>&ksnakeduel;: Player vs Player</guimenuitem></term>
+    <listitem><para>A &ksnakeduel; game between two human players.</para></listitem>
+  </varlistentry>
 
-<varlistentry>
-<term
->&ksnake;: Einzelspieler</term
-><listitem
-><para
->Ein Einzelspieler &ksnake;-Spiel.</para
-></listitem>
-</varlistentry>
+  <varlistentry>
+    <term><guimenuitem>&ksnakeduel;: Player vs Computer</guimenuitem></term>
+    <listitem><para>A &ksnakeduel; game between a human player and the computer.</para></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term><guimenuitem>KSnake mode: Single player</guimenuitem></term>
+    <listitem><para>A single player &ksnakeduel; game.</para></listitem>
+  </varlistentry>
 </variablelist>
 
-</para
-></listitem>
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guilabel
->Beschleunigen verhindern</guilabel
-></term>
-<listitem
-><para
->Ist diese Einstellung markiert, kann im Spiel nicht beschleunigt werden. Eine Betätigung der Beschleunigungstaste hat keine Auswirkungen, beide Spieler bewegen sich immer mit der gleichen Geschwindigkeit.</para
-></listitem>
+<term><guilabel>Disable acceleration</guilabel></term>
+<listitem><para>Checking this box will disable the acceleration feature -
+pressing the acceleration key will have no effect, both vehicles will always
+travel with constant velocity.</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guilabel
->Spielernamen</guilabel
-></term>
-<listitem
-><para
->Hier können eigene Namen eintragen und damit die Standardnamen überschrieben werden.</para>
-<para
->Der Standardname für den (rechten) Spieler ist der des aktuell angemeldeten Benutzers. </para
-></listitem>
+<term><guilabel>Player Names</guilabel></term>
+<listitem><para>Specify custom names to use for the players to override the
+use of default ones.</para>
+<para>
+The default name for player one is the name of the current logged in
+user.
+</para></listitem>
 </varlistentry>
 
 <varlistentry>
-<term
-><guilabel
->Spieleinstellungen</guilabel
-></term>
-<listitem
-><para
->Mit <guilabel
->Runden zum Gewinnen</guilabel
-> wird festgelegt, wie viele Runden nötig sind, ehe ein Gewinner feststeht. </para
-></listitem>
+<term><guilabel>Game Options</guilabel></term>
+<listitem><para>Specify the <guilabel>Rounds to win:</guilabel> to define how many
+rounds are required before a winner is declared.</para></listitem>
 </varlistentry>
 
 </variablelist>
 </sect1>
 
 <sect1 id="configuration-theme">
-<title
->Designeinstellungen</title>
+<title>Theme Configuration</title>
 
 <screenshot>
-<screeninfo
->&kappname; einrichten - Design</screeninfo>
+<screeninfo>Configure &ksnakeduel; - Theme</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-theme.png" format="PNG"/>
 	  </imageobject>
 	    <textobject>
-	    <phrase
->Designeinstellungen
-></phrase>
+	    <phrase>Theme Configuration</phrase>
 	  </textobject>
 	</mediaobject>
 </screenshot>
 
-<para
->Diese Seite ermöglicht das Wechseln des zu verwendenden Designs von &kappname;. </para>
+<para>
+This page will allow you to change the theme &ksnakeduel; uses.
+</para>
 </sect1>
 </chapter>
 
-<!-- credits chapter done --> 
+<!-- credits chapter done -->
 <chapter id="credits">
-<title
->Danksagungen und Lizenz</title>
+<title>Credits and License</title>
 
-<para
->&kappname; </para>
+<para>
+&ksnakeduel;
+</para>
 
-<para
->Programm Copyright 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+<para>Program Copyright 1998-2000 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
+</para>
 
-<para
->Programm Copyright 2008-2009 &Stas.Verberkt; &Stas.Verberkt.mail; </para>
+<para>Program Copyright 2008-2009 &Stas.Verberkt;
+&Stas.Verberkt.mail;
+</para>
 
-<para
->Teile des Quelltextes sind von <command
->xtron-1.1</command
-> von Rhett D. Jacobs <email
->rhett@hotel.canberra.edu.au&gt;</email
-> </para>
+<para>
+Parts of the code are from xtron-1.1 by Rhett D. Jacobs
+<email>rhett@hotel.canberra.edu.au&gt;</email>
+</para>
 
-<para
->Dokumentation Copyright 1999 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
+<para>
+Documentation Copyright 1999 &Matthias.Kiefer;
+&Matthias.Kiefer.mail;
+</para>
 
-<para
->Dokumentation für &kde; 2.0 von &Fabian.Dal.Santo; &Fabian.DalSanto.mail; überarbeitet.</para>
+<para>Documentation updated for &kde; 2.0 by &Fabian.Dal.Santo;
+&Fabian.DalSanto.mail;</para>
 
-<para
->Übersetzung: Maren Pakura <email
->maren@kde.org</email
-></para
-><para
->Überarbeitung der Übersetzung: Johannes Obermayr <email
->johannesobermayr@gmx.de</email
-></para
-> &underFDL; &underGPL; </chapter>
+<!-- TRANS:CREDIT_FOR_TRANSLATORS -->
+&underFDL;
+&underGPL;
+</chapter>
 
 </book>
 <!--
