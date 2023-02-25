@@ -1,9 +1,8 @@
 <?xml version="1.0" ?>
 <!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
-  <!ENTITY kappname "<application
+  <!ENTITY ksnakeduel "<application
 >KSnakeDuel</application
 >">
-  <!ENTITY package "kdegames">
   <!ENTITY % addindex "IGNORE">
   <!ENTITY % Brazilian-Portuguese "INCLUDE">
 ]>
@@ -11,7 +10,7 @@
 <book id="ksnakeduel" lang="&language;">
 <bookinfo>
 <title
->Manual do &kappname;</title>
+>Manual do &ksnakeduel;</title>
 
 <authorgroup>
 <author
@@ -91,13 +90,13 @@
 >&FDLNotice;</legalnotice>
 
 <date
->05/05/2013</date>
+>17/08/2021</date>
 <releaseinfo
->2.0 (&kde; 4.11)</releaseinfo>
+>2.1 (KDE Gear 21.08)</releaseinfo>
 
 <abstract>
 <para
->O &kappname; é um jogo simples de duelo de cobras para o &kde;, que você poderá jogar sozinho ou contra um amigo. </para>
+>O &ksnakeduel; é um jogo simples de duelo de cobras, que você poderá jogar sozinho ou contra um amigo. </para>
 </abstract>
 
 <keywordset>
@@ -129,14 +128,10 @@
 >Introdução</title>
 
 <para
->O &kappname; é um jogo simples de duelo de cobras para o <ulink url="http://www.kde.org"
->Ambiente de Trabalho K</ulink
->. Você poderá jogar o &kappname; contra o computador ou contra um amigo. O objetivo é viver mais tempo que o seu adversário. Para fazer isso, evite embater numa parede, na sua própria cauda ou na do seu adversário. </para>
+>O &ksnakeduel; é um jogo simples de duelo de cobras. Você poderá jogar contra o computador ou contra um amigo. O objetivo é viver mais tempo que o seu adversário. Para fazer isso, evite embater numa parede, na sua própria cauda ou na do seu adversário. </para>
 
 <para
->O &ksnake; é um clone simples do jogo Snake para o <ulink url="http://www.kde.org"
->Ambiente de Trabalho K</ulink
->. O objetivo do &ksnake; é sobreviver o máximo de tempo possível, comendo tantos frutos quantos possíveis. </para>
+>O &ksnakeduel; é um clone simples do jogo Snake. O objetivo é sobreviver  o máximo de tempo possível, comendo tantos frutos quantos possíveis. </para>
 
 <para
 >Você pode alternar entre estes jogos, usando o seletor do tipo de jogo na janela de configuração. </para>
@@ -145,7 +140,7 @@
 
 <chapter id="playing-ktron">
 <title
->Jogando o &kappname;</title>
+>Jogando o &ksnakeduel;</title>
 
 <sect1 id="playing-ktron-rules">
 <title
@@ -158,25 +153,35 @@
 >Uma rodada começa quando todos os jogadores humanos pressionarem numa tecla de direção. A direção do movimento inicial será então essa que você escolheu. </para>
 
 <para
->Se você quiser interromper o jogo, selecione a opção <guimenuitem
->Pausa</guimenuitem
-> no menu <guimenu
+>Se você quiser interromper o jogo, selecione o item <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
 >Jogo</guimenu
-> ou pressione o atalho de teclado respectivo (veja a seção <link linkend="keys"
->Atalhos Padrão</link
->). Adicionalmente, o jogo fica em pausa quando perder o controle do teclado, &eg; ao mudar para outra janela. </para>
+> <guimenuitem
+>Pausar</guimenuitem
+></menuchoice
+> no menu. Adicionalmente, o jogo fica em pausa quando perder o controle do teclado, &eg; ao mudar para outra janela. </para>
 
 <para
->Para continuar o jogo, selecione o item do menu <guimenuitem
->Pausa</guimenuitem
-> de novo ou o atalho de teclado, mais uma vez. O jogo irá também continuar se os jogadores humanos pressionarem uma das suas teclas de cursores. Mas tenha cuidado, o seu jogador irá mudar imediatamente para essa direção. </para>
+>Para continuar o jogo, selecione novamente este item do menu ou o atalho de teclado. O jogo irá também continuar se os jogadores humanos pressionarem uma das suas teclas de cursores. Mas tenha cuidado, o seu jogador irá mudar imediatamente para essa direção. </para>
 
 
 <para
 >Um jogo consiste em várias rodadas e termina se um jogador tiver pelo menos nove pontos, tendo ainda uma diferença de dois pontos a mais do adversário. A pontuação atual é sempre mostrada na barra de estado. </para>
 
 <para
->Você poderá alterar o nível de dificuldade do jogo, usando o item do menu ou a área de seleção na barra de estado. A dificuldade influencia a velocidade do jogo e o jogador por computador. </para>
+>Você poderá alterar o nível de dificuldade do jogo, usando submenu <menuchoice
+><guimenu
+>Configurações</guimenu
+> <guisubmenu
+>Dificuldade</guisubmenu
+></menuchoice
+>em do menu ou a caixa suspensa na barra de status. A dificuldade influencia a velocidade do jogo e o jogador por computador. </para>
 </sect1>
 
 <sect1 id="computerplayer">
@@ -204,18 +209,22 @@
 
 <note
 ><para
->Você pode configurar as teclas padrão na opção de atalhos no menu <ulink url="help:/fundamentals/shortcuts.html"
+>Você pode <ulink url="help:/fundamentals/shortcuts.html"
+>alterar as teclas</ulink
+> usando o item <menuchoice
 ><guimenu
 >Configurações</guimenu
-> </ulink
->. </para
+> <guimenuitem
+>Configurar atalhos...</guimenuitem
+></menuchoice
+> no menu. </para
 ></note>
 </sect1>
 </chapter>
 
 <chapter id="playing-snake">
 <title
->Jogar o &ksnake;</title>
+>Jogando o modo KSnake</title>
 
 <sect1 id="playing-snake-rules">
 <title
@@ -225,18 +234,22 @@
 >Logo que tenha iniciado uma rodada, os jogadores não irão parar de se mover para frente (a menos que o jogo esteja em pausa). Tudo o que você terá que fazer é evitar se chocar, mudando para isso a direção do seu jogador. Um jogo inicia quando você pressiona uma tecla de cursor. O movimento inicial será então na direção do cursor pressionado. </para>
 
 <para
->Se você quiser interromper o jogo, selecione a opção <guimenuitem
->Pausa</guimenuitem
-> no menu <guimenuitem
->Jogo</guimenuitem
-> ou pressione o atalho de teclado respectivo (veja a seção <link linkend="keys"
->Atalhos Padrão</link
->). Adicionalmente, o jogo fica em pausa quando perder o controle do teclado, &eg; ao mudar para outra janela. </para>
+>Se você quiser interromper o jogo, selecione o item<menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Jogo</guimenu
+> <guimenuitem
+>Pausar</guimenuitem
+></menuchoice
+> no menu ou pressione o atalho de teclado. Adicionalmente, o jogo fica em pausa quando perder o controle do teclado, &eg; ao mudar para outra janela. </para>
 
 <para
->Para continuar o jogo, selecione o item do menu <guimenuitem
->Pausa</guimenuitem
-> de novo ou o atalho de teclado, mais uma vez. O jogo irá também continuar se os jogadores humanos pressionarem uma das suas teclas de cursores. Mas tenha cuidado, o seu jogador irá mudar imediatamente para essa direção. </para>
+>Para continuar o jogo, selecione novamente este item do menu ou o atalho de teclado. O jogo irá também continuar se os jogadores humanos pressionarem uma das suas teclas de cursores. Mas tenha cuidado, o seu jogador irá mudar imediatamente para essa direção. </para>
 
 <para
 >No jogo, irá existir sempre um fruto no mapa. Se você o apanhar, irá ganhar 5 pontos. A pontuação atual é sempre mostrada na barra de estado. </para>
@@ -245,7 +258,13 @@
 >Quando estiver percorrendo o mapa, irão aparecer alguns obstáculos. Se acertar neles, também irá estourar. Contudo, sempre que aparecer um obstáculo e você sobreviver, serão atribuídos 2 pontos </para>
 
 <para
->Você poderá alterar o nível de dificuldade do jogo, usando o item do menu ou a área de seleção na barra de estado. A dificuldade influencia a velocidade do jogo. </para>
+>Você poderá alterar o nível de dificuldade do jogo, usando submenu <menuchoice
+><guimenu
+>Configurações</guimenu
+> <guisubmenu
+>Dificuldade</guisubmenu
+></menuchoice
+>em do menu ou a caixa suspensa na barra de status. A dificuldade influencia a velocidade do jogo e o jogador por computador. </para>
 
 </sect1>
 
@@ -258,11 +277,15 @@
 
 <note
 ><para
->Você pode configurar as teclas padrão na opção de atalhos no menu <ulink url="help:/fundamentals/shortcuts.html"
+>Você pode <ulink url="help:/fundamentals/shortcuts.html"
+>alterar as teclas</ulink
+> usando o item <menuchoice
 ><guimenu
 >Configurações</guimenu
-> </ulink
->. </para
+> <guimenuitem
+>Configurar atalhos...</guimenuitem
+></menuchoice
+> no menu. </para
 ></note>
 </sect1>
 
@@ -275,7 +298,7 @@
 <sect1 id="menu-items">
 <title
 >Itens dos menus</title>
-  
+
 <para
 >A lista a seguir descreve brevemente cada opção da barra de menus.</para>
 
@@ -342,7 +365,7 @@
 <listitem
 ><para
 ><action
->Mostra a janela de recordes (para o &ksnake;).</action
+>Mostra a janela de recordes.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -365,7 +388,7 @@
 <listitem
 ><para
 ><action
->Sai do jogo.</action
+>Sair do &ksnakeduel;.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -382,7 +405,7 @@
 <listitem
 ><para
 ><action
->Permite-lhe alterar o nível de dificuldade do jogo.</action
+>Um submenu que lhe permite alterar o nível de dificuldade do jogo.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -393,7 +416,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &kappname;...</guimenuitem
+>Configurar o &ksnakeduel;...</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -408,7 +431,7 @@
 </variablelist>
 
 <para
->O &ksnake; possui os itens dos menus <guimenu
+>Adicionalmente, o &ksnakeduel; possui os itens dos menus <guimenu
 >Configurações</guimenu
 > e <guimenu
 >Ajuda</guimenu
@@ -443,35 +466,27 @@
 <tbody>
 <row>
 <entry
-><keycap
->Seta para cima</keycap
-></entry>
+>Seta para &Up;</entry>
 <entry
->Para cima</entry>
+>Mover para cima</entry>
 </row>
 <row>
 <entry
-><keycap
->Seta para baixo</keycap
-></entry>
+>Seta para &Down;</entry>
 <entry
->Para baixo</entry>
+>Mover para baixo</entry>
 </row>
 <row>
 <entry
-><keycap
->Seta a direita</keycap
-></entry>
+>Seta para &Right;</entry>
 <entry
->Direita</entry>
+>Mover para direita</entry>
 </row>
 <row>
 <entry
-><keycap
->Seta a esquerda</keycap
-></entry>
+>Seta para &Left;</entry>
 <entry
->Esquerda</entry>
+>Mover para esquerda</entry>
 </row>
 <row>
 <entry
@@ -504,7 +519,7 @@
 >R</keycap
 ></entry>
 <entry
->Para cima</entry>
+>Mover para cima</entry>
 </row>
 <row>
 <entry
@@ -512,7 +527,7 @@
 >F</keycap
 ></entry>
 <entry
->Para baixo</entry>
+>Mover para baixo</entry>
 </row>
 <row>
 <entry
@@ -520,7 +535,7 @@
 >G</keycap
 ></entry>
 <entry
->Direita</entry>
+>Mover para direita</entry>
 </row>
 <row>
 <entry
@@ -528,7 +543,7 @@
 >D</keycap
 ></entry>
 <entry
->Esquerda</entry>
+>Mover para esquerda</entry>
 </row>
 <row>
 <entry
@@ -561,7 +576,7 @@
 >P</keycap
 ></entry>
 <entry
->Pausar/Continuar o Jogo</entry>
+>Pausar/continuar o jogo</entry>
 </row>
 <row>
 <entry
@@ -591,7 +606,7 @@
 ></keycombo
 ></entry>
 <entry
->Sai do &kappname;</entry>
+>Sair do &ksnakeduel;</entry>
 </row>
 <row>
 <entry
@@ -599,7 +614,7 @@
 >F1</keycap
 ></entry>
 <entry
->Conteúdo da ajuda</entry>
+>Este manual</entry>
 </row>
 <row>
 <entry
@@ -619,13 +634,13 @@ action="simul"
 <para
 >Estes atalhos <ulink url="help:/fundamentals/shortcuts.html"
 >podem ser alterados</ulink
-> ao selecionar a opção <menuchoice
-> <guimenu
+> ao selecionar o item <menuchoice
+><guimenu
 >Configurações</guimenu
 > <guimenuitem
 >Configurar atalhos...</guimenuitem
-> </menuchoice
-> na barra de menus. </para>
+></menuchoice
+> no menu. </para>
 
 </sect1>
 
@@ -637,11 +652,13 @@ action="simul"
 >O diálogo de configuração</title>
 
 <para
->Selecionando a opção <guimenuitem
->Configurar o &kappname;...</guimenuitem
-> no menu <guimenu
+>Selecionando o item <menuchoice
+><guimenu
 >Configurações</guimenu
-> irá abrir um diálogo posterior que lhe permite ajustar o comportamento do &kappname;.</para>
+> <guimenuitem
+>Configurar o &ksnakeduel;...</guimenuitem
+></menuchoice
+> no menu irá abrir um diálogo posterior que lhe permite ajustar o comportamento do &ksnakeduel;.</para>
 
 <para
 >Esta janela está dividida em duas páginas.</para>
@@ -652,7 +669,7 @@ action="simul"
 
 <screenshot>
 <screeninfo
->Configurar o &kappname; - Geral</screeninfo>
+>Configurar o &ksnakeduel; - Geral</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-general.png" format="PNG"/>
@@ -673,32 +690,38 @@ action="simul"
 <listitem
 ><para
 >Isto permite alterar o tipo de jogo. Existem três opções: <variablelist>
-<varlistentry>
-<term
->&kappname;: Jogador vs Jogador</term
-><listitem
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jogador vs Jogador</guimenuitem
+></term>
+    <listitem
 ><para
->um jogo do &kappname; entre dois jogadores humanos</para
+>Um jogo do &ksnakeduel; entre dois jogadores humanos.</para
 ></listitem>
-</varlistentry>
+  </varlistentry>
 
-<varlistentry>
-<term
->&kappname;: Jogador vs Computador</term>
-<listitem
+  <varlistentry>
+    <term
+><guimenuitem
+>&ksnakeduel;: Jogador vs Computador</guimenuitem
+></term>
+    <listitem
 ><para
->um jogo do &kappname; entre um jogador humano e o computador</para
+>Um jogo do &ksnakeduel; entre um jogador humano e o computador</para
 ></listitem>
-</varlistentry>
+  </varlistentry>
 
-<varlistentry>
-<term
->&ksnake;: Um jogador</term
-><listitem
+  <varlistentry>
+    <term
+><guimenuitem
+>Modo KSnake: Um jogador</guimenuitem
+></term>
+    <listitem
 ><para
->um jogo do &ksnake; com apenas um jogador</para
+>Um jogo do &ksnakeduel; com apenas um jogador.</para
 ></listitem>
-</varlistentry>
+  </varlistentry>
 </variablelist>
 
 </para
@@ -729,6 +752,19 @@ action="simul"
 ></listitem>
 </varlistentry>
 
+<varlistentry>
+<term
+><guilabel
+>Opções do jogo</guilabel
+></term>
+<listitem
+><para
+>Especifique as <guilabel
+>Rodadas para ganhar:</guilabel
+> para definir quantas rodadas são necessárias antes que o vencedor seja declarado.</para
+></listitem>
+</varlistentry>
+
 </variablelist>
 </sect1>
 
@@ -738,7 +774,7 @@ action="simul"
 
 <screenshot>
 <screeninfo
->Configurar o &kappname; - tema</screeninfo>
+>Configurar o &ksnakeduel;; - Tema</screeninfo>
 	<mediaobject>
 	  <imageobject>
 	    <imagedata fileref="settings-theme.png" format="PNG"/>
@@ -751,17 +787,17 @@ action="simul"
 </screenshot>
 
 <para
->Esta página permitirá alterar o tema que o &kappname; usa. </para>
+>Esta página permitirá alterar o tema que o &ksnakeduel; usa. </para>
 </sect1>
 </chapter>
 
-<!-- credits chapter done --> 
+<!-- credits chapter done -->
 <chapter id="credits">
 <title
 >Créditos e licença</title>
 
 <para
->&kappname; </para>
+>&ksnakeduel; </para>
 
 <para
 >Direitos autorais do programa 1998-2000 &Matthias.Kiefer; &Matthias.Kiefer.mail; </para>
@@ -785,31 +821,6 @@ action="simul"
 >marcus.gama@gmail.com</email
 ></para
 > &underFDL; &underGPL; </chapter>
-
-<!-- appendix finished -->
-
-<appendix id="installation">
-<title
->Instalação</title>
-
-<sect1 id="getting-ktron">
-<title
->Como obter o &kappname;</title
->&install.intro.documentation; </sect1>
-
-<sect1 id="requirements">
-<title
->Requisitos</title>
-
-<para
->Para poder compilar com sucesso o &kappname;, você precisa do &kde; 4. Todas as bibliotecas necessárias, assim como o próprio &kappname; poderão ser encontrados em &kde-ftp;.</para>
-</sect1>
-
-<sect1 id="compilation">
-<title
->Compilação e instalação</title
->&install.compile.documentation; </sect1>
-</appendix>
 
 </book>
 <!--
