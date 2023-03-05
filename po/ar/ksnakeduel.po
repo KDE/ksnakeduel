@@ -275,7 +275,7 @@ msgstr "Stas Verberkt"
 #: main.cpp:60
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
-msgstr "النقل إلى كدي٤ ومراجعة الواجهة ونمط KSnake"
+msgstr "النقل إلى كِيدِي٤ ومراجعة الواجهة ونمط KSnake"
 
 #: main.cpp:65
 #, kde-format
