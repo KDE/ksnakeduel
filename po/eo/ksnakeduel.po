@@ -6,8 +6,8 @@ msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2022-09-28 00:44+0000\n"
-"PO-Revision-Date: 2009-11-15 12:06+0100\n"
-"Last-Translator: Axel Rousseau <axel@esperanto-jeunes.org>\n"
+"PO-Revision-Date: 2023-03-25 16:19+0100\n"
+"Last-Translator: Oliver Kellogg <okellogg@users.sourceforge.net>\n"
 "Language-Team: esperanto <kde-i18n-eo@kde.org>\n"
 "Language: eo\n"
 "MIME-Version: 1.0\n"
@@ -28,9 +28,9 @@ msgstr "axel@esperanto-jeunes.org"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
 #: general.ui:35
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game Type"
-msgstr "Ludo finita!"
+msgstr ""
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:42
@@ -52,9 +52,9 @@ msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
 #: general.ui:60
-#, fuzzy, kde-format
+#, kde-format
 msgid "Game type:"
-msgstr "Ludo finita!"
+msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
 #: general.ui:73
@@ -70,9 +70,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
 #: general.ui:89
-#, fuzzy, kde-format
+#, kde-format
 msgid "Player Names"
-msgstr "Ludantonomoj"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
 #: general.ui:101
@@ -322,6 +322,3 @@ msgstr ""
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr ""
-
-#~ msgid "The difficulty level."
-#~ msgstr "La nivelo de malfacileco."
