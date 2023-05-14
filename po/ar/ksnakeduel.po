@@ -116,13 +116,13 @@ msgstr "هل تعطل التسريع."
 #: ksnakeduel.kcfg:19
 #, kde-format
 msgid "The name of player 1."
-msgstr "اسم اللعب ١"
+msgstr "اسم اللعب 1"
 
 #. i18n: ectx: label, entry (NamePlayer2), group (Game)
 #: ksnakeduel.kcfg:22
 #, kde-format
 msgid "The name of player 2."
-msgstr "اسم اللعب ٢"
+msgstr "اسم اللعب 2"
 
 #. i18n: ectx: label, entry, group (Game)
 #: ksnakeduel.kcfg:25
@@ -275,7 +275,7 @@ msgstr "Stas Verberkt"
 #: main.cpp:60
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
-msgstr "النقل إلى كِيدِي٤ ومراجعة الواجهة ونمط KSnake"
+msgstr "النقل إلى كِيدِي4 ومراجعة الواجهة ونمط KSnake"
 
 #: main.cpp:65
 #, kde-format
