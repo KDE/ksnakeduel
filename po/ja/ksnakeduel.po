@@ -15,7 +15,7 @@ msgstr ""
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
 "X-Accelerator-Marker: &\n"
 "X-Text-Markup: kde4\n"
 
@@ -310,7 +310,6 @@ msgstr "プレイヤー %1"
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
 msgstr[0] "%1 が %2 に %4 : %3 で勝ち!"
-msgstr[1] "%1 が %2 に %4 : %3 で勝ち!"
 
 #: tron.cpp:354
 #, kde-format
@@ -323,14 +322,12 @@ msgstr "%1 (%2 ポイント) 対 %3 (%4 ポイント)"
 msgid "%1 point"
 msgid_plural "%1 points"
 msgstr[0] ""
-msgstr[1] ""
 
 #: tron.cpp:364
 #, kde-format
 msgid "KSnake game ended with 1 point"
 msgid_plural "KSnake game ended with %1 points"
-msgstr[0] "KSnake ゲームが 1 ポイントで終了しました"
-msgstr[1] "KSnake ゲームが %1 ポイントで終了しました"
+msgstr[0] "KSnake ゲームが %1 ポイントで終了しました"
 
 #: tron.cpp:369
 #, kde-format
