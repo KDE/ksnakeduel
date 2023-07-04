@@ -454,3 +454,4 @@ void Player::setKeyPressed(bool value)
 	m_keyPressed = value;
 }
 
+#include "moc_player.cpp"

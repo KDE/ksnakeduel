@@ -369,6 +369,4 @@ void KTron::triggerKey1Accelerate(bool b)
 	m_tron->triggerKey(1, KBAction::ACCELERATE, b);
 }
 
-
-
-
+#include "moc_ktron.cpp"
