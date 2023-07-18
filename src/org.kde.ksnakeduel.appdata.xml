@@ -12,6 +12,7 @@
   <name xml:lang="de">KSnakeDuel</name>
   <name xml:lang="el">KSnakeDuel</name>
   <name xml:lang="en-GB">KSnakeDuel</name>
+  <name xml:lang="eo">KSnakeDuel</name>
   <name xml:lang="es">KSnakeDuel</name>
   <name xml:lang="et">KSnakeDuel</name>
   <name xml:lang="eu">KSnakeDuel</name>
@@ -49,6 +50,7 @@
   <summary xml:lang="de">Tron-ähnliches Spiel</summary>
   <summary xml:lang="el">Παιχνίδι τρον</summary>
   <summary xml:lang="en-GB">Tron-like Game</summary>
+  <summary xml:lang="eo">Ludo simila al Tron</summary>
   <summary xml:lang="es">Juego semejante a Tron</summary>
   <summary xml:lang="et">Troni moodi mäng</summary>
   <summary xml:lang="eu">Tron antzeko jokoa</summary>
@@ -89,6 +91,7 @@
     <p xml:lang="de">KSnakeDuel ist eine einfache Kopie des Spiels „Tron“.Sie können KSnakeDuel gegen den Rechner oder einen Freund spielen. Das Ziel ist länger zu leben als der Gegner. Dazu darf man weder in eine Mauer noch in den eigenen oder gegnerischen „Körper“ rennen.</p>
     <p xml:lang="el">Το KSnakeDuel είναι ένας απλός κλώνος τρον. Μπορείς να παίξεις KSnakeDuel με τον υπολογιστή ή με έναν φίλο. Ο στόχος του παιχνιδιού είναι να επιζήσεις περισσότερο από τον αντίπαλο. Για να τα καταφέρεις, απόφυγε την επαφή με τοίχο, με την ουρά σου ή με την ουρά του αντιπάλου.</p>
     <p xml:lang="en-GB">KSnakeDuel is a simple Tron-Clone. You can play KSnakeDuel against the computer or a friend. The aim of the game is to live longer than your opponent. To do that, avoid running into a wall, your own tail and that of your opponent.</p>
+    <p xml:lang="eo">KSnakeDuel estas simpla Tron-Klono. Vi povas ludi KSnakeDuel kontraŭ la komputilo aŭ amiko. La celo de la ludo estas vivi pli longe ol via kontraŭulo. Por fari tion, evitu kuri en muron, vian propran voston kaj tiun de via kontraŭulo.</p>
     <p xml:lang="es">KSnakeDuel es un sencillo clon de Tron. Puede jugar a KSnakeDuel contra la computadora o contra otro oponente. El objetivo del juego es sobrevivir más tiempo que el oponente. Para ello, evite estrellarse contra los muros, su propia cola y la de su oponente.</p>
     <p xml:lang="et">KSnakeDuel on lihtne Troni kloon. Seda saab mängida nii arvuti kui ka sõbra vastu. Mängu siht on püsida elus kauem kui vastane. Selleks tuleb vältida põrkumist seinaga, oma sabaga ja vastasega.</p>
     <p xml:lang="eu">KSnakeDuel Tron-en klon sinple bat da. KSnakeDuel-en ordenagailuaren aurka edo lagun baten aurka joka dezakezu. Jokoaren xedea zure aurkaria baino luzeago bizirik irautea da. Horretarako, hormarekin, zure isatsarekin eta zure aurkariarenarekin talka egitea ekidin behar duzu.</p>
