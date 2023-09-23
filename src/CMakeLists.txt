@@ -47,21 +47,16 @@ kconfig_add_kcfg_files(ksnakeduel settings.kcfgc)
 file(GLOB ICONS_SRCS "${CMAKE_SOURCE_DIR}/icons/*-apps-ksnakeduel.png")
 ecm_add_app_icon(ksnakeduel ICONS ${ICONS_SRCS})
 
-if (QT_MAJOR_VERSION STREQUAL "6")
-    target_link_libraries(ksnakeduel KDEGames6)
-else()
-    target_link_libraries(ksnakeduel KF5KDEGames)
-endif()
-
 target_link_libraries(ksnakeduel
-    KF${KF_MAJOR_VERSION}::CoreAddons
-    KF${KF_MAJOR_VERSION}::Completion
-    KF${KF_MAJOR_VERSION}::Crash
-    KF${KF_MAJOR_VERSION}::DBusAddons
-    KF${KF_MAJOR_VERSION}::GuiAddons
-    KF${KF_MAJOR_VERSION}::I18n
-    KF${KF_MAJOR_VERSION}::XmlGui
-    Qt${QT_MAJOR_VERSION}::Svg
+    KDEGames6
+    KF6::CoreAddons
+    KF6::Completion
+    KF6::Crash
+    KF6::DBusAddons
+    KF6::GuiAddons
+    KF6::I18n
+    KF6::XmlGui
+    Qt6::Svg
 )
 
 install(TARGETS ksnakeduel ${KDE_INSTALL_TARGETS_DEFAULT_ARGS})

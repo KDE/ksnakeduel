@@ -14,9 +14,6 @@
 #include <KAboutData>
 #include <KCrash>
 #include <KDBusService>
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-#include <Kdelibs4ConfigMigrator>
-#endif
 #include <QCommandLineParser>
 #include <QCommandLineOption>
 #include <QStandardPaths>
@@ -29,19 +26,9 @@
 
 int main(int argc, char* argv[])
 {
-    // Fixes blurry icons with fractional scaling
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    QGuiApplication::setAttribute(Qt::AA_UseHighDpiPixmaps);
-#endif
     QApplication app(argc, argv);
 
     KLocalizedString::setApplicationDomain("ksnakeduel");
-#if QT_VERSION < QT_VERSION_CHECK(6, 0, 0)
-    Kdelibs4ConfigMigrator migrate(QStringLiteral("ksnakeduel"));
-    migrate.setConfigFiles(QStringList() << QStringLiteral("ksnakeduelrc"));
-    migrate.setUiFiles(QStringList() << QStringLiteral("ksnakeduelui.rc"));
-    migrate.migrate();
-#endif
 
     KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
             QStringLiteral(KSNAKEDUEL_VERSION_STRING),
