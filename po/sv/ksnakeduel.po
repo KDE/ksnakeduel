@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:44+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2021-08-19 16:23+0200\n"
 "Last-Translator: Stefan Asserhäll <stefan.asserhall@bredband.net>\n"
 "Language-Team: Swedish <kde-i18n-doc@kde.org>\n"
@@ -227,17 +227,17 @@ msgstr "Allmänt"
 msgid "Theme"
 msgstr "Tema"
 
-#: main.cpp:46 player.cpp:82
+#: main.cpp:33 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
 msgstr "Ormspel"
 
-#: main.cpp:48
+#: main.cpp:35
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "Ett lopp i hyperrymden"
 
-#: main.cpp:50
+#: main.cpp:37
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -254,37 +254,37 @@ msgstr ""
 "Delar av algoritmerna för datorspelaren är tagna från\n"
 "Xtron-1.1 av Rhett D. Jacobs <rhett@hotel.canberra.edu.au>."
 
-#: main.cpp:58
+#: main.cpp:45
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:58
+#: main.cpp:45
 #, kde-format
 msgid "Original author"
 msgstr "Ursprunglig upphovsman"
 
-#: main.cpp:59
+#: main.cpp:46
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:59
+#: main.cpp:46
 #, kde-format
 msgid "Various improvements"
 msgstr "Diverse förbättringar"
 
-#: main.cpp:60
+#: main.cpp:47
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Stas Verberkt"
 
-#: main.cpp:60
+#: main.cpp:47
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "Överföring till KDE 4, omarbetning av gränssnitt och ormspelsläge"
 
-#: main.cpp:65
+#: main.cpp:52
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Starta i ormspelsläge"

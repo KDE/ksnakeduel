@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2020-05-12 03:24+0200\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -50,8 +50,9 @@ msgstr "К‑змијски-двобој: играч против играча"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:52
-#, kde-format
-msgid "KSnake: Single player"
+#, fuzzy, kde-format
+#| msgid "KSnake: Single player"
+msgid "KSnake mode: Single player"
 msgstr "К‑змијице: један играч"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
@@ -80,15 +81,29 @@ msgstr "Имена играча"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
 #: general.ui:101
-#, kde-format
-msgid "Right player / KSnake:"
+#, fuzzy, kde-format
+#| msgid "Right player / KSnake:"
+msgid "Right player / KSnake mode:"
 msgstr "Десни играч, К‑змијице:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:111
+#: general.ui:111 ktron.cpp:258
 #, kde-format
 msgid "Left player:"
 msgstr "Лијеви играч:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
+#: general.ui:124
+#, fuzzy, kde-format
+#| msgid "Game paused"
+msgid "Game Options"
+msgstr "Игра је паузирана"
+
+#. i18n: ectx: property (text), widget (QLabel, roundsLabel)
+#: general.ui:130
+#, kde-format
+msgid "Rounds to win:"
+msgstr ""
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: ksnakeduel.kcfg:9
@@ -120,107 +135,118 @@ msgstr "Име играча 2."
 msgid "Type of the game"
 msgstr "Врста игре"
 
-#: ktron.cpp:79
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:34
 #, kde-format
-msgid "Right Player / KSnake: Up"
+msgid "Rounds"
+msgstr ""
+
+#: ktron.cpp:64
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Up"
+msgid "Right Player / KSnake mode: Up"
 msgstr "Десни играч, К‑змијице: нагоре"
 
-#: ktron.cpp:85
-#, kde-format
-msgid "Right Player / KSnake: Down"
+#: ktron.cpp:70
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Down"
+msgid "Right Player / KSnake mode: Down"
 msgstr "Десни играч, К‑змијице: надоље"
 
-#: ktron.cpp:91
-#, kde-format
-msgid "Right Player / KSnake: Right"
+#: ktron.cpp:76
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Right"
+msgid "Right Player / KSnake mode: Right"
 msgstr "Десни играч, К‑змијице: удесно"
 
-#: ktron.cpp:97
-#, kde-format
-msgid "Right Player / KSnake: Left"
+#: ktron.cpp:82
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake: Left"
+msgid "Right Player / KSnake mode: Left"
 msgstr "Десни играч, К‑змијице: улијево"
 
-#: ktron.cpp:103
+#: ktron.cpp:88
 #, kde-format
 msgid "Right Player: Accelerator"
 msgstr "Десни играч, К‑змијице: убрзавање"
 
-#: ktron.cpp:109
+#: ktron.cpp:94
 #, kde-format
 msgid "Left Player: Up"
 msgstr "Лијеви играч: нагоре"
 
-#: ktron.cpp:115
+#: ktron.cpp:100
 #, kde-format
 msgid "Left Player: Down"
 msgstr "Лијеви играч: надоље"
 
-#: ktron.cpp:121
+#: ktron.cpp:106
 #, kde-format
 msgid "Left Player: Right"
 msgstr "Лијеви играч: удесно"
 
-#: ktron.cpp:127
+#: ktron.cpp:112
 #, kde-format
 msgid "Left Player: Left"
 msgstr "Лијеви играч: улијево"
 
-#: ktron.cpp:133
+#: ktron.cpp:118
 #, kde-format
 msgid "Left Player: Accelerator"
 msgstr "Лијеви играч: убрзавање"
 
-#: ktron.cpp:173
+#: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
 msgstr "Не могу да учитам тему „%1“. Провјерите инсталацију."
 
-#: ktron.cpp:192
+#: ktron.cpp:181
 #, kde-format
 msgid "%1 has won!"
 msgstr "%1 победи!"
 
-#: ktron.cpp:195 tron.cpp:337
+#: ktron.cpp:184 tron.cpp:323
 #, kde-format
 msgid "Game paused"
 msgstr "Игра је паузирана"
 
-#: ktron.cpp:264
+#: ktron.cpp:253
 #, kde-format
 msgid "Player Name:"
 msgstr "Име играча:"
 
-#: ktron.cpp:265
+#: ktron.cpp:254
 #, kde-format
 msgid "Opponent:"
 msgstr "Противник:"
 
-#: ktron.cpp:268
-#, kde-format
-msgid "Right Player:"
+#: ktron.cpp:257
+#, fuzzy, kde-format
+#| msgid "Right Player:"
+msgid "Right player:"
 msgstr "Десни играч:"
 
-#: ktron.cpp:269
-#, kde-format
-msgid "Left Player:"
-msgstr "Лијеви играч:"
-
-#: ktron.cpp:273
+#: ktron.cpp:262
 #, kde-format
 msgid "General"
 msgstr "Опште"
 
-#: ktron.cpp:274
+#: ktron.cpp:263
 #, kde-format
 msgid "Theme"
 msgstr "Тема"
 
-#: main.cpp:39
+#: main.cpp:33 player.cpp:82
+#, kde-format
+msgid "KSnakeDuel"
+msgstr "К‑змијски-двобој"
+
+#: main.cpp:35
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "Трка у хиперпростору"
 
-#: main.cpp:40
+#: main.cpp:37
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -237,52 +263,47 @@ msgstr ""
 "Дијелови алгоритма рачунарског играча преузети су из\n"
 "Икс‑трона 1.1 Рет Д. Џејкобс <rhett@hotel.canberra.edu.au>"
 
-#: main.cpp:61 player.cpp:95
-#, kde-format
-msgid "KSnakeDuel"
-msgstr "К‑змијски-двобој"
-
-#: main.cpp:63
+#: main.cpp:45
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Матијас Кифер"
 
-#: main.cpp:63
+#: main.cpp:45
 #, kde-format
 msgid "Original author"
 msgstr "Првобитни аутор"
 
-#: main.cpp:64
+#: main.cpp:46
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Бенџамин К. Мејер"
 
-#: main.cpp:64
+#: main.cpp:46
 #, kde-format
 msgid "Various improvements"
 msgstr "Разна побољшања"
 
-#: main.cpp:65
+#: main.cpp:47
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Стас Верберкт"
 
-#: main.cpp:65
+#: main.cpp:47
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "Пренос на КДЕ‑4, ревизија сучеља и режим К‑змијица"
 
-#: main.cpp:70
+#: main.cpp:52
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Покрени у режиму К‑змијица"
 
-#: player.cpp:116
+#: player.cpp:103
 #, kde-format
 msgid "Player %1"
 msgstr "Играч %1"
 
-#: tron.cpp:357
+#: tron.cpp:343
 #, kde-format
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
@@ -291,13 +312,13 @@ msgstr[1] "%1 побиједи %2 са %4:%3!"
 msgstr[2] "%1 побиједи %2 са %4:%3!"
 msgstr[3] "%1 побиједи %2 са %4:%3!"
 
-#: tron.cpp:368
+#: tron.cpp:354
 #, kde-format
 msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
 msgid "%1 (%2) versus %3 (%4)"
 msgstr "%1 (%2) пр. %3 (%4)"
 
-#: tron.cpp:369 tron.cpp:370
+#: tron.cpp:355 tron.cpp:356
 #, kde-format
 msgid "%1 point"
 msgid_plural "%1 points"
@@ -306,7 +327,7 @@ msgstr[1] "%1 поена"
 msgstr[2] "%1 поена"
 msgstr[3] "%1 поен"
 
-#: tron.cpp:378
+#: tron.cpp:364
 #, kde-format
 msgid "KSnake game ended with 1 point"
 msgid_plural "KSnake game ended with %1 points"
@@ -315,13 +336,16 @@ msgstr[1] "Игра К‑змијица завршена са %1 поена"
 msgstr[2] "Игра К‑змијица завршена са %1 поена"
 msgstr[3] "Игра К‑змијица завршена са %1 поеном"
 
-#: tron.cpp:383
+#: tron.cpp:369
 #, kde-format
 msgid ""
 "The game starts when each player has pressed one of their direction keys!"
 msgstr "Игра почиње када сваки играч притисне један од тастера за смјер!"
 
-#: tron.cpp:386
+#: tron.cpp:372
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr "Притисните један од тастера за смјер да бисте почели!"
+
+#~ msgid "Left Player:"
+#~ msgstr "Лијеви играч:"

@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2022-09-28 00:44+0000\n"
+"POT-Creation-Date: 2023-09-25 01:40+0000\n"
 "PO-Revision-Date: 2021-11-12 00:49+0100\n"
 "Last-Translator: Shinjo Park <kde@peremen.name>\n"
 "Language-Team: Korean <kde-kr@kde.org>\n"
@@ -225,17 +225,17 @@ msgstr "일반"
 msgid "Theme"
 msgstr "테마"
 
-#: main.cpp:46 player.cpp:82
+#: main.cpp:33 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
 msgstr "KSnakeDuel"
 
-#: main.cpp:48
+#: main.cpp:35
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "하이퍼스페이스에서의 경주"
 
-#: main.cpp:50
+#: main.cpp:37
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -252,37 +252,37 @@ msgstr ""
 "컴퓨터 플레이어의 알고리즘의 일부는\n"
 "Rhett D. Jacobs <rhett@hotel.canberra.edu.au>의 xtron-1.1에서 발췌함"
 
-#: main.cpp:58
+#: main.cpp:45
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:58
+#: main.cpp:45
 #, kde-format
 msgid "Original author"
 msgstr "원 작성자"
 
-#: main.cpp:59
+#: main.cpp:46
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:59
+#: main.cpp:46
 #, kde-format
 msgid "Various improvements"
 msgstr "다양한 개선"
 
-#: main.cpp:60
+#: main.cpp:47
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Stas Verberkt"
 
-#: main.cpp:60
+#: main.cpp:47
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "KDE 4 포트, 인터페이스 개선 및 KSnake 모드"
 
-#: main.cpp:65
+#: main.cpp:52
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "KSnake 모드로 시작하기"
