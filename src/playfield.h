@@ -14,7 +14,7 @@
 
 #include "object.h"
 
-#include <QVector>
+#include <QList>
 
 #define TRON_PLAYFIELD_WIDTH 50
 #define TRON_PLAYFIELD_HEIGHT 30
@@ -35,7 +35,7 @@ class PlayField
 		void setObjectAt(int x, int y, Object &o);
 		
 	private:
-		QVector< Object > m_playfield;
+		QList< Object > m_playfield;
 		int m_width;
 		int m_height;
 };
