@@ -195,7 +195,7 @@ msgstr "Xogador da esquerda: acelerador"
 #: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
-msgstr "Non se puido cargar o tema \"%1\". Comprobe a instalación."
+msgstr "Non foi posíbel cargar o tema \"%1\". Comprobe a instalación."
 
 #: ktron.cpp:181
 #, kde-format
