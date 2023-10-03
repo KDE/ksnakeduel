@@ -14,13 +14,13 @@
 #include "object.h"
 #include "ksnakeduel_debug.h"
 // KDEGames
-#include <KgThemeProvider>
+#include <KGameThemeProvider>
 // KF
 #include <KFontUtils>
 
-static KgThemeProvider *provider()
+static KGameThemeProvider *provider()
 {
-    auto *prov = new KgThemeProvider(QByteArray()); // empty config key to disable internal config storage
+    auto *prov = new KGameThemeProvider(QByteArray()); // empty config key to disable internal config storage
     prov->discoverThemes(
         QStringLiteral("themes"), // theme file location
         QStringLiteral("default") // default theme file name
@@ -44,8 +44,8 @@ Renderer *Renderer::self()
 bool Renderer::loadTheme(const QString &name)
 {
 	const QByteArray identifier = name.toUtf8();
-	KgThemeProvider *provider = themeProvider();
-	const QList<const KgTheme *> themes = provider->themes();
+	KGameThemeProvider *provider = themeProvider();
+	const QList<const KGameTheme *> themes = provider->themes();
 	for (auto* theme : themes) {
 	    if (theme->identifier() == identifier) {
 		provider->setCurrentTheme(theme);

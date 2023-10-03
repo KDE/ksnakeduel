@@ -17,7 +17,7 @@
 #include <KGameDifficulty>
 #include <KStandardGameAction>
 #include <KScoreDialog>
-#include <KgThemeSelector>
+#include <KGameThemeSelector>
 
 #include <QApplication>
 #include <QStatusBar>
@@ -141,8 +141,8 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
     );
     KGameDifficultyGUI::init(this);
     connect(KGameDifficulty::global(), &KGameDifficulty::currentLevelChanged, m_tron, &Tron::loadSettings);
-    connect(Renderer::self()->themeProvider(), &KgThemeProvider::currentThemeChanged,
-	    [this](const KgTheme *theme) {
+    connect(Renderer::self()->themeProvider(), &KGameThemeProvider::currentThemeChanged,
+	    [this](const KGameTheme *theme) {
 		Settings::setTheme(QString::fromUtf8(theme->identifier()));
 	    });
 
@@ -260,7 +260,7 @@ void KTron::showSettings(){
 
 	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral( "settings" ), Settings::self());
 	dialog->addPage(m_generalConfigDialog, i18n("General"), QStringLiteral( "games-config-options" ));
-	dialog->addPage(new KgThemeSelector(Renderer::self()->themeProvider(), KgThemeSelector::EnableNewStuffDownload, dialog), i18n("Theme"), QStringLiteral( "games-config-theme" ));
+	dialog->addPage(new KGameThemeSelector(Renderer::self()->themeProvider(), KGameThemeSelector::EnableNewStuffDownload, dialog), i18n("Theme"), QStringLiteral( "games-config-theme" ));
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KTron::loadSettings);
 	connect(dialog, &KConfigDialog::settingsChanged, m_tron, &Tron::loadSettings);
 	dialog->show();

@@ -20,7 +20,7 @@
 #include <KLocalizedString>
 // KDEGames
 #include <KGameDifficulty>
-#include <KgThemeProvider>
+#include <KGameThemeProvider>
 
 #include "settings.h"
 #include "renderer.h"
@@ -49,7 +49,7 @@ Tron::Tron(QWidget *parent) : QWidget(parent)
 	timer = new QTimer(this);
 	//loadSettings();
 	connect(timer, &QTimer::timeout, this, &Tron::doMove);
-	connect(Renderer::self()->themeProvider(), &KgThemeProvider::currentThemeChanged,
+	connect(Renderer::self()->themeProvider(), &KGameThemeProvider::currentThemeChanged,
 		this, &Tron::resetOnThemeChange);
 }
 
