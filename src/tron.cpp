@@ -19,7 +19,7 @@
 #include "ksnakeduel_debug.h"
 #include <KLocalizedString>
 // KDEGames
-#include <KgDifficulty>
+#include <KGameDifficulty>
 #include <KgThemeProvider>
 
 #include "settings.h"
@@ -653,17 +653,17 @@ void Tron::checkHeadToHeadCollision()
 
 /** retrieves the line speed */
 int Tron::lineSpeed() {
-	switch (Kg::difficultyLevel()) {
-		case KgDifficultyLevel::VeryEasy:
+	switch (KGameDifficulty::globalLevel()) {
+		case KGameDifficultyLevel::VeryEasy:
 			return 2;
 		default:
-		case KgDifficultyLevel::Easy:
+		case KGameDifficultyLevel::Easy:
 			return 3;
-		case KgDifficultyLevel::Medium:
+		case KGameDifficultyLevel::Medium:
 			return 5;
-		case KgDifficultyLevel::Hard:
+		case KGameDifficultyLevel::Hard:
 			return 7;
-		case KgDifficultyLevel::VeryHard:
+		case KGameDifficultyLevel::VeryHard:
 			return 8;
 	}
 }

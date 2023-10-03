@@ -14,7 +14,7 @@
 #include "tron.h"
 #include "settings.h"
 
-#include <KgDifficulty>
+#include <KGameDifficulty>
 
 Intelligence::Intelligence()
     : m_random(QRandomGenerator::global()->generate())
@@ -33,17 +33,17 @@ void Intelligence::referenceTron(Tron *t)
 
 /** retrieves the opponentSkill */
 int Intelligence::opponentSkill() {
-	switch (Kg::difficultyLevel()) {
-		case KgDifficultyLevel::VeryEasy:
+	switch (KGameDifficulty::globalLevel()) {
+		case KGameDifficultyLevel::VeryEasy:
 			return 1;
 		default:
-		case KgDifficultyLevel::Easy:
+		case KGameDifficultyLevel::Easy:
 			return 1;
-		case KgDifficultyLevel::Medium:
+		case KGameDifficultyLevel::Medium:
 			return 2;
-		case KgDifficultyLevel::Hard:
+		case KGameDifficultyLevel::Hard:
 			return 3;
-		case KgDifficultyLevel::VeryHard:
+		case KGameDifficultyLevel::VeryHard:
 			return 3;
 	}
 }
