@@ -47,6 +47,7 @@ int main(int argc, char* argv[])
     aboutData.addAuthor(i18n("Stas Verberkt"), i18n("KDE 4 Port, interface revision and KSnake mode"), QStringLiteral("legolas@legolasweb.nl"));
 
     KAboutData::setApplicationData(aboutData);
+    QApplication::setWindowIcon(QIcon::fromTheme(QStringLiteral("ksnakeduel")));
 
     KCrash::initialize();
 
@@ -74,8 +75,6 @@ int main(int argc, char* argv[])
 
     KTron *ktron = new KTron();
     ktron->show();
-
-    app.setWindowIcon(QIcon::fromTheme(QStringLiteral("ksnakeduel")));
 
     return app.exec();
 }
