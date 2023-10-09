@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2022-09-09 15:24+0200\n"
 "Last-Translator: Josep M. Ferrer <txemaq@gmail.com>\n"
 "Language-Team: Catalan <kde-i18n-ca@kde.org>\n"
@@ -34,73 +34,73 @@ msgid "Your emails"
 msgstr "manutortosa@gmail.com"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
-#: general.ui:35
+#: general.ui:32
 #, kde-format
 msgid "Game Type"
 msgstr "Tipus de joc"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:42
+#: general.ui:39
 #, kde-format
 msgid "KSnakeDuel: Player vs Computer"
 msgstr "KSnakeDuel: Jugador contra ordinador"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:47
+#: general.ui:44
 #, kde-format
 msgid "KSnakeDuel: Player vs Player"
 msgstr "KSnakeDuel: Jugador contra jugador"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:52
+#: general.ui:49
 #, kde-format
 msgid "KSnake mode: Single player"
 msgstr "Mode del KSnake: un sol jugador"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
-#: general.ui:60
+#: general.ui:57
 #, kde-format
 msgid "Game type:"
 msgstr "Tipus de joc:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
-#: general.ui:73
+#: general.ui:70
 #, kde-format
 msgid "Behavior"
 msgstr "Comportament"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
-#: general.ui:79
+#: general.ui:76
 #, kde-format
 msgid "&Disable acceleration"
 msgstr "&Desactiva l'acceleració"
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
-#: general.ui:89
+#: general.ui:86
 #, kde-format
 msgid "Player Names"
 msgstr "Noms dels jugadors"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
-#: general.ui:101
+#: general.ui:98
 #, kde-format
 msgid "Right player / KSnake mode:"
 msgstr "Jugador dret / Mode del KSnake:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:111 ktron.cpp:258
+#: general.ui:108 ktron.cpp:258
 #, kde-format
 msgid "Left player:"
 msgstr "Jugador esquerre:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
-#: general.ui:124
+#: general.ui:121
 #, kde-format
 msgid "Game Options"
 msgstr "Opcions del joc"
 
 #. i18n: ectx: property (text), widget (QLabel, roundsLabel)
-#: general.ui:130
+#: general.ui:127
 #, kde-format
 msgid "Rounds to win:"
 msgstr "Tandes per a guanyar:"
@@ -288,7 +288,7 @@ msgstr "Stas Verberkt"
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "Adaptació a KDE 4, revisió de la interfície i el mode KSnake"
 
-#: main.cpp:52
+#: main.cpp:55
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Inicia en el mode KSnake"

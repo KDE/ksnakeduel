@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2010-03-20 19:59+0200\n"
 "Last-Translator: Maris Nartiss <maris.kde@gmail.com>\n"
 "Language-Team: Latvian\n"
@@ -31,78 +31,78 @@ msgid "Your emails"
 msgstr "viesturs.zarins@mii.lu.lv, einars8@gmail.com"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
-#: general.ui:35
+#: general.ui:32
 #, kde-format
 msgid "Game Type"
 msgstr "Spēles tips"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:42
+#: general.ui:39
 #, fuzzy, kde-format
 #| msgid "KTron: Player vs Computer"
 msgid "KSnakeDuel: Player vs Computer"
 msgstr "KTron: spēlētājs pret datoru"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:47
+#: general.ui:44
 #, fuzzy, kde-format
 #| msgid "KTron: Player vs Player"
 msgid "KSnakeDuel: Player vs Player"
 msgstr "KTron: spēlētājs pret spēlētāju"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:52
+#: general.ui:49
 #, fuzzy, kde-format
 #| msgid "KSnake: Single player"
 msgid "KSnake mode: Single player"
 msgstr "KSnake: viens spēlētājs"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
-#: general.ui:60
+#: general.ui:57
 #, kde-format
 msgid "Game type:"
 msgstr "Spēles tips:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
-#: general.ui:73
+#: general.ui:70
 #, kde-format
 msgid "Behavior"
 msgstr "Izturēšanās"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
-#: general.ui:79
+#: general.ui:76
 #, kde-format
 msgid "&Disable acceleration"
 msgstr "A&tslēgt paātrinājumu"
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
-#: general.ui:89
+#: general.ui:86
 #, kde-format
 msgid "Player Names"
 msgstr "Spēlētāju vārdi"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
-#: general.ui:101
+#: general.ui:98
 #, fuzzy, kde-format
 #| msgid "Right player / KSnake:"
 msgid "Right player / KSnake mode:"
 msgstr "Labais spēlētājs / KSnake:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:111 ktron.cpp:258
+#: general.ui:108 ktron.cpp:258
 #, kde-format
 msgid "Left player:"
 msgstr "Kreisais spēlētājs:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
-#: general.ui:124
+#: general.ui:121
 #, fuzzy, kde-format
 #| msgid "Game paused"
 msgid "Game Options"
 msgstr "Spēle nopauzēta"
 
 #. i18n: ectx: property (text), widget (QLabel, roundsLabel)
-#: general.ui:130
+#: general.ui:127
 #, kde-format
 msgid "Rounds to win:"
 msgstr ""
@@ -295,7 +295,7 @@ msgstr "Stas Verberkt"
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "KDE4 ports, saskarnes pārskatīšana un KSnake režīms"
 
-#: main.cpp:52
+#: main.cpp:55
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Sākt KSnake režīmā"

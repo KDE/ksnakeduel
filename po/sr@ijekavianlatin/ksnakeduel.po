@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-09-25 01:40+0000\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -31,76 +31,76 @@ msgid "Your emails"
 msgstr "slsimic@gmail.com,caslav.ilic@gmx.net"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
-#: general.ui:35
+#: general.ui:32
 #, kde-format
 msgid "Game Type"
 msgstr "Vrsta igre"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:42
+#: general.ui:39
 #, kde-format
 msgid "KSnakeDuel: Player vs Computer"
 msgstr "K‑zmijski-dvoboj: igrač protiv računara"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:47
+#: general.ui:44
 #, kde-format
 msgid "KSnakeDuel: Player vs Player"
 msgstr "K‑zmijski-dvoboj: igrač protiv igrača"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
-#: general.ui:52
+#: general.ui:49
 #, fuzzy, kde-format
 #| msgid "KSnake: Single player"
 msgid "KSnake mode: Single player"
 msgstr "K‑zmijice: jedan igrač"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
-#: general.ui:60
+#: general.ui:57
 #, kde-format
 msgid "Game type:"
 msgstr "Vrsta igre:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
-#: general.ui:73
+#: general.ui:70
 #, kde-format
 msgid "Behavior"
 msgstr "Ponašanje"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
-#: general.ui:79
+#: general.ui:76
 #, kde-format
 msgid "&Disable acceleration"
 msgstr "&Bez ubrzavanja"
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
-#: general.ui:89
+#: general.ui:86
 #, kde-format
 msgid "Player Names"
 msgstr "Imena igrača"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
-#: general.ui:101
+#: general.ui:98
 #, fuzzy, kde-format
 #| msgid "Right player / KSnake:"
 msgid "Right player / KSnake mode:"
 msgstr "Desni igrač, K‑zmijice:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:111 ktron.cpp:258
+#: general.ui:108 ktron.cpp:258
 #, kde-format
 msgid "Left player:"
 msgstr "Lijevi igrač:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
-#: general.ui:124
+#: general.ui:121
 #, fuzzy, kde-format
 #| msgid "Game paused"
 msgid "Game Options"
 msgstr "Igra je pauzirana"
 
 #. i18n: ectx: property (text), widget (QLabel, roundsLabel)
-#: general.ui:130
+#: general.ui:127
 #, kde-format
 msgid "Rounds to win:"
 msgstr ""
@@ -293,7 +293,7 @@ msgstr "Stas Verberkt"
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "Prenos na KDE4, revizija sučelja i režim K‑zmijica"
 
-#: main.cpp:52
+#: main.cpp:55
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Pokreni u režimu K‑zmijica"
