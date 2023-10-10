@@ -210,7 +210,7 @@
 >. El juego también se pone en pausa al cambiar a otra ventana. </para>
 
 <para
->Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla de acceso rápido. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+>Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
 
 
 <para
@@ -257,7 +257,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar accesos rápidos...</guimenuitem
+>Configurar los atajos de teclado...</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -288,16 +288,16 @@
 > <guimenuitem
 >Pausa</guimenuitem
 ></menuchoice
-> o pulse la tecla de acceso rápido. El juego también se pone en pausa al cambiar a otra ventana. </para>
+> o pulse la tecla del atajo. El juego también se pone en pausa al cambiar a otra ventana. </para>
 
 <para
->Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla de acceso rápido. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+>Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
 
 <para
 >En el juego siempre habrá una pieza de fruta en el mapa. Si la recoge, su puntuación aumentará 5 puntos. La puntuación actual siempre se muestra en la barra de estado. </para>
 
 <para
->Cuando se esté moviendo por el mapa aparecerán obstáculos. Golpearse contra ellos también resultará en un choque. Sin embargo, cada vez que aparezca un obstáculo y usted sobreviva, ganará 2 puntos. </para>
+>Cuando se esté moviendo por el mapa aparecerán obstáculos. Golpearse contra ellos también resultará en un choque. Sin embargo, cada vez que aparezca un obstáculo y sobreviva, ganará 2 puntos. </para>
 
 <para
 >Puede cambiar el nivel de dificultad del juego usando el submenú <menuchoice
@@ -325,7 +325,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar accesos rápidos...</guimenuitem
+>Configurar los atajos de teclado...</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -487,7 +487,7 @@
 
 <sect1 id="keys">
 <title
->Accesos rápidos predeterminados</title>
+>Atajos de teclado predeterminados</title>
 
 <para
 >Las siguientes tablas muestran las asociaciones de teclas predeterminadas.</para>
@@ -495,7 +495,7 @@
 
 <table>
 <title
->Accesos rápidos del jugador 1</title>
+>Atajos de teclado del jugador 1</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -544,7 +544,7 @@
 
 <table>
 <title
->Acceso rápido del jugador 2</title>
+>Atajos de teclado del jugador 2</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -601,7 +601,7 @@
 
 <table>
 <title
->Accesos rápidos generales</title>
+>Atajos de teclado generales</title>
 <tgroup cols="2">
 <thead>
 <row>
@@ -680,7 +680,7 @@ action="simul"
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar accesos rápidos...</guimenuitem
+>Configurar los atajos de teclado...</guimenuitem
 ></menuchoice
 >. </para>
 
