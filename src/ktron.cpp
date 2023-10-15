@@ -62,61 +62,61 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 
 	m_player0Up = actionCollection()->addAction( QStringLiteral( "Pl1Up" ));
 	m_player0Up->setText(i18n("Right Player / KSnake mode: Up"));
-	actionCollection()->setDefaultShortcut(m_player0Up,Qt::Key_Up);
+	KActionCollection::setDefaultShortcut(m_player0Up, Qt::Key_Up);
 	connect(m_player0Up, &QAction::triggered, this, &KTron::triggerKey0Up);
 	addAction(m_player0Up);
 
 	m_player0Down = actionCollection()->addAction( QStringLiteral( "Pl1Down" ));
 	m_player0Down->setText(i18n("Right Player / KSnake mode: Down"));
-	actionCollection()->setDefaultShortcut(m_player0Down,Qt::Key_Down);
+	KActionCollection::setDefaultShortcut(m_player0Down, Qt::Key_Down);
 	connect(m_player0Down, &QAction::triggered, this, &KTron::triggerKey0Down);
 	addAction(m_player0Down);
 
 	m_player0Right = actionCollection()->addAction( QStringLiteral( "Pl1Right" ));
 	m_player0Right->setText(i18n("Right Player / KSnake mode: Right"));
-	actionCollection()->setDefaultShortcut(m_player0Right,Qt::Key_Right);
+	KActionCollection::setDefaultShortcut(m_player0Right, Qt::Key_Right);
 	connect(m_player0Right, &QAction::triggered, this, &KTron::triggerKey0Right);
 	addAction(m_player0Right);
 
 	m_player0Left = actionCollection()->addAction( QStringLiteral( "Pl1Left" ));
 	m_player0Left->setText(i18n("Right Player / KSnake mode: Left"));
-	actionCollection()->setDefaultShortcut(m_player0Left,Qt::Key_Left);
+	KActionCollection::setDefaultShortcut(m_player0Left, Qt::Key_Left);
 	connect(m_player0Left, &QAction::triggered, this, &KTron::triggerKey0Left);
 	addAction(m_player0Left);
 
 	m_player0Accelerate = actionCollection()->addAction( QStringLiteral( "Pl1Ac" ));
 	m_player0Accelerate->setText(i18n("Right Player: Accelerator"));
-	actionCollection()->setDefaultShortcut(m_player0Accelerate,Qt::Key_0);
+	KActionCollection::setDefaultShortcut(m_player0Accelerate, Qt::Key_0);
 	m_player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player0Accelerate);
 
 	m_player1Up = actionCollection()->addAction( QStringLiteral( "Pl2Up" ));
 	m_player1Up->setText(i18n("Left Player: Up"));
-	actionCollection()->setDefaultShortcut(m_player1Up,Qt::Key_W);
+	KActionCollection::setDefaultShortcut(m_player1Up, Qt::Key_W);
 	connect(m_player1Up, &QAction::triggered, this, &KTron::triggerKey1Up);
 	addAction(m_player1Up);
 
 	m_player1Down = actionCollection()->addAction( QStringLiteral( "Pl2Down" ));
 	m_player1Down->setText(i18n("Left Player: Down"));
-	actionCollection()->setDefaultShortcut(m_player1Down,Qt::Key_S);
+	KActionCollection::setDefaultShortcut(m_player1Down, Qt::Key_S);
 	connect(m_player1Down, &QAction::triggered, this, &KTron::triggerKey1Down);
 	addAction(m_player1Down);
 
 	m_player1Right = actionCollection()->addAction( QStringLiteral( "Pl2Right" ));;
 	m_player1Right->setText(i18n("Left Player: Right"));
-	actionCollection()->setDefaultShortcut(m_player1Right,Qt::Key_D);
+	KActionCollection::setDefaultShortcut(m_player1Right, Qt::Key_D);
 	connect(m_player1Right, &QAction::triggered, this, &KTron::triggerKey1Right);
 	addAction(m_player1Right);
 
 	m_player1Left = actionCollection()->addAction( QStringLiteral( "Pl2Left" ));
 	m_player1Left->setText(i18n("Left Player: Left"));
-	actionCollection()->setDefaultShortcut(m_player1Left,Qt::Key_A);
+	KActionCollection::setDefaultShortcut(m_player1Left, Qt::Key_A);
 	connect(m_player1Left, &QAction::triggered, this, &KTron::triggerKey1Left);
 	addAction(m_player1Left);
 
 	m_player1Accelerate = actionCollection()->addAction( QStringLiteral( "Pl2Ac" ));
 	m_player1Accelerate->setText(i18n("Left Player: Accelerator"));
-	actionCollection()->setDefaultShortcut(m_player1Accelerate,Qt::Key_Q);
+	KActionCollection::setDefaultShortcut(m_player1Accelerate, Qt::Key_Q);
 	m_player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player1Accelerate);
 
