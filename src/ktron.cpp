@@ -15,7 +15,7 @@
 #include "ui_general.h"
 
 #include <KGameDifficulty>
-#include <KStandardGameAction>
+#include <KGameStandardAction>
 #include <KScoreDialog>
 #include <KGameThemeSelector>
 
@@ -121,18 +121,18 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 	addAction(m_player1Accelerate);
 
 	// Pause
-	m_pauseButton = KStandardGameAction::pause(m_tron, &Tron::togglePause, actionCollection());
+	m_pauseButton = KGameStandardAction::pause(m_tron, &Tron::togglePause, actionCollection());
 	m_pauseButton->setEnabled(false);
 	// New
-	KStandardGameAction::gameNew(m_tron, &Tron::newGame, actionCollection());
+	KGameStandardAction::gameNew(m_tron, &Tron::newGame, actionCollection());
 	// Quit
-	KStandardGameAction::quit(qApp, &QApplication::quit, actionCollection());
+	KGameStandardAction::quit(qApp, &QApplication::quit, actionCollection());
 	// Settings
 	KStandardAction::preferences(this, &KTron::showSettings, actionCollection());
 	// Configure keys
 	KStandardAction::keyBindings(this, &KTron::optionsConfigureKeys, actionCollection());
 	// Highscores
-	KStandardGameAction::highscores(this, &KTron::showHighscores, actionCollection());
+	KGameStandardAction::highscores(this, &KTron::showHighscores, actionCollection());
 
 	//difficulty
     KGameDifficulty::global()->addStandardLevelRange(
