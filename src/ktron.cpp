@@ -15,8 +15,8 @@
 #include "ui_general.h"
 
 #include <KGameDifficulty>
+#include <KGameHighScoreDialog>
 #include <KGameStandardAction>
-#include <KScoreDialog>
 #include <KGameThemeSelector>
 
 #include <QApplication>
@@ -223,12 +223,12 @@ void KTron::changeStatus() {
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake)
 	{
-		KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
+		KGameHighScoreDialog scoreDialog(KGameHighScoreDialog::Score | KGameHighScoreDialog::Name, this);
 		scoreDialog.initFromDifficulty(KGameDifficulty::global());
 
-		KScoreDialog::FieldInfo scoreInfo;
-		scoreInfo[KScoreDialog::Name] = m_tron->getPlayer(0)->getName();
-		scoreInfo[KScoreDialog::Score].setNum(m_tron->getPlayer(0)->getScore());
+		KGameHighScoreDialog::FieldInfo scoreInfo;
+		scoreInfo[KGameHighScoreDialog::Name] = m_tron->getPlayer(0)->getName();
+		scoreInfo[KGameHighScoreDialog::Score].setNum(m_tron->getPlayer(0)->getScore());
 		if (scoreDialog.addScore(scoreInfo) != 0)
 			scoreDialog.exec();
 	}
@@ -270,7 +270,7 @@ void KTron::showSettings(){
  * Show highscores
  */
 void KTron::showHighscores() {
-	KScoreDialog scoreDialog(KScoreDialog::Score | KScoreDialog::Name, this);
+	KGameHighScoreDialog scoreDialog(KGameHighScoreDialog::Score | KGameHighScoreDialog::Name, this);
 	scoreDialog.initFromDifficulty(KGameDifficulty::global());
 	scoreDialog.exec();
 }
