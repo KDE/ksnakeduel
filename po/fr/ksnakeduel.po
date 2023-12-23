@@ -6,7 +6,7 @@
 # Sébastien Renard <Sebastien.Renard@digitalfox.org>, 2009.
 # Stanislas Zeller <uncensored.assault@gmail.com>, 2009.
 # Ryan Kavanagh <ryanakca@kubuntu.org>, 2010.
-# xavier <xavier.besnard@neuf.fr>, 2012, 2013, 2020, 2021.
+# Xavier Besnard <xavier.besnard@kde.org>, 2012, 2013, 2020, 2021.
 # SPDX-FileCopyrightText: 2023 Xavier Besnard <xavier.besnard@kde.org>
 #
 msgid ""
