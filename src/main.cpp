@@ -28,7 +28,7 @@ int main(int argc, char* argv[])
 {
     QApplication app(argc, argv);
 
-    KLocalizedString::setApplicationDomain("ksnakeduel");
+    KLocalizedString::setApplicationDomain(QByteArrayLiteral("ksnakeduel"));
 
     KAboutData aboutData( QStringLiteral("ksnakeduel"), i18n("KSnakeDuel"),
             QStringLiteral(KSNAKEDUEL_VERSION_STRING),
