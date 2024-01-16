@@ -98,6 +98,3 @@ GenericName[zh_CN]=超空间竞速
 GenericName[zh_TW]=超空間競賽
 X-KDE-StartupNotify=true
 Categories=Qt;KDE;Game;ArcadeGame;
-X-DBUS-StartupType=Multi
-X-DBUS-ServiceName=org.kde.ksnakeduel
-
