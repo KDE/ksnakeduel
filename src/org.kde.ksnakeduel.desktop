@@ -96,5 +96,5 @@ GenericName[uk]=Перегони у гіперпросторі
 GenericName[x-test]=xxA race in hyperspacexx
 GenericName[zh_CN]=超空间竞速
 GenericName[zh_TW]=超空間競賽
-X-KDE-StartupNotify=true
+StartupNotify=true
 Categories=Qt;KDE;Game;ArcadeGame;
