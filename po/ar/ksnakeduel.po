@@ -1,13 +1,13 @@
-# Copyright (C) YEAR This file is copyright:
+# Copyright (C) 2024 This file is copyright:
 # This file is distributed under the same license as the ksnakeduel package.
 #
-# Zayed Al-Saidi <zayed.alsaidi@gmail.com>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Zayed Al-Saidi <zayed.alsaidi@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-09 01:45+0000\n"
-"PO-Revision-Date: 2022-01-22 14:10+0400\n"
+"PO-Revision-Date: 2024-02-12 13:53+0400\n"
 "Last-Translator: Zayed Al-Saidi <zayed.alsaidi@gmail.com>\n"
 "Language-Team: ar\n"
 "Language: ar\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=6; plural=n==0 ? 0 : n==1 ? 1 : n==2 ? 2 : n%100>=3 "
 "&& n%100<=10 ? 3 : n%100>=11 && n%100<=99 ? 4 : 5;\n"
-"X-Generator: Lokalize 21.07.70\n"
+"X-Generator: Lokalize 23.08.1\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -68,7 +68,7 @@ msgstr "السّلوك"
 #: general.ui:76
 #, kde-format
 msgid "&Disable acceleration"
-msgstr ""
+msgstr "&عطل التسريع"
 
 #. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
 #: general.ui:86
@@ -139,62 +139,62 @@ msgstr "الجولات"
 #: ktron.cpp:64
 #, kde-format
 msgid "Right Player / KSnake mode: Up"
-msgstr ""
+msgstr "اللاعب الأيمن / نمط الأفعى ك: أعلى"
 
 #: ktron.cpp:70
 #, kde-format
 msgid "Right Player / KSnake mode: Down"
-msgstr ""
+msgstr "اللاعب الأيمن / نمط الأفعى ك: أسفل"
 
 #: ktron.cpp:76
 #, kde-format
 msgid "Right Player / KSnake mode: Right"
-msgstr ""
+msgstr "اللاعب الأيمن / نمط الأفعى ك: يمين"
 
 #: ktron.cpp:82
 #, kde-format
 msgid "Right Player / KSnake mode: Left"
-msgstr ""
+msgstr "اللاعب الأيمن / نمط الأفعى ك: يسار"
 
 #: ktron.cpp:88
 #, kde-format
 msgid "Right Player: Accelerator"
-msgstr ""
+msgstr "اللاعب الأيمن: المسرّع"
 
 #: ktron.cpp:94
 #, kde-format
 msgid "Left Player: Up"
-msgstr ""
+msgstr "اللاعب الأيسر: أعلى"
 
 #: ktron.cpp:100
 #, kde-format
 msgid "Left Player: Down"
-msgstr ""
+msgstr "اللاعب الأيسر: أسفل"
 
 #: ktron.cpp:106
 #, kde-format
 msgid "Left Player: Right"
-msgstr ""
+msgstr "اللاعب الأيسر: يمين"
 
 #: ktron.cpp:112
 #, kde-format
 msgid "Left Player: Left"
-msgstr ""
+msgstr "اللاعب الأيسر: يسار"
 
 #: ktron.cpp:118
 #, kde-format
 msgid "Left Player: Accelerator"
-msgstr ""
+msgstr "اللاعب الأيسر: المسرّع"
 
 #: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
-msgstr ""
+msgstr "تعذّر تحميل السمة \"%1\"، فضلًا تأكّد من تثبيتك."
 
 #: ktron.cpp:181
 #, kde-format
 msgid "%1 has won!"
-msgstr ""
+msgstr "فارز %1!"
 
 #: ktron.cpp:184 tron.cpp:323
 #, kde-format
@@ -209,12 +209,12 @@ msgstr "اسم اللاعب:"
 #: ktron.cpp:254
 #, kde-format
 msgid "Opponent:"
-msgstr ""
+msgstr "الخصم:"
 
 #: ktron.cpp:257
 #, kde-format
 msgid "Right player:"
-msgstr ""
+msgstr "اللاعب الأيمن:"
 
 #: ktron.cpp:262
 #, kde-format
@@ -246,6 +246,12 @@ msgid ""
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 msgstr ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"جزء من خوارزمية لاعب الحاسوب من \n"
+"xtron-1.1 لصاحبها Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 
 #: main.cpp:45
 #, kde-format
@@ -280,7 +286,7 @@ msgstr "النقل إلى كِيدِي4 ومراجعة الواجهة ونمط K
 #: main.cpp:55
 #, kde-format
 msgid "Start in KSnake mode"
-msgstr ""
+msgstr "ابدأ في نمط مبارزة الأفعى"
 
 #: player.cpp:103
 #, kde-format
@@ -291,18 +297,18 @@ msgstr "اللاعب %1"
 #, kde-format
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "فاز %1 ضد %2 ب%4 مقابل %3 نقطة!"
+msgstr[1] "فاز %1 ضد %2 ب%4 مقابل نقطة واحدة!"
+msgstr[2] "فاز %1 ضد %2 ب%4 مقابل نقطتان!"
+msgstr[3] "فاز %1 ضد %2 ب%4 مقابل %3 نقاط!"
+msgstr[4] "فاز %1 ضد %2 ب%4 مقابل %3 نقطة!"
+msgstr[5] "فاز %1 ضد %2 ب%4 مقابل %3 نقطة!"
 
 #: tron.cpp:354
 #, kde-format
 msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
 msgid "%1 (%2) versus %3 (%4)"
-msgstr ""
+msgstr "%1 (%2) مقابل %3 (%4)"
 
 #: tron.cpp:355 tron.cpp:356
 #, kde-format
@@ -319,20 +325,20 @@ msgstr[5] "%1 نقطة"
 #, kde-format
 msgid "KSnake game ended with 1 point"
 msgid_plural "KSnake game ended with %1 points"
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
-msgstr[3] ""
-msgstr[4] ""
-msgstr[5] ""
+msgstr[0] "انتهت لعبة مبارزة الأفعى دون شيء"
+msgstr[1] "انتهت لعبة مبارزة الأفعى بنقطة واحدة"
+msgstr[2] "انتهت لعبة مبارزة الأفعى بنقطتين"
+msgstr[3] "انتهت لعبة مبارزة الأفعى ب%1 نقاط"
+msgstr[4] "انتهت لعبة مبارزة الأفعى ب%1 نقطة"
+msgstr[5] "انتهت لعبة مبارزة الأفعى ب%1 نقطة"
 
 #: tron.cpp:369
 #, kde-format
 msgid ""
 "The game starts when each player has pressed one of their direction keys!"
-msgstr ""
+msgstr "تبدأ اللعبة عندما يضغط كل لاعب على أحد مفاتيح الاتجاه الخاصة به!"
 
 #: tron.cpp:372
 #, kde-format
 msgid "Press any of your direction keys to start!"
-msgstr ""
+msgstr "اضغط على أي زر اتجاه لتبدأ!"
