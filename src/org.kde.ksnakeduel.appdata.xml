@@ -3,6 +3,9 @@
   <id>org.kde.ksnakeduel.desktop</id>
   <metadata_license>FSFAP</metadata_license>
   <project_license>GPL-2.0+</project_license>
+  <developer id="org.kde">
+    <name translate="no">KDE</name>
+  </developer>
   <name>KSnakeDuel</name>
   <name xml:lang="ar">مبارزة الأفعى</name>
   <name xml:lang="ast">KSnakeDuel</name>
