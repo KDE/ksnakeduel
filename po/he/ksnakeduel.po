@@ -1,0 +1,338 @@
+# Copyright (C) 2024 This file is copyright:
+# This file is distributed under the same license as the ksnakeduel package.
+#
+# SPDX-FileCopyrightText: 2024 Yaron Shahrabani <sh.yaron@gmail.com>
+msgid ""
+msgstr ""
+"Project-Id-Version: ksnakeduel\n"
+"Report-Msgid-Bugs-To: https://bugs.kde.org\n"
+"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"PO-Revision-Date: 2024-04-08 19:19+0300\n"
+"Last-Translator: Yaron Shahrabani <sh.yaron@gmail.com>\n"
+"Language-Team: צוות התרגום של KDE ישראל\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=4; plural=(n==1 ? 0 : n==2 ? 1 : n>10 && n%10==0 ? "
+"2 : 3);\n"
+"X-Generator: Poedit 3.4.2\n"
+
+#, kde-format
+msgctxt "NAME OF TRANSLATORS"
+msgid "Your names"
+msgstr "צוות התרגום של KDE ישראל"
+
+#, kde-format
+msgctxt "EMAIL OF TRANSLATORS"
+msgid "Your emails"
+msgstr "kde-l10n-he@kde.org"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
+#: general.ui:32
+#, kde-format
+msgid "Game Type"
+msgstr "סוג המשחק"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:39
+#, kde-format
+msgid "KSnakeDuel: Player vs Computer"
+msgstr "KSnakeDuel: שחקן נגד מחשב"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:44
+#, kde-format
+msgid "KSnakeDuel: Player vs Player"
+msgstr "KSnakeDuel: שחקן נגד שחקן"
+
+#. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
+#: general.ui:49
+#, kde-format
+msgid "KSnake mode: Single player"
+msgstr "מצב KSnake: שחקן יחיד"
+
+#. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
+#: general.ui:57
+#, kde-format
+msgid "Game type:"
+msgstr "סוג המשחק:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
+#: general.ui:70
+#, kde-format
+msgid "Behavior"
+msgstr "התנהגות"
+
+#. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
+#: general.ui:76
+#, kde-format
+msgid "&Disable acceleration"
+msgstr "ה&שבתת האצה"
+
+#. i18n: ectx: property (title), widget (QGroupBox, playerNamesGroup)
+#: general.ui:86
+#, kde-format
+msgid "Player Names"
+msgstr "שמות השחקנים"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
+#: general.ui:98
+#, kde-format
+msgid "Right player / KSnake mode:"
+msgstr "שחקן ימני / מצב KSnake:"
+
+#. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
+#: general.ui:108 ktron.cpp:258
+#, kde-format
+msgid "Left player:"
+msgstr "שחקן שמאלי:"
+
+#. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
+#: general.ui:121
+#, kde-format
+msgid "Game Options"
+msgstr "אפשרויות משחק"
+
+#. i18n: ectx: property (text), widget (QLabel, roundsLabel)
+#: general.ui:127
+#, kde-format
+msgid "Rounds to win:"
+msgstr "סיבובים לניצחון:"
+
+#. i18n: ectx: label, entry (Theme), group (General)
+#: ksnakeduel.kcfg:9
+#, kde-format
+msgid "The graphical theme to be used."
+msgstr "ערכת העיצוב הגרפית לשימוש."
+
+#. i18n: ectx: label, entry (AcceleratorBlocked), group (Game)
+#: ksnakeduel.kcfg:15
+#, kde-format
+msgid "Whether to disable acceleration."
+msgstr "האם להשבית האצה."
+
+#. i18n: ectx: label, entry (NamePlayer1), group (Game)
+#: ksnakeduel.kcfg:19
+#, kde-format
+msgid "The name of player 1."
+msgstr "שם שחקן 1."
+
+#. i18n: ectx: label, entry (NamePlayer2), group (Game)
+#: ksnakeduel.kcfg:22
+#, kde-format
+msgid "The name of player 2."
+msgstr "שם שחקן 2."
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:25
+#, kde-format
+msgid "Type of the game"
+msgstr "סוג המשחק"
+
+#. i18n: ectx: label, entry, group (Game)
+#: ksnakeduel.kcfg:34
+#, kde-format
+msgid "Rounds"
+msgstr "סיבובים"
+
+#: ktron.cpp:64
+#, kde-format
+msgid "Right Player / KSnake mode: Up"
+msgstr "שחקן ימני / מצב KSnake: למעלה"
+
+#: ktron.cpp:70
+#, kde-format
+msgid "Right Player / KSnake mode: Down"
+msgstr "שחקן ימני / מצב KSnake: למטה"
+
+#: ktron.cpp:76
+#, kde-format
+msgid "Right Player / KSnake mode: Right"
+msgstr "שחקן ימני / מצב KSnake: ימין"
+
+#: ktron.cpp:82
+#, kde-format
+msgid "Right Player / KSnake mode: Left"
+msgstr "שחקן ימני / מצב KSnake: שמאל"
+
+#: ktron.cpp:88
+#, kde-format
+msgid "Right Player: Accelerator"
+msgstr "שחקן ימני: מאיץ"
+
+#: ktron.cpp:94
+#, kde-format
+msgid "Left Player: Up"
+msgstr "שחקן שמאלי: למעלה"
+
+#: ktron.cpp:100
+#, kde-format
+msgid "Left Player: Down"
+msgstr "שחקן שמאלי: למטה"
+
+#: ktron.cpp:106
+#, kde-format
+msgid "Left Player: Right"
+msgstr "שחקן שמאלי: ימין"
+
+#: ktron.cpp:112
+#, kde-format
+msgid "Left Player: Left"
+msgstr "שחקן שמאלי: שמאל"
+
+#: ktron.cpp:118
+#, kde-format
+msgid "Left Player: Accelerator"
+msgstr "שחקן שמאלי: מאיץ"
+
+#: ktron.cpp:162
+#, kde-format
+msgid "Failed to load \"%1\" theme. Please check your installation."
+msgstr "טעינת ערכת העיצוב „%1” נכשלה. נא לבדוק שההתקנה שלך תקינה."
+
+#: ktron.cpp:181
+#, kde-format
+msgid "%1 has won!"
+msgstr "ניצחון של %1!"
+
+#: ktron.cpp:184 tron.cpp:323
+#, kde-format
+msgid "Game paused"
+msgstr "המשחק הושהה"
+
+#: ktron.cpp:253
+#, kde-format
+msgid "Player Name:"
+msgstr "שם השחקן:"
+
+#: ktron.cpp:254
+#, kde-format
+msgid "Opponent:"
+msgstr "יריב:"
+
+#: ktron.cpp:257
+#, kde-format
+msgid "Right player:"
+msgstr "שחקן ימני:"
+
+#: ktron.cpp:262
+#, kde-format
+msgid "General"
+msgstr "כללי"
+
+#: ktron.cpp:263
+#, kde-format
+msgid "Theme"
+msgstr "ערכת עיצוב"
+
+#: main.cpp:33 player.cpp:82
+#, kde-format
+msgid "KSnakeDuel"
+msgstr "KSnakeDuel"
+
+#: main.cpp:35
+#, kde-format
+msgid "A race in hyperspace"
+msgstr "מירוץ בחלל"
+
+#: main.cpp:37
+#, kde-format
+msgid ""
+"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 2005, Benjamin Meyer\n"
+"(c) 2008-2009, Stas Verberkt\n"
+"\n"
+"Parts of the algorithms for the computer player are from\n"
+"xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
+msgstr ""
+"(c) 1998‏-2000, מתיאס קיפר\n"
+"(c) 2005, בנג׳מין מאייר\n"
+"(c) 2008-2009, סטס ורברקט\n"
+"\n"
+"חלקים מהאלגוריתמים לשחקן המחשב באדיבות\n"
+"xtron-1.1 מאת רט ד. ג׳ייקובס <rhett@hotel.canberra.edu.au>"
+
+#: main.cpp:45
+#, kde-format
+msgid "Matthias Kiefer"
+msgstr "מתיאס קיפר"
+
+#: main.cpp:45
+#, kde-format
+msgid "Original author"
+msgstr "יוצר מקורי"
+
+#: main.cpp:46
+#, kde-format
+msgid "Benjamin Meyer"
+msgstr "בנג׳מין מייר"
+
+#: main.cpp:46
+#, kde-format
+msgid "Various improvements"
+msgstr "שיפורים רבים"
+
+#: main.cpp:47
+#, kde-format
+msgid "Stas Verberkt"
+msgstr "סטס ורברקט"
+
+#: main.cpp:47
+#, kde-format
+msgid "KDE 4 Port, interface revision and KSnake mode"
+msgstr "הסבה ל־KDE 4, שיפור הממשק ומצב KSnake"
+
+#: main.cpp:55
+#, kde-format
+msgid "Start in KSnake mode"
+msgstr "התחלה במצב KSnake"
+
+#: player.cpp:103
+#, kde-format
+msgid "Player %1"
+msgstr "שחקן %1"
+
+#: tron.cpp:343
+#, kde-format
+msgid "%1 has won versus %2 with %4 versus %3 point!"
+msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
+msgstr[0] "ניצחון של %1 מול %2 עם %4 מול נקודה!"
+msgstr[1] "ניצחון של %1 מול %2 עם %4 מול שתי נקודות!"
+msgstr[2] "ניצחון של %1 מול %2 עם %4 מול %3 נקודות!"
+msgstr[3] "ניצחון של %1 מול %2 עם %4 מול %3 נקודות!"
+
+#: tron.cpp:354
+#, kde-format
+msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
+msgid "%1 (%2) versus %3 (%4)"
+msgstr "%1 (%2) נגד %3 (%4)"
+
+#: tron.cpp:355 tron.cpp:356
+#, kde-format
+msgid "%1 point"
+msgid_plural "%1 points"
+msgstr[0] "נקודה"
+msgstr[1] "שתי נקודות"
+msgstr[2] "%1 נקודות"
+msgstr[3] "%1 נקודות"
+
+#: tron.cpp:364
+#, kde-format
+msgid "KSnake game ended with 1 point"
+msgid_plural "KSnake game ended with %1 points"
+msgstr[0] "משחק ה־KSnake הסתיים עם נקודה"
+msgstr[1] "משחק ה־KSnake הסתיים עם שתי נקודות"
+msgstr[2] "משחק ה־KSnake הסתיים עם %1 נקודות"
+msgstr[3] "משחק ה־KSnake הסתיים עם %1 נקודות"
+
+#: tron.cpp:369
+#, kde-format
+msgid ""
+"The game starts when each player has pressed one of their direction keys!"
+msgstr "המשחק מתחיל לאחר שבפני כל אחד מהשחקנים מופיעים מקשי הכיוון שלו!"
+
+#: tron.cpp:372
+#, kde-format
+msgid "Press any of your direction keys to start!"
+msgstr "יש לגעת באיזשהו מקש כיוון שלך כדי להתחיל!"
