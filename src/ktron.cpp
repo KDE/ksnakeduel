@@ -141,7 +141,7 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
     );
     KGameDifficultyGUI::init(this);
     connect(KGameDifficulty::global(), &KGameDifficulty::currentLevelChanged, m_tron, &Tron::loadSettings);
-    connect(Renderer::self()->themeProvider(), &KGameThemeProvider::currentThemeChanged,
+    connect(Renderer::self()->themeProvider(), &KGameThemeProvider::currentThemeChanged, this,
 	    [this](const KGameTheme *theme) {
 		Settings::setTheme(QString::fromUtf8(theme->identifier()));
 	    });
