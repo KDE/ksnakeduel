@@ -30,6 +30,7 @@
   <name xml:lang="it">KSnakeDuel</name>
   <name xml:lang="ka">KSnakeDuel</name>
   <name xml:lang="ko">KSnakeDuel</name>
+  <name xml:lang="lv">KSnakeDuel</name>
   <name xml:lang="nl">KSnakeDuel</name>
   <name xml:lang="nn">KSnakeDuel</name>
   <name xml:lang="pl">KPojedynekWęży</name>
@@ -70,6 +71,7 @@
   <summary xml:lang="it">Gioco simile a Tron</summary>
   <summary xml:lang="ka">Tron-ის მსგავსი თამაში</summary>
   <summary xml:lang="ko">트론 게임</summary>
+  <summary xml:lang="lv">„Tron“ līdzīga spēle</summary>
   <summary xml:lang="nl">Tronachtig spel</summary>
   <summary xml:lang="nn">Tron-liknande spel</summary>
   <summary xml:lang="pl">Gra typu Tron</summary>
@@ -114,6 +116,7 @@
     <p xml:lang="it">KSnakeDuel è una replica semplice di Tron. Puoi giocare a KSnakeDuel contro il computer o un amico. Lo scopo del gioco è vivere più a lungo del tuo avversario. Per fare questo, evita di sbattere contro il muro, contro la tua coda o quella del tuo avversario.</p>
     <p xml:lang="ka">KSnakeDuel -ი Tron-ის კლონია. KSnakeDuel შეგიძლიათ როგორც კომპიუტერს, ისე მეგობარს ეთამაშოთ. თამაშის აზრია მეტოქეზე დიდხანს დარჩეთ ცოცხალი. ამის გასაკეთებლად მოერიდეთ შესკდომას კედელთან, თქვენს კუდთან და მეტოქესთან.</p>
     <p xml:lang="ko">KSnakeDuel은 트론 게임 클론입니다. 컴퓨터나 다른 사람과 게임을 즐길 수 있습니다. 게임의 목표는 상대방보다 더 오래 살아남는 것입니다. 벽을 들이받거나, 자기 자신이나 상대방의 궤적을 들이받으면 게임이 끝납니다.</p>
+    <p xml:lang="lv">„KSnakeDuel“ ir vienkāršs „Tron“ spēles klons. Varat spēlēt „KSnakeDuel“ pret datoru vai draugu. Spēles mērķis ir izdzīvot ilgāk par pretinieku. Lai to izdarītu, izvairieties no sienām un savas un pretinieka astes.</p>
     <p xml:lang="nl">KSnakeDuel is een eenvoudig Tron-kloon. U kunt KSnakeDuel spelen tegen de computer of een vriend. Het doel van het spel is langer dan uw tegenstander in leven te blijven. Om dit te bereiken moet u een botsing met een muur, uw eigen staart en de staart van uw tegenstander vermijden.</p>
     <p xml:lang="nn">KSnakeDuel er ein enkel klon av spelet Tron. Du kan spela mot datamaskina eller mot ein venn. Målet er å overleva lenger enn motstandaren, ved å unngå å komma borti veggar, din eigen hale eller halen til motstandaren.</p>
     <p xml:lang="pl">KPojedynekWęży jest prostym klonem Tronu. Możesz zagrać w KPojedynekWęży przeciwko komputerowi lub koledze. Celem gry jest przeżycie dłużej niż twój przecinik. Aby to osiągnąć unikaj wpadanie na ściany, swój ogon i ogon przeciwnika.</p>
