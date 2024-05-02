@@ -178,7 +178,7 @@ release the acceleration key, velocity returns to normal.
 
 <note><para>
 You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
-<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts…</guimenuitem></menuchoice>
 menu item.
 </para></note>
 </sect1>
@@ -243,7 +243,7 @@ the direction of your player.
 
 <note><para>
 You can <ulink url="help:/fundamentals/shortcuts.html">alter the keys</ulink> using the
-<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts…</guimenuitem></menuchoice>
 menu item.
 </para></note>
 </sect1>
@@ -315,7 +315,7 @@ level of the game.</action></para></listitem>
 <varlistentry>
 <term><menuchoice>
 <guimenu>Settings</guimenu>
-<guimenuitem>Configure &ksnakeduel;...</guimenuitem>
+<guimenuitem>Configure &ksnakeduel;…</guimenuitem>
 </menuchoice></term>
 <listitem><para><action>Opens a <link linkend="configuration">comprehensive dialog</link>
 to configure various options.</action></para></listitem>
@@ -444,7 +444,7 @@ action="simul">&Shift;<keycap>F1</keycap></keycombo></entry>
 
 <para>
 These shortcuts <ulink url="help:/fundamentals/shortcuts.html">can be changed</ulink> by selecting the
-<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts...</guimenuitem></menuchoice>
+<menuchoice><guimenu>Settings</guimenu> <guimenuitem>Configure Shortcuts…</guimenuitem></menuchoice>
 menu item.
 </para>
 
@@ -457,7 +457,7 @@ menu item.
 <title>The Configuration Dialog</title>
 
 <para>Selecting the <menuchoice><guimenu>Settings</guimenu>
-<guimenuitem>Configure &ksnakeduel;...</guimenuitem></menuchoice> menu item will open a further dialog
+<guimenuitem>Configure &ksnakeduel;…</guimenuitem></menuchoice> menu item will open a further dialog
 which lets you tweak &ksnakeduel;'s behavior.</para>
 
 <para>This dialog is divided into two pages.</para>
