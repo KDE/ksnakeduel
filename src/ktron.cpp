@@ -61,61 +61,61 @@ KTron::KTron(QWidget *parent) : KXmlGuiWindow(parent, Qt::WindowFlags()) {
 	// We must disable the actions, otherwise we don't get the keyPressEvent's
 
 	m_player0Up = actionCollection()->addAction( QStringLiteral( "Pl1Up" ));
-	m_player0Up->setText(i18n("Right Player / KSnake mode: Up"));
+	m_player0Up->setText(i18nc("@action", "Right Player / KSnake mode: Up"));
 	KActionCollection::setDefaultShortcut(m_player0Up, Qt::Key_Up);
 	connect(m_player0Up, &QAction::triggered, this, &KTron::triggerKey0Up);
 	addAction(m_player0Up);
 
 	m_player0Down = actionCollection()->addAction( QStringLiteral( "Pl1Down" ));
-	m_player0Down->setText(i18n("Right Player / KSnake mode: Down"));
+	m_player0Down->setText(i18nc("@action", "Right Player / KSnake mode: Down"));
 	KActionCollection::setDefaultShortcut(m_player0Down, Qt::Key_Down);
 	connect(m_player0Down, &QAction::triggered, this, &KTron::triggerKey0Down);
 	addAction(m_player0Down);
 
 	m_player0Right = actionCollection()->addAction( QStringLiteral( "Pl1Right" ));
-	m_player0Right->setText(i18n("Right Player / KSnake mode: Right"));
+	m_player0Right->setText(i18nc("@action", "Right Player / KSnake mode: Right"));
 	KActionCollection::setDefaultShortcut(m_player0Right, Qt::Key_Right);
 	connect(m_player0Right, &QAction::triggered, this, &KTron::triggerKey0Right);
 	addAction(m_player0Right);
 
 	m_player0Left = actionCollection()->addAction( QStringLiteral( "Pl1Left" ));
-	m_player0Left->setText(i18n("Right Player / KSnake mode: Left"));
+	m_player0Left->setText(i18nc("@action", "Right Player / KSnake mode: Left"));
 	KActionCollection::setDefaultShortcut(m_player0Left, Qt::Key_Left);
 	connect(m_player0Left, &QAction::triggered, this, &KTron::triggerKey0Left);
 	addAction(m_player0Left);
 
 	m_player0Accelerate = actionCollection()->addAction( QStringLiteral( "Pl1Ac" ));
-	m_player0Accelerate->setText(i18n("Right Player: Accelerator"));
+	m_player0Accelerate->setText(i18nc("@action", "Right Player: Accelerator"));
 	KActionCollection::setDefaultShortcut(m_player0Accelerate, Qt::Key_0);
 	m_player0Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player0Accelerate);
 
 	m_player1Up = actionCollection()->addAction( QStringLiteral( "Pl2Up" ));
-	m_player1Up->setText(i18n("Left Player: Up"));
+	m_player1Up->setText(i18nc("@action", "Left Player: Up"));
 	KActionCollection::setDefaultShortcut(m_player1Up, Qt::Key_W);
 	connect(m_player1Up, &QAction::triggered, this, &KTron::triggerKey1Up);
 	addAction(m_player1Up);
 
 	m_player1Down = actionCollection()->addAction( QStringLiteral( "Pl2Down" ));
-	m_player1Down->setText(i18n("Left Player: Down"));
+	m_player1Down->setText(i18nc("@action", "Left Player: Down"));
 	KActionCollection::setDefaultShortcut(m_player1Down, Qt::Key_S);
 	connect(m_player1Down, &QAction::triggered, this, &KTron::triggerKey1Down);
 	addAction(m_player1Down);
 
 	m_player1Right = actionCollection()->addAction( QStringLiteral( "Pl2Right" ));;
-	m_player1Right->setText(i18n("Left Player: Right"));
+	m_player1Right->setText(i18nc("@action", "Left Player: Right"));
 	KActionCollection::setDefaultShortcut(m_player1Right, Qt::Key_D);
 	connect(m_player1Right, &QAction::triggered, this, &KTron::triggerKey1Right);
 	addAction(m_player1Right);
 
 	m_player1Left = actionCollection()->addAction( QStringLiteral( "Pl2Left" ));
-	m_player1Left->setText(i18n("Left Player: Left"));
+	m_player1Left->setText(i18nc("@action", "Left Player: Left"));
 	KActionCollection::setDefaultShortcut(m_player1Left, Qt::Key_A);
 	connect(m_player1Left, &QAction::triggered, this, &KTron::triggerKey1Left);
 	addAction(m_player1Left);
 
 	m_player1Accelerate = actionCollection()->addAction( QStringLiteral( "Pl2Ac" ));
-	m_player1Accelerate->setText(i18n("Left Player: Accelerator"));
+	m_player1Accelerate->setText(i18nc("@action", "Left Player: Accelerator"));
 	KActionCollection::setDefaultShortcut(m_player1Accelerate, Qt::Key_Q);
 	m_player1Accelerate->setEnabled(false); // Alternate handling, because of up/down events
 	addAction(m_player1Accelerate);
@@ -250,17 +250,17 @@ void KTron::showSettings(){
 	m_generalConfigDialog = new General();
 
 	if (Settings::gameType() == Settings::EnumGameType::Snake) {
-		m_generalConfigDialog->namePlayer1Label->setText(i18n("Player Name:"));
-		m_generalConfigDialog->namePlayer2Label->setText(i18n("Opponent:"));
+		m_generalConfigDialog->namePlayer1Label->setText(i18nc("@label", "Player name:"));
+		m_generalConfigDialog->namePlayer2Label->setText(i18nc("@label", "Opponent:"));
 	}
 	else {
-		m_generalConfigDialog->namePlayer1Label->setText(i18n("Right player:"));
-		m_generalConfigDialog->namePlayer2Label->setText(i18n("Left player:"));
+		m_generalConfigDialog->namePlayer1Label->setText(i18nc("@label", "Right player:"));
+		m_generalConfigDialog->namePlayer2Label->setText(i18nc("@label", "Left player:"));
 	}
 
 	KConfigDialog *dialog = new KConfigDialog(this, QStringLiteral( "settings" ), Settings::self());
-	dialog->addPage(m_generalConfigDialog, i18n("General"), QStringLiteral( "games-config-options" ));
-	dialog->addPage(new KGameThemeSelector(Renderer::self()->themeProvider(), KGameThemeSelector::EnableNewStuffDownload, dialog), i18n("Theme"), QStringLiteral( "games-config-theme" ));
+	dialog->addPage(m_generalConfigDialog, i18nc("@title:tab", "General"), QStringLiteral( "games-config-options" ));
+	dialog->addPage(new KGameThemeSelector(Renderer::self()->themeProvider(), KGameThemeSelector::EnableNewStuffDownload, dialog), i18nc("@title:tab", "Theme"), QStringLiteral( "games-config-theme" ));
 	connect(dialog, &KConfigDialog::settingsChanged, this, &KTron::loadSettings);
 	connect(dialog, &KConfigDialog::settingsChanged, m_tron, &Tron::loadSettings);
 	dialog->show();
