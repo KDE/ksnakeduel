@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2021-08-20 11:56-0300\n"
 "Last-Translator: Luiz Fernando Ranghetti <elchevive@opensuse.org>\n"
 "Language-Team: Portuguese <kde-i18n-pt_BR@kde.org>\n"
@@ -87,7 +87,7 @@ msgid "Right player / KSnake mode:"
 msgstr "Jogador direito / modo KSnake:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, kde-format
 msgid "Left player:"
 msgstr "Jogador esquerdo:"
@@ -141,52 +141,72 @@ msgid "Rounds"
 msgstr "Rodadas"
 
 #: ktron.cpp:64
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Up"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Jogador direito / modo KSnake: para cima"
 
 #: ktron.cpp:70
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Down"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Jogador direito / modo KSnake: para baixo"
 
 #: ktron.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Right"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Jogador direito / modo KSnake: direita"
 
 #: ktron.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Left"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Jogador direito / modo KSnake: esquerda"
 
 #: ktron.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player: Accelerator"
+msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Jogador direito: Acelerador"
 
 #: ktron.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Up"
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Jogador esquerdo: para cima"
 
 #: ktron.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Down"
+msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Jogador esquerdo: para baixo"
 
 #: ktron.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Right"
+msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Jogador esquerdo: direita"
 
 #: ktron.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Left"
+msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Jogador esquerdo: esquerda"
 
 #: ktron.cpp:118
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Accelerator"
+msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Jogador esquerdo: Acelerador"
 
@@ -206,27 +226,44 @@ msgid "Game paused"
 msgstr "Jogo pausado"
 
 #: ktron.cpp:253
-#, kde-format
-msgid "Player Name:"
+#, fuzzy, kde-format
+#| msgid "Player Name:"
+msgctxt "@label"
+msgid "Player name:"
 msgstr "Nome do jogador:"
 
 #: ktron.cpp:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Opponent:"
+msgctxt "@label"
 msgid "Opponent:"
 msgstr "Adversário:"
 
 #: ktron.cpp:257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right player:"
+msgctxt "@label"
 msgid "Right player:"
 msgstr "Jogador direito:"
 
+#: ktron.cpp:258
+#, fuzzy, kde-format
+#| msgid "Left player:"
+msgctxt "@label"
+msgid "Left player:"
+msgstr "Jogador esquerdo:"
+
 #: ktron.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Geral"
 
 #: ktron.cpp:263
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
@@ -321,9 +358,11 @@ msgstr[1] "%1 pontos"
 # Caso contrário, só será visualizado '1 ponto'
 # Mesma situação do bug: 303710 (Alvarenga)
 #: tron.cpp:364
-#, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+#, fuzzy, kde-format
+#| msgid "KSnake game ended with 1 point"
+#| msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] "Jogo KSnake terminado com %1 ponto"
 msgstr[1] "Jogo KSnake terminado com %1 pontos"
 

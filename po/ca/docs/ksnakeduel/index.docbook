@@ -202,7 +202,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura les dreceres de teclat...</guimenuitem
+>Configura les dreceres de teclat…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -270,7 +270,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura les dreceres de teclat...</guimenuitem
+>Configura les dreceres de teclat…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -403,7 +403,7 @@
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura el &ksnakeduel;...</guimenuitem
+>Configura el &ksnakeduel;…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -625,7 +625,7 @@ action="simul"
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura les dreceres de teclat...</guimenuitem
+>Configura les dreceres de teclat…</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -643,7 +643,7 @@ action="simul"
 ><guimenu
 >Arranjament</guimenu
 > <guimenuitem
->Configura el &ksnakeduel;...</guimenuitem
+>Configura el &ksnakeduel;…</guimenuitem
 ></menuchoice
 > s'obrirà un diàleg addicional que us permetrà modificar el comportament del &ksnakeduel;.</para>
 

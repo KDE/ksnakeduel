@@ -215,7 +215,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати скорочення...</guimenuitem
+>Налаштувати скорочення…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -283,7 +283,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати скорочення...</guimenuitem
+>Налаштувати скорочення…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -416,7 +416,7 @@
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &ksnakeduel;...</guimenuitem
+>Налаштувати &ksnakeduel;…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -636,7 +636,7 @@ action="simul"
 > <guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати скорочення...</guimenuitem
+>Налаштувати скорочення…</guimenuitem
 > </menuchoice
 >. </para>
 
@@ -654,7 +654,7 @@ action="simul"
 ><guimenu
 >Параметри</guimenu
 > <guimenuitem
->Налаштувати &ksnakeduel;...</guimenuitem
+>Налаштувати &ksnakeduel;…</guimenuitem
 ></menuchoice
 > призведе до відкриття діалогового вікна, за допомогою якого ви зможете налаштувати поведінку &ksnakeduel;.</para>
 

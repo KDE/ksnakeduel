@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2009-10-23 22:04+0700\n"
 "Last-Translator: Morn Met\n"
 "Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
@@ -86,7 +86,7 @@ msgid "Right player / KSnake mode:"
 msgstr "អ្នកលេង​ស្ដាំ / KSnake ៖"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, kde-format
 msgid "Left player:"
 msgstr "អ្នកលេង​​ឆ្វេង ៖"
@@ -143,54 +143,70 @@ msgstr ""
 #: ktron.cpp:64
 #, fuzzy, kde-format
 #| msgid "Right Player / KSnake: Up"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "អ្នក​លេង​ស្ដាំ / KSnake ៖ ឡើង​លើ"
 
 #: ktron.cpp:70
 #, fuzzy, kde-format
 #| msgid "Right Player / KSnake: Down"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "អ្នក​លេង​ស្ដាំ / KSnake ៖ ចុះក្រោម"
 
 #: ktron.cpp:76
 #, fuzzy, kde-format
 #| msgid "Right Player / KSnake: Right"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "អ្នកលេង​ស្ដាំ / KSnake ៖ ស្ដាំ"
 
 #: ktron.cpp:82
 #, fuzzy, kde-format
 #| msgid "Right Player / KSnake: Left"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "អ្នកលេង​ស្ដាំ / KSnake ៖ ឆ្វេង"
 
 #: ktron.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player: Accelerator"
+msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "អ្នក​លេង​ស្ដាំ ៖ ឧបករណ៍​បង្កើន​ល្បឿន"
 
 #: ktron.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Up"
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "អ្នក​លេង​ឆ្វេង ៖ ឡើង​លើ"
 
 #: ktron.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Down"
+msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "អ្នក​លេង​ឆ្វេង ៖ ចុះក្រោម"
 
 #: ktron.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Right"
+msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "អ្នក​លេង​ឆ្វេង ៖ ស្ដាំ"
 
 #: ktron.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Left"
+msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "អ្នក​លេង​ឆ្វេង ៖ ឆ្វេង"
 
 #: ktron.cpp:118
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Accelerator"
+msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "អ្នក​លេង​ខាង​​ឆ្វេង ៖ ឧបករណ៍​បង្កើនល្បឿន​"
 
@@ -210,28 +226,44 @@ msgid "Game paused"
 msgstr "បានផ្អាក​ល្បែង"
 
 #: ktron.cpp:253
-#, kde-format
-msgid "Player Name:"
+#, fuzzy, kde-format
+#| msgid "Player Name:"
+msgctxt "@label"
+msgid "Player name:"
 msgstr "ឈ្មោះ​អ្នក​លេង ៖"
 
 #: ktron.cpp:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Opponent:"
+msgctxt "@label"
 msgid "Opponent:"
 msgstr "សត្រូវ ៖"
 
 #: ktron.cpp:257
 #, fuzzy, kde-format
 #| msgid "Right Player:"
+msgctxt "@label"
 msgid "Right player:"
 msgstr "អ្នកលេង​ស្ដាំ ៖"
 
+#: ktron.cpp:258
+#, fuzzy, kde-format
+#| msgid "Left player:"
+msgctxt "@label"
+msgid "Left player:"
+msgstr "អ្នកលេង​​ឆ្វេង ៖"
+
 #: ktron.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "ទូទៅ"
 
 #: ktron.cpp:263
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ស្បែក"
 
@@ -321,9 +353,11 @@ msgid_plural "%1 points"
 msgstr[0] "%1 ពិន្ទុ"
 
 #: tron.cpp:364
-#, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+#, fuzzy, kde-format
+#| msgid "KSnake game ended with 1 point"
+#| msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] "ល្បែង KSnake បានបញ្ចប់​ដោយ​មាន​ពិន្ទុ %1"
 
 #: tron.cpp:369

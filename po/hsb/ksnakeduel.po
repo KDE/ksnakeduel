@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: desktop_kdebase\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2008-11-06 22:08+0100\n"
 "Last-Translator: Eduard Werner <edi.werner@gmx.de>\n"
 "Language-Team: en_US <kde-i18n-doc@lists.kde.org>\n"
@@ -86,7 +86,7 @@ msgid "Right player / KSnake mode:"
 msgstr "MPlayer"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, fuzzy, kde-format
 #| msgctxt "GenericName"
 #| msgid "Video Player"
@@ -145,6 +145,7 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "MPlayer"
 
@@ -152,6 +153,7 @@ msgstr "MPlayer"
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "MPlayer"
 
@@ -159,6 +161,7 @@ msgstr "MPlayer"
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "MPlayer"
 
@@ -166,40 +169,57 @@ msgstr "MPlayer"
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "MPlayer"
 
 #: ktron.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "GenericName"
+#| msgid "Video Player"
+msgctxt "@action"
 msgid "Right Player: Accelerator"
-msgstr ""
+msgstr "Widejowy wothrawak"
 
 #: ktron.cpp:94
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "MPlayer"
 
 #: ktron.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "GenericName"
+#| msgid "Video Player"
+msgctxt "@action"
 msgid "Left Player: Down"
-msgstr ""
+msgstr "Widejowy wothrawak"
 
 #: ktron.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "GenericName"
+#| msgid "Video Player"
+msgctxt "@action"
 msgid "Left Player: Right"
-msgstr ""
+msgstr "Widejowy wothrawak"
 
 #: ktron.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "GenericName"
+#| msgid "Video Player"
+msgctxt "@action"
 msgid "Left Player: Left"
-msgstr ""
+msgstr "Widejowy wothrawak"
 
 #: ktron.cpp:118
-#, kde-format
+#, fuzzy, kde-format
+#| msgctxt "Name"
+#| msgid "MPlayer"
+msgctxt "@action"
 msgid "Left Player: Accelerator"
-msgstr ""
+msgstr "MPlayer"
 
 #: ktron.cpp:162
 #, kde-format
@@ -220,12 +240,14 @@ msgstr ""
 #, fuzzy, kde-format
 #| msgctxt "Name"
 #| msgid "MPlayer"
-msgid "Player Name:"
+msgctxt "@label"
+msgid "Player name:"
 msgstr "MPlayer"
 
 #: ktron.cpp:254
 #, fuzzy, kde-format
 #| msgid "Exponent: 0x"
+msgctxt "@label"
 msgid "Opponent:"
 msgstr "Eksponent: 0x"
 
@@ -233,16 +255,28 @@ msgstr "Eksponent: 0x"
 #, fuzzy, kde-format
 #| msgctxt "GenericName"
 #| msgid "Video Player"
+msgctxt "@label"
 msgid "Right player:"
 msgstr "Widejowy wothrawak"
 
+#: ktron.cpp:258
+#, fuzzy, kde-format
+#| msgctxt "GenericName"
+#| msgid "Video Player"
+msgctxt "@label"
+msgid "Left player:"
+msgstr "Widejowy wothrawak"
+
 #: ktron.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelnje"
 
 #: ktron.cpp:263
 #, kde-format
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr ""
 
@@ -335,8 +369,8 @@ msgstr[3] ""
 
 #: tron.cpp:364
 #, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""
@@ -352,9 +386,3 @@ msgstr ""
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr ""
-
-#, fuzzy
-#~| msgctxt "GenericName"
-#~| msgid "Video Player"
-#~ msgid "Left Player:"
-#~ msgstr "Widejowy wothrawak"

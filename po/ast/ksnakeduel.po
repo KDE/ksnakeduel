@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2023-10-31 20:02+0100\n"
 "Last-Translator: Enol P. <enolp@softastur.org>\n"
 "Language-Team: \n"
@@ -82,7 +82,7 @@ msgid "Right player / KSnake mode:"
 msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, kde-format
 msgid "Left player:"
 msgstr ""
@@ -137,51 +137,61 @@ msgstr ""
 
 #: ktron.cpp:64
 #, kde-format
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr ""
 
 #: ktron.cpp:70
 #, kde-format
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr ""
 
 #: ktron.cpp:76
 #, kde-format
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr ""
 
 #: ktron.cpp:82
 #, kde-format
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr ""
 
 #: ktron.cpp:88
 #, kde-format
+msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr ""
 
 #: ktron.cpp:94
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr ""
 
 #: ktron.cpp:100
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Down"
 msgstr ""
 
 #: ktron.cpp:106
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Right"
 msgstr ""
 
 #: ktron.cpp:112
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Left"
 msgstr ""
 
 #: ktron.cpp:118
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr ""
 
@@ -202,26 +212,37 @@ msgstr ""
 
 #: ktron.cpp:253
 #, kde-format
-msgid "Player Name:"
+msgctxt "@label"
+msgid "Player name:"
 msgstr ""
 
 #: ktron.cpp:254
 #, kde-format
+msgctxt "@label"
 msgid "Opponent:"
 msgstr ""
 
 #: ktron.cpp:257
 #, kde-format
+msgctxt "@label"
 msgid "Right player:"
+msgstr ""
+
+#: ktron.cpp:258
+#, kde-format
+msgctxt "@label"
+msgid "Left player:"
 msgstr ""
 
 #: ktron.cpp:262
 #, kde-format
+msgctxt "@title:tab"
 msgid "General"
 msgstr ""
 
 #: ktron.cpp:263
 #, kde-format
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr ""
 
@@ -308,8 +329,8 @@ msgstr[1] ""
 
 #: tron.cpp:364
 #, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] ""
 msgstr[1] ""
 

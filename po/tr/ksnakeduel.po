@@ -11,7 +11,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2023-01-31 01:19+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
@@ -87,7 +87,7 @@ msgid "Right player / KSnake mode:"
 msgstr "Sağdaki oyuncu / K Yılan kipi:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, kde-format
 msgid "Left player:"
 msgstr "Soldaki oyuncu:"
@@ -141,52 +141,72 @@ msgid "Rounds"
 msgstr "Raundlar"
 
 #: ktron.cpp:64
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Up"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Yukarı"
 
 #: ktron.cpp:70
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Down"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Aşağı"
 
 #: ktron.cpp:76
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Right"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Sağdaki Oyuncu /K Yılan kipi: Sağ"
 
 #: ktron.cpp:82
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player / KSnake mode: Left"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Sol"
 
 #: ktron.cpp:88
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right Player: Accelerator"
+msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Sağdaki Oyuncu: İvmelendirici"
 
 #: ktron.cpp:94
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Up"
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Soldaki Oyuncu: Yukarı"
 
 #: ktron.cpp:100
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Down"
+msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Soldaki Oyuncu: Aşağı"
 
 #: ktron.cpp:106
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Right"
+msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Soldaki Oyuncu: Sağ"
 
 #: ktron.cpp:112
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Left"
+msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Soldaki Oyuncu: Sol"
 
 #: ktron.cpp:118
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Left Player: Accelerator"
+msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Soldaki Oyuncu: İvmelendirici"
 
@@ -207,27 +227,44 @@ msgid "Game paused"
 msgstr "Oyun duraklatıldı"
 
 #: ktron.cpp:253
-#, kde-format
-msgid "Player Name:"
+#, fuzzy, kde-format
+#| msgid "Player Name:"
+msgctxt "@label"
+msgid "Player name:"
 msgstr "Oyuncu Adı:"
 
 #: ktron.cpp:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Opponent:"
+msgctxt "@label"
 msgid "Opponent:"
 msgstr "Rakip:"
 
 #: ktron.cpp:257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Right player:"
+msgctxt "@label"
 msgid "Right player:"
 msgstr "Sağdaki oyuncu:"
 
+#: ktron.cpp:258
+#, fuzzy, kde-format
+#| msgid "Left player:"
+msgctxt "@label"
+msgid "Left player:"
+msgstr "Soldaki oyuncu:"
+
 #: ktron.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "Genel"
 
 #: ktron.cpp:263
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
 
@@ -320,9 +357,11 @@ msgstr[0] "%1 puan"
 msgstr[1] "%1 puan"
 
 #: tron.cpp:364
-#, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+#, fuzzy, kde-format
+#| msgid "KSnake game ended with 1 point"
+#| msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] "K Yılan oyunu %1 puan ile sona erdi"
 msgstr[1] "KSnake oyunu %1 puan ile sona erdi"
 

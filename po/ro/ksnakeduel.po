@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2023-10-09 01:45+0000\n"
+"POT-Creation-Date: 2024-05-03 00:37+0000\n"
 "PO-Revision-Date: 2010-01-18 15:27+0200\n"
 "Last-Translator: Sergiu Bivol <sergiu@cip.md>\n"
 "Language-Team: Română <kde-i18n-ro@kde.org>\n"
@@ -86,7 +86,7 @@ msgid "Right player / KSnake mode:"
 msgstr "Pornește în regim KSnake"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
-#: general.ui:108 ktron.cpp:258
+#: general.ui:108
 #, kde-format
 msgid "Left player:"
 msgstr ""
@@ -143,54 +143,64 @@ msgstr ""
 #: ktron.cpp:64
 #, fuzzy, kde-format
 #| msgid "Start in KSnake mode"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Pornește în regim KSnake"
 
 #: ktron.cpp:70
 #, fuzzy, kde-format
 #| msgid "Start in KSnake mode"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Pornește în regim KSnake"
 
 #: ktron.cpp:76
 #, fuzzy, kde-format
 #| msgid "Start in KSnake mode"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Pornește în regim KSnake"
 
 #: ktron.cpp:82
 #, fuzzy, kde-format
 #| msgid "Start in KSnake mode"
+msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Pornește în regim KSnake"
 
 #: ktron.cpp:88
 #, kde-format
+msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr ""
 
 #: ktron.cpp:94
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Up"
 msgstr ""
 
 #: ktron.cpp:100
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Down"
 msgstr ""
 
 #: ktron.cpp:106
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Right"
 msgstr ""
 
 #: ktron.cpp:112
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Left"
 msgstr ""
 
 #: ktron.cpp:118
 #, kde-format
+msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr ""
 
@@ -210,27 +220,43 @@ msgid "Game paused"
 msgstr ""
 
 #: ktron.cpp:253
-#, kde-format
-msgid "Player Name:"
-msgstr ""
+#, fuzzy, kde-format
+#| msgid "Player Names"
+msgctxt "@label"
+msgid "Player name:"
+msgstr "Numele jucătorilor"
 
 #: ktron.cpp:254
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Opponent:"
+msgctxt "@label"
 msgid "Opponent:"
 msgstr "Oponent:"
 
 #: ktron.cpp:257
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Start in KSnake mode"
+msgctxt "@label"
 msgid "Right player:"
+msgstr "Pornește în regim KSnake"
+
+#: ktron.cpp:258
+#, kde-format
+msgctxt "@label"
+msgid "Left player:"
 msgstr ""
 
 #: ktron.cpp:262
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "General"
+msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
 
 #: ktron.cpp:263
-#, kde-format
+#, fuzzy, kde-format
+#| msgid "Theme"
+msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tematică"
 
@@ -319,8 +345,8 @@ msgstr[2] ""
 
 #: tron.cpp:364
 #, kde-format
-msgid "KSnake game ended with 1 point"
-msgid_plural "KSnake game ended with %1 points"
+msgid "The game ended with 1 point."
+msgid_plural "The game ended with %1 points."
 msgstr[0] ""
 msgstr[1] ""
 msgstr[2] ""

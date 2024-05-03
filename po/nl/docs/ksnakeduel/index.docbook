@@ -202,7 +202,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Sneltoetsen configureren...</guimenuitem
+>Sneltoetsen configureren…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -270,7 +270,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Sneltoetsen configureren...</guimenuitem
+>Sneltoetsen configureren…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -403,7 +403,7 @@
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&ksnakeduel; configureren...</guimenuitem
+>&ksnakeduel; configureren…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -625,7 +625,7 @@ action="simul"
 > <guimenu
 >Instellingen</guimenu
 > <guimenuitem
->Sneltoetsen configureren...</guimenuitem
+>Sneltoetsen configureren…</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -643,7 +643,7 @@ action="simul"
 ><guimenu
 >Instellingen</guimenu
 > <guimenuitem
->&ksnakeduel; configureren...</guimenuitem
+>&ksnakeduel; configureren…</guimenuitem
 ></menuchoice
 > opent u een verdere dialoog waarin u het gedrag van &ksnakeduel; kunt aanpassen.</para>
 
