@@ -102,6 +102,20 @@
 ></affiliation
 > <contrib
 >Traductora</contrib
+></othercredit
+><othercredit role="translator"
+><firstname
+>Eloy</firstname
+> <surname
+>Cuadra</surname
+> <affiliation
+><address
+><email
+>ecuadra@eloihr.net</email
+></address
+></affiliation
+> <contrib
+>Corrección de la traducción</contrib
 ></othercredit>
 </authorgroup>
 
@@ -138,7 +152,7 @@
 
 <abstract>
 <para
->&ksnakeduel; es un sencillo juego de duelo de serpientes al que podrá jugar solo o con un amigo. </para>
+>&ksnakeduel; es un sencillo juego de duelo de serpientes al que podrás jugar solo o con un amigo. </para>
 </abstract>
 
 <keywordset>
@@ -170,13 +184,13 @@
 >Introducción</title>
 
 <para
->&ksnakeduel; es un sencillo juego de duelo de serpientes. Podrá jugar contra el ordenador o contra un amigo. El objetivo del juego es vivir más que su oponente. Para ello, evite estrellarse contra una pared, su propia estela o la de su oponente. </para>
+>&ksnakeduel; es un sencillo juego de duelo de serpientes. Podrás jugar contra el ordenador o contra un amigo. El objetivo del juego es vivir más que tu oponente. Para ello, evita estrellarte contra una pared, tu propia estela o la de tu oponente. </para>
 
 <para
->&ksnakeduel; es un sencillo juego estilo Snake. El objetivo es sobrevivir tanto como sea posible y comer tantas frutas como pueda. </para>
+>&ksnakeduel; es un sencillo juego estilo Snake. El objetivo es sobrevivir tanto como sea posible y comer tantas frutas como puedas. </para>
 
 <para
->Puede cambiar entre estos juegos usando el selector de tipo de juego en el diálogo de configuración. </para>
+>Puedes cambiar entre estos juegos usando el selector de tipo de juego en el diálogo de configuración. </para>
 
 </chapter>
 
@@ -189,13 +203,13 @@
 >Reglas</title>
 
 <para
->Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia delante (a menos que pare el juego). Todo lo que debe hacer es evitar estrellarse cambiando la dirección de sus jugadores. Adicionalmente puede tratar de estorbar a su oponente. Para ello es posible incrementar la velocidad pulsando la tecla de aceleración. </para>
+>Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia adelante (a menos que pares el juego). Todo lo que debes hacer es evitar estrellarte cambiando la dirección de los jugadores. Además, puedes tratar de estorbar a tu oponente. Para ello, puedes aumentar la velocidad pulsando la tecla de aceleración. </para>
 
 <para
 >Una ronda empieza cuando un humano pulsa una tecla de dirección. El movimiento inicial se produce en la dirección de la tecla pulsada. </para>
 
 <para
->Si quiere interrumpir el juego, seleccione la opción del menú <menuchoice
+>Si quieres interrumpir el juego, selecciona la opción del menú <menuchoice
 > <shortcut
 ><keycombo action="simul"
 ><keycap
@@ -210,14 +224,14 @@
 >. El juego también se pone en pausa al cambiar a otra ventana. </para>
 
 <para
->Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+>Para continuar el juego, vuelve a seleccionar esta opción del menú o pulsa la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero ten cuidado, tu jugador cambiará inmediatamente a esta dirección. </para>
 
 
 <para
->Un juego consiste en varias rondas, y finaliza si un jugador consigue nueve puntos, además de dos puntos más que su oponente. La puntuación actual se muestra en la barra de estado. </para>
+>Un juego consta de varias rondas y finaliza si un jugador consigue nueve puntos, además de dos puntos más que tu oponente. La puntuación actual se muestra en la barra de estado. </para>
 
 <para
->Puede cambiar el nivel de dificultad del juego usando el submenú <menuchoice
+>Puedes cambiar el nivel de dificultad del juego usando el submenú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guisubmenu
@@ -228,10 +242,10 @@
 
 <sect1 id="computerplayer">
 <title
->El jugador del ordenador</title>
+>El jugador de la máquina</title>
 
 <para
->Puede jugar contra la máquina. El nivel de dificultad del juego afecta a la inteligencia del jugador controlado por la máquina. </para>
+>Puedes jugar contra la máquina. El nivel de dificultad del juego afecta a la inteligencia del jugador controlado por la máquina. </para>
 <para
 >En los niveles medio y experto, la máquina no se preocupa del oponente y solo se mueve por ahí. En los niveles más altos de habilidad, la máquina intenta perjudicar al oponente cuando se le acerca. </para>
 </sect1>
@@ -241,13 +255,13 @@
 >Uso del teclado</title>
 
 <para
->Cada jugador usará cinco teclas. Cuatro teclas para cambiar de dirección y una para acelerar. </para>
+>Cada jugador dispone de cinco teclas. Cuatro teclas para cambiar de dirección y una para acelerar. </para>
 
 <para
->La teclas de dirección no necesitan mantenerse pulsadas. Simplemente púlselas una vez para cambiar la dirección de su jugador. </para>
+>La teclas de dirección no necesitan mantenerse pulsadas. Solo hay que pulsarlas una vez para cambiar la dirección del jugador. </para>
 
 <para
->La aceleración solo se produce mientras se mantenga la tecla pulsada. Cuando suelte la tecla de aceleración, se vuelve a la velocidad normal. </para>
+>La aceleración solo se produce mientras se mantenga la tecla pulsada. Cuando sueltes la tecla de aceleración, se vuelve a la velocidad normal. </para>
 
 <note
 ><para
@@ -273,10 +287,10 @@
 >Reglas</title>
 
 <para
->Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia delante (a menos que pare el juego). Todo lo que debe hacer es evitar estrellarse cambiando de dirección. El juego comienza cuando presiona una tecla de dirección. El movimiento inicial se hará hacia esta. </para>
+>Una vez que empieza el juego, los jugadores no podrán parar de moverse hacia adelante (a menos que pares el juego). Todo lo que debes hacer es evitar estrellarte cambiando de dirección. El juego comienza cuando pulses una tecla de dirección. El movimiento inicial se hará en dicha dirección. </para>
 
 <para
->Si quiere pausar el juego, use la opción del menú <menuchoice
+>Si quieres pausar el juego, usa la opción del menú <menuchoice
 > <shortcut
 ><keycombo action="simul"
 ><keycap
@@ -288,19 +302,19 @@
 > <guimenuitem
 >Pausa</guimenuitem
 ></menuchoice
-> o pulse la tecla del atajo. El juego también se pone en pausa al cambiar a otra ventana. </para>
+> o pulsa la tecla del atajo. El juego también se pone en pausa al cambiar a otra ventana. </para>
 
 <para
->Para continuar el juego, vuelva a seleccionar esta opción del menú o pulse la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero tenga cuidado, su jugador cambiará inmediatamente a esta dirección. </para>
+>Para continuar el juego, vuelve a seleccionar esta opción del menú o pulsa la tecla del atajo. El juego continuará si el jugador humano pulsa una de las teclas de dirección. Pero ten cuidado, tu jugador cambiará inmediatamente a esta dirección. </para>
 
 <para
->En el juego siempre habrá una pieza de fruta en el mapa. Si la recoge, su puntuación aumentará 5 puntos. La puntuación actual siempre se muestra en la barra de estado. </para>
+>En el juego siempre habrá una pieza de fruta en el mapa. Si la recoges, tu puntuación aumentará 5 puntos. La puntuación actual siempre se muestra en la barra de estado. </para>
 
 <para
->Cuando se esté moviendo por el mapa aparecerán obstáculos. Golpearse contra ellos también resultará en un choque. Sin embargo, cada vez que aparezca un obstáculo y sobreviva, ganará 2 puntos. </para>
+>Cuando te estés moviendo por el mapa, aparecerán obstáculos. Si chocas contra ellos tendrás un accidente. Sin embargo, cada vez que aparezca un obstáculo y sobrevivas, ganarás 2 puntos. </para>
 
 <para
->Puede cambiar el nivel de dificultad del juego usando el submenú <menuchoice
+>Puedes cambiar el nivel de dificultad del juego usando el submenú <menuchoice
 ><guimenu
 >Preferencias</guimenu
 > <guisubmenu
@@ -312,10 +326,10 @@
 
 <sect1 id="using-keyboard-snake">
 <title
->Usando el teclado</title>
+>Uso del teclado</title>
 
 <para
->Cada jugador dispone de cuatro teclas que se usan para cambiar de dirección. Las teclas de dirección no tienen que mantenerse pulsadas. Simplemente presiónelas una vez para cambiar la dirección de su jugador. </para>
+>Cada jugador dispone de cuatro teclas que se usan para cambiar de dirección. Las teclas de dirección no tienen que mantenerse pulsadas. Solo hay que pulsarlas una vez para cambiar la dirección del jugador. </para>
 
 <note
 ><para
@@ -335,14 +349,14 @@
 
 <chapter id="interface-overview">
 <title
->Visión general de la interfaz</title>
+>Vista general de la interfaz</title>
 
 <sect1 id="menu-items">
 <title
->Opciones de menú</title>
+>Opciones del menú</title>
 
 <para
->Las siguientes secciones describen brevemente las opciones de la barra de menús.</para>
+>Las siguientes secciones describen brevemente las opciones de la barra de menú.</para>
 
 <variablelist>
 <varlistentry>
@@ -363,7 +377,7 @@
 <listitem
 ><para
 ><action
->Comienza una nueva partida.</action
+>Empieza una nueva partida.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -372,12 +386,12 @@
 <term
 ><menuchoice
 ><shortcut
-><keycap
+> <keycap
 >P</keycap
-></shortcut
-><guimenu
+> </shortcut
+> <guimenu
 > Juego</guimenu
-><guimenuitem
+> <guimenuitem
 >Pausa</guimenuitem
 > </menuchoice
 ></term>
@@ -421,9 +435,9 @@
 > Q</keycap
 ></keycombo
 ></shortcut
-><guimenu
-> Juego</guimenu
-><guimenuitem
+> <guimenu
+>Juego</guimenu
+> <guimenuitem
 >Salir</guimenuitem
 > </menuchoice
 ></term>
@@ -447,7 +461,7 @@
 <listitem
 ><para
 ><action
->Un submenú que le permite cambiar el nivel de dificultad del juego.</action
+>Un submenú que permite cambiar el nivel de dificultad del juego.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -464,20 +478,20 @@
 <listitem
 ><para
 ><action
->Abre el diálogo <link linkend="configuration"
->para configurar varias opciones</link
->.</action
+>Abre un <link linkend="configuration"
+>completo diálogo</link
+> para configurar varias opciones.</action
 ></para
 ></listitem>
 </varlistentry>
 </variablelist>
 
 <para
->Además &ksnakeduel; tiene las opciones de menú <guimenu
+>Además, &ksnakeduel; tiene las opciones de menú <guimenu
 >Preferencias</guimenu
 > y <guimenu
 >Ayuda</guimenu
-> comunes de &kde;. Para obtener más información, consulte las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
+> comunes de &kde;. Para obtener más información, consulta las secciones sobre el <ulink url="help:/fundamentals/menus.html#menus-settings"
 >Menú «Preferencias»</ulink
 > y <ulink url="help:/fundamentals/menus.html#menus-help"
 >Menú «Ayuda» </ulink
@@ -731,7 +745,7 @@ action="simul"
 ></term>
 <listitem
 ><para
->Esto le permitirá cambiar el tipo de juego. Hay tres opciones: <variablelist>
+>Esto te permitirá cambiar el tipo de juego. Contiene tres opciones: <variablelist>
   <varlistentry>
     <term
 ><guimenuitem
@@ -773,11 +787,11 @@ action="simul"
 <varlistentry>
 <term
 ><guilabel
->Desactiva aceleración</guilabel
+>Desactivar aceleración</guilabel
 ></term>
 <listitem
 ><para
->Activando esta opción se desactivará la aceleración - pulsar la tecla de aceleración no tendrá efecto, ambas serpientes viajarán con velocidad constante.</para
+>Marcando esta opción se desactivará la aceleración: pulsar la tecla de aceleración no tendrá efecto y ambas serpientes viajarán con velocidad constante.</para
 ></listitem>
 </varlistentry>
 
@@ -788,7 +802,7 @@ action="simul"
 ></term>
 <listitem
 ><para
->Establece los nombres que utilizarán los jugadores sobreescribiendo los que existían de forma predeterminada.</para>
+>Definir los nombres que usarán los jugadores sobrescribiendo los que hay de forma predeterminada.</para>
 <para
 >El nombre predeterminado para el jugador 1 es el nombre del usuario registrado actualmente. </para
 ></listitem>
@@ -801,8 +815,8 @@ action="simul"
 ></term>
 <listitem
 ><para
->Indique las <guilabel
->Rondas para ganar:</guilabel
+>Indica las <guilabel
+>Rondas para ganar</guilabel
 > para definir cuántas rondas son necesarias antes de declarar un ganador.</para
 ></listitem>
 </varlistentry>
@@ -829,7 +843,7 @@ action="simul"
 </screenshot>
 
 <para
->Esta página le permite cambiar el tema que usa &ksnakeduel;. </para>
+>Esta página te permite cambiar el tema que usa &ksnakeduel;. </para>
 </sect1>
 </chapter>
 
@@ -859,7 +873,7 @@ action="simul"
 >Documentación actualizada para &kde; 2.0 por &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
 
 <para
->Traducido por Rocío Gallego <email
+>Traducida por Rocío Gallego <email
 >traducciones@rociogallego.com</email
 >, Rafael Osuna<email
 >rosuna@wol.es</email
@@ -868,6 +882,10 @@ action="simul"
 > y Kira J. Fernández <email
 >kirajfdez@gmail.com</email
 >.</para
+><para
+>Revisada y corregida por Eloy Cuadra <email
+>ecuadra@eloihr.net</email
+> en 2024.</para
 > &underFDL; &underGPL; </chapter>
 
 </book>
