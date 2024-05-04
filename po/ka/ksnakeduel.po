@@ -8,7 +8,7 @@ msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2022-12-08 07:01+0100\n"
+"PO-Revision-Date: 2024-05-03 04:05+0200\n"
 "Last-Translator: Temuri Doghonadze <temuri.doghonadze@gmail.com>\n"
 "Language-Team: Georgian <kde-i18n-doc@kde.org>\n"
 "Language: ka\n"
@@ -16,7 +16,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"X-Generator: Poedit 3.2.2\n"
+"X-Generator: Poedit 3.3.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -137,71 +137,61 @@ msgid "Rounds"
 msgstr "ხელი"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მაღლა"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: დაბლა"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მარჯვნივ"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "მარჯვენა მოთამაშე/KSnake-ის რეჟიმი: მარცხნივ"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "მარჯვენა მოთამაშე: ამაჩქარებელი"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
-#| msgid "Left Player: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "მარცხენა მოთამაშე: მაღლა"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
-#| msgid "Left Player: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "მარცხენა მოთამაშე: დაბლა"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
-#| msgid "Left Player: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "მარცხენა მოთამაშე: მარჯვნივ"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
-#| msgid "Left Player: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "მარცხენა მოთამაშე: მარცხნივ"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "მარცხენა მოთამაშე: ამაჩქარებელი"
@@ -222,43 +212,37 @@ msgid "Game paused"
 msgstr "თამაში შეჩერებულია"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Name:"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
 msgstr "მოთამაშის სახელი:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
-#| msgid "Opponent:"
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "მეტოქე:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right player:"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "მარჯვენა მოთამაშე:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Left player:"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "მარცხენა მოთამაშე:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "ზოგადი"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "თემა"
@@ -351,13 +335,11 @@ msgstr[0] "%1 ქულა"
 msgstr[1] "%1 ქულა"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "KSnake 1 ქულით დასრულდა"
-msgstr[1] "KSnake %1 ქულით დასრულდა"
+msgstr[0] "KSnake 1 ქულით დასრულდა."
+msgstr[1] "KSnake %1 ქულით დასრულდა."
 
 #: tron.cpp:369
 #, kde-format

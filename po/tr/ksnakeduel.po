@@ -6,13 +6,13 @@
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Serhat Demirkol <serhat_demirkol@yahoo.com>, 2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-01-31 01:19+0300\n"
+"PO-Revision-Date: 2024-05-04 01:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -141,71 +141,61 @@ msgid "Rounds"
 msgstr "Raundlar"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Yukarı"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Aşağı"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Sağdaki Oyuncu /K Yılan kipi: Sağ"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Sağdaki Oyuncu / K Yılan kipi: Sol"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
-msgstr "Sağdaki Oyuncu: İvmelendirici"
+msgstr "Sağdaki oyuncu: İvmelendirici"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
-#| msgid "Left Player: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Soldaki Oyuncu: Yukarı"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
-#| msgid "Left Player: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
-msgstr "Soldaki Oyuncu: Aşağı"
+msgstr "Soldaki oyuncu: Aşağı"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
-#| msgid "Left Player: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Soldaki Oyuncu: Sağ"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
-#| msgid "Left Player: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Soldaki Oyuncu: Sol"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Soldaki Oyuncu: İvmelendirici"
@@ -214,7 +204,7 @@ msgstr "Soldaki Oyuncu: İvmelendirici"
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
 msgstr ""
-"\"%1\" temasının yüklenmesi başarısız oldu. Lütfen kurulumunuzu denetleyin."
+"“%1” temasının yüklenmesi başarısız oldu. Lütfen kurulumunuzu denetleyin."
 
 #: ktron.cpp:181
 #, kde-format
@@ -227,43 +217,37 @@ msgid "Game paused"
 msgstr "Oyun duraklatıldı"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Name:"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
-msgstr "Oyuncu Adı:"
+msgstr "Oyuncu adı:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
-#| msgid "Opponent:"
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Rakip:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right player:"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Sağdaki oyuncu:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Left player:"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Soldaki oyuncu:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Genel"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -288,13 +272,13 @@ msgid ""
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 msgstr ""
-"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 1998–2000, Matthias Kiefer\n"
 "(c) 2005, Benjamin Meyer\n"
 "(c) 2008, Stas Verberkt\n"
 "\n"
 "Bilgisayar oyuncunun algoritmik parçaları\n"
 "Rhett D. Jacobs <rhett@hotel.canberra.edu.au>\n"
-"tarafından geliştirilen xtron-1.1'den alınmıştır"
+"tarafından geliştirilen xtron-1.1’den alınmıştır"
 
 #: main.cpp:45
 #, kde-format
@@ -304,7 +288,7 @@ msgstr "Matthias Kiefer"
 #: main.cpp:45
 #, kde-format
 msgid "Original author"
-msgstr "Özgün Yazar"
+msgstr "Özgün yazar"
 
 #: main.cpp:46
 #, kde-format
@@ -314,7 +298,7 @@ msgstr "Benjamin Meyer"
 #: main.cpp:46
 #, kde-format
 msgid "Various improvements"
-msgstr "Çeşitli Geliştirmeler"
+msgstr "Çeşitli geliştirmeler"
 
 #: main.cpp:47
 #, kde-format
@@ -340,14 +324,14 @@ msgstr "%1. Oyuncu"
 #, kde-format
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
-msgstr[0] "%1 %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
-msgstr[1] "%1 %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
+msgstr[0] "%1, %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
+msgstr[1] "%1, %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
 
 #: tron.cpp:354
 #, kde-format
 msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
 msgid "%1 (%2) versus %3 (%4)"
-msgstr "%1 (%2) ile %3 (%4)"
+msgstr "%1 (%2), %3 (%4) karşısında"
 
 #: tron.cpp:355 tron.cpp:356
 #, kde-format
@@ -357,13 +341,11 @@ msgstr[0] "%1 puan"
 msgstr[1] "%1 puan"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "K Yılan oyunu %1 puan ile sona erdi"
-msgstr[1] "KSnake oyunu %1 puan ile sona erdi"
+msgstr[0] "Oyun 1 puan ile sona erdi."
+msgstr[1] "Oyun %1 puan ile sona erdi."
 
 #: tron.cpp:369
 #, kde-format
