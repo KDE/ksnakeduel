@@ -6,13 +6,13 @@
 # obsoleteman <tulliana@gmail.com>, 2008-2009.
 # Serhat Demirkol <serhat_demirkol@yahoo.com>, 2009.
 # Volkan Gezer <volkangezer@gmail.com>, 2013-2014.
-# Emir SARI <emir_sari@icloud.com>, 2022, 2023.
+# SPDX-FileCopyrightText: 2022, 2023, 2024 Emir SARI <emir_sari@icloud.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: kdegames-kde4\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2023-10-09 01:45+0000\n"
-"PO-Revision-Date: 2023-01-31 01:19+0300\n"
+"PO-Revision-Date: 2024-05-04 01:36+0300\n"
 "Last-Translator: Emir SARI <emir_sari@icloud.com>\n"
 "Language-Team: Turkish <kde-l10n-tr@kde.org>\n"
 "Language: tr\n"
@@ -20,7 +20,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Lokalize 22.12.1\n"
+"X-Generator: Lokalize 24.07.70\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -194,7 +194,7 @@ msgstr "Soldaki Oyuncu: İvmelendirici"
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
 msgstr ""
-"\"%1\" temasının yüklenmesi başarısız oldu. Lütfen kurulumunuzu denetleyin."
+"“%1” temasının yüklenmesi başarısız oldu. Lütfen kurulumunuzu denetleyin."
 
 #: ktron.cpp:181
 #, kde-format
@@ -251,13 +251,13 @@ msgid ""
 "Parts of the algorithms for the computer player are from\n"
 "xtron-1.1 by Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 msgstr ""
-"(c) 1998-2000, Matthias Kiefer\n"
+"(c) 1998–2000, Matthias Kiefer\n"
 "(c) 2005, Benjamin Meyer\n"
 "(c) 2008, Stas Verberkt\n"
 "\n"
 "Bilgisayar oyuncunun algoritmik parçaları\n"
 "Rhett D. Jacobs <rhett@hotel.canberra.edu.au>\n"
-"tarafından geliştirilen xtron-1.1'den alınmıştır"
+"tarafından geliştirilen xtron-1.1’den alınmıştır"
 
 #: main.cpp:45
 #, kde-format
@@ -267,7 +267,7 @@ msgstr "Matthias Kiefer"
 #: main.cpp:45
 #, kde-format
 msgid "Original author"
-msgstr "Özgün Yazar"
+msgstr "Özgün yazar"
 
 #: main.cpp:46
 #, kde-format
@@ -277,7 +277,7 @@ msgstr "Benjamin Meyer"
 #: main.cpp:46
 #, kde-format
 msgid "Various improvements"
-msgstr "Çeşitli Geliştirmeler"
+msgstr "Çeşitli geliştirmeler"
 
 #: main.cpp:47
 #, kde-format
@@ -303,14 +303,14 @@ msgstr "%1. Oyuncu"
 #, kde-format
 msgid "%1 has won versus %2 with %4 versus %3 point!"
 msgid_plural "%1 has won versus %2 with %4 versus %3 points!"
-msgstr[0] "%1 %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
-msgstr[1] "%1 %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
+msgstr[0] "%1, %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
+msgstr[1] "%1, %2 kişisine karşı %3 puana %4 puan alarak kazandı!"
 
 #: tron.cpp:354
 #, kde-format
 msgctxt "%2 = 'x points' [player %1], %4 = 'x points' [player %3]"
 msgid "%1 (%2) versus %3 (%4)"
-msgstr "%1 (%2) ile %3 (%4)"
+msgstr "%1 (%2), %3 (%4) karşısında"
 
 #: tron.cpp:355 tron.cpp:356
 #, kde-format
