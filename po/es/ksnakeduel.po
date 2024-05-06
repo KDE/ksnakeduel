@@ -5,7 +5,7 @@
 # Sofía Priego <spriego@darksylvania.net>, %Y.
 # Santi <santi@kde-es.org>, 2008.
 # Ignacio Poggi <ignaciop.3@gmail.com>, 2009.
-# SPDX-FileCopyrightText: 2009, 2020, 2021, 2023 Eloy Cuadra <ecuadra@eloihr.net>
+# SPDX-FileCopyrightText: 2009, 2020, 2021, 2023, 2024 Eloy Cuadra <ecuadra@eloihr.net>
 # Huever, 2009.
 # Kira J. Fernandez <kirajfdez@gmail.com>, 2010.
 msgid ""
@@ -13,14 +13,14 @@ msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-10-02 21:49+0100\n"
+"PO-Revision-Date: 2024-05-05 21:25+0100\n"
 "Last-Translator: Sofía Priego <spriego@darksylvania.net>\n"
 "Language-Team: Spanish <kde-l10n-es@kde.org>\n"
 "Language: es\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 23.08.1\n"
+"X-Generator: Lokalize 24.02.2\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 
 #, kde-format
@@ -45,13 +45,13 @@ msgstr "Tipo de partida"
 #: general.ui:39
 #, kde-format
 msgid "KSnakeDuel: Player vs Computer"
-msgstr "KSnakeDuel: Jugador contra la máquina"
+msgstr "KSnakeDuel: jugador contra la máquina"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:44
 #, kde-format
 msgid "KSnakeDuel: Player vs Player"
-msgstr "KSnakeDuel: Jugador contra jugador"
+msgstr "KSnakeDuel: jugador contra jugador"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:49
@@ -87,7 +87,7 @@ msgstr "Nombres de los jugadores"
 #: general.ui:98
 #, kde-format
 msgid "Right player / KSnake mode:"
-msgstr "Jugador de la derecha / KSnake:"
+msgstr "Jugador de la derecha / modo KSnake:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:108
@@ -111,7 +111,7 @@ msgstr "Rondas para ganar:"
 #: ksnakeduel.kcfg:9
 #, kde-format
 msgid "The graphical theme to be used."
-msgstr "El tema gráfico utilizado."
+msgstr "El tema gráfico que se usará."
 
 #. i18n: ectx: label, entry (AcceleratorBlocked), group (Game)
 #: ksnakeduel.kcfg:15
@@ -144,71 +144,61 @@ msgid "Rounds"
 msgstr "Rondas"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
-msgstr "Jugador de la derecha / KSnake: Arriba"
+msgstr "Jugador de la derecha / Modo KSnake: Arriba"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
-msgstr "Jugador de la derecha / KSnake: Abajo"
+msgstr "Jugador de la derecha / Modo KSnake: Abajo"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
-msgstr "Jugador de la derecha / KSnake: Derecha"
+msgstr "Jugador de la derecha / Modo KSnake: Derecha"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
-msgstr "Jugador de la derecha / KSnake: Izquierda"
+msgstr "Jugador de la derecha / Modo KSnake: Izquierda"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Jugador de la derecha: Acelerador"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
-#| msgid "Left Player: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Jugador de la izquierda: Arriba"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
-#| msgid "Left Player: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Jugador de la izquierda: Abajo"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
-#| msgid "Left Player: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Jugador de la izquierda: Derecha"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
-#| msgid "Left Player: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Jugador de la izquierda: Izquierda"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Jugador de la izquierda: Acelerador"
@@ -216,7 +206,7 @@ msgstr "Jugador de la izquierda: Acelerador"
 #: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
-msgstr "Falló la carga del tema «%1». Compruebe su instalación."
+msgstr "No se ha podido cargar el tema «%1». Comprueba la instalación."
 
 #: ktron.cpp:181
 #, kde-format
@@ -229,43 +219,37 @@ msgid "Game paused"
 msgstr "Partida detenida"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Name:"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
 msgstr "Nombre del jugador:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
-#| msgid "Opponent:"
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Oponente:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right player:"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Jugador de la derecha:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Left player:"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Jugador de la izquierda:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -305,7 +289,7 @@ msgstr "Matthias Kiefer"
 #: main.cpp:45
 #, kde-format
 msgid "Original author"
-msgstr "Autor original"
+msgstr "Autor original."
 
 #: main.cpp:46
 #, kde-format
@@ -315,7 +299,7 @@ msgstr "Benjamin Meyer"
 #: main.cpp:46
 #, kde-format
 msgid "Various improvements"
-msgstr "Varias mejoras"
+msgstr "Varias mejoras."
 
 #: main.cpp:47
 #, kde-format
@@ -325,7 +309,7 @@ msgstr "Stas Verberkt"
 #: main.cpp:47
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
-msgstr "Adaptación a KDE 4, revisión de la interfaz y modo KSnake"
+msgstr "Adaptación a KDE 4, revisión de la interfaz y modo KSnake."
 
 #: main.cpp:55
 #, kde-format
@@ -358,26 +342,24 @@ msgstr[0] "%1 punto"
 msgstr[1] "%1 puntos"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "El juego KSnake finalizó con 1 punto"
-msgstr[1] "El juego KSnake finalizó con %1 puntos"
+msgstr[0] "El juego ha terminado con 1 punto."
+msgstr[1] "El juego ha terminado con %1 puntos."
 
 #: tron.cpp:369
 #, kde-format
 msgid ""
 "The game starts when each player has pressed one of their direction keys!"
 msgstr ""
-"¡El juego comenzará cuando cada jugador haya pulsado una de sus teclas de "
+"¡El juego empezará cuando cada jugador haya pulsado una de sus teclas de "
 "dirección!"
 
 #: tron.cpp:372
 #, kde-format
 msgid "Press any of your direction keys to start!"
-msgstr "¡Pulse una tecla de dirección para comenzar!"
+msgstr "¡Pulsa una tecla de dirección para empezar!"
 
 #~ msgid "Left Player:"
 #~ msgstr "Jugador de la izquierda:"
