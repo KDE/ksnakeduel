@@ -1,13 +1,13 @@
 # Copyright (C) YEAR This file is copyright:
 # This file is distributed under the same license as the ksnakeduel package.
 #
-# giovanni <g.sora@tiscali.it>, 2023.
+# giovanni <g.sora@tiscali.it>, 2023, 2024.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2023-12-18 12:50+0100\n"
+"PO-Revision-Date: 2024-05-06 14:49+0200\n"
 "Last-Translator: giovanni <g.sora@tiscali.it>\n"
 "Language-Team: Interlingua <kde-i18n-doc@kde.org>\n"
 "Language: ia\n"
@@ -208,14 +208,13 @@ msgstr "%1 ha ganiate!"
 #: ktron.cpp:184 tron.cpp:323
 #, kde-format
 msgid "Game paused"
-msgstr ""
+msgstr "Joco In Pausa"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player %1"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
-msgstr "Jocator %1"
+msgstr "Nomine de Jocator:"
 
 #: ktron.cpp:254
 #, kde-format
@@ -236,15 +235,13 @@ msgid "Left player:"
 msgstr ""
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "General"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Thema"
@@ -252,7 +249,7 @@ msgstr "Thema"
 #: main.cpp:33 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
-msgstr ""
+msgstr "KSnakeDuel"
 
 #: main.cpp:35
 #, kde-format
