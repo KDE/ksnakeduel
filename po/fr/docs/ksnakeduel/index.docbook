@@ -639,11 +639,13 @@ action="simul"
 >La boîte de dialogue de configuration</title>
 
 <para
->Sélectionner l'option <guimenuitem
->Configurer &ksnakeduel;...</guimenuitem
-> dans le menu <guimenu
+>La sélection de l'élément de menu <menuchoice
+><guimenu
 >Configuration</guimenu
-> ouvre une boîte de dialogue qui permet d'affiner le comportement de &ksnakeduel;.</para>
+> <guimenuitem
+>Configurer &ksnakeduel;…</guimenuitem
+></menuchoice
+> ouvrira une nouvelle boîte de dialogue vous permettant d'affiner le comportement de &ksnakeduel;.</para>
 
 <para
 >La boîte de dialogue est divisée en deux parties.</para>

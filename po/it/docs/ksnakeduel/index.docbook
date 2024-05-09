@@ -244,7 +244,7 @@
 > <guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura le scorciatoie...</guimenuitem
+>Configura le scorciatoie…</guimenuitem
 > </menuchoice
 >. </para
 ></note>
@@ -312,7 +312,7 @@
 > <guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura le scorciatoie...</guimenuitem
+>Configura le scorciatoie…</guimenuitem
 > </menuchoice
 >. </para
 ></note>
@@ -445,7 +445,7 @@
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura &ksnakeduel;...</guimenuitem
+>Configura &ksnakeduel;…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -667,7 +667,7 @@ action="simul"
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura le scorciatoie...</guimenuitem
+>Configura le scorciatoie…</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -685,7 +685,7 @@ action="simul"
 ><guimenu
 >Impostazioni</guimenu
 > <guimenuitem
->Configura &ksnakeduel;...</guimenuitem
+>Configura &ksnakeduel;…</guimenuitem
 ></menuchoice
 > che aprirà un'ulteriore finestra di dialogo in cui potrai modificare il comportamento di &ksnakeduel;.</para>
 
