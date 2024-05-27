@@ -6,13 +6,13 @@
 # Łukasz Dróżdż <luc.levain@yahoo.co.uk>, 2009.
 # Marta Rybczyńska <kde-i18n@rybczynska.net>, 2009.
 # Michal Rudolf <mrudolf@kdewebdev.org>, 2009.
-# Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>, 2011, 2014, 2020, 2021.
+# SPDX-FileCopyrightText: 2011, 2014, 2020, 2021, 2024 Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2021-09-12 09:53+0200\n"
+"PO-Revision-Date: 2024-05-26 12:27+0200\n"
 "Last-Translator: Łukasz Wojniłowicz <lukasz.wojnilowicz@gmail.com>\n"
 "Language-Team: Polish <kde-i18n-doc@kde.org>\n"
 "Language: pl\n"
@@ -21,9 +21,9 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 ">\n"
 ">\n"
-"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10 "
-"|| n%100>=20) ? 1 : 2);\n"
-"X-Generator: Lokalize 20.12.1\n"
+"Plural-Forms: nplurals=3; plural=(n==1 ? 0 : n%10>=2 && n%10<=4 && (n%100<10"
+" || n%100>=20) ? 1 : 2);\n"
+"X-Generator: Lokalize 23.08.5\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -144,70 +144,70 @@ msgid "Rounds"
 msgstr "Rund"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right Player / KSnake mode: Up"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Prawy gracz / tryb KSnake: w górę"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right Player / KSnake mode: Down"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Prawy gracz / tryb KSnake: w dół"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right Player / KSnake mode: Right"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Prawy gracz / tryb KSnake: w prawo"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right Player / KSnake mode: Left"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Prawy gracz / tryb KSnake: w lewo"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right Player: Accelerator"
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Prawy gracz: przyspieszenie"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left Player: Up"
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Lewy gracz: w górę"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left Player: Down"
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Lewy gracz: w dół"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left Player: Right"
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Lewy gracz: w prawo"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left Player: Left"
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Lewy gracz: w lewo"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left Player: Accelerator"
 msgctxt "@action"
 msgid "Left Player: Accelerator"
@@ -230,42 +230,42 @@ msgid "Game paused"
 msgstr "Gra wstrzymana"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Player Name:"
 msgctxt "@label"
 msgid "Player name:"
-msgstr "Imię gracza:"
+msgstr "Nazwa gracza:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Opponent:"
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Przeciwnik:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Right player:"
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Prawy gracz:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Left player:"
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Lewy gracz:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "General"
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Ogólne"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
@@ -361,14 +361,14 @@ msgstr[1] "%1 punkty"
 msgstr[2] "%1 punktów"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
+#, kde-format
 #| msgid "KSnake game ended with 1 point"
 #| msgid_plural "KSnake game ended with %1 points"
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "Koniec gry. Punkty: 1."
-msgstr[1] "Koniec gry. Punkty: %1."
-msgstr[2] "Koniec gry. Punkty: %1."
+msgstr[0] "Zakończono grę z 1 punktem."
+msgstr[1] "Zakończono grę z %1 punktami."
+msgstr[2] "Zakończono grę z %1 punktami."
 
 #: tron.cpp:369
 #, kde-format
@@ -399,3 +399,4 @@ msgstr "Naciśnij jeden z klawiszy kierunków, aby rozpocząć!"
 #~ msgstr[0] "%1 (%2 pkt) - %3 (%4 pkt)"
 #~ msgstr[1] "%1 (%2 pkt) - %3 (%4 pkt)"
 #~ msgstr[2] "%1 (%2 pkt) - %3 (%4 pkt)"
+
