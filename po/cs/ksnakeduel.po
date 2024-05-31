@@ -1,22 +1,22 @@
 # Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the PACKAGE package.
 # Vít Pelčák <vit@pelcak.org>, 2010, 2011, 2013, 2020.
-# Vit Pelcak <vit@pelcak.org>, 2021.
+# SPDX-FileCopyrightText: 2021, 2024 Vit Pelcak <vit@pelcak.org>
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2021-08-19 10:53+0200\n"
-"Last-Translator: Vit Pelcak <vit@pelcak.org>\n"
+"PO-Revision-Date: 2024-05-30 09:42+0200\n"
+"Last-Translator: Vit Pelcak <vpelcak@suse.cz>\n"
 "Language-Team: Czech <kde-i18n-doc@kde.org>\n"
 "Language: cs\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n>=2 && n<=4) ? 1 : 2;\n"
-"X-Generator: Lokalize 21.08.0\n"
+"X-Generator: Lokalize 24.02.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -140,61 +140,61 @@ msgstr "Kola"
 #, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
-msgstr ""
+msgstr "Pravý hráč / KSnake režim: Nahoru"
 
 #: ktron.cpp:70
 #, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
-msgstr ""
+msgstr "Pravý hráč / KSnake režim: Dolů"
 
 #: ktron.cpp:76
 #, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
-msgstr ""
+msgstr "Pravý hráč / KSnake režim: Doprava"
 
 #: ktron.cpp:82
 #, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
-msgstr ""
+msgstr "Pravý hráč / KSnake režim: Doleva"
 
 #: ktron.cpp:88
 #, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
-msgstr ""
+msgstr "Pravý hráč: Zrychlení"
 
 #: ktron.cpp:94
 #, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
-msgstr ""
+msgstr "Levý hráč: Nahoru"
 
 #: ktron.cpp:100
 #, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
-msgstr ""
+msgstr "Levý hráč: Dolů"
 
 #: ktron.cpp:106
 #, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
-msgstr ""
+msgstr "Levý hráč: Doprava"
 
 #: ktron.cpp:112
 #, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
-msgstr ""
+msgstr "Levý hráč: Doleva"
 
 #: ktron.cpp:118
 #, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
-msgstr ""
+msgstr "Levý hráč: Zrychlení"
 
 #: ktron.cpp:162
 #, kde-format
@@ -215,25 +215,25 @@ msgstr "Hra pozastavena"
 #, kde-format
 msgctxt "@label"
 msgid "Player name:"
-msgstr ""
+msgstr "Jméno hráče:"
 
 #: ktron.cpp:254
 #, kde-format
 msgctxt "@label"
 msgid "Opponent:"
-msgstr ""
+msgstr "Protihráč:"
 
 #: ktron.cpp:257
 #, kde-format
 msgctxt "@label"
 msgid "Right player:"
-msgstr ""
+msgstr "Pravý hráč:"
 
 #: ktron.cpp:258
 #, kde-format
 msgctxt "@label"
 msgid "Left player:"
-msgstr ""
+msgstr "Levý hráč:"
 
 #: ktron.cpp:262
 #, kde-format
@@ -245,7 +245,7 @@ msgstr "Obecné"
 #, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
-msgstr ""
+msgstr "Motiv"
 
 #: main.cpp:33 player.cpp:82
 #, kde-format
@@ -340,9 +340,9 @@ msgstr[2] "%1 bodů"
 #, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] ""
-msgstr[1] ""
-msgstr[2] ""
+msgstr[0] "Hra skončila s 1 bodem."
+msgstr[1] "Hra skončila s %1 body"
+msgstr[2] "Hra skončila s %1 body"
 
 #: tron.cpp:369
 #, kde-format
