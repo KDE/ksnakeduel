@@ -140,70 +140,60 @@ msgstr "Rundar"
 
 #: ktron.cpp:64
 #, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Up"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Høgre spelar / KSnake-modus: opp"
 
 #: ktron.cpp:70
 #, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Down"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Høgre spelar / KSnake-modus: ned"
 
 #: ktron.cpp:76
 #, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Right"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Høgre spelar / KSnake-modus: høgre"
 
 #: ktron.cpp:82
 #, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Left"
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Høgre spelar / KSnake-modus: venstre"
 
 #: ktron.cpp:88
 #, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Høgre spelar: akselerasjon"
 
 #: ktron.cpp:94
 #, fuzzy, kde-format
-#| msgid "Left Player: Up"
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Venstre spelar: opp"
 
 #: ktron.cpp:100
 #, fuzzy, kde-format
-#| msgid "Left Player: Down"
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Venstre spelar: ned"
 
 #: ktron.cpp:106
 #, fuzzy, kde-format
-#| msgid "Left Player: Right"
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Venstre spelar: høgre"
 
 #: ktron.cpp:112
 #, fuzzy, kde-format
-#| msgid "Left Player: Left"
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Venstre spelar: venstre"
 
 #: ktron.cpp:118
 #, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Venstre spelar: akselerasjon"
@@ -226,42 +216,36 @@ msgstr "Pause"
 
 #: ktron.cpp:253
 #, fuzzy, kde-format
-#| msgid "Player Name:"
 msgctxt "@label"
 msgid "Player name:"
 msgstr "Spelarnamn:"
 
 #: ktron.cpp:254
 #, fuzzy, kde-format
-#| msgid "Opponent:"
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Motstandar:"
 
 #: ktron.cpp:257
 #, fuzzy, kde-format
-#| msgid "Right player:"
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Høgre spelar:"
 
 #: ktron.cpp:258
 #, fuzzy, kde-format
-#| msgid "Left player:"
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Venstre spelar:"
 
 #: ktron.cpp:262
 #, fuzzy, kde-format
-#| msgid "General"
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelt"
 
 #: ktron.cpp:263
 #, fuzzy, kde-format
-#| msgid "Theme"
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -355,8 +339,6 @@ msgstr[1] "%1 poeng"
 
 #: tron.cpp:364
 #, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
 msgstr[0] "KSnake-spel slutt med 1 poeng"
