@@ -1,20 +1,19 @@
 # Translation of ksnakeduel to Norwegian Nynorsk
 #
 # Gaute Hvoslef Kvalnes <gaute@verdsveven.com>, 1999, 2000, 2002, 2003, 2004.
-# Karl Ove Hufthammer <karl@huftis.org>, 2008, 2009, 2016, 2020, 2022.
 msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2022-07-02 13:34+0200\n"
+"PO-Revision-Date: 2024-08-26 22:06+0200\n"
 "Last-Translator: Karl Ove Hufthammer <karl@huftis.org>\n"
 "Language-Team: Norwegian Nynorsk <l10n-no@lister.huftis.org>\n"
 "Language: nn\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 22.04.2\n"
+"X-Generator: Lokalize 24.11.70\n"
 "Plural-Forms: nplurals=2; plural=n != 1;\n"
 "X-Environment: kde\n"
 "X-Accelerator-Marker: &\n"
@@ -139,61 +138,61 @@ msgid "Rounds"
 msgstr "Rundar"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Høgre spelar / KSnake-modus: opp"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Høgre spelar / KSnake-modus: ned"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Høgre spelar / KSnake-modus: høgre"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Høgre spelar / KSnake-modus: venstre"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Høgre spelar: akselerasjon"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Venstre spelar: opp"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Venstre spelar: ned"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Venstre spelar: høgre"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Venstre spelar: venstre"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Venstre spelar: akselerasjon"
@@ -215,37 +214,37 @@ msgid "Game paused"
 msgstr "Pause"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
 msgstr "Spelarnamn:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Motstandar:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Høgre spelar:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Venstre spelar:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Generelt"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Tema"
@@ -338,11 +337,11 @@ msgstr[0] "%1 poeng"
 msgstr[1] "%1 poeng"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "KSnake-spel slutt med 1 poeng"
-msgstr[1] "KSnake-spel slutt med %1 poeng"
+msgstr[0] "Spelet slutta med 1 poeng."
+msgstr[1] "Spelet slutta med %1 poeng."
 
 #: tron.cpp:369
 #, kde-format
