@@ -3,20 +3,20 @@
 #
 # Artem Sereda <overmind88@gmail.com>, 2008, 2009, 2010.
 # Alexander Potashev <aspotashev@gmail.com>, 2010.
-# Olesya Gerasimenko <translation-team@basealt.ru>, 2022.
+# SPDX-FileCopyrightText: 2022, 2024 Olesya Gerasimenko <translation-team@basealt.ru>
 msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-05-03 00:37+0000\n"
-"PO-Revision-Date: 2022-03-02 17:31+0300\n"
+"PO-Revision-Date: 2024-10-08 15:10+0300\n"
 "Last-Translator: Olesya Gerasimenko <translation-team@basealt.ru>\n"
 "Language-Team: Basealt Translation Team\n"
 "Language: ru\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"X-Generator: Lokalize 21.12.1\n"
+"X-Generator: Lokalize 23.08.5\n"
 "Plural-Forms: nplurals=4; plural=n==1 ? 3 : n%10==1 && n%100!=11 ? 0 : n"
 "%10>=2 && n%10<=4 && (n%100<10 || n%100>=20) ? 1 : 2;\n"
 "X-Environment: kde\n"
@@ -55,7 +55,7 @@ msgstr "Дуэль KSnake: Два игрока"
 #: general.ui:49
 #, kde-format
 msgid "KSnake mode: Single player"
-msgstr "Режим KSnake: один игрок"
+msgstr "Режим змейки: один игрок"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
 #: general.ui:57
@@ -85,7 +85,7 @@ msgstr "Имена игроков"
 #: general.ui:98
 #, kde-format
 msgid "Right player / KSnake mode:"
-msgstr "Правый игрок / режим KSnake:"
+msgstr "Правый игрок / режим змейки:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:108
@@ -142,74 +142,64 @@ msgid "Rounds"
 msgstr "Раунды"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
-msgstr "Правый игрок / режим KSnake: вверх"
+msgstr "Правый игрок / режим змейки: вверх"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
-msgstr "Правый игрок / режим KSnake: вниз"
+msgstr "Правый игрок / режим змейки: вниз"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
-msgstr "Правый игрок / режим KSnake: вправо"
+msgstr "Правый игрок / режим змейки: вправо"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake mode: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
-msgstr "Правый игрок / режим KSnake: влево"
+msgstr "Правый игрок / режим змейки: влево"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
-msgstr "Правый игрок: Ускорение"
+msgstr "Правый игрок: ускорение"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
-#| msgid "Left Player: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Левый игрок: вверх"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
-#| msgid "Left Player: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Левый игрок: вниз"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
-#| msgid "Left Player: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Левый игрок: вправо"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
-#| msgid "Left Player: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Левый игрок: влево"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
-msgstr "Левый игрок: Ускорение"
+msgstr "Левый игрок: ускорение"
 
 #: ktron.cpp:162
 #, kde-format
@@ -227,43 +217,37 @@ msgid "Game paused"
 msgstr "Игра приостановлена"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Name:"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
 msgstr "Имя игрока:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
-#| msgid "Opponent:"
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Противник:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right player:"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Правый игрок:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Left player:"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Левый игрок:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
-msgstr "Основные"
+msgstr "Основное"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Оформление"
@@ -328,7 +312,7 @@ msgstr "Перенос на KDE4, обновление интерфейса и �
 #: main.cpp:55
 #, kde-format
 msgid "Start in KSnake mode"
-msgstr "Запустить в режиме KSnake"
+msgstr "Запустить в режиме змейки"
 
 #: player.cpp:103
 #, kde-format
@@ -360,15 +344,13 @@ msgstr[2] "%1 очков"
 msgstr[3] "1 очко"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "Вы завершили игру, набрав %1 очко"
-msgstr[1] "Вы завершили игру, набрав %1 очка"
-msgstr[2] "Вы завершили игру, набрав %1 очков"
-msgstr[3] "Вы завершили игру, набрав %1 очко"
+msgstr[0] "Вы завершили игру, набрав %1 очко."
+msgstr[1] "Вы завершили игру, набрав %1 очка."
+msgstr[2] "Вы завершили игру, набрав %1 очков."
+msgstr[3] "Вы завершили игру, набрав 1 очко."
 
 #: tron.cpp:369
 #, kde-format
