@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2009-10-23 22:04+0700\n"
 "Last-Translator: Morn Met\n"
 "Language-Team: Khmer <kde-i18n-doc@kde.org>\n"
@@ -267,17 +267,17 @@ msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ស្បែក"
 
-#: main.cpp:33 player.cpp:82
+#: main.cpp:51 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
 msgstr "KSnakeDuel"
 
-#: main.cpp:35
+#: main.cpp:53
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "ប្រណាំង​នៅ​ក្នុងលំហ"
 
-#: main.cpp:37
+#: main.cpp:55
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -294,37 +294,37 @@ msgstr ""
 "ផ្នែក​​ក្បួន​ដោះស្រាយ​សម្រាប់​​អ្នក​លេង​កុំព្យូទ័រ​ពី\n"
 "xtron-1.1 ដោយ​ Rhett D. Jacobs <rhett@hotel.canberra.edu.au>"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Original author"
 msgstr "អ្នកនិពន្ធ​ដើម"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Various improvements"
 msgstr "ការ​ធ្វើ​ឲ្យ​ប្រសើរ​​ផ្សេងៗ​"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Stas Verberkt"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "ច្រក KDE 4 ការ​កែប្រែ​ចំណុច​ប្រទាក់ និង​របៀប KSnake"
 
-#: main.cpp:55
+#: main.cpp:73
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "ចាប់ផ្ដើម​នៅ​ក្នុង​របៀប KSnake"

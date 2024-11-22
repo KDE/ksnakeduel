@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2024-05-06 09:42+0900\n"
 "Last-Translator: Kisaragi Hiu <mail@kisaragi-hiu.com>\n"
 "Language-Team: Traditional Chinese <zh-l10n@lists.slat.org>\n"
@@ -248,17 +248,17 @@ msgctxt "@title:tab"
 msgid "Theme"
 msgstr "主題"
 
-#: main.cpp:33 player.cpp:82
+#: main.cpp:51 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
 msgstr "KSnakeDuel"
 
-#: main.cpp:35
+#: main.cpp:53
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "超空間賽車"
 
-#: main.cpp:37
+#: main.cpp:55
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -275,37 +275,37 @@ msgstr ""
 "電腦玩家的演算法一部份是來自\n"
 "Rhett D. Jacobs <rhett@hotel.canberra.edu.au> 的 xtron-1.1 "
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Matthias Kiefer"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Original author"
 msgstr "原始作者"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Benjamin Meyer"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Various improvements"
 msgstr "諸多改進"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Stas Verberkt"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "KDE4 移植，介面修訂，KSnake 模式"
 
-#: main.cpp:55
+#: main.cpp:73
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "以 KSnake 模式開始"

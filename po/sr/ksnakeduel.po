@@ -6,7 +6,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
-"POT-Creation-Date: 2024-05-03 00:37+0000\n"
+"POT-Creation-Date: 2024-11-22 00:38+0000\n"
 "PO-Revision-Date: 2017-09-28 17:59+0200\n"
 "Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
@@ -268,17 +268,17 @@ msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Тема"
 
-#: main.cpp:33 player.cpp:82
+#: main.cpp:51 player.cpp:82
 #, kde-format
 msgid "KSnakeDuel"
 msgstr "К‑змијски-двобој"
 
-#: main.cpp:35
+#: main.cpp:53
 #, kde-format
 msgid "A race in hyperspace"
 msgstr "Трка у хиперпростору"
 
-#: main.cpp:37
+#: main.cpp:55
 #, kde-format
 msgid ""
 "(c) 1998-2000, Matthias Kiefer\n"
@@ -295,37 +295,37 @@ msgstr ""
 "Делови алгоритма рачунарског играча преузети су из\n"
 "Икс‑трона 1.1 Рет Д. Џејкобс <rhett@hotel.canberra.edu.au>"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Matthias Kiefer"
 msgstr "Матијас Кифер"
 
-#: main.cpp:45
+#: main.cpp:63
 #, kde-format
 msgid "Original author"
 msgstr "Првобитни аутор"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
 msgstr "Бенџамин К. Мејер"
 
-#: main.cpp:46
+#: main.cpp:64
 #, kde-format
 msgid "Various improvements"
 msgstr "Разна побољшања"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "Stas Verberkt"
 msgstr "Стас Верберкт"
 
-#: main.cpp:47
+#: main.cpp:65
 #, kde-format
 msgid "KDE 4 Port, interface revision and KSnake mode"
 msgstr "Пренос на КДЕ‑4, ревизија сучеља и режим К‑змијица"
 
-#: main.cpp:55
+#: main.cpp:73
 #, kde-format
 msgid "Start in KSnake mode"
 msgstr "Покрени у режиму К‑змијица"
