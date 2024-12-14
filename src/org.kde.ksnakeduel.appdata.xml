@@ -37,6 +37,7 @@
   <name xml:lang="pt">KSnakeDuel</name>
   <name xml:lang="pt-BR">KSnakeDuel</name>
   <name xml:lang="ru">KSnakeDuel</name>
+  <name xml:lang="sa">KSnakeDuel इति</name>
   <name xml:lang="sk">KSnakeDuel</name>
   <name xml:lang="sl">KSnakeDuel</name>
   <name xml:lang="sr">К‑змијски-двобој</name>
@@ -78,6 +79,7 @@
   <summary xml:lang="pt">Jogo Semelhante ao Tron</summary>
   <summary xml:lang="pt-BR">Jogo no estilo Tron</summary>
   <summary xml:lang="ru">Игра в стиле «Tron»</summary>
+  <summary xml:lang="sa">ट्रोन्-सदृशः गेमः</summary>
   <summary xml:lang="sk">Hra ako Tron</summary>
   <summary xml:lang="sl">Igra podobna Tronu</summary>
   <summary xml:lang="sr">Игра налик на трон</summary>
@@ -123,6 +125,7 @@
     <p xml:lang="pt">O KSnakeDuel é um clone simples do Tron. Poderá jogar o KSnakeDuel contra o computador ou com um amigo. O objectivo do jogo é sobreviver mais tempo que o seu adversário. Para o fazer, evite bater contra uma parede, a sua própria cauda ou a do seu adversário.</p>
     <p xml:lang="pt-BR">KSnakeDuel é um clone simples do Tron. Você poderá jogar o KSnakeDuel contra o computador ou contra um amigo. O objetivo é viver mais tempo que o seu adversário. Para fazer isso, evite bater contra uma parede, na sua própria cauda ou na do seu adversário.</p>
     <p xml:lang="ru">KSnakeDuel — это простой клон «Tron». В KSnakeDuel можно играть против компьютера или с другом. Цель игры заключается в том, чтобы прожить дольше противника. Для этого следует избегать столкновения со стеной, собственным хвостом и противником.</p>
+    <p xml:lang="sa">KSnakeDuel इति सरलं Tron-Clone इति । सङ्गणकस्य वा मित्रस्य वा विरुद्धं KSnakeDuel क्रीडितुं शक्नुवन्ति । क्रीडायाः उद्देश्यं भवतः प्रतिद्वन्द्वी अपेक्षया दीर्घकालं जीवितुं भवति। तदर्थं भित्तिं, स्वस्य पुच्छं, प्रतिद्वन्द्वस्य च पुच्छं च परिहरन्तु ।</p>
     <p xml:lang="sk">KSnakeDuel je jednoduchý klon Tronu. Môžete ho hrať proti počítaču alebo priateľovi.Cieľom hry je žiť dlhšie ako váš protivník. Na to sa treba vyhýbať stene, vlastnému chvostu a vášmu protivníkovi.</p>
     <p xml:lang="sl">KSnakeDuel je preprosti dvojnik igre Tron. Igrate ga lahko proti računalniku ali prijatelju. Cilj igre je, da preživite nasprotnika. Da vam to uspe, se poskusite izogniti trkom s steno ali pa lastnim oz. nasprotnikovim repom.</p>
     <p xml:lang="sr">К‑змијски-двобој је једноставан клон трона. Можете играти против рачунара или пријатеља. Циљ партије је надживети свог противника. То чините избегавањем судара са зидом, сопственим репом или репом противника.</p>
