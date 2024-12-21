@@ -9,7 +9,7 @@ msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2024-11-22 00:38+0000\n"
-"PO-Revision-Date: 2024-12-14 13:26+0530\n"
+"PO-Revision-Date: 2024-12-20 21:52+0530\n"
 "Last-Translator: kali <skkalwar999@gmail.com>\n"
 "Language-Team: Sanskrit <kde-i18n-doc@kde.org>\n"
 "Language: sa\n"
@@ -17,7 +17,7 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n>2);\n"
-"X-Generator: Poedit 3.5\n"
+"X-Generator: Lokalize 24.08.2\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
@@ -57,7 +57,7 @@ msgstr "KSnake mode: एकल खिलाडी"
 #: general.ui:57
 #, kde-format
 msgid "Game type:"
-msgstr "क्रीडायाः प्रकारः : १."
+msgstr "क्रीडायाः प्रकारः :"
 
 #. i18n: ectx: property (title), widget (QGroupBox, behaviorGroup)
 #: general.ui:70
@@ -81,13 +81,13 @@ msgstr "खिलाडी नाम"
 #: general.ui:98
 #, kde-format
 msgid "Right player / KSnake mode:"
-msgstr "दक्षिणः खिलाडी / KSnake मोडः : १."
+msgstr "दक्षिणः खिलाडी / KSnake मोडः :"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:108
 #, kde-format
 msgid "Left player:"
-msgstr "वामक्रीडकः : १."
+msgstr "वामक्रीडकः :"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
 #: general.ui:121
@@ -99,7 +99,7 @@ msgstr "गेम विकल्प"
 #: general.ui:127
 #, kde-format
 msgid "Rounds to win:"
-msgstr "विजयाय गोलानि : १."
+msgstr "विजयाय गोलानि :"
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: ksnakeduel.kcfg:9
@@ -117,13 +117,13 @@ msgstr "त्वरणं निष्क्रियं कर्तव्य�
 #: ksnakeduel.kcfg:19
 #, kde-format
 msgid "The name of player 1."
-msgstr "क्रीडकस्य नाम १."
+msgstr "क्रीडकस्य नाम"
 
 #. i18n: ectx: label, entry (NamePlayer2), group (Game)
 #: ksnakeduel.kcfg:22
 #, kde-format
 msgid "The name of player 2."
-msgstr "क्रीडकस्य नाम २."
+msgstr "क्रीडकस्य नाम"
 
 #. i18n: ectx: label, entry, group (Game)
 #: ksnakeduel.kcfg:25
@@ -216,7 +216,7 @@ msgstr "क्रीडा विरमति स्म"
 #, kde-format
 msgctxt "@label"
 msgid "Player name:"
-msgstr "खिलाडीनाम : १."
+msgstr "खिलाडीनाम :"
 
 #: ktron.cpp:254
 #, kde-format
@@ -228,13 +228,13 @@ msgstr "विपरीतः:"
 #, kde-format
 msgctxt "@label"
 msgid "Right player:"
-msgstr "दक्षिणः खिलाडी : १."
+msgstr "दक्षिणः खिलाडी :"
 
 #: ktron.cpp:258
 #, kde-format
 msgctxt "@label"
 msgid "Left player:"
-msgstr "वामक्रीडकः : १."
+msgstr "वामक्रीडकः :"
 
 #: ktron.cpp:262
 #, kde-format
