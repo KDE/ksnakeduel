@@ -40,7 +40,6 @@ class Player : public QObject
 		Player(PlayField &pf, int playerNr);
 		int getPlayerNumber();
 		void reset();
-		void setCoordinates(int x, int y);
         bool isComputer() const;
 		void setComputer(bool computer);
 		void setStartPosition();

@@ -48,7 +48,6 @@ class Tron : public QWidget
 		~Tron() override;
 		void updatePixmap();
 		void setVelocity(int);
-		void setRectSize(int newSize);
 		void triggerKey(int, KBAction::Action, bool);
 		bool running();
 		bool paused();
@@ -115,8 +114,6 @@ class Tron : public QWidget
 		void stopGame();
 		/** creates a new playfield and a bufferpixmap */
 		void createNewPlayfield();
-		/** paints players at current player coordinates */
-		void paintPlayers();
 		/** emits gameEnds(Player) */
 		void showWinner();
 		/** retrieves the line speed */
