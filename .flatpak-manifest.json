@@ -8,7 +8,11 @@
     "tags": ["nightly"],
     "desktop-file-name-suffix": " (Nightly)",
     "finish-args": ["--share=ipc", "--socket=fallback-x11", "--socket=wayland" ],
-
+    "cleanup": [
+        "/include",
+        "/lib/cmake",
+        "/lib/pkgconfig"
+    ],
     "modules": [
         {
             "config-opts": [ "-DENABLE_TESTING=OFF" ],
