@@ -47,7 +47,6 @@
   <name xml:lang="sv">Ormspel</name>
   <name xml:lang="tr">K Yılan Düellosu</name>
   <name xml:lang="uk">KSnakeDuel</name>
-  <name xml:lang="x-test">xxKSnakeDuelxx</name>
   <name xml:lang="zh-CN">KSnakeDuel</name>
   <name xml:lang="zh-TW">KSnakeDuel</name>
   <summary>Tron-like Game</summary>
@@ -89,7 +88,6 @@
   <summary xml:lang="sv">Tron-liknande spel</summary>
   <summary xml:lang="tr">Tron benzeri Oyun</summary>
   <summary xml:lang="uk">Гра, подібна до Tron</summary>
-  <summary xml:lang="x-test">xxTron-like Gamexx</summary>
   <summary xml:lang="zh-CN">类 Tron 游戏</summary>
   <summary xml:lang="zh-TW">類似 Tron 的遊戲</summary>
   <description>
@@ -135,7 +133,6 @@
     <p xml:lang="sv">Ormspelet är en enkel klon av Tron. Man kan spela ormspelet mot datorn eller mot en vän. Spelets mål är att överleva längre än motspelaren. För att göra det, undvik att träffa en vägg, din egen kropp eller motspelaren.</p>
     <p xml:lang="tr">K Yılan Düellosu, basit bir Tron klonudur. K Yılan Düellosu'nu bilgisayara veya bir arkadaşınıza karşı oynayabilirsiniz. Oyunun amacı, rakibinizden daha uzun yaşamaktır. Bunu yapmak için bir duvara, kendi kuyruğunuza ve rakibinizin duvarına çarpmayın.</p>
     <p xml:lang="uk">KSnakeDuel — це проста гра «дуель змій» (Tron). Грати у KSnakeDuel можна або з комп’ютерним гравцем, або з другом (подругою). Метою гри є вижити у грі довше, ніж ваш суперник. Щоб зробити це, уникайте контакту зі стінами, хвостом вашої змійки або вашим опонентом.</p>
-    <p xml:lang="x-test">xxKSnakeDuel is a simple Tron-Clone. You can play KSnakeDuel against the computer or a friend. The aim of the game is to live longer than your opponent. To do that, avoid running into a wall, your own tail and that of your opponent.xx</p>
     <p xml:lang="zh-CN">KSnakeDuel 是 Tron 的简单克隆版。在此游戏中，您可以与电脑或朋友对抗。游戏目标是要比对手的存活时间更长，因此您需要避免撞到墙、自己的尾巴和对手的尾巴。</p>
     <p xml:lang="zh-TW">KSnakeDuel 是一個簡單的 Tron 複製品。您可以與朋友或電腦對手遊玩 KSnakeDuel。遊戲的目標是比對手活得更久。要生存下去就要避免撞擊到牆壁、自己的軌跡或是對手的軌跡。</p>
   </description>
