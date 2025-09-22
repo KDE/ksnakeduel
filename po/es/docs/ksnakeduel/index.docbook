@@ -271,7 +271,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar los atajos de teclado...</guimenuitem
+>Configurar los atajos de teclado…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -339,7 +339,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar los atajos de teclado...</guimenuitem
+>Configurar los atajos de teclado…</guimenuitem
 ></menuchoice
 >. </para
 ></note>
@@ -472,7 +472,7 @@
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &ksnakeduel;...</guimenuitem
+>Configurar &ksnakeduel;…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -694,7 +694,7 @@ action="simul"
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar los atajos de teclado...</guimenuitem
+>Configurar los atajos de teclado…</guimenuitem
 ></menuchoice
 >. </para>
 
@@ -712,7 +712,7 @@ action="simul"
 ><guimenu
 >Preferencias</guimenu
 > <guimenuitem
->Configurar &ksnakeduel;...</guimenuitem
+>Configurar &ksnakeduel;…</guimenuitem
 ></menuchoice
 > se mostrará un diálogo que permite ajustar el comportamiento de &ksnakeduel;.</para>
 
