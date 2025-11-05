@@ -121,7 +121,7 @@
 >&ksnakeduel; est un simple clone de Tron. Le but est de survivre le plus longtemps possible et de manger le plus de fruits que vous pouvez. </para>
 
 <para
->Vous pouvez passer d'un jeu à l'autre en utilisant le sélecteur de type de jeu dans la boîte de dialogue de configuration. </para>
+>Vous pouvez passer d'un jeu à l'autre en utilisant le sélecteur de type de jeu dans la boite de dialogue de configuration. </para>
 
 </chapter>
 
@@ -168,7 +168,7 @@
 > <guisubmenu
 >Niveau de difficulté</guisubmenu
 ></menuchoice
-> ou la boîte de dialogue à liste déroulante de la barre d'état. La difficulté influence la vitesse du jeu et du temps de réponse de l'ordinateur. </para>
+> ou la boite de dialogue à liste déroulante de la barre d'état. La difficulté influence la vitesse du jeu et du temps de réponse de l'ordinateur. </para>
 </sect1>
 
 <sect1 id="computerplayer">
@@ -242,7 +242,7 @@
 >Dans le jeu, il y aura toujours un fruit sur l'aire de jeu. Si vous le collectez, votre score augmentera de 5 points. Le score courant est toujours affiché dans la barre d'état. </para>
 
 <para
->Quand vous vous déplacez sur l'aire de jeu, des obstacles apparaîtront. Le fait de les toucher provoquera une collision. Cependant, chaque fois qu'un obstacle apparaît et que vous survivez, vous recevez 2 points. </para>
+>Quand vous vous déplacez sur l'aire de jeu, des obstacles apparaitront. Le fait de les toucher provoquera une collision. Cependant, chaque fois qu'un obstacle apparait et que vous survivez, vous recevez 2 points. </para>
 
 <para
 >Vous pouvez modifier le niveau de difficulté du jeu en utilisant l'élément du menu <menuchoice
@@ -251,7 +251,7 @@
 > <guisubmenu
 >Niveau de difficulté</guisubmenu
 ></menuchoice
-> ou la boîte de dialogue à liste déroulante de la barre d'état. La difficulté influence la vitesse du jeu et du temps de réponse de l'ordinateur. </para>
+> ou la boite de dialogue à liste déroulante de la barre d'état. La difficulté influence la vitesse du jeu et du temps de réponse de l'ordinateur. </para>
 
 </sect1>
 
@@ -352,7 +352,7 @@
 <listitem
 ><para
 ><action
->Affiche la boîte de dialogue des meilleurs scores.</action
+>Affiche la boite de dialogue des meilleurs scores.</action
 ></para
 ></listitem>
 </varlistentry>
@@ -410,7 +410,7 @@
 ><para
 ><action
 >Ouvre une <link linkend="configuration"
->boîte de dialogue de configuration</link
+>boite de dialogue de configuration</link
 > pour configurer diverses options.</action
 ></para
 ></listitem>
@@ -636,7 +636,7 @@ action="simul"
 <chapter id="configuration">
 
 <title
->La boîte de dialogue de configuration</title>
+>La boite de dialogue de configuration</title>
 
 <para
 >La sélection de l'élément de menu <menuchoice
@@ -645,10 +645,10 @@ action="simul"
 > <guimenuitem
 >Configurer &ksnakeduel;…</guimenuitem
 ></menuchoice
-> ouvrira une nouvelle boîte de dialogue vous permettant d'affiner le comportement de &ksnakeduel;.</para>
+> ouvrira une nouvelle boite de dialogue vous permettant d'affiner le comportement de &ksnakeduel;.</para>
 
 <para
->La boîte de dialogue est divisée en deux parties.</para>
+>La boite de dialogue est divisée en deux parties.</para>
 
 <sect1 id="configuration-general">
 <title
