@@ -359,9 +359,3 @@ msgstr ""
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr "Premeu una de les vostres tecles de direcció per a començar!"
-
-#~ msgid "Left Player:"
-#~ msgstr "Jugador esquerre:"
-
-#~ msgid "The difficulty level."
-#~ msgstr "El nivell de dificultat."
