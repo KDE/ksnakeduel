@@ -215,7 +215,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar atalhos...</guimenuitem
+>Configurar atalhos…</guimenuitem
 ></menuchoice
 > no menu. </para
 ></note>
@@ -283,7 +283,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar atalhos...</guimenuitem
+>Configurar atalhos…</guimenuitem
 ></menuchoice
 > no menu. </para
 ></note>
@@ -416,7 +416,7 @@
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &ksnakeduel;...</guimenuitem
+>Configurar o &ksnakeduel;…</guimenuitem
 > </menuchoice
 ></term>
 <listitem
@@ -638,7 +638,7 @@ action="simul"
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar atalhos...</guimenuitem
+>Configurar atalhos…</guimenuitem
 ></menuchoice
 > no menu. </para>
 
@@ -656,7 +656,7 @@ action="simul"
 ><guimenu
 >Configurações</guimenu
 > <guimenuitem
->Configurar o &ksnakeduel;...</guimenuitem
+>Configurar o &ksnakeduel;…</guimenuitem
 ></menuchoice
 > no menu irá abrir um diálogo posterior que lhe permite ajustar o comportamento do &ksnakeduel;.</para>
 
