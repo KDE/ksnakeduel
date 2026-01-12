@@ -204,7 +204,7 @@ msgstr "Jugador esquerre: accelerador"
 #: ktron.cpp:162
 #, kde-format
 msgid "Failed to load \"%1\" theme. Please check your installation."
-msgstr "No s'ha pogut carregar el tema «%1». Comproveu la instal·lació."
+msgstr "Ha fallat mentre es carregava el tema «%1». Comproveu la instal·lació."
 
 #: ktron.cpp:181
 #, kde-format
