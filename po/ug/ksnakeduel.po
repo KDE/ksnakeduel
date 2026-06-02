@@ -8,30 +8,31 @@ msgstr ""
 "Project-Id-Version: ktron\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2013-09-08 07:05+0900\n"
-"Last-Translator: Gheyret Kenji <gheyret@gmail.com>\n"
+"PO-Revision-Date: 2026-05-31 19:43-0400\n"
+"Last-Translator: Abduqadir Abliz <sahranbay@gmail.com>\n"
 "Language-Team: Uyghur Computer Science Association <UKIJ@yahoogroups.com>\n"
 "Language: ug\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"X-Generator: Poedit 3.9\n"
 
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "ئابدۇقادىر ئابلىز, غەيرەت كەنجى"
+msgstr "ئابدۇقادىر ئابلىز، غەيرەت كەنجى"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "sahran.ug@gmail.com,  gheyret@gmail.com"
+msgstr "sahranbay@gmail.com, gheyret@gmail.com"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
 #: general.ui:32
 #, kde-format
 msgid "Game Type"
-msgstr "ئويۇن تىپى"
+msgstr "ئويۇن تۈرى"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:39
@@ -61,7 +62,7 @@ msgstr ""
 #: general.ui:70
 #, kde-format
 msgid "Behavior"
-msgstr "ھەرىكەت"
+msgstr "قىلمىش"
 
 #. i18n: ectx: property (text), widget (QCheckBox, kcfg_AcceleratorBlocked)
 #: general.ui:76
@@ -77,10 +78,9 @@ msgstr "ئوينىغۇچىنىڭ ئاتى"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
 #: general.ui:98
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgid "Right player / KSnake mode:"
-msgstr "R"
+msgstr ""
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:108
@@ -90,10 +90,9 @@ msgstr ""
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
 #: general.ui:121
-#, fuzzy, kde-format
-#| msgid "Game paused"
+#, kde-format
 msgid "Game Options"
-msgstr "ئويۇن ۋاقىتلىق توختىتىلدى"
+msgstr "ئويۇن تاللانمىسى"
 
 #. i18n: ectx: property (text), widget (QLabel, roundsLabel)
 #: general.ui:127
@@ -138,39 +137,34 @@ msgid "Rounds"
 msgstr ""
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:94
 #, kde-format
@@ -218,11 +212,10 @@ msgid "Game paused"
 msgstr "ئويۇن ۋاقىتلىق توختىتىلدى"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Names"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
-msgstr "ئوينىغۇچىنىڭ ئاتى"
+msgstr ""
 
 #: ktron.cpp:254
 #, kde-format
@@ -231,29 +224,25 @@ msgid "Opponent:"
 msgstr ""
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
-msgstr "R"
+msgstr ""
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "ئادەتتىكى"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "ئۆرنەك"
@@ -282,17 +271,17 @@ msgstr ""
 #: main.cpp:63
 #, kde-format
 msgid "Matthias Kiefer"
-msgstr "Matthias Kiefer"
+msgstr ""
 
 #: main.cpp:63
 #, kde-format
 msgid "Original author"
-msgstr "ئەسلى ئاپتور"
+msgstr "ئەسلى يازغۇچى"
 
 #: main.cpp:64
 #, kde-format
 msgid "Benjamin Meyer"
-msgstr "Benjamin Meyer"
+msgstr ""
 
 #: main.cpp:64
 #, kde-format
