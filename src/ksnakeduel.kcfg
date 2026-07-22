@@ -30,7 +30,7 @@
       </choices>
       <default>PlayerVSComputer</default>
     </entry>
-    <entry key="Rounds" type="int">
+    <entry key="Rounds" type="Int">
       <label>Rounds</label>
       <default>5</default>
     </entry>
