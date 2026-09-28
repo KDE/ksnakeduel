@@ -1,0 +1,833 @@
+<?xml version="1.0" ?>
+<!DOCTYPE book PUBLIC "-//KDE//DTD DocBook XML V4.5-Based Variant V1.1//EN" "dtd/kdedbx45.dtd" [
+  <!ENTITY ksnakeduel "<application
+>KSnakeDuel</application
+>">
+  <!ENTITY % addindex "IGNORE">
+  <!ENTITY % Russian "INCLUDE">
+]>
+
+<book id="ksnakeduel" lang="&language;">
+<bookinfo>
+<title
+>Руководство пользователя &ksnakeduel;</title>
+
+<authorgroup>
+<author
+><firstname
+>Fabian</firstname
+> <surname
+>Dal Santo</surname
+> <affiliation
+> <address
+>&Fabian.DalSanto.mail;</address>
+</affiliation>
+</author>
+
+<author
+><firstname
+>Stas</firstname
+> <surname
+>Verberkt</surname
+> <affiliation
+> <address
+>&Stas.Verberkt.mail;</address>
+</affiliation>
+</author>
+
+<othercredit role="reviewer"
+><firstname
+>Lauri</firstname
+> <surname
+>Watts</surname
+> <affiliation
+> <address
+>&Lauri.Watts.mail;</address>
+</affiliation>
+<contrib
+>Рецензент</contrib>
+</othercredit>
+<othercredit role="translator"
+><firstname
+>Александр</firstname
+><surname
+>Яворский</surname
+><affiliation
+><address
+><email
+>kekcuha@gmail.com</email
+></address
+></affiliation
+><contrib
+>Перевод на русский</contrib
+></othercredit>
+</authorgroup>
+
+<copyright>
+<year
+>1999</year>
+<year
+>2000</year>
+<holder
+>&Matthias.Kiefer;</holder>
+</copyright>
+
+<copyright>
+<year
+>2001</year>
+<holder
+>&Fabian.Dal.Santo;</holder>
+</copyright>
+
+<copyright>
+<year
+>2009</year>
+<holder
+>&Stas.Verberkt;</holder>
+</copyright>
+
+<legalnotice
+>&FDLNotice;</legalnotice>
+
+<date
+>17 августа 2021 г.</date>
+<releaseinfo
+>2.1 (KDE Gear 21.08)</releaseinfo>
+
+<abstract>
+<para
+>&ksnakeduel; — простая игра-дуэль змеек, в которую можно играть одному или с другом. </para>
+</abstract>
+
+<keywordset>
+<keyword
+>KDE</keyword>
+<keyword
+>kdegames</keyword>
+<keyword
+>KTron</keyword>
+<keyword
+>KSnakeDuel</keyword>
+<keyword
+>игра</keyword>
+<keyword
+>tron</keyword>
+<keyword
+>snakeduel</keyword>
+<keyword
+>KSnake</keyword>
+<keyword
+>змейка</keyword>
+<keyword
+>дуэль</keyword>
+</keywordset>
+</bookinfo>
+
+<chapter id="introduction">
+<title
+>Введение</title>
+
+<para
+>&ksnakeduel; — простая игра-дуэль змеек. Играть можно против компьютера или друга. Цель — продержаться дольше соперника: для этого не врезайтесь в стены, в свой хвост и в хвост соперника. </para>
+
+<para
+>В режиме змейки &ksnakeduel; — простая игра наподобие «Змейки». Цель — продержаться как можно дольше и съесть как можно больше фруктов. </para>
+
+<para
+>Переключаться между этими играми можно, выбрав тип игры в диалоге настройки. </para>
+
+</chapter>
+
+<chapter id="playing-ktron">
+<title
+>Игра в &ksnakeduel;</title>
+
+<sect1 id="playing-ktron-rules">
+<title
+>Правила</title>
+
+<para
+>После начала раунда игроки непрерывно движутся вперёд (если игра не приостановлена). Нужно только не разбиться, вовремя меняя направление. Кроме того, можно попытаться помешать сопернику — для этого можно разогнаться, нажав клавишу ускорения. </para>
+
+<para
+>Раунд начинается, когда все игроки-люди нажмут клавишу направления; в этом направлении они и начнут двигаться. </para>
+
+<para
+>Чтобы прервать игру, выберите пункт меню <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+></menuchoice
+>. Игра также приостанавливается, когда окно теряет фокус клавиатуры, например при переключении на другое окно. </para>
+
+<para
+>Чтобы продолжить игру, снова выберите этот пункт меню или нажмите комбинацию клавиш. Игра продолжится и при нажатии клавиши направления, но осторожно: игрок сразу повернёт в эту сторону. </para>
+
+
+<para
+>Игра состоит из нескольких раундов и заканчивается, когда у одного из игроков не меньше девяти очков и хотя бы на два больше, чем у соперника. Текущий счёт всегда показан в строке состояния. </para>
+
+<para
+>Уровень сложности меняется в подменю <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Уровень сложности</guisubmenu
+></menuchoice
+> или в раскрывающемся списке в строке состояния. От сложности зависят скорость игры и сила компьютерного игрока. </para>
+</sect1>
+
+<sect1 id="computerplayer">
+<title
+>Компьютерный игрок</title>
+
+<para
+>Можно играть против компьютера. От уровня сложности зависит, насколько умно играет компьютер. </para>
+<para
+>На низких уровнях компьютер не обращает внимания на соперника и просто ездит по полю. На высоких он пытается помешать сопернику, когда тот оказывается рядом. </para>
+</sect1>
+
+<sect1 id="using-keyboard">
+<title
+>Использование клавиатуры</title>
+
+<para
+>У каждого игрока пять клавиш: четыре для смены направления и одна для ускорения. </para>
+
+<para
+>Клавиши направления не нужно удерживать: чтобы повернуть, достаточно нажать клавишу один раз. </para>
+
+<para
+>Ускорение действует, только пока удерживается клавиша ускорения. Когда её отпускаешь, скорость возвращается к обычной. </para>
+
+<note
+><para
+><ulink url="help:/fundamentals/shortcuts.html"
+>Клавиши можно изменить</ulink
+> в пункте меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить комбинации клавиш…</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+</chapter>
+
+<chapter id="playing-snake">
+<title
+>Игра в режиме змейки</title>
+
+<sect1 id="playing-snake-rules">
+<title
+>Правила</title>
+
+<para
+>После начала игры игрок непрерывно движется вперёд (если игра не приостановлена). Нужно только не разбиться, вовремя меняя направление. Игра начинается, когда вы нажимаете клавишу направления; в этом направлении змейка и начнёт двигаться. </para>
+
+<para
+>Чтобы приостановить игру, выберите пункт меню <menuchoice
+> <shortcut
+><keycombo action="simul"
+><keycap
+>P</keycap
+></keycombo
+></shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+></menuchoice
+> или нажмите комбинацию клавиш. Игра также приостанавливается, когда окно теряет фокус клавиатуры, например при переключении на другое окно. </para>
+
+<para
+>Чтобы продолжить игру, снова выберите этот пункт меню или нажмите комбинацию клавиш. Игра продолжится и при нажатии клавиши направления, но осторожно: игрок сразу повернёт в эту сторону. </para>
+
+<para
+>На поле всегда лежит один фрукт. Если его съесть, счёт увеличится на 5 очков. Текущий счёт всегда показан в строке состояния. </para>
+
+<para
+>Пока вы движетесь по полю, на нём появляются препятствия; столкновение с ними тоже заканчивается аварией. Зато за каждое появившееся препятствие, которое вы пережили, начисляется 2 очка. </para>
+
+<para
+>Уровень сложности меняется в подменю <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guisubmenu
+>Уровень сложности</guisubmenu
+></menuchoice
+> или в раскрывающемся списке в строке состояния. От сложности зависят скорость игры и сила компьютерного игрока. </para>
+
+</sect1>
+
+<sect1 id="using-keyboard-snake">
+<title
+>Использование клавиатуры</title>
+
+<para
+>У игрока четыре клавиши для смены направления. Удерживать их не нужно: чтобы повернуть, достаточно нажать клавишу один раз. </para>
+
+<note
+><para
+><ulink url="help:/fundamentals/shortcuts.html"
+>Клавиши можно изменить</ulink
+> в пункте меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить комбинации клавиш…</guimenuitem
+></menuchoice
+>. </para
+></note>
+</sect1>
+
+</chapter>
+
+<chapter id="interface-overview">
+<title
+>Обзор интерфейса</title>
+
+<sect1 id="menu-items">
+<title
+>Пункты меню</title>
+
+<para
+>Ниже кратко описаны все пункты меню.</para>
+
+<variablelist>
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Начать игру</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Начать новую игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycap
+>P</keycap
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Пауза</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Приостановить или продолжить игру.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Показать лучшие результаты</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Показать таблицу лучших результатов.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><shortcut
+> <keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+> </shortcut
+> <guimenu
+>Игра</guimenu
+> <guimenuitem
+>Выход</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Выйти из &ksnakeduel;.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Уровень сложности</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Подменю выбора уровня сложности.</action
+></para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &ksnakeduel;…</guimenuitem
+> </menuchoice
+></term>
+<listitem
+><para
+><action
+>Открыть <link linkend="configuration"
+>диалог настройки</link
+> с разными параметрами.</action
+></para
+></listitem>
+</varlistentry>
+</variablelist>
+
+<para
+>Кроме того, в &ksnakeduel; есть стандартные для &kde; меню <guimenu
+>Настройка</guimenu
+> и <guimenu
+>Справка</guimenu
+>, описанные в разделах <ulink url="help:/fundamentals/menus.html#menus-settings"
+>Меню «Настройка»</ulink
+> и <ulink url="help:/fundamentals/menus.html#menus-help"
+>Меню «Справка»</ulink
+> руководства «Основы &kde;». </para>
+
+</sect1>
+
+<sect1 id="keys">
+<title
+>Комбинации клавиш по умолчанию</title>
+
+<para
+>В таблицах ниже перечислены комбинации клавиш по умолчанию.</para>
+
+
+<table>
+<title
+>Комбинации клавиш игрока 1</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбинация клавиш</entry>
+<entry
+>Действие</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+>&Up;</entry>
+<entry
+>Вверх</entry>
+</row>
+<row>
+<entry
+>&Down;</entry>
+<entry
+>Вниз</entry>
+</row>
+<row>
+<entry
+>&Right;</entry>
+<entry
+>Вправо</entry>
+</row>
+<row>
+<entry
+>&Left;</entry>
+<entry
+>Влево</entry>
+</row>
+<row>
+<entry
+><keycap
+>0</keycap
+></entry>
+<entry
+>Ускорение</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Комбинации клавиш игрока 2</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбинация клавиш</entry>
+<entry
+>Действие</entry
+></row
+></thead>
+<tbody>
+<row>
+<entry
+><keycap
+>R</keycap
+></entry>
+<entry
+>Вверх</entry>
+</row>
+<row>
+<entry
+><keycap
+>F</keycap
+></entry>
+<entry
+>Вниз</entry>
+</row>
+<row>
+<entry
+><keycap
+>G</keycap
+></entry>
+<entry
+>Вправо</entry>
+</row>
+<row>
+<entry
+><keycap
+>D</keycap
+></entry>
+<entry
+>Влево</entry>
+</row>
+<row>
+<entry
+><keycap
+>A</keycap
+></entry>
+<entry
+>Ускорение</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<table>
+<title
+>Общие комбинации клавиш</title>
+<tgroup cols="2">
+<thead>
+<row>
+<entry
+>Комбинация клавиш</entry>
+<entry
+>Действие</entry>
+</row>
+</thead>
+<tbody>
+<row>
+<entry
+><keycap
+>P</keycap
+></entry>
+<entry
+>Пауза/продолжение игры</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>H</keycap
+></keycombo
+></entry>
+<entry
+>Лучшие результаты</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>N</keycap
+></keycombo
+></entry>
+<entry
+>Новая игра</entry>
+</row>
+<row>
+<entry
+><keycombo action="simul"
+>&Ctrl;<keycap
+>Q</keycap
+></keycombo
+></entry>
+<entry
+>Выйти из &ksnakeduel;</entry>
+</row>
+<row>
+<entry
+><keycap
+>F1</keycap
+></entry>
+<entry
+>Это руководство</entry>
+</row>
+<row>
+<entry
+><keycombo
+action="simul"
+>&Shift;<keycap
+>F1</keycap
+></keycombo
+></entry>
+<entry
+>Справка «Что это?»</entry>
+</row>
+</tbody>
+</tgroup>
+</table>
+
+<para
+>Эти комбинации клавиш <ulink url="help:/fundamentals/shortcuts.html"
+>можно изменить</ulink
+> с помощью пункта меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить комбинации клавиш…</guimenuitem
+></menuchoice
+>. </para>
+
+</sect1>
+
+</chapter>
+
+<chapter id="configuration">
+
+<title
+>Диалог настройки</title>
+
+<para
+>Пункт меню <menuchoice
+><guimenu
+>Настройка</guimenu
+> <guimenuitem
+>Настроить &ksnakeduel;…</guimenuitem
+></menuchoice
+> открывает диалог, в котором настраивается поведение &ksnakeduel;.</para>
+
+<para
+>В диалоге две страницы.</para>
+
+<sect1 id="configuration-general">
+<title
+>Основные параметры</title>
+
+<screenshot>
+<screeninfo
+>Настройка &ksnakeduel; — Основное</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-general.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Основные параметры</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<variablelist>
+<varlistentry>
+<term
+><guilabel
+>Тип игры</guilabel
+></term>
+<listitem
+><para
+>Здесь выбирается тип игры. Вариантов три: <variablelist>
+  <varlistentry>
+    <term
+><guimenuitem
+>Дуэль KSnake: Два игрока</guimenuitem
+></term>
+    <listitem
+><para
+>Игра &ksnakeduel; двух людей.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Дуэль KSnake: Игрок и Компьютер</guimenuitem
+></term>
+    <listitem
+><para
+>Игра &ksnakeduel; человека против компьютера.</para
+></listitem>
+  </varlistentry>
+
+  <varlistentry>
+    <term
+><guimenuitem
+>Режим змейки: один игрок</guimenuitem
+></term>
+    <listitem
+><para
+>Игра &ksnakeduel; для одного игрока.</para
+></listitem>
+  </varlistentry>
+</variablelist>
+
+</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Отключить ускорение</guilabel
+></term>
+<listitem
+><para
+>Если флажок установлен, ускорение отключено: клавиша ускорения ничего не делает, и оба игрока всегда движутся с постоянной скоростью.</para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Имена игроков</guilabel
+></term>
+<listitem
+><para
+>Здесь можно задать свои имена игроков вместо имён по умолчанию.</para>
+<para
+>По умолчанию первый игрок получает имя пользователя, вошедшего в систему. </para
+></listitem>
+</varlistentry>
+
+<varlistentry>
+<term
+><guilabel
+>Параметры игры</guilabel
+></term>
+<listitem
+><para
+>Параметр <guilabel
+>Раундов для победы:</guilabel
+> задаёт, сколько раундов нужно выиграть для победы.</para
+></listitem>
+</varlistentry>
+
+</variablelist>
+</sect1>
+
+<sect1 id="configuration-theme">
+<title
+>Оформление</title>
+
+<screenshot>
+<screeninfo
+>Настройка &ksnakeduel; — Оформление</screeninfo>
+	<mediaobject>
+	  <imageobject>
+	    <imagedata fileref="settings-theme.png" format="PNG"/>
+	  </imageobject>
+	    <textobject>
+	    <phrase
+>Оформление</phrase>
+	  </textobject>
+	</mediaobject>
+</screenshot>
+
+<para
+>На этой странице выбирается тема оформления &ksnakeduel;. </para>
+</sect1>
+</chapter>
+
+<!-- credits chapter done -->
+<chapter id="credits">
+<title
+>Авторские права и лицензия</title>
+
+<para
+>&ksnakeduel; </para>
+
+<para
+>© &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1998–2000 (программа) </para>
+
+<para
+>© &Stas.Verberkt; &Stas.Verberkt.mail;, 2008–2009 (программа) </para>
+
+<para
+>Часть кода взята из xtron-1.1 (автор — Rhett D. Jacobs <email
+>rhett@hotel.canberra.edu.au&gt;</email
+>) </para>
+
+<para
+>© &Matthias.Kiefer; &Matthias.Kiefer.mail;, 1999 (документация) </para>
+
+<para
+>Документация обновлена для &kde; 2.0: &Fabian.Dal.Santo; &Fabian.DalSanto.mail;</para>
+
+<para
+>Перевод на русский — Александр Яворский<email
+>kekcuha@gmail.com</email
+></para
+> &underFDL; &underGPL; </chapter>
+
+</book>
+<!--
+Local Variables:
+mode: sgml
+sgml-omittag: nil
+sgml-shorttag: t
+End:
+-->
+
