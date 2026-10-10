@@ -2,13 +2,14 @@
 # Slobodan Simic <slsimic@gmail.com>, 2009.
 # Chusslove Illich <caslav.ilic@gmx.net>, 2009, 2010, 2017.
 # Dalibor Djuric <dalibor.djuric@mozilla-srbija.org>, 2010.
+# Nemanja Hiršl <nemhirsl@gmail.com>, 2026.
 msgid ""
 msgstr ""
 "Project-Id-Version: ksnakeduel\n"
 "Report-Msgid-Bugs-To: https://bugs.kde.org\n"
 "POT-Creation-Date: 2025-11-17 11:50+0000\n"
-"PO-Revision-Date: 2017-09-28 17:59+0200\n"
-"Last-Translator: Chusslove Illich <caslav.ilic@gmx.net>\n"
+"PO-Revision-Date: 2026-10-09 22:30+0200\n"
+"Last-Translator: Nemanja Hiršl <nemhirsl@gmail.com>\n"
 "Language-Team: Serbian <kde-i18n-sr@kde.org>\n"
 "Language: sr\n"
 "MIME-Version: 1.0\n"
@@ -23,12 +24,12 @@ msgstr ""
 #, kde-format
 msgctxt "NAME OF TRANSLATORS"
 msgid "Your names"
-msgstr "Слободан Симић,Часлав Илић"
+msgstr "Слободан Симић,Часлав Илић,Немања Хиршл"
 
 #, kde-format
 msgctxt "EMAIL OF TRANSLATORS"
 msgid "Your emails"
-msgstr "slsimic@gmail.com,caslav.ilic@gmx.net"
+msgstr "slsimic@gmail.com,caslav.ilic@gmx.net,nemhirsl@gmail.com"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameTypeGroup)
 #: general.ui:32
@@ -50,10 +51,9 @@ msgstr "К‑змијски-двобој: играч против играча"
 
 #. i18n: ectx: property (text), item, widget (KComboBox, kcfg_GameType)
 #: general.ui:49
-#, fuzzy, kde-format
-#| msgid "KSnake: Single player"
+#, kde-format
 msgid "KSnake mode: Single player"
-msgstr "К‑змијице: један играч"
+msgstr "Режим К‑змијица: један играч"
 
 #. i18n: ectx: property (text), widget (QLabel, gameTypeLabel)
 #: general.ui:57
@@ -81,10 +81,9 @@ msgstr "Имена играча"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer1Label)
 #: general.ui:98
-#, fuzzy, kde-format
-#| msgid "Right player / KSnake:"
+#, kde-format
 msgid "Right player / KSnake mode:"
-msgstr "Десни играч, К‑змијице:"
+msgstr "Десни играч, режим К‑змијица:"
 
 #. i18n: ectx: property (text), widget (QLabel, namePlayer2Label)
 #: general.ui:108
@@ -94,16 +93,15 @@ msgstr "Леви играч:"
 
 #. i18n: ectx: property (title), widget (QGroupBox, gameOptionsGroup)
 #: general.ui:121
-#, fuzzy, kde-format
-#| msgid "Game paused"
+#, kde-format
 msgid "Game Options"
-msgstr "Игра је паузирана"
+msgstr "Опције игре"
 
 #. i18n: ectx: property (text), widget (QLabel, roundsLabel)
 #: general.ui:127
 #, kde-format
 msgid "Rounds to win:"
-msgstr ""
+msgstr "Рунди за победу:"
 
 #. i18n: ectx: label, entry (Theme), group (General)
 #: ksnakeduel.kcfg:9
@@ -139,74 +137,64 @@ msgstr "Врста игре"
 #: ksnakeduel.kcfg:34
 #, kde-format
 msgid "Rounds"
-msgstr ""
+msgstr "Број рунди"
 
 #: ktron.cpp:64
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Up"
 msgstr "Десни играч, К‑змијице: нагоре"
 
 #: ktron.cpp:70
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Down"
 msgstr "Десни играч, К‑змијице: надоле"
 
 #: ktron.cpp:76
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Right"
 msgstr "Десни играч, К‑змијице: удесно"
 
 #: ktron.cpp:82
-#, fuzzy, kde-format
-#| msgid "Right Player / KSnake: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player / KSnake mode: Left"
 msgstr "Десни играч, К‑змијице: улево"
 
 #: ktron.cpp:88
-#, fuzzy, kde-format
-#| msgid "Right Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Right Player: Accelerator"
 msgstr "Десни играч, К‑змијице: убрзавање"
 
 #: ktron.cpp:94
-#, fuzzy, kde-format
-#| msgid "Left Player: Up"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Up"
 msgstr "Леви играч: нагоре"
 
 #: ktron.cpp:100
-#, fuzzy, kde-format
-#| msgid "Left Player: Down"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Down"
 msgstr "Леви играч: надоле"
 
 #: ktron.cpp:106
-#, fuzzy, kde-format
-#| msgid "Left Player: Right"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Right"
 msgstr "Леви играч: удесно"
 
 #: ktron.cpp:112
-#, fuzzy, kde-format
-#| msgid "Left Player: Left"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Left"
 msgstr "Леви играч: улево"
 
 #: ktron.cpp:118
-#, fuzzy, kde-format
-#| msgid "Left Player: Accelerator"
+#, kde-format
 msgctxt "@action"
 msgid "Left Player: Accelerator"
 msgstr "Леви играч: убрзавање"
@@ -227,43 +215,37 @@ msgid "Game paused"
 msgstr "Игра је паузирана"
 
 #: ktron.cpp:253
-#, fuzzy, kde-format
-#| msgid "Player Name:"
+#, kde-format
 msgctxt "@label"
 msgid "Player name:"
 msgstr "Име играча:"
 
 #: ktron.cpp:254
-#, fuzzy, kde-format
-#| msgid "Opponent:"
+#, kde-format
 msgctxt "@label"
 msgid "Opponent:"
 msgstr "Противник:"
 
 #: ktron.cpp:257
-#, fuzzy, kde-format
-#| msgid "Right Player:"
+#, kde-format
 msgctxt "@label"
 msgid "Right player:"
 msgstr "Десни играч:"
 
 #: ktron.cpp:258
-#, fuzzy, kde-format
-#| msgid "Left player:"
+#, kde-format
 msgctxt "@label"
 msgid "Left player:"
 msgstr "Леви играч:"
 
 #: ktron.cpp:262
-#, fuzzy, kde-format
-#| msgid "General"
+#, kde-format
 msgctxt "@title:tab"
 msgid "General"
 msgstr "Опште"
 
 #: ktron.cpp:263
-#, fuzzy, kde-format
-#| msgid "Theme"
+#, kde-format
 msgctxt "@title:tab"
 msgid "Theme"
 msgstr "Тема"
@@ -360,15 +342,13 @@ msgstr[2] "%1 поена"
 msgstr[3] "%1 поен"
 
 #: tron.cpp:364
-#, fuzzy, kde-format
-#| msgid "KSnake game ended with 1 point"
-#| msgid_plural "KSnake game ended with %1 points"
+#, kde-format
 msgid "The game ended with 1 point."
 msgid_plural "The game ended with %1 points."
-msgstr[0] "Игра К‑змијица завршена са %1 поеном"
-msgstr[1] "Игра К‑змијица завршена са %1 поена"
-msgstr[2] "Игра К‑змијица завршена са %1 поена"
-msgstr[3] "Игра К‑змијица завршена са %1 поеном"
+msgstr[0] "Игра је завршена са %1 поеном."
+msgstr[1] "Игра је завршена са %1 поена."
+msgstr[2] "Игра је завршена са %1 поена."
+msgstr[3] "Игра је завршена са једним поеном."
 
 #: tron.cpp:369
 #, kde-format
@@ -380,6 +360,3 @@ msgstr "Игра почиње када сваки играч притисне ј
 #, kde-format
 msgid "Press any of your direction keys to start!"
 msgstr "Притисните један од тастера за смер да бисте почели!"
-
-#~ msgid "Left Player:"
-#~ msgstr "Леви играч:"
