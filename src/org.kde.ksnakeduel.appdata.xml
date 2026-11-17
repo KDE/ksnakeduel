@@ -2,7 +2,7 @@
 <component type="desktop-application">
   <id>org.kde.ksnakeduel</id>
   <metadata_license>FSFAP</metadata_license>
-  <project_license>GPL-2.0+</project_license>
+  <project_license>GPL-2.0-or-later</project_license>
   <developer id="org.kde">
     <name translate="no">KDE</name>
   </developer>
@@ -143,6 +143,8 @@
   <url type="help">https://docs.kde.org/?application=ksnakeduel</url>
   <url type="donation">https://www.kde.org/community/donations/?app=ksnakeduel&amp;source=appdata</url>
   <url type="homepage">https://apps.kde.org/ksnakeduel</url>
+  <url type="vcs-browser">https://invent.kde.org/games/ksnakeduel/</url>
+  <url type="contribute">https://community.kde.org/Get_Involved</url>
   <screenshots>
     <screenshot type="default">
       <image>https://kde.org/images/screenshots/ksnakeduel.png</image>
